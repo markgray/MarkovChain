@@ -17,6 +17,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".DoMarkov"
+            android:label="@string/title_activity_do_markov"></activity>
+
     </application>
 
 </manifest>

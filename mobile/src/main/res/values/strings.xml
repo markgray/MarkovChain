@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MarkovChain</string>
+    <string name="title_activity_do_markov">DoMarkov</string>
 </resources>
