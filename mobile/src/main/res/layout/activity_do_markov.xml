@@ -12,6 +12,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/textview_for_nonsense"
         android:text="This is the second activity"/>
 
 </LinearLayout>
