@@ -10,7 +10,9 @@ class Markov {
         Chain chain = new Chain();
         int nwords = MAXGEN;
 
-        chain.build(System.in);
+        for (String quotes: args) {
+            chain.build(new StringReader(quotes));
+        }
         chain.generate(nwords);
     }
 
@@ -25,13 +27,13 @@ class Markov {
         Random rand = new Random();
 
         // Chain build: build State table from input stream
-        void build(InputStream in) throws IOException {
-            StreamTokenizer st = new StreamTokenizer(in);
+        void build(Reader quotes) throws IOException {
+            StreamTokenizer st = new StreamTokenizer(quotes);
 
             st.resetSyntax();                     // remove default rules
             st.wordChars(0, Character.MAX_VALUE); // turn on all chars
             st.whitespaceChars(0, ' ');           // except up to blank
-            while (st.nextToken() != st.TT_EOF)
+            while (st.nextToken() != StreamTokenizer.TT_EOF)
                 add(st.sval);
             add(NONWORD);
         }
