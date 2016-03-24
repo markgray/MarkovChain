@@ -19,7 +19,7 @@
         </activity>
 
         <activity
-            android:name=".DoMarkov"
+            android:name=".ShakespeareActivity"
             android:label="@string/title_activity_do_markov"></activity>
 
     </application>

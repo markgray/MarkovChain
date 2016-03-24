@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ViewGroup rootView = (ViewGroup) findViewById(R.id.main_rootview);
-        addButton(DoMarkov.class, "Do the Markov Chain", rootView);
+        addButton(ShakespeareActivity.class, "Shakespeare", rootView);
 
     }
 
