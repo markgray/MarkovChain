@@ -1,10 +1,14 @@
 package com.example.android.common;
 
+import android.util.Log;
+
 import java.io.*;
 import java.util.*;
 
-class Markov {
+public class Markov {
+    static final String TAG = "Markov";
     static final int MAXGEN = 10000; // maximum words generated
+    public List<String> mOutput = new ArrayList<>();
 
     public void startUp (String[] args) throws IOException {
         Chain chain = new Chain();
@@ -56,14 +60,13 @@ class Markov {
             for (int i = 0; i < nwords; i++) {
                 Vector s = (Vector) statetab.get(prefix);
                 if (s == null) {
-                    System.err.println("Markov: internal error: no state");
-                    System.exit(1);
+                    Log.d(TAG, "internal error: no state");
                 }
                 int r = Math.abs(rand.nextInt()) % s.size();
                 String suf = (String) s.elementAt(r);
                 if (suf.equals(NONWORD))
                     break;
-                System.out.println(suf);
+                mOutput.add(suf);
                 prefix.pref.removeElementAt(0);
                 prefix.pref.addElement(suf);
             }
