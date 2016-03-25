@@ -45,6 +45,7 @@ public class ShakespeareActivity extends ListActivity {
                 stringBuilder.append(word + " ");
             }
         }
+        tempStr[tempStrNext++] = stringBuilder.toString();
 
         ArrayAdapter<String> itemsAdapter =
                 new ArrayAdapter<>(this,
