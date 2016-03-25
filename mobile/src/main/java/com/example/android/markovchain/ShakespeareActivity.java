@@ -27,8 +27,18 @@ public class ShakespeareActivity extends ListActivity {
         }
 
         String[] tempStr = new String[(markov.mOutput.size())];
-        for (int i = 0; i < tempStr.length; i++) {
-            tempStr[i] = markov.mOutput.get(i);
+        int tempStrNext = 0;
+        StringBuilder stringBuilder = new StringBuilder(60);
+        for (int i = 0; i < markov.mOutput.size(); i++) {
+            String word = markov.mOutput.get(i);
+            if (stringBuilder.length() + word.length() < 60) {
+                stringBuilder.append(word + " ");
+            } else {
+                stringBuilder.append("\n");
+                tempStr[tempStrNext++] = stringBuilder.toString();
+                stringBuilder.delete(0, stringBuilder.length());
+                stringBuilder.append(word + " ");
+            }
         }
 
         ArrayAdapter<String> itemsAdapter =
