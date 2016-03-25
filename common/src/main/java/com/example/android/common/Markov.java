@@ -99,12 +99,13 @@ public class Markov {
 
         // Prefix constructor: duplicate existing prefix
         Prefix(Prefix p) {
+            //noinspection unchecked
             pref = (Vector<String>) p.pref.clone();
         }
 
         // Prefix constructor: n copies of str
         Prefix(int n, String str) {
-            pref = new Vector<String>();
+            pref = new Vector<>();
             for (int i = 0; i < n; i++)
                 pref.addElement(str);
         }
