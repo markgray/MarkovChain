@@ -2,6 +2,7 @@ package com.example.android.markovchain;
 
 import android.app.ListActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -11,6 +12,8 @@ import com.example.android.common.Shakespeare;
 import java.io.IOException;
 
 public class ShakespeareActivity extends ListActivity {
+
+    public final String TAG = "ShakespeareActivity";
 
     public ListView mlistView;
     public Markov markov = new Markov();
@@ -26,10 +29,12 @@ public class ShakespeareActivity extends ListActivity {
             e.printStackTrace();
         }
 
+        Log.i(TAG, "Size of generated text:" + markov.mOutput.size());
         String[] tempStr = new String[(markov.mOutput.size())];
         int tempStrNext = 0;
         StringBuilder stringBuilder = new StringBuilder(60);
         for (int i = 0; i < markov.mOutput.size(); i++) {
+            tempStr[i] = "<empty>";
             String word = markov.mOutput.get(i);
             if (stringBuilder.length() + word.length() < 60) {
                 stringBuilder.append(word + " ");
