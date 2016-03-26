@@ -32,17 +32,15 @@ public class ShakespeareActivity extends ListActivity {
         Log.i(TAG, "Size of generated text:" + markov.mOutput.size());
         String[] tempStr = new String[(markov.mOutput.size())];
         int tempStrNext = 0;
-        StringBuilder stringBuilder = new StringBuilder(60);
+        StringBuilder stringBuilder = new StringBuilder(400);
         for (int i = 0; i < markov.mOutput.size(); i++) {
             tempStr[i] = "<empty>";
             String word = markov.mOutput.get(i);
-            if (stringBuilder.length() + word.length() < 60) {
-                stringBuilder.append(word + " ");
-            } else {
+            stringBuilder.append(word + " ");
+            if (word.contains(".")) {
                 stringBuilder.append("\n");
                 tempStr[tempStrNext++] = stringBuilder.toString();
-                stringBuilder.delete(0, stringBuilder.length());
-                stringBuilder.append(word + " ");
+                stringBuilder = new StringBuilder(400);
             }
         }
         tempStr[tempStrNext++] = stringBuilder.toString();
