@@ -37,13 +37,13 @@ public class ShakespeareActivity extends ListActivity {
             tempStr[i] = "<empty>";
             String word = markov.mOutput.get(i);
             stringBuilder.append(word + " ");
-            if (word.contains(".")) {
+            if (word.contains(".") || word.contains("?") || word.contains("!")) {
                 stringBuilder.append("\n");
                 tempStr[tempStrNext++] = stringBuilder.toString();
                 stringBuilder = new StringBuilder(400);
             }
         }
-        tempStr[tempStrNext++] = stringBuilder.toString();
+        tempStr[tempStrNext] = stringBuilder.toString();
 
         ArrayAdapter<String> itemsAdapter =
                 new ArrayAdapter<>(this,
