@@ -1,22 +1,23 @@
 package com.example.android.markovchain;
 
-import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.Adapter;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 public class BibleActivity extends AppCompatActivity {
 
     public final String TAG = "BibleActivity";
-
+    public ArrayList<String> tempList;
     public ListView mlistView;
-
+    protected String[] tempStr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,12 +26,33 @@ public class BibleActivity extends AppCompatActivity {
         mlistView = (ListView) findViewById(android.R.id.list);
         InputStream inputStream = getApplicationContext().getResources().openRawResource(R.raw.king_james);
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-//        Adapter
-//        ArrayAdapter<String> itemsAdapter =
-//                new ArrayAdapter<>(this,
-//                        android.R.layout.simple_list_item_1,
-//                        tempStr);
-//        mlistView.setAdapter(itemsAdapter);
+        fillArray(reader);
+        ArrayAdapter<String> itemsAdapter =
+                new ArrayAdapter<>(this,
+                        android.R.layout.simple_list_item_1,
+                        tempStr);
+        mlistView.setAdapter(itemsAdapter);
+
+    }
+
+    private void fillArray(BufferedReader reader) {
+        String line;
+        StringBuilder builder = new StringBuilder();
+        try {            while ((line = reader.readLine()) != null) {
+                builder.append(line).append("\n");
+                if (line.length() == 0) {
+                    tempList.add(builder.toString());
+                    builder = new StringBuilder();
+                }
+            }
+            Log.i(TAG, "Verses read: " + tempList.size());
+            tempStr = new String[tempList.size()];
+            for (int i = 0; i < tempStr.length; i++) {
+                tempStr[i] = tempList.get(i);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 }
