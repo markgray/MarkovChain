@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">MarkovChain</string>
     <string name="title_activity_do_markov">DoMarkov</string>
-    <string name="empty_list">No Results</string>
+    <string name="empty_list">Busy generating output</string>
 </resources>

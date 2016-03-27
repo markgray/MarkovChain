@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.example.android.common.BenchMark;
+//import com.example.android.common.BenchMark;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,11 +16,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ViewGroup rootView = (ViewGroup) findViewById(R.id.main_rootview);
-        addButton(ShakespeareActivity.class, "Shakespeare", rootView);
+        addButton(ShakespeareActivity.class, "Shakespeare Markov", rootView);
+        addButton(Sonnets.class, "Shakespeare Sonnets", rootView);
 
     }
 
-    BenchMark benchMark = new BenchMark();
+//    BenchMark benchMark = new BenchMark();
 
     public void addButton(final Class destination, String description, ViewGroup parent) {
         Button button = new Button(this);
