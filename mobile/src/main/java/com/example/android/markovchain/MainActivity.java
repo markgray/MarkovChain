@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
         ViewGroup rootView = (ViewGroup) findViewById(R.id.main_rootview);
         addButton(ShakespeareActivity.class, "Shakespeare Markov", rootView);
         addButton(Sonnets.class, "Shakespeare Sonnets", rootView);
-
+        addButton(BibleActivity.class, "King James Bible", rootView);
     }
 
 //    BenchMark benchMark = new BenchMark();

@@ -1,5 +1,6 @@
 package com.example.android.markovchain;
 
+import android.app.ListActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -12,10 +13,10 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-public class BibleActivity extends AppCompatActivity {
+public class BibleActivity extends ListActivity {
 
     public final String TAG = "BibleActivity";
-    public ArrayList<String> tempList;
+    public ArrayList<String> tempList = new ArrayList<>();
     public ListView mlistView;
     protected String[] tempStr;
 
@@ -40,10 +41,12 @@ public class BibleActivity extends AppCompatActivity {
         StringBuilder builder = new StringBuilder();
         try {
             while ((line = reader.readLine()) != null) {
-                builder.append(line).append("\n");
+                builder.append(line);
                 if (line.length() == 0) {
                     tempList.add(builder.toString());
                     builder = new StringBuilder();
+                } else {
+                    builder.append(" ");
                 }
             }
             Log.i(TAG, "Verses read: " + tempList.size());
