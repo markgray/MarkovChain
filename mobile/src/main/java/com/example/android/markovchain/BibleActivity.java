@@ -38,7 +38,8 @@ public class BibleActivity extends AppCompatActivity {
     private void fillArray(BufferedReader reader) {
         String line;
         StringBuilder builder = new StringBuilder();
-        try {            while ((line = reader.readLine()) != null) {
+        try {
+            while ((line = reader.readLine()) != null) {
                 builder.append(line).append("\n");
                 if (line.length() == 0) {
                     tempList.add(builder.toString());
