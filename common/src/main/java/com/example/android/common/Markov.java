@@ -66,30 +66,27 @@ public class Markov {
 
         // Chain generate: generate output words
         void generate(int nwords) {
+
             prefix = new Prefix(NPREF, NONWORD);
-            Vector<String> lastSuf = null;
+            String suf;
+            int r;
+
             for (int i = 0; i < nwords; i++) {
                 Vector<String> s = statetab.get(prefix);
                 if (s == null) {
                     Log.d(TAG, "internal error: no state");
+                    return;
                 }
-                int r = 0;
-                if (s != null) {
-                    r = Math.abs(rand.nextInt()) % s.size();
-                }
-                String suf = null;
-                if (s != null) {
-                    suf = s.elementAt(r);
-                }
-                if (suf != null && suf.equals(NONWORD)) {
+                r = Math.abs(rand.nextInt()) % s.size();
+                suf = s.elementAt(r);
+
+                if (suf.equals(NONWORD)) {
                     Log.i(TAG, "Suffix at " + r + " is NONWORD");
                     Log.i(TAG, "Size of Vector s is: " + s.size());
+                    Log.i(TAG, "Words generated:" + i);
                     prefix = new Prefix(NPREF, NONWORD);
-//                    break;
                 }
                 mOutput.add(suf);
-                lastSuf = s;
-//                Log.i(TAG, "Word: " + i + " " + suf);
                 prefix.pref.removeElementAt(0);
                 prefix.pref.addElement(suf);
             }
