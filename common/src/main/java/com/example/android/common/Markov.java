@@ -7,7 +7,7 @@ import java.util.*;
 
 public class Markov {
     static final String TAG = "Markov";
-    static final int MAXGEN = 1000000; // maximum words generated
+    static final int MAXGEN = 100000; // maximum words generated
     public List<String> mOutput = new ArrayList<>();
 
     public void startUp (String[] args) throws IOException {
@@ -67,6 +67,7 @@ public class Markov {
         // Chain generate: generate output words
         void generate(int nwords) {
             prefix = new Prefix(NPREF, NONWORD);
+            Vector<String> lastSuf = null;
             for (int i = 0; i < nwords; i++) {
                 Vector<String> s = statetab.get(prefix);
                 if (s == null) {
@@ -83,9 +84,11 @@ public class Markov {
                 if (suf != null && suf.equals(NONWORD)) {
                     Log.i(TAG, "Suffix at " + r + " is NONWORD");
                     Log.i(TAG, "Size of Vector s is: " + s.size());
-                    break;
+                    prefix = new Prefix(NPREF, NONWORD);
+//                    break;
                 }
                 mOutput.add(suf);
+                lastSuf = s;
 //                Log.i(TAG, "Word: " + i + " " + suf);
                 prefix.pref.removeElementAt(0);
                 prefix.pref.addElement(suf);
