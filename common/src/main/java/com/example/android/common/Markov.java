@@ -7,7 +7,7 @@ import java.util.*;
 
 public class Markov {
     static final String TAG = "Markov";
-    static final int MAXGEN = 100000; // maximum words generated
+    static final int MAXGEN = 10000; // maximum words generated
     public List<String> mOutput = new ArrayList<>();
 
     public void startUp (String[] args) throws IOException {
