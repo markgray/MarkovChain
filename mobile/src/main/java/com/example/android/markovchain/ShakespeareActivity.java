@@ -43,9 +43,8 @@ public class ShakespeareActivity extends ListActivity {
             String word = markov.mOutput.get(i);
             stringBuilder.append(word).append(" ");
             if (word.contains(".") || word.contains("?") || word.contains("!")) {
-                stringBuilder.append("\n");
                 tempStr[tempStrNext++] = stringBuilder.toString();
-                stringBuilder = new StringBuilder(400);
+                stringBuilder.setLength(0);
             }
         }
         tempStr[tempStrNext] = stringBuilder.toString();
