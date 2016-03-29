@@ -18,9 +18,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ShakespeareActivity"
+            android:name=".ShakespeareMarkovActivity"
             android:label="@string/title_activity_do_markov" />
-        <activity android:name=".Sonnets" />
+        <activity android:name=".ShakespeareActivity" />
         <activity android:name=".BibleActivity"></activity>
     </application>
 
