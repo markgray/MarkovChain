@@ -9,19 +9,22 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.android.common.Markov;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
+//import java.util.ArrayList;
 import java.util.Random;
 
 public class BibleMarkovActivity extends ListActivity {
     public final String TAG = "BibleMarkovActivity";
-    public ArrayList<String> tempList = new ArrayList<>();
+//    public ArrayList<String> tempList = new ArrayList<>();
     public ListView mlistView;
     protected String[] tempStr;
     Random rand = new Random();
+    public Markov markov = new Markov();
 
 
     @Override
@@ -31,7 +34,13 @@ public class BibleMarkovActivity extends ListActivity {
         mlistView = (ListView) findViewById(android.R.id.list);
         InputStream inputStream = getApplicationContext().getResources().openRawResource(R.raw.king_james_state_table);
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-        fillArray(reader);
+        try {
+            markov.startUp(reader);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Log.i(TAG, "Size of generated text:" + markov.mOutput.size());
+//        TODO: Write string list adapter
         ArrayAdapter<String> itemsAdapter =
                 new ArrayAdapter<>(this,
                         android.R.layout.simple_list_item_1,
@@ -47,22 +56,6 @@ public class BibleMarkovActivity extends ListActivity {
             }
         });
 
-
-    }
-    private void fillArray(BufferedReader reader) {
-        String line;
-        try {
-            while ((line = reader.readLine()) != null) {
-                    tempList.add(line);
-            }
-            Log.i(TAG, "Verses read: " + tempList.size());
-            tempStr = new String[tempList.size()];
-            for (int i = 0; i < tempStr.length; i++) {
-                tempStr[i] = tempList.get(i);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
     }
 

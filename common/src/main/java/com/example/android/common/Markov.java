@@ -22,6 +22,15 @@ public class Markov {
         chain.generate(nwords);
     }
 
+    public void startUp (BufferedReader reader) throws IOException {
+        String line;
+        Chain chain = new Chain();
+        int nwords = MAXGEN;
+
+        chain.loadStateTable(reader);
+        chain.generate(nwords);
+    }
+
     public class Chain {
         static final int NPREF = 2;    // size of prefix
         static final String NONWORD = "\n";
@@ -50,6 +59,20 @@ public class Markov {
             }
             Log.i(TAG, "Words read: " + wordsRead);
             add(NONWORD);
+        }
+
+        void loadStateTable(BufferedReader reader) {
+            String line;
+            try {
+                while ((line = reader.readLine()) != null) {
+                    if (line.length() == 0) {
+                        // NONWORD occured add to state and read next line
+                    }
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
         }
 
         // Chain add: add word to suffix list, update prefix
