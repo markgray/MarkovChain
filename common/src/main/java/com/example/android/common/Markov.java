@@ -70,8 +70,13 @@ public class Markov {
                     String words[] = line.split(" ");
                     prefix.pref.setElementAt(words[0], 0);
                     prefix.pref.setElementAt(words[1], 1);
+                    Vector<String> suf = statetab.get(prefix);
+                    if (suf == null) {
+                        suf = new Vector<>();
+                        statetab.put(new Prefix(prefix), suf);
+                    }
                     for (int i = 2; i < words.length; i++) {
-                        add(words[i]);
+                        suf.addElement(words[i]);
                     }
                 }
             } catch (IOException e) {
