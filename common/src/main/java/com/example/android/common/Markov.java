@@ -23,7 +23,6 @@ public class Markov {
     }
 
     public void startUp (BufferedReader reader) throws IOException {
-        String line;
         Chain chain = new Chain();
         int nwords = MAXGEN;
 
@@ -65,9 +64,30 @@ public class Markov {
             String line;
             try {
                 while ((line = reader.readLine()) != null) {
-                    if (line.length() == 0) {
-                        // NONWORD occured add to state and read next line
+
+                    StreamTokenizer st = new StreamTokenizer(new StringReader(line));
+                    int wordsRead = 0;
+
+                    st.resetSyntax();                     // remove default rules
+                    st.wordChars(0, Character.MAX_VALUE); // turn on all chars
+                    st.whitespaceChars(0, ' ');           // except up to blank
+
+                    
+
+                    while (st.nextToken() != StreamTokenizer.TT_EOF) {
+                        add(st.sval);
+                        if (st.sval.equals(NONWORD)) {
+                            Log.i(TAG, "NONWORD occurs in input");
+                        }
+// TODO: need to collect two tokens for prefix, and rest of tokens on line are suffixes to be added one by one
+// empty string is a NONWORD Token
+
+
+                        wordsRead++;
                     }
+                    Log.i(TAG, "Words read: " + wordsRead);
+                    add(NONWORD);
+
                 }
             } catch (IOException e) {
                 e.printStackTrace();
