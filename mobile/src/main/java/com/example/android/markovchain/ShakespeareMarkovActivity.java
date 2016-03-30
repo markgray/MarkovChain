@@ -17,7 +17,7 @@ import java.util.Random;
 
 public class ShakespeareMarkovActivity extends ListActivity {
 
-    public final String TAG = "ShakespeareMarkovActivity";
+    public final String TAG = "ShakespeareMarkov";
 
     public ListView mlistView;
     public Markov markov = new Markov();
@@ -26,7 +26,7 @@ public class ShakespeareMarkovActivity extends ListActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_do_shakespeare);
+        setContentView(R.layout.activity_shakespeare_markov);
         mlistView = (ListView) findViewById(android.R.id.list);
         try {
             markov.startUp(Shakespeare.DIALOGUE);

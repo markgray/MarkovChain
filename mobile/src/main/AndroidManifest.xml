@@ -21,7 +21,16 @@
             android:name=".ShakespeareMarkovActivity"
             android:label="@string/title_activity_do_markov" />
         <activity android:name=".ShakespeareActivity" />
-        <activity android:name=".BibleActivity"></activity>
+        <activity android:name=".BibleActivity" />
+        <activity
+            android:name=".BibleMarkovActivity"
+            android:label="@string/title_activity_bible_markov"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.android.markovchain.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

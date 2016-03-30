@@ -14,14 +14,14 @@ import java.util.Random;
 
 public class ShakespeareActivity extends ListActivity {
 
-    public final String TAG = "SonnetsActivity";
+    public final String TAG = "ShakespeareActivity";
     public ListView mlistView;
     Random rand = new Random();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sonnets);
+        setContentView(R.layout.activity_shakespeare);
         mlistView = (ListView) findViewById(android.R.id.list);
         ArrayAdapter<String> itemsAdapter =
                 new ArrayAdapter<>(this,
