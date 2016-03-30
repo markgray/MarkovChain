@@ -32,7 +32,7 @@ public class Markov {
 
     public class Chain {
         static final int NPREF = 2;    // size of prefix
-        static final String NONWORD = "\n";
+        static final String NONWORD = "%";
         // "word" that can't appear
         Hashtable<Prefix, Vector<String>> statetab = new Hashtable<>();
         // key = Prefix, value = suffix Vector
@@ -62,32 +62,17 @@ public class Markov {
 
         void loadStateTable(BufferedReader reader) {
             String line;
+            prefix.pref = new Vector<>(2);
+            prefix.pref.addElement(NONWORD);
+            prefix.pref.addElement(NONWORD);
             try {
                 while ((line = reader.readLine()) != null) {
-
-                    StreamTokenizer st = new StreamTokenizer(new StringReader(line));
-                    int wordsRead = 0;
-
-                    st.resetSyntax();                     // remove default rules
-                    st.wordChars(0, Character.MAX_VALUE); // turn on all chars
-                    st.whitespaceChars(0, ' ');           // except up to blank
-
-                    
-
-                    while (st.nextToken() != StreamTokenizer.TT_EOF) {
-                        add(st.sval);
-                        if (st.sval.equals(NONWORD)) {
-                            Log.i(TAG, "NONWORD occurs in input");
-                        }
-// TODO: need to collect two tokens for prefix, and rest of tokens on line are suffixes to be added one by one
-// empty string is a NONWORD Token
-
-
-                        wordsRead++;
+                    String words[] = line.split(" ");
+                    prefix.pref.setElementAt(words[0], 0);
+                    prefix.pref.setElementAt(words[1], 1);
+                    for (int i = 2; i < words.length; i++) {
+                        add(words[i]);
                     }
-                    Log.i(TAG, "Words read: " + wordsRead);
-                    add(NONWORD);
-
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -97,6 +82,7 @@ public class Markov {
 
         // Chain add: add word to suffix list, update prefix
         void add(String word) {
+
             Vector<String> suf = statetab.get(prefix);
             if (suf == null) {
                 suf = new Vector<>();
