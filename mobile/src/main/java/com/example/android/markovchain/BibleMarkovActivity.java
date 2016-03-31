@@ -41,6 +41,21 @@ public class BibleMarkovActivity extends ListActivity {
         }
         Log.i(TAG, "Size of generated text:" + markov.mOutput.size());
 //        TODO: Write string list adapter
+
+        tempStr = new String[(markov.mOutput.size())];
+        int tempStrNext = 0;
+        StringBuilder stringBuilder = new StringBuilder(400);
+        for (int i = 0; i < markov.mOutput.size(); i++) {
+            tempStr[i] = "<empty>";
+            String word = markov.mOutput.get(i);
+            stringBuilder.append(word).append(" ");
+            if (word.contains(".") || word.contains("?") || word.contains("!")) {
+                tempStr[tempStrNext++] = stringBuilder.toString();
+                stringBuilder.setLength(0);
+            }
+        }
+        tempStr[tempStrNext] = stringBuilder.toString();
+
         ArrayAdapter<String> itemsAdapter =
                 new ArrayAdapter<>(this,
                         android.R.layout.simple_list_item_1,
