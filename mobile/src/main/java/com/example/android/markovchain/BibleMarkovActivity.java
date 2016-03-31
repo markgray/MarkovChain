@@ -61,10 +61,11 @@ public class BibleMarkovActivity extends ListActivity {
                         android.R.layout.simple_list_item_1,
                         tempStr);
         mlistView.setAdapter(itemsAdapter);
+        final int finalTempStrNext = tempStrNext;
         mlistView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                int selection = Math.abs(rand.nextInt()) % tempStr.length;
+                int selection = Math.abs(rand.nextInt()) % finalTempStrNext;
                 mlistView.setSelection(selection);
                 Toast.makeText(getApplicationContext(), "Moving to verse " + selection, Toast.LENGTH_LONG).show();
                 return true;
