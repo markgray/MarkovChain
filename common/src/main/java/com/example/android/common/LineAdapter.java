@@ -1,50 +1,77 @@
 package com.example.android.common;
 
-import android.content.Context;
-import android.database.Cursor;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CursorAdapter;
 import android.widget.TextView;
 
-public class LineAdapter extends CursorAdapter {
+public class LineAdapter extends RecyclerView.Adapter<LineAdapter.ViewHolder> {
+    private static final String TAG = "CustomAdapter";
+
+    private String[] mDataSet;
+
     /**
-     * Recommended constructor.
-     *
-     * @param context The context
-     * @param c       The cursor from which to get the data.
-     * @param flags   Flags used to determine the behavior of the adapter; may
-     *                be any combination of {@link #FLAG_AUTO_REQUERY} and
-     *                {@link #FLAG_REGISTER_CONTENT_OBSERVER}.
+     * Provide a reference to the type of views that you are using (custom ViewHolder)
      */
-    public LineAdapter(Context context, Cursor c, int flags) {
-        super(context, c, flags);
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        private final TextView textView;
+
+        public ViewHolder(View v) {
+            super(v);
+            // Define click listener for the ViewHolder's View.
+            v.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.d(TAG, "Element " + getPosition() + " clicked.");
+                }
+            });
+            textView = (TextView) v.findViewById(R.id.textView);
+        }
+
+        public TextView getTextView() {
+            return textView;
+        }
     }
 
     /**
-     * Makes a new view to hold the data pointed to by cursor.
+     * Initialize the dataset of the Adapter.
      *
-     * @param context Interface to application's global information
-     * @param cursor  The cursor from which to get the data. The cursor is already
-     *                moved to the correct position.
-     * @param parent  The parent to which the new view is attached to
-     * @return the newly created view.
+     * @param dataSet String[] containing the data to populate views to be used by RecyclerView.
      */
-    @Override
-    public View newView(Context context, Cursor cursor, ViewGroup parent) {
-        return null;
+    public LineAdapter(String[] dataSet) {
+        mDataSet = dataSet;
     }
 
-    /**
-     * Bind an existing view to the data pointed to by cursor
-     *
-     * @param view    Existing view, returned earlier by newView
-     * @param context Interface to application's global information
-     * @param cursor  The cursor from which to get the data. The cursor is already
-     */
+    // BEGIN_INCLUDE(recyclerViewOnCreateViewHolder)
+    // Create new views (invoked by the layout manager)
     @Override
-    public void bindView(View view, Context context, Cursor cursor) {
-        TextView textView = (TextView) view.findViewById(R.id.text);
-        textView.setText(cursor.getString(1));
+    public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
+        // Create a new view.
+        View v = LayoutInflater.from(viewGroup.getContext())
+                .inflate(R.layout.line_list_item, viewGroup, false);
+
+        return new ViewHolder(v);
+    }
+    // END_INCLUDE(recyclerViewOnCreateViewHolder)
+
+    // BEGIN_INCLUDE(recyclerViewOnBindViewHolder)
+    // Replace the contents of a view (invoked by the layout manager)
+    @Override
+    public void onBindViewHolder(ViewHolder viewHolder, final int position) {
+        Log.d(TAG, "Element " + position + " set.");
+
+        // Get element from your dataset at this position and replace the contents of the view
+        // with that element
+        viewHolder.getTextView().setText(mDataSet[position]);
+    }
+    // END_INCLUDE(recyclerViewOnBindViewHolder)
+
+    // Return the size of your dataset (invoked by the layout manager)
+    @Override
+    public int getItemCount() {
+        return mDataSet.length;
     }
 }
+

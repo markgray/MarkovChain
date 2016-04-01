@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
         addButton(ShakespeareActivity.class, "Shakespeare", rootView);
         addButton(BibleActivity.class, "King James Bible", rootView);
         addButton(BibleMarkovActivity.class, "King James Bible Markov", rootView);
+        addButton(BibleRecycler.class, "King James Recycler", rootView);
     }
 
 //    BenchMark benchMark = new BenchMark();
