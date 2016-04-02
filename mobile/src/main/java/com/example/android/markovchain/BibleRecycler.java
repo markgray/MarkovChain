@@ -4,35 +4,55 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-
+import android.util.Log;
 import com.example.android.common.LineAdapter;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 public class BibleRecycler extends AppCompatActivity {
 
+    public final String TAG = "BibleRecycler";
     RecyclerView mRecyclerView;
     RecyclerView.LayoutManager mLayoutManager;
     protected LineAdapter mAdapter;
-    protected String[] mDataset;
-    private static final int DATASET_COUNT = 60;
+    ArrayList<String> tempList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initDataset();
         setContentView(R.layout.activity_bible_recycler);
+        mLayoutManager = new LinearLayoutManager(getApplicationContext());
         mRecyclerView = (RecyclerView) findViewById(R.id.bible_recyclerview);
-        mAdapter = new LineAdapter(mDataset);
+        mAdapter = new LineAdapter(tempList, mLayoutManager);
         // Set CustomAdapter as the adapter for RecyclerView.
         mRecyclerView.setAdapter(mAdapter);
-        mLayoutManager = new LinearLayoutManager(getApplicationContext());
         mRecyclerView.setLayoutManager(mLayoutManager);
     }
 
     private void initDataset() {
-        mDataset = new String[DATASET_COUNT];
-        for (int i = 0; i < DATASET_COUNT; i++) {
-            mDataset[i] = "This is element #" + i;
-        }
-    }
+        String line;
+        StringBuilder builder = new StringBuilder();
+        InputStream inputStream = getApplicationContext().getResources().openRawResource(R.raw.king_james);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
 
+        try {
+            while ((line = reader.readLine()) != null) {
+                builder.append(line);
+                if (line.length() == 0) {
+                    tempList.add(builder.toString());
+                    builder = new StringBuilder();
+                } else {
+                    builder.append(" ");
+                }
+            }
+            Log.i(TAG, "Verses read: " + tempList.size());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
 }
