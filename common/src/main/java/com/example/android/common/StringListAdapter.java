@@ -12,9 +12,9 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class LineAdapter extends RecyclerView.Adapter<LineAdapter.ViewHolder> {
+public class StringListAdapter extends RecyclerView.Adapter<StringListAdapter.ViewHolder> {
 
-    private static final String TAG = "CustomAdapter";
+    private static final String TAG = "StringListAdapter";
     private static Random rand = new Random();
     private static ArrayList<String> mDataSet;
     private static LinearLayoutManager mLayoutManager;
@@ -58,12 +58,11 @@ public class LineAdapter extends RecyclerView.Adapter<LineAdapter.ViewHolder> {
      *
      * @param dataSet String[] containing the data to populate views to be used by RecyclerView.
      */
-    public LineAdapter(ArrayList<String> dataSet, RecyclerView.LayoutManager layoutManager) {
+    public StringListAdapter(ArrayList<String> dataSet, RecyclerView.LayoutManager layoutManager) {
         mDataSet = dataSet;
         mLayoutManager = (LinearLayoutManager) layoutManager;
     }
 
-    // BEGIN_INCLUDE(recyclerViewOnCreateViewHolder)
     // Create new views (invoked by the layout manager)
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
@@ -73,9 +72,7 @@ public class LineAdapter extends RecyclerView.Adapter<LineAdapter.ViewHolder> {
 
         return new ViewHolder(v);
     }
-    // END_INCLUDE(recyclerViewOnCreateViewHolder)
 
-    // BEGIN_INCLUDE(recyclerViewOnBindViewHolder)
     // Replace the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, final int position) {
@@ -85,7 +82,6 @@ public class LineAdapter extends RecyclerView.Adapter<LineAdapter.ViewHolder> {
         // with that element
         viewHolder.getTextView().setText(mDataSet.get(position));
     }
-    // END_INCLUDE(recyclerViewOnBindViewHolder)
 
     // Return the size of your dataset (invoked by the layout manager)
     @Override

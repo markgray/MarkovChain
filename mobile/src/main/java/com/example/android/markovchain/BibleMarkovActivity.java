@@ -20,7 +20,7 @@ import java.util.Random;
 
 public class BibleMarkovActivity extends ListActivity {
     public final String TAG = "BibleMarkovActivity";
-//    public ArrayList<String> tempList = new ArrayList<>();
+//    public ArrayList<String> stringList = new ArrayList<>();
     public ListView mlistView;
     protected String[] tempStr;
     Random rand = new Random();
