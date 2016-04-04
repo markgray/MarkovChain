@@ -4,4 +4,8 @@
     <string name="empty_list">Busy generating output</string>
     <string name="title_activity_bible_markov">BibleMarkovActivity</string>
     <string name="generating_data">Generating Data</string>
+
+    <string name="title_activity_fullscreen">FullscreenActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 </resources>

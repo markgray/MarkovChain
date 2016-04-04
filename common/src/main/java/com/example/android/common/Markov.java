@@ -9,9 +9,10 @@ public class Markov {
     static final String TAG = "Markov";
     static final int MAXGEN = 10000; // maximum words generated
     public List<String> mOutput = new ArrayList<>();
+    public Chain chain;
 
     public void startUp (String[] args) throws IOException {
-        Chain chain = new Chain();
+        chain = new Chain();
         int nwords = MAXGEN;
 
         StringBuilder stringBuilder = new StringBuilder();
@@ -23,11 +24,25 @@ public class Markov {
     }
 
     public void startUp (BufferedReader reader) throws IOException {
-        Chain chain = new Chain();
+        chain = new Chain();
         int nwords = MAXGEN;
 
         chain.loadStateTable(reader);
         chain.generate(nwords);
+    }
+
+    public void load (BufferedReader reader) throws IOException {
+        chain = new Chain();
+        chain.loadStateTable(reader);
+    }
+
+    public void make (BufferedReader reader) throws IOException {
+        chain = new Chain();
+        chain.build(reader);
+    }
+
+    public String line() {
+        return chain.line();
     }
 
     public class Chain {
@@ -125,6 +140,45 @@ public class Markov {
                 prefix.pref.addElement(suf);
             }
         }
+
+        void init() {
+            if (prefix == null) {
+                prefix = new Prefix(NPREF, NONWORD);
+            }
+        }
+
+        boolean notEnd(String word) {
+            return !(word.contains(".") || word.contains("?") || word.contains("!"));
+        }
+
+        String line() {
+            StringBuilder builder = new StringBuilder(120);
+            String suf = "";
+            int r;
+
+            init();
+            while (notEnd(suf)) {
+                Vector<String> s = statetab.get(prefix);
+                if (s == null) {
+                    Log.d(TAG, "internal error: no state");
+                    return "Error!";
+                }
+                r = Math.abs(rand.nextInt()) % s.size();
+                suf = s.elementAt(r);
+
+                if (suf.equals(NONWORD)) {
+                    Log.i(TAG, "Suffix at " + r + " is NONWORD");
+                    Log.i(TAG, "Size of Vector s is: " + s.size());
+                    prefix = new Prefix(NPREF, NONWORD);
+                }
+                builder.append(suf).append(" ");
+                prefix.pref.removeElementAt(0);
+                prefix.pref.addElement(suf);
+            }
+            builder.append(suf);
+            return builder.toString();
+        }
+
     }
 
     public class Prefix {

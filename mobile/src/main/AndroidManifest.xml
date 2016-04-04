@@ -41,6 +41,8 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ShakespeareRecylcler"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ShakespeareMarkovRecycler"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
     </application>
