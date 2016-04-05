@@ -36,7 +36,7 @@ public class Markov {
         chain.loadStateTable(reader);
     }
 
-    public void make (BufferedReader reader) throws IOException {
+    public void make (Reader reader) throws IOException {
         chain = new Chain();
         chain.build(reader);
     }
@@ -54,6 +54,7 @@ public class Markov {
         Prefix prefix = new Prefix(NPREF, NONWORD);
         // initial prefix
         Random rand = new Random();
+        boolean firstLine = true;
 
         // Chain build: build State table from input stream
         void build(Reader quotes) throws IOException {
@@ -142,8 +143,9 @@ public class Markov {
         }
 
         void init() {
-            if (prefix == null) {
+            if (firstLine) {
                 prefix = new Prefix(NPREF, NONWORD);
+                firstLine = false;
             }
         }
 
