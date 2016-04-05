@@ -177,7 +177,6 @@ public class Markov {
                 prefix.pref.removeElementAt(0);
                 prefix.pref.addElement(suf);
             }
-            builder.append(suf);
             return builder.toString();
         }
 
