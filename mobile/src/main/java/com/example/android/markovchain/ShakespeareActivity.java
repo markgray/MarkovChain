@@ -26,12 +26,12 @@ public class ShakespeareActivity extends ListActivity {
         ArrayAdapter<String> itemsAdapter =
                 new ArrayAdapter<>(this,
                         android.R.layout.simple_list_item_1,
-                        Shakespeare.DIALOGUE);
+                        Shakespeare.SONNETS);
         mlistView.setAdapter(itemsAdapter);
         mlistView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                int selection = Math.abs(rand.nextInt()) % Shakespeare.DIALOGUE.length;
+                int selection = Math.abs(rand.nextInt()) % Shakespeare.SONNETS.length;
                 mlistView.setSelection(selection);
                 Toast.makeText(getApplicationContext(), "Moving to verse " + selection, Toast.LENGTH_LONG).show();
                 return true;

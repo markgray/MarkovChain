@@ -29,7 +29,7 @@ public class ShakespeareMarkovActivity extends ListActivity {
         setContentView(R.layout.activity_shakespeare_markov);
         mlistView = (ListView) findViewById(android.R.id.list);
         try {
-            markov.startUp(Shakespeare.DIALOGUE);
+            markov.startUp(Shakespeare.SONNETS);
         } catch (IOException e) {
             e.printStackTrace();
         }

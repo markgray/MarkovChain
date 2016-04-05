@@ -8,11 +8,8 @@ import android.support.v7.widget.RecyclerView;
 import com.example.android.common.Markov;
 import com.example.android.common.MarkovAdapter;
 import com.example.android.common.Shakespeare;
-import com.example.android.common.StringArrayAdapter;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.Reader;
 import java.io.StringReader;
 
 public class ShakespeareMarkovRecycler extends AppCompatActivity {
@@ -29,7 +26,7 @@ public class ShakespeareMarkovRecycler extends AppCompatActivity {
         mLayoutManager = new LinearLayoutManager(getApplicationContext());
         mRecyclerView = (RecyclerView) findViewById(R.id.shakespeare_markov_recyclerview);
         StringBuilder stringBuilder = new StringBuilder();
-        for (String quotes: Shakespeare.DIALOGUE) {
+        for (String quotes: Shakespeare.SONNETS) {
             stringBuilder.append(quotes);
         }
         try {

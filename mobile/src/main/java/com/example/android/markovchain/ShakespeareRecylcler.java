@@ -22,10 +22,10 @@ public class ShakespeareRecylcler extends AppCompatActivity {
         setContentView(R.layout.activity_shakespeare_recylcler);
         mLayoutManager = new LinearLayoutManager(getApplicationContext());
         mRecyclerView = (RecyclerView) findViewById(R.id.shakespeare_recyclerview);
-        mAdapter = new StringArrayAdapter(Shakespeare.DIALOGUE, mLayoutManager);
+        mAdapter = new StringArrayAdapter(Shakespeare.SONNETS, mLayoutManager);
         // Set CustomAdapter as the adapter for RecyclerView.
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setLayoutManager(mLayoutManager);
-        Log.i(TAG, "Verses read: " + Shakespeare.DIALOGUE.length);
+        Log.i(TAG, "Verses read: " + Shakespeare.SONNETS.length);
     }
 }
