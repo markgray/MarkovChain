@@ -42,9 +42,11 @@
         <activity
             android:name=".ShakespeareRecylcler"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ShakespeareMarkovRecycler"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+        <activity
+            android:name=".ShakespeareMarkovRecycler"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".BibleMarkovRecycler"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

@@ -9,10 +9,13 @@ import com.example.android.common.Markov;
 import com.example.android.common.MarkovAdapter;
 import com.example.android.common.Shakespeare;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.StringReader;
 
-public class ShakespeareMarkovRecycler extends AppCompatActivity {
+public class BibleMarkovRecycler extends AppCompatActivity {
     public final String TAG = "ShakespeareMarkovRecycler";
     RecyclerView mRecyclerView;
     RecyclerView.LayoutManager mLayoutManager;
@@ -22,15 +25,13 @@ public class ShakespeareMarkovRecycler extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_shakespeare_markov_recycler);
+        setContentView(R.layout.activity_bible_markov_recycler);
         mLayoutManager = new LinearLayoutManager(getApplicationContext());
-        mRecyclerView = (RecyclerView) findViewById(R.id.shakespeare_markov_recyclerview);
-        StringBuilder stringBuilder = new StringBuilder();
-        for (String quotes: Shakespeare.SONNETS) {
-            stringBuilder.append(quotes);
-        }
+        mRecyclerView = (RecyclerView) findViewById(R.id.bible_markov_recyclerview);
+        InputStream inputStream = getApplicationContext().getResources().openRawResource(R.raw.king_james_state_table);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
         try {
-            mMarkov.make(new StringReader(stringBuilder.toString()));
+            mMarkov.load(reader);
         } catch (IOException e) {
             e.printStackTrace();
         }
