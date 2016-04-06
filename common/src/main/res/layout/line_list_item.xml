@@ -10,6 +10,7 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceListItemSmall"
         android:text="@string/element_text"
         android:layout_marginBottom="2dp"
         android:background="#FFFFFF"
