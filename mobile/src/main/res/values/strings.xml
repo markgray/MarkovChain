@@ -8,4 +8,6 @@
     <string name="title_activity_fullscreen">FullscreenActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="fragment_retain_instance_msg">Please wait while loading data</string>
+    <string name="restart">RESTART</string>
 </resources>
