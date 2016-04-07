@@ -5,8 +5,6 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -160,8 +158,14 @@ public class FragmentVersionSkeleton extends Activity {
             super.onActivityCreated(savedInstanceState);
 
             // Retrieve the progress bar from the target's view hierarchy.
-            mProgressBar = (ProgressBar)getTargetFragment().getView().findViewById(
-                    R.id.progress_horizontal);
+            Fragment tarGetFragment = getTargetFragment();
+            View gotView = null;
+            if(tarGetFragment != null) {
+                gotView = tarGetFragment.getView();
+            }
+            if (gotView != null) {
+                mProgressBar = (ProgressBar) gotView.findViewById(R.id.progress_horizontal);
+            }
 
             // We are ready for our thread to go.
             synchronized (mThread) {
