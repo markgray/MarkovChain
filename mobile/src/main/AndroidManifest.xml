@@ -48,7 +48,8 @@
         <activity
             android:name=".BibleMarkovRecycler"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".FragmentVersionSkeleton"></activity>
+        <activity android:name=".FragmentVersionSkeleton" />
+        <activity android:name=".BibleFragment"></activity>
     </application>
 
 </manifest>
