@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 
 public class FragmentVersionSkeleton extends AppCompatActivity {
@@ -47,6 +48,14 @@ public class FragmentVersionSkeleton extends AppCompatActivity {
                 }
             });
 
+            button = (Button) v.findViewById(R.id.toastme);
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(getActivity(), "The value is:" + RetainedFragment.mPosition, Toast.LENGTH_LONG).show();
+                }
+            });
+
             return v;
         }
 
@@ -78,7 +87,7 @@ public class FragmentVersionSkeleton extends AppCompatActivity {
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public static class RetainedFragment extends Fragment {
         ProgressBar mProgressBar;
-        int mPosition;
+        public static int mPosition;
         boolean mReady = false;
         boolean mQuiting = false;
 
