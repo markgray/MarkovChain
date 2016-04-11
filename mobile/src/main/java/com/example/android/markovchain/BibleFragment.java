@@ -36,26 +36,36 @@ public class BibleFragment extends AppCompatActivity {
     }
 
     private void initDataset() {
-        String line;
-        StringBuilder builder = new StringBuilder();
+        final String[] line = new String[1];
+        final StringBuilder[] builder = {new StringBuilder()};
         InputStream inputStream = getApplicationContext().getResources().openRawResource(R.raw.king_james);
-        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+        final BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
 
-        try {
-            while ((line = reader.readLine()) != null) {
-                builder.append(line);
-                if (line.length() == 0) {
-                    stringList.add(builder.toString());
-                    builder = new StringBuilder();
-                } else {
-                    builder.append(" ");
+        /**
+         * This is the thread that will do our work.  It sits in a loop running
+         * the progress up until it has reached the top, then stops and waits.
+         */
+        final Thread mThread = new Thread() {
+            @Override
+            public void run() {
+                try {
+                    while ((line[0] = reader.readLine()) != null) {
+                        builder[0].append(line[0]);
+                        if (line[0].length() == 0) {
+                            stringList.add(builder[0].toString());
+                            builder[0] = new StringBuilder();
+                        } else {
+                            builder[0].append(" ");
+                        }
+                    }
+                    Log.i(TAG, "Verses read: " + stringList.size());
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
-            }
-            Log.i(TAG, "Verses read: " + stringList.size());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
+            }
+        };
+        mThread.start();
     }
 
 }

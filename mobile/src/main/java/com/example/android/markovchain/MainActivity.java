@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         addButton(BibleRecycler.class, "King James Recycler", rootView);
         addButton(BibleMarkovRecycler.class, "Bible Markov Recycler", rootView);
         addButton(FragmentVersionSkeleton.class, "Fragment Skeleton", rootView);
+        addButton(BibleFragment.class, "Bible retained fragment", rootView);
     }
 
 //    BenchMark benchMark = new BenchMark();
