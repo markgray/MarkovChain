@@ -15,18 +15,18 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ViewGroup rootView = (ViewGroup) findViewById(R.id.main_rootview);
-        addButton(ShakespeareActivity.class, "Shakespeare", rootView);
-        addButton(ShakespeareMarkovActivity.class, "Shakespeare Markov", rootView);
-        addButton(ShakespeareRecylcler.class, "Shakespeare Recycler", rootView);
-        addButton(ShakespeareMarkovRecycler.class, "Shakespeare Markov Recycler", rootView);
-        addButton(BibleActivity.class, "King James Bible", rootView);
-        addButton(BibleMarkovActivity.class, "King James Bible Markov", rootView);
-        addButton(BibleRecycler.class, "King James Recycler", rootView);
-        addButton(BibleMarkovRecycler.class, "Bible Markov Recycler", rootView);
-        addButton(FragmentVersionSkeleton.class, "Fragment Skeleton", rootView);
-        addButton(BibleFragment.class, "Bible retained fragment", rootView);
-        addButton(BibleMarkovFragment.class, "Bible Markov Fragment", rootView);
+        ViewGroup linearLayout = (ViewGroup) findViewById(R.id.linear_layout);
+        addButton(ShakespeareRecylcler.class, "Shakespeare Recycler", linearLayout);
+        addButton(ShakespeareMarkovRecycler.class, "Shakespeare Markov Recycler", linearLayout);
+        addButton(BibleFragment.class, "Bible retained fragment", linearLayout);
+        addButton(BibleMarkovRecycler.class, "Bible Markov Recycler", linearLayout);
+        addButton(FragmentVersionSkeleton.class, "Fragment Skeleton", linearLayout);
+        addButton(BibleMarkovFragment.class, "Buggy Bible Markov Fragment", linearLayout);
+        addButton(ShakespeareActivity.class, "Shakespeare", linearLayout);
+        addButton(ShakespeareMarkovActivity.class, "Shakespeare Markov", linearLayout);
+        addButton(BibleActivity.class, "King James Bible", linearLayout);
+        addButton(BibleMarkovActivity.class, "King James Bible Markov", linearLayout);
+        addButton(BibleRecycler.class, "King James Recycler", linearLayout);
     }
 
 //    BenchMark benchMark = new BenchMark();
