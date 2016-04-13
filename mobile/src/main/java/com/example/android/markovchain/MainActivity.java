@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 //import com.example.android.common.BenchMark;
 
@@ -20,8 +21,9 @@ public class MainActivity extends AppCompatActivity {
         addButton(ShakespeareMarkovRecycler.class, "Shakespeare Markov Recycler", linearLayout);
         addButton(BibleFragment.class, "Bible retained fragment", linearLayout);
         addButton(BibleMarkovRecycler.class, "Bible Markov Recycler", linearLayout);
-        addButton(FragmentVersionSkeleton.class, "Fragment Skeleton", linearLayout);
         addButton(BibleMarkovFragment.class, "Buggy Bible Markov Fragment", linearLayout);
+        addText("Obsolete activities", linearLayout);
+        addButton(FragmentVersionSkeleton.class, "Fragment Skeleton", linearLayout);
         addButton(ShakespeareActivity.class, "Shakespeare", linearLayout);
         addButton(ShakespeareMarkovActivity.class, "Shakespeare Markov", linearLayout);
         addButton(BibleActivity.class, "King James Bible", linearLayout);
@@ -43,5 +45,11 @@ public class MainActivity extends AppCompatActivity {
 
         button.setText(description);
         parent.addView(button);
+    }
+
+    public void addText(String text, ViewGroup parent) {
+        TextView mText = new TextView(this);
+        mText.setText(text);
+        parent.addView(mText);
     }
 }

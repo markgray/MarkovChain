@@ -47,17 +47,16 @@ public class Markov {
 
     public class Chain {
         static final int NPREF = 2;    // size of prefix
-        static final String NONWORD = "%";
-        // "word" that can't appear
-        Hashtable<Prefix, Vector<String>> statetab = new Hashtable<>();
-        // key = Prefix, value = suffix Vector
-        Prefix prefix = new Prefix(NPREF, NONWORD);
-        // initial prefix
+        static final String NONWORD = "%"; // "word" that can't appear
+        Hashtable<Prefix, Vector<String>> statetab = new Hashtable<>(); // key = Prefix, value = suffix Vector
+        Prefix prefix = new Prefix(NPREF, NONWORD); // initial prefix
         Random rand = new Random();
         boolean firstLine = true;
+        public boolean loaded = false; // set once chain is loaded
 
         // Chain build: build State table from input stream
         void build(Reader quotes) throws IOException {
+            if (loaded) return;
             StreamTokenizer st = new StreamTokenizer(quotes);
             int wordsRead = 0;
 
@@ -74,9 +73,11 @@ public class Markov {
             }
             Log.i(TAG, "Words read: " + wordsRead);
             add(NONWORD);
+            loaded = true;
         }
 
         void loadStateTable(BufferedReader reader) {
+            if (loaded) return;
             String line;
             prefix.pref = new Vector<>(2);
             prefix.pref.addElement(NONWORD);
@@ -98,7 +99,7 @@ public class Markov {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
+            loaded = true;
         }
 
         // Chain add: add word to suffix list, update prefix

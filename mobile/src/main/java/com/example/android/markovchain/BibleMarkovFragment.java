@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 import com.example.android.common.Markov;
 import com.example.android.common.MarkovAdapter;
@@ -53,5 +54,6 @@ public class BibleMarkovFragment extends AppCompatActivity {
             }
         };
         mThread.start();
+        Log.i(TAG, "We are waiting for Markov chain to load");
     }
 }

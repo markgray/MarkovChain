@@ -32,7 +32,7 @@ public class MarkovAdapter extends RecyclerView.Adapter<MarkovAdapter.ViewHolder
             v.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Log.d(TAG, "Element " + getPosition() + " clicked.");
+                    Log.d(TAG, "Element " + getPosition() + " " + getLayoutPosition() + " " + getAdapterPosition() + " clicked.");
                 }
             });
             v.setOnLongClickListener(new View.OnLongClickListener() {
@@ -115,7 +115,7 @@ public class MarkovAdapter extends RecyclerView.Adapter<MarkovAdapter.ViewHolder
 
         // Get element from your dataset at this position and replace the contents of the view
         // with that element
-        holder.getTextView().setText(mMarkov.line());
+        if (mMarkov.chain.loaded) holder.getTextView().setText(mMarkov.line());
     }
 
     /**
