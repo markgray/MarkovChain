@@ -154,7 +154,7 @@ public class Markov {
             return !(word.contains(".") || word.contains("?") || word.contains("!"));
         }
 
-        String line() {
+        public String line() {
             StringBuilder builder = new StringBuilder(120);
             String suf = "";
             int r;
