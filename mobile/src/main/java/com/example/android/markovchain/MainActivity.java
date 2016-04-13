@@ -20,7 +20,6 @@ public class MainActivity extends AppCompatActivity {
         addButton(ShakespeareRecylcler.class, "Shakespeare Recycler", linearLayout);
         addButton(ShakespeareMarkovRecycler.class, "Shakespeare Markov Recycler", linearLayout);
         addButton(BibleFragment.class, "Bible retained fragment", linearLayout);
-        addButton(BibleMarkovRecycler.class, "Bible Markov Recycler", linearLayout);
         addButton(BibleMarkovFragment.class, "Buggy Bible Markov Fragment", linearLayout);
         addText("Obsolete activities", linearLayout);
         addButton(FragmentVersionSkeleton.class, "Fragment Skeleton", linearLayout);
@@ -29,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         addButton(BibleActivity.class, "King James Bible", linearLayout);
         addButton(BibleMarkovActivity.class, "King James Bible Markov", linearLayout);
         addButton(BibleRecycler.class, "King James Recycler", linearLayout);
+        addButton(BibleMarkovRecycler.class, "Bible Markov Recycler", linearLayout);
     }
 
 //    BenchMark benchMark = new BenchMark();

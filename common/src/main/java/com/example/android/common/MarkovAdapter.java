@@ -32,7 +32,7 @@ public class MarkovAdapter extends RecyclerView.Adapter<MarkovAdapter.ViewHolder
             v.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Log.d(TAG, "Element " + getPosition() + " " + getLayoutPosition() + " " + getAdapterPosition() + " clicked.");
+                    Log.d(TAG, "Element " + getLayoutPosition() + " clicked.");
                 }
             });
             v.setOnLongClickListener(new View.OnLongClickListener() {

@@ -46,10 +46,9 @@ public class Markov {
     }
 
     public class Chain {
-        static final int NPREF = 2;    // size of prefix
         static final String NONWORD = "%"; // "word" that can't appear
         Hashtable<Prefix, Vector<String>> statetab = new Hashtable<>(); // key = Prefix, value = suffix Vector
-        Prefix prefix = new Prefix(NPREF, NONWORD); // initial prefix
+        Prefix prefix = new Prefix(NONWORD); // initial prefix
         Random rand = new Random();
         boolean firstLine = true;
         public boolean loaded = false; // set once chain is loaded
@@ -79,14 +78,14 @@ public class Markov {
         void loadStateTable(BufferedReader reader) {
             if (loaded) return;
             String line;
-            prefix.pref = new Vector<>(2);
-            prefix.pref.addElement(NONWORD);
-            prefix.pref.addElement(NONWORD);
+            prefix.pref = new String[2];
+            prefix.pref[0] = NONWORD;
+            prefix.pref[1] = NONWORD;
             try {
                 while ((line = reader.readLine()) != null) {
                     String words[] = line.split(" ");
-                    prefix.pref.setElementAt(words[0], 0);
-                    prefix.pref.setElementAt(words[1], 1);
+                    prefix.pref[0] = words[0];
+                    prefix.pref[1] = words[1];
                     Vector<String> suf = statetab.get(prefix);
                     if (suf == null) {
                         suf = new Vector<>();
@@ -111,14 +110,14 @@ public class Markov {
                 statetab.put(new Prefix(prefix), suf);
             }
             suf.addElement(word);
-            prefix.pref.removeElementAt(0);
-            prefix.pref.addElement(word);
+            prefix.pref[0] = prefix.pref[1];
+            prefix.pref[1] = word;
         }
 
         // Chain generate: generate output words
         void generate(int nwords) {
 
-            prefix = new Prefix(NPREF, NONWORD);
+            prefix = new Prefix(NONWORD);
             String suf;
             int r;
 
@@ -135,17 +134,17 @@ public class Markov {
                     Log.i(TAG, "Suffix at " + r + " is NONWORD");
                     Log.i(TAG, "Size of Vector s is: " + s.size());
                     Log.i(TAG, "Words generated:" + i);
-                    prefix = new Prefix(NPREF, NONWORD);
+                    prefix = new Prefix(NONWORD);
                 }
                 mOutput.add(suf);
-                prefix.pref.removeElementAt(0);
-                prefix.pref.addElement(suf);
+                prefix.pref[0] = prefix.pref[1];
+                prefix.pref[1] = suf;
             }
         }
 
         void init() {
             if (firstLine) {
-                prefix = new Prefix(NPREF, NONWORD);
+                prefix = new Prefix(NONWORD);
                 firstLine = false;
             }
         }
@@ -172,11 +171,11 @@ public class Markov {
                 if (suf.equals(NONWORD)) {
                     Log.i(TAG, "Suffix at " + r + " is NONWORD");
                     Log.i(TAG, "Size of Vector s is: " + s.size());
-                    prefix = new Prefix(NPREF, NONWORD);
+                    prefix = new Prefix(NONWORD);
                 }
                 builder.append(suf).append(" ");
-                prefix.pref.removeElementAt(0);
-                prefix.pref.addElement(suf);
+                prefix.pref[0] = prefix.pref[1];
+                prefix.pref[1] = suf;
             }
             return builder.toString();
         }
@@ -184,28 +183,28 @@ public class Markov {
     }
 
     public class Prefix {
-        public Vector<String> pref;    // NPREF adjacent words from input
+        public String[] pref;    // NPREF adjacent words from input
         static final int MULTIPLIER = 31;    // for hashCode()
 
         // Prefix constructor: duplicate existing prefix
         Prefix(Prefix p) {
             //noinspection unchecked
-            pref = (Vector<String>) p.pref.clone();
+            pref = p.pref.clone();
         }
 
         // Prefix constructor: n copies of str
-        Prefix(int n, String str) {
-            pref = new Vector<>();
-            for (int i = 0; i < n; i++)
-                pref.addElement(str);
+        Prefix(String str) {
+            pref =  new String[2];
+            pref[0] = str;
+            pref[1] = str;
         }
 
         // Prefix hashCode: generate hash from all prefix words
         public int hashCode() {
             int h = 0;
 
-            for (int i = 0; i < pref.size(); i++)
-                h = MULTIPLIER * h + pref.elementAt(i).hashCode();
+            for (int i = 0; i < 2; i++)
+                h = MULTIPLIER * h + pref[i].hashCode();
             return h;
         }
 
@@ -215,12 +214,9 @@ public class Markov {
                 return false;
             }
             Prefix p = (Prefix) o;
-
-            for (int i = 0; i < pref.size(); i++)
-                if (!pref.elementAt(i).equals(p.pref.elementAt(i)))
-                    return false;
-            return true;
+            return (p.pref[0].equals(pref[0]) && p.pref[1].equals(pref[1]));
         }
 
     }
+
 }
