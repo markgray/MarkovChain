@@ -1,11 +1,20 @@
 package com.example.android.common;
 
+
 import android.util.Log;
 
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.Reader;
+import java.io.StreamTokenizer;
+import java.io.StringReader;
+import java.util.ArrayList;
+import java.util.Hashtable;
+import java.util.List;
+import java.util.Random;
+import java.util.Vector;
 
-public class Markov {
+public class MarkovSave {
     static final String TAG = "Markov";
     static final int MAXGEN = 10000; // maximum words generated
     public List<String> mOutput = new ArrayList<>();
@@ -47,7 +56,7 @@ public class Markov {
 
     public class Chain {
         static final String NONWORD = "%"; // "word" that can't appear
-        Hashtable<Prefix, String[]> statetab = new Hashtable<>(); // key = Prefix, value = suffix Array
+        Hashtable<Prefix, Vector<String>> statetab = new Hashtable<>(); // key = Prefix, value = suffix Vector
         Prefix prefix = new Prefix(NONWORD); // initial prefix
         Random rand = new Random();
         boolean firstLine = true;
@@ -86,7 +95,14 @@ public class Markov {
                     String words[] = line.split(" ");
                     prefix.pref[0] = words[0];
                     prefix.pref[1] = words[1];
-                    statetab.put(new Prefix(prefix), words);
+                    Vector<String> suf = statetab.get(prefix);
+                    if (suf == null) {
+                        suf = new Vector<>();
+                        statetab.put(new Prefix(prefix), suf);
+                    }
+                    for (int i = 2; i < words.length; i++) {
+                        suf.addElement(words[i]);
+                    }
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -97,19 +113,12 @@ public class Markov {
         // Chain add: add word to suffix list, update prefix
         void add(String word) {
 
-            String[] suf = statetab.get(prefix);
+            Vector<String> suf = statetab.get(prefix);
             if (suf == null) {
-                suf = new String[3];
-                suf[0] = prefix.pref[0];
-                suf[1] = prefix.pref[1];
-                suf[2] = word;
+                suf = new Vector<>();
                 statetab.put(new Prefix(prefix), suf);
-                return;
             }
-            String[] newSuf = new String[suf.length + 1];
-            System.arraycopy(suf, 0, newSuf, 0, suf.length);
-            newSuf[suf.length] = word;
-            statetab.put(prefix, newSuf);
+            suf.addElement(word);
             prefix.pref[0] = prefix.pref[1];
             prefix.pref[1] = word;
         }
@@ -122,17 +131,17 @@ public class Markov {
             int r;
 
             for (int i = 0; i < nwords; i++) {
-                String[] s = statetab.get(prefix);
+                Vector<String> s = statetab.get(prefix);
                 if (s == null) {
                     Log.d(TAG, "internal error: no state");
                     return;
                 }
-                r = Math.abs(rand.nextInt()) % (s.length - 2);
-                suf = s[r+2];
+                r = Math.abs(rand.nextInt()) % s.size();
+                suf = s.elementAt(r);
 
                 if (suf.equals(NONWORD)) {
                     Log.i(TAG, "Suffix at " + r + " is NONWORD");
-                    Log.i(TAG, "Size of Vector s is: " + s.length);
+                    Log.i(TAG, "Size of Vector s is: " + s.size());
                     Log.i(TAG, "Words generated:" + i);
                     prefix = new Prefix(NONWORD);
                 }
@@ -160,17 +169,17 @@ public class Markov {
 
             init();
             while (notEnd(suf)) {
-                String[] s = statetab.get(prefix);
+                Vector<String> s = statetab.get(prefix);
                 if (s == null) {
                     Log.d(TAG, "internal error: no state");
                     return "Error!";
                 }
-                r = Math.abs(rand.nextInt()) % (s.length - 2);
-                suf = s[r + 2];
+                r = Math.abs(rand.nextInt()) % s.size();
+                suf = s.elementAt(r);
 
                 if (suf.equals(NONWORD)) {
                     Log.i(TAG, "Suffix at " + r + " is NONWORD");
-                    Log.i(TAG, "Size of Vector s is: " + s.length);
+                    Log.i(TAG, "Size of Vector s is: " + s.size());
                     prefix = new Prefix(NONWORD);
                 }
                 builder.append(suf).append(" ");
@@ -200,7 +209,6 @@ public class Markov {
         }
 
         // Prefix hashCode: generate hash from all prefix words
-        @Override
         public int hashCode() {
             int h = 0;
 
@@ -210,7 +218,6 @@ public class Markov {
         }
 
         // Prefix equals: compare two prefixes for equal words
-        @Override
         public boolean equals(Object o) {
             if (!(o instanceof Prefix)) {
                 return false;
@@ -220,5 +227,6 @@ public class Markov {
         }
 
     }
+
 
 }

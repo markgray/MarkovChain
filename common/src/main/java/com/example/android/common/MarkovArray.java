@@ -1,11 +1,17 @@
 package com.example.android.common;
 
 import android.util.Log;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.Reader;
+import java.io.StreamTokenizer;
+import java.io.StringReader;
+import java.util.ArrayList;
+import java.util.Hashtable;
+import java.util.List;
+import java.util.Random;
 
-import java.io.*;
-import java.util.*;
-
-public class Markov {
+public class MarkovArray {
     static final String TAG = "Markov";
     static final int MAXGEN = 10000; // maximum words generated
     public List<String> mOutput = new ArrayList<>();
@@ -107,9 +113,11 @@ public class Markov {
                 return;
             }
             String[] newSuf = new String[suf.length + 1];
-            System.arraycopy(suf, 0, newSuf, 0, suf.length);
-            newSuf[suf.length] = word;
-            statetab.put(prefix, newSuf);
+            for (int i = 0; i < suf.length; i++) {
+                newSuf[i] = suf[i];
+            }
+            suf = newSuf;
+            suf[suf.length - 1] = word;
             prefix.pref[0] = prefix.pref[1];
             prefix.pref[1] = word;
         }
@@ -200,7 +208,6 @@ public class Markov {
         }
 
         // Prefix hashCode: generate hash from all prefix words
-        @Override
         public int hashCode() {
             int h = 0;
 
@@ -210,7 +217,6 @@ public class Markov {
         }
 
         // Prefix equals: compare two prefixes for equal words
-        @Override
         public boolean equals(Object o) {
             if (!(o instanceof Prefix)) {
                 return false;
