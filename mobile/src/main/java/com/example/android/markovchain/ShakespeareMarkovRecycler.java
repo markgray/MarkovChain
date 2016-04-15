@@ -29,6 +29,8 @@ public class ShakespeareMarkovRecycler extends AppCompatActivity {
         for (String quotes: Shakespeare.SONNETS) {
             stringBuilder.append(quotes);
         }
+
+        // TODO: do this as thread
         try {
             mMarkov.make(new StringReader(stringBuilder.toString()));
         } catch (IOException e) {
