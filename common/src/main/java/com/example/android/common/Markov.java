@@ -104,12 +104,12 @@ public class Markov {
                 suf[1] = prefix.pref[1];
                 suf[2] = word;
                 statetab.put(new Prefix(prefix), suf);
-                return;
+            } else {
+                String[] newSuf = new String[suf.length + 1];
+                System.arraycopy(suf, 0, newSuf, 0, suf.length);
+                newSuf[suf.length] = word;
+                statetab.put(prefix, newSuf);
             }
-            String[] newSuf = new String[suf.length + 1];
-            System.arraycopy(suf, 0, newSuf, 0, suf.length);
-            newSuf[suf.length] = word;
-            statetab.put(prefix, newSuf);
             prefix.pref[0] = prefix.pref[1];
             prefix.pref[1] = word;
         }
@@ -188,8 +188,9 @@ public class Markov {
 
         // Prefix constructor: duplicate existing prefix
         Prefix(Prefix p) {
-            //noinspection unchecked
-            pref = p.pref.clone();
+            pref = new String[2];
+            pref[0] = p.pref[0];
+            pref[1] = p.pref[1];
         }
 
         // Prefix constructor: n copies of str
@@ -216,7 +217,7 @@ public class Markov {
                 return false;
             }
             Prefix p = (Prefix) o;
-            return (p.pref[0].equals(pref[0]) && p.pref[1].equals(pref[1]));
+            return (p.pref[0].equals(this.pref[0]) && p.pref[1].equals(this.pref[1]));
         }
 
     }
