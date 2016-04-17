@@ -153,6 +153,10 @@ public class Markov {
             return !(word.contains(".") || word.contains("?") || word.contains("!"));
         }
 
+        private String capitalize(final String line) {
+            return Character.toUpperCase(line.charAt(0)) + line.substring(1);
+        }
+
         public String line() {
             StringBuilder builder = new StringBuilder(120);
             String suf = "";
@@ -177,7 +181,7 @@ public class Markov {
                 prefix.pref[0] = prefix.pref[1];
                 prefix.pref[1] = suf;
             }
-            return builder.toString();
+            return capitalize(builder.toString());
         }
 
     }
