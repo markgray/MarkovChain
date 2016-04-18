@@ -105,7 +105,7 @@ public class StringArrayAdapter extends RecyclerView.Adapter<StringArrayAdapter.
             v.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Log.d(TAG, "Element " + getPosition() + " clicked.");
+                    Log.d(TAG, "Element " + getLayoutPosition() + " clicked.");
                 }
             });
             v.setOnLongClickListener(new View.OnLongClickListener() {
