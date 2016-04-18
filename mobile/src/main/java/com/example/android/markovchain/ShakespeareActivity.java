@@ -2,6 +2,7 @@ package com.example.android.markovchain;
 
 import android.app.ListActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -34,6 +35,7 @@ public class ShakespeareActivity extends ListActivity {
                 int selection = Math.abs(rand.nextInt()) % Shakespeare.SONNETS.length;
                 mlistView.setSelection(selection);
                 Toast.makeText(getApplicationContext(), "Moving to verse " + selection, Toast.LENGTH_LONG).show();
+                Log.i(TAG, "Moving to verse " + selection);
                 return true;
             }
         });

@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 import com.example.android.common.Markov;
 import com.example.android.common.MarkovAdapter;
@@ -13,7 +14,7 @@ import java.io.IOException;
 import java.io.StringReader;
 
 public class ShakespeareMarkovRecycler extends AppCompatActivity {
-    public final String TAG = "ShakespeareMarkovRecycler";
+    public final String TAG = "ShakespeareMarkovR...";
     RecyclerView mRecyclerView;
     RecyclerView.LayoutManager mLayoutManager;
     protected MarkovAdapter mAdapter;
@@ -32,6 +33,7 @@ public class ShakespeareMarkovRecycler extends AppCompatActivity {
 
         // TODO: do this as thread
         try {
+            Log.i(TAG, "making chain");
             mMarkov.make(new StringReader(stringBuilder.toString()));
         } catch (IOException e) {
             e.printStackTrace();

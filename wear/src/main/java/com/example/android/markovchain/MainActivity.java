@@ -50,13 +50,16 @@ public class MainActivity extends WearableActivity {
 
     private void updateDisplay() {
         if (isAmbient()) {
+            //noinspection deprecation
             mContainerView.setBackgroundColor(getResources().getColor(android.R.color.black));
+            //noinspection deprecation
             mTextView.setTextColor(getResources().getColor(android.R.color.white));
             mClockView.setVisibility(View.VISIBLE);
 
             mClockView.setText(AMBIENT_DATE_FORMAT.format(new Date()));
         } else {
             mContainerView.setBackground(null);
+            //noinspection deprecation
             mTextView.setTextColor(getResources().getColor(android.R.color.black));
             mClockView.setVisibility(View.GONE);
         }

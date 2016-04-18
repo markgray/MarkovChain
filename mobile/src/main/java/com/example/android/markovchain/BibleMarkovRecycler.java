@@ -1,19 +1,18 @@
 package com.example.android.markovchain;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 import com.example.android.common.Markov;
 import com.example.android.common.MarkovAdapter;
-import com.example.android.common.Shakespeare;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.StringReader;
 
 public class BibleMarkovRecycler extends AppCompatActivity {
     public final String TAG = "BibleMarkovRecycler";
@@ -31,6 +30,7 @@ public class BibleMarkovRecycler extends AppCompatActivity {
         InputStream inputStream = getApplicationContext().getResources().openRawResource(R.raw.king_james_state_table);
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
         try {
+            Log.i(TAG, "Loading chain");
             mMarkov.load(reader);
         } catch (IOException e) {
             e.printStackTrace();
