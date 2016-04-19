@@ -21,7 +21,6 @@
         </activity>
         <activity
             android:name=".ShakespeareMarkovActivity"
-            android:label="@string/title_activity_do_markov"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ShakespeareActivity"
@@ -31,14 +30,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".BibleMarkovActivity"
-            android:label="@string/title_activity_bible_markov"
-            android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            tools:targetApi="jelly_bean">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.android.markovchain.MainActivity" />
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".BibleRecycler"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -51,12 +43,15 @@
         <activity
             android:name=".BibleMarkovRecycler"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".FragmentVersionSkeleton" />
+        <activity
+            android:name=".FragmentVersionSkeleton"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".BibleFragment"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".BibleMarkovFragment"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".BibleMarkovFragment"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
