@@ -27,6 +27,14 @@ public class FragmentVersionSkeleton extends AppCompatActivity {
         }
     }
 
+    void doDa() {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(getApplicationContext(), "I am done", Toast.LENGTH_LONG);
+            }
+        });
+    }
     /**
      * This is a fragment showing UI that will be updated from work done
      * in the retained fragment.
@@ -77,6 +85,8 @@ public class FragmentVersionSkeleton extends AppCompatActivity {
             }
         }
 
+
+
     }
 
     /**
@@ -90,6 +100,9 @@ public class FragmentVersionSkeleton extends AppCompatActivity {
         public static int mPosition;
         boolean mReady = false;
         boolean mQuiting = false;
+
+
+
 
         /**
          * This is the thread that will do our work.  It sits in a loop running
@@ -135,6 +148,7 @@ public class FragmentVersionSkeleton extends AppCompatActivity {
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
+                        
                     }
                 }
             }
