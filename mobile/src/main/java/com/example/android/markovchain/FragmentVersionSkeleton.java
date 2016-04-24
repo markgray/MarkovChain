@@ -4,16 +4,32 @@ import android.annotation.TargetApi;
 import android.app.Fragment;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
 public class FragmentVersionSkeleton extends AppCompatActivity {
+
+    private final class RemoveWindow implements Runnable {
+        public void run() {
+            removeWindow();
+        }
+    }
+
+    private RemoveWindow mRemoveWindow = new RemoveWindow();
+    Handler mHandler = new Handler();
+    private WindowManager mWindowManager;
+    private TextView mDialogText;
+    private boolean mShowing;
+    private boolean mReady;
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     @Override
@@ -24,6 +40,13 @@ public class FragmentVersionSkeleton extends AppCompatActivity {
         if (savedInstanceState == null) {
             getFragmentManager().beginTransaction().add(android.R.id.content,
                     new UiFragment()).commit();
+        }
+    }
+
+    private void removeWindow() {
+        if (mShowing) {
+            mShowing = false;
+            mDialogText.setVisibility(View.INVISIBLE);
         }
     }
 
