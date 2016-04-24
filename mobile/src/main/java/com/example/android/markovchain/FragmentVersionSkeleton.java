@@ -9,7 +9,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -18,19 +17,6 @@ import android.widget.Toast;
 
 
 public class FragmentVersionSkeleton extends AppCompatActivity {
-
-    private final class RemoveWindow implements Runnable {
-        public void run() {
-            removeWindow();
-        }
-    }
-
-    private RemoveWindow mRemoveWindow = new RemoveWindow();
-    Handler mHandler = new Handler();
-    private WindowManager mWindowManager;
-    private TextView mDialogText;
-    private boolean mShowing;
-    private boolean mReady;
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     @Override
@@ -42,22 +28,6 @@ public class FragmentVersionSkeleton extends AppCompatActivity {
             getFragmentManager().beginTransaction().add(android.R.id.content,
                     new UiFragment()).commit();
         }
-    }
-
-    private void removeWindow() {
-        if (mShowing) {
-            mShowing = false;
-            mDialogText.setVisibility(View.INVISIBLE);
-        }
-    }
-
-    void doDa() {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                Toast.makeText(getApplicationContext(), "I am done", Toast.LENGTH_LONG);
-            }
-        });
     }
 
     /**
