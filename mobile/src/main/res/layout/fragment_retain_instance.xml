@@ -13,7 +13,12 @@
      limitations under the License.
 -->
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+
+<LinearLayout
+    android:id="@+id/progress_view_linear_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
@@ -53,3 +58,13 @@
     </Button>
 
 </LinearLayout>
+
+    <TextView
+        android:id="@+id/main_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="This is the main view"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:visibility="gone"/>
+
+</FrameLayout>

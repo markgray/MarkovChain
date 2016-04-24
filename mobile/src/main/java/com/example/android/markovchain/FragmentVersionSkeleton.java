@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -65,12 +66,16 @@ public class FragmentVersionSkeleton extends AppCompatActivity {
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public static class UiFragment extends Fragment {
         RetainedFragment mWorkFragment;
+        LinearLayout mProgressViewLinearLayout;
+        TextView mMainView;
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View v = inflater.inflate(R.layout.fragment_retain_instance, container, false);
 
+            mProgressViewLinearLayout = (LinearLayout) v.findViewById(R.id.progress_view_linear_layout);
+            mMainView = (TextView) v.findViewById(R.id.main_view);
             // Watch for button clicks.
             Button button = (Button)v.findViewById(R.id.restart);
             button.setOnClickListener(new View.OnClickListener() {
