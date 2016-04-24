@@ -59,6 +59,7 @@ public class FragmentVersionSkeleton extends AppCompatActivity {
             }
         });
     }
+
     /**
      * This is a fragment showing UI that will be updated from work done
      * in the retained fragment.
@@ -73,7 +74,7 @@ public class FragmentVersionSkeleton extends AppCompatActivity {
             View v = inflater.inflate(R.layout.fragment_retain_instance, container, false);
 
             // Watch for button clicks.
-            Button button = (Button)v.findViewById(R.id.restart);
+            Button button = (Button) v.findViewById(R.id.restart);
             button.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     mWorkFragment.restart();
@@ -98,7 +99,7 @@ public class FragmentVersionSkeleton extends AppCompatActivity {
             android.app.FragmentManager fm = getFragmentManager();
 
             // Check to see if we have retained the worker fragment.
-            mWorkFragment = (RetainedFragment)fm.findFragmentByTag("work");
+            mWorkFragment = (RetainedFragment) fm.findFragmentByTag("work");
 
             // If not retained (or first time running), we need to create it.
             if (mWorkFragment == null) {
@@ -108,7 +109,6 @@ public class FragmentVersionSkeleton extends AppCompatActivity {
                 fm.beginTransaction().add(mWorkFragment, "work").commit();
             }
         }
-
 
 
     }
@@ -126,7 +126,7 @@ public class FragmentVersionSkeleton extends AppCompatActivity {
         boolean mQuiting = false;
         LinearLayout mProgressViewLinearLayout;
         TextView mMainView;
-
+        Handler mHandler = new Handler();
 
         /**
          * This is the thread that will do our work.  It sits in a loop running
@@ -149,11 +149,13 @@ public class FragmentVersionSkeleton extends AppCompatActivity {
                             if (mQuiting) {
                                 return;
                             }
-                            
-                            mProgressViewLinearLayout.setVisibility(View.GONE);
-                            mMainView.setVisibility(View.VISIBLE);
-
-    // TODO: Here we need to swap views.
+                            mHandler.post(new Runnable() {
+                                public void run() {
+                                    mProgressViewLinearLayout.setVisibility(View.GONE);
+                                    mMainView.setVisibility(View.VISIBLE);
+                                }
+                            });
+                            // TODO: Here we need to swap views.
                             try {
                                 wait();
                             } catch (InterruptedException e) {
@@ -193,7 +195,6 @@ public class FragmentVersionSkeleton extends AppCompatActivity {
             // Tell the framework to try to keep this fragment around
             // during a configuration change.
             setRetainInstance(true);
-
             // Start up the worker thread.
             mThread.start();
         }
@@ -211,7 +212,7 @@ public class FragmentVersionSkeleton extends AppCompatActivity {
             // Retrieve the progress bar from the target's view hierarchy.
             Fragment tarGetFragment = getTargetFragment();
             View gotView = null;
-            if(tarGetFragment != null) {
+            if (tarGetFragment != null) {
                 gotView = tarGetFragment.getView();
             }
             if (gotView != null) {
