@@ -66,16 +66,12 @@ public class FragmentVersionSkeleton extends AppCompatActivity {
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public static class UiFragment extends Fragment {
         RetainedFragment mWorkFragment;
-        LinearLayout mProgressViewLinearLayout;
-        TextView mMainView;
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View v = inflater.inflate(R.layout.fragment_retain_instance, container, false);
 
-            mProgressViewLinearLayout = (LinearLayout) v.findViewById(R.id.progress_view_linear_layout);
-            mMainView = (TextView) v.findViewById(R.id.main_view);
             // Watch for button clicks.
             Button button = (Button)v.findViewById(R.id.restart);
             button.setOnClickListener(new View.OnClickListener() {
@@ -128,6 +124,9 @@ public class FragmentVersionSkeleton extends AppCompatActivity {
         public static int mPosition;
         boolean mReady = false;
         boolean mQuiting = false;
+        LinearLayout mProgressViewLinearLayout;
+        TextView mMainView;
+
 
         /**
          * This is the thread that will do our work.  It sits in a loop running
@@ -150,6 +149,10 @@ public class FragmentVersionSkeleton extends AppCompatActivity {
                             if (mQuiting) {
                                 return;
                             }
+                            
+                            mProgressViewLinearLayout.setVisibility(View.GONE);
+                            mMainView.setVisibility(View.VISIBLE);
+
     // TODO: Here we need to swap views.
                             try {
                                 wait();
@@ -213,6 +216,8 @@ public class FragmentVersionSkeleton extends AppCompatActivity {
             }
             if (gotView != null) {
                 mProgressBar = (ProgressBar) gotView.findViewById(R.id.progress_horizontal);
+                mProgressViewLinearLayout = (LinearLayout) gotView.findViewById(R.id.progress_view_linear_layout);
+                mMainView = (TextView) gotView.findViewById(R.id.main_view);
             }
 
             // We are ready for our thread to go.
