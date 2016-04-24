@@ -1563,10 +1563,8 @@ Iconium
 Idalah
 Idbash
 Iddo
-Idolatry
 Idumaea
 Idumea
-If
 Igal
 Igdaliah
 Igeal
@@ -1585,17 +1583,7 @@ Imna
 Imnah
 Imrah
 Imri
-In
-Inasmuch
-Incline
-Increase
-Indeed
 India
-Iniquities
-Insomuch
-Instead
-Into
-Intreat
 Iphedeiah
 Ir
 Ira
@@ -1608,8 +1596,6 @@ Iron
 Irpeel
 Irshemesh
 Iru
-Is
-IS
 Isaac
 Isaiah
 Iscah
@@ -1646,8 +1632,6 @@ Issachar
 Isshiah
 Isuah
 Isui
-It
-IT
 Italian
 Italy
 Ithai
@@ -1764,7 +1748,6 @@ Javan
 Jazer
 Jaziz
 Je
-Jealous
 Jearim
 Jeaterai
 Jeberechiah
