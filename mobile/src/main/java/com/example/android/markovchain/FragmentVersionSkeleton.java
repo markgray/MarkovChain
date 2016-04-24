@@ -124,9 +124,6 @@ public class FragmentVersionSkeleton extends AppCompatActivity {
         boolean mReady = false;
         boolean mQuiting = false;
 
-
-
-
         /**
          * This is the thread that will do our work.  It sits in a loop running
          * the progress up until it has reached the top, then stops and waits.
@@ -148,6 +145,7 @@ public class FragmentVersionSkeleton extends AppCompatActivity {
                             if (mQuiting) {
                                 return;
                             }
+    // TODO: Here we need to swap views.
                             try {
                                 wait();
                             } catch (InterruptedException e) {
@@ -171,7 +169,6 @@ public class FragmentVersionSkeleton extends AppCompatActivity {
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
-                        
                     }
                 }
             }
