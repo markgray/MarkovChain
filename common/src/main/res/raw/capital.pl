@@ -17,10 +17,15 @@ while (my $line =<>) {
   chomp $line;
   my @words = split / /, $line;
   foreach my $word (@words) {
+    my $punct = '';
+    if ($word =~ m{([a-z-]+)([.!?])}) {
+      $word = $1;
+      $punct = $2;
+    }
     if (exists $capHash{$word}) {
       $word = $capHash{$word};
     }
-    print "$word ";
+    print "$word", "$punct ";
   }
   print "\n";
 }
