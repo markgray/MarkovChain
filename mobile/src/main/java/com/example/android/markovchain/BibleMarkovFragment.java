@@ -47,10 +47,10 @@ public class BibleMarkovFragment extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-            mMarkov.load(reader);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+                    mMarkov.load(reader);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         };
         mThread.start();
