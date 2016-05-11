@@ -125,7 +125,7 @@ public class FragmentVersionSkeleton extends AppCompatActivity {
                                     mMainView.setVisibility(View.VISIBLE);
                                 }
                             });
-                            // TODO: Here we need to swap views.
+
                             try {
                                 wait();
                             } catch (InterruptedException e) {
