@@ -36,6 +36,7 @@ public class BibleMarkovFragment extends AppCompatActivity {
 
     }
 
+    // TODO: Replace with a retained fragment
     private void initMarkov() {
         InputStream inputStream = getApplicationContext().getResources().openRawResource(R.raw.king_james_state_table);
         final BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
