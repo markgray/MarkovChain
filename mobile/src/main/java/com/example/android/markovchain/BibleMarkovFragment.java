@@ -1,10 +1,12 @@
 package com.example.android.markovchain;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import com.example.android.common.Markov;
 import com.example.android.common.MarkovAdapter;
@@ -16,6 +18,7 @@ import java.io.InputStreamReader;
 
 public class BibleMarkovFragment extends AppCompatActivity {
     public final String TAG = "BibleMarkovFragment";
+    ProgressBar mProgressBar;
     RecyclerView mRecyclerView;
     RecyclerView.LayoutManager mLayoutManager;
     protected MarkovAdapter mAdapter;
@@ -26,6 +29,7 @@ public class BibleMarkovFragment extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bible_markov_fragment);
+        mProgressBar = (ProgressBar) findViewById(R.id.bible_markov_fragment_progress);
         mLayoutManager = new LinearLayoutManager(getApplicationContext());
         mRecyclerView = (RecyclerView) findViewById(R.id.bible_markov_fragment);
         initMarkov();
@@ -34,6 +38,14 @@ public class BibleMarkovFragment extends AppCompatActivity {
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
+        mProgressBar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick (View view) {
+                mProgressBar.setVisibility(View.INVISIBLE);
+                mRecyclerView.setVisibility(View.VISIBLE);
+                mAdapter.notifyDataSetChanged();
+            }
+        });
     }
 
     // TODO: Replace with a retained fragment

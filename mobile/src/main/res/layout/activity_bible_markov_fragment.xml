@@ -10,11 +10,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:divider="@null"
-        android:visibility="visible" />
+        android:visibility="invisible" />
 
     <ProgressBar
+        android:id="@+id/bible_markov_fragment_progress"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="invisible" />
+        android:visibility="visible" />
 
 </FrameLayout>
