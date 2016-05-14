@@ -1,5 +1,8 @@
 package com.example.android.markovchain;
 
+import android.annotation.TargetApi;
+import android.app.Activity;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -7,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.example.android.common.DoneListener;
 import com.example.android.common.Markov;
@@ -41,13 +45,26 @@ public class BibleMarkovFragment extends AppCompatActivity {
 
         mProgressBar.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick (View view) {
+            public void onClick(View view) {
                 mProgressBar.setVisibility(View.INVISIBLE);
                 mRecyclerView.setVisibility(View.VISIBLE);
                 mAdapter.notifyDataSetChanged();
             }
         });
-        mMarkov.setDoneListener(new DoneListener(), mProgressBar);
+        final Thread mOnDone = new Thread(new Runnable() {
+            @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1)
+            @Override
+            public void run() {
+                Toast.makeText(mProgressBar.getContext(), "I am done OVERRIDE.", Toast.LENGTH_LONG).show();
+                mProgressBar.callOnClick();
+            }
+        });
+        mMarkov.setDoneListener(new DoneListener() {
+            @Override
+            public void onDone(final View view) {
+                ((Activity) view.getContext()).runOnUiThread(mOnDone);
+            }
+        }, mProgressBar);
     }
 
     // TODO: Replace with a retained fragment
