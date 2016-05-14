@@ -1,6 +1,7 @@
 package com.example.android.common;
 
 import android.util.Log;
+import android.view.View;
 
 import java.io.*;
 import java.util.*;
@@ -10,6 +11,15 @@ public class Markov {
     static final int MAXGEN = 10000; // maximum words generated
     public List<String> mOutput = new ArrayList<>();
     public Chain chain;
+    private DoneListener doneListener;
+    private View view;
+
+    public void setDoneListener(DoneListener doneListener, View view) {
+        this.view = view;
+        this.doneListener = doneListener;
+    }
+
+
 
     public void startUp (String[] args) throws IOException {
         chain = new Chain();
@@ -92,6 +102,9 @@ public class Markov {
                 e.printStackTrace();
             }
             loaded = true;
+            if (doneListener != null) {
+                doneListener.onDone(view);
+            }
         }
 
         // Chain add: add word to suffix list, update prefix

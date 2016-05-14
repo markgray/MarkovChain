@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 
+import com.example.android.common.DoneListener;
 import com.example.android.common.Markov;
 import com.example.android.common.MarkovAdapter;
 
@@ -46,6 +47,7 @@ public class BibleMarkovFragment extends AppCompatActivity {
                 mAdapter.notifyDataSetChanged();
             }
         });
+        mMarkov.setDoneListener(new DoneListener(), mProgressBar);
     }
 
     // TODO: Replace with a retained fragment
