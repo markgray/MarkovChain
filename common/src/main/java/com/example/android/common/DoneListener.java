@@ -16,9 +16,13 @@ public class DoneListener {
         {
             @Override
             public void run() {
-                Toast.makeText(view.getContext(), "I am done.", Toast.LENGTH_LONG).show();
+                onDoneDo(view);
             }
         }));
 
+    }
+
+    public void onDoneDo(View view) {
+        Toast.makeText(view.getContext(), "I am done.", Toast.LENGTH_LONG).show();
     }
 }

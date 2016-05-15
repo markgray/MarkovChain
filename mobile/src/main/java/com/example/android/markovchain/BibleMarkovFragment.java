@@ -1,7 +1,6 @@
 package com.example.android.markovchain;
 
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -21,6 +20,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+@TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1)
 public class BibleMarkovFragment extends AppCompatActivity {
     public final String TAG = "BibleMarkovFragment";
     ProgressBar mProgressBar;
@@ -51,18 +51,20 @@ public class BibleMarkovFragment extends AppCompatActivity {
                 mAdapter.notifyDataSetChanged();
             }
         });
-        final Thread mOnDone = new Thread(new Runnable() {
-            @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1)
-            @Override
-            public void run() {
-                Toast.makeText(mProgressBar.getContext(), "I am done OVERRIDE.", Toast.LENGTH_LONG).show();
-                mProgressBar.callOnClick();
-            }
-        });
+//        final Thread mOnDone = new Thread(new Runnable() {
+//            @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1)
+//            @Override
+//            public void run() {
+//                Toast.makeText(mProgressBar.getContext(), "I am done OVERRIDE.", Toast.LENGTH_LONG).show();
+//                mProgressBar.callOnClick();
+//            }
+//        });
         mMarkov.setDoneListener(new DoneListener() {
             @Override
-            public void onDone(final View view) {
-                ((Activity) view.getContext()).runOnUiThread(mOnDone);
+            public void onDoneDo(final View view) {
+                Toast.makeText(view.getContext(), "I am done OVERRIDE.", Toast.LENGTH_LONG).show();
+                view.callOnClick();
+
             }
         }, mProgressBar);
     }
