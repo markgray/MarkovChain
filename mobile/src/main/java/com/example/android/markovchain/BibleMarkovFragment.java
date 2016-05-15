@@ -51,20 +51,11 @@ public class BibleMarkovFragment extends AppCompatActivity {
                 mAdapter.notifyDataSetChanged();
             }
         });
-//        final Thread mOnDone = new Thread(new Runnable() {
-//            @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1)
-//            @Override
-//            public void run() {
-//                Toast.makeText(mProgressBar.getContext(), "I am done OVERRIDE.", Toast.LENGTH_LONG).show();
-//                mProgressBar.callOnClick();
-//            }
-//        });
         mMarkov.setDoneListener(new DoneListener() {
             @Override
             public void onDoneDo(final View view) {
                 Toast.makeText(view.getContext(), "I am done OVERRIDE.", Toast.LENGTH_LONG).show();
                 view.callOnClick();
-
             }
         }, mProgressBar);
     }
