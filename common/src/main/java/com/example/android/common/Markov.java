@@ -83,6 +83,10 @@ public class Markov {
             Log.i(TAG, "Words read: " + wordsRead);
             add(NONWORD);
             loaded = true;
+            if (doneListener != null) {
+                doneListener.onDone(view);
+            }
+
         }
 
         void loadStateTable(BufferedReader reader) {

@@ -1,11 +1,16 @@
 package com.example.android.markovchain;
 
+import android.annotation.TargetApi;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.widget.Toast;
 
+import com.example.android.common.DoneListener;
 import com.example.android.common.Markov;
 import com.example.android.common.MarkovAdapter;
 import com.example.android.common.Shakespeare;
@@ -32,6 +37,15 @@ public class ShakespeareMarkovRecycler extends AppCompatActivity {
         }
 
         // TODO: do this as thread
+        mMarkov.setDoneListener(new DoneListener() {
+            @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1)
+            @Override
+            public void onDoneDo(final View view) {
+                Toast.makeText(view.getContext(), "I am done OVERRIDE.", Toast.LENGTH_LONG).show();
+                view.callOnClick();
+            }
+        }, mRecyclerView);
+
         try {
             Log.i(TAG, "making chain");
             mMarkov.make(new StringReader(stringBuilder.toString()));
