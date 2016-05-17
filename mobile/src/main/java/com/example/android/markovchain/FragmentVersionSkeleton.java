@@ -4,7 +4,6 @@ import android.annotation.TargetApi;
 import android.app.Fragment;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +13,8 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.android.common.DoneListener;
 
 
 public class FragmentVersionSkeleton extends AppCompatActivity {
@@ -37,11 +38,12 @@ public class FragmentVersionSkeleton extends AppCompatActivity {
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public static class UiFragment extends Fragment {
         RetainedFragment mWorkFragment;
+        View v;
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View v = inflater.inflate(R.layout.fragment_retain_instance, container, false);
+            v = inflater.inflate(R.layout.fragment_retain_instance, container, false);
 
             // Watch for button clicks.
             Button button = (Button) v.findViewById(R.id.restart);
@@ -76,9 +78,20 @@ public class FragmentVersionSkeleton extends AppCompatActivity {
                 mWorkFragment = new RetainedFragment();
                 // Tell it who it is working with.
                 mWorkFragment.setTargetFragment(this, 0);
-                fm.beginTransaction().add(mWorkFragment, "work").commit();
+                fm.beginTransaction ().add(mWorkFragment, "work").commit();
             }
+            mWorkFragment.setDoneListener(mIamDone, v);
         }
+
+        DoneListener mIamDone = new DoneListener() {
+            @Override
+            public void onDoneDo(View v) {
+                TextView mMainView = (TextView) v.findViewById(R.id.main_view);
+                LinearLayout mProgressViewLinearLayout = (LinearLayout) v.findViewById(R.id.progress_view_linear_layout);
+                mProgressViewLinearLayout.setVisibility(View.INVISIBLE);
+                mMainView.setVisibility(View.VISIBLE);
+            }
+        };
 
 
     }
@@ -90,13 +103,21 @@ public class FragmentVersionSkeleton extends AppCompatActivity {
      */
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public static class RetainedFragment extends Fragment {
+
         ProgressBar mProgressBar;
         public static int mPosition;
         boolean mReady = false;
         boolean mQuiting = false;
         LinearLayout mProgressViewLinearLayout;
         TextView mMainView;
-        Handler mHandler = new Handler();
+//        Handler mHandler = new Handler();
+        private DoneListener doneListener;
+        private View view;
+
+        public void setDoneListener(DoneListener doneListener, View view) {
+            this.view = view;
+            this.doneListener = doneListener;
+        }
 
         /**
          * This is the thread that will do our work.  It sits in a loop running
@@ -119,12 +140,13 @@ public class FragmentVersionSkeleton extends AppCompatActivity {
                             if (mQuiting) {
                                 return;
                             }
-                            mHandler.post(new Runnable() {
-                                public void run() {
-                                    mProgressViewLinearLayout.setVisibility(View.GONE);
-                                    mMainView.setVisibility(View.VISIBLE);
-                                }
-                            });
+//                            mHandler.post(new Runnable() {
+//                                public void run() {
+//                                    mProgressViewLinearLayout.setVisibility(View.GONE);
+//                                    mMainView.setVisibility(View.VISIBLE);
+//                                }
+//                            });
+                            doneListener.onDone(view);
 
                             try {
                                 wait();
