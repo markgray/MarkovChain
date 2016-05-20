@@ -21,6 +21,7 @@ public class BibleFragment extends AppCompatActivity {
     RecyclerView.LayoutManager mLayoutManager;
     protected StringListAdapter mAdapter;
     ArrayList<String> stringList = new ArrayList<>();
+    ArrayList<String> bookChapterVerse = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,12 +53,16 @@ public class BibleFragment extends AppCompatActivity {
             public void run() {
                 try {
                     while ((line[0] = reader.readLine()) != null) {
-                        builder[0].append(line[0]);
-                        if (line[0].length() == 0) {
-                            stringList.add(builder[0].toString());
-                            builder[0] = new StringBuilder();
-                        } else {
-                            builder[0].append(" ");
+                        bookChapterVerse.add(line[0]);
+                        while ((line[0] = reader.readLine()) != null) {
+                            builder[0].append(line[0]);
+                            if (line[0].length() == 0) {
+                                stringList.add(builder[0].toString());
+                                builder[0] = new StringBuilder();
+                                break;
+                            } else {
+                                builder[0].append(" ");
+                            }
                         }
                     }
                     Log.i(TAG, "Verses read: " + stringList.size());
