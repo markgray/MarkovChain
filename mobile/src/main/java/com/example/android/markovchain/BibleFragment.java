@@ -38,7 +38,7 @@ public class BibleFragment extends AppCompatActivity {
     private void initDataset() {
         final String[] line = new String[1];
         final StringBuilder[] builder = {new StringBuilder()};
-        InputStream inputStream = getApplicationContext().getResources().openRawResource(R.raw.king_james);
+        InputStream inputStream = getApplicationContext().getResources().openRawResource(R.raw.king_james_text_and_verse);
         final BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
 
         /**
