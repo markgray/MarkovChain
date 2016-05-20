@@ -42,8 +42,10 @@ public class BibleFragment extends AppCompatActivity {
         final BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
 
         /**
-         * This is the thread that will do our work.  It sits in a loop running
-         * the progress up until it has reached the top, then stops and waits.
+         * This is the thread that will do our work.  It reads each line of text
+         * and adds it to a StringBuilder until it finds an empty line which is
+         * used to separate verses then converts the StringBuilder to a string
+         * and adds it to list of Strings.
          */
         final Thread mThread = new Thread() {
             @Override
