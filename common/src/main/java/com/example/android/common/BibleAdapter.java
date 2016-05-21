@@ -12,12 +12,15 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class StringListAdapter extends RecyclerView.Adapter<StringListAdapter.ViewHolder> {
-
+/**
+ * Adapter used by BibleFragment to populate the RecyclerView
+ */
+public class BibleAdapter extends RecyclerView.Adapter<BibleAdapter.ViewHolder>  {
     private static final String TAG = "StringListAdapter";
     private static Random rand = new Random();
     private static ArrayList<String> mDataSet;
     private static LinearLayoutManager mLayoutManager;
+    private final ArrayList<String> mChapterAndVerse;
 
 
     /**
@@ -55,12 +58,15 @@ public class StringListAdapter extends RecyclerView.Adapter<StringListAdapter.Vi
     }
 
     /**
-     * Initialize the dataset of the Adapter.
+     * Initialze the data used for the Adapter
      *
-     * @param dataSet String[] containing the data to populate views to be used by RecyclerView.
+     * @param dataSet List containing the text
+     * @param chapterAndVerse chapter and verse annotation for each paragraph
+     * @param layoutManager layout manager to use
      */
-    public StringListAdapter(ArrayList<String> dataSet, RecyclerView.LayoutManager layoutManager) {
+    public BibleAdapter(ArrayList<String> dataSet, ArrayList<String> chapterAndVerse, RecyclerView.LayoutManager layoutManager) {
         mDataSet = dataSet;
+        mChapterAndVerse = chapterAndVerse;
         mLayoutManager = (LinearLayoutManager) layoutManager;
     }
 
@@ -90,4 +96,3 @@ public class StringListAdapter extends RecyclerView.Adapter<StringListAdapter.Vi
         return mDataSet.size();
     }
 }
-
