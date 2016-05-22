@@ -21,7 +21,7 @@ public class BibleAdapter extends RecyclerView.Adapter<BibleAdapter.ViewHolder> 
     private static Random rand = new Random();
     private static ArrayList<String> mDataSet;
     private static LinearLayoutManager mLayoutManager;
-    private final ArrayList<String> mChapterAndVerse;
+    private static ArrayList<String> mChapterAndVerse;
 
 
     /**
@@ -38,7 +38,7 @@ public class BibleAdapter extends RecyclerView.Adapter<BibleAdapter.ViewHolder> 
                 @Override
                 public void onClick(View v) {
                     Log.d(TAG, "Element " + getLayoutPosition() + " clicked.");
-                    Toast.makeText(v.getContext(), "Verse " + getLayoutPosition(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(v.getContext(), "Verse " + mChapterAndVerse.get(getLayoutPosition()), Toast.LENGTH_LONG).show();
                 }
             });
             v.setOnLongClickListener(new View.OnLongClickListener() {
@@ -46,7 +46,7 @@ public class BibleAdapter extends RecyclerView.Adapter<BibleAdapter.ViewHolder> 
                 public boolean onLongClick(View view) {
                     int selection = Math.abs(rand.nextInt()) % mDataSet.size();
                     mLayoutManager.scrollToPositionWithOffset(selection, 0);
-                    Toast.makeText(view.getContext(), "Moving to verse " + selection, Toast.LENGTH_LONG).show();
+                    Toast.makeText(view.getContext(), "Moving to verse " + mChapterAndVerse.get(selection), Toast.LENGTH_LONG).show();
                     return true;
                 }
             });
@@ -69,6 +69,7 @@ public class BibleAdapter extends RecyclerView.Adapter<BibleAdapter.ViewHolder> 
         mDataSet = dataSet;
         mChapterAndVerse = chapterAndVerse;
         mLayoutManager = (LinearLayoutManager) layoutManager;
+        initializeNumberToBook();
     }
 
     static public boolean numberToBookInitialized = false;
@@ -96,6 +97,7 @@ public class BibleAdapter extends RecyclerView.Adapter<BibleAdapter.ViewHolder> 
     };
     public HashMap<String, String> initializeNumberToBook() {
         if (!numberToBookInitialized) {
+            numberToBook = new HashMap<>(66);
             for (int i = 0; i < numbers.length; i++) {
                 numberToBook.put(numbers[i], books[i]);
             }

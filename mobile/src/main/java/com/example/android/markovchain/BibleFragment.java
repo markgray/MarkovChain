@@ -1,12 +1,12 @@
 package com.example.android.markovchain;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
-import com.example.android.common.StringListAdapter;
+import com.example.android.common.BibleAdapter;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -19,7 +19,7 @@ public class BibleFragment extends AppCompatActivity {
     public final String TAG = "BibleRecycler";
     RecyclerView mRecyclerView;
     RecyclerView.LayoutManager mLayoutManager;
-    protected StringListAdapter mAdapter;
+    protected BibleAdapter mAdapter;
     ArrayList<String> stringList = new ArrayList<>();
     ArrayList<String> bookChapterVerse = new ArrayList<>();
 
@@ -30,7 +30,7 @@ public class BibleFragment extends AppCompatActivity {
         setContentView(R.layout.activity_bible_fragment);
         mLayoutManager = new LinearLayoutManager(getApplicationContext());
         mRecyclerView = (RecyclerView) findViewById(R.id.bible_recyclerview);
-        mAdapter = new StringListAdapter(stringList, mLayoutManager);
+        mAdapter = new BibleAdapter(stringList, bookChapterVerse, mLayoutManager);
         // Set CustomAdapter as the adapter for RecyclerView.
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setLayoutManager(mLayoutManager);
