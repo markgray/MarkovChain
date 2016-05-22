@@ -23,6 +23,10 @@ public class BibleAdapter extends RecyclerView.Adapter<BibleAdapter.ViewHolder> 
     private static LinearLayoutManager mLayoutManager;
     private static ArrayList<String> mChapterAndVerse;
 
+    public static String makeCitation(String numChatVerse) {
+        String bookNumber = numChatVerse.substring(0, 2);
+        return numberToBook.get(bookNumber) + ":" + numChatVerse;
+    }
 
     /**
      * Provide a reference to the type of views that you are using (custom ViewHolder)
@@ -38,7 +42,7 @@ public class BibleAdapter extends RecyclerView.Adapter<BibleAdapter.ViewHolder> 
                 @Override
                 public void onClick(View v) {
                     Log.d(TAG, "Element " + getLayoutPosition() + " clicked.");
-                    Toast.makeText(v.getContext(), "Verse " + mChapterAndVerse.get(getLayoutPosition()), Toast.LENGTH_LONG).show();
+                    Toast.makeText(v.getContext(), "Verse " + makeCitation(mChapterAndVerse.get(getLayoutPosition())), Toast.LENGTH_LONG).show();
                 }
             });
             v.setOnLongClickListener(new View.OnLongClickListener() {
@@ -46,7 +50,7 @@ public class BibleAdapter extends RecyclerView.Adapter<BibleAdapter.ViewHolder> 
                 public boolean onLongClick(View view) {
                     int selection = Math.abs(rand.nextInt()) % mDataSet.size();
                     mLayoutManager.scrollToPositionWithOffset(selection, 0);
-                    Toast.makeText(view.getContext(), "Moving to verse " + mChapterAndVerse.get(selection), Toast.LENGTH_LONG).show();
+                    Toast.makeText(view.getContext(), "Moving to verse " + makeCitation(mChapterAndVerse.get(selection)), Toast.LENGTH_LONG).show();
                     return true;
                 }
             });
