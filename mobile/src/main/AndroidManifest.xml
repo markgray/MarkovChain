@@ -15,18 +15,26 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".ShakespeareMarkovActivity"
+            android:name=".ShakespeareRecylcler"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ShakespeareActivity"
+            android:name=".ShakespeareMarkovRecycler"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".BibleActivity"
+            android:name=".BibleFragment"
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".BibleMarkovFragment"
+            android:theme="@style/AppTheme.NoActionBar" />
+<!-- Old or test activities not expected to be used except for learning purposes -->
+        <activity
+            android:name=".FragmentVersionSkeleton"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".BibleMarkovActivity"
@@ -35,22 +43,18 @@
             android:name=".BibleRecycler"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ShakespeareRecylcler"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".ShakespeareMarkovRecycler"
+            android:name=".ShakespeareMarkovActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".BibleMarkovRecycler"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".FragmentVersionSkeleton"
+            android:name=".ShakespeareActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".BibleFragment"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".BibleMarkovFragment"
+            android:name=".BibleActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|orientation|screenSize"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
