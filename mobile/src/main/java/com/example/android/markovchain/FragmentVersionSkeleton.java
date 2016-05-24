@@ -61,6 +61,14 @@ public class FragmentVersionSkeleton extends AppCompatActivity {
                 }
             });
 
+            TextView textView = (TextView) v.findViewById(R.id.main_view);
+            textView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    Toast.makeText(getActivity(), "I have been long clicked", Toast.LENGTH_LONG).show();
+                    return true;
+                }
+            });
             return v;
         }
 
@@ -88,7 +96,7 @@ public class FragmentVersionSkeleton extends AppCompatActivity {
             public void onDoneDo(View v) {
                 TextView mMainView = (TextView) v.findViewById(R.id.main_view);
                 LinearLayout mProgressViewLinearLayout = (LinearLayout) v.findViewById(R.id.progress_view_linear_layout);
-                mProgressViewLinearLayout.setVisibility(View.INVISIBLE);
+                mProgressViewLinearLayout.setVisibility(View.GONE);
                 mMainView.setVisibility(View.VISIBLE);
             }
         };
