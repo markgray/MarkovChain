@@ -28,6 +28,7 @@ public class BibleFragment extends AppCompatActivity {
     protected BibleAdapter mAdapter;
     ArrayList<String> stringList = new ArrayList<>();
     ArrayList<String> bookChapterVerse = new ArrayList<>();
+    BibleDialog bibleDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,9 +56,14 @@ public class BibleFragment extends AppCompatActivity {
         ft.addToBackStack(null);
 
         // Create and show the dialog.
-        BibleDialog newFragment = BibleDialog.newInstance(label, text);
-        newFragment.show(ft, "dialog");
+        bibleDialog = BibleDialog.newInstance(label, text);
+        bibleDialog.show(ft, "dialog");
     }
+
+    private void dismissDiaglog() {
+        bibleDialog.dismiss();
+    }
+
 
     private void initDataset() {
         final String[] line = new String[1];
@@ -146,7 +152,8 @@ public class BibleFragment extends AppCompatActivity {
             button.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     // When button is clicked, call up to owning activity.
-                    ((BibleFragment)getActivity()).showDialog("Done", "I am done");
+                    ((BibleFragment)getActivity()).dismissDiaglog();
+//                    ((BibleFragment)getActivity()).showDialog("Done", "I am done");
                 }
             });
 
@@ -158,5 +165,4 @@ public class BibleFragment extends AppCompatActivity {
             return super.show(ft, dialog);
         }
     }
-
 }
