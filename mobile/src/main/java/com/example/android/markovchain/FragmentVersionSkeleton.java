@@ -46,7 +46,7 @@ public class FragmentVersionSkeleton extends AppCompatActivity {
         ft.addToBackStack(null);
 
         // Create and show the dialog.
-        DialogFragment newFragment = MyDialogFragment.newInstance(0);
+        DialogFragment newFragment = MyDialogFragment.newInstance("This is label", "This is the text");
         newFragment.show(ft, "dialog");
     }
 
@@ -294,18 +294,26 @@ public class FragmentVersionSkeleton extends AppCompatActivity {
     }
 
     public static class MyDialogFragment extends DialogFragment {
-        int mNum;
+
+        String mLabel;
+        String mText;
 
         /**
-         * Create a new instance of MyDialogFragment, providing "num"
-         * as an argument.
+         * Create a new instance of MyDialogFragment providing
+         * "label" and "text" as arguments.
+         *
+         * @param label Label to use for dialog
+         * @param text  Text body for dialog
+         * @return A MyDialogFragment instance with the arguments set
          */
-        static MyDialogFragment newInstance(int num) {
+        static MyDialogFragment newInstance(String label, String text) {
             MyDialogFragment f = new MyDialogFragment();
 
             // Supply num input as an argument.
             Bundle args = new Bundle();
-            args.putInt("num", num);
+            args.putString("label", label);
+            args.putString("text", text);
+
             f.setArguments(args);
 
             return f;
@@ -314,27 +322,11 @@ public class FragmentVersionSkeleton extends AppCompatActivity {
         @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-            mNum = getArguments().getInt("num");
+            mLabel = getArguments().getString("label");
+            mText = getArguments().getString("text");
 
             // Pick a style based on the num.
             int style = DialogFragment.STYLE_NORMAL, theme = 0;
-            switch ((mNum-1)%6) {
-                case 1: style = DialogFragment.STYLE_NO_TITLE; break;
-                case 2: style = DialogFragment.STYLE_NO_FRAME; break;
-                case 3: style = DialogFragment.STYLE_NO_INPUT; break;
-                case 4: style = DialogFragment.STYLE_NORMAL; break;
-                case 5: style = DialogFragment.STYLE_NORMAL; break;
-                case 6: style = DialogFragment.STYLE_NO_TITLE; break;
-                case 7: style = DialogFragment.STYLE_NO_FRAME; break;
-                case 8: style = DialogFragment.STYLE_NORMAL; break;
-            }
-            switch ((mNum-1)%6) {
-                case 4: theme = android.R.style.Theme_Holo; break;
-                case 5: theme = android.R.style.Theme_Holo_Light_Dialog; break;
-                case 6: theme = android.R.style.Theme_Holo_Light; break;
-                case 7: theme = android.R.style.Theme_Holo_Light_Panel; break;
-                case 8: theme = android.R.style.Theme_Holo_Light; break;
-            }
             setStyle(style, theme);
         }
 
@@ -342,10 +334,12 @@ public class FragmentVersionSkeleton extends AppCompatActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View v = inflater.inflate(R.layout.fragment_dialog, container, false);
-            View tv = v.findViewById(R.id.text);
-            String dialogLabel = getString(R.string.dialog_number) + mNum + ": using style "
-                    + "STYLE_NORMAL";
+            View tv = v.findViewById(R.id.label);
+            String dialogLabel = mLabel;
             ((TextView)tv).setText(dialogLabel);
+
+            tv = v.findViewById(R.id.text);
+            ((TextView)tv).setText(mText);
 
             // Watch for button clicks.
             Button button = (Button)v.findViewById(R.id.show);

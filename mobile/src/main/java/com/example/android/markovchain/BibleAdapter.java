@@ -1,4 +1,4 @@
-package com.example.android.common;
+package com.example.android.markovchain;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -48,6 +48,9 @@ public class BibleAdapter extends RecyclerView.Adapter<BibleAdapter.ViewHolder> 
             v.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View view) {
+
+                    ((BibleFragment)view.getContext()).showDialog("Verse " + makeCitation(mChapterAndVerse.get(getLayoutPosition())),
+                            (String) textView.getText());
                     int selection = Math.abs(rand.nextInt()) % mDataSet.size();
                     mLayoutManager.scrollToPositionWithOffset(selection, 0);
                     Toast.makeText(view.getContext(), "Moving to verse " + makeCitation(mChapterAndVerse.get(selection)), Toast.LENGTH_LONG).show();
