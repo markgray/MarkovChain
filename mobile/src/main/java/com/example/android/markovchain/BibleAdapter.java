@@ -51,9 +51,7 @@ public class BibleAdapter extends RecyclerView.Adapter<BibleAdapter.ViewHolder> 
 
                     ((BibleFragment)view.getContext()).showDialog("Verse " + makeCitation(mChapterAndVerse.get(getLayoutPosition())),
                             (String) textView.getText());
-                    int selection = Math.abs(rand.nextInt()) % mDataSet.size();
-                    mLayoutManager.scrollToPositionWithOffset(selection, 0);
-                    Toast.makeText(view.getContext(), "Moving to verse " + makeCitation(mChapterAndVerse.get(selection)), Toast.LENGTH_LONG).show();
+                    moveToRandom(view);
                     return true;
                 }
             });
@@ -63,6 +61,12 @@ public class BibleAdapter extends RecyclerView.Adapter<BibleAdapter.ViewHolder> 
         public TextView getTextView() {
             return textView;
         }
+    }
+
+    public static void moveToRandom(View view) {
+        int selection = Math.abs(rand.nextInt()) % mDataSet.size();
+        mLayoutManager.scrollToPositionWithOffset(selection, 0);
+        Toast.makeText(view.getContext(), "Moving to verse " + makeCitation(mChapterAndVerse.get(selection)), Toast.LENGTH_LONG).show();
     }
 
     /**
