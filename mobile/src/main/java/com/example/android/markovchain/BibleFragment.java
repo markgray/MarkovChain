@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -139,6 +140,19 @@ public class BibleFragment extends AppCompatActivity {
         }
 
         public String[] spinChoices = {"Dismiss", "Random verse", "Google"};
+        public String spinChosen = "";
+        public AdapterView.OnItemSelectedListener spinSelected = new AdapterView.OnItemSelectedListener(){
+
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                spinChosen = spinChoices[position];
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        };
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -160,7 +174,7 @@ public class BibleFragment extends AppCompatActivity {
                             spinChoices);
             spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             spin.setAdapter(spinnerArrayAdapter);
-
+            spin.setOnItemSelectedListener(spinSelected);
 
             // Watch for button clicks.
             Button button = (Button)v.findViewById(R.id.show);
@@ -168,7 +182,7 @@ public class BibleFragment extends AppCompatActivity {
                 public void onClick(View v) {
                     // When button is clicked, call up to owning activity.
                     ((BibleFragment)getActivity()).dismissDiaglog();
-//                    ((BibleFragment)getActivity()).showDialog("Done", "I am done");
+                    ((BibleFragment)getActivity()).showDialog("Spinner value", spinChosen);
                 }
             });
 
