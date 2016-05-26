@@ -11,7 +11,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.io.BufferedReader;
@@ -136,6 +138,8 @@ public class BibleFragment extends AppCompatActivity {
             setStyle(DialogFragment.STYLE_NORMAL, 0);
         }
 
+        public String[] spinChoices = {"Dismiss", "Random verse", "Google"};
+
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
@@ -146,6 +150,17 @@ public class BibleFragment extends AppCompatActivity {
 
             tv = v.findViewById(R.id.text);
             ((TextView)tv).setText(mText);
+
+
+            Spinner spin = (Spinner) v.findViewById(R.id.spinner);
+
+            ArrayAdapter<String> spinnerArrayAdapter =
+                    new ArrayAdapter<>(v.getContext(),
+                            android.R.layout.simple_spinner_item,
+                            spinChoices);
+            spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            spin.setAdapter(spinnerArrayAdapter);
+
 
             // Watch for button clicks.
             Button button = (Button)v.findViewById(R.id.show);
