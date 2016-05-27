@@ -141,7 +141,7 @@ public class BibleFragment extends AppCompatActivity {
             mLabel = getArguments().getString("label");
             mText = getArguments().getString("text");
 
-            setStyle(DialogFragment.STYLE_NORMAL, 0);
+            setStyle(DialogFragment.STYLE_NORMAL, android.R.style.Theme_DeviceDefault_Dialog);
         }
 
         public String[] spinChoices = {"Dismiss", "Random verse", "Google"};
