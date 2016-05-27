@@ -51,7 +51,6 @@ public class BibleAdapter extends RecyclerView.Adapter<BibleAdapter.ViewHolder> 
 
                     ((BibleFragment)view.getContext()).showDialog("Verse " + makeCitation(mChapterAndVerse.get(getLayoutPosition())),
                             (String) textView.getText());
-                    moveToRandom(view);
                     return true;
                 }
             });

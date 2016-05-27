@@ -67,6 +67,11 @@ public class BibleFragment extends AppCompatActivity {
         bibleDialog.dismiss();
     }
 
+    public void handleAction(View v, int spinIndex) {
+        if (spinIndex == 1) {
+            BibleAdapter.moveToRandom(v);
+        }
+    }
 
     private void initDataset() {
         final String[] line = new String[1];
@@ -141,10 +146,12 @@ public class BibleFragment extends AppCompatActivity {
 
         public String[] spinChoices = {"Dismiss", "Random verse", "Google"};
         public String spinChosen = "";
+        public int spinIndex = 0;
         public AdapterView.OnItemSelectedListener spinSelected = new AdapterView.OnItemSelectedListener(){
 
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                spinIndex = position;
                 spinChosen = spinChoices[position];
             }
 
@@ -181,8 +188,8 @@ public class BibleFragment extends AppCompatActivity {
             button.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     // When button is clicked, call up to owning activity.
+                    ((BibleFragment) getActivity()).handleAction(v, spinIndex);
                     ((BibleFragment)getActivity()).dismissDiaglog();
-                    ((BibleFragment)getActivity()).showDialog("Spinner value", spinChosen);
                 }
             });
 
