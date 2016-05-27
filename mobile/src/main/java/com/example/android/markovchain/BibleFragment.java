@@ -68,8 +68,16 @@ public class BibleFragment extends AppCompatActivity {
     }
 
     public void handleAction(View v, int spinIndex) {
-        if (spinIndex == 1) {
-            BibleAdapter.moveToRandom(v);
+        switch (spinIndex) {
+            case BibleDialog.CHOICE_DISMISS:
+                break; // Dialog is dismissed after all choices
+            case BibleDialog.CHOICE_RANDOM_VERSE:
+                BibleAdapter.moveToRandom(v);
+                break;
+            case BibleDialog.CHOICE_GOOGLE:
+                break; // Unimplemented future feature
+            default:
+                break;
         }
     }
 
@@ -147,6 +155,10 @@ public class BibleFragment extends AppCompatActivity {
         public String[] spinChoices = {"Dismiss", "Random verse", "Google"};
         public String spinChosen = "";
         public int spinIndex = 0;
+        public static final int CHOICE_DISMISS = 0;
+        public static final int CHOICE_RANDOM_VERSE = 1;
+        public static final int CHOICE_GOOGLE = 2;
+
         public AdapterView.OnItemSelectedListener spinSelected = new AdapterView.OnItemSelectedListener(){
 
             @Override
