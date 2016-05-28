@@ -81,6 +81,10 @@ public class BibleFragment extends AppCompatActivity {
                 break;
             case BibleDialog.CHOICE_GOOGLE:
                 break; // Unimplemented future feature
+            case BibleDialog.CHOICE_BOOKMARK:
+                break; // Unimplemented future feature
+            case BibleDialog.CHOICE_GO_TO_VERSE:
+                break; // Unimplemented future feature
             default:
                 break;
         }
@@ -154,18 +158,19 @@ public class BibleFragment extends AppCompatActivity {
             mLabel = getArguments().getString("label");
             mText = getArguments().getString("text");
 
-            setStyle(DialogFragment.STYLE_NORMAL, android.R.style.Theme_DeviceDefault_Dialog);
+            setStyle(DialogFragment.STYLE_NORMAL, 0);
         }
 
-        public String[] spinChoices = {"Dismiss", "Random verse", "Google"};
+        public String[] spinChoices = {"Dismiss", "Random verse", "Google", "Bookmark", "Go to verse"};
         public String spinChosen = "";
         public int spinIndex = 0;
         public static final int CHOICE_DISMISS = 0;
         public static final int CHOICE_RANDOM_VERSE = 1;
         public static final int CHOICE_GOOGLE = 2;
+        public static final int CHOICE_BOOKMARK = 3;
+        public static final int CHOICE_GO_TO_VERSE = 4;
 
         public AdapterView.OnItemSelectedListener spinSelected = new AdapterView.OnItemSelectedListener(){
-
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 spinIndex = position;
@@ -174,7 +179,6 @@ public class BibleFragment extends AppCompatActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
             }
         };
 
@@ -213,7 +217,7 @@ public class BibleFragment extends AppCompatActivity {
             return v;
         }
 
-
+        @Override
         public int show(FragmentTransaction ft, String dialog) {
             return super.show(ft, dialog);
         }
