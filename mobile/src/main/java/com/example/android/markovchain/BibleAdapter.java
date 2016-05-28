@@ -34,6 +34,7 @@ public class BibleAdapter extends RecyclerView.Adapter<BibleAdapter.ViewHolder> 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         private final TextView textView;
+        public int verseNumber;
 
         public ViewHolder(View v) {
             super(v);
@@ -51,6 +52,7 @@ public class BibleAdapter extends RecyclerView.Adapter<BibleAdapter.ViewHolder> 
 
                     ((BibleFragment)view.getContext()).showDialog("Verse " + makeCitation(mChapterAndVerse.get(getLayoutPosition())),
                             (String) textView.getText());
+                    BibleFragment.dialogVerse = verseNumber;
                     return true;
                 }
             });
@@ -132,6 +134,7 @@ public class BibleAdapter extends RecyclerView.Adapter<BibleAdapter.ViewHolder> 
     public void onBindViewHolder(ViewHolder viewHolder, final int position) {
         Log.d(TAG, "Element " + position + " set.");
 
+        viewHolder.verseNumber = position;
         // Get element from your dataset at this position and replace the contents of the view
         // with that element
         viewHolder.getTextView().setText(mDataSet.get(position));

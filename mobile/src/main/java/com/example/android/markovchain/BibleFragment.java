@@ -25,13 +25,16 @@ import java.util.ArrayList;
 
 public class BibleFragment extends AppCompatActivity {
 
-    public final String TAG = "BibleRecycler";
+    public final String TAG = "BibleFragment";
     RecyclerView mRecyclerView;
     RecyclerView.LayoutManager mLayoutManager;
     protected BibleAdapter mAdapter;
     ArrayList<String> stringList = new ArrayList<>();
     ArrayList<String> bookChapterVerse = new ArrayList<>();
     BibleDialog bibleDialog;
+    public static String dialogTitle;
+    public static String dialogText;
+    public static int dialogVerse;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +51,8 @@ public class BibleFragment extends AppCompatActivity {
 
     public void showDialog(String label, String text) {
 
+        dialogTitle = label;
+        dialogText = text;
         // DialogFragment.show() will take care of adding the fragment
         // in a transaction.  We also want to remove any currently showing
         // dialog, so make our own transaction and take care of that here.
