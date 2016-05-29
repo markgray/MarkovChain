@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         ViewGroup linearLayout = (ViewGroup) findViewById(R.id.linear_layout);
         addButton(ShakespeareRecylcler.class, "Shakespeare Recycler", linearLayout);
         addButton(ShakespeareMarkovRecycler.class, "Shakespeare Markov Recycler", linearLayout);
-        addButton(BibleFragment.class, "Bible retained fragment", linearLayout);
+        addButton(BibleMain.class, "Bible retained fragment", linearLayout);
         addButton(BibleMarkovFragment.class, "Buggy Bible Markov Fragment", linearLayout);
         addText("Obsolete activities", linearLayout);
         addButton(FragmentVersionSkeleton.class, "Fragment Skeleton", linearLayout);

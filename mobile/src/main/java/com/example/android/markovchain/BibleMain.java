@@ -15,9 +15,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-public class BibleFragment extends AppCompatActivity {
+public class BibleMain extends AppCompatActivity {
 
-    public final String TAG = "BibleFragment";
+    public final String TAG = "BibleMain";
     RecyclerView mRecyclerView;
     RecyclerView.LayoutManager mLayoutManager;
     protected BibleAdapter mAdapter;

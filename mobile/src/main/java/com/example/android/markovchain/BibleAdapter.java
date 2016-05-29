@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.Random;
 
 /**
- * Adapter used by BibleFragment to populate the RecyclerView
+ * Adapter used by BibleMain to populate the RecyclerView
  */
 public class BibleAdapter extends RecyclerView.Adapter<BibleAdapter.ViewHolder>  {
     private static final String TAG = "StringListAdapter";
@@ -50,9 +50,9 @@ public class BibleAdapter extends RecyclerView.Adapter<BibleAdapter.ViewHolder> 
                 @Override
                 public boolean onLongClick(View view) {
 
-                    ((BibleFragment)view.getContext()).showDialog("Verse " + makeCitation(mChapterAndVerse.get(getLayoutPosition())),
+                    ((BibleMain)view.getContext()).showDialog("Verse " + makeCitation(mChapterAndVerse.get(getLayoutPosition())),
                             (String) textView.getText());
-                    BibleFragment.dialogVerse = verseNumber;
+                    BibleMain.dialogVerse = verseNumber;
                     return true;
                 }
             });

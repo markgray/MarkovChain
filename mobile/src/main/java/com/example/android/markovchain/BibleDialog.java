@@ -93,8 +93,8 @@ public class BibleDialog extends DialogFragment {
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // When button is clicked, call up to owning activity.
-                ((BibleFragment) getActivity()).handleAction(v, spinIndex);
-                ((BibleFragment) getActivity()).dismissDiaglog();
+                ((BibleMain) getActivity()).handleAction(v, spinIndex);
+                ((BibleMain) getActivity()).dismissDiaglog();
             }
         });
 
