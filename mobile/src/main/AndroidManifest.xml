@@ -40,7 +40,7 @@
             android:name=".BibleMarkovActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".BibleRecycler"
+            android:name=".OldBibleRecycler"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ShakespeareMarkovActivity"
@@ -52,7 +52,7 @@
             android:name=".ShakespeareActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".BibleActivity"
+            android:name=".OldBibleActivity"
             android:screenOrientation="portrait"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:theme="@style/AppTheme.NoActionBar" />

@@ -25,9 +25,9 @@ public class MainActivity extends AppCompatActivity {
         addButton(FragmentVersionSkeleton.class, "Fragment Skeleton", linearLayout);
         addButton(ShakespeareActivity.class, "Shakespeare", linearLayout);
         addButton(ShakespeareMarkovActivity.class, "Shakespeare Markov", linearLayout);
-        addButton(BibleActivity.class, "King James Bible", linearLayout);
+        addButton(OldBibleActivity.class, "King James Bible", linearLayout);
         addButton(BibleMarkovActivity.class, "King James Bible Markov", linearLayout);
-        addButton(BibleRecycler.class, "King James Recycler", linearLayout);
+        addButton(OldBibleRecycler.class, "King James Recycler", linearLayout);
         addButton(BibleMarkovRecycler.class, "Bible Markov Recycler", linearLayout);
     }
 

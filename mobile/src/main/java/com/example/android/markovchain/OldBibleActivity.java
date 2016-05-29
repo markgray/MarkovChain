@@ -16,9 +16,9 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class BibleActivity extends ListActivity {
+public class OldBibleActivity extends ListActivity {
 
-    public final String TAG = "BibleActivity";
+    public final String TAG = "OldBibleActivity";
     public ArrayList<String> tempList = new ArrayList<>();
     public ListView mlistView;
     protected String[] tempStr;

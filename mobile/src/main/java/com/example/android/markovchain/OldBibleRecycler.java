@@ -12,9 +12,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-public class BibleRecycler extends AppCompatActivity {
+public class OldBibleRecycler extends AppCompatActivity {
 
-    public final String TAG = "BibleRecycler";
+    public final String TAG = "OldBibleRecycler";
     RecyclerView mRecyclerView;
     RecyclerView.LayoutManager mLayoutManager;
     protected StringListAdapter mAdapter;
