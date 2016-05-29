@@ -2,6 +2,7 @@ package com.example.android.markovchain;
 
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -18,6 +19,8 @@ import java.util.ArrayList;
 public class BibleMain extends AppCompatActivity {
 
     public final String TAG = "BibleMain";
+    public Context bibleContext = this;
+    public BibleData bibleData = new BibleData();
     RecyclerView mRecyclerView;
     RecyclerView.LayoutManager mLayoutManager;
     protected BibleAdapter mAdapter;
