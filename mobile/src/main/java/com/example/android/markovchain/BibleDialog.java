@@ -45,7 +45,8 @@ public class BibleDialog extends DialogFragment {
         setStyle(DialogFragment.STYLE_NORMAL, 0);
     }
 
-    public String[] spinChoices = {"Dismiss", "Random verse", "Google", "Bookmark", "Go to verse"};
+    public String[] spinChoices = {"Dismiss", "Random verse", "Google",
+                                   "Bookmark", "Go to verse", "Read aloud"};
     public String spinChosen = "";
     public int spinIndex = 0;
     public static final int CHOICE_DISMISS = 0;
@@ -53,6 +54,7 @@ public class BibleDialog extends DialogFragment {
     public static final int CHOICE_GOOGLE = 2;
     public static final int CHOICE_BOOKMARK = 3;
     public static final int CHOICE_GO_TO_VERSE = 4;
+    public static final int CHOICE_READ_ALOUD = 5;
 
     public AdapterView.OnItemSelectedListener spinSelected = new AdapterView.OnItemSelectedListener() {
         @Override

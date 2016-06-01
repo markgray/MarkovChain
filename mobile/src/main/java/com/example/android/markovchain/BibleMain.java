@@ -80,6 +80,8 @@ public class BibleMain extends AppCompatActivity {
                 break; // Unimplemented future feature
             case BibleDialog.CHOICE_GO_TO_VERSE:
                 break; // Unimplemented future feature
+            case BibleDialog.CHOICE_READ_ALOUD:
+                break; // Unimplemented future feature
             default:
                 break;
         }
