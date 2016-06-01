@@ -4,6 +4,7 @@ import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -62,6 +63,10 @@ public class BibleMain extends AppCompatActivity {
         // Create and show the dialog.
         bibleDialog = BibleDialog.newInstance(label, text);
         bibleDialog.show(ft, "dialog");
+    }
+
+    public void showDialog(DialogFragment dialogFragment, String label, String text) {
+        // dialogFragment must already have setArguments set to bundle!
     }
 
      public void dismissDiaglog() {
