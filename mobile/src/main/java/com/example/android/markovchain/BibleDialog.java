@@ -71,7 +71,7 @@ public class BibleDialog extends DialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_dialog, container, false);
+        View v = inflater.inflate(R.layout.bible_dialog, container, false);
         View tv = v.findViewById(R.id.label);
         String dialogLabel = mLabel;
         ((TextView) tv).setText(dialogLabel);

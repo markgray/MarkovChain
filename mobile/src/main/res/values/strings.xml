@@ -15,4 +15,6 @@
     <string name="dialog_number">Dialog #</string>
     <string name="show">SHOW</string>
     <string name="choose_action_to_perform">Choose action to perform</string>
+    <string name="search">SEARCH</string>
+    <string name="enter_search_words_below">Enter search words below</string>
 </resources>
