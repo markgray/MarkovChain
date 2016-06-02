@@ -3,6 +3,7 @@ package com.example.android.markovchain;
 import android.app.DialogFragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,10 +11,12 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class BibleSearch extends DialogFragment {
+    public final static String TAG = "BibleSearch";
     public String mLabel;
     public String mText;
 
     static BibleSearch newInstance(String label, String text) {
+        Log.i(TAG, " newInstance called with: " + label + " " + text);
         BibleSearch f = new BibleSearch();
 
         Bundle args = new Bundle();
@@ -27,8 +30,10 @@ public class BibleSearch extends DialogFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         mLabel = getArguments().getString("label");
         mText = getArguments().getString("text");
+        Log.i(TAG, "onCreate called with: " + mLabel + " " + mText);
 
         setStyle(DialogFragment.STYLE_NORMAL, 0);
 
@@ -37,6 +42,7 @@ public class BibleSearch extends DialogFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        Log.i(TAG, "onCreateView called");
         View v = inflater.inflate(R.layout.bible_search, container, false);
         View tv = v.findViewById(R.id.label);
         String dialogLabel = mLabel;
@@ -50,7 +56,7 @@ public class BibleSearch extends DialogFragment {
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // When button is clicked, call up to owning activity.
-                ((BibleMain) getActivity()).dismissDiaglog();
+               BibleSearch.this.dismiss();
             }
         });
 

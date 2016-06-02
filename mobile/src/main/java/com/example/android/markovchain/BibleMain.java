@@ -27,7 +27,7 @@ public class BibleMain extends AppCompatActivity {
     protected BibleAdapter mAdapter;
     ArrayList<String> stringList = new ArrayList<>();
     ArrayList<String> bookChapterVerse = new ArrayList<>();
-    BibleDialog bibleDialog;
+    public static BibleDialog bibleDialog;
     BibleSearch bibleSearch;
     public static String dialogTitle;
     public static String dialogText;
@@ -76,22 +76,14 @@ public class BibleMain extends AppCompatActivity {
     public void handleAction(View v, int spinIndex) {
         switch (spinIndex) {
             case BibleDialog.CHOICE_DISMISS:
-                break; // Dialog is dismissed after all choices
+                dismissDiaglog();
+                break;
             case BibleDialog.CHOICE_RANDOM_VERSE:
                 BibleAdapter.moveToRandom(v);
+                showDialog(BibleDialog.newInstance(dialogTitle, dialogText));
                 break;
             case BibleDialog.CHOICE_GOOGLE:
-                FragmentTransaction ft = getFragmentManager().beginTransaction();
-                Fragment prev = getFragmentManager().findFragmentByTag("dialog");
-                if (prev != null) {
-                    ft.remove(prev);
-                }
-                ft.addToBackStack(null);
-
-                // Create and show the dialog.
-
-                bibleSearch = BibleSearch.newInstance(dialogTitle, dialogText);
-                bibleSearch.show(ft, "dialog");
+                showDialog(BibleSearch.newInstance(dialogTitle, dialogText));
                 break; // Unimplemented future feature
             case BibleDialog.CHOICE_BOOKMARK:
                 break; // Unimplemented future feature

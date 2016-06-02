@@ -67,7 +67,13 @@ public class BibleAdapter extends RecyclerView.Adapter<BibleAdapter.ViewHolder> 
     public static void moveToRandom(View view) {
         int selection = Math.abs(rand.nextInt()) % mDataSet.size();
         mLayoutManager.scrollToPositionWithOffset(selection, 0);
-        Toast.makeText(view.getContext(), "Moving to verse " + makeCitation(mChapterAndVerse.get(selection)), Toast.LENGTH_LONG).show();
+        final String citation = makeCitation(mChapterAndVerse.get(selection));
+        Toast.makeText(view.getContext(), "Moving to verse " + citation, Toast.LENGTH_LONG).show();
+
+        BibleMain.dialogTitle = citation;
+        BibleMain.dialogText = mDataSet.get(selection);
+        BibleMain.dialogVerse = selection;
+        BibleMain.bibleDialog.dismiss();
     }
 
     /**
