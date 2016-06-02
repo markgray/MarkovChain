@@ -4,7 +4,7 @@ import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
+import android.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -47,9 +47,16 @@ public class BibleMain extends AppCompatActivity {
     }
 
     public void showDialog(String label, String text) {
-
         dialogTitle = label;
         dialogText = text;
+
+        // Create and show the dialog.
+        bibleDialog = BibleDialog.newInstance(label, text);
+        showDialog(bibleDialog);
+    }
+
+    public int showDialog(DialogFragment dialogFragment) {
+        // dialogFragment must already have setArguments set to bundle!
         // DialogFragment.show() will take care of adding the fragment
         // in a transaction.  We also want to remove any currently showing
         // dialog, so make our own transaction and take care of that here.
@@ -59,14 +66,7 @@ public class BibleMain extends AppCompatActivity {
             ft.remove(prev);
         }
         ft.addToBackStack(null);
-
-        // Create and show the dialog.
-        bibleDialog = BibleDialog.newInstance(label, text);
-        bibleDialog.show(ft, "dialog");
-    }
-
-    public void showDialog(DialogFragment dialogFragment, String label, String text) {
-        // dialogFragment must already have setArguments set to bundle!
+        return dialogFragment.show(ft, "dialog");
     }
 
      public void dismissDiaglog() {
