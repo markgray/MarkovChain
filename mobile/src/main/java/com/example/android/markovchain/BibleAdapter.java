@@ -62,18 +62,28 @@ public class BibleAdapter extends RecyclerView.Adapter<BibleAdapter.ViewHolder> 
         public TextView getTextView() {
             return textView;
         }
+
+
     }
 
     public static void moveToRandom(View view) {
         int selection = Math.abs(rand.nextInt()) % mDataSet.size();
+        moveToVerse(view, selection);
+        BibleMain.bibleDialog.dismiss();
+    }
+
+    public static void moveToVerse(View view, int selection) {
+        if (!BibleMain.doneReading) {
+            BibleMain.mDoneReading.block(5000);
+        }
         mLayoutManager.scrollToPositionWithOffset(selection, 0);
+        BibleMain.saveVerseNumber(selection, BibleMain.LAST_VERSE_VIEWED);
         final String citation = makeCitation(mChapterAndVerse.get(selection));
         Toast.makeText(view.getContext(), "Moving to verse " + citation, Toast.LENGTH_LONG).show();
 
         BibleMain.dialogTitle = citation;
         BibleMain.dialogText = mDataSet.get(selection);
         BibleMain.dialogVerse = selection;
-        BibleMain.bibleDialog.dismiss();
     }
 
     /**
@@ -151,4 +161,7 @@ public class BibleAdapter extends RecyclerView.Adapter<BibleAdapter.ViewHolder> 
     public int getItemCount() {
         return mDataSet.size();
     }
+// lastFirstVisiblePosition = ((LinearLayoutManager)rv.getLayoutManager()).findFirstCompletelyVisibleItemPosition(); onPause
+// ((LinearLayoutManager) rv.getLayoutManager()).scrollToPosition(lastFirstVisiblePosition); onResume
+
 }
