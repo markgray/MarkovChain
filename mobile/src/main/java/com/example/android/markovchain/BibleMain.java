@@ -90,7 +90,8 @@ public class BibleMain extends AppCompatActivity {
             case BibleDialog.CHOICE_GO_TO_VERSE:
                 break; // Unimplemented future feature
             case BibleDialog.CHOICE_READ_ALOUD:
-                break; // Unimplemented future feature
+                showDialog(BibleSpeak.newInstance(dialogTitle, dialogText));
+                break;
             default:
                 break;
         }
