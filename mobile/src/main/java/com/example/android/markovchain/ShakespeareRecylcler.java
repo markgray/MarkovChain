@@ -1,7 +1,7 @@
 package com.example.android.markovchain;
 
+import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -9,7 +9,7 @@ import android.util.Log;
 import com.example.android.common.Shakespeare;
 import com.example.android.common.StringArrayAdapter;
 
-public class ShakespeareRecylcler extends AppCompatActivity {
+public class ShakespeareRecylcler extends Activity {
 
     public final String TAG = "ShakespeareRecycler";
     RecyclerView mRecyclerView;

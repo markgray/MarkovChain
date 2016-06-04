@@ -1,13 +1,13 @@
 package com.example.android.markovchain;
 
+import android.app.Activity;
+import android.app.DialogFragment;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.app.DialogFragment;
 import android.os.ConditionVariable;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -19,7 +19,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-public class BibleMain extends AppCompatActivity {
+public class BibleMain extends Activity {
 
     public final String TAG = "BibleMain";
     public static final String LAST_VERSE_VIEWED = "LAST_VERSE_VIEWED";

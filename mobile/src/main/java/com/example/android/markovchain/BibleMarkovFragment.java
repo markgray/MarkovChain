@@ -1,9 +1,9 @@
 package com.example.android.markovchain;
 
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -21,7 +21,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1)
-public class BibleMarkovFragment extends AppCompatActivity {
+public class BibleMarkovFragment extends Activity {
     public final String TAG = "BibleMarkovFragment";
     ProgressBar mProgressBar;
     RecyclerView mRecyclerView;

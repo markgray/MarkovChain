@@ -1,7 +1,7 @@
 package com.example.android.markovchain;
 
+import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-public class BibleMarkovRecycler extends AppCompatActivity {
+public class BibleMarkovRecycler extends Activity {
     public final String TAG = "BibleMarkovRecycler";
     RecyclerView mRecyclerView;
     RecyclerView.LayoutManager mLayoutManager;

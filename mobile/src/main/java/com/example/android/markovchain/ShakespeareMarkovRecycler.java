@@ -1,8 +1,8 @@
 package com.example.android.markovchain;
 
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.os.Build;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -18,7 +18,7 @@ import com.example.android.common.Shakespeare;
 import java.io.IOException;
 import java.io.StringReader;
 
-public class ShakespeareMarkovRecycler extends AppCompatActivity {
+public class ShakespeareMarkovRecycler extends Activity {
     public final String TAG = "ShakespeareMarkovR...";
     RecyclerView mRecyclerView;
     RecyclerView.LayoutManager mLayoutManager;

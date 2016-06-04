@@ -1,12 +1,12 @@
 package com.example.android.markovchain;
 
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.app.DialogFragment;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +19,7 @@ import android.widget.Toast;
 import com.example.android.common.DoneListener;
 
 
-public class FragmentVersionSkeleton extends AppCompatActivity {
+public class FragmentVersionSkeleton extends Activity {
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     @Override

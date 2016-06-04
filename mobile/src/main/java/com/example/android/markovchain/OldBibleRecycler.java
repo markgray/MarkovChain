@@ -1,18 +1,20 @@
 package com.example.android.markovchain;
 
+import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+
 import com.example.android.common.StringListAdapter;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-public class OldBibleRecycler extends AppCompatActivity {
+public class OldBibleRecycler extends Activity {
 
     public final String TAG = "OldBibleRecycler";
     RecyclerView mRecyclerView;
