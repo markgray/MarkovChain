@@ -17,18 +17,18 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ViewGroup linearLayout = (ViewGroup) findViewById(R.id.linear_layout);
-        addButton(ShakespeareRecylcler.class, "Shakespeare Recycler", linearLayout);
-        addButton(ShakespeareMarkovRecycler.class, "Shakespeare Markov Recycler", linearLayout);
-        addButton(BibleMain.class, "Bible retained fragment", linearLayout);
-        addButton(BibleMarkovFragment.class, "Buggy Bible Markov Fragment", linearLayout);
+        addButton(ShakespeareRecylcler.class, "Shakespeare", linearLayout);
+        addButton(ShakespeareMarkovRecycler.class, "Shakespeare Markov", linearLayout);
+        addButton(BibleMain.class, "Bible", linearLayout);
+        addButton(BibleMarkovFragment.class, "Bible Markov", linearLayout);
         addText("Obsolete activities", linearLayout);
         addButton(FragmentVersionSkeleton.class, "Fragment Skeleton", linearLayout);
-        addButton(ShakespeareActivity.class, "Shakespeare", linearLayout);
-        addButton(ShakespeareMarkovActivity.class, "Shakespeare Markov", linearLayout);
-        addButton(OldBibleActivity.class, "King James Bible", linearLayout);
-        addButton(BibleMarkovActivity.class, "King James Bible Markov", linearLayout);
-        addButton(OldBibleRecycler.class, "King James Recycler", linearLayout);
-        addButton(BibleMarkovRecycler.class, "Bible Markov Recycler", linearLayout);
+        addButton(ShakespeareActivity.class, "Old Shakespeare", linearLayout);
+        addButton(ShakespeareMarkovActivity.class, "Old Shakespeare Markov", linearLayout);
+        addButton(OldBibleActivity.class, "Old King James Bible", linearLayout);
+        addButton(BibleMarkovActivity.class, "Old King James Bible Markov", linearLayout);
+        addButton(OldBibleRecycler.class, "Old King James Recycler", linearLayout);
+        addButton(BibleMarkovRecycler.class, "Old Bible Markov Recycler", linearLayout);
     }
 
 //    BenchMark benchMark = new BenchMark();
