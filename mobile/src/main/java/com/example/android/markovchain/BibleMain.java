@@ -127,6 +127,7 @@ public class BibleMain extends Activity {
             case BibleDialog.CHOICE_BOOKMARK:
                 break; // Unimplemented future feature
             case BibleDialog.CHOICE_GO_TO_VERSE:
+                showDialog(BibleChoose.newInstance(dialogTitle, dialogText));
                 break; // Unimplemented future feature
             case BibleDialog.CHOICE_READ_ALOUD:
                 showDialog(BibleSpeak.newInstance(dialogTitle, dialogText));
