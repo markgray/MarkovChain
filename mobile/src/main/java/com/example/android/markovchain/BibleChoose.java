@@ -42,7 +42,7 @@ public class BibleChoose extends DialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Log.i(TAG, "onCreateView called");
-        View v = inflater.inflate(R.layout.bible_search, container, false);
+        View v = inflater.inflate(R.layout.bible_choose, container, false);
         View tv = v.findViewById(R.id.label);
         String dialogLabel = mLabel;
         ((TextView) tv).setText(dialogLabel);
