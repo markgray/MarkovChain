@@ -7,7 +7,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 
@@ -50,6 +53,17 @@ public class BibleChoose extends DialogFragment {
         tv = v.findViewById(R.id.text);
         ((TextView) tv).setText(mText);
 
+        Spinner spin = (Spinner) v.findViewById(R.id.spinner);
+
+        ArrayAdapter<String> spinnerArrayAdapter =
+                new ArrayAdapter<>(v.getContext(),
+                        android.R.layout.simple_spinner_item,
+                        BibleAdapter.books);
+        spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spin.setAdapter(spinnerArrayAdapter);
+        spin.setOnItemSelectedListener(spinSelected);
+
+
         // Watch for button clicks.
         Button button = (Button) v.findViewById(R.id.show);
         button.setOnClickListener(new View.OnClickListener() {
@@ -63,4 +77,20 @@ public class BibleChoose extends DialogFragment {
         return v;
 
     }
+
+    public int bookNumber;
+    public String bookName;
+    public AdapterView.OnItemSelectedListener spinSelected = new AdapterView.OnItemSelectedListener() {
+        @Override
+        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            bookNumber = position;
+            bookName = BibleAdapter.books[position];
+
+        }
+
+        @Override
+        public void onNothingSelected(AdapterView<?> parent) {
+        }
+    };
+
 }

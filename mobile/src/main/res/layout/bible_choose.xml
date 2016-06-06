@@ -31,8 +31,11 @@
         android:orientation="horizontal">
 
         <Spinner
+            android:id="@+id/spinner"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_weight="0">
+
 
         </Spinner>
         <TextView
@@ -43,7 +46,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
-            android:hint="01"/>
+            android:text="01"
+            />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -52,7 +56,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
-            android:hint="01"/>
+            android:text="01"
+            />
     </LinearLayout>
 
     <Button
