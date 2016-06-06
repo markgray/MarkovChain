@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -34,30 +35,33 @@
             android:id="@+id/spinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0">
-
-
+            android:layout_weight="0"
+            tools:ignore="InefficientWeight">
         </Spinner>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/colon"/>
         <EditText
+            android:id="@+id/chapter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:hint="001"
+            android:maxLength="3"
             android:inputType="numberDecimal"
-            android:text="01"
-            />
+            tools:ignore="HardcodedText" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/colon"/>
         <EditText
+            android:id="@+id/verse"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:hint="001"
+            android:maxLength="3"
             android:inputType="numberDecimal"
-            android:text="01"
-            />
+            tools:ignore="HardcodedText" />
     </LinearLayout>
 
     <Button

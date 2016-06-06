@@ -23,6 +23,12 @@ public class BibleAdapter extends RecyclerView.Adapter<BibleAdapter.ViewHolder> 
     private static LinearLayoutManager mLayoutManager;
     private static ArrayList<String> mChapterAndVerse;
 
+    /**
+     * Create a Canonical Bible citation: BookName:##:###:### from the numChatVerse passed it.
+     *
+     * @param numChatVerse ##:###:### index string for verse as read from text
+     * @return BookName:##:###:###
+     */
     public static String makeCitation(String numChatVerse) {
         String bookNumber = numChatVerse.substring(0, 2);
         return numberToBook.get(bookNumber) + ":" + numChatVerse;
@@ -50,7 +56,7 @@ public class BibleAdapter extends RecyclerView.Adapter<BibleAdapter.ViewHolder> 
                 @Override
                 public boolean onLongClick(View view) {
 
-                    ((BibleMain)view.getContext()).showDialog("Verse " + makeCitation(mChapterAndVerse.get(getLayoutPosition())),
+                    ((BibleMain)view.getContext()).showDialog(makeCitation(mChapterAndVerse.get(getLayoutPosition())),
                             (String) textView.getText());
                     BibleMain.dialogVerse = verseNumber;
                     return true;
