@@ -36,6 +36,13 @@ public class BibleDialog extends DialogFragment {
         return f;
     }
 
+    TextView lastLabelView;
+    TextView lastTextView;
+    public void refresh(String label, String text) {
+        lastLabelView.setText(label);
+        lastTextView.setText(text);
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,10 +80,12 @@ public class BibleDialog extends DialogFragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.bible_dialog, container, false);
         View tv = v.findViewById(R.id.label);
+        lastLabelView = (TextView) tv;
         String dialogLabel = mLabel;
         ((TextView) tv).setText(dialogLabel);
 
         tv = v.findViewById(R.id.text);
+        lastTextView = (TextView) tv;
         ((TextView) tv).setText(mText);
 
 

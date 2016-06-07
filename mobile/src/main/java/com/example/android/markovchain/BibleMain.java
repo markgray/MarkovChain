@@ -119,7 +119,8 @@ public class BibleMain extends Activity {
                 break;
             case BibleDialog.CHOICE_RANDOM_VERSE:
                 BibleAdapter.moveToRandom(v);
-                showDialog(BibleDialog.newInstance(dialogTitle, dialogText));
+//                showDialog(BibleDialog.newInstance(dialogTitle, dialogText));
+                bibleDialog.refresh(dialogTitle, dialogText);
                 break;
             case BibleDialog.CHOICE_GOOGLE:
                 showDialog(BibleSearch.newInstance(dialogTitle, dialogText));
