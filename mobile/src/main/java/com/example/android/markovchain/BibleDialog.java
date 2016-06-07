@@ -98,7 +98,7 @@ public class BibleDialog extends DialogFragment {
         spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spin.setAdapter(spinnerArrayAdapter);
         spin.setOnItemSelectedListener(spinSelected);
-        spin.setSelection(1);
+        spin.setSelection(CHOICE_RANDOM_VERSE);
 
         // Watch for button clicks.
         Button button = (Button) v.findViewById(R.id.show);
