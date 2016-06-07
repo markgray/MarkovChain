@@ -98,6 +98,7 @@ public class BibleDialog extends DialogFragment {
         spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spin.setAdapter(spinnerArrayAdapter);
         spin.setOnItemSelectedListener(spinSelected);
+        spin.setSelection(1);
 
         // Watch for button clicks.
         Button button = (Button) v.findViewById(R.id.show);
@@ -106,6 +107,14 @@ public class BibleDialog extends DialogFragment {
                 // When button is clicked, call up to owning activity.
                 ((BibleMain) getActivity()).handleAction(v, spinIndex);
 //                ((BibleMain) getActivity()).dismissDiaglog();
+            }
+        });
+
+        button = (Button) v.findViewById(R.id.dismiss);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((BibleMain) getActivity()).dismissDiaglog();
             }
         });
 
