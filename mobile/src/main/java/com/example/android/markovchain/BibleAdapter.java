@@ -49,7 +49,7 @@ public class BibleAdapter extends RecyclerView.Adapter<BibleAdapter.ViewHolder> 
                 @Override
                 public void onClick(View v) {
                     Log.d(TAG, "Element " + getLayoutPosition() + " clicked.");
-                    Toast.makeText(v.getContext(), "Verse " + makeCitation(mChapterAndVerse.get(getLayoutPosition())), Toast.LENGTH_LONG).show();
+                    Toast.makeText(v.getContext(), makeCitation(mChapterAndVerse.get(getLayoutPosition())), Toast.LENGTH_LONG).show();
                 }
             });
             v.setOnLongClickListener(new View.OnLongClickListener() {
@@ -85,7 +85,7 @@ public class BibleAdapter extends RecyclerView.Adapter<BibleAdapter.ViewHolder> 
         mLayoutManager.scrollToPositionWithOffset(selection, 0);
         BibleMain.saveVerseNumber(selection, BibleMain.LAST_VERSE_VIEWED);
         final String citation = makeCitation(mChapterAndVerse.get(selection));
-        Toast.makeText(view.getContext(), "Moving to verse " + citation, Toast.LENGTH_LONG).show();
+        Toast.makeText(view.getContext(), "Moving to " + citation, Toast.LENGTH_LONG).show();
 
         BibleMain.dialogTitle = citation;
         BibleMain.dialogText = mDataSet.get(selection);
