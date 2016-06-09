@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -18,6 +19,8 @@ public class BibleChoose extends DialogFragment {
     public final static String TAG = "BibleChoose";
     public String mLabel;
     public String mText;
+    public String mBook;
+    public String mChapterAndVerse;
 
     public static BibleChoose newInstance(String label, String text) {
         Log.i(TAG, " newInstance called with: " + label + " " + text);
@@ -53,7 +56,7 @@ public class BibleChoose extends DialogFragment {
         tv = v.findViewById(R.id.text);
         ((TextView) tv).setText(mText);
 
-        Spinner spin = (Spinner) v.findViewById(R.id.spinner);
+        final Spinner spin = (Spinner) v.findViewById(R.id.spinner);
 
         ArrayAdapter<String> spinnerArrayAdapter =
                 new ArrayAdapter<>(v.getContext(),
@@ -63,12 +66,16 @@ public class BibleChoose extends DialogFragment {
         spin.setAdapter(spinnerArrayAdapter);
         spin.setOnItemSelectedListener(spinSelected);
 
+        final EditText cavEditText = (EditText) v.findViewById(R.id.chapter_and_verse);
 
         // Watch for button clicks.
         Button button = (Button) v.findViewById(R.id.show);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // When button is clicked, call up to owning activity.
+                mBook = (String) spin.getSelectedItem();
+                mChapterAndVerse = cavEditText.getText().toString();
+                Log.i(TAG, mBook + ":" + mChapterAndVerse);
                 BibleChoose.this.dismiss();
             }
         });
