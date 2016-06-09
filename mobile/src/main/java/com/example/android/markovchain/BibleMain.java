@@ -84,6 +84,15 @@ public class BibleMain extends Activity {
         return pref.getInt(key, verse);
     }
 
+    public int findFromCitation(String citation) {
+        for (int i = 0; i < bookChapterVerse.size(); i++) {
+            if (citation.equals(bookChapterVerse.get(i))) {
+                return i;
+            }
+        }
+        return 0;
+    }
+
 
     public void showDialog(String label, String text) {
         dialogTitle = label;
