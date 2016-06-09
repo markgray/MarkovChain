@@ -46,7 +46,7 @@ public class BibleChoose extends DialogFragment {
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Log.i(TAG, "onCreateView called");
         View v = inflater.inflate(R.layout.bible_choose, container, false);
         View tv = v.findViewById(R.id.label);
@@ -75,7 +75,9 @@ public class BibleChoose extends DialogFragment {
                 // When button is clicked, call up to owning activity.
                 mBook = (String) spin.getSelectedItem();
                 mChapterAndVerse = cavEditText.getText().toString();
-                Log.i(TAG, mBook + ":" + mChapterAndVerse);
+                Log.i(TAG, mBook + " " + mChapterAndVerse);
+                int bookNum = spin.getSelectedItemPosition();
+                Log.i(TAG, BibleAdapter.numbers[bookNum] + ":" + mChapterAndVerse);
                 BibleChoose.this.dismiss();
             }
         });
