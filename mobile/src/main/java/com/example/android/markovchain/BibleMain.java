@@ -84,13 +84,17 @@ public class BibleMain extends Activity {
         return pref.getInt(key, verse);
     }
 
-    public int findFromCitation(String citation) {
+    public int findFromCitation(String citation, String fallback) {
+        int fallBackIndex = 0;
         for (int i = 0; i < bookChapterVerse.size(); i++) {
             if (citation.equals(bookChapterVerse.get(i))) {
                 return i;
             }
+            if (fallback.equals(bookChapterVerse.get(i))) {
+                fallBackIndex = i;
+            }
         }
-        return 0;
+        return fallBackIndex;
     }
 
 
