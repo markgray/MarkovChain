@@ -32,7 +32,7 @@ public class BibleMain extends Activity {
     public static ConditionVariable mDoneReading = new ConditionVariable();
     protected BibleAdapter mAdapter;
     ArrayList<String> stringList = new ArrayList<>();
-    ArrayList<String> bookChapterVerse = new ArrayList<>();
+    static ArrayList<String> bookChapterVerse = new ArrayList<>();
     public static BibleDialog bibleDialog;
     BibleSearch bibleSearch;
     public static String dialogTitle;
@@ -84,7 +84,7 @@ public class BibleMain extends Activity {
         return pref.getInt(key, verse);
     }
 
-    public int findFromCitation(String citation, String fallback) {
+    public static int findFromCitation(String citation, String fallback) {
         int fallBackIndex = 0;
         for (int i = 0; i < bookChapterVerse.size(); i++) {
             if (citation.equals(bookChapterVerse.get(i))) {

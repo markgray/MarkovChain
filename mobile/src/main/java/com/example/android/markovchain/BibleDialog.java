@@ -14,8 +14,8 @@ import android.widget.TextView;
 
 
 public class BibleDialog extends DialogFragment {
-    String mLabel;
-    String mText;
+    public String mLabel;
+    public String mText;
 
     /**
      * Create and iniitialize a BibleDialog DialogFragment

@@ -167,7 +167,5 @@ public class BibleAdapter extends RecyclerView.Adapter<BibleAdapter.ViewHolder> 
     public int getItemCount() {
         return mDataSet.size();
     }
-// lastFirstVisiblePosition = ((LinearLayoutManager)rv.getLayoutManager()).findFirstCompletelyVisibleItemPosition(); onPause
-// ((LinearLayoutManager) rv.getLayoutManager()).scrollToPosition(lastFirstVisiblePosition); onResume
 
 }
