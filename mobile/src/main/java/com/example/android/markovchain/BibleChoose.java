@@ -78,7 +78,9 @@ public class BibleChoose extends DialogFragment {
                 mChapterAndVerse = cavEditText.getText().toString();
                 Log.i(TAG, mBook + " " + mChapterAndVerse);
                 int bookNum = spin.getSelectedItemPosition();
-                final String citationChosen = BibleAdapter.numbers[bookNum] + ":" + mChapterAndVerse;
+                final String citationChosen = mChapterAndVerse.contains(":") ?
+                        BibleAdapter.numbers[bookNum] + ":" + mChapterAndVerse
+                        : BibleAdapter.numbers[bookNum] + ":" + mChapterAndVerse + ":1";
                 final String citationFallback = BibleAdapter.numbers[bookNum] + ":1:1";
                 Log.i(TAG, citationChosen + " or " + citationFallback);
                 int verseNumber = BibleMain.findFromCitation(citationChosen, citationFallback);
