@@ -65,6 +65,7 @@ public class BibleChoose extends DialogFragment {
         spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spin.setAdapter(spinnerArrayAdapter);
         spin.setOnItemSelectedListener(spinSelected);
+        spin.setSelection(33);
 
         final EditText cavEditText = (EditText) v.findViewById(R.id.chapter_and_verse);
 
@@ -93,7 +94,7 @@ public class BibleChoose extends DialogFragment {
 
     }
 
-    public int bookNumber;
+    public int bookNumber = 0;
     public String bookName;
     public AdapterView.OnItemSelectedListener spinSelected = new AdapterView.OnItemSelectedListener() {
         @Override
