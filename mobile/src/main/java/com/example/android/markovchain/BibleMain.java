@@ -97,6 +97,18 @@ public class BibleMain extends Activity {
         return fallBackIndex;
     }
 
+    public static int indexFromCitation(String citation) {
+        String bookLook = citation.substring(0, citation.indexOf(":"));
+        int indexOf = 0;
+        for (String book : BibleAdapter.books) {
+            if (bookLook.equals(book)) {
+                return indexOf;
+            }
+            indexOf++;
+        }
+        return 0;
+    }
+
 
     public void showDialog(String label, String text) {
         dialogTitle = label;

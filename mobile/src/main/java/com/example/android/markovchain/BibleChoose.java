@@ -65,7 +65,7 @@ public class BibleChoose extends DialogFragment {
         spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spin.setAdapter(spinnerArrayAdapter);
         spin.setOnItemSelectedListener(spinSelected);
-        spin.setSelection(33);
+        spin.setSelection(BibleMain.indexFromCitation(dialogLabel));
 
         final EditText cavEditText = (EditText) v.findViewById(R.id.chapter_and_verse);
 
