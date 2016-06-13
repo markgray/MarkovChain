@@ -23,12 +23,6 @@ public class MainActivity extends Activity {
         addButton(BibleMarkovFragment.class, "Bible Markov", linearLayout);
         addText("Obsolete activities", linearLayout);
         addButton(FragmentVersionSkeleton.class, "Fragment Skeleton", linearLayout);
-        addButton(ShakespeareActivity.class, "Old Shakespeare", linearLayout);
-        addButton(ShakespeareMarkovActivity.class, "Old Shakespeare Markov", linearLayout);
-        addButton(OldBibleActivity.class, "Old King James Bible", linearLayout);
-        addButton(BibleMarkovActivity.class, "Old King James Bible Markov", linearLayout);
-        addButton(OldBibleRecycler.class, "Old King James Recycler", linearLayout);
-        addButton(BibleMarkovRecycler.class, "Old Bible Markov Recycler", linearLayout);
     }
 
 //    BenchMark benchMark = new BenchMark();

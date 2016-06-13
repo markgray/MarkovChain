@@ -36,26 +36,6 @@
         <activity
             android:name=".FragmentVersionSkeleton"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".BibleMarkovActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".OldBibleRecycler"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".ShakespeareMarkovActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".BibleMarkovRecycler"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".ShakespeareActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".OldBibleActivity"
-            android:screenOrientation="portrait"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
