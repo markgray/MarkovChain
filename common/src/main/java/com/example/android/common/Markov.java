@@ -8,8 +8,6 @@ import java.util.*;
 
 public class Markov {
     static final String TAG = "Markov";
-    static final int MAXGEN = 10000; // maximum words generated
-    public List<String> mOutput = new ArrayList<>();
     public Chain chain;
     private DoneListener doneListener;
     private View view;
@@ -17,28 +15,6 @@ public class Markov {
     public void setDoneListener(DoneListener doneListener, View view) {
         this.view = view;
         this.doneListener = doneListener;
-    }
-
-
-
-    public void startUp (String[] args) throws IOException {
-        chain = new Chain();
-        int nwords = MAXGEN;
-
-        StringBuilder stringBuilder = new StringBuilder();
-        for (String quotes: args) {
-            stringBuilder.append(quotes);
-        }
-        chain.build(new StringReader(stringBuilder.toString()));
-        chain.generate(nwords);
-    }
-
-    public void startUp (BufferedReader reader) throws IOException {
-        chain = new Chain();
-        int nwords = MAXGEN;
-
-        chain.loadStateTable(reader);
-        chain.generate(nwords);
     }
 
     public void load (BufferedReader reader) throws IOException {
@@ -129,34 +105,6 @@ public class Markov {
             }
             prefix.pref[0] = prefix.pref[1];
             prefix.pref[1] = word;
-        }
-
-        // Chain generate: generate output words
-        void generate(int nwords) {
-
-            prefix = new Prefix(NONWORD);
-            String suf;
-            int r;
-
-            for (int i = 0; i < nwords; i++) {
-                String[] s = statetab.get(prefix);
-                if (s == null) {
-                    Log.d(TAG, "internal error: no state");
-                    return;
-                }
-                r = Math.abs(rand.nextInt()) % (s.length - 2);
-                suf = s[r+2];
-
-                if (suf.equals(NONWORD)) {
-                    Log.i(TAG, "Suffix at " + r + " is NONWORD");
-                    Log.i(TAG, "Size of Vector s is: " + s.length);
-                    Log.i(TAG, "Words generated:" + i);
-                    prefix = new Prefix(NONWORD);
-                }
-                mOutput.add(suf);
-                prefix.pref[0] = prefix.pref[1];
-                prefix.pref[1] = suf;
-            }
         }
 
         void init() {

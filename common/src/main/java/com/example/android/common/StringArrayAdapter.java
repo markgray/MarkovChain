@@ -13,7 +13,7 @@ import java.util.Random;
 
 public class StringArrayAdapter extends RecyclerView.Adapter<StringArrayAdapter.ViewHolder>  {
 
-    private static final String TAG = "StringListAdapter";
+    private static final String TAG = "StringArrayAdapter";
     private static Random rand = new Random();
     private static String[] mDataSet;
     private static LinearLayoutManager mLayoutManager;

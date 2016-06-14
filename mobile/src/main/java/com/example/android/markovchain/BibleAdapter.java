@@ -1,5 +1,6 @@
 package com.example.android.markovchain;
 
+import android.annotation.SuppressLint;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -17,7 +18,7 @@ import java.util.Random;
  * Adapter used by BibleMain to populate the RecyclerView
  */
 public class BibleAdapter extends RecyclerView.Adapter<BibleAdapter.ViewHolder>  {
-    private static final String TAG = "StringListAdapter";
+    private static final String TAG = "BibleAdapter";
     private static Random rand = new Random();
     private static ArrayList<String> mDataSet;
     private static LinearLayoutManager mLayoutManager;
@@ -153,7 +154,7 @@ public class BibleAdapter extends RecyclerView.Adapter<BibleAdapter.ViewHolder> 
 
     // Replace the contents of a view (invoked by the layout manager)
     @Override
-    public void onBindViewHolder(ViewHolder viewHolder, int position) {
+    public void onBindViewHolder(ViewHolder viewHolder, @SuppressLint("RecyclerView") int position) {
         Log.d(TAG, "Element " + position + " set.");
 
         viewHolder.verseNumber = position;
