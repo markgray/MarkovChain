@@ -25,7 +25,6 @@ public class BibleMain extends Activity {
     public static final String LAST_VERSE_VIEWED = "LAST_VERSE_VIEWED";
     private static final String CLASS = BibleMain.class.getSimpleName();
     public static Context bibleContext;
-    public BibleData bibleData = new BibleData();
     RecyclerView mRecyclerView;
     RecyclerView.LayoutManager mLayoutManager;
     public static boolean doneReading = false;
@@ -34,7 +33,6 @@ public class BibleMain extends Activity {
     ArrayList<String> stringList = new ArrayList<>();
     static ArrayList<String> bookChapterVerse = new ArrayList<>();
     public static BibleDialog bibleDialog;
-    BibleSearch bibleSearch;
     public static String dialogTitle;
     public static String dialogText;
     public static int dialogVerse;
@@ -66,9 +64,7 @@ public class BibleMain extends Activity {
     @Override
     protected void onResume() {
         int lastFirstVisiblePosition = getVerseNumber(0, LAST_VERSE_VIEWED);
-//        ((LinearLayoutManager) mRecyclerView.getLayoutManager())
-//                .scrollToPositionWithOffset(lastFirstVisiblePosition, 0);
-        mAdapter.moveToVerse(mRecyclerView, lastFirstVisiblePosition);
+        BibleAdapter.moveToVerse(mRecyclerView, lastFirstVisiblePosition);
         super.onResume();
     }
 
@@ -76,7 +72,7 @@ public class BibleMain extends Activity {
         SharedPreferences pref = bibleContext.getSharedPreferences(CLASS, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = pref.edit();
         editor.putInt(key, verse);
-        editor.commit();
+        editor.apply();
     }
 
     public int getVerseNumber(int verse, String key) {

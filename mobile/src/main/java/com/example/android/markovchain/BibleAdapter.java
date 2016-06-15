@@ -76,7 +76,6 @@ public class BibleAdapter extends RecyclerView.Adapter<BibleAdapter.ViewHolder> 
     public static void moveToRandom(View view) {
         int selection = Math.abs(rand.nextInt()) % mDataSet.size();
         moveToVerse(view, selection);
-//        BibleMain.bibleDialog.dismiss();
     }
 
     public static void moveToVerse(View view, int selection) {
