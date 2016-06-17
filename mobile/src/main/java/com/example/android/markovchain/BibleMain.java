@@ -63,7 +63,7 @@ public class BibleMain extends Activity {
 
     @Override
     protected void onResume() {
-        int lastFirstVisiblePosition = getVerseNumber(0, LAST_VERSE_VIEWED);
+        int lastFirstVisiblePosition = restoreVerseNumber(0, LAST_VERSE_VIEWED);
         BibleAdapter.moveToVerse(mRecyclerView, lastFirstVisiblePosition);
         super.onResume();
     }
@@ -75,7 +75,7 @@ public class BibleMain extends Activity {
         editor.apply();
     }
 
-    public int getVerseNumber(int verse, String key) {
+    public int restoreVerseNumber(int verse, String key) {
         SharedPreferences pref = getSharedPreferences(CLASS, Context.MODE_PRIVATE);
         return pref.getInt(key, verse);
     }
