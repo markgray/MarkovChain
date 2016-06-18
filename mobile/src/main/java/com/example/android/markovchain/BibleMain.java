@@ -129,7 +129,7 @@ public class BibleMain extends Activity {
         return dialogFragment.show(ft, "dialog");
     }
 
-     public void dismissDiaglog() {
+    public void dismissDiaglog() {
         bibleDialog.dismiss();
     }
 
@@ -146,6 +146,7 @@ public class BibleMain extends Activity {
                 showDialog(BibleSearch.newInstance(dialogTitle, dialogText));
                 break; // Unimplemented future feature
             case BibleDialog.CHOICE_BOOKMARK:
+                showDialog(BibleBookmark.newInstance(dialogTitle, dialogText));
                 break; // Unimplemented future feature
             case BibleDialog.CHOICE_GO_TO_VERSE:
                 showDialog(BibleChoose.newInstance(dialogTitle, dialogText));
