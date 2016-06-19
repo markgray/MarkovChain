@@ -105,7 +105,12 @@ public class BibleMain extends Activity {
         return 0;
     }
 
-
+    /**
+     * Convenience function for starting a BibleDialog fragment
+     *
+     * @param label citation for verse contained in text
+     * @param text  text of current verse 
+     */
     public void showDialog(String label, String text) {
         dialogTitle = label;
         dialogText = text;
@@ -144,16 +149,16 @@ public class BibleMain extends Activity {
                 break;
             case BibleDialog.CHOICE_GOOGLE:
                 showDialog(BibleSearch.newInstance(dialogTitle, dialogText));
-                break; // Unimplemented future feature
+                break; // TODO: start a google search based on user input
             case BibleDialog.CHOICE_BOOKMARK:
                 showDialog(BibleBookmark.newInstance(dialogTitle, dialogText));
-                break; // Unimplemented future feature
+                break; // TODO: add a set of strings to shared preferences
             case BibleDialog.CHOICE_GO_TO_VERSE:
                 showDialog(BibleChoose.newInstance(dialogTitle, dialogText));
-                break; // Unimplemented future feature
+                break;
             case BibleDialog.CHOICE_READ_ALOUD:
                 showDialog(BibleSpeak.newInstance(dialogTitle, dialogText));
-                break;
+                break; // TODO: add tts to BibleSpeak dialog
             default:
                 break;
         }
