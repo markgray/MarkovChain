@@ -10,13 +10,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.speech.tts.TextToSpeech;
+import android.speech.tts.TextToSpeech.OnInitListener;
 
-public class BibleSpeak extends DialogFragment{
+import java.util.Locale;
+
+public class BibleSpeak extends DialogFragment implements OnInitListener {
 
     private static final String TAG = "BibleSpeak";
     public String mLabel;
     public String mText;
-
+    private TextToSpeech mTts;
 
     static BibleSpeak newInstance(String label, String text) {
         Log.i(TAG, " newInstance called with: " + label + " " + text);
@@ -46,7 +50,7 @@ public class BibleSpeak extends DialogFragment{
         Button button = (Button) v.findViewById(R.id.speak);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                // When button is clicked, call up to owning activity.
+                // When button is clicked, dismiss this DialogFragment
                 BibleSpeak.this.dismiss();
             }
         });
@@ -64,6 +68,25 @@ public class BibleSpeak extends DialogFragment{
         Log.i(TAG, "onCreate called with: " + mLabel + " " + mText);
 
         setStyle(DialogFragment.STYLE_NORMAL, 0);
+        mTts = new TextToSpeech(BibleMain.bibleContext, this);
+
+    }
+
+    @Override
+    public void onInit(int status) {
+        if (status == TextToSpeech.SUCCESS) {
+            int result = mTts.setLanguage(Locale.US);
+            if (result == TextToSpeech.LANG_MISSING_DATA
+                    || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                Log.e(TAG, "TTS language is not available.");
+            } else {
+                //noinspection deprecation
+                mTts.speak(mText, TextToSpeech.QUEUE_ADD, null);
+            }
+        } else {
+            // Initialization failed.
+            Log.e(TAG, "Could not initialize TTS.");
+        }
 
     }
 }

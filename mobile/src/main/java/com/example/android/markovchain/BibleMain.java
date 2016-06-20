@@ -109,7 +109,7 @@ public class BibleMain extends Activity {
      * Convenience function for starting a BibleDialog fragment
      *
      * @param label citation for verse contained in text
-     * @param text  text of current verse 
+     * @param text  text of current verse
      */
     public void showDialog(String label, String text) {
         dialogTitle = label;
