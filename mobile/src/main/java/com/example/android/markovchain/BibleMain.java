@@ -140,8 +140,7 @@ public class BibleMain extends Activity {
 
     public void handleAction(View v, int spinIndex) {
         switch (spinIndex) {
-            case BibleDialog.CHOICE_DISMISS:
-                dismissDiaglog();
+            case BibleDialog.CHOICE_NONE:
                 break;
             case BibleDialog.CHOICE_RANDOM_VERSE:
                 BibleAdapter.moveToRandom(v);

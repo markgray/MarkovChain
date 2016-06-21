@@ -13,7 +13,7 @@
     <string name="toast_value">TOAST VALUE</string>
     <string name="this_is_the_main_view">This is the main view\nLong click me to launch dialog</string>
     <string name="dialog_number">Dialog #</string>
-    <string name="show">SHOW</string>
+    <string name="repeat">REPEAT</string>
     <string name="choose_action_to_perform">Choose action to perform</string>
     <string name="search">SEARCH</string>
     <string name="enter_search_words_below">Enter search words below</string>

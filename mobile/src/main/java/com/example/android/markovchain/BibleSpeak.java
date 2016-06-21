@@ -47,7 +47,7 @@ public class BibleSpeak extends DialogFragment implements OnInitListener {
         ((TextView) tv).setText(mText);
 
         // Watch for button clicks.
-        Button button = (Button) v.findViewById(R.id.speak);
+        Button button = (Button) v.findViewById(R.id.dissmiss);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // When button is clicked, dismiss this DialogFragment

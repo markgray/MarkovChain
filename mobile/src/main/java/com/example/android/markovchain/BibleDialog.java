@@ -52,11 +52,12 @@ public class BibleDialog extends DialogFragment {
         setStyle(DialogFragment.STYLE_NORMAL, 0);
     }
 
-    public String[] spinChoices = {"Dismiss", "Random verse", "Google",
+    public String[] spinChoices = {"Choose Action", "Random verse", "Google",
                                    "Bookmark", "Go to verse", "Read aloud"};
     public String spinChosen = "";
     public int spinIndex = 0;
-    public static final int CHOICE_DISMISS = 0;
+    public int lastIndex = 0;
+    public static final int CHOICE_NONE = 0;
     public static final int CHOICE_RANDOM_VERSE = 1;
     public static final int CHOICE_GOOGLE = 2;
     public static final int CHOICE_BOOKMARK = 3;
@@ -68,6 +69,11 @@ public class BibleDialog extends DialogFragment {
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
             spinIndex = position;
             spinChosen = spinChoices[position];
+
+            if (spinIndex != lastIndex) {
+                ((BibleMain) getActivity()).handleAction(view, spinIndex);
+                lastIndex = spinIndex;
+            }
         }
 
         @Override
@@ -98,15 +104,13 @@ public class BibleDialog extends DialogFragment {
         spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spin.setAdapter(spinnerArrayAdapter);
         spin.setOnItemSelectedListener(spinSelected);
-        spin.setSelection(CHOICE_RANDOM_VERSE);
 
         // Watch for button clicks.
-        Button button = (Button) v.findViewById(R.id.show);
+        Button button = (Button) v.findViewById(R.id.repeat);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // When button is clicked, call up to owning activity.
                 ((BibleMain) getActivity()).handleAction(v, spinIndex);
-//                ((BibleMain) getActivity()).dismissDiaglog();
             }
         });
 
