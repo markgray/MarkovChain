@@ -20,4 +20,5 @@
     <string name="select_book_chapter_and_verse">Select Book chapter and verse</string>
     <string name="colon">:</string>
     <string name="dismiss">DISMISS</string>
+    <string name="next">NEXT</string>
 </resources>

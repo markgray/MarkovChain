@@ -54,7 +54,13 @@ public class BibleSpeak extends DialogFragment implements OnInitListener {
                 BibleSpeak.this.dismiss();
             }
         });
-
+        button = (Button) v.findViewById(R.id.next);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // When button is clicked, dismiss this DialogFragment
+                BibleAdapter.moveToVerse(v, BibleMain.dialogVerse+1);
+            }
+        });
 
         return v;
     }
