@@ -21,6 +21,7 @@ public class BibleSpeak extends DialogFragment implements OnInitListener {
     public String mLabel;
     public String mText;
     private TextToSpeech mTts;
+    private View mView;
 
     static BibleSpeak newInstance(String label, String text) {
         Log.i(TAG, " newInstance called with: " + label + " " + text);
@@ -38,31 +39,40 @@ public class BibleSpeak extends DialogFragment implements OnInitListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Log.i(TAG, "onCreateView called");
-        View v = inflater.inflate(R.layout.bible_speak, container, false);
-        View tv = v.findViewById(R.id.label);
-        String dialogLabel = mLabel;
-        ((TextView) tv).setText(dialogLabel);
-
-        tv = v.findViewById(R.id.text);
-        ((TextView) tv).setText(mText);
+        mView = inflater.inflate(R.layout.bible_speak, container, false);
+        setDisplayedText(mView);
 
         // Watch for button clicks.
-        Button button = (Button) v.findViewById(R.id.dissmiss);
+        Button button = (Button) mView.findViewById(R.id.dissmiss);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // When button is clicked, dismiss this DialogFragment
                 BibleSpeak.this.dismiss();
             }
         });
-        button = (Button) v.findViewById(R.id.next);
+        button = (Button) mView.findViewById(R.id.next);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // When button is clicked, dismiss this DialogFragment
                 BibleAdapter.moveToVerse(v, BibleMain.dialogVerse+1);
+                mLabel = BibleMain.dialogTitle;
+                mText =  BibleMain.dialogText;
+                setDisplayedText(mView);
+                //noinspection deprecation
+                mTts.speak(mText, TextToSpeech.QUEUE_ADD, null);
             }
         });
 
-        return v;
+        return mView;
+    }
+
+    public void setDisplayedText(View v) {
+        View tv = v.findViewById(R.id.label);
+        String dialogLabel = mLabel;
+        ((TextView) tv).setText(dialogLabel);
+
+        tv = v.findViewById(R.id.text);
+        ((TextView) tv).setText(mText);
     }
 
     @Override
