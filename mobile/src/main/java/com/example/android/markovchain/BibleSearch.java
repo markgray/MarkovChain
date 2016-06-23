@@ -1,6 +1,8 @@
 package com.example.android.markovchain;
 
 import android.app.DialogFragment;
+import android.app.SearchManager;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -60,7 +62,7 @@ public class BibleSearch extends DialogFragment {
         tv = v.findViewById(R.id.text);
         ((TextView) tv).setText(mText);
 
-        MultiAutoCompleteTextView textView = (MultiAutoCompleteTextView) v.findViewById(R.id.edit);
+        final MultiAutoCompleteTextView textView = (MultiAutoCompleteTextView) v.findViewById(R.id.edit);
         textView.setAdapter(adapter);
         textView.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
 
@@ -69,7 +71,11 @@ public class BibleSearch extends DialogFragment {
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // When button is clicked, call up to owning activity.
-               BibleSearch.this.dismiss();
+                String query = textView.getText().toString();
+                Intent intent = new Intent(Intent.ACTION_WEB_SEARCH);
+                intent.putExtra(SearchManager.QUERY, query); // query contains search string
+                startActivity(intent);
+                BibleSearch.this.dismiss();
             }
         });
 
