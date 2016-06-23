@@ -25,10 +25,11 @@
         android:layout_height="wrap_content"
         android:text="@string/enter_search_words_below" />
 
-    <EditText
+    <MultiAutoCompleteTextView
+        android:id="@+id/edit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textLongMessage" />
+        android:popupBackground="#000000"/>
 
     <Button
         android:id="@+id/show"

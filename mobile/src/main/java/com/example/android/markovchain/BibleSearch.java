@@ -7,13 +7,17 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.MultiAutoCompleteTextView;
 import android.widget.TextView;
 
 public class BibleSearch extends DialogFragment {
     public final static String TAG = "BibleSearch";
     public String mLabel;
     public String mText;
+    public String[] mSuggestions;
+    public ArrayAdapter<String> adapter;
 
     static BibleSearch newInstance(String label, String text) {
         Log.i(TAG, " newInstance called with: " + label + " " + text);
@@ -33,6 +37,11 @@ public class BibleSearch extends DialogFragment {
 
         mLabel = getArguments().getString("label");
         mText = getArguments().getString("text");
+        //noinspection ConstantConditions
+        mSuggestions = mText.split(" ");
+        adapter = new ArrayAdapter<>(BibleMain.bibleContext,
+                android.R.layout.simple_dropdown_item_1line, mSuggestions);
+
         Log.i(TAG, "onCreate called with: " + mLabel + " " + mText);
 
         setStyle(DialogFragment.STYLE_NORMAL, 0);
@@ -50,6 +59,10 @@ public class BibleSearch extends DialogFragment {
 
         tv = v.findViewById(R.id.text);
         ((TextView) tv).setText(mText);
+
+        MultiAutoCompleteTextView textView = (MultiAutoCompleteTextView) v.findViewById(R.id.edit);
+        textView.setAdapter(adapter);
+        textView.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
 
         // Watch for button clicks.
         Button button = (Button) v.findViewById(R.id.show);
