@@ -64,7 +64,7 @@ public class BibleSearch extends DialogFragment {
 
         final MultiAutoCompleteTextView textView = (MultiAutoCompleteTextView) v.findViewById(R.id.edit);
         textView.setAdapter(adapter);
-        textView.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
+        textView.setTokenizer(new SpaceTokenizer());
 
         // Watch for button clicks.
         Button button = (Button) v.findViewById(R.id.show);
