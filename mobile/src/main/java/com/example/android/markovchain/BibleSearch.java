@@ -14,6 +14,9 @@ import android.widget.Button;
 import android.widget.MultiAutoCompleteTextView;
 import android.widget.TextView;
 
+import java.util.Collections;
+import java.util.HashSet;
+
 public class BibleSearch extends DialogFragment {
     public final static String TAG = "BibleSearch";
     public String mLabel;
@@ -44,6 +47,16 @@ public class BibleSearch extends DialogFragment {
         return stringBuilder.toString();
     }
 
+    public String[] uniq(String[] strings) {
+        HashSet<String> setOfStrings = new HashSet<>(strings.length);
+        Collections.addAll(setOfStrings, strings);
+        String[] returnStringArray = new String[setOfStrings.size()];
+        for (int i = 0; i < setOfStrings.size(); i++) {
+            returnStringArray[i] = (String) setOfStrings.toArray()[i];
+        }
+        return returnStringArray;
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +64,7 @@ public class BibleSearch extends DialogFragment {
         mLabel = getArguments().getString("label");
         mText = getArguments().getString("text");
         //noinspection ConstantConditions
-        mSuggestions = noPunct(mText).split(" ");
+        mSuggestions = uniq(noPunct(mText).split(" "));
         adapter = new ArrayAdapter<>(BibleMain.bibleContext,
                 android.R.layout.simple_dropdown_item_1line, mSuggestions);
 
