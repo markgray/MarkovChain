@@ -33,6 +33,17 @@ public class BibleSearch extends DialogFragment {
         return f;
     }
 
+    public String noPunct(String text) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < text.length() ; i++) {
+            char c = text.charAt(i);
+            if (!".,;:()!?".contains(String.valueOf(c))) {
+                stringBuilder.append(text.charAt(i));
+            }
+        }
+        return stringBuilder.toString();
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +51,7 @@ public class BibleSearch extends DialogFragment {
         mLabel = getArguments().getString("label");
         mText = getArguments().getString("text");
         //noinspection ConstantConditions
-        mSuggestions = mText.split(" ");
+        mSuggestions = noPunct(mText).split(" ");
         adapter = new ArrayAdapter<>(BibleMain.bibleContext,
                 android.R.layout.simple_dropdown_item_1line, mSuggestions);
 
@@ -78,8 +89,6 @@ public class BibleSearch extends DialogFragment {
                 BibleSearch.this.dismiss();
             }
         });
-
-
         return v;
     }
 }

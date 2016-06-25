@@ -8,6 +8,14 @@ import android.widget.MultiAutoCompleteTextView;
 
 public class SpaceTokenizer implements MultiAutoCompleteTextView.Tokenizer {
 
+    /**
+     * Returns the start of the token that ends at offset cursor within text.
+     *
+     * @param text Text we are working on
+     * @param cursor Offset within text to start at
+     * @return Offset to next token to be considered
+     */
+    @Override
     public int findTokenStart(CharSequence text, int cursor) {
         int i = cursor;
 
