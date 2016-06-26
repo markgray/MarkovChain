@@ -29,6 +29,14 @@ public class SpaceTokenizer implements MultiAutoCompleteTextView.Tokenizer {
         return i;
     }
 
+    /**
+     * Returns the end of the token (minus trailing punctuation)
+     * that begins at offset <code>cursor</code> within <code>text</code>.
+     *
+     * @param text Text we are working on
+     * @param cursor offset within text to start at
+     * @return offset of space character that ends the token
+     */
     public int findTokenEnd(CharSequence text, int cursor) {
         int i = cursor;
         int len = text.length();
@@ -44,6 +52,13 @@ public class SpaceTokenizer implements MultiAutoCompleteTextView.Tokenizer {
         return len;
     }
 
+    /**
+     * Returns <code>text</code>, modified, if necessary, to ensure that
+     * it ends with a space character
+     *
+     * @param text Text we are working on
+     * @return text terminated by single space
+     */
     public CharSequence terminateToken(CharSequence text) {
         int i = text.length();
 
