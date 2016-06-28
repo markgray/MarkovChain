@@ -37,6 +37,32 @@ public class BibleMain extends Activity {
     public static String dialogText;
     public static int dialogVerse;
 
+    /**
+     * Called when the activity is starting.  This is where most initialization
+     * should go: calling {@link #setContentView(int)} to inflate the
+     * activity's UI, using {@link #findViewById} to programmatically interact
+     * with widgets in the UI, calling
+     * {@link #managedQuery(android.net.Uri , String[], String, String[], String)} to retrieve
+     * cursors for data being displayed, etc.
+     *
+     * <p>You can call {@link #finish} from within this function, in
+     * which case onDestroy() will be immediately called without any of the rest
+     * of the activity lifecycle ({@link #onStart}, {@link #onResume},
+     * {@link #onPause}, etc) executing.
+     *
+     * <p><em>Derived classes must call through to the super class's
+     * implementation of this method.  If they do not, an exception will be
+     * thrown.</em></p>
+     *
+     * @param savedInstanceState If the activity is being re-initialized after
+     *     previously being shut down then this Bundle contains the data it most
+     *     recently supplied in {@link #onSaveInstanceState}.  <b><i>Note: Otherwise it is null.</i></b>
+     *
+     * @see #onStart
+     * @see #onSaveInstanceState
+     * @see #onRestoreInstanceState
+     * @see #onPostCreate
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +79,24 @@ public class BibleMain extends Activity {
         mRecyclerView.setLayoutManager(mLayoutManager);
     }
 
+    /**
+     * Called when you are no longer visible to the user.  You will next
+     * receive either {@link #onRestart}, {@link #onDestroy}, or nothing,
+     * depending on later user activity.
+     *
+     * <p>Note that this method may never be called, in low memory situations
+     * where the system does not have enough memory to keep your activity's
+     * process running after its {@link #onPause} method is called.
+     *
+     * <p><em>Derived classes must call through to the super class's
+     * implementation of this method.  If they do not, an exception will be
+     * thrown.</em></p>
+     *
+     * @see #onRestart
+     * @see #onResume
+     * @see #onSaveInstanceState
+     * @see #onDestroy
+     */
     @Override
     protected void onStop() {
         int lastFirstVisiblePosition = ((LinearLayoutManager)mRecyclerView
@@ -61,6 +105,26 @@ public class BibleMain extends Activity {
         super.onStop();
     }
 
+    /**
+     * Called after {@link #onRestoreInstanceState}, {@link #onRestart}, or
+     * {@link #onPause}, for your activity to start interacting with the user.
+     * This is a good place to begin animations, open exclusive-access devices
+     * (such as the camera), etc.
+     *
+     * <p>Keep in mind that onResume is not the best indicator that your activity
+     * is visible to the user; a system window such as the keyguard may be in
+     * front.  Use {@link #onWindowFocusChanged} to know for certain that your
+     * activity is visible to the user (for example, to resume a game).
+     *
+     * <p><em>Derived classes must call through to the super class's
+     * implementation of this method.  If they do not, an exception will be
+     * thrown.</em></p>
+     *
+     * @see #onRestoreInstanceState
+     * @see #onRestart
+     * @see #onPostResume
+     * @see #onPause
+     */
     @Override
     protected void onResume() {
         int lastFirstVisiblePosition = restoreVerseNumber(0, LAST_VERSE_VIEWED);
@@ -68,6 +132,12 @@ public class BibleMain extends Activity {
         super.onResume();
     }
 
+    /**
+     * Save the currently viewed verse to shared preferences file
+     *
+     * @param verse verse number
+     * @param key   key to store it under (presently only "LAST_VERSE_VIEWED")
+     */
     public static void saveVerseNumber(int verse, String key) {
         SharedPreferences pref = bibleContext.getSharedPreferences(CLASS, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = pref.edit();
@@ -75,6 +145,13 @@ public class BibleMain extends Activity {
         editor.apply();
     }
 
+    /**
+     * Retrieve the last viewed verse from shared preferences file
+     *
+     * @param verse verse number default value
+     * @param key   key it was stored under (presently only "LAST_VERSE_VIEWED")
+     * @return      verse number stored in shared preferences, or the default value passed it
+     */
     public int restoreVerseNumber(int verse, String key) {
         SharedPreferences pref = getSharedPreferences(CLASS, Context.MODE_PRIVATE);
         return pref.getInt(key, verse);
@@ -163,6 +240,10 @@ public class BibleMain extends Activity {
         }
     }
 
+    /**
+     * Reads the raw file king_james_text_and_verse.txt, separating it into citations
+     * (bookChapterVerse) and verse text (stringList)
+     */
     private void initDataset() {
         final String[] line = new String[1];
         final StringBuilder[] builder = {new StringBuilder()};
