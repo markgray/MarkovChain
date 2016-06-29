@@ -157,6 +157,15 @@ public class BibleMain extends Activity {
         return pref.getInt(key, verse);
     }
 
+    /**
+     * Finds the verse index of a given standard Bible citation, using the fallback citation
+     * in case there are no exact matches for the given citation
+     *
+     * @param citation Bible citation we are looking for
+     * @param fallback a fallback citation to use if that citation is not foud
+     *
+     * @return Index of the verse we are interested in
+     */
     public static int findFromCitation(String citation, String fallback) {
         int fallBackIndex = 0;
         for (int i = 0; i < bookChapterVerse.size(); i++) {
@@ -170,6 +179,12 @@ public class BibleMain extends Activity {
         return fallBackIndex;
     }
 
+    /**
+     *  Returns the book number index for a citation which uses the name instead of the number
+     *
+     * @param citation Standard Bible citation
+     * @return Index of the book name
+     */
     public static int indexFromCitation(String citation) {
         String bookLook = citation.substring(0, citation.indexOf(":"));
         int indexOf = 0;
@@ -225,16 +240,16 @@ public class BibleMain extends Activity {
                 break;
             case BibleDialog.CHOICE_GOOGLE:
                 showDialog(BibleSearch.newInstance(dialogTitle, dialogText));
-                break; // TODO: start a google search based on user input
+                break;
             case BibleDialog.CHOICE_BOOKMARK:
                 showDialog(BibleBookmark.newInstance(dialogTitle, dialogText));
-                break; // TODO: add a set of strings to shared preferences
+                break; // TODO: add a set of strings to shared preferences or sql file
             case BibleDialog.CHOICE_GO_TO_VERSE:
                 showDialog(BibleChoose.newInstance(dialogTitle, dialogText));
                 break;
             case BibleDialog.CHOICE_READ_ALOUD:
                 showDialog(BibleSpeak.newInstance(dialogTitle, dialogText));
-                break; // TODO: add tts to BibleSpeak dialog
+                break;
             default:
                 break;
         }
