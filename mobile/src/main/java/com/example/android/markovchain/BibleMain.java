@@ -212,6 +212,13 @@ public class BibleMain extends Activity {
         showDialog(bibleDialog);
     }
 
+    /**
+     * Shows the DialogFragment passed to it
+     *
+     * @param dialogFragment DialogFragment subclass which already has had setArguments
+     *                       called to attach a Bundle of arguments
+     * @return Tag for the fragment, as per FragmentTransaction.add.
+     */
     public int showDialog(DialogFragment dialogFragment) {
         // dialogFragment must already have setArguments set to bundle!
         // DialogFragment.show() will take care of adding the fragment
@@ -226,6 +233,9 @@ public class BibleMain extends Activity {
         return dialogFragment.show(ft, "dialog");
     }
 
+    /**
+     * Convenience function to dismiss the main BibleDialog DialogFragment
+     */
     public void dismissDiaglog() {
         bibleDialog.dismiss();
     }
