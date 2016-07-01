@@ -240,6 +240,12 @@ public class BibleMain extends Activity {
         bibleDialog.dismiss();
     }
 
+    /**
+     * Handle whichever action was chosen in the Spinner contained in the BibleDialog fragment
+     *
+     * @param v Just a view passed to give context for creating a Toast when called for
+     * @param spinIndex Spinner index chosen
+     */
     public void handleAction(View v, int spinIndex) {
         switch (spinIndex) {
             case BibleDialog.CHOICE_NONE:
