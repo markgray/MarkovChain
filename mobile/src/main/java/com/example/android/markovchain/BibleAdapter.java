@@ -1,6 +1,5 @@
 package com.example.android.markovchain;
 
-import android.annotation.SuppressLint;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -17,7 +16,7 @@ import java.util.Random;
 /**
  * Adapter used by BibleMain to populate the RecyclerView
  */
-public class BibleAdapter extends RecyclerView.Adapter<BibleAdapter.ViewHolder>  {
+public class BibleAdapter extends RecyclerView.Adapter<BibleAdapter.ViewHolder> {
     private static final String TAG = "BibleAdapter";
     private static Random rand = new Random();
     private static ArrayList<String> mDataSet;
@@ -26,6 +25,8 @@ public class BibleAdapter extends RecyclerView.Adapter<BibleAdapter.ViewHolder> 
 
     /**
      * Create a Canonical Bible citation: BookName:##:###:### from the numChatVerse passed it.
+     * It keeps the book number in the citation since it might be of use to know the relative
+     * position in the Bible.
      *
      * @param numChatVerse ##:###:### index string for verse as read from text
      * @return BookName:##:###:###
@@ -41,7 +42,7 @@ public class BibleAdapter extends RecyclerView.Adapter<BibleAdapter.ViewHolder> 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         private final TextView textView;
-        public int verseNumber;
+        //public int verseNumber;
 
         public ViewHolder(View v) {
             super(v);
@@ -57,9 +58,9 @@ public class BibleAdapter extends RecyclerView.Adapter<BibleAdapter.ViewHolder> 
                 @Override
                 public boolean onLongClick(View view) {
 
-                    ((BibleMain)view.getContext()).showDialog(makeCitation(mChapterAndVerse.get(getLayoutPosition())),
+                    ((BibleMain) view.getContext()).showDialog(makeCitation(mChapterAndVerse.get(getLayoutPosition())),
                             (String) textView.getText());
-                    BibleMain.dialogVerse = verseNumber;
+                    BibleMain.dialogVerse = getAdapterPosition();
                     return true;
                 }
             });
@@ -73,12 +74,24 @@ public class BibleAdapter extends RecyclerView.Adapter<BibleAdapter.ViewHolder> 
 
     }
 
+    /**
+     * Move to a random verse in the Bible
+     *
+     * @param view Just included to give context for creating a Toast
+     */
     public static void moveToRandom(View view) {
         int selection = Math.abs(rand.nextInt()) % mDataSet.size();
         moveToVerse(view, selection);
     }
 
+    /**
+     * Move to a specific verse in the Bible
+     *
+     * @param view      Just used to getContext() for a Toast
+     * @param selection Verse number 0 to mDataSet.size()
+     */
     public static void moveToVerse(View view, int selection) {
+        // Make sure the BibleMain,init() thread has finished reading the text in
         if (!BibleMain.doneReading) {
             BibleMain.mDoneReading.block(5000);
         }
@@ -95,9 +108,9 @@ public class BibleAdapter extends RecyclerView.Adapter<BibleAdapter.ViewHolder> 
     /**
      * Initialze the data used for the Adapter
      *
-     * @param dataSet List containing the text
+     * @param dataSet         List containing the text
      * @param chapterAndVerse chapter and verse annotation for each paragraph
-     * @param layoutManager layout manager to use
+     * @param layoutManager   layout manager to use
      */
     public BibleAdapter(ArrayList<String> dataSet, ArrayList<String> chapterAndVerse, RecyclerView.LayoutManager layoutManager) {
         mDataSet = dataSet;
@@ -129,6 +142,12 @@ public class BibleAdapter extends RecyclerView.Adapter<BibleAdapter.ViewHolder> 
             "1 Timothy", "2 Timothy", "Titus", "Philemon", "Hebrews", "James", "1 Peter",
             "2 Peter", "1 John", "2 John", "3 John", "Jude", "Revelation"
     };
+
+    /**
+     * Build HashMap mapping book number to book name
+     *
+     * @return The HashMap created (unneeded since numberToBook is also set in method
+     */
     public HashMap<String, String> initializeNumberToBook() {
         if (!numberToBookInitialized) {
             numberToBook = new HashMap<>(66);
@@ -141,7 +160,14 @@ public class BibleAdapter extends RecyclerView.Adapter<BibleAdapter.ViewHolder> 
         return numberToBook;
     }
 
-    // Create new views (invoked by the layout manager)
+
+    /**
+     * Create new views (invoked by the layout manager)
+     *
+     * @param viewGroup The ViewGroup into which the new View will be added after it is bound to an adapter position.
+     * @param viewType  The view type of the new View.
+     * @return A new ViewHolder that holds a View of the given view type.
+     */
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         // Create a new view.
@@ -151,12 +177,30 @@ public class BibleAdapter extends RecyclerView.Adapter<BibleAdapter.ViewHolder> 
         return new ViewHolder(v);
     }
 
-    // Replace the contents of a view (invoked by the layout manager)
+
+    /**
+     * Replace the contents of a view (invoked by the layout manager)
+     * Called by RecyclerView to display the data at the specified position.
+     * This method should update the contents of the itemView to reflect the item at the given position.
+     *
+     * Note that unlike ListView, RecyclerView will not call this method again if the position of
+     * the item changes in the data set unless the item itself is invalidated or the new position
+     * cannot be determined. For this reason, you should only use the position parameter while
+     * acquiring the related data item inside this method and should not keep a copy of it.
+     * If you need the position of an item later on (e.g. in a click listener),
+     * use getAdapterPosition() which will have the updated adapter position.
+     * Override onBindViewHolder(ViewHolder, int, List) instead if Adapter can handle
+     * efficient partial bind
+     *
+     * @param viewHolder The ViewHolder which should be updated to represent the contents of the
+     *                   item at the given position in the data set.
+     * @param position  The position of the item within the adapter's data set.
+     */
     @Override
-    public void onBindViewHolder(ViewHolder viewHolder, @SuppressLint("RecyclerView") int position) {
+    public void onBindViewHolder(ViewHolder viewHolder, int position) {
         Log.d(TAG, "Element " + position + " set.");
 
-        viewHolder.verseNumber = position;
+//        viewHolder.verseNumber = position;
         // Get element from your dataset at this position and replace the contents of the view
         // with that element
         viewHolder.getTextView().setText(mDataSet.get(position));
