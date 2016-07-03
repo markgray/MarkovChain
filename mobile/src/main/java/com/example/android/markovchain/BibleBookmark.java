@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 
@@ -89,6 +90,14 @@ public class BibleBookmark extends DialogFragment {
 
         tv = v.findViewById(R.id.text);
         ((TextView) tv).setText(mText);
+
+        Button dismiss = (Button) v.findViewById(R.id.dismiss);
+        dismiss.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BibleBookmark.this.dismiss();
+            }
+        });
 
         return v;
     }

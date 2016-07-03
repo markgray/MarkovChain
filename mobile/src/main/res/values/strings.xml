@@ -21,4 +21,7 @@
     <string name="colon">:</string>
     <string name="dismiss">DISMISS</string>
     <string name="next">NEXT</string>
+    <string name="notes">Notes</string>
+    <string name="add_button">ADD</string>
+    <string name="old">OLD</string>
 </resources>
