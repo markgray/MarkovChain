@@ -176,7 +176,6 @@ public class BibleAdapter extends RecyclerView.Adapter<BibleAdapter.ViewHolder> 
         return new ViewHolder(v);
     }
 
-
     /**
      * Replace the contents of a view (invoked by the layout manager)
      * Called by RecyclerView to display the data at the specified position.
