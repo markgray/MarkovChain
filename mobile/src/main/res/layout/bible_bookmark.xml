@@ -26,28 +26,31 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textLongMessage" />
+        android:inputType="textMultiLine" />
 
     <LinearLayout android:layout_height="wrap_content"
         android:layout_width="match_parent">
 
         <Button
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:id="@+id/add"
             android:text="@string/add_button"
             tools:ignore="ButtonStyle" />
 
         <Button
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:id="@+id/view_bookmarks"
             android:text="@string/old"
             tools:ignore="ButtonStyle" />
 
         <Button
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:id="@+id/dismiss"
             android:text="@string/dismiss"
             tools:ignore="ButtonStyle" />
