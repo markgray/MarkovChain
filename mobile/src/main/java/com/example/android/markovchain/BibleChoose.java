@@ -141,7 +141,7 @@ public class BibleChoose extends DialogFragment {
          * Callback method to be invoked when an item in this view has been selected.
          * This callback is invoked only when the newly selected position is different
          * from the previously selected position or if there was no selected item.
-         * Impelmenters can call getItemAtPosition(position) if they need to access
+         * Implementers can call getItemAtPosition(position) if they need to access
          * the data associated with the selected item.
          *
          * @param parent The AdapterView where the selection happened
