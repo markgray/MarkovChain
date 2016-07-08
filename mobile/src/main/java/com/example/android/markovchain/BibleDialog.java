@@ -18,7 +18,7 @@ public class BibleDialog extends DialogFragment {
     public String mText;
 
     /**
-     * Create and iniitialize a BibleDialog DialogFragment
+     * Create and initialize a BibleDialog DialogFragment
      *
      * @param label Label to use
      * @param text  Text to use

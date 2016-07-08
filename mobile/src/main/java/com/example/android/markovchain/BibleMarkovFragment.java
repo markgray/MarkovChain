@@ -29,7 +29,32 @@ public class BibleMarkovFragment extends Activity {
     protected MarkovAdapter mAdapter;
     protected Markov mMarkov = new Markov();
 
-
+    /**
+     * Called when the activity is starting.  This is where most initialization
+     * should go: calling {@link #setContentView(int)} to inflate the
+     * activity's UI, using {@link #findViewById} to programmatically interact
+     * with widgets in the UI, calling
+     * {@link #managedQuery(android.net.Uri , String[], String, String[], String)} to retrieve
+     * cursors for data being displayed, etc.
+     *
+     * <p>You can call {@link #finish} from within this function, in
+     * which case onDestroy() will be immediately called without any of the rest
+     * of the activity lifecycle ({@link #onStart}, {@link #onResume},
+     * {@link #onPause}, etc) executing.
+     *
+     * <p><em>Derived classes must call through to the super class's
+     * implementation of this method.  If they do not, an exception will be
+     * thrown.</em></p>
+     *
+     * @param savedInstanceState If the activity is being re-initialized after
+     *     previously being shut down then this Bundle contains the data it most
+     *     recently supplied in {@link #onSaveInstanceState}.  <b><i>Note: Otherwise it is null.</i></b>
+     *
+     * @see #onStart
+     * @see #onSaveInstanceState
+     * @see #onRestoreInstanceState
+     * @see #onPostCreate
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,13 +85,15 @@ public class BibleMarkovFragment extends Activity {
         }, mProgressBar);
     }
 
-    // TODO: Replace with a retained fragment
+    /**
+     * This method reads in the Markov state table contained in raw/king_james_state_table.txt
+     * using a background thread.
+     */
     private void initMarkov() {
         InputStream inputStream = getApplicationContext().getResources().openRawResource(R.raw.king_james_state_table);
         final BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
         /**
-         * This is the thread that will do our work.  It sits in a loop running
-         * the progress up until it has reached the top, then stops and waits.
+         * This is the thread that will do our work.
          */
         final Thread mThread = new Thread() {
             @Override
