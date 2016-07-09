@@ -37,6 +37,7 @@ public class SpaceTokenizer implements MultiAutoCompleteTextView.Tokenizer {
      * @param cursor offset within text to start at
      * @return offset of space character that ends the token
      */
+    @Override
     public int findTokenEnd(CharSequence text, int cursor) {
         int i = cursor;
         int len = text.length();
@@ -59,6 +60,7 @@ public class SpaceTokenizer implements MultiAutoCompleteTextView.Tokenizer {
      * @param text Text we are working on
      * @return text terminated by single space
      */
+    @Override
     public CharSequence terminateToken(CharSequence text) {
         int i = text.length();
 

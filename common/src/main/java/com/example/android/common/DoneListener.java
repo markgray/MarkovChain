@@ -6,8 +6,8 @@ import android.widget.Toast;
 
 /**
  * This class allows an application to set a DoneListener on a View, and override the
- * onDone method in an anonymous class to perform some action when a method in a seperate
- * thread is done
+ * onDone method in an anonymous class to perform some action on the UI thread when a
+ * method in a separate thread is done
  */
 public class DoneListener {
 
