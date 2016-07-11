@@ -3,7 +3,7 @@ package com.example.android.common;
 import android.os.AsyncTask;
 
 /**
- * Background task to be benchmarked
+ * Background task to benchmark
 */
 public class CalcTask extends AsyncTask<Long, Long, Long> {
 
@@ -13,21 +13,26 @@ public class CalcTask extends AsyncTask<Long, Long, Long> {
 
     /**
      * This method performs a computation contained in the method testMethod
-     * reps times on a background thread.
-     * The specified parameters are the parameters passed to execute(Params...)
-     * by the caller of this task. This method can call publishProgress(Progress...)
+     * reps[0]*reps[1] times on a background thread.
+     * The specified parameters are the parameters passed to execute(Long...)
+     * by the caller of this task. This method calls publishProgress(Long...)
      * to publish updates on the UI thread.
      *
-     * @param reps Number of repetitions the for loop should execute
+     * @param reps [0] Number of repetitions the for loop should run for each publish period
+     *             [1] Number of publish progress periods
      * @return Time in milliseconds that the benchmark took
      */
     @Override
     protected Long doInBackground(Long... reps) {
         Long repeats = reps[0];
+        Long publish = reps[1];
 
         benchMark.Start();
-        for (int i = 0; i < repeats ; i++) {
-            testMethod();
+        for (int j=0; j < publish; j++) {
+            for (int i = 0; i < repeats ; i++) {
+                testMethod();
+            }
+            publishProgress((long) j);
         }
         return benchMark.Stop();
     }
@@ -38,6 +43,27 @@ public class CalcTask extends AsyncTask<Long, Long, Long> {
      */
     public void testMethod() {
         acc = acc / div;
+    }
+
+    /**
+     * Runs on the UI thread after publishProgress(Long...) is invoked.
+     * The specified values are the values passed to publishProgress(Long...).
+     * Override this to advance a progress bar
+     *
+     * @param progress The values indicating progress.
+     */
+    protected void onProgressUpdate(Long... progress) {
+    }
+
+    /**
+     * Runs on the UI thread after doInBackground(Long...).
+     * The specified result is the value returned by doInBackground(Long...).
+     * This method won't be invoked if the task was cancelled.
+     * Override this to make use of the elapssed time value returned.
+     *
+     * @param result The elapsed time the benchmark took.
+     */
+    protected void onPostExecute(Long result) {
     }
 
 }
