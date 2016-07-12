@@ -6,6 +6,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.android.common.CalcTask;
+
 public class TestBenchMark extends Activity {
     String TAG = "TestBenchMark";
     Button startButton;
@@ -30,5 +32,20 @@ public class TestBenchMark extends Activity {
             }
         });
     }
+
+    private class ControlClass extends CalcTask {
+        @Override
+        protected void onPostExecute(Long result) {
+            super.onPostExecute(result);
+            Log.i(TAG, "Benchmark took " + result + " milliseconds");
+        }
+
+        @Override
+        protected void onProgressUpdate(Long... progress) {
+            super.onProgressUpdate(progress);
+
+        }
+    }
+
 
 }
