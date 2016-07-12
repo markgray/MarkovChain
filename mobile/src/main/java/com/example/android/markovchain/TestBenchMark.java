@@ -2,14 +2,33 @@ package com.example.android.markovchain;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 public class TestBenchMark extends Activity {
+    String TAG = "TestBenchMark";
+    Button startButton;
+    Button abortButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_bench_mark);
-
+        startButton = (Button) findViewById(R.id.start);
+        startButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i(TAG, "Start button clicked");
+            }
+        });
+        abortButton = (Button) findViewById(R.id.abort);
+        abortButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i(TAG, "Abort button clicked");
+            }
+        });
     }
 
 }
