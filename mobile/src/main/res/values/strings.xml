@@ -24,4 +24,5 @@
     <string name="notes">Notes</string>
     <string name="add_button">ADD</string>
     <string name="old">OLD</string>
+    <string name="title_activity_test_bench_mark">TestBenchMark</string>
 </resources>

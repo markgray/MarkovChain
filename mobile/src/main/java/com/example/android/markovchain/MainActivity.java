@@ -23,6 +23,7 @@ public class MainActivity extends Activity {
         addButton(BibleMarkovFragment.class, "Bible Markov", linearLayout);
         addText("Obsolete activities", linearLayout);
         addButton(FragmentVersionSkeleton.class, "Fragment Skeleton", linearLayout);
+        addButton(TestBenchMark.class, "Test BenchMark", linearLayout);
     }
 
 //    BenchMark benchMark = new BenchMark();
