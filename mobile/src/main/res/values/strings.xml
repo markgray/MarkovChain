@@ -27,4 +27,5 @@
     <string name="title_activity_test_bench_mark">TestBenchMark</string>
     <string name="start">START</string>
     <string name="abort">ABORT</string>
+    <string name="benchmark_msg">Push the START button to start the benchmark</string>
 </resources>

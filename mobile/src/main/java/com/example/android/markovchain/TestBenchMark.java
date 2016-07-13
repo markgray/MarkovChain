@@ -1,11 +1,14 @@
 package com.example.android.markovchain;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.example.android.common.CalcTask;
 
@@ -14,7 +17,11 @@ public class TestBenchMark extends Activity {
     Button startButton;
     Button abortButton;
     ProgressBar mProgressBar;
+    TextView mResults;
+    LinearLayout mProgressLayout;
     ControlClass mControlInstance = new ControlClass();
+    final Long PROGRESS_STEPS = 100L;
+    final Long LOOP_REPITIONS = 10000000L;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +33,7 @@ public class TestBenchMark extends Activity {
             @Override
             public void onClick(View v) {
                 Log.i(TAG, "Start button clicked");
-                mControlInstance.execute(100L, 100L);
+                mControlInstance.execute(LOOP_REPITIONS, PROGRESS_STEPS);
             }
         });
         abortButton = (Button) findViewById(R.id.abort);
@@ -36,13 +43,19 @@ public class TestBenchMark extends Activity {
                 Log.i(TAG, "Abort button clicked");
             }
         });
+        mProgressLayout = (LinearLayout) findViewById(R.id.progress_view_linear_layout);
+        mResults = (TextView) findViewById(R.id.results_view);
     }
 
     private class ControlClass extends CalcTask {
+        @SuppressLint("SetTextI18n")
         @Override
         protected void onPostExecute(Long result) {
             super.onPostExecute(result);
             Log.i(TAG, "Benchmark took " + result + " milliseconds");
+            mResults.setText("Executed " + PROGRESS_STEPS*LOOP_REPITIONS + " times in\n" + result + " milliseconds");
+            mProgressLayout.setVisibility(View.GONE);
+            mResults.setVisibility(View.VISIBLE);
         }
 
         @Override

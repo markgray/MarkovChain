@@ -15,7 +15,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/fragment_retain_instance_msg"
+            android:text="@string/benchmark_msg"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <ProgressBar
@@ -47,7 +47,7 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/main_view"
+        android:id="@+id/results_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="@string/this_is_the_main_view"
