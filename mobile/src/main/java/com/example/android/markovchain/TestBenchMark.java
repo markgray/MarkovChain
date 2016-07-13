@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 
 import com.example.android.common.CalcTask;
 
@@ -12,11 +13,13 @@ public class TestBenchMark extends Activity {
     String TAG = "TestBenchMark";
     Button startButton;
     Button abortButton;
+    ProgressBar mProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_bench_mark);
+        mProgressBar = (ProgressBar) findViewById(R.id.progress_horizontal);
         startButton = (Button) findViewById(R.id.start);
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,7 +46,7 @@ public class TestBenchMark extends Activity {
         @Override
         protected void onProgressUpdate(Long... progress) {
             super.onProgressUpdate(progress);
-
+            mProgressBar.setProgress(progress[0].intValue());
         }
     }
 
