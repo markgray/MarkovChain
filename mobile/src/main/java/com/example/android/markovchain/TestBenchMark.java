@@ -14,6 +14,7 @@ public class TestBenchMark extends Activity {
     Button startButton;
     Button abortButton;
     ProgressBar mProgressBar;
+    ControlClass mControlInstance = new ControlClass();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +26,7 @@ public class TestBenchMark extends Activity {
             @Override
             public void onClick(View v) {
                 Log.i(TAG, "Start button clicked");
+                mControlInstance.execute(100L, 100L);
             }
         });
         abortButton = (Button) findViewById(R.id.abort);

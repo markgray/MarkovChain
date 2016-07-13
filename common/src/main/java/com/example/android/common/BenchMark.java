@@ -10,7 +10,7 @@ public class BenchMark {
      * Create a new BenchMark instance initialized to current time
      */
     public BenchMark() {
-        this.Start();
+        this.start();
     }
 
     /**
@@ -18,17 +18,17 @@ public class BenchMark {
      *
      * @return current time
      */
-    public long Start() {
+    public long start() {
         return mStartTime = SystemClock.elapsedRealtime();
     }
 
     /**
      * Slight misnomer, clock is not stopped, but the elapsed time in milliseconds since the creation
-     * or Start() of the clock is returned.
+     * or start() of the clock is returned.
      *
-     * @return Elapsed time in milliseconds since Start() was called
+     * @return Elapsed time in milliseconds since start() was called
      */
-    public long Stop() {
+    public long stop() {
         return SystemClock.elapsedRealtime() - mStartTime;
     }
 

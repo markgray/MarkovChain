@@ -27,14 +27,14 @@ public class CalcTask extends AsyncTask<Long, Long, Long> {
         Long repeats = reps[0];
         Long publish = reps[1];
 
-        benchMark.Start();
+        benchMark.start();
         for (int j=0; j < publish; j++) {
             for (int i = 0; i < repeats ; i++) {
                 testMethod();
             }
             publishProgress((long) j);
         }
-        return benchMark.Stop();
+        return benchMark.stop();
     }
 
     /**
