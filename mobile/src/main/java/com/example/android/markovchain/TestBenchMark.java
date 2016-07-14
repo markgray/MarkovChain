@@ -12,6 +12,9 @@ import android.widget.TextView;
 
 import com.example.android.common.CalcTask;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
 public class TestBenchMark extends Activity {
     String TAG = "TestBenchMark";
     Button startButton;
@@ -53,7 +56,9 @@ public class TestBenchMark extends Activity {
         protected void onPostExecute(Long result) {
             super.onPostExecute(result);
             Log.i(TAG, "Benchmark took " + result + " milliseconds");
-            mResults.setText("Executed " + PROGRESS_STEPS*LOOP_REPITIONS + " times in\n" + result + " milliseconds");
+            String formatedIterations = NumberFormat.getNumberInstance(Locale.US).format(PROGRESS_STEPS*LOOP_REPITIONS);
+            String formatedResult = NumberFormat.getNumberInstance(Locale.US).format(result);
+            mResults.setText("Executed " + formatedIterations + " times in\n" + formatedResult + " milliseconds");
             mProgressLayout.setVisibility(View.GONE);
             mResults.setVisibility(View.VISIBLE);
         }
