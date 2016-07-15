@@ -52,12 +52,28 @@
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/results_view"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:id="@+id/results_linear_layout"
+        android:visibility="gone"
+        android:orientation="vertical"
         android:layout_height="match_parent"
-        android:text="@string/this_is_the_main_view"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:visibility="gone" />
+        android:layout_width="match_parent">
+
+        <Button
+            android:id="@+id/try_again"
+            android:text="@string/try_again"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:id="@+id/results_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/benchmark_results"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+             />
+    </LinearLayout>
+
 
 </FrameLayout>

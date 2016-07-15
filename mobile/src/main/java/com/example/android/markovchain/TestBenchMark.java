@@ -22,8 +22,10 @@ public class TestBenchMark extends Activity {
     Button abortButton;
     ProgressBar mProgressBar;
     TextView mResults;
+    Button mTryAgain;
     LinearLayout mProgressLayout;
-    ControlClass mControlInstance = new ControlClass();
+    LinearLayout mResultsLinearLayout;
+    ControlClass mControlInstance;
     final Long PROGRESS_STEPS = 100L;
     final Long LOOP_REPITIONS = 10000000L;
 
@@ -37,6 +39,7 @@ public class TestBenchMark extends Activity {
             @Override
             public void onClick(View v) {
                 Log.i(TAG, "Start button clicked");
+                mControlInstance = new ControlClass();
                 mControlInstance.execute(LOOP_REPITIONS, PROGRESS_STEPS);
             }
         });
@@ -45,6 +48,7 @@ public class TestBenchMark extends Activity {
             @Override
             public void onClick(View v) {
                 Log.i(TAG, "Start button clicked");
+                mControlInstance = new ControlClass();
                 mControlInstance.execute(LOOP_REPITIONS, PROGRESS_STEPS);
             }
         });
@@ -56,6 +60,16 @@ public class TestBenchMark extends Activity {
             }
         });
         mProgressLayout = (LinearLayout) findViewById(R.id.progress_view_linear_layout);
+        mTryAgain = (Button) findViewById(R.id.try_again);
+        mTryAgain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mResultsLinearLayout.setVisibility(View.GONE);
+                mProgressLayout.setVisibility(View.VISIBLE);
+            }
+        });
+        mResultsLinearLayout = (LinearLayout) findViewById(R.id.results_linear_layout);
+
         mResults = (TextView) findViewById(R.id.results_view);
     }
 
@@ -69,7 +83,7 @@ public class TestBenchMark extends Activity {
             String formatedResult = NumberFormat.getNumberInstance(Locale.US).format(result);
             mResults.append("Executed " + formatedIterations + " times in\n" + formatedResult + " milliseconds\n");
             mProgressLayout.setVisibility(View.GONE);
-            mResults.setVisibility(View.VISIBLE);
+            mResultsLinearLayout.setVisibility(View.VISIBLE);
         }
 
         @Override

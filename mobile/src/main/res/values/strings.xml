@@ -30,4 +30,6 @@
     <string name="benchmark_msg">Push the START button to start the benchmark</string>
     <string name="start_one">START ONE</string>
     <string name="start_two">START TWO</string>
+    <string name="try_again">TRY AGAIN</string>
+    <string name="benchmark_results">Benchmark results\n</string>
 </resources>
