@@ -28,13 +28,19 @@
             android:padding="6dp" />
 
         <Button
-            android:id="@+id/start"
+            android:id="@+id/start_one"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/start">
+            android:text="@string/start_one">
+        </Button>
 
-            <requestFocus />
+        <Button
+            android:id="@+id/start_two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/start_two">
         </Button>
 
         <Button

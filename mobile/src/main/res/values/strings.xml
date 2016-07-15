@@ -28,4 +28,6 @@
     <string name="start">START</string>
     <string name="abort">ABORT</string>
     <string name="benchmark_msg">Push the START button to start the benchmark</string>
+    <string name="start_one">START ONE</string>
+    <string name="start_two">START TWO</string>
 </resources>

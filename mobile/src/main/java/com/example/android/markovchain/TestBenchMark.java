@@ -17,7 +17,8 @@ import java.util.Locale;
 
 public class TestBenchMark extends Activity {
     String TAG = "TestBenchMark";
-    Button startButton;
+    Button startButtonOne;
+    Button startButtonTwo;
     Button abortButton;
     ProgressBar mProgressBar;
     TextView mResults;
@@ -31,8 +32,16 @@ public class TestBenchMark extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_bench_mark);
         mProgressBar = (ProgressBar) findViewById(R.id.progress_horizontal);
-        startButton = (Button) findViewById(R.id.start);
-        startButton.setOnClickListener(new View.OnClickListener() {
+        startButtonOne = (Button) findViewById(R.id.start_one);
+        startButtonOne.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i(TAG, "Start button clicked");
+                mControlInstance.execute(LOOP_REPITIONS, PROGRESS_STEPS);
+            }
+        });
+        startButtonTwo = (Button) findViewById(R.id.start_two);
+        startButtonTwo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.i(TAG, "Start button clicked");
@@ -58,7 +67,7 @@ public class TestBenchMark extends Activity {
             Log.i(TAG, "Benchmark took " + result + " milliseconds");
             String formatedIterations = NumberFormat.getNumberInstance(Locale.US).format(PROGRESS_STEPS*LOOP_REPITIONS);
             String formatedResult = NumberFormat.getNumberInstance(Locale.US).format(result);
-            mResults.setText("Executed " + formatedIterations + " times in\n" + formatedResult + " milliseconds");
+            mResults.append("Executed " + formatedIterations + " times in\n" + formatedResult + " milliseconds\n");
             mProgressLayout.setVisibility(View.GONE);
             mResults.setVisibility(View.VISIBLE);
         }
