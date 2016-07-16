@@ -39,7 +39,7 @@ public class TestBenchMark extends Activity {
             @Override
             public void onClick(View v) {
                 Log.i(TAG, "Start button clicked");
-                mControlInstance = new ControlClass();
+                mControlInstance = new ControlClass1();
                 mControlInstance.execute(LOOP_REPITIONS, PROGRESS_STEPS);
             }
         });
@@ -48,7 +48,7 @@ public class TestBenchMark extends Activity {
             @Override
             public void onClick(View v) {
                 Log.i(TAG, "Start button clicked");
-                mControlInstance = new ControlClass();
+                mControlInstance = new ControlClass2();
                 mControlInstance.execute(LOOP_REPITIONS, PROGRESS_STEPS);
             }
         });
@@ -74,6 +74,9 @@ public class TestBenchMark extends Activity {
     }
 
     private class ControlClass extends CalcTask {
+
+        public double acc = 1.000000001;
+        public double div = 0.999999999;
         @SuppressLint("SetTextI18n")
         @Override
         protected void onPostExecute(Long result) {
@@ -93,5 +96,28 @@ public class TestBenchMark extends Activity {
         }
     }
 
+    private class ControlClass1 extends ControlClass {
+        /**
+         * This method should be overridden by a method which performs whatever computation
+         * you wish to benchmark.
+         */
+        @Override
+        public void testMethod() {
+            acc = acc / div;
+        }
+
+    }
+
+    private class ControlClass2 extends ControlClass {
+        /**
+         * This method should be overridden by a method which performs whatever computation
+         * you wish to benchmark.
+         */
+        @Override
+        public void testMethod() {
+            acc = acc * div;
+        }
+
+    }
 
 }
