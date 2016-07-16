@@ -75,8 +75,6 @@ public class TestBenchMark extends Activity {
 
     private class ControlClass extends CalcTask {
 
-        public double acc = 1.000000001;
-        public double div = 0.999999999;
         @SuppressLint("SetTextI18n")
         @Override
         protected void onPostExecute(Long result) {
@@ -97,6 +95,8 @@ public class TestBenchMark extends Activity {
     }
 
     private class ControlClass1 extends ControlClass {
+        public double acc = 1.000000001;
+        public double div = 0.999999999;
         /**
          * This method should be overridden by a method which performs whatever computation
          * you wish to benchmark.
@@ -109,13 +109,15 @@ public class TestBenchMark extends Activity {
     }
 
     private class ControlClass2 extends ControlClass {
+        public double acc = 1.000000001;
+        public double mul = 0.999999999;
         /**
          * This method should be overridden by a method which performs whatever computation
          * you wish to benchmark.
          */
         @Override
         public void testMethod() {
-            acc = acc * div;
+            acc = acc * mul;
         }
 
     }
