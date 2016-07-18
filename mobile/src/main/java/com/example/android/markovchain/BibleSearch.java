@@ -67,12 +67,13 @@ public class BibleSearch extends DialogFragment {
      * @param strings String array with possible duplicate string members
      * @return Same array with only single occurrences of strings
      */
-    public String[] uniq(String[] strings) {
+    private String[] uniq(String[] strings) {
         HashSet<String> setOfStrings = new HashSet<>(strings.length);
         Collections.addAll(setOfStrings, strings);
         String[] returnStringArray = new String[setOfStrings.size()];
-        for (int i = 0; i < setOfStrings.size(); i++) {
-            returnStringArray[i] = (String) setOfStrings.toArray()[i];
+        Object[] tempObjectArray = setOfStrings.toArray();
+        for (int i = 0; i < setOfStrings.size() ; i++) {
+            returnStringArray[i] = (String) tempObjectArray[i];
         }
         return returnStringArray;
     }
