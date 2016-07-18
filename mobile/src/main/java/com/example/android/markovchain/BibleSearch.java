@@ -153,6 +153,8 @@ public class BibleSearch extends DialogFragment {
                 intent.putExtra(SearchManager.QUERY, query); // query contains search string
                 startActivity(intent);
                 BibleSearch.this.dismiss();
+                BibleMain.bibleDialog.mLabel = BibleMain.dialogTitle;
+                BibleMain.bibleDialog.mText = BibleMain.dialogText;
             }
         });
         return v;
