@@ -21,6 +21,7 @@ public class BibleSpeak extends DialogFragment implements OnInitListener {
     public String mLabel;
     public String mText;
     private TextToSpeech mTts;
+    // TODO: Call mTts.shutdown() at appropriate time.
     private View mView;
 
     static BibleSpeak newInstance(String label, String text) {
