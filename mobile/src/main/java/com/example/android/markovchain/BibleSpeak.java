@@ -21,7 +21,7 @@ public class BibleSpeak extends DialogFragment implements OnInitListener {
     public String mLabel;
     public String mText;
     private TextToSpeech mTts;
-    // TODO: Call mTts.shutdown() at appropriate time.
+    // TODO: Call mTts.shutdown() at appropriate time. May need to move to BibleMain?
     private View mView;
 
     static BibleSpeak newInstance(String label, String text) {
@@ -125,7 +125,15 @@ public class BibleSpeak extends DialogFragment implements OnInitListener {
         Log.i(TAG, "onCreate called with: " + mLabel + " " + mText);
 
         setStyle(DialogFragment.STYLE_NORMAL, 0);
-        mTts = new TextToSpeech(BibleMain.bibleContext, this);
+
+        if (BibleMain.textToSpeech == null) {
+            mTts = new TextToSpeech(BibleMain.bibleContext, this);
+            BibleMain.textToSpeech = mTts;
+        } else {
+            mTts = BibleMain.textToSpeech;
+            //noinspection deprecation
+            mTts.speak(mText, TextToSpeech.QUEUE_ADD, null);
+        }
 
     }
 

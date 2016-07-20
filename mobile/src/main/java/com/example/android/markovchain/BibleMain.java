@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.ConditionVariable;
+import android.speech.tts.TextToSpeech;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -36,6 +37,7 @@ public class BibleMain extends Activity {
     public static String dialogTitle;
     public static String dialogText;
     public static int dialogVerse;
+    public static TextToSpeech textToSpeech;
 
     /**
      * Called when the activity is starting.  This is where most initialization
@@ -131,6 +133,20 @@ public class BibleMain extends Activity {
         BibleAdapter.moveToVerse(mRecyclerView, lastFirstVisiblePosition);
         super.onResume();
     }
+
+    @Override
+    public void onDestroy() {
+        Log.i(TAG, "onDestroy has been called");
+        // Don't forget to shutdown!
+        if (textToSpeech != null) {
+            textToSpeech.stop();
+            textToSpeech.shutdown();
+            textToSpeech = null;
+        }
+        super.onDestroy();
+    }
+
+
 
     /**
      * Save the currently viewed verse to shared preferences file
