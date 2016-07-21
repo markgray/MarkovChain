@@ -43,10 +43,23 @@ public class BibleAdapter extends RecyclerView.Adapter<BibleAdapter.ViewHolder> 
 
         private final TextView textView;
 
+        /**
+         * Initializes a new instance of a ViewHolder. Sets the onClickListener to Toast the
+         * canonical Bible citation for the verse that the view will hold, and sets the
+         * onLongClickListener to launch a BibleDialog DialogFragment for the verse. It finds the
+         * TextView for displaying the verse an squirrels it away in the textView field.
+         *
+         * @param v View that this is the ViewHolder for
+         */
         public ViewHolder(View v) {
             super(v);
             // Define click listener for the ViewHolder's View.
             v.setOnClickListener(new View.OnClickListener() {
+                /**
+                 * Create a Toast of the canonical Bible citation for the verse in the View clicked
+                 *
+                 * @param v View that was clicked
+                 */
                 @Override
                 public void onClick(View v) {
                     Log.d(TAG, "Element " + getLayoutPosition() + " clicked.");
