@@ -56,7 +56,8 @@ public class BibleAdapter extends RecyclerView.Adapter<BibleAdapter.ViewHolder> 
             // Define click listener for the ViewHolder's View.
             v.setOnClickListener(new View.OnClickListener() {
                 /**
-                 * Create a Toast of the canonical Bible citation for the verse in the View clicked
+                 * Create a Toast of the canonical Bible citation for the verse contained
+                 * in the View that was clicked
                  *
                  * @param v View that was clicked
                  */
@@ -67,6 +68,14 @@ public class BibleAdapter extends RecyclerView.Adapter<BibleAdapter.ViewHolder> 
                 }
             });
             v.setOnLongClickListener(new View.OnLongClickListener() {
+                /**
+                 * Pops up a BibleDialog DialogFragment containing the citation and text of the verse
+                 * contained in the View that was long clicked, and sets BibleMain.dialogVerse to
+                 * point to the verse index number (which is also the adapter position.)
+                 * 
+                 * @param view View that was long clicked
+                 * @return true because the callback consumed the long click
+                 */
                 @Override
                 public boolean onLongClick(View view) {
 
