@@ -10,7 +10,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-
+/**
+ * This DialogFragment will (eventually) save a bookmark with a date bookmarked and comment
+ * to an SQL database.
+ */
 public class BibleBookmark extends DialogFragment {
     public final static String TAG = "BibleBookmark";
     public String mLabel;
