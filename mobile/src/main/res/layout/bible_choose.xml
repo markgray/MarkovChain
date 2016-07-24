@@ -41,7 +41,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=" "/>
+            android:text="@string/space_only"/>
         <EditText
             android:id="@+id/chapter_and_verse"
             android:layout_width="wrap_content"
@@ -57,7 +57,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="0"
-        android:text="@string/repeat">
+        android:text="@string/go">
 
         <requestFocus />
     </Button>

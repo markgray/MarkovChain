@@ -32,4 +32,6 @@
     <string name="start_two">START TWO</string>
     <string name="try_again">TRY AGAIN</string>
     <string name="benchmark_results">Benchmark results\n</string>
+    <string name="space_only" />
+    <string name="go">GO</string>
 </resources>

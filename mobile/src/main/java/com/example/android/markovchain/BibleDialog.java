@@ -16,6 +16,7 @@ public class BibleDialog extends DialogFragment {
     private static final String TAG = "BibleDialog";
     public String mLabel;
     public String mText;
+    public Button repeatButton;
 
     /**
      * Create and initialize a BibleDialog DialogFragment
@@ -108,6 +109,7 @@ public class BibleDialog extends DialogFragment {
 
             if (spinIndex != lastIndex) {
                 ((BibleMain) getActivity()).handleAction(view, spinIndex);
+                repeatButton.setVisibility(View.VISIBLE);
                 lastIndex = spinIndex;
             }
         }
@@ -168,8 +170,8 @@ public class BibleDialog extends DialogFragment {
         spin.setOnItemSelectedListener(spinSelected);
 
         // Watch for button clicks.
-        Button button = (Button) v.findViewById(R.id.repeat);
-        button.setOnClickListener(new View.OnClickListener() {
+        repeatButton = (Button) v.findViewById(R.id.repeat);
+        repeatButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // When button is clicked, call up to owning activity.
@@ -177,7 +179,7 @@ public class BibleDialog extends DialogFragment {
             }
         });
 
-        button = (Button) v.findViewById(R.id.dismiss);
+        Button button = (Button) v.findViewById(R.id.dismiss);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
