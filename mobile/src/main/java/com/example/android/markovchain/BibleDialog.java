@@ -48,6 +48,7 @@ public class BibleDialog extends DialogFragment {
     public void refresh(String label, String text) {
         lastLabelView.setText(label);
         lastTextView.setText(text);
+        repeatButton.setVisibility(View.VISIBLE);
     }
 
     /**

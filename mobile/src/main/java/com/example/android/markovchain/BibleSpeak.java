@@ -70,6 +70,7 @@ public class BibleSpeak extends DialogFragment implements OnInitListener {
                 BibleSpeak.this.dismiss();
                 BibleMain.bibleDialog.mLabel = BibleMain.dialogTitle;
                 BibleMain.bibleDialog.mText = BibleMain.dialogText;
+                BibleMain.bibleDialog.repeatButton.setVisibility(View.VISIBLE);
             }
         });
         // Watch for NEXT  button clicks
