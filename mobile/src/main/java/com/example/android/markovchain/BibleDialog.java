@@ -110,8 +110,10 @@ public class BibleDialog extends DialogFragment {
 
             if (spinIndex != lastIndex) {
                 ((BibleMain) getActivity()).handleAction(view, spinIndex);
-                repeatButton.setVisibility(View.VISIBLE);
                 lastIndex = spinIndex;
+            }
+            if (spinIndex != 0) {
+                repeatButton.setVisibility(View.VISIBLE);
             }
         }
 
