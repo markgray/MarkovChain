@@ -263,7 +263,6 @@ public class BibleMain extends Activity {
      * @param spinIndex Spinner index chosen
      */
     public void handleAction(View v, int spinIndex) {
-        bibleDialog.repeatButton.setVisibility(View.VISIBLE);
         switch (spinIndex) {
             case BibleDialog.CHOICE_NONE:
                 break;

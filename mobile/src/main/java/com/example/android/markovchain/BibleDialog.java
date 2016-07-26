@@ -48,7 +48,6 @@ public class BibleDialog extends DialogFragment {
     public void refresh(String label, String text) {
         lastLabelView.setText(label);
         lastTextView.setText(text);
-        repeatButton.setVisibility(View.VISIBLE);
     }
 
     /**
@@ -112,7 +111,7 @@ public class BibleDialog extends DialogFragment {
                 ((BibleMain) getActivity()).handleAction(view, spinIndex);
                 lastIndex = spinIndex;
             }
-            if (spinIndex != 0) {
+            if (spinIndex != 0) { // This is the correct place to set this! (I think)
                 repeatButton.setVisibility(View.VISIBLE);
             }
         }
