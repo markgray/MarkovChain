@@ -47,7 +47,7 @@ public class BibleAdapter extends RecyclerView.Adapter<BibleAdapter.ViewHolder> 
          * Initializes a new instance of a ViewHolder. Sets the onClickListener to Toast the
          * canonical Bible citation for the verse that the view will hold, and sets the
          * onLongClickListener to launch a BibleDialog DialogFragment for the verse. It finds the
-         * TextView for displaying the verse an squirrels it away in the textView field.
+         * TextView for displaying the verse and squirrels it away in the textView field.
          *
          * @param v View that this is the ViewHolder for
          */

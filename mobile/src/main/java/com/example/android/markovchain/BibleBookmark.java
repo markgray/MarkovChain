@@ -11,8 +11,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 /**
- * This DialogFragment will (eventually) save a bookmark with a date bookmarked and comment
- * to an SQL database.
+` * This DialogFragment will (eventually) save a bookmark with the date it was bookmarked
+ * and an optional comment to an SQL database.
  */
 public class BibleBookmark extends DialogFragment {
     public final static String TAG = "BibleBookmark";
@@ -50,7 +50,8 @@ public class BibleBookmark extends DialogFragment {
      * created, see {@link #onActivityCreated(Bundle)}.
      *
      * @param savedInstanceState If the fragment is being re-created from
-     * a previous saved state, this is the state.
+     * a previous saved state, this is the state. (Always null since onSaveInstanceState
+     * is not overridden.
      */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -78,7 +79,8 @@ public class BibleBookmark extends DialogFragment {
      * UI should be attached to.  The fragment should not add the view itself,
      * but this can be used to generate the LayoutParams of the view.
      * @param savedInstanceState If non-null, this fragment is being re-constructed
-     * from a previous saved state as given here.
+     * from a previous saved state as given here. (Always null since onSaveInstanceState
+     * is not overridden.)
      *
      * @return Return the View for the fragment's UI, or null.
      */
