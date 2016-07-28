@@ -98,6 +98,12 @@ public class BibleBookmark extends DialogFragment {
 
         Button dismiss = (Button) v.findViewById(R.id.dismiss);
         dismiss.setOnClickListener(new View.OnClickListener() {
+            /**
+             * Dismiss this DialogFragment, and make sure that the BibleDialog which we are
+             * returing to uses the correct dialogTitle and dialogText TODO: IS THIS RIGHT?
+             *
+             * @param v Button which was clicked
+             */
             @Override
             public void onClick(View v) {
                 BibleBookmark.this.dismiss();
