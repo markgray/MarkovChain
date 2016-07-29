@@ -100,7 +100,7 @@ public class BibleBookmark extends DialogFragment {
         dismiss.setOnClickListener(new View.OnClickListener() {
             /**
              * Dismiss this DialogFragment, and make sure that the BibleDialog which we are
-             * returing to uses the correct dialogTitle and dialogText TODO: IS THIS RIGHT?
+             * returning to uses the correct dialogTitle and dialogText
              *
              * @param v Button which was clicked
              */
