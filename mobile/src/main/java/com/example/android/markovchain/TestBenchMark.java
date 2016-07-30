@@ -18,6 +18,9 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Locale;
 
+/**
+ * This activity is useful to benchmark two different implementations of a method
+ */
 public class TestBenchMark extends Activity {
     String TAG = "TestBenchMark";
     Button startButtonOne;
@@ -32,6 +35,19 @@ public class TestBenchMark extends Activity {
     final Long PROGRESS_STEPS = 100L;
     final Long LOOP_REPITIONS = 100L;
 
+    /**
+     * Called when the activity is starting, it sets the content view to the layout
+     * activity_test_bench_mark, locates the ProgressBar View R.id.progress_horizontal
+     * and squirrels it away for later use, locates the Button R.id.start_one in the layout,
+     * and sets the OnClickListener of the Button to run the first method's benchmark, locates
+     * the Button R.id.start_two in the layout, and sets the OnClickListener of the Button to
+     * run the second method's benchmark. It then locates the Button R.id.abort and sets its
+     * OnClickListener to just Log a message TODO: Implement an "abort" function
+     * It locates the LinearLayout containing the ProgressBar (R.id.progress_view_linear_layout)
+     * and squirrels it away
+     *
+     * @param savedInstanceState always null since onSaveInstanceState is not overridden
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
