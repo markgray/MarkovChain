@@ -44,7 +44,7 @@ public class TestBenchMark extends Activity {
      * run the second method's benchmark. It then locates the Button R.id.abort and sets its
      * OnClickListener to just Log a message TODO: Implement an "abort" function
      * It locates the LinearLayout containing the ProgressBar (R.id.progress_view_linear_layout)
-     * and squirrels it away
+     * and squirrels it away in mProgressLayout to use later to swap visibility of views.
      *
      * @param savedInstanceState always null since onSaveInstanceState is not overridden
      */
