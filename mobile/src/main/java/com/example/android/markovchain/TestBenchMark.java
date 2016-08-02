@@ -10,13 +10,10 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.example.android.common.CalcTask;
-//import com.example.android.common.Shakespeare;
-
 import java.text.NumberFormat;
-//import java.util.Collections;
-//import java.util.HashSet;
 import java.util.Locale;
+
+import com.example.android.common.CalcTask;
 
 /**
  * This activity is useful to benchmark two different implementations of a method
@@ -145,73 +142,5 @@ public class TestBenchMark extends Activity {
             acc = acc * mul;
         }
     }
-
-//    private class ControlClass3 extends ControlClass {
-//
-//        public String[] testArray;
-//
-//        public ControlClass3() {
-//            testArray = Shakespeare.SONNETS[0].split(" ");
-//        }
-//        /**
-//         * Given an array of strings which might contain duplicate strings remove all
-//         * duplicates
-//         *
-//         * @param strings String array with possible duplicate string members
-//         * @return Same array with only single occurrences of strings
-//         */
-//        private String[] uniq(String[] strings) {
-//            HashSet<String> setOfStrings = new HashSet<>(strings.length);
-//            Collections.addAll(setOfStrings, strings);
-//            String[] returnStringArray = new String[setOfStrings.size()];
-//            for (int i = 0; i < setOfStrings.size(); i++) {
-//                returnStringArray[i] = (String) setOfStrings.toArray()[i];
-//            }
-//            return returnStringArray;
-//        }
-//        /**
-//         * This method should be overridden by a method which performs whatever computation
-//         * you wish to benchmark.
-//         */
-//        @Override
-//        public void testMethod() {
-//            testArray = uniq(testArray);
-//        }
-//
-//    }
-//    private class ControlClass4 extends ControlClass {
-//
-//        public String[] testArray;
-//
-//        public ControlClass4() {
-//            testArray = Shakespeare.SONNETS[0].split(" ");
-//        }
-//        /**
-//         * Given an array of strings which might contain duplicate strings remove all
-//         * duplicates
-//         *
-//         * @param strings String array with possible duplicate string members
-//         * @return Same array with only single occurrences of strings
-//         */
-//        private String[] uniq(String[] strings) {
-//            HashSet<String> setOfStrings = new HashSet<>(strings.length);
-//            Collections.addAll(setOfStrings, strings);
-//            String[] returnStringArray = new String[setOfStrings.size()];
-//            Object[] tempObjectArray = setOfStrings.toArray();
-//            for (int i = 0; i < setOfStrings.size() ; i++) {
-//                returnStringArray[i] = (String) tempObjectArray[i];
-//            }
-//            return returnStringArray;
-//        }
-//        /**
-//         * This method should be overridden by a method which performs whatever computation
-//         * you wish to benchmark.
-//         */
-//        @Override
-//        public void testMethod() {
-//            testArray = uniq(testArray);
-//        }
-//
-//    }
 
 }
