@@ -30,7 +30,7 @@ public class TestBenchMark extends Activity {
     LinearLayout mResultsLinearLayout;
     ControlClass mControlInstance;
     final Long PROGRESS_STEPS = 100L;
-    final Long LOOP_REPITIONS = 10000000L;
+    final Long LOOP_REPETITIONS = 10000000L;
 
     /**
      * Called when the activity is starting, it sets the content view to the layout
@@ -62,7 +62,7 @@ public class TestBenchMark extends Activity {
             public void onClick(View v) {
                 Log.i(TAG, "Start button clicked");
                 mControlInstance = new ControlClass1();
-                mControlInstance.execute(LOOP_REPITIONS, PROGRESS_STEPS);
+                mControlInstance.execute(LOOP_REPETITIONS, PROGRESS_STEPS);
             }
         });
         startButtonTwo = (Button) findViewById(R.id.start_two);
@@ -71,7 +71,7 @@ public class TestBenchMark extends Activity {
             public void onClick(View v) {
                 Log.i(TAG, "Start button clicked");
                 mControlInstance = new ControlClass2();
-                mControlInstance.execute(LOOP_REPITIONS, PROGRESS_STEPS);
+                mControlInstance.execute(LOOP_REPETITIONS, PROGRESS_STEPS);
             }
         });
         abortButton = (Button) findViewById(R.id.abort);
@@ -96,20 +96,39 @@ public class TestBenchMark extends Activity {
         mResults = (TextView) findViewById(R.id.results_view);
     }
 
+    /**
+     * This class should be extended by classes which wish to benchmark their code in the
+     * overridden method testMethod().
+     */
     private class ControlClass extends CalcTask {
 
         @SuppressLint("SetTextI18n")
+        /**
+         * Runs on the UI thread after doInBackground(Long...).
+         * The specified result is the value returned by doInBackground(Long...).
+         * This method won't be invoked if the task was cancelled.
+         * Override this to make use of the elapsed time value returned.
+         *
+         * @param result The elapsed time the benchmark took.
+         */
         @Override
         protected void onPostExecute(Long result) {
             super.onPostExecute(result);
             Log.i(TAG, "Benchmark took " + result + " milliseconds");
-            String formatedIterations = NumberFormat.getNumberInstance(Locale.US).format(PROGRESS_STEPS*LOOP_REPITIONS);
-            String formatedResult = NumberFormat.getNumberInstance(Locale.US).format(result);
-            mResults.append("Executed " + formatedIterations + " times in\n" + formatedResult + " milliseconds\n");
+            String formattedIterations = NumberFormat.getNumberInstance(Locale.US).format(PROGRESS_STEPS* LOOP_REPETITIONS);
+            String formattedResult = NumberFormat.getNumberInstance(Locale.US).format(result);
+            mResults.append("Executed " + formattedIterations + " times in\n" + formattedResult + " milliseconds\n");
             mProgressLayout.setVisibility(View.GONE);
             mResultsLinearLayout.setVisibility(View.VISIBLE);
         }
 
+        /**
+         * Runs on the UI thread after publishProgress(Long...) is invoked.
+         * The specified values are the values passed to publishProgress(Long...).
+         * Override this to advance a progress bar
+         *
+         * @param progress The values indicating progress.
+         */
         @Override
         protected void onProgressUpdate(Long... progress) {
             super.onProgressUpdate(progress);
@@ -117,6 +136,9 @@ public class TestBenchMark extends Activity {
         }
     }
 
+    /**
+     * This is a simple example use of ControlClass designed to benchmark division.
+     */
     private class ControlClass1 extends ControlClass {
         public double acc = 1.000000001;
         public double div = 0.999999999;
@@ -130,6 +152,9 @@ public class TestBenchMark extends Activity {
         }
     }
 
+    /**
+     * This is a simple example use of ControlClass designed to benchmark multiplication.
+     */
     private class ControlClass2 extends ControlClass {
         public double acc = 1.000000001;
         public double mul = 0.999999999;

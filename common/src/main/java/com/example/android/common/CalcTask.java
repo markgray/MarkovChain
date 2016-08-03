@@ -59,7 +59,7 @@ public class CalcTask extends AsyncTask<Long, Long, Long> {
      * Runs on the UI thread after doInBackground(Long...).
      * The specified result is the value returned by doInBackground(Long...).
      * This method won't be invoked if the task was cancelled.
-     * Override this to make use of the elapssed time value returned.
+     * Override this to make use of the elapsed time value returned.
      *
      * @param result The elapsed time the benchmark took.
      */
