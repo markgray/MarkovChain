@@ -14,7 +14,9 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-
+/**
+ * This DialogFragment allows a user to choose a specific verse of the Bible
+ */
 public class BibleChoose extends DialogFragment {
     public final static String TAG = "BibleChoose";
     public String mLabel;
@@ -41,18 +43,12 @@ public class BibleChoose extends DialogFragment {
     }
 
     /**
-     * Called to do initial creation of a DialogFragment.  This is called after
-     * onAttach(Activity) and before
-     * onCreateView(LayoutInflater, ViewGroup, Bundle).
+     * Called to do initial creation of a BibleChoose DialogFragment. It sets the fields mLabel and
+     * mText of the instance to the values "label" and "text" contained in the arguments Bundle
+     * respectively, and sets the style used by the DialogFragment to STYLE_NORMAL.
      *
-     * <p>Note that this can be called while the fragment's activity is
-     * still in the process of being created.  As such, you can not rely
-     * on things like the activity's content view hierarchy being initialized
-     * at this point.  If you want to do work once the activity itself is
-     * created, see {@link #onActivityCreated(Bundle)}.
      *
-     * @param savedInstanceState If the fragment is being re-created from
-     * a previous saved state, this is the state.
+     * @param savedInstanceState always null since onSaveInstanceState is not overridden
      */
     @Override
     public void onCreate(Bundle savedInstanceState) {
