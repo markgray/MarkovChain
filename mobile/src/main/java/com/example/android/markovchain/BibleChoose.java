@@ -47,7 +47,6 @@ public class BibleChoose extends DialogFragment {
      * mText of the instance to the values "label" and "text" contained in the arguments Bundle
      * respectively, and sets the style used by the DialogFragment to STYLE_NORMAL.
      *
-     *
      * @param savedInstanceState always null since onSaveInstanceState is not overridden
      */
     @Override
@@ -62,23 +61,20 @@ public class BibleChoose extends DialogFragment {
     }
 
     /**
-     * Called to have the fragment instantiate its user interface view.
-     * This is optional, and non-graphical fragments can return null (which
-     * is the default implementation).  This will be called between
-     * {@link #onCreate(Bundle)} and {@link #onActivityCreated(Bundle)}.
+     * Called to have the fragment instantiate its user interface view. It inflates our layout file
+     * R.layout.bible_choose to be our View v, locates the TextView for our label in v (R.id.label)
+     * and sets the text to be the canonical Bible citation for our current verse mLabel, finds the
+     * TextView for our verse (R.id.text) and sets the text to the verse text for our current verse
+     * mText.
      *
-     * <p>If you return a View from here, you will later be called in
-     * {@link #onDestroyView} when the view is being released.
-
-     * @param inflater The LayoutInflater object that can be used to inflate
-     * any views in the fragment,
+     * @param inflater  The LayoutInflater object that can be used to inflate
+     *                  any views in the fragment,
      * @param container If non-null, this is the parent view that the fragment's
-     * UI should be attached to.  The fragment should not add the view itself,
-     * but this can be used to generate the LayoutParams of the view.
-     * @param savedInstanceState If non-null, this fragment is being re-constructed
-     * from a previous saved state as given here.
+     *                  UI should be attached to.  The fragment should not add the view itself,
+     *                  but this can be used to generate the LayoutParams of the view.
+     * @param savedInstanceState Always null since onSaveInstanceState is not overridden.
      *
-     * @return Return the View for the fragment's UI, or null.
+     * @return The View v for the fragment's UI.
      */
     @Nullable
     @Override
