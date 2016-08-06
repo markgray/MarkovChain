@@ -65,7 +65,8 @@ public class BibleChoose extends DialogFragment {
      * R.layout.bible_choose to be our View v, locates the TextView for our label in v (R.id.label)
      * and sets the text to be the canonical Bible citation for our current verse mLabel, finds the
      * TextView for our verse (R.id.text) and sets the text to the verse text for our current verse
-     * mText.
+     * mText. It then finds the Spinner spin (R.id.spinner) which we will use for our dropdown Bible
+     * book chooser.
      *
      * @param inflater  The LayoutInflater object that can be used to inflate
      *                  any views in the fragment,
