@@ -66,7 +66,9 @@ public class BibleChoose extends DialogFragment {
      * and sets the text to be the canonical Bible citation for our current verse mLabel, finds the
      * TextView for our verse (R.id.text) and sets the text to the verse text for our current verse
      * mText. It then finds the Spinner spin (R.id.spinner) which we will use for our dropdown Bible
-     * book chooser.
+     * book chooser. It creates ArrayAdapter<String> spinnerArrayAdapter from the names of the books
+     * in the Bible (BibleAdapter.books) using android.R.layout.simple_spinner_item as their layout,
+     * and sets "spinnerArrayAdapter" to be the adapter for "spin".
      *
      * @param inflater  The LayoutInflater object that can be used to inflate
      *                  any views in the fragment,
