@@ -72,7 +72,9 @@ public class BibleChoose extends DialogFragment {
      * to an anonymous method which merely stores the selected item away in bookNumber and bookName
      * for later use. Sets the Spinner selection to the book the current verse is contained in by
      * parsing the Bible citation for the verse contained in dialogLabel by using the method
-     * BibleMain.indexFromCitation(dialogLabel).
+     * BibleMain.indexFromCitation(dialogLabel). It next finds the EditText used to enter chapter
+     * and verse (R.id.chapter_and_verse) and stashes it away for later use in the onClickListener
+     * for the "GO" Button.
      *
      * @param inflater  The LayoutInflater object that can be used to inflate
      *                  any views in the fragment,
