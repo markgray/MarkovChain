@@ -74,7 +74,9 @@ public class BibleChoose extends DialogFragment {
      * parsing the Bible citation for the verse contained in dialogLabel by using the method
      * BibleMain.indexFromCitation(dialogLabel). It next finds the EditText used to enter chapter
      * and verse (R.id.chapter_and_verse) and stashes it away for later use in the onClickListener
-     * for the "GO" Button.
+     * for the "GO" Button. Next it locates the "GO" Button (R.id.show) and sets the onClickListener
+     * to a method instended to move to the verse selected by the Spinner spin and the EditText
+     * cavEditText.
      *
      * @param inflater  The LayoutInflater object that can be used to inflate
      *                  any views in the fragment,
@@ -113,6 +115,7 @@ public class BibleChoose extends DialogFragment {
         // Watch for button clicks.
         Button button = (Button) v.findViewById(R.id.show);
         button.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View v) {
                 // When button is clicked, call up to owning activity.
                 mBook = (String) spin.getSelectedItem();
