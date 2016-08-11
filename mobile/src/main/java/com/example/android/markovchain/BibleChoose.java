@@ -75,8 +75,9 @@ public class BibleChoose extends DialogFragment {
      * BibleMain.indexFromCitation(dialogLabel). It next finds the EditText used to enter chapter
      * and verse (R.id.chapter_and_verse) and stashes it away for later use in the onClickListener
      * for the "GO" Button. Next it locates the "GO" Button (R.id.show) and sets the onClickListener
-     * to a method instended to move to the verse selected by the Spinner spin and the EditText
-     * cavEditText.
+     * to a method designed to move to the verse selected by the Spinner spin and the EditText
+     * cavEditText. It then returns the View created by inflating R.layout.bible_choose at the
+     * beginning of the method.
      *
      * @param inflater  The LayoutInflater object that can be used to inflate
      *                  any views in the fragment,
