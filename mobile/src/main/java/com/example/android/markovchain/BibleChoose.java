@@ -116,9 +116,15 @@ public class BibleChoose extends DialogFragment {
         // Watch for button clicks.
         Button button = (Button) v.findViewById(R.id.show);
         button.setOnClickListener(new View.OnClickListener() {
+            /**
+             * Called when the "GO" Button is clicked, this method is tasked with doing all necessary
+             * book keeping, and instructing the BibleAdapter for the RecyclerView to move to the
+             * verse the user has selected.
+             *
+             * @param v "GO" Button View which was clicked
+             */
             @Override
             public void onClick(View v) {
-                // When button is clicked, call up to owning activity.
                 mBook = (String) spin.getSelectedItem();
                 mChapterAndVerse = cavEditText.getText().toString();
                 Log.i(TAG, mBook + " " + mChapterAndVerse);
