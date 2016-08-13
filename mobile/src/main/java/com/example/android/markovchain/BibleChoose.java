@@ -119,7 +119,12 @@ public class BibleChoose extends DialogFragment {
             /**
              * Called when the "GO" Button is clicked, this method is tasked with doing all necessary
              * book keeping, and instructing the BibleAdapter for the RecyclerView to move to the
-             * verse the user has selected.
+             * verse the user has selected. First it sets the field mBook to the selected item in
+             * the Spinner spin, then it sets the field mChapterAndVerse to the text entered in the
+             * EditText cavEditText. It sets the int bookNum based on the selected item position of
+             * the Spinner spin in order to more easily construct the String's citationChosen, and
+             * citationFallback which it uses as parameters to the method BibleMain.findFromCitation
+             * to find the int verseNumber index into the BibleAdapter's data.
              *
              * @param v "GO" Button View which was clicked
              */
