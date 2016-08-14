@@ -124,7 +124,12 @@ public class BibleChoose extends DialogFragment {
              * EditText cavEditText. It sets the int bookNum based on the selected item position of
              * the Spinner spin in order to more easily construct the String's citationChosen, and
              * citationFallback which it uses as parameters to the method BibleMain.findFromCitation
-             * to find the int verseNumber index into the BibleAdapter's data.
+             * to find the int verseNumber index into the BibleAdapter's data. It then calls the
+             * method BibleAdapter.moveToVerse with the View that was clicked (used only to provide
+             * Context for displaying a toast) and the verseNumber that the user has chosen. Since
+             * our work is done for now we dismiss ourselves and update the BibleDialog data fields
+             * mLabel and mText with the dialogTitle and dialogText of the verse we have just moved
+             * to.
              *
              * @param v "GO" Button View which was clicked
              */
