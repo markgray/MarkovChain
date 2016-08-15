@@ -23,7 +23,7 @@ public class BibleDialog extends DialogFragment {
      *
      * @param label Label to use
      * @param text  Text to use
-     * @return Initialized BibleDialog
+     * @return Initialized BibleDialog with the arguments Bundle containing the method's parameters
      */
     static BibleDialog newInstance(String label, String text) {
         BibleDialog f = new BibleDialog();
