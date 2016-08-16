@@ -19,7 +19,11 @@ public class BibleDialog extends DialogFragment {
     public Button repeatButton;
 
     /**
-     * Create and initialize a BibleDialog DialogFragment
+     * Create and initialize a BibleDialog DialogFragment. It does this by first creating a new
+     * instance of BibleDialog f, then creates an instance of Bundle args, putString's the label
+     * parameter under the index "label", and putStrings's the text parameter under the index
+     * "text' in this Bundle args, and finally using this Bundle to set the arguments of the
+     * BibleDialog using the method Fragment.setArguments.
      *
      * @param label Label to use
      * @param text  Text to use
