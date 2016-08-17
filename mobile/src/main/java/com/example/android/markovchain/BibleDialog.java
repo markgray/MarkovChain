@@ -44,10 +44,11 @@ public class BibleDialog extends DialogFragment {
     TextView lastLabelView;
     TextView lastTextView;
     /**
-     * Update the text displayed in the BibleDialog for new verse. This is necessary only after
-     * moving to a random verse, other action DialogFragments which return to the BibleDialog
-     * which launched them set the fields BibleMain.bibleDialog.mLabel and BibleMain.bibleDialog.mText
-     * instead TODO: Figure out if the move to random verse should do likewise?
+     * Update the text displayed in the BibleDialog for a new verse. This is necessary only after
+     * moving to a random verse at the moment because the same BibleDialog DialogFragment is
+     * used. Other actions create DialogFragments which when dismissed need to have the BibleDialog
+     * recreated so onCreateView is called, therefore setting the fields BibleMain.bibleDialog.mLabel
+     * and BibleMain.bibleDialog.mText is done instead.
      *
      * @param label Canonical Bible citation for the verse
      * @param text Text of the verse
