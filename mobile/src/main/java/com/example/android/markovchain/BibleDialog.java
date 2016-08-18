@@ -105,6 +105,13 @@ public class BibleDialog extends DialogFragment {
          * Implementers can call getItemAtPosition(position) if they need to access the data
          * associated with the selected item.
          *
+         * First we save the position selected and the string associated with that position in
+         * the fields spinIndex and spinChosen respectively. Then if it is not the same as the
+         * as the lastIndex chosen we call handleAction to perform whatever action is required
+         * when that spinIndex is chosen, and on return we save this position as the new lastIndex.
+         * If the index was not 0 (our "Choose Action" prompt) we set the visibility of our "REPEAT"
+         * Button to VISIBLE (It starts out with a visibility of GONE.)
+         *
          * @param parent The AdapterView where the selection happened
          * @param view The view within the AdapterView that was clicked
          * @param position The position of the view in the adapter
@@ -119,7 +126,7 @@ public class BibleDialog extends DialogFragment {
                 ((BibleMain) getActivity()).handleAction(view, spinIndex);
                 lastIndex = spinIndex;
             }
-            if (spinIndex != 0) { // This is the correct place to set this! (I think)
+            if (spinIndex != 0) {
                 repeatButton.setVisibility(View.VISIBLE);
             }
         }
