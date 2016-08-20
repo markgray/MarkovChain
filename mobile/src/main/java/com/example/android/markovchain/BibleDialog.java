@@ -144,7 +144,9 @@ public class BibleDialog extends DialogFragment {
      * Called to have the fragment instantiate its user interface view. This will be called between
      * onCreate(Bundle) and onActivityCreated(Bundle). Locate and inflate our layout
      * (R.layout.bible_dialog) into View v. Find the TextView for our label (R.id.label), save it
-     * in lastLabelView and set the text of that TextView to the contents of the String mLabel
+     * in lastLabelView and set the text of that TextView to the contents of the String mLabel.
+     * Find the TextView for our verses text (R.id.text), save it in lastTextView and set the text
+     * of this TextView to the String mText.
      *
      *
      * @param inflater The LayoutInflater object that can be used to inflate
