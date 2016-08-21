@@ -142,12 +142,19 @@ public class BibleDialog extends DialogFragment {
 
     /**
      * Called to have the fragment instantiate its user interface view. This will be called between
-     * onCreate(Bundle) and onActivityCreated(Bundle). Locate and inflate our layout
+     * onCreate(Bundle) and onActivityCreated(Bundle). Here we locate and inflate our layout
      * (R.layout.bible_dialog) into View v. Find the TextView for our label (R.id.label), save it
      * in lastLabelView and set the text of that TextView to the contents of the String mLabel.
      * Find the TextView for our verses text (R.id.text), save it in lastTextView and set the text
-     * of this TextView to the String mText.
-     *
+     * of this TextView to the String mText. It next locates our Spinner in the layout (R.id.spinner)
+     * and sets Spinner spin to it, creates ArrayAdapter<String> spinnerArrayAdapter from spinChoices
+     * (our String array of actions that the BibleDialog can launch for us), configures it and sets
+     * it as the adapter that Spinner spin will use, and sets the AdapterView.OnItemSelectedListener
+     * to the spinSelected instance defined above. It next locates our "REPEAT" Button (R.id.repeat)
+     * and sets the OnClickListener to an anonymous class which will cause the last action performed
+     * to be repeated, and locates our "DISMISS" Button (R.id.dismiss) and sets the OnClickListener
+     * to an anonymous class which will dismiss our BibleDialog. We finally return the View v we have
+     * created and configured.
      *
      * @param inflater The LayoutInflater object that can be used to inflate
      * any views in the fragment,
@@ -156,11 +163,10 @@ public class BibleDialog extends DialogFragment {
      * but this can be used to generate the LayoutParams of the view.
      * @param savedInstanceState Always null since onSaveInstanceState is not overridden.
      *
-     * @return Return the View for the fragment's UI, or null.
+     * @return Return the View for the fragment's UI.
      */
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.bible_dialog, container, false);
         View tv = v.findViewById(R.id.label);
         lastLabelView = (TextView) tv;
@@ -170,7 +176,6 @@ public class BibleDialog extends DialogFragment {
         tv = v.findViewById(R.id.text);
         lastTextView = (TextView) tv;
         ((TextView) tv).setText(mText);
-
 
         Spinner spin = (Spinner) v.findViewById(R.id.spinner);
 
@@ -187,7 +192,6 @@ public class BibleDialog extends DialogFragment {
         repeatButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // When button is clicked, call up to owning activity.
                 ((BibleMain) getActivity()).handleAction(v, spinIndex);
             }
         });
