@@ -190,6 +190,11 @@ public class BibleDialog extends DialogFragment {
         // Watch for button clicks.
         repeatButton = (Button) v.findViewById(R.id.repeat);
         repeatButton.setOnClickListener(new View.OnClickListener() {
+            /**
+             * Repeat the last action processed when clicked
+             *
+             * @param v REPEAT Button which has been clicked
+             */
             @Override
             public void onClick(View v) {
                 ((BibleMain) getActivity()).handleAction(v, spinIndex);
@@ -198,6 +203,13 @@ public class BibleDialog extends DialogFragment {
 
         Button button = (Button) v.findViewById(R.id.dismiss);
         button.setOnClickListener(new View.OnClickListener() {
+            /**
+             * Dismiss this BibleDialog. It does this by fetching the activity our DialogFragment
+             * is associated with (BibleMain) and using this to access the convenience function
+             * dismissDiaglog which will dismiss us.
+             *
+             * @param v DISMISS Button which has been clicked
+             */
             @Override
             public void onClick(View v) {
                 ((BibleMain) getActivity()).dismissDiaglog();
