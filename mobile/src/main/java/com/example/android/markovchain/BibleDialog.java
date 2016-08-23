@@ -206,7 +206,7 @@ public class BibleDialog extends DialogFragment {
             /**
              * Dismiss this BibleDialog. It does this by fetching the activity our DialogFragment
              * is associated with (BibleMain) and using this to access the convenience function
-             * dismissDiaglog which will dismiss us.
+             * dismissDialog which will dismiss us.
              *
              * @param v DISMISS Button which has been clicked
              */
@@ -222,7 +222,7 @@ public class BibleDialog extends DialogFragment {
     /**
      * Called when the fragment is visible to the user and actively running.
      * This is generally tied to Activity.onResume of the containing Activity's
-     * lifecycle.
+     * lifecycle. I just override for educational purposes.
      */
     @Override
     public void onResume() {
