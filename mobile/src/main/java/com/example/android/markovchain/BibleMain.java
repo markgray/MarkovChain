@@ -44,7 +44,16 @@ public class BibleMain extends Activity {
 
     /**
      * Called when the activity is starting. First we call through to the super class's
-     * implementation of this method. 
+     * implementation of this method. We set the field mDoneReading to false so that our
+     * UI thread knows to wait until our text file is read into memory before trying to
+     * access the data. We Reset the ConditionVariable mDoneReading to the closed state
+     * so that any threads that call block() will block until someone calls open. We next
+     * set the field Context bibleContext to the context of the single, global Application
+     * object of the current process. This is because we will later need a Context whose
+     * lifecycle is separate from the current context, that is tied to the lifetime of
+     * the process rather than the current component. We next call the method initDataSet
+     * which will spawn a thread to read in our data file (R.raw.king_james_text_and_verse)
+     * and create the data structures we will use in our activity.
      *
      * @param savedInstanceState always null since onSaveInstanceState is not overridden
      */
@@ -54,7 +63,7 @@ public class BibleMain extends Activity {
         doneReading = false;
         mDoneReading.close();
         bibleContext = getApplicationContext();
-        initDataset();
+        initDataSet();
         setContentView(R.layout.activity_bible_fragment);
         mLayoutManager = new LinearLayoutManager(getApplicationContext());
         mRecyclerView = (RecyclerView) findViewById(R.id.bible_recyclerview);
@@ -274,7 +283,7 @@ public class BibleMain extends Activity {
      * Reads the raw file king_james_text_and_verse.txt, separating it into citations
      * (bookChapterVerse) and verse text (stringList)
      */
-    private void initDataset() {
+    private void initDataSet() {
         final String[] line = new String[1];
         final StringBuilder[] builder = {new StringBuilder()};
         InputStream inputStream = getApplicationContext().getResources().openRawResource(R.raw.king_james_text_and_verse);
