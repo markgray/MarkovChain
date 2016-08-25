@@ -52,8 +52,11 @@ public class BibleMain extends Activity {
      * object of the current process. This is because we will later need a Context whose
      * lifecycle is separate from the current context, that is tied to the lifetime of
      * the process rather than the current component. We next call the method initDataSet
-     * which will spawn a thread to read in our data file (R.raw.king_james_text_and_verse)
-     * and create the data structures we will use in our activity.
+     * which will spawn a background thread to read in the data file we will be using
+     * (R.raw.king_james_text_and_verse) and create the data structures needed by our
+     * activity. Then we set the content View to our layout file (R.layout.activity_bible_fragment),
+     * locate the RecyclerView in the layout (R.id.bible_recyclerview) and save it in the
+     * field RecyclerView mRecyclerView
      *
      * @param savedInstanceState always null since onSaveInstanceState is not overridden
      */
