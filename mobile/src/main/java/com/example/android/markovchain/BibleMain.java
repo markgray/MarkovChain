@@ -56,7 +56,13 @@ public class BibleMain extends Activity {
      * (R.raw.king_james_text_and_verse) and create the data structures needed by our
      * activity. Then we set the content View to our layout file (R.layout.activity_bible_fragment),
      * locate the RecyclerView in the layout (R.id.bible_recyclerview) and save it in the
-     * field RecyclerView mRecyclerView
+     * field RecyclerView mRecyclerView. Create BibleAdapter mAdapter from the List containing the
+     * text (ArrayList<String> stringList), the List containing chapter and verse annotation for
+     * each paragraph (ArrayList<String> bookChapterVerse), and the layout manager to use for the
+     * RecyclerView.Adapter created (RecyclerView.LayoutManager mLayoutManager -- an instance of
+     * LinearLayoutManager created above). We now set the adapter of our RecyclerView mRecyclerView
+     * to the BibleAdapter mAdapter we just created, and the layout manager to be used to the
+     * RecyclerView.LayoutManager mLayoutManager.
      *
      * @param savedInstanceState always null since onSaveInstanceState is not overridden
      */
