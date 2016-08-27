@@ -212,7 +212,7 @@ public class BibleDialog extends DialogFragment {
              */
             @Override
             public void onClick(View v) {
-                ((BibleMain) getActivity()).dismissDiaglog();
+                ((BibleMain) getActivity()).dismissDialog();
             }
         });
 

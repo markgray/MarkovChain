@@ -83,29 +83,18 @@ public class BibleMain extends Activity {
     }
 
     /**
-     * Called when you are no longer visible to the user.  You will next
-     * receive either {@link #onRestart}, {@link #onDestroy}, or nothing,
-     * depending on later user activity.
-     *
-     * <p>Note that this method may never be called, in low memory situations
-     * where the system does not have enough memory to keep your activity's
-     * process running after its {@link #onPause} method is called.
-     *
-     * <p><em>Derived classes must call through to the super class's
-     * implementation of this method.  If they do not, an exception will be
-     * thrown.</em></p>
-     *
-     * @see #onRestart
-     * @see #onResume
-     * @see #onSaveInstanceState
-     * @see #onDestroy
+     * Called as part of the activity lifecycle when an activity is going into
+     * the background, but has not (yet) been killed.  The counterpart to
+     * {@link #onResume}. We fetch the first completely visible verse by calling
+     * findFirstCompletelyVisibleItemPosition, then call saveVerseNumber to save
+     * the index number to our shared preference file.
      */
     @Override
-    protected void onStop() {
+    protected void onPause() {
         int lastFirstVisiblePosition = ((LinearLayoutManager)mRecyclerView
                 .getLayoutManager()).findFirstCompletelyVisibleItemPosition();
         saveVerseNumber(lastFirstVisiblePosition, LAST_VERSE_VIEWED);
-        super.onStop();
+        super.onPause();
     }
 
     /**
@@ -147,8 +136,6 @@ public class BibleMain extends Activity {
         super.onDestroy();
     }
 
-
-
     /**
      * Save the currently viewed verse to shared preferences file
      *
@@ -179,7 +166,7 @@ public class BibleMain extends Activity {
      * in case there are no exact matches for the given citation
      *
      * @param citation Bible citation we are looking for
-     * @param fallback a fallback citation to use if that citation is not foud
+     * @param fallback a fallback citation to use if that citation is not found
      *
      * @return Index of the verse we are interested in
      */
@@ -253,7 +240,7 @@ public class BibleMain extends Activity {
     /**
      * Convenience function to dismiss the main BibleDialog DialogFragment
      */
-    public void dismissDiaglog() {
+    public void dismissDialog() {
         bibleDialog.dismiss();
     }
 
