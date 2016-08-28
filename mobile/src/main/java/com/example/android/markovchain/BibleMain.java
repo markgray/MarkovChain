@@ -83,11 +83,12 @@ public class BibleMain extends Activity {
     }
 
     /**
-     * Called as part of the activity lifecycle when an activity is going into
-     * the background, but has not (yet) been killed.  The counterpart to
-     * {@link #onResume}. We fetch the first completely visible verse by calling
-     * findFirstCompletelyVisibleItemPosition, then call saveVerseNumber to save
-     * the index number to our shared preference file.
+     * Called as part of the activity lifecycle when an activity is going into the background,
+     * but has not (yet) been killed.  The counterpart to onResume. We fetch the verse number
+     * of the first completely visible verse by calling findFirstCompletelyVisibleItemPosition,
+     * then call saveVerseNumber to save the verse number to our shared preference file under
+     * the index LAST_VERSE_VIEWED. Finally we call through to our super's implementation of
+     * onPause.
      */
     @Override
     protected void onPause() {
