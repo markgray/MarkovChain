@@ -20,6 +20,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
+/**
+ * This is the main activity of our Bible Text reading function.
+ */
 public class BibleMain extends Activity {
 
     public final String TAG = "BibleMain";
@@ -40,30 +43,28 @@ public class BibleMain extends Activity {
     public static TextToSpeech textToSpeech;
 
     /**
-     * Called when the activity is starting.  This is where most initialization
-     * should go: calling {@link #setContentView(int)} to inflate the
-     * activity's UI, using {@link #findViewById} to programmatically interact
-     * with widgets in the UI, calling
-     * {@link #managedQuery(android.net.Uri , String[], String, String[], String)} to retrieve
-     * cursors for data being displayed, etc.
+     * Called when the activity is starting. First we call through to the super class's
+     * implementation of this method. We set the field mDoneReading to false so that our
+     * UI thread knows to wait until our text file is read into memory before trying to
+     * access the data. We Reset the ConditionVariable mDoneReading to the closed state
+     * so that any threads that call block() will block until someone calls open. We next
+     * set the field Context bibleContext to the context of the single, global Application
+     * object of the current process. This is because we will later need a Context whose
+     * lifecycle is separate from the current context, that is tied to the lifetime of
+     * the process rather than the current component. We next call the method initDataSet
+     * which will spawn a background thread to read in the data file we will be using
+     * (R.raw.king_james_text_and_verse) and create the data structures needed by our
+     * activity. Then we set the content View to our layout file (R.layout.activity_bible_fragment),
+     * locate the RecyclerView in the layout (R.id.bible_recyclerview) and save it in the
+     * field RecyclerView mRecyclerView. Create BibleAdapter mAdapter from the List containing the
+     * text (ArrayList<String> stringList), the List containing chapter and verse annotation for
+     * each paragraph (ArrayList<String> bookChapterVerse), and the layout manager to use for the
+     * RecyclerView.Adapter created (RecyclerView.LayoutManager mLayoutManager -- an instance of
+     * LinearLayoutManager created above). We now set the adapter of our RecyclerView mRecyclerView
+     * to the BibleAdapter mAdapter we just created, and the layout manager to be used to the
+     * RecyclerView.LayoutManager mLayoutManager.
      *
-     * <p>You can call {@link #finish} from within this function, in
-     * which case onDestroy() will be immediately called without any of the rest
-     * of the activity lifecycle ({@link #onStart}, {@link #onResume},
-     * {@link #onPause}, etc) executing.
-     *
-     * <p><em>Derived classes must call through to the super class's
-     * implementation of this method.  If they do not, an exception will be
-     * thrown.</em></p>
-     *
-     * @param savedInstanceState If the activity is being re-initialized after
-     *     previously being shut down then this Bundle contains the data it most
-     *     recently supplied in {@link #onSaveInstanceState}.  <b><i>Note: Otherwise it is null.</i></b>
-     *
-     * @see #onStart
-     * @see #onSaveInstanceState
-     * @see #onRestoreInstanceState
-     * @see #onPostCreate
+     * @param savedInstanceState always null since onSaveInstanceState is not overridden
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,7 +72,7 @@ public class BibleMain extends Activity {
         doneReading = false;
         mDoneReading.close();
         bibleContext = getApplicationContext();
-        initDataset();
+        initDataSet();
         setContentView(R.layout.activity_bible_fragment);
         mLayoutManager = new LinearLayoutManager(getApplicationContext());
         mRecyclerView = (RecyclerView) findViewById(R.id.bible_recyclerview);
@@ -82,29 +83,19 @@ public class BibleMain extends Activity {
     }
 
     /**
-     * Called when you are no longer visible to the user.  You will next
-     * receive either {@link #onRestart}, {@link #onDestroy}, or nothing,
-     * depending on later user activity.
-     *
-     * <p>Note that this method may never be called, in low memory situations
-     * where the system does not have enough memory to keep your activity's
-     * process running after its {@link #onPause} method is called.
-     *
-     * <p><em>Derived classes must call through to the super class's
-     * implementation of this method.  If they do not, an exception will be
-     * thrown.</em></p>
-     *
-     * @see #onRestart
-     * @see #onResume
-     * @see #onSaveInstanceState
-     * @see #onDestroy
+     * Called as part of the activity lifecycle when an activity is going into the background,
+     * but has not (yet) been killed.  The counterpart to onResume. We fetch the verse number
+     * of the first completely visible verse by calling findFirstCompletelyVisibleItemPosition,
+     * then call saveVerseNumber to save the verse number to our shared preference file under
+     * the index LAST_VERSE_VIEWED. Finally we call through to our super's implementation of
+     * onPause.
      */
     @Override
-    protected void onStop() {
+    protected void onPause() {
         int lastFirstVisiblePosition = ((LinearLayoutManager)mRecyclerView
                 .getLayoutManager()).findFirstCompletelyVisibleItemPosition();
         saveVerseNumber(lastFirstVisiblePosition, LAST_VERSE_VIEWED);
-        super.onStop();
+        super.onPause();
     }
 
     /**
@@ -126,6 +117,10 @@ public class BibleMain extends Activity {
      * @see #onRestart
      * @see #onPostResume
      * @see #onPause
+     *
+     * Our first action is to retreive the last verse viewed number from our shared preference file
+     * by calling restoreVerseNumber, then we use this number to move our BibleAdapter to this verse.
+     * Finally we call through to our super's implementation of onResume.
      */
     @Override
     protected void onResume() {
@@ -145,8 +140,6 @@ public class BibleMain extends Activity {
         }
         super.onDestroy();
     }
-
-
 
     /**
      * Save the currently viewed verse to shared preferences file
@@ -178,7 +171,7 @@ public class BibleMain extends Activity {
      * in case there are no exact matches for the given citation
      *
      * @param citation Bible citation we are looking for
-     * @param fallback a fallback citation to use if that citation is not foud
+     * @param fallback a fallback citation to use if that citation is not found
      *
      * @return Index of the verse we are interested in
      */
@@ -252,7 +245,7 @@ public class BibleMain extends Activity {
     /**
      * Convenience function to dismiss the main BibleDialog DialogFragment
      */
-    public void dismissDiaglog() {
+    public void dismissDialog() {
         bibleDialog.dismiss();
     }
 
@@ -291,7 +284,7 @@ public class BibleMain extends Activity {
      * Reads the raw file king_james_text_and_verse.txt, separating it into citations
      * (bookChapterVerse) and verse text (stringList)
      */
-    private void initDataset() {
+    private void initDataSet() {
         final String[] line = new String[1];
         final StringBuilder[] builder = {new StringBuilder()};
         InputStream inputStream = getApplicationContext().getResources().openRawResource(R.raw.king_james_text_and_verse);
