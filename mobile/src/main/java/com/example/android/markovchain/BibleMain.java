@@ -117,6 +117,10 @@ public class BibleMain extends Activity {
      * @see #onRestart
      * @see #onPostResume
      * @see #onPause
+     *
+     * Our first action is to retreive the last verse viewed number from our shared preference file
+     * by calling restoreVerseNumber, then we use this number to move our BibleAdapter to this verse.
+     * Finally we call through to our super's implementation of onResume.
      */
     @Override
     protected void onResume() {
