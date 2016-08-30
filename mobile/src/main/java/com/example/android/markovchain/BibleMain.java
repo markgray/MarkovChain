@@ -129,6 +129,14 @@ public class BibleMain extends Activity {
         super.onResume();
     }
 
+    /**
+     * Perform any final cleanup before an activity is destroyed. If textToSpeech is not null (we
+     * have been using text to speech in BibleSpeak) interrupt the current utterance and discard
+     * other utterances in the queue by calling TextToSpeech.stop(), release the resources used
+     * by the TextToSpeech engine by calling TextToSpeech.shutdown() and then set textToSpeech to
+     * null (unnecessary since we are in onDestroy, but better safe than sorry!). Finally we call
+     * through to our super's implementation of of onDestroy().
+     */
     @Override
     public void onDestroy() {
         Log.i(TAG, "onDestroy has been called");
