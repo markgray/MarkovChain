@@ -99,26 +99,11 @@ public class BibleMain extends Activity {
     }
 
     /**
-     * Called after {@link #onRestoreInstanceState}, {@link #onRestart}, or
-     * {@link #onPause}, for your activity to start interacting with the user.
-     * This is a good place to begin animations, open exclusive-access devices
-     * (such as the camera), etc.
+     * Called after onRestoreInstanceState, onRestart, or onPause, for your activity to start
+     * interacting with the user. This is a good place to begin animations, open exclusive-access
+     * devices (such as the camera), etc.
      *
-     * <p>Keep in mind that onResume is not the best indicator that your activity
-     * is visible to the user; a system window such as the keyguard may be in
-     * front.  Use {@link #onWindowFocusChanged} to know for certain that your
-     * activity is visible to the user (for example, to resume a game).
-     *
-     * <p><em>Derived classes must call through to the super class's
-     * implementation of this method.  If they do not, an exception will be
-     * thrown.</em></p>
-     *
-     * @see #onRestoreInstanceState
-     * @see #onRestart
-     * @see #onPostResume
-     * @see #onPause
-     *
-     * Our first action is to retreive the last verse viewed number from our shared preference file
+     * Our first action is to retrieve the last verse viewed number from our shared preference file
      * by calling restoreVerseNumber, then we use this number to move our BibleAdapter to this verse.
      * Finally we call through to our super's implementation of onResume.
      */
@@ -130,8 +115,8 @@ public class BibleMain extends Activity {
     }
 
     /**
-     * Perform any final cleanup before an activity is destroyed. If textToSpeech is not null (we
-     * have been using text to speech in BibleSpeak) interrupt the current utterance and discard
+     * Perform any final cleanup before an activity is destroyed. If textToSpeech is not null we
+     * have been using text to speech in BibleSpeak so we interrupt the current utterance and discard
      * other utterances in the queue by calling TextToSpeech.stop(), release the resources used
      * by the TextToSpeech engine by calling TextToSpeech.shutdown() and then set textToSpeech to
      * null (unnecessary since we are in onDestroy, but better safe than sorry!). Finally we call
@@ -150,7 +135,9 @@ public class BibleMain extends Activity {
     }
 
     /**
-     * Save the currently viewed verse to shared preferences file
+     * Save the currently viewed verse (or any other int) to shared preferences file under the
+     * key key. First we retrieve a reference the preferences file for the Class BibleMain and
+     * save it in SharedPreferences pref.
      *
      * @param verse verse number
      * @param key   key to store it under (presently only "LAST_VERSE_VIEWED")
