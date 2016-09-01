@@ -136,8 +136,10 @@ public class BibleMain extends Activity {
 
     /**
      * Save the currently viewed verse (or any other int) to shared preferences file under the
-     * key key. First we retrieve a reference the preferences file for the Class BibleMain and
-     * save it in SharedPreferences pref.
+     * key "key". First we retrieve a reference to the preferences file for the Class BibleMain and
+     * save it in SharedPreferences pref. We create an SharedPreferences.Editor editor from pref,
+     * use this Editor to save as an int value our parameter verse using the key "key", and finally
+     * commit our changes from our Editor to SharedPreferences pref.
      *
      * @param verse verse number
      * @param key   key to store it under (presently only "LAST_VERSE_VIEWED")
