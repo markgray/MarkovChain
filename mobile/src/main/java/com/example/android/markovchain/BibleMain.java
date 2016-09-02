@@ -139,7 +139,8 @@ public class BibleMain extends Activity {
      * key "key". First we retrieve a reference to the preferences file for the Class BibleMain and
      * save it in SharedPreferences pref. We create an SharedPreferences.Editor editor from pref,
      * use this Editor to save as an int value our parameter verse using the key "key", and finally
-     * commit our changes from our Editor to SharedPreferences pref.
+     * commit our changes from our Editor to SharedPreferences pref. (Only memory copy is written to,
+     * an asynchronous commit is started to write to disk.)
      *
      * @param verse verse number
      * @param key   key to store it under (presently only "LAST_VERSE_VIEWED")
@@ -152,7 +153,9 @@ public class BibleMain extends Activity {
     }
 
     /**
-     * Retrieve the last viewed verse from shared preferences file
+     * Retrieve the last viewed verse from shared preferences file. First we retrieve a reference
+     * to the preferences file for the Class BibleMain and save it in SharedPreferences pref, then
+     * we retrieve the int value stored in the preference file under the key "key".
      *
      * @param verse verse number default value
      * @param key   key it was stored under (presently only "LAST_VERSE_VIEWED")
