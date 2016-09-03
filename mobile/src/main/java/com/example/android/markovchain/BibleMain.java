@@ -155,7 +155,7 @@ public class BibleMain extends Activity {
     /**
      * Retrieve the last viewed verse from shared preferences file. First we retrieve a reference
      * to the preferences file for the Class BibleMain and save it in SharedPreferences pref, then
-     * we retrieve the int value stored in the preference file under the key "key".
+     * we retrieve and return the int value stored in the preference file under the key "key".
      *
      * @param verse verse number default value
      * @param key   key it was stored under (presently only "LAST_VERSE_VIEWED")
@@ -168,7 +168,7 @@ public class BibleMain extends Activity {
 
     /**
      * Finds the verse index of a given standard Bible citation, using the fallback citation
-     * in case there are no exact matches for the given citation
+     * in case there are no exact matches for the given citation.
      *
      * @param citation Bible citation we are looking for
      * @param fallback a fallback citation to use if that citation is not found
