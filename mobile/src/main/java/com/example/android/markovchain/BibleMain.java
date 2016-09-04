@@ -168,7 +168,14 @@ public class BibleMain extends Activity {
 
     /**
      * Finds the verse index of a given standard Bible citation, using the fallback citation
-     * in case there are no exact matches for the given citation.
+     * in case there are no exact matches for the given citation. We start by initializing
+     * fallBackIndex to 0 so that if neither citation nor fallback is found by exact match
+     * we will return 0 (very beginning of Bible). Then we search through our entire list of
+     * citations ArrayList<String> bookChapterVerse checking whether "citation" matches (in
+     * which case we immediately return the index for the verse in question) or "fallback"
+     * matches (in which case we set fallBackIndex to the index for the verse "fallback"
+     * matches). Finally if an exact match for citation has not been found in our bookChapterVerse
+     * list we return fallBackIndex. TODO: Benchmark moving get to variable!
      *
      * @param citation Bible citation we are looking for
      * @param fallback a fallback citation to use if that citation is not found
