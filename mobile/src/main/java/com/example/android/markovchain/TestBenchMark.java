@@ -11,6 +11,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.text.NumberFormat;
+import java.util.ArrayList;
 import java.util.Locale;
 
 import com.example.android.common.CalcTask;
@@ -167,5 +168,33 @@ public class TestBenchMark extends Activity {
             acc = acc * mul;
         }
     }
+
+    static ArrayList<String> bookChapterVerse = new ArrayList<>();
+    public static int findFromCitation1(String citation, String fallback) {
+        int fallBackIndex = 0;
+        for (int i = 0; i < bookChapterVerse.size(); i++) {
+            if (citation.equals(bookChapterVerse.get(i))) {
+                return i;
+            }
+            if (fallback.equals(bookChapterVerse.get(i))) {
+                fallBackIndex = i;
+            }
+        }
+        return fallBackIndex;
+    }
+    public static int findFromCitation2(String citation, String fallback) {
+        int fallBackIndex = 0;
+        for (int i = 0; i < bookChapterVerse.size(); i++) {
+            String stringToCheck = bookChapterVerse.get(i);
+            if (citation.equals(stringToCheck)) {
+                return i;
+            }
+            if (fallback.equals(stringToCheck)) {
+                fallBackIndex = i;
+            }
+        }
+        return fallBackIndex;
+    }
+
 
 }
