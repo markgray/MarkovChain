@@ -32,7 +32,7 @@ public class TestBenchMark extends Activity {
     LinearLayout mResultsLinearLayout;
     ControlClass mControlInstance;
     final Long PROGRESS_STEPS = 100L;
-    final Long LOOP_REPETITIONS = 10000000L;
+    final Long LOOP_REPETITIONS = 100000L;
 
     /**
      * Called when the activity is starting, it sets the content view to the layout
@@ -63,7 +63,7 @@ public class TestBenchMark extends Activity {
             @Override
             public void onClick(View v) {
                 Log.i(TAG, "Start button clicked");
-                mControlInstance = new ControlClass1();
+                mControlInstance = new ControlClass3();
                 mControlInstance.execute(LOOP_REPETITIONS, PROGRESS_STEPS);
             }
         });
@@ -72,7 +72,7 @@ public class TestBenchMark extends Activity {
             @Override
             public void onClick(View v) {
                 Log.i(TAG, "Start button clicked");
-                mControlInstance = new ControlClass2();
+                mControlInstance = new ControlClass4();
                 mControlInstance.execute(LOOP_REPETITIONS, PROGRESS_STEPS);
             }
         });
@@ -170,7 +170,7 @@ public class TestBenchMark extends Activity {
         }
     }
 
-    private class ControlCall3 extends ControlClass {
+    private class ControlClass3 extends ControlClass {
         /**
          * This method should be overridden by a method which performs whatever computation
          * you wish to benchmark.
@@ -182,7 +182,7 @@ public class TestBenchMark extends Activity {
         }
     }
 
-    private class ControlCall4 extends ControlClass {
+    private class ControlClass4 extends ControlClass {
         /**
          * This method should be overridden by a method which performs whatever computation
          * you wish to benchmark.
