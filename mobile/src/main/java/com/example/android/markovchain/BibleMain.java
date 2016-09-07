@@ -175,7 +175,7 @@ public class BibleMain extends Activity {
      * which case we immediately return the index for the verse in question) or "fallback"
      * matches (in which case we set fallBackIndex to the index for the verse "fallback"
      * matches). Finally if an exact match for citation has not been found in our bookChapterVerse
-     * list we return fallBackIndex. TODO: Benchmark moving get to variable!
+     * list we return fallBackIndex.
      *
      * @param citation Bible citation we are looking for
      * @param fallback a fallback citation to use if that citation is not found
@@ -185,10 +185,11 @@ public class BibleMain extends Activity {
     public static int findFromCitation(String citation, String fallback) {
         int fallBackIndex = 0;
         for (int i = 0; i < bookChapterVerse.size(); i++) {
-            if (citation.equals(bookChapterVerse.get(i))) {
+            final String candidateVerse = bookChapterVerse.get(i);
+            if (citation.equals(candidateVerse)) {
                 return i;
             }
-            if (fallback.equals(bookChapterVerse.get(i))) {
+            if (fallback.equals(candidateVerse)) {
                 fallBackIndex = i;
             }
         }
