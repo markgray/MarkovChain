@@ -197,7 +197,9 @@ public class BibleMain extends Activity {
     }
 
     /**
-     *  Returns the book number index for a citation which uses the name instead of the number
+     *  Returns the book number index for a citation which uses the name instead of the number.
+     *  First we strip off the book name from the citation (all characters up to the first ":")
+     *  into the variable String bookLook.
      *
      * @param citation Standard Bible citation
      * @return Index of the book name
