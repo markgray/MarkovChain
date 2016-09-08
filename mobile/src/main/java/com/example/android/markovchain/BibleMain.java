@@ -139,7 +139,8 @@ public class BibleMain extends Activity {
      * key "key". First we retrieve a reference to the preferences file for the Class BibleMain and
      * save it in SharedPreferences pref. We create an SharedPreferences.Editor editor from pref,
      * use this Editor to save as an int value our parameter verse using the key "key", and finally
-     * commit our changes from our Editor to SharedPreferences pref.
+     * commit our changes from our Editor to SharedPreferences pref. (Only memory copy is written to,
+     * an asynchronous commit is started to write to disk.)
      *
      * @param verse verse number
      * @param key   key to store it under (presently only "LAST_VERSE_VIEWED")
@@ -152,7 +153,9 @@ public class BibleMain extends Activity {
     }
 
     /**
-     * Retrieve the last viewed verse from shared preferences file
+     * Retrieve the last viewed verse from shared preferences file. First we retrieve a reference
+     * to the preferences file for the Class BibleMain and save it in SharedPreferences pref, then
+     * we retrieve and return the int value stored in the preference file under the key "key".
      *
      * @param verse verse number default value
      * @param key   key it was stored under (presently only "LAST_VERSE_VIEWED")
@@ -165,7 +168,14 @@ public class BibleMain extends Activity {
 
     /**
      * Finds the verse index of a given standard Bible citation, using the fallback citation
-     * in case there are no exact matches for the given citation
+     * in case there are no exact matches for the given citation. We start by initializing
+     * fallBackIndex to 0 so that if neither citation nor fallback is found by exact match
+     * we will return 0 (very beginning of Bible). Then we search through our entire list of
+     * citations ArrayList<String> bookChapterVerse checking whether "citation" matches (in
+     * which case we immediately return the index for the verse in question) or "fallback"
+     * matches (in which case we set fallBackIndex to the index for the verse "fallback"
+     * matches). Finally if an exact match for citation has not been found in our bookChapterVerse
+     * list we return fallBackIndex.
      *
      * @param citation Bible citation we are looking for
      * @param fallback a fallback citation to use if that citation is not found
@@ -175,10 +185,11 @@ public class BibleMain extends Activity {
     public static int findFromCitation(String citation, String fallback) {
         int fallBackIndex = 0;
         for (int i = 0; i < bookChapterVerse.size(); i++) {
-            if (citation.equals(bookChapterVerse.get(i))) {
+            final String candidateVerse = bookChapterVerse.get(i);
+            if (citation.equals(candidateVerse)) {
                 return i;
             }
-            if (fallback.equals(bookChapterVerse.get(i))) {
+            if (fallback.equals(candidateVerse)) {
                 fallBackIndex = i;
             }
         }
@@ -186,7 +197,9 @@ public class BibleMain extends Activity {
     }
 
     /**
-     *  Returns the book number index for a citation which uses the name instead of the number
+     *  Returns the book number index for a citation which uses the name instead of the number.
+     *  First we strip off the book name from the citation (all characters up to the first ":")
+     *  into the variable String bookLook.
      *
      * @param citation Standard Bible citation
      * @return Index of the book name

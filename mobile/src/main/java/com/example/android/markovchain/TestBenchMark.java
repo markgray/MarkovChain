@@ -11,9 +11,11 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.text.NumberFormat;
+import java.util.ArrayList;
 import java.util.Locale;
 
 import com.example.android.common.CalcTask;
+import com.example.android.common.Shakespeare;
 
 /**
  * This activity is useful to benchmark two different implementations of a method
@@ -30,7 +32,7 @@ public class TestBenchMark extends Activity {
     LinearLayout mResultsLinearLayout;
     ControlClass mControlInstance;
     final Long PROGRESS_STEPS = 100L;
-    final Long LOOP_REPETITIONS = 10000000L;
+    final Long LOOP_REPETITIONS = 100000L;
 
     /**
      * Called when the activity is starting, it sets the content view to the layout
@@ -61,7 +63,7 @@ public class TestBenchMark extends Activity {
             @Override
             public void onClick(View v) {
                 Log.i(TAG, "Start button clicked");
-                mControlInstance = new ControlClass1();
+                mControlInstance = new ControlClass3();
                 mControlInstance.execute(LOOP_REPETITIONS, PROGRESS_STEPS);
             }
         });
@@ -70,7 +72,7 @@ public class TestBenchMark extends Activity {
             @Override
             public void onClick(View v) {
                 Log.i(TAG, "Start button clicked");
-                mControlInstance = new ControlClass2();
+                mControlInstance = new ControlClass4();
                 mControlInstance.execute(LOOP_REPETITIONS, PROGRESS_STEPS);
             }
         });
@@ -167,5 +169,70 @@ public class TestBenchMark extends Activity {
             acc = acc * mul;
         }
     }
+
+    private class ControlClass3 extends ControlClass {
+        /**
+         * This method should be overridden by a method which performs whatever computation
+         * you wish to benchmark.
+         */
+        @Override
+        public void testMethod() {
+            init();
+            findFromCitation1("not here", "not here either");
+        }
+    }
+
+    private class ControlClass4 extends ControlClass {
+        /**
+         * This method should be overridden by a method which performs whatever computation
+         * you wish to benchmark.
+         */
+        @Override
+        public void testMethod() {
+            init();
+            findFromCitation2("not here", "not here either");
+        }
+    }
+
+
+    static ArrayList<String> bookChapterVerse = null;
+    public void init() {
+        if (bookChapterVerse != null) {
+            return;
+        }
+        bookChapterVerse = new ArrayList<>();
+        for (String s :
+                Shakespeare.SONNETS) {
+            bookChapterVerse.add(s);
+        }
+    }
+
+    public static int findFromCitation1(String citation, String fallback) {
+        int fallBackIndex = 0;
+        for (int i = 0; i < bookChapterVerse.size(); i++) {
+            if (citation.equals(bookChapterVerse.get(i))) {
+                return i;
+            }
+            if (fallback.equals(bookChapterVerse.get(i))) {
+                fallBackIndex = i;
+            }
+        }
+        return fallBackIndex;
+    }
+
+    public static int findFromCitation2(String citation, String fallback) {
+        int fallBackIndex = 0;
+        for (int i = 0; i < bookChapterVerse.size(); i++) {
+            String stringToCheck = bookChapterVerse.get(i);
+            if (citation.equals(stringToCheck)) {
+                return i;
+            }
+            if (fallback.equals(stringToCheck)) {
+                fallBackIndex = i;
+            }
+        }
+        return fallBackIndex;
+    }
+
 
 }
