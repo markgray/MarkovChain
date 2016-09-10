@@ -159,6 +159,7 @@ public class BibleMain extends Activity {
      *
      * @param verse verse number default value
      * @param key   key it was stored under (presently only "LAST_VERSE_VIEWED")
+     *
      * @return      verse number stored in shared preferences, or the default value passed it
      */
     public int restoreVerseNumber(int verse, String key) {
@@ -199,9 +200,14 @@ public class BibleMain extends Activity {
     /**
      *  Returns the book number index for a citation which uses the name instead of the number.
      *  First we strip off the book name from the citation (all characters up to the first ":")
-     *  into the variable String bookLook.
+     *  into the variable String bookLook. Then we "foreach loop" through all the book names in
+     *  the String[] BibleAdapter.books incrementing the int indexOf (starts at zero) every time
+     *  the book from BibleAdapter.books fails to match our target bookLook, if they do match we
+     *  immediately return indexOf as our result. If none of the books in BibleAdapter.books
+     *  match we return 0.
      *
      * @param citation Standard Bible citation
+     *
      * @return Index of the book name
      */
     public static int indexFromCitation(String citation) {
@@ -217,7 +223,11 @@ public class BibleMain extends Activity {
     }
 
     /**
-     * Convenience function for starting a BibleDialog fragment
+     * Convenience function for starting a BibleDialog fragment. First we set our fields String dialogTitle
+     * and String dialogText to our arguments for later use, then we call the factory method
+     * BibleDialog.newInstance to create a BibleDialog bibleDialog and save it in our static field
+     * for later use. Finally we call our overloaded method showDialog(DialogFragment) to pop up
+     * the instance of BibleDialog we just created.
      *
      * @param label citation for verse contained in text
      * @param text  text of current verse
@@ -236,6 +246,7 @@ public class BibleMain extends Activity {
      *
      * @param dialogFragment DialogFragment subclass which already has had setArguments
      *                       called to attach a Bundle of arguments
+     *
      * @return Tag for the fragment, as per FragmentTransaction.add.
      */
     public int showDialog(DialogFragment dialogFragment) {
