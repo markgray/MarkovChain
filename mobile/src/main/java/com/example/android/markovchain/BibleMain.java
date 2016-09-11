@@ -242,7 +242,10 @@ public class BibleMain extends Activity {
     }
 
     /**
-     * Shows the DialogFragment passed to it
+     * Shows the DialogFragment passed to it. First we fetch a reference to the FragmentManager used
+     * for interacting with fragments associated with this activity and use it to start a series of
+     * Fragment edit operations using our variable FragmentTransaction ft which is initialized to an
+     * instance of FragmentTransaction using FragmentManager.beginTransaction().
      *
      * @param dialogFragment DialogFragment subclass which already has had setArguments
      *                       called to attach a Bundle of arguments
