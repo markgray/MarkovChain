@@ -273,14 +273,17 @@ public class BibleMain extends Activity {
     }
 
     /**
-     * Convenience function to dismiss the main BibleDialog DialogFragment
+     * Convenience function to dismiss the main BibleDialog DialogFragment. This is called only
+     * from the OnClickListener for the "DISMISS" Button in BibleDialog, and exists due to errors
+     * encountered calling DialogFragment.dismiss() directly from that callback. We simply use our
+     * reference to the BibleDialog DialogFragment instance to call DialogFragment.dismiss().
      */
     public void dismissDialog() {
         bibleDialog.dismiss();
     }
 
     /**
-     * Handle whichever action was chosen in the Spinner contained in the BibleDialog fragment
+     * Handle whichever action was chosen in the Spinner contained in the BibleDialog fragment.
      *
      * @param v Just a view passed to give context for creating a Toast when called for
      * @param spinIndex Spinner index chosen
