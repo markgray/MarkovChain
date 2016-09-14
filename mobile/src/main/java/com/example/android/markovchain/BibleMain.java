@@ -245,7 +245,13 @@ public class BibleMain extends Activity {
      * Shows the DialogFragment passed to it. First we fetch a reference to the FragmentManager used
      * for interacting with fragments associated with this activity and use it to start a series of
      * Fragment edit operations using our variable FragmentTransaction ft which is initialized to an
-     * instance of FragmentTransaction using FragmentManager.beginTransaction().
+     * instance of FragmentTransaction using FragmentManager.beginTransaction(). Next we use the
+     * FragmentManager to search for any existing Fragment's with the tag "dialog" (the tag used for
+     * all the DialogFragment's we display), and if one is found (Fragment prev not equal null) we
+     * use the FragmentTransaction ft to remove it. We add FragmentTransaction ft to the BackStack
+     * so that the back Button will remember this transaction once we commit the transaction then we
+     * call  DialogFragment.show to display the dialog, adding the fragment using FragmentTransaction
+     * ft and then committing the transaction.
      *
      * @param dialogFragment DialogFragment subclass which already has had setArguments
      *                       called to attach a Bundle of arguments
@@ -267,14 +273,19 @@ public class BibleMain extends Activity {
     }
 
     /**
-     * Convenience function to dismiss the main BibleDialog DialogFragment
+     * Convenience function to dismiss the main BibleDialog DialogFragment. This is called only
+     * from the OnClickListener for the "DISMISS" Button in BibleDialog, and exists due to errors
+     * encountered calling DialogFragment.dismiss() directly from that callback. We simply use our
+     * reference to the BibleDialog DialogFragment instance to call DialogFragment.dismiss().
      */
     public void dismissDialog() {
         bibleDialog.dismiss();
     }
 
     /**
-     * Handle whichever action was chosen in the Spinner contained in the BibleDialog fragment
+     * Handle whichever action was chosen in the Spinner contained in the BibleDialog fragment.
+     * This is called from BibleDialog both in the onItemSelected callback for the Spinner, and in
+     * the onClick callback for the "REPEAT" Button.
      *
      * @param v Just a view passed to give context for creating a Toast when called for
      * @param spinIndex Spinner index chosen
