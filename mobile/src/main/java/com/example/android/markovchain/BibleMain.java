@@ -284,6 +284,8 @@ public class BibleMain extends Activity {
 
     /**
      * Handle whichever action was chosen in the Spinner contained in the BibleDialog fragment.
+     * This is called from BibleDialog both in the onItemSelected callback for the Spinner, and in
+     * the onClick callback for the "REPEAT" Button.
      *
      * @param v Just a view passed to give context for creating a Toast when called for
      * @param spinIndex Spinner index chosen
