@@ -285,7 +285,25 @@ public class BibleMain extends Activity {
     /**
      * Handle whichever action was chosen in the Spinner contained in the BibleDialog fragment.
      * This is called from BibleDialog both in the onItemSelected callback for the Spinner, and in
-     * the onClick callback for the "REPEAT" Button.
+     * the onClick callback for the "REPEAT" Button. We switch based on the parameter spinIndex
+     * which is the position of the Spinner view which was selected:
+     *
+     *      CHOICE_NONE Do nothing
+     *      CHOICE_RANDOM_VERSE Instruct the BibleAdapter to move to a random verse by calling
+     *          moveToRandom (the View v is passed so that it can toast the citation for the
+     *          verse moved to), then instruct the bibleDialog to refresh its display of the
+     *          citation and verse chosen.
+     *      CHOICE_GOOGLE Launch an instance of DialogFragment BibleSearch using the current
+     *          dialogTitle (citation) and dialogText (verse).
+     *      CHOICE_BOOKMARK Launch an instance of DialogFragment BibleBookmark using the current
+     *          dialogTitle (citation) and dialogText (verse).
+     *      CHOICE_GO_TO_VERSE Launch an instance of DialogFragment BibleChoose using the current
+     *          dialogTitle (citation) and dialogText (verse).
+     *      CHOICE_READ_ALOUD Launch an instance of DialogFragment BibleSpeak using the current
+     *          dialogTitle (citation) and dialogText (verse).
+     *
+     * If it is none of the above, then we do nothing, although this could only happen as the result
+     * of a programming error.
      *
      * @param v Just a view passed to give context for creating a Toast when called for
      * @param spinIndex Spinner index chosen
