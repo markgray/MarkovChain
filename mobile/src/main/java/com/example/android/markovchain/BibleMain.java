@@ -335,7 +335,8 @@ public class BibleMain extends Activity {
 
     /**
      * Reads the raw file king_james_text_and_verse.txt, separating it into citations
-     * (bookChapterVerse) and verse text (stringList)
+     * (bookChapterVerse) and verse text (stringList).
+     * TODO: Figure out why I used arrays for line and builder?
      */
     private void initDataSet() {
         final String[] line = new String[1];
