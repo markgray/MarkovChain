@@ -12,6 +12,13 @@ public class Markov {
     private DoneListener doneListener;
     private View view;
 
+    /**
+     * Sets the DoneListener doneListener and View view for this instance of Markov.
+     *
+     * @param doneListener DoneListener for thread calling us, we will call doneListener.onDone(view)
+     *                     on the UI thread when long running process finishes.
+     * @param view View that will be passed to onDone(View), used for context
+     */
     public void setDoneListener(DoneListener doneListener, View view) {
         this.view = view;
         this.doneListener = doneListener;

@@ -20,6 +20,7 @@ public class CalcTask extends AsyncTask<Long, Long, Long> {
      *
      * @param reps [0] Number of repetitions the for loop should run for each publish period
      *             [1] Number of publish progress periods
+     *
      * @return Time in milliseconds that the benchmark took
      */
     @Override
@@ -52,6 +53,7 @@ public class CalcTask extends AsyncTask<Long, Long, Long> {
      *
      * @param progress The values indicating progress.
      */
+    @Override
     protected void onProgressUpdate(Long... progress) {
     }
 
@@ -63,6 +65,7 @@ public class CalcTask extends AsyncTask<Long, Long, Long> {
      *
      * @param result The elapsed time the benchmark took.
      */
+    @Override
     protected void onPostExecute(Long result) {
     }
 
