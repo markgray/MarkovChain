@@ -24,6 +24,16 @@ public class Markov {
         this.doneListener = doneListener;
     }
 
+    /**
+     * This method initializes this instance of Markov by reading an existing pre-built Markov chain
+     * from a BufferedReader. If is currently called only from BibleMarkovFragment in order to read
+     * the state table for the King James Bible using a BufferedReader created from an
+     * InputStreamReader which is created from an InputStream for the file R.raw.king_james_state_table,
+     * but any kind of BufferedReader will work.
+     *
+     * @param reader BufferedReader to read a existing Markov chain into
+     * @throws IOException
+     */
     public void load (BufferedReader reader) throws IOException {
         chain = new Chain();
         chain.loadStateTable(reader);
