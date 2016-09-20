@@ -53,6 +53,12 @@ public class Markov {
         chain.build(reader);
     }
 
+    /**
+     * Called to retrieve the next sentence this is randomly generated from this instances's
+     * state table.
+     *
+     * @return The next sentence generated from the Markov chain.
+     */
     public String line() {
         return chain.line();
     }
