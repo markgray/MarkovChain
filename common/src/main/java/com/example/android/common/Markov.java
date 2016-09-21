@@ -54,8 +54,9 @@ public class Markov {
     }
 
     /**
-     * Called to retrieve the next sentence this is randomly generated from this instances's
-     * state table.
+     * Called to retrieve the next sentence that is randomly generated from this instances's
+     * state table. Simply a convenience function to access the Chain.line() method of our
+     * instance's Chain chain instance.
      *
      * @return The next sentence generated from the Markov chain.
      */
