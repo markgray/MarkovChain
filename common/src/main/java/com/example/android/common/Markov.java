@@ -67,7 +67,7 @@ public class Markov {
 
     /**
      * This class is used to contain, build and interact with the Markov chain state table
-     * Hashtable<Prefix, String[]> stateTable
+     * maintained in Hashtable<Prefix, String[]> stateTable
      */
     public class Chain {
         static final String NONWORD = "%"; // "word" that can't appear
