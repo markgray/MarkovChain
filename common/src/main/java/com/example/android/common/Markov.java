@@ -12,21 +12,54 @@ public class Markov {
     private DoneListener doneListener;
     private View view;
 
+    /**
+     * Sets the DoneListener doneListener and View view for this instance of Markov.
+     *
+     * @param doneListener DoneListener for thread calling us, we will call doneListener.onDone(view)
+     *                     on the UI thread when long running process finishes.
+     * @param view View that will be passed to onDone(View), used for context
+     */
     public void setDoneListener(DoneListener doneListener, View view) {
         this.view = view;
         this.doneListener = doneListener;
     }
 
+    /**
+     * This method initializes this instance of Markov by reading an existing pre-built Markov chain
+     * from a BufferedReader. It is currently called only from BibleMarkovFragment in order to read
+     * the state table for the King James Bible using a BufferedReader created from an
+     * InputStreamReader which is created from an InputStream for the file R.raw.king_james_state_table,
+     * but any kind of BufferedReader will work.
+     *
+     * @param reader BufferedReader to read a existing Markov chain into
+     * @throws IOException
+     */
     public void load (BufferedReader reader) throws IOException {
         chain = new Chain();
         chain.loadStateTable(reader);
     }
 
+    /**
+     * This method initializes this instance of Markov by reading text from a reader and then
+     * building a Markov chain from that text. It is currently called only with a StringReader from
+     * ShakespeareMarkovRecycler but any kind of Reader could be used.
+     *
+     * @param reader Reader of raw text to read in order to construct  construct the Markov chain
+     *               our instance will use.
+     * @throws IOException
+     */
     public void make (Reader reader) throws IOException {
         chain = new Chain();
         chain.build(reader);
     }
 
+    /**
+     * Called to retrieve the next sentence that is randomly generated from this instances's
+     * state table. Simply a convenience function to access the Chain.line() method of our
+     * instance's Chain chain instance.
+     *
+     * @return The next sentence generated from the Markov chain.
+     */
     public String line() {
         return chain.line();
     }
