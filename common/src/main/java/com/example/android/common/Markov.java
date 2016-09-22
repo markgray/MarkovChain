@@ -6,6 +6,7 @@ import android.view.View;
 import java.io.*;
 import java.util.*;
 
+@SuppressWarnings("WeakerAccess")
 public class Markov {
     static final String TAG = "Markov";
     public Chain chain;
@@ -64,9 +65,13 @@ public class Markov {
         return chain.line();
     }
 
+    /**
+     * This class is used to contain, build and interact with the Markov chain state table
+     * Hashtable<Prefix, String[]> stateTable
+     */
     public class Chain {
         static final String NONWORD = "%"; // "word" that can't appear
-        Hashtable<Prefix, String[]> statetab = new Hashtable<>(); // key = Prefix, value = suffix Array
+        Hashtable<Prefix, String[]> stateTable = new Hashtable<>(); // key = Prefix, value = suffix Array
         Prefix prefix = new Prefix(NONWORD); // initial prefix
         Random rand = new Random();
         boolean firstLine = true;
@@ -109,7 +114,7 @@ public class Markov {
                     String words[] = line.split(" ");
                     prefix.pref[0] = words[0];
                     prefix.pref[1] = words[1];
-                    statetab.put(new Prefix(prefix), words);
+                    stateTable.put(new Prefix(prefix), words);
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -123,18 +128,18 @@ public class Markov {
         // Chain add: add word to suffix list, update prefix
         void add(String word) {
 
-            String[] suf = statetab.get(prefix);
+            String[] suf = stateTable.get(prefix);
             if (suf == null) {
                 suf = new String[3];
                 suf[0] = prefix.pref[0];
                 suf[1] = prefix.pref[1];
                 suf[2] = word;
-                statetab.put(new Prefix(prefix), suf);
+                stateTable.put(new Prefix(prefix), suf);
             } else {
                 String[] newSuf = new String[suf.length + 1];
                 System.arraycopy(suf, 0, newSuf, 0, suf.length);
                 newSuf[suf.length] = word;
-                statetab.put(prefix, newSuf);
+                stateTable.put(prefix, newSuf);
             }
             prefix.pref[0] = prefix.pref[1];
             prefix.pref[1] = word;
@@ -162,7 +167,7 @@ public class Markov {
 
             init();
             while (notEnd(suf)) {
-                String[] s = statetab.get(prefix);
+                String[] s = stateTable.get(prefix);
                 if (s == null) {
                     Log.d(TAG, "internal error: no state");
                     return "Error!";
