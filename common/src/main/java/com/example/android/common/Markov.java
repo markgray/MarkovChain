@@ -73,11 +73,16 @@ public class Markov {
         static final String NONWORD = "%"; // "word" that can't appear
         Hashtable<Prefix, String[]> stateTable = new Hashtable<>(); // key = Prefix, value = suffix Array
         Prefix prefix = new Prefix(NONWORD); // initial prefix
-        Random rand = new Random();
-        boolean firstLine = true;
+        Random rand = new Random(); // Used to pick a random word from suffix array to follow up the Prefix
+        boolean firstLine = true; // Used in method init() to decide if the Prefix prefix needs to be reset to NONWORD (TODO: necessary?)
         public boolean loaded = false; // set once chain is loaded
 
-        // Chain build: build State table from input stream
+        /**
+         * Build State table from input stream
+         *
+         * @param quotes Reader which is read and parsed into words which are then added to the state table
+         * @throws IOException
+         */
         void build(Reader quotes) throws IOException {
             if (loaded) return;
             StreamTokenizer st = new StreamTokenizer(quotes);
