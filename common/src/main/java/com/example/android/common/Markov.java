@@ -78,7 +78,18 @@ public class Markov {
         public boolean loaded = false; // set once chain is loaded
 
         /**
-         * Build State table from input stream
+         * Build State table from Reader input stream. First we check the boolean field "loaded" and
+         * if it is true, we return without doing anything. We create a StreamTokenizer st from the
+         * Reader quotes parameter, specify that all characters shall be treated as ordinary characters
+         * by calling StreamTokenizer.resetSyntax(), specify that all characters shall be treated as
+         * word characters by the tokenizer (a word consists of a word character followed by zero or
+         * more word or number characters), and finally specify that all characters between 0 and the
+         * the space character are to be treated as whitespace characters. Having initialized our
+         * StreamTokenizer to our liking we read and parse the entire Reader quotes into words
+         * (stopping when the word is of ttype StreamTokenizer.TT_EOF (the end of the stream)), and
+         * "add" each word to our state table by adding the word to the end of our current Prefix
+         * String[] array of suffixes, and updating our Prefix prefix using the new word as the second
+         * word of "prefix" and the old second word as the first word.
          *
          * @param quotes Reader which is read and parsed into words which are then added to the state table
          * @throws IOException
@@ -93,7 +104,7 @@ public class Markov {
             st.whitespaceChars(0, ' ');           // except up to blank
             while (st.nextToken() != StreamTokenizer.TT_EOF) {
                 add(st.sval);
-                if (st.sval.equals(NONWORD)){
+                if (st.sval.equals(NONWORD)){ // TODO: this should be an asserts
                     Log.i(TAG, "NONWORD occurs in input");
                 }
 
