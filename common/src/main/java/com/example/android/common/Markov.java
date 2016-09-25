@@ -89,7 +89,10 @@ public class Markov {
          * (stopping when the word is of ttype StreamTokenizer.TT_EOF (the end of the stream)), and
          * "add" each word to our state table by adding the word to the end of our current Prefix
          * String[] array of suffixes, and updating our Prefix prefix using the new word as the second
-         * word of "prefix" and the old second word as the first word.
+         * word of "prefix" and the old second word as the first word. When TT_EOF is reached we add
+         * a NONWORD as the last word of our state table, set loaded to "true" and if our caller has
+         * registered an OnDoneListener by calling Markov.setOnDoneListener we call the callback
+         * onDone of that OnDoneListener passing it the view passed to setOnDoneListener.
          *
          * @param quotes Reader which is read and parsed into words which are then added to the state table
          * @throws IOException
