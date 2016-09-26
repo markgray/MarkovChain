@@ -122,6 +122,14 @@ public class Markov {
 
         }
 
+        /**
+         * Reads in a Markov chain state table which has been prepared offline and loads it into our
+         * Hashtable<Prefix, String[]> stateTable. First we check to make sure it has not already
+         * been loaded and if so return having done nothing.
+         *
+         *
+         * @param reader BufferedReader for a pre-parsed Markov chain state table
+         */
         void loadStateTable(BufferedReader reader) {
             if (loaded) return;
             String line;
