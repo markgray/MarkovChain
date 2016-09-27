@@ -125,8 +125,16 @@ public class Markov {
         /**
          * Reads in a Markov chain state table which has been prepared offline and loads it into our
          * Hashtable<Prefix, String[]> stateTable. First we check to make sure it has not already
-         * been loaded and if so return having done nothing.
-         *
+         * been loaded and if so return having done nothing. Then we initialize Prefix prefix to
+         * the starting point of [NONWORD, NONWORD]. Then we read our BufferedReader reader line by
+         * line until there are no more lines to read, splitting each line read using space as our
+         * delimiter into String words[]. We use the first two words of words[] as our Prefix, and
+         * the entire array of words[] as the suffix (wastes two entries in suffix for the sake of
+         * speed) and put() the parsed line into our Hashtable<Prefix, String[]> stateTable. This
+         * read loop is surrounded by a try block to catch IOException. When done reading in,the
+         * Markov chain state table we set loaded to true, and if our caller has registered an
+         * OnDoneListener by calling Markov.setOnDoneListener we call the callback onDone of that
+         * OnDoneListener passing it the view passed to setOnDoneListener.
          *
          * @param reader BufferedReader for a pre-parsed Markov chain state table
          */
