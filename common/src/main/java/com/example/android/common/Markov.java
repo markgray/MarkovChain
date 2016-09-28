@@ -6,6 +6,7 @@ import android.view.View;
 import java.io.*;
 import java.util.*;
 
+@SuppressWarnings("WeakerAccess")
 public class Markov {
     static final String TAG = "Markov";
     public Chain chain;
@@ -64,15 +65,38 @@ public class Markov {
         return chain.line();
     }
 
+    /**
+     * This class is used to contain, build and interact with the Markov chain state table
+     * maintained in Hashtable<Prefix, String[]> stateTable
+     */
     public class Chain {
         static final String NONWORD = "%"; // "word" that can't appear
-        Hashtable<Prefix, String[]> statetab = new Hashtable<>(); // key = Prefix, value = suffix Array
+        Hashtable<Prefix, String[]> stateTable = new Hashtable<>(); // key = Prefix, value = suffix Array
         Prefix prefix = new Prefix(NONWORD); // initial prefix
-        Random rand = new Random();
-        boolean firstLine = true;
+        Random rand = new Random(); // Used to pick a random word from suffix array to follow up the Prefix
+        boolean firstLine = true; // Used in method init() to decide if the Prefix prefix needs to be reset to NONWORD (TODO: necessary?)
         public boolean loaded = false; // set once chain is loaded
 
-        // Chain build: build State table from input stream
+        /**
+         * Build State table from Reader input stream. First we check the boolean field "loaded" and
+         * if it is true, we return without doing anything. We create a StreamTokenizer st from the
+         * Reader quotes parameter, specify that all characters shall be treated as ordinary characters
+         * by calling StreamTokenizer.resetSyntax(), specify that all characters shall be treated as
+         * word characters by the tokenizer (a word consists of a word character followed by zero or
+         * more word or number characters), and finally specify that all characters between 0 and the
+         * the space character are to be treated as whitespace characters. Having initialized our
+         * StreamTokenizer to our liking we read and parse the entire Reader quotes into words
+         * (stopping when the word is of ttype StreamTokenizer.TT_EOF (the end of the stream)), and
+         * "add" each word to our state table by adding the word to the end of our current Prefix
+         * String[] array of suffixes, and updating our Prefix prefix using the new word as the second
+         * word of "prefix" and the old second word as the first word. When TT_EOF is reached we add
+         * a NONWORD as the last word of our state table, set loaded to "true" and if our caller has
+         * registered an OnDoneListener by calling Markov.setOnDoneListener we call the callback
+         * onDone of that OnDoneListener passing it the view passed to setOnDoneListener.
+         *
+         * @param quotes Reader which is read and parsed into words which are then added to the state table
+         * @throws IOException
+         */
         void build(Reader quotes) throws IOException {
             if (loaded) return;
             StreamTokenizer st = new StreamTokenizer(quotes);
@@ -83,7 +107,7 @@ public class Markov {
             st.whitespaceChars(0, ' ');           // except up to blank
             while (st.nextToken() != StreamTokenizer.TT_EOF) {
                 add(st.sval);
-                if (st.sval.equals(NONWORD)){
+                if (st.sval.equals(NONWORD)){ // TODO: this should be an asserts
                     Log.i(TAG, "NONWORD occurs in input");
                 }
 
@@ -98,6 +122,22 @@ public class Markov {
 
         }
 
+        /**
+         * Reads in a Markov chain state table which has been prepared offline and loads it into our
+         * Hashtable<Prefix, String[]> stateTable. First we check to make sure it has not already
+         * been loaded and if so return having done nothing. Then we initialize Prefix prefix to
+         * the starting point of [NONWORD, NONWORD]. Then we read our BufferedReader reader line by
+         * line until there are no more lines to read, splitting each line read using space as our
+         * delimiter into String words[]. We use the first two words of words[] as our Prefix, and
+         * the entire array of words[] as the suffix (wastes two entries in suffix for the sake of
+         * speed) and put() the parsed line into our Hashtable<Prefix, String[]> stateTable. This
+         * read loop is surrounded by a try block to catch IOException. When done reading in,the
+         * Markov chain state table we set loaded to true, and if our caller has registered an
+         * OnDoneListener by calling Markov.setOnDoneListener we call the callback onDone of that
+         * OnDoneListener passing it the view passed to setOnDoneListener.
+         *
+         * @param reader BufferedReader for a pre-parsed Markov chain state table
+         */
         void loadStateTable(BufferedReader reader) {
             if (loaded) return;
             String line;
@@ -109,7 +149,7 @@ public class Markov {
                     String words[] = line.split(" ");
                     prefix.pref[0] = words[0];
                     prefix.pref[1] = words[1];
-                    statetab.put(new Prefix(prefix), words);
+                    stateTable.put(new Prefix(prefix), words);
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -123,18 +163,18 @@ public class Markov {
         // Chain add: add word to suffix list, update prefix
         void add(String word) {
 
-            String[] suf = statetab.get(prefix);
+            String[] suf = stateTable.get(prefix);
             if (suf == null) {
                 suf = new String[3];
                 suf[0] = prefix.pref[0];
                 suf[1] = prefix.pref[1];
                 suf[2] = word;
-                statetab.put(new Prefix(prefix), suf);
+                stateTable.put(new Prefix(prefix), suf);
             } else {
                 String[] newSuf = new String[suf.length + 1];
                 System.arraycopy(suf, 0, newSuf, 0, suf.length);
                 newSuf[suf.length] = word;
-                statetab.put(prefix, newSuf);
+                stateTable.put(prefix, newSuf);
             }
             prefix.pref[0] = prefix.pref[1];
             prefix.pref[1] = word;
@@ -162,7 +202,7 @@ public class Markov {
 
             init();
             while (notEnd(suf)) {
-                String[] s = statetab.get(prefix);
+                String[] s = stateTable.get(prefix);
                 if (s == null) {
                     Log.d(TAG, "internal error: no state");
                     return "Error!";
