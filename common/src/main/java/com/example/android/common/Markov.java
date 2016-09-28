@@ -160,7 +160,23 @@ public class Markov {
             }
         }
 
-        // Chain add: add word to suffix list, update prefix
+        /**
+         * Chain add: add word to suffix list, update prefix. First we retrieve the suffix String[]
+         * array for the current Prefix prefix from our Hashtable<Prefix, String[]> stateTable, and
+         * if it is null (no prior occurrence of prefix encountered) we create a String[3] suf, set
+         * suf[0] to the first word of the current prefix, suf[1] to the second word of prefix, and
+         * set suf[2] to our argument String word, and then we create a new Prefix from the current
+         * Prefix prefix and enter the suf array into our stateTable using prefix as the key. If it
+         * is not null we need to add the new word to the end of the String suf[] array, and to do
+         * this we first create a String[] newSuf that is one String longer than the current suf,
+         * copy the current suf to newSuf, place our argument String word as the last entry in newSuf
+         * and then use newSuf to replace the current entry in our stateTable for the Prefix prefix.
+         * Finally we update the current Prefix prefix by setting the first word of prefix
+         * (prefix.pref[0]) to the second word (prefix.pref[1]), and the second word of prefix
+         * (prefix.pref[1]) to the argument String word passed to us by our caller.
+         *
+         * @param word Word to be added to the suffix list of the current Prefix prefix
+         */
         void add(String word) {
 
             String[] suf = stateTable.get(prefix);
