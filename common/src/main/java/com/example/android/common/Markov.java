@@ -196,6 +196,11 @@ public class Markov {
             prefix.pref[1] = word;
         }
 
+        /**
+         * Not really necessary it appears. TODO: Remove this or find a purpose for it!
+         * We initialize Prefix prefix with a new instance of Prefix pointing to the first entry
+         * in the Markov chain state table: ["%", "%"]
+         */
         void init() {
             if (firstLine) {
                 prefix = new Prefix(NONWORD);
@@ -203,14 +208,38 @@ public class Markov {
             }
         }
 
+        /**
+         * This method is used to check if the word passed it was not an end of sentence word in the
+         * original text (does not contain ".", "?", or "!") and should just be added to the line
+         * being formed (returns true). If it does contain ".", "?", or "!" it returns false and'
+         * the caller should start a new line after adding the word to the line being formed.
+         *
+         * @param word Word to check for end of sentence punctuation.
+         * @return true if String word is not an end of sentence word, false if it is.
+         */
         boolean notEnd(String word) {
             return !(word.contains(".") || word.contains("?") || word.contains("!"));
         }
 
+        /**
+         * This method is used to capitalize the first word of a sentence. It does this by isolating
+         * the char at position 0 (first char of the line), feeding it to the method Character.toUpperCase
+         * and concatenating that capitalized char with the rest of the original line starting at
+         * position 1 (second char of line.)
+         *
+         * @param line String which needs the first letter capitalized (Beginning word of sentence).
+         * @return String which consists of the capitalization of the first char concatenated with
+         *         the rest of the line
+         */
         private String capitalize(final String line) {
             return Character.toUpperCase(line.charAt(0)) + line.substring(1);
         }
 
+        /**
+         * Uses the Markov chain state table to generate a single random sentence.
+         *
+         * @return String to use as the next sentence of the generated nonsense.
+         */
         public String line() {
             StringBuilder builder = new StringBuilder(120);
             String suf = "";
