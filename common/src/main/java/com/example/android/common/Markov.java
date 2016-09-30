@@ -236,7 +236,19 @@ public class Markov {
         }
 
         /**
-         * Uses the Markov chain state table to generate a single random sentence.
+         * Uses the Markov chain state table to generate a single random sentence. First we do some
+         * initialization: create StringBuilder builder with an initial capacity of 120 characters,
+         * set our String suf to the empty string, allocate int r to hold our random number, and
+         * call init to make sure Prefix prefix is initialized. TODO: remove this call
+         * Then while our String suf is not an end of sentence word in the original text, we loop
+         * first fetching the suffix String[] array of the current Prefix prefix from the state
+         * table, performing a sanity check to make sure there is an entry for prefix (Returning the
+         * string "Error!" as our line if there is none). Then we choose a random word from the
+         * String[] array s and set String suf to it. If suf is a NONWORD (NONWORD is stored as a
+         * suffix entry when the current two word Prefix prefix occurs as the last two words in the
+         * original text) we reset the current Prefix prefix to the beginning of the state table
+         * ([NONWORD, NONWORD]) thus starting another pass through the table.
+         *
          *
          * @return String to use as the next sentence of the generated nonsense.
          */
@@ -259,10 +271,11 @@ public class Markov {
                     Log.i(TAG, "Suffix at " + r + " is NONWORD");
                     Log.i(TAG, "Size of Vector s is: " + s.length);
                     prefix = new Prefix(NONWORD);
+                } else {
+                    builder.append(suf).append(" ");
+                    prefix.pref[0] = prefix.pref[1];
+                    prefix.pref[1] = suf;
                 }
-                builder.append(suf).append(" ");
-                prefix.pref[0] = prefix.pref[1];
-                prefix.pref[1] = suf;
             }
             return capitalize(builder.toString());
         }
