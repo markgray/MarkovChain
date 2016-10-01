@@ -247,8 +247,10 @@ public class Markov {
          * String[] array s and set String suf to it. If suf is a NONWORD (NONWORD is stored as a
          * suffix entry when the current two word Prefix prefix occurs as the last two words in the
          * original text) we reset the current Prefix prefix to the beginning of the state table
-         * ([NONWORD, NONWORD]) thus starting another pass through the table.
-         *
+         * ([NONWORD, NONWORD]) thus starting another pass through the table. Finally when we have
+         * reached a random word which was at the end of a sentence in the original text, we convert
+         * our Builder builder to a String, capitalize the first word of that generated String and
+         * return it to the caller.
          *
          * @return String to use as the next sentence of the generated nonsense.
          */
@@ -282,18 +284,33 @@ public class Markov {
 
     }
 
+    /**
+     * This class holds two words that appear next to each other in the original text and is used
+     * to index into a String[] array of words that were found to follow those two words in the
+     * original text that is the value of the two word key in the Markov chain state table
+     * Hashtable<Prefix, String[]> stateTable.
+     */
     public class Prefix {
         public String[] pref;    // NPREF adjacent words from input
         static final int MULTIPLIER = 31;    // for hashCode()
 
-        // Prefix constructor: duplicate existing prefix
+        /**
+         * Prefix constructor: duplicate existing prefix
+         *
+         * @param p Prefix to duplicate
+         */
         Prefix(Prefix p) {
             pref = new String[2];
             pref[0] = p.pref[0];
             pref[1] = p.pref[1];
         }
 
-        // Prefix constructor: n copies of str
+        /**
+         * Prefix constructor: Both words of this Prefix are set to str (only used when
+         * creating a "start of state table" key from 2 NONWORD's)
+         *
+         * @param str String which will be used for both words of this Prefix
+         */
         Prefix(String str) {
             pref =  new String[2];
             pref[0] = str;
