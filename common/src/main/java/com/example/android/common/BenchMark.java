@@ -2,6 +2,7 @@ package com.example.android.common;
 
 import android.os.SystemClock;
 
+@SuppressWarnings("WeakerAccess")
 public class BenchMark {
 
     private long mStartTime;

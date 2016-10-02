@@ -8,16 +8,16 @@ import java.util.*;
 
 @SuppressWarnings("WeakerAccess")
 public class Markov {
-    static final String TAG = "Markov";
-    public Chain chain;
-    private DoneListener doneListener;
-    private View view;
+    static final String TAG = "Markov"; // Used for log.i calls
+    public Chain chain; // Our instance's Markov chain instance
+    private DoneListener doneListener; // Optional callback class instance to invoke when class is ready to use
+    private View view; // Optional View for above DoneListener to use for Toast context
 
     /**
      * Sets the DoneListener doneListener and View view for this instance of Markov.
      *
      * @param doneListener DoneListener for thread calling us, we will call doneListener.onDone(view)
-     *                     on the UI thread when long running process finishes.
+     *        on the UI thread when long running process finishes.
      * @param view View that will be passed to onDone(View), used for context
      */
     public void setDoneListener(DoneListener doneListener, View view) {
@@ -131,7 +131,7 @@ public class Markov {
          * delimiter into String words[]. We use the first two words of words[] as our Prefix, and
          * the entire array of words[] as the suffix (wastes two entries in suffix for the sake of
          * speed) and put() the parsed line into our Hashtable<Prefix, String[]> stateTable. This
-         * read loop is surrounded by a try block to catch IOException. When done reading in,the
+         * read loop is surrounded by a try block to catch IOException. When done reading in the
          * Markov chain state table we set loaded to true, and if our caller has registered an
          * OnDoneListener by calling Markov.setOnDoneListener we call the callback onDone of that
          * OnDoneListener passing it the view passed to setOnDoneListener.
@@ -295,7 +295,9 @@ public class Markov {
         static final int MULTIPLIER = 31;    // for hashCode()
 
         /**
-         * Prefix constructor: duplicate existing prefix
+         * Prefix constructor: duplicate existing prefix. We first allocate a String[] array of size
+         * 2 for our field String[] pref, then we copy the contents of our parameter's field to this
+         * instances field.
          *
          * @param p Prefix to duplicate
          */
@@ -317,17 +319,29 @@ public class Markov {
             pref[1] = str;
         }
 
-        // Prefix hashCode: generate hash from all prefix words
+        /**
+         * Prefix hashCode: generate hash from both prefix words. We use the recommended algorithm
+         * of adding the hashCode of one field to 31 times the hashCode of the other field.
+         *
+         * @return Hash code value used by the system when the Hashtable<Prefix, String[]> stateTable
+         *         Markov chain state table is accessed.
+         */
         @Override
         public int hashCode() {
-            int h = 0;
-
-            for (int i = 0; i < 2; i++)
-                h = MULTIPLIER * h + pref[i].hashCode();
-            return h;
+            return MULTIPLIER * pref[0].hashCode() + pref[1].hashCode();
         }
 
         // Prefix equals: compare two prefixes for equal words
+
+        /**
+         * Indicates whether some other Object o is "equal to" this Prefix Object. First we make sure
+         * the Object o is an instance of Prefix, and if not immediately return false. Then we cast
+         * our Object o parameter in Prefix p and return true iff both pref[0] and pref[1] of p are
+         * equal to this instances pref[0] and pref[1] respectively.
+         *
+         * @param o the reference object with which to compare.
+         * @return {@code true} if this object is the same as the o argument; {@code false} otherwise.
+         */
         @Override
         public boolean equals(Object o) {
             if (!(o instanceof Prefix)) {
