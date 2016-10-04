@@ -25,7 +25,10 @@ public class MarkovAdapter extends RecyclerView.Adapter<MarkovAdapter.ViewHolder
     private static LinearLayoutManager mLayoutManager; // LayoutManager instance used by the RecyclerView
 
     /**
-     * Provide a reference to the type of views that you are using (custom ViewHolder)
+     * Provide a reference to the type of views that you are using (custom ViewHolder). Each ViewHolder
+     * will be used to display an individual data item of the RecyclerView's data set, and should
+     * contain any information needed by onBindViewHolder to more efficiently display the data for
+     * the position called for (TextView textView in our case).
      */
     @SuppressWarnings("WeakerAccess")
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -33,7 +36,8 @@ public class MarkovAdapter extends RecyclerView.Adapter<MarkovAdapter.ViewHolder
         private final TextView textView; // TextView to write our Markov chain generated lines to.
 
         /**
-         * Constructor for our RecyclerView.ViewHolder to be used by onCreateViewHolder
+         * Constructor for our RecyclerView.ViewHolder to be used by onCreateViewHolder. First we
+         * call our super's constructor.
          *
          * @param v View inflated by onCreateViewHolder for us to use for our current line
          */
