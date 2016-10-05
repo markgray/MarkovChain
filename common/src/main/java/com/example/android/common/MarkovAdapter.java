@@ -39,6 +39,17 @@ public class MarkovAdapter extends RecyclerView.Adapter<MarkovAdapter.ViewHolder
          * Constructor for our RecyclerView.ViewHolder to be used by onCreateViewHolder. First we
          * call our super's constructor.
          *
+         * Then we set our OnClickListener to a placeholder anonymous class which simply logs the
+         * current layout position.
+         * TODO: Make this do something useful like Display the odds of that combination of words occurring
+         *
+         * Then we set our OnLongClickListener to a placeholder anonymous class which simply "moves"
+         * to a random verse, and shows a Toast to that effect.
+         * TODO: Pop up a DialogFragment that allows us to explore all variations starting from first two words.
+         *
+         * Finally we find the TextView textView (R.id.textView) that we will use to later to display
+         * the line of generated nonsense.
+         *
          * @param v View inflated by onCreateViewHolder for us to use for our current line
          */
         public ViewHolder(View v) {
@@ -62,13 +73,20 @@ public class MarkovAdapter extends RecyclerView.Adapter<MarkovAdapter.ViewHolder
             textView = (TextView) v.findViewById(R.id.textView);
         }
 
+        /**
+         * Just a getter method for our field TextView textView
+         *
+         * @return The TextView textView field for this instance of ViewHolder
+         */
         public TextView getTextView() {
             return textView;
         }
     }
 
     /**
-     * Initialize the dataset of the Adapter.
+     * Constructor for this instance of MarkovAdapter. We set our field Markov mMarkov to our
+     * parameter Markov markov, and our field LinearLayoutManager mLayoutManager to our parameter
+     * RecyclerView.LayoutManager layoutManager.
      *
      * @param markov Markov class used to generate lines for the RecyclerView
      * @param layoutManager LayoutManager to be used by the RecyclerView
@@ -90,6 +108,9 @@ public class MarkovAdapter extends RecyclerView.Adapter<MarkovAdapter.ViewHolder
      * {@link #onBindViewHolder(ViewHolder, int)}. Since it will be re-used to display different
      * items in the data set, it is a good idea to cache references to sub views of the View to
      * avoid unnecessary {@link View#findViewById(int)} calls.
+     *
+     * We simply create a View v by inflating our item layout file R.layout.line_list_item, then
+     * return a ViewHolder created using this View v.
      *
      * @param parent   The ViewGroup into which the new View will be added after it is bound to
      *                 an adapter position.
