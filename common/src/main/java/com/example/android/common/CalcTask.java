@@ -7,9 +7,11 @@ import android.os.AsyncTask;
 */
 public class CalcTask extends AsyncTask<Long, Long, Long> {
 
-    public BenchMark benchMark = new BenchMark();
-    double acc = 1.000000001;
-    double div = 0.999999999;
+    @SuppressWarnings("WeakerAccess")
+    public BenchMark benchMark = new BenchMark(); // Create a BenchMark timer instance
+    private double acc = 1.000000001; // Start value for example use
+    @SuppressWarnings("FieldCanBeLocal")
+    private double div = 0.999999999; // Dividend for example use
 
     /**
      * This method performs a computation contained in the method testMethod
@@ -39,8 +41,8 @@ public class CalcTask extends AsyncTask<Long, Long, Long> {
     }
 
     /**
-     * This method should be overridden by a method which performs whatever computation
-     * you wish to benchmark.
+     * Just an example calculation to run a benchmark on. This method should be overridden by a
+     * method which performs whatever computation you wish to benchmark.
      */
     public void testMethod() {
         acc = acc / div;

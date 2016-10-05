@@ -2,21 +2,24 @@ package com.example.android.common;
 
 import android.os.SystemClock;
 
+@SuppressWarnings("WeakerAccess")
 public class BenchMark {
 
-    private long mStartTime;
+    private long mStartTime; // Milliseconds since boot when instance created or start() called.
 
     /**
-     * Create a new BenchMark instance initialized to current time
+     * Create a new BenchMark instance initialized to current time. We simply call our method start()
+     * to initialize our field long mStartTime to the time in milliseconds since boot.
      */
     public BenchMark() {
         this.start();
     }
 
     /**
-     * Set timer to current timee
+     * Set timer (long mStartTime) to current time in milliseconds since boot, including time spent
+     * in sleep, and return that value to caller.
      *
-     * @return current time
+     * @return current time in milliseconds since boot, including time spent in sleep.
      */
     public long start() {
         return mStartTime = SystemClock.elapsedRealtime();

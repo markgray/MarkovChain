@@ -9,23 +9,38 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import java.util.Random;
 
+/**
+ * An implementation of RecyclerView.Adapter<MarkovAdapter.ViewHolder> designed to be used by an
+ * Activity that needs to populate a RecyclerView using lines obtained from an instance of Markov
+ */
 public class MarkovAdapter extends RecyclerView.Adapter<MarkovAdapter.ViewHolder> {
 
-    private static final String TAG = "MarkovAdapter";
-    private static final int NLINES = 10000;
-    private static Random rand = new Random();
-    private static Markov mMarkov;
-    private static LinearLayoutManager mLayoutManager;
+    private static final String TAG = "MarkovAdapter"; // TAG used for Log
+    private static final int NLINES = 10000; // Just used as an arbitrary number for getItemCount
+    private static Random rand = new Random(); // Used to choose a random line to go to (a rather silly concept) TODO: Remove
+    private Markov mMarkov; // The Markov instance we are reading from.
+    private static LinearLayoutManager mLayoutManager; // LayoutManager instance used by the RecyclerView
 
     /**
-     * Provide a reference to the type of views that you are using (custom ViewHolder)
+     * Provide a reference to the type of views that you are using (custom ViewHolder). Each ViewHolder
+     * will be used to display an individual data item of the RecyclerView's data set, and should
+     * contain any information needed by onBindViewHolder to more efficiently display the data for
+     * the position called for (TextView textView in our case).
      */
+    @SuppressWarnings("WeakerAccess")
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        private final TextView textView;
+        private final TextView textView; // TextView to write our Markov chain generated lines to.
 
+        /**
+         * Constructor for our RecyclerView.ViewHolder to be used by onCreateViewHolder. First we
+         * call our super's constructor.
+         *
+         * @param v View inflated by onCreateViewHolder for us to use for our current line
+         */
         public ViewHolder(View v) {
             super(v);
             // Define click listener for the ViewHolder's View.
