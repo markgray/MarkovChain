@@ -16,12 +16,13 @@ import java.util.Random;
 /**
  * Adapter used by BibleMain to populate the RecyclerView
  */
+@SuppressWarnings("WeakerAccess")
 public class BibleAdapter extends RecyclerView.Adapter<BibleAdapter.ViewHolder> {
-    private static final String TAG = "BibleAdapter";
-    private static Random rand = new Random();
-    private static ArrayList<String> mDataSet;
-    private static LinearLayoutManager mLayoutManager;
-    private static ArrayList<String> mChapterAndVerse;
+    private static final String TAG = "BibleAdapter"; // TAG used for logging
+    private static Random rand = new Random(); // Random number generator used for moveToRandom
+    private static LinearLayoutManager mLayoutManager; // RecyclerView.LayoutManager passed to our constructor
+    private static ArrayList<String> mChapterAndVerse; // Citation for each verse
+    private static ArrayList<String> mDataSet; // Verses of the King James Bible read in by BibleMain.initDataSet()
 
     /**
      * Create a Canonical Bible citation: BookName:##:###:### from the numChatVerse passed it.
@@ -225,12 +226,12 @@ public class BibleAdapter extends RecyclerView.Adapter<BibleAdapter.ViewHolder> 
     public void onBindViewHolder(ViewHolder viewHolder, int position) {
         Log.d(TAG, "Element " + position + " set.");
 
-        // Get element from your dataset at this position and replace the contents of the view
+        // Get element from your data set at this position and replace the contents of the view
         // with that element
         viewHolder.getTextView().setText(mDataSet.get(position));
     }
 
-    // Return the size of your dataset (invoked by the layout manager)
+    // Return the size of your data set (invoked by the layout manager)
     @Override
     public int getItemCount() {
         return mDataSet.size();

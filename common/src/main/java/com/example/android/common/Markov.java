@@ -6,6 +6,13 @@ import android.view.View;
 import java.io.*;
 import java.util.*;
 
+/**
+ * This class is inspired by the Markov chain example source code that was written for the book
+ * "The Practice of Programming". It consists of methods to build and access a table which is
+ * indexed by two words that occur one after the other in a text of literature, and when those
+ * two words are used to access the table an array of all the third words that occur after the
+ * first two words is returned.
+ */
 @SuppressWarnings("WeakerAccess")
 public class Markov {
     static final String TAG = "Markov"; // Used for log.i calls

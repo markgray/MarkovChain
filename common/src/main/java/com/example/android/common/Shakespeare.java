@@ -1,5 +1,8 @@
 package com.example.android.common;
 
+/**
+ * Shakespeare's complete sonnets
+ */
 public final class Shakespeare {
 
     /**
