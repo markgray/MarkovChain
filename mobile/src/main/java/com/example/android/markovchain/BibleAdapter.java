@@ -23,6 +23,66 @@ public class BibleAdapter extends RecyclerView.Adapter<BibleAdapter.ViewHolder> 
     private static LinearLayoutManager mLayoutManager; // RecyclerView.LayoutManager passed to our constructor
     private static ArrayList<String> mChapterAndVerse; // Citation for each verse
     private static ArrayList<String> mDataSet; // Verses of the King James Bible read in by BibleMain.initDataSet()
+// TODO: Move all fields to beginning of class?
+
+    /**
+     * Initialize the data used for the Adapter. We save our parameters ArrayList<String> dataSet in
+     * our field ArrayList<String> mDataSet, ArrayList<String> chapterAndVerse in our field
+     * ArrayList<String> mChapterAndVerse, and RecyclerView.LayoutManager layoutManager in our field
+     * LinearLayoutManager mLayoutManager. Then we call initializeNumberToBook to initialize our
+     * map of book names indexed by the book number: HashMap<String, String> numberToBook.
+     *
+     * @param dataSet         List containing the text
+     * @param chapterAndVerse chapter and verse annotation for each paragraph
+     * @param layoutManager   layout manager to use
+     */
+    public BibleAdapter(ArrayList<String> dataSet, ArrayList<String> chapterAndVerse, RecyclerView.LayoutManager layoutManager) {
+        mDataSet = dataSet;
+        mChapterAndVerse = chapterAndVerse;
+        mLayoutManager = (LinearLayoutManager) layoutManager;
+        initializeNumberToBook();
+    }
+
+    static public boolean numberToBookInitialized = false; // Prevent us from accessing our map until initialization finishes
+    static public HashMap<String, String> numberToBook; // Map of book names indexed by book number
+    static final String[] numbers = {  // Array of book numbers
+            "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12",
+            "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24",
+            "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36",
+            "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48",
+            "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60",
+            "61", "62", "63", "64", "65", "66"
+    };
+    static final String[] books = {  // Array of book names
+            "Genesis", "Exodus", "Leviticus", "Numbers", "Deuteronomy", "Joshua",
+            "Judges", "Ruth", "1 Samuel", "2 Samuel", "1 Kings", "2 Kings",
+            "1 Chronicles", "2 Chronicles", "Ezra", "Nehemiah", "Esther", "Job",
+            "Psalms", "Proverbs", "Ecclesiastes", "Song of Solomon", "Isaiah",
+            "Jeremiah", "Lamentations", "Ezekiel", "Daniel", "Hosea", "Joel",
+            "Amos", "Obadiah", "Jonah", "Micah", "Nahum", "Habakkuk", "Zephaniah",
+            "Haggai", "Zechariah", "Malachi", "Matthew", "Mark", "Luke", "John",
+            "Acts", "Romans", "1 Corinthians", "2 Corinthians", "Galatians",
+            "Ephesians", "Philippians", "Colossians", "1 Thessalonians", "2 Thessalonians",
+            "1 Timothy", "2 Timothy", "Titus", "Philemon", "Hebrews", "James", "1 Peter",
+            "2 Peter", "1 John", "2 John", "3 John", "Jude", "Revelation"
+    };
+
+    /**
+     * Build HashMap mapping book number to book name.
+     *
+     * @return The HashMap created (unneeded since numberToBook is also set in method
+     */
+    public HashMap<String, String> initializeNumberToBook() {
+        if (!numberToBookInitialized) {
+            numberToBook = new HashMap<>(66);
+            for (int i = 0; i < numbers.length; i++) {
+                numberToBook.put(numbers[i], books[i]);
+            }
+            numberToBookInitialized = true;
+        }
+
+        return numberToBook;
+    }
 
     /**
      * Create a Canonical Bible citation: BookName:##:###:### from the numChatVerse passed it.
@@ -131,62 +191,6 @@ public class BibleAdapter extends RecyclerView.Adapter<BibleAdapter.ViewHolder> 
         BibleMain.dialogText = mDataSet.get(selection);
         BibleMain.dialogVerse = selection;
     }
-
-    /**
-     * Initialize the data used for the Adapter
-     *
-     * @param dataSet         List containing the text
-     * @param chapterAndVerse chapter and verse annotation for each paragraph
-     * @param layoutManager   layout manager to use
-     */
-    public BibleAdapter(ArrayList<String> dataSet, ArrayList<String> chapterAndVerse, RecyclerView.LayoutManager layoutManager) {
-        mDataSet = dataSet;
-        mChapterAndVerse = chapterAndVerse;
-        mLayoutManager = (LinearLayoutManager) layoutManager;
-        initializeNumberToBook();
-    }
-
-    static public boolean numberToBookInitialized = false;
-    static public HashMap<String, String> numberToBook;
-    static final String[] numbers = {
-            "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12",
-            "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24",
-            "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36",
-            "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48",
-            "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60",
-            "61", "62", "63", "64", "65", "66"
-    };
-    static final String[] books = {
-            "Genesis", "Exodus", "Leviticus", "Numbers", "Deuteronomy", "Joshua",
-            "Judges", "Ruth", "1 Samuel", "2 Samuel", "1 Kings", "2 Kings",
-            "1 Chronicles", "2 Chronicles", "Ezra", "Nehemiah", "Esther", "Job",
-            "Psalms", "Proverbs", "Ecclesiastes", "Song of Solomon", "Isaiah",
-            "Jeremiah", "Lamentations", "Ezekiel", "Daniel", "Hosea", "Joel",
-            "Amos", "Obadiah", "Jonah", "Micah", "Nahum", "Habakkuk", "Zephaniah",
-            "Haggai", "Zechariah", "Malachi", "Matthew", "Mark", "Luke", "John",
-            "Acts", "Romans", "1 Corinthians", "2 Corinthians", "Galatians",
-            "Ephesians", "Philippians", "Colossians", "1 Thessalonians", "2 Thessalonians",
-            "1 Timothy", "2 Timothy", "Titus", "Philemon", "Hebrews", "James", "1 Peter",
-            "2 Peter", "1 John", "2 John", "3 John", "Jude", "Revelation"
-    };
-
-    /**
-     * Build HashMap mapping book number to book name
-     *
-     * @return The HashMap created (unneeded since numberToBook is also set in method
-     */
-    public HashMap<String, String> initializeNumberToBook() {
-        if (!numberToBookInitialized) {
-            numberToBook = new HashMap<>(66);
-            for (int i = 0; i < numbers.length; i++) {
-                numberToBook.put(numbers[i], books[i]);
-            }
-            numberToBookInitialized = true;
-        }
-
-        return numberToBook;
-    }
-
 
     /**
      * Create new views (invoked by the layout manager)
