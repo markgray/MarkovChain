@@ -68,9 +68,16 @@ public class BibleAdapter extends RecyclerView.Adapter<BibleAdapter.ViewHolder> 
     };
 
     /**
-     * Build HashMap mapping book number to book name.
+     * Build HashMap mapping book number to book name. If the number to name map is already
+     * initialized (numberToBookInitialized is true) we simply return the current value of
+     * HashMap<String, String> numberToBook, otherwise we allocate space on the heap for
+     * HashMap<String, String> numberToBook and then loop through our String[] numbers
+     * array and "put" the corresponding entry in the String[] books array into numberToBook
+     * indexed by the entry in the entry in numbers. When done we set numberToBookInitialized
+     * to true and return the initialized numberToBook
      *
-     * @return The HashMap created (unneeded since numberToBook is also set in method
+     * @return The HashMap created (unneeded since numberToBook is also set in the method, but it
+     *          does give the use of the method additional flexibility)
      */
     public HashMap<String, String> initializeNumberToBook() {
         if (!numberToBookInitialized) {
@@ -87,7 +94,10 @@ public class BibleAdapter extends RecyclerView.Adapter<BibleAdapter.ViewHolder> 
     /**
      * Create a Canonical Bible citation: BookName:##:###:### from the numChatVerse passed it.
      * It keeps the book number in the citation since it might be of use to know the relative
-     * position in the Bible.
+     * position in the Bible. We grab the first two characters of our parameter String numChatVerse
+     * (the book number "01" to "66") and use it to index into HashMap<String, String> numberToBook
+     * to retrieve the book name corresponding to that number, and then we return that book name
+     * concatenated to the front of our argument String numChatVerse with a ":" to separate the two.
      *
      * @param numChatVerse ##:###:### index string for verse as read from text
      * @return BookName:##:###:###
@@ -102,7 +112,7 @@ public class BibleAdapter extends RecyclerView.Adapter<BibleAdapter.ViewHolder> 
      */
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        private final TextView textView;
+        private final TextView textView; // TextView in our layout to use for the verse we display
 
         /**
          * Initializes a new instance of a ViewHolder. Sets the onClickListener to Toast the
