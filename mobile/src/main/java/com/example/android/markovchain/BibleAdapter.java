@@ -108,7 +108,8 @@ public class BibleAdapter extends RecyclerView.Adapter<BibleAdapter.ViewHolder> 
     }
 
     /**
-     * Provide a reference to the type of views that you are using (custom ViewHolder)
+     * Provides a reference to the type of views that we are using (custom ViewHolder), and also
+     * allows us to store additional information about our content.
      */
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
@@ -117,8 +118,9 @@ public class BibleAdapter extends RecyclerView.Adapter<BibleAdapter.ViewHolder> 
         /**
          * Initializes a new instance of a ViewHolder. Sets the onClickListener to Toast the
          * canonical Bible citation for the verse that the view will hold, and sets the
-         * onLongClickListener to launch a BibleDialog DialogFragment for the verse. It finds the
-         * TextView for displaying the verse and squirrels it away in the textView field.
+         * onLongClickListener to launch a BibleDialog DialogFragment for the verse. Finally it
+         * finds the TextView for displaying the verse and squirrels it away in the textView field
+         * for later use.
          *
          * @param v View that this is the ViewHolder for
          */
@@ -172,7 +174,8 @@ public class BibleAdapter extends RecyclerView.Adapter<BibleAdapter.ViewHolder> 
     }
 
     /**
-     * Move to a random verse in the Bible
+     * Move to a random verse in the Bible. First we calculate a random verse number, then we call
+     * moveToVerse to do the move.
      *
      * @param view Just included to give context for creating a Toast
      */
@@ -182,10 +185,14 @@ public class BibleAdapter extends RecyclerView.Adapter<BibleAdapter.ViewHolder> 
     }
 
     /**
-     * Move to a specific verse in the Bible
+     * Move to a specific verse in the Bible. First we check to make sure that the background thread
+     * reading in the Bible has finished the task, and if not we block the current thread until the
+     * ConditionVariable mDoneReading condition is opened or until 5000 milliseconds have passed.
+     * Then we instruct the LinearLayoutManager mLayoutManager that this adapter is using to
+     * scrollToPositionWithOffset to the selection verse number requested. 
      *
      * @param view      Just used to getContext() for a Toast
-     * @param selection Verse number 0 to mDataSet.size()
+     * @param selection Verse number 0 to mDataSet.size() - 1.
      */
     public static void moveToVerse(View view, int selection) {
         // Make sure the BibleMain,init() thread has finished reading the text in
