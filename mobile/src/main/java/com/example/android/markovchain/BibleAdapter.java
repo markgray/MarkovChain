@@ -189,7 +189,12 @@ public class BibleAdapter extends RecyclerView.Adapter<BibleAdapter.ViewHolder> 
      * reading in the Bible has finished the task, and if not we block the current thread until the
      * ConditionVariable mDoneReading condition is opened or until 5000 milliseconds have passed.
      * Then we instruct the LinearLayoutManager mLayoutManager that this adapter is using to
-     * scrollToPositionWithOffset to the selection verse number requested. 
+     * scrollToPositionWithOffset to the selection verse number requested. Next we call
+     * BibleMain.saveVerseNumber to save the verse number in our shared preference file. Then we
+     * make a canonical Bible citation out of the mChapterAndVerse entry for the verse we moved to,
+     * Toast this citation, save the citation in BibleMain.dialogTitle, retrieve the verse text from
+     * mDataSet and save it in BibleMain.dialogText, and save the verse number (selection) in
+     * BibleMain.dialogVerse
      *
      * @param view      Just used to getContext() for a Toast
      * @param selection Verse number 0 to mDataSet.size() - 1.
@@ -210,7 +215,9 @@ public class BibleAdapter extends RecyclerView.Adapter<BibleAdapter.ViewHolder> 
     }
 
     /**
-     * Create new views (invoked by the layout manager)
+     * Create new views (invoked by the layout manager). We create a new View v by inflating the
+     * layout file for our items: R.layout.line_list_item, and return a ViewHolder constructed using
+     * View v.
      *
      * @param viewGroup The ViewGroup into which the new View will be added after it is bound to an adapter position.
      * @param viewType  The view type of the new View.
@@ -239,6 +246,9 @@ public class BibleAdapter extends RecyclerView.Adapter<BibleAdapter.ViewHolder> 
      * Override onBindViewHolder(ViewHolder, int, List) instead if Adapter can handle
      * efficient partial bind
      *
+     * We simply set the TextView in the layout file used for the ViewHolder viewholder to the
+     * text of the verse pointed to by int position.
+     *
      * @param viewHolder The ViewHolder which should be updated to represent the contents of the
      *                   item at the given position in the data set.
      * @param position  The position of the item within the adapter's data set.
@@ -252,7 +262,12 @@ public class BibleAdapter extends RecyclerView.Adapter<BibleAdapter.ViewHolder> 
         viewHolder.getTextView().setText(mDataSet.get(position));
     }
 
-    // Return the size of your data set (invoked by the layout manager)
+    /**
+     * Return the size of your data set (invoked by the layout manager). This is simple the size
+     * of ArrayList<String> mDataSet.
+     *
+     * @return number of verses in the Bible
+     */
     @Override
     public int getItemCount() {
         return mDataSet.size();
