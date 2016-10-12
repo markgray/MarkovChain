@@ -15,15 +15,19 @@ import android.widget.TextView;
  * and an optional comment to an SQL database.
  */
 public class BibleBookmark extends DialogFragment {
-    public final static String TAG = "BibleBookmark";
-    public String mLabel;
-    public String mText;
+    public final static String TAG = "BibleBookmark"; // TAG for logging
+    public String mLabel; // Canonical Bible citation for current verse
+    public String mText;  // Current verse
 
     /**
-     * Create a new BibleBookmark DialogFragment
+     * Create a new BibleBookmark DialogFragment. We create a new instance of BibleBookmark f,
+     * create a Bundle args, add our parameter String label to args using the index "label", add
+     * our parameter String text to args using the index "text", and then set the arguments for
+     * f to our Bundle args. Finally we return BibleBook f to our caller.
      *
      * @param label Canonical Bible citation for the verse being bookmarked
      * @param text  Text of the verse being bookmarked
+     *
      * @return A BibleBookmark instance with the arguments bundle set with the
      *         label and text passed to the method
      */
