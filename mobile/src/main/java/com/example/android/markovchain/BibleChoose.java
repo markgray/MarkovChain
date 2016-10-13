@@ -18,11 +18,11 @@ import android.widget.TextView;
  * This DialogFragment allows a user to choose a specific verse of the Bible
  */
 public class BibleChoose extends DialogFragment {
-    public final static String TAG = "BibleChoose";
-    public String mLabel;
-    public String mText;
-    public String mBook;
-    public String mChapterAndVerse;
+    public final static String TAG = "BibleChoose"; // TAG used for logging
+    public String mLabel; // Bible citation for the current verse
+    public String mText;  // Text of the current verse
+    public String mBook;  // Name of the book chosen using the spinner
+    public String mChapterAndVerse; // Chapter and verse read from the EditText used for that purpose
 
     /**
      * Create a new BibleChoose DialogFragment instance

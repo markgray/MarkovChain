@@ -53,6 +53,12 @@ public class BibleBookmark extends DialogFragment {
      * at this point.  If you want to do work once the activity itself is
      * created, see {@link #onActivityCreated(Bundle)}.
      *
+     * First we call through to our super's implementation of onCreate, then we read the construction
+     * arguments used when creating this DialogFragment with our field mLabel set to the String
+     * stored under the key "label", and mText set to the String stored under the key "text". Finally
+     * we set the style of the DialogFragment to be STYLE_NORMAL (for a reason which escapes me right
+     * now. TODO: figure out better style usage here.
+     *
      * @param savedInstanceState If the fragment is being re-created from
      * a previous saved state, this is the state. (Always null since onSaveInstanceState
      * is not overridden.
@@ -76,7 +82,16 @@ public class BibleBookmark extends DialogFragment {
      *
      * <p>If you return a View from here, you will later be called in
      * {@link #onDestroyView} when the view is being released.
-
+     *
+     * First we create View v by inflating our layout file R.layout.bible_bookmark, then we locate
+     * the TextView that we will use to display our field mLabel (R.id.label) and set its text to
+     * that String, and we the locate the TextView that we will use to display our field mText
+     * (R.id.text) and set its text to that String. Finally we locate the "DISMISS" Button
+     * (R.id.dismiss) and set its OnClickListener to an anonymous class which will dismiss this
+     * BibleBookmark DialogFragment when clicked, while updating the label and text used by the
+     * BibleDialog which launched us and to which we will be returning to.
+     * TODO: is this really necessary?
+     *
      * @param inflater The LayoutInflater object that can be used to inflate
      * any views in the fragment,
      * @param container If non-null, this is the parent view that the fragment's
