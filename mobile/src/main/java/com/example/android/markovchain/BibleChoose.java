@@ -18,14 +18,17 @@ import android.widget.TextView;
  * This DialogFragment allows a user to choose a specific verse of the Bible
  */
 public class BibleChoose extends DialogFragment {
-    public final static String TAG = "BibleChoose";
-    public String mLabel;
-    public String mText;
-    public String mBook;
-    public String mChapterAndVerse;
+    public final static String TAG = "BibleChoose"; // TAG used for logging
+    public String mLabel; // Bible citation for the current verse
+    public String mText;  // Text of the current verse
+    public String mBook;  // Name of the book chosen using the spinner
+    public String mChapterAndVerse; // Chapter and verse read from the EditText used for that purpose
 
     /**
-     * Create a new BibleChoose DialogFragment instance
+     * Create a new BibleChoose DialogFragment instance. First we use the BibleChoose constructor to
+     * create BibleChoose f, then we create a Bundle args and add our parameter label to it under
+     * the key "label", and our parameter text under the key "text". We set the arguments of our
+     * BibleChoose f to be the Bundle args and finally return f.
      *
      * @param label Canonical Bible citation of current verse
      * @param text  Verse text
@@ -129,8 +132,8 @@ public class BibleChoose extends DialogFragment {
         return v;
     }
 
-    public int bookNumber = 0;
-    public String bookName;
+    public int bookNumber = 0; // Book number selected in the Spinner
+    public String bookName; // Book name corresponding to bookNumber
     public AdapterView.OnItemSelectedListener spinSelected = new AdapterView.OnItemSelectedListener() {
         /**
          * Callback method to be invoked when an item in this view has been selected.
@@ -138,6 +141,9 @@ public class BibleChoose extends DialogFragment {
          * from the previously selected position or if there was no selected item.
          * Implementers can call getItemAtPosition(position) if they need to access
          * the data associated with the selected item.
+         *
+         * We simply squirrel away the position passed us in the field bookNumber and the book name
+         * corresponding to that book number in the field bookName
          *
          * @param parent The AdapterView where the selection happened
          * @param view The view within the AdapterView that was clicked
@@ -148,13 +154,14 @@ public class BibleChoose extends DialogFragment {
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
             bookNumber = position;
             bookName = BibleAdapter.books[position];
-
         }
 
         /**
          * Callback method to be invoked when the selection disappears from this view.
          * The selection can disappear for instance when touch is activated or when
          * the adapter becomes empty.
+         *
+         * We do nothing.
          *
          * @param parent The AdapterView that now contains no selected item.
          */
