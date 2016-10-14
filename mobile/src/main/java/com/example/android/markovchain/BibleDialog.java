@@ -13,17 +13,18 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 public class BibleDialog extends DialogFragment {
-    private static final String TAG = "BibleDialog";
-    public String mLabel;
-    public String mText;
-    public Button repeatButton;
+    private static final String TAG = "BibleDialog"; // TAG used for logging
+    public String mLabel; // label for the DialogFragment (we use the canonical Bible citation)
+    public String mText;  // text of the current verse
+    public Button repeatButton; // Button to use to repeat last operation selected in the Spinner
 
     /**
      * Create and initialize a BibleDialog DialogFragment. It does this by first creating a new
      * instance of BibleDialog f, then creates an instance of Bundle args, putString's the label
      * parameter under the index "label", and putStrings's the text parameter under the index
-     * "text' in this Bundle args, and finally using this Bundle to set the arguments of the
-     * BibleDialog using the method Fragment.setArguments.
+     * "text' in this Bundle args, and finally uses this Bundle to set the arguments of the
+     * BibleDialog f using the method Fragment.setArguments. Finally it returns the BibleDialog f
+     * to the caller.
      *
      * @param label Label to use
      * @param text  Text to use
@@ -41,8 +42,8 @@ public class BibleDialog extends DialogFragment {
         return f;
     }
 
-    TextView lastLabelView;
-    TextView lastTextView;
+    TextView lastLabelView; // TextView in our inflated layout used for the Bible citation label
+    TextView lastTextView;  // TextView in our inflated layout used for the text of the current verse
     /**
      * Update the text displayed in the BibleDialog for a new verse. This is necessary only after
      * moving to a random verse at the moment because the same BibleDialog DialogFragment is
