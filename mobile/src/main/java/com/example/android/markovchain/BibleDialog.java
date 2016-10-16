@@ -49,7 +49,9 @@ public class BibleDialog extends DialogFragment {
      * moving to a random verse at the moment because the same BibleDialog DialogFragment is
      * used. Other actions create DialogFragments which when dismissed need to have the BibleDialog
      * recreated so onCreateView is called, therefore setting the fields BibleMain.bibleDialog.mLabel
-     * and BibleMain.bibleDialog.mText is done instead.
+     * and BibleMain.bibleDialog.mText is done instead. We set the text of the TextView lastLabelView
+     * to the label argument, and the text of the TextView lastTextView to the text argument.
+     * lastLabelView and lastTextView are set in the callback onCreateView.
      *
      * @param label Canonical Bible citation for the verse
      * @param text Text of the verse
@@ -79,17 +81,19 @@ public class BibleDialog extends DialogFragment {
         setStyle(DialogFragment.STYLE_NORMAL, 0);
     }
 
+    //  Object used in the ArrayAdapter used for our Spinner
     public String[] spinChoices = {"Choose Action", "Random verse", "Google",
                                    "Bookmark", "Go to verse", "Read aloud"};
-    public String spinChosen = "";
-    public int spinIndex = 0;
-    public int lastIndex = 0;
-    public static final int CHOICE_NONE = 0;
-    public static final int CHOICE_RANDOM_VERSE = 1;
-    public static final int CHOICE_GOOGLE = 2;
-    public static final int CHOICE_BOOKMARK = 3;
-    public static final int CHOICE_GO_TO_VERSE = 4;
-    public static final int CHOICE_READ_ALOUD = 5;
+    public String spinChosen = ""; // Which spinChoices action has been chosen
+    public int spinIndex = 0;      // The index of the action chosen in the Spinner
+    public int lastIndex = 0;      // Used to determine if Spinner has chosen a new action or
+                                   // whether the "REPEAT" Button should be visible
+    public static final int CHOICE_NONE = 0;         // "Choose Action"
+    public static final int CHOICE_RANDOM_VERSE = 1; // "Random verse"
+    public static final int CHOICE_GOOGLE = 2;       // "Google"
+    public static final int CHOICE_BOOKMARK = 3;     // "Bookmark"
+    public static final int CHOICE_GO_TO_VERSE = 4;  // "Go to verse"
+    public static final int CHOICE_READ_ALOUD = 5;   // "Read aloud"
 
     /**
      * AdapterView.OnItemSelectedListener used for the function chooser spinner

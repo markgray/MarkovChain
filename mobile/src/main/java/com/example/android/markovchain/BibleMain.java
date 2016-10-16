@@ -1,5 +1,6 @@
 package com.example.android.markovchain;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.DialogFragment;
 import android.app.Fragment;
@@ -25,17 +26,19 @@ import java.util.ArrayList;
  */
 public class BibleMain extends Activity {
 
-    public final String TAG = "BibleMain";
-    public static final String LAST_VERSE_VIEWED = "LAST_VERSE_VIEWED";
-    private static final String CLASS = BibleMain.class.getSimpleName();
-    public static Context bibleContext;
-    RecyclerView mRecyclerView;
-    RecyclerView.LayoutManager mLayoutManager;
-    public static boolean doneReading = false;
-    public static ConditionVariable mDoneReading = new ConditionVariable();
-    protected BibleAdapter mAdapter;
+    public final String TAG = "BibleMain"; // TAG for logging
+    public static final String LAST_VERSE_VIEWED = "LAST_VERSE_VIEWED"; // Key for shared preference to save verse number
+    private static final String CLASS = BibleMain.class.getSimpleName(); // Used to access shared preference file
+    @SuppressLint("StaticFieldLeak")
+    public static Context bibleContext; // Application Context for BibleMain to use when necessary
+    RecyclerView mRecyclerView; // Reference to the RecyclerView in our layout
+    RecyclerView.LayoutManager mLayoutManager; // LayoutManager for our RecyclerView
+    public static boolean doneReading = false; // Flag used to signal that we are done reading in the Bible
+    public static ConditionVariable mDoneReading = new ConditionVariable(); // Used to block until reading is finished
+    protected BibleAdapter mAdapter; // 
     ArrayList<String> stringList = new ArrayList<>();
     static ArrayList<String> bookChapterVerse = new ArrayList<>();
+    @SuppressLint("StaticFieldLeak")
     public static BibleDialog bibleDialog;
     public static String dialogTitle;
     public static String dialogText;
