@@ -35,15 +35,15 @@ public class BibleMain extends Activity {
     RecyclerView.LayoutManager mLayoutManager; // LayoutManager for our RecyclerView
     public static boolean doneReading = false; // Flag used to signal that we are done reading in the Bible
     public static ConditionVariable mDoneReading = new ConditionVariable(); // Used to block until reading is finished
-    protected BibleAdapter mAdapter; // 
-    ArrayList<String> stringList = new ArrayList<>();
-    static ArrayList<String> bookChapterVerse = new ArrayList<>();
+    protected BibleAdapter mAdapter; // The Adapter used to fill our RecyclerView
+    ArrayList<String> stringList = new ArrayList<>(); // List of Bible verses
+    static ArrayList<String> bookChapterVerse = new ArrayList<>(); // List of citations corresponding to each stringList verse
     @SuppressLint("StaticFieldLeak")
-    public static BibleDialog bibleDialog;
-    public static String dialogTitle;
-    public static String dialogText;
-    public static int dialogVerse;
-    public static TextToSpeech textToSpeech;
+    public static BibleDialog bibleDialog; // Contains reference to the BibleDialog launched by long clicking a verse
+    public static String dialogTitle; // Canonical Bible citation used in bibleDialog
+    public static String dialogText;  // Verse text used in bibleDialog
+    public static int dialogVerse;    // Verse number used in bibleDialog
+    public static TextToSpeech textToSpeech; // TextToSpeech instance used by BibleSpeak
 
     /**
      * Called when the activity is starting. First we call through to the super class's
@@ -342,7 +342,7 @@ public class BibleMain extends Activity {
      * TODO: Figure out why I used arrays for line and builder?
      */
     private void initDataSet() {
-        final String[] line = new String[1];
+        final String[] line = new String[1]; 
         final StringBuilder[] builder = {new StringBuilder()};
         InputStream inputStream = getApplicationContext().getResources().openRawResource(R.raw.king_james_text_and_verse);
         final BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
