@@ -338,13 +338,16 @@ public class BibleMain extends Activity {
 
     /**
      * Reads the raw file king_james_text_and_verse.txt, separating it into citations
-     * (bookChapterVerse) and verse text (stringList).
-     * TODO: Figure out why I used arrays for line and builder?
+     * (bookChapterVerse) and verse text (stringList). First we open InputStream inputStream
+     * to read our copy of the Bible (R.raw.king_james_text_and_verse) from our raw resource
+     * directory. Then we create BufferedReader reader from an instance of InputStreamReader
+     * created from inputStream (InputStreamReader does the character conversion needed to convert
+     * the byte stream coming from the InputStream inputStream, and BufferedReader allows us to
+     * use readLine on the characters coming from the InputStreamReader).
+     *
      */
     private void initDataSet() {
-        final String[] line = new String[1]; 
-        final StringBuilder[] builder = {new StringBuilder()};
-        InputStream inputStream = getApplicationContext().getResources().openRawResource(R.raw.king_james_text_and_verse);
+        final InputStream inputStream = getApplicationContext().getResources().openRawResource(R.raw.king_james_text_and_verse);
         final BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
 
         /**
@@ -355,24 +358,27 @@ public class BibleMain extends Activity {
          */
         doneReading = false;
         final Thread mThread = new Thread() {
+            String line;
+            StringBuilder builder = new StringBuilder();
             @Override
             public void run() {
                 mDoneReading.close();
                 try {
-                    while ((line[0] = reader.readLine()) != null) {
-                        bookChapterVerse.add(line[0]);
-                        while ((line[0] = reader.readLine()) != null) {
-                            builder[0].append(line[0]);
-                            if (line[0].length() == 0) {
-                                stringList.add(builder[0].toString());
-                                builder[0] = new StringBuilder();
+                    while ((line = reader.readLine()) != null) {
+                        bookChapterVerse.add(line);
+                        while ((line = reader.readLine()) != null) {
+                            builder.append(line);
+                            if (line.length() == 0) {
+                                stringList.add(builder.toString());
+                                builder = new StringBuilder();
                                 break;
                             } else {
-                                builder[0].append(" ");
+                                builder.append(" ");
                             }
                         }
                     }
                     Log.i(TAG, "Verses read: " + stringList.size());
+                    reader.close();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
