@@ -22,7 +22,7 @@ import java.io.InputStreamReader;
 
 @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1)
 public class BibleMarkovFragment extends Activity {
-    public final String TAG = "BibleMarkovFragment";
+    public final String TAG = "BibleMarkovFragment"; // TAG for logging
     ProgressBar mProgressBar;
     RecyclerView mRecyclerView;
     RecyclerView.LayoutManager mLayoutManager;

@@ -342,21 +342,34 @@ public class BibleMain extends Activity {
      * to read our copy of the Bible (R.raw.king_james_text_and_verse) from our raw resource
      * directory. Then we create BufferedReader reader from an instance of InputStreamReader
      * created from inputStream (InputStreamReader does the character conversion needed to convert
-     * the byte stream coming from the InputStream inputStream, and BufferedReader allows us to
-     * use readLine on the characters coming from the InputStreamReader).
-     *
+     * the byte stream coming from the InputStream inputStream to characters, and BufferedReader
+     * allows us to use readLine on the characters coming from the InputStreamReader). Then we
+     * set the doneReading flag to false so that other code does not try to access our data until
+     * it is ready to be used. Then we create the Thread mThread to read in the data from
+     * <code>reader</code> and start that thread running.
      */
     private void initDataSet() {
         final InputStream inputStream = getApplicationContext().getResources().openRawResource(R.raw.king_james_text_and_verse);
         final BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+        doneReading = false;
 
         /**
-         * This is the thread that will do our work.  It reads each line of text
-         * and adds it to a StringBuilder until it finds an empty line which is
-         * used to separate verses then converts the StringBuilder to a string
-         * and adds it to list of Strings.
+         * This is the thread that will do our work. First it calls <code>close()</code> on the
+         * ConditionVariable mDoneReading so that other Thread's may block on mDoneReading until
+         * we call <code>open()</code>. Then it proceeds to read and process every line in reader
+         * until readLine() returns null (EOF). The processing consists of separating the text
+         * into the citation for each verse (first line of a paragraph) which it adds to the field
+         * ArrayList<String> bookChapterVerse, and the lines of the text of the verse (all the
+         * lines until an empty line is encountered) which it appends to the StringBuilder builder.
+         * When the empty line terminating the verse is found (<code>line.length() == 0</code>), it
+         * converts StringBuilder build to a String and adds it to ArrayList<String> stringList,
+         * then it replaces the StringBuilder builder with a new instance of StringBuilder and
+         * breaks from the verse building loop in order to start reading in the next citation and
+         * verse. Once it is done reading all the lines in BufferedReader reader (reader.readLine()
+         * returns null) it closes BufferedReader reader (which also closes the InputStreamReader
+         * and InputStream it was reading from (I hope)), opens the ConditionVariable mDoneReading
+         * and sets doneReading to true.
          */
-        doneReading = false;
         final Thread mThread = new Thread() {
             String line;
             StringBuilder builder = new StringBuilder();
