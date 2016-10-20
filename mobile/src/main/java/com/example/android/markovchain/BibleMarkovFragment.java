@@ -22,46 +22,34 @@ import java.io.InputStreamReader;
 
 @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1)
 public class BibleMarkovFragment extends Activity {
-    public final String TAG = "BibleMarkovFragment";
-    ProgressBar mProgressBar;
-    RecyclerView mRecyclerView;
-    RecyclerView.LayoutManager mLayoutManager;
-    protected MarkovAdapter mAdapter;
-    protected Markov mMarkov = new Markov();
+    public final String TAG = "BibleMarkovFragment"; // TAG for logging
+    ProgressBar mProgressBar; // ProgressBar in our layout file
+    RecyclerView mRecyclerView; // RecyclerView in our layout file
+    RecyclerView.LayoutManager mLayoutManager; // LayoutManager use for our RecyclerView
+    protected MarkovAdapter mAdapter; // MarkovAdapter used by our RecyclerView
+    protected Markov mMarkov = new Markov(); // Markov instance used to generate random text to display
 
     /**
-     * Called when the activity is starting.  This is where most initialization
-     * should go: calling {@link #setContentView(int)} to inflate the
-     * activity's UI, using {@link #findViewById} to programmatically interact
-     * with widgets in the UI, calling
-     * {@link #managedQuery(android.net.Uri , String[], String, String[], String)} to retrieve
-     * cursors for data being displayed, etc.
+     * Called when the activity is starting. First we call through to our super's implementation of
+     * onCreate, and then we set our content view to our layout file R.layout.activity_bible_markov_fragment.
+     * We initialize our field ProgressBar mProgressBar by locating the ProgressBar in our layout
+     * (R.id.bible_markov_fragment_progress), our field RecyclerView mRecyclerView by locating the
+     * RecyclerView in our layout, and our field our field RecyclerView.LayoutManager mLayoutManager
+     * by creating a new instance of LinearLayoutManager. Then we call our method initMarkov() which
+     * starts a background thread to read in our offline generated Markov state table using
+     * mMarkov.load.
      *
-     * <p>You can call {@link #finish} from within this function, in
-     * which case onDestroy() will be immediately called without any of the rest
-     * of the activity lifecycle ({@link #onStart}, {@link #onResume},
-     * {@link #onPause}, etc) executing.
-     *
-     * <p><em>Derived classes must call through to the super class's
-     * implementation of this method.  If they do not, an exception will be
-     * thrown.</em></p>
-     *
-     * @param savedInstanceState If the activity is being re-initialized after
-     *     previously being shut down then this Bundle contains the data it most
-     *     recently supplied in {@link #onSaveInstanceState}.  <b><i>Note: Otherwise it is null.</i></b>
-     *
-     * @see #onStart
-     * @see #onSaveInstanceState
-     * @see #onRestoreInstanceState
-     * @see #onPostCreate
+     * @param savedInstanceState always null since onSaveInstanceState is not overridden
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bible_markov_fragment);
+
         mProgressBar = (ProgressBar) findViewById(R.id.bible_markov_fragment_progress);
-        mLayoutManager = new LinearLayoutManager(getApplicationContext());
         mRecyclerView = (RecyclerView) findViewById(R.id.bible_markov_fragment);
+        mLayoutManager = new LinearLayoutManager(getApplicationContext());
+
         initMarkov();
         mAdapter = new MarkovAdapter(mMarkov, mLayoutManager);
         // Set CustomAdapter as the adapter for RecyclerView.
