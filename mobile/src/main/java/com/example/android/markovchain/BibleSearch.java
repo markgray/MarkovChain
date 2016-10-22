@@ -17,15 +17,22 @@ import android.widget.TextView;
 import java.util.Collections;
 import java.util.HashSet;
 
+/**
+ * This DialogFragment allows you to search for words or phrases in the current verse on the web
+ * using Google search.
+ */
 public class BibleSearch extends DialogFragment {
-    public final static String TAG = "BibleSearch";
-    public String mLabel;
-    public String mText;
-    public String[] mSuggestions;
-    public ArrayAdapter<String> adapter;
+    public final static String TAG = "BibleSearch"; // TAG used for logging
+    public String mLabel; // Canonical Bible citation for current verse
+    public String mText;  // Current verse
+    public String[] mSuggestions; // Array containing all words in current verse (duplicates removed)
+    public ArrayAdapter<String> adapter; // Suggestions Adapter for MultiAutoCompleteTextView textView
 
     /**
-     * Create and initialize a BibleSearch DialogFragment
+     * Create and initialize a BibleSearch DialogFragment. First we create a new BibleSearch instance
+     * "f", we create a Bundle "args" and store our parameter <code>label</code> in it under the key
+     * "label" and our parameter <code>text</code> under the key "text". We set the arguments of our
+     * BibleSearch instance <code>f</code> to the Bundle args and return <code>f</code> to the caller.
      *
      * @param label Label to use
      * @param text  Text to use

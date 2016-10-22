@@ -87,7 +87,7 @@ public class BibleMarkovFragment extends Activity {
              * Called by DoneListener.onDone by Markov when it is done reading in the Markov state
              * table. We simply call callOnClick using the view passed us. (The Toast is just there
              * for debugging purposes)
-             * 
+             *
              * @param view a View for Context for a Toast or other possible uses.
              */
             @Override
@@ -103,10 +103,16 @@ public class BibleMarkovFragment extends Activity {
      * using a background thread.
      */
     private void initMarkov() {
+
+        // InputStream for reading the raw bytes from the file R.raw.king_james_state_table from
+        // which an InputStreamReader is constructed to convert the bytes to characters, and finally
+        // the BufferedReader which Markov.load needs to read the file line by line.
         InputStream inputStream = getApplicationContext().getResources().openRawResource(R.raw.king_james_state_table);
         final BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+
         /**
-         * This is the thread that will do our work.
+         * This is the thread that will do our work. Pretty much self explanatory since Markov.load
+         * does all the work. We just wrap the call in a "try" in order to catch IOException
          */
         final Thread mThread = new Thread() {
             @Override
