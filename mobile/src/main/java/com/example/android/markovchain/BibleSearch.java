@@ -26,7 +26,7 @@ public class BibleSearch extends DialogFragment {
     public String mLabel; // Canonical Bible citation for current verse
     public String mText;  // Current verse
     public String[] mSuggestions; // Array containing all words in current verse (duplicates removed)
-    public ArrayAdapter<String> adapter; // Suggestions Adapter for MultiAutoCompleteTextView textView
+    public ArrayAdapter<String> mAdapter; // Suggestions Adapter for MultiAutoCompleteTextView textView
 
     /**
      * Create and initialize a BibleSearch DialogFragment. First we create a new BibleSearch instance
@@ -51,7 +51,12 @@ public class BibleSearch extends DialogFragment {
     }
 
     /**
-     * Remove punctuation characters .,;:()!? from the verse passed it
+     * Remove punctuation characters .,;:()!? from the verse passed it. First we create a StringBuilder
+     * stringBuilder, then looping through all the characters in our parameter String text we grab
+     * each <code>char c</code> from <code>text</code> and if it is not one of the punctuation
+     * characters ".,;:()!?" we append it to our <code>StringBuilder stringBuilder</code>, otherwise
+     * we ignore it. Finally we return the String contents of <code>stringBuilder</code> to the
+     * caller.
      *
      * @param text Verse containing punctuation characters
      * @return Same verse minus all punctuation
@@ -68,8 +73,15 @@ public class BibleSearch extends DialogFragment {
     }
 
     /**
-     * Given an array of strings which might contain duplicate strings remove all
-     * duplicates
+     * Given an array of strings which might contain duplicate strings remove all duplicates. First
+     * we create HashSet<String> setOfStrings, then we add all the String's in our parameter string
+     * to the set using Collections.addAll. This has the effect of only adding a String if it is not
+     * already present in the set (thus removing the duplicates). We create Object[] tempObjectArray
+     * to temporarily hold a copy of all of the Objects in our setOfStrings (necessary because
+     * <code>HashSet<String>.toArray()</code> returns an array of Object's, not String's). Then we
+     * create the array <code>String[] returnStringArray</code> and loop through the Object's in
+     * <code>tempObjectArray</code>, casting them to String before storing them in returnStringArray.
+     * Finally we return returnStringArray to our caller.
      *
      * @param strings String array with possible duplicate string members
      * @return Same array with only single occurrences of strings
@@ -77,8 +89,8 @@ public class BibleSearch extends DialogFragment {
     private String[] uniq(String[] strings) {
         HashSet<String> setOfStrings = new HashSet<>(strings.length);
         Collections.addAll(setOfStrings, strings);
-        String[] returnStringArray = new String[setOfStrings.size()];
         Object[] tempObjectArray = setOfStrings.toArray();
+        String[] returnStringArray = new String[setOfStrings.size()];
         for (int i = 0; i < setOfStrings.size() ; i++) {
             returnStringArray[i] = (String) tempObjectArray[i];
         }
@@ -96,8 +108,19 @@ public class BibleSearch extends DialogFragment {
      * at this point.  If you want to do work once the activity itself is
      * created, see {@link #onActivityCreated(Bundle)}.
      *
-     * @param savedInstanceState If the fragment is being re-created from
-     * a previous saved state, this is the state.
+     * First we call through to our super's implementation of onCreate, then we initialize our
+     * fields <code>mLabel</code> and <code>mText</code> from our arguments using the keys "label"
+     * and "text" respectively. Then we initialize our field <code>String[] mSuggestions</code>
+     * (the array of suggestions for our EditText) by first removing all punctuation characters
+     * from <code>mText</code>, splitting the result into a String array using the delimiter " ",
+     * and removing all duplicates from that array using our method <code>uniq</code>. We then
+     * initialize our field <code>ArrayAdapter<String> mAdapter</code> using <code>mSuggestions</code>
+     * as the constants to be used in the ListView when <code>mAdapter</code> is used for the
+     * suggestions in our EditText. Finally we set our DialogFragment style to STYLE_NORMAL (for
+     * no better reason then it was done in the sample code we studied.
+     * TODO: Improve the styles used for all DialogFragment's and Spinner's
+     *
+     * @param savedInstanceState always null since onSaveInstanceState is not overridden.
      */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -107,7 +130,7 @@ public class BibleSearch extends DialogFragment {
         mText = getArguments().getString("text");
         //noinspection ConstantConditions
         mSuggestions = uniq(noPunct(mText).split(" "));
-        adapter = new ArrayAdapter<>(BibleMain.bibleContext,
+        mAdapter = new ArrayAdapter<>(BibleMain.bibleContext,
                 android.R.layout.simple_dropdown_item_1line, mSuggestions);
 
         Log.i(TAG, "onCreate called with: " + mLabel + " " + mText);
@@ -147,7 +170,7 @@ public class BibleSearch extends DialogFragment {
         ((TextView) tv).setText(mText);
 
         final MultiAutoCompleteTextView textView = (MultiAutoCompleteTextView) v.findViewById(R.id.edit);
-        textView.setAdapter(adapter);
+        textView.setAdapter(mAdapter);
         textView.setTokenizer(new SpaceTokenizer());
 
         // Watch for button clicks.
