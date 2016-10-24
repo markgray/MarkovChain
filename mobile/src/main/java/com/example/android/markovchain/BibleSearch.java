@@ -139,21 +139,23 @@ public class BibleSearch extends DialogFragment {
     }
 
     /**
-     * Called to have the fragment instantiate its user interface view.
-     * This is optional, and non-graphical fragments can return null (which
-     * is the default implementation).  This will be called between
-     * {@link #onCreate(Bundle)} and {@link #onActivityCreated(Bundle)}.
-     *
-     * <p>If you return a View from here, you will later be called in
-     * {@link #onDestroyView} when the view is being released.
+     * Called to have the fragment instantiate its user interface view. First we inflate our layout
+     * file R.layout.bible_search into View v. Then we locate the TextView R.id.label and set its
+     * text to <code>mLabel</code>, and locate the TextView R.id.text and set its text to
+     * <code>mText</code>. We locate our <code>MultiAutoCompleteTextView textView</code> R.id.edit
+     * set its Adapter to <code>mAdapter</code> and set its tokenizer to a new instance of our class
+     * SpaceTokenizer. Next we locate the "SEARCH" Button (R.id.show) and set its OnClickListener to
+     * an anonymous class which when the Button is clicked will create an Intent to do a Google
+     * search on the text which has been entered in our <code>MultiAutoCompleteTextView textView</code>.
+     * Finally we return <code>View v</code> to our caller.
 
      * @param inflater The LayoutInflater object that can be used to inflate
-     * any views in the fragment,
-     * @param container If non-null, this is the parent view that the fragment's
-     * UI should be attached to.  The fragment should not add the view itself,
-     * but this can be used to generate the LayoutParams of the view.
-     * @param savedInstanceState If non-null, this fragment is being re-constructed
-     * from a previous saved state as given here.
+     *                 any views in the fragment,
+     * @param container If non-null, this is the parent view that the fragment's UI should be
+     *                  attached to.  The fragment should not add the view itself, but this can
+     *                  be used to generate the LayoutParams of the view.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed from a previous
+     *                           saved state as given here.
      *
      * @return Return the View for the fragment's UI, or null.
      */
@@ -162,9 +164,9 @@ public class BibleSearch extends DialogFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Log.i(TAG, "onCreateView called");
         View v = inflater.inflate(R.layout.bible_search, container, false);
+
         View tv = v.findViewById(R.id.label);
-        String dialogLabel = mLabel;
-        ((TextView) tv).setText(dialogLabel);
+        ((TextView) tv).setText(mLabel);
 
         tv = v.findViewById(R.id.text);
         ((TextView) tv).setText(mText);
@@ -176,15 +178,28 @@ public class BibleSearch extends DialogFragment {
         // Watch for button clicks.
         Button button = (Button) v.findViewById(R.id.show);
         button.setOnClickListener(new View.OnClickListener() {
+            /**
+             * Called when the "SEARCH" Button (R.id.show) is clicked. First we retrieve the String
+             * query from <code>MultiAutoCompleteTextView textView</code>, create an Intent intent
+             * with the action ACTION_WEB_SEARCH (Perform a web search), add extended data to the
+             * intent containing our <code>String query</code> and using SearchManager.QUERY as the
+             * name of the extra value, and then we launch the Activity we specified in the Intent.
+             * We make sure that the BibleDialog that launched us has an up to date value for its
+             * fields mLabel and mText, and finally we dismiss this BibleSearch DialogFragment.
+             *
+             * @param v View of Button that was clicked.
+             */
+            @Override
             public void onClick(View v) {
-                // When button is clicked, call up to owning activity.
+                // Create an Intent to perform a Google search and launch it.
                 String query = textView.getText().toString();
                 Intent intent = new Intent(Intent.ACTION_WEB_SEARCH);
                 intent.putExtra(SearchManager.QUERY, query); // query contains search string
                 startActivity(intent);
-                BibleSearch.this.dismiss();
+
                 BibleMain.bibleDialog.mLabel = BibleMain.dialogTitle;
                 BibleMain.bibleDialog.mText = BibleMain.dialogText;
+                BibleSearch.this.dismiss();
             }
         });
         return v;

@@ -15,6 +15,9 @@ import android.speech.tts.TextToSpeech.OnInitListener;
 
 import java.util.Locale;
 
+/**
+ * This DialogFragment reads the current verse using the systems text to speech synthesizer.
+ */
 public class BibleSpeak extends DialogFragment implements OnInitListener {
 
     private static final String TAG = "BibleSpeak";
