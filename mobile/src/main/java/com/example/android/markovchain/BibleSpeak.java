@@ -15,15 +15,25 @@ import android.speech.tts.TextToSpeech.OnInitListener;
 
 import java.util.Locale;
 
+/**
+ * This DialogFragment reads the current verse using the systems text to speech synthesizer.
+ */
 public class BibleSpeak extends DialogFragment implements OnInitListener {
 
-    private static final String TAG = "BibleSpeak";
-    public String mLabel;
-    public String mText;
-    private TextToSpeech mTts;
-    // TODO: Call mTts.shutdown() at appropriate time. May need to move to BibleMain?
-    private View mView;
+    private static final String TAG = "BibleSpeak"; // TAG used for logging
+    public String mLabel; // canonical Bible citation for current verse
+    public String mText;  // text of current verse
+    private TextToSpeech mTts; // TextToSpeech instance we will use to synthesize speech
+    private View mView; // View containing our layout inflated in onCreateView
 
+    /**
+     * Create a new instance of BibleSpeak with its arguments set to the values of the parameters
+     * passed us.
+     *
+     * @param label canonical Bible citation for current verse
+     * @param text  text of current verse
+     * @return an instance of BibleSpeak with arguments set to the values of our parameters
+     */
     static BibleSpeak newInstance(String label, String text) {
         Log.i(TAG, " newInstance called with: " + label + " " + text);
         BibleSpeak f = new BibleSpeak();
