@@ -27,8 +27,13 @@ public class BibleSpeak extends DialogFragment implements OnInitListener {
     private View mView; // View containing our layout inflated in onCreateView
 
     /**
-     * Create a new instance of BibleSpeak with its arguments set to the values of the parameters
-     * passed us.
+     * Create a new instance of BibleSpeak f with its arguments set to the values of the parameters
+     * passed us. First we create a new instance of BibleSpeak f, then we create Bundle args and
+     * insert the label parameter under key "label" and the text parameter under key "text".
+     * We use Bundle f to supply the construction arguments for the BibleSpeak DialogFragment by
+     * calling f.setArguments(args). The arguments in <code>args</code> can then be retrieved in
+     * BibleSpeak.onCreate(). The arguments supplied here will be retained across fragment destroy
+     * and creation.
      *
      * @param label canonical Bible citation for current verse
      * @param text  text of current verse
@@ -53,17 +58,24 @@ public class BibleSpeak extends DialogFragment implements OnInitListener {
      * {@link #onCreate(Bundle)} and {@link #onActivityCreated(Bundle)}.
      *
      * <p>If you return a View from here, you will later be called in
-     * {@link #onDestroyView} when the view is being released.
+     * {@link #onDestroyView} when the view is being released.</p>
+     *
+     * First we inflate our layout into our field View mView, then we call our method
+     * setDisplayedText to set the label of our View mView to the String mLabel and the
+     * text of our View mView to the String mText. Next we locate the Button "DISMISS"
+     * (R.id.dismiss) and set its OnClickListener to an anonymous class which will dismiss
+     * this BibleSpeak DialogFragment, and then we locate the Button "NEXT" (R.id.next) and
+     * set its OnClickListener to an anonymous class which will move to the next verse of the
+     * Bible and speak it out loud. Finally we return View mView to the caller.
      *
      * @param inflater The LayoutInflater object that can be used to inflate
-     * any views in the fragment,
+     *        any views in the fragment,
      * @param container If non-null, this is the parent view that the fragment's
-     * UI should be attached to.  The fragment should not add the view itself,
-     * but this can be used to generate the LayoutParams of the view.
-     * @param savedInstanceState If non-null, this fragment is being re-constructed
-     * from a previous saved state as given here.
+     *        UI should be attached to.  The fragment should not add the view itself,
+     *        but this can be used to generate the LayoutParams of the view.
+     * @param savedInstanceState always null since onSaveInstanceState is not overridden
      *
-     * @return Return the View for the fragment's UI, or null.
+     * @return Return the View for the fragment's UI.
      */
     @Nullable
     @Override
@@ -77,9 +89,9 @@ public class BibleSpeak extends DialogFragment implements OnInitListener {
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // When button is clicked, dismiss this DialogFragment
-                BibleSpeak.this.dismiss();
                 BibleMain.bibleDialog.mLabel = BibleMain.dialogTitle;
                 BibleMain.bibleDialog.mText = BibleMain.dialogText;
+                BibleSpeak.this.dismiss();
             }
         });
         // Watch for NEXT  button clicks
@@ -100,14 +112,15 @@ public class BibleSpeak extends DialogFragment implements OnInitListener {
     }
 
     /**
-     * Set the label and text of the view to those saved in mLabel and mText
+     * Set the label and text of the view to those saved in mLabel and mText. First we locate the
+     * View tv for the label (R.id.label) and set its text to the String mLabel, then we locate the
+     * View for the text (R.id.text) and set its text to the String mText.
      *
-     * @param v Main View for the DialogFragment (usually mView)
+     * @param v Main View for the DialogFragment (always mView at the moment)
      */
     public void setDisplayedText(View v) {
         View tv = v.findViewById(R.id.label);
-        String dialogLabel = mLabel;
-        ((TextView) tv).setText(dialogLabel);
+        ((TextView) tv).setText(mLabel);
 
         tv = v.findViewById(R.id.text);
         ((TextView) tv).setText(mText);
