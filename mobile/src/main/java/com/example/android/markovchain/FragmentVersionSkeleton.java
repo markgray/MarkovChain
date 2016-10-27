@@ -18,7 +18,9 @@ import android.widget.Toast;
 
 import com.example.android.common.DoneListener;
 
-
+/**
+ * Just a test Activity for experimenting with retained fragments.
+ */
 public class FragmentVersionSkeleton extends Activity {
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
