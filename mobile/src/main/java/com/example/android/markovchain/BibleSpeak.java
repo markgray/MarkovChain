@@ -130,14 +130,21 @@ public class BibleSpeak extends DialogFragment implements OnInitListener {
      * Called to do initial creation of a fragment.  This is called after
      * onAttach(Activity) and before onCreateView(LayoutInflater, ViewGroup, Bundle).
      *
-     * <p>Note that this can be called while the fragment's activity is
-     * still in the process of being created.  As such, you can not rely
-     * on things like the activity's content view hierarchy being initialized
-     * at this point.  If you want to do work once the activity itself is
-     * created, see {@link #onActivityCreated(Bundle)}.
+     * First we call through to our super's implementation of onCreate, then we initialize our field
+     * String mLabel using what was stored in our arguments under the key "label", and our field
+     * String mText using what was stored in our arguments under the key "text" (the canonical Bible
+     * citation for the current verse, and the text of the current verse respectively). Then we set
+     * the style of our DialogFragment to STYLE_NORMAL (for no reason I can think of.) Finally if
+     * BibleMain.textToSpeech is null (first time BibleSpeak has been called) we create a new
+     * instance of TextToSpeech and save it in our field TextToSpeech mTts as well as a permanent
+     * copy in BibleMain.textToSpeech, otherwise we initialize our field TextToSpeech mTts from the
+     * existing TextToSpeech instance in BibleMain.textToSpeech and immediately instruct mTts to
+     * speak our String mText (since it is preexisting, the TextToSpeech instance has already
+     * finished its initialization phase and is ready to use, for the first use of a newly created
+     * TextToSpeech instance we delay instructing it to speak until the onInit callback is called
+     * to signal the completion of the TextToSpeech engine initialization).
      *
-     * @param savedInstanceState If the fragment is being re-created from
-     * a previous saved state, this is the state.
+     * @param savedInstanceState always null since onSaveInstanceState is not overridden
      */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -161,7 +168,12 @@ public class BibleSpeak extends DialogFragment implements OnInitListener {
     }
 
     /**
-     * Called to signal the completion of the TextToSpeech engine initialization.
+     * Called to signal the completion of the TextToSpeech engine initialization. If the status
+     * passed us is TextToSpeech.SUCCESS, we try to set the language of TextToSpeech mTts to Locale.US
+     * (Locale constant for en_US) and if the result of that attempt is either LANG_MISSING_DATA or
+     * LANG_NOT_SUPPORTED we just log the error and return, otherwise we instruct TextToSpeech mTts
+     * to speak our String mText. If the status passed to us was not TextToSpeech.SUCCESS we log
+     * our failure to initialize the TextToSpeech engine.
      *
      * @param status {@link TextToSpeech#SUCCESS} or {@link TextToSpeech#ERROR}.
      */
