@@ -7,6 +7,7 @@ import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,22 +22,34 @@ import com.example.android.common.DoneListener;
 /**
  * Just a test Activity for experimenting with retained fragments.
  */
+@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class FragmentVersionSkeleton extends Activity {
+    final String TAG = "FragmentVersionSkeleton";
 
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+    /**
+     * Called when the activity is starting. First we call through to our super's implementation of
+     * onCreate
+     *
+     * @param savedInstanceState If the activity is being re-initialized after
+     *        previously being shut down then this Bundle contains the data that was most
+     *        recently supplied in {@link #onSaveInstanceState}. In addition FragmentManager
+     *        will save information in the Bundle so it will be non-null when we are recreated
+     *        as the result of an orientation change iff we contain a retained Fragment.
+     */
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         // First time init, create the UI.
         if (savedInstanceState == null) {
             getFragmentManager().beginTransaction().add(android.R.id.content,
                     new UiFragment()).commit();
+        } else {
+            Log.i(TAG, "Bundle savedInstanceState is not null");
         }
     }
 
     void showDialog() {
-
         // DialogFragment.show() will take care of adding the fragment
         // in a transaction.  We also want to remove any currently showing
         // dialog, so make our own transaction and take care of that here.
@@ -61,6 +74,18 @@ public class FragmentVersionSkeleton extends Activity {
         RetainedFragment mWorkFragment;
         View v;
 
+        /**
+         *
+         * @param inflater The LayoutInflater object that can be used to inflate
+         *        any views in the fragment,
+         * @param container If non-null, this is the parent view that the fragment's UI
+         *        should be attached to.  The fragment should not add the view itself,
+         *        but this can be used to generate the LayoutParams of the view.
+         * @param savedInstanceState If non-null, this fragment is being re-constructed
+         *        from a previous saved state as given here.
+         *
+         * @return Return the View for the fragment's UI, or null.
+         */
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
