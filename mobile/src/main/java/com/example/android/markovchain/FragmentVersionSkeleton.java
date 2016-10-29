@@ -28,7 +28,17 @@ public class FragmentVersionSkeleton extends Activity {
 
     /**
      * Called when the activity is starting. First we call through to our super's implementation of
-     * onCreate
+     * onCreate. If this is the first time we are called (Bundle savedInstanceState == null) we need
+     * to:
+     *     1. Get the FragmentManager for interacting with fragments associated with this activity.
+     *     2. Start a series of edit operations on the Fragments associated with this FragmentManager.
+     *     3. Add a new instance of our UiFragment fragment to the activity state
+     *     4. Schedule a commit of this transaction. The commit does not happen immediately; it will
+     *        be scheduled as work on the main thread to be done the next time that thread is ready.
+     *
+     * If we are being recreated after an orientation change or other event, then the fragment api
+     * will have saved its state in Bundle savedInstanceState so it will not be null. (We however do
+     * not override onSaveInstanceState, so there is nothing in the Bundle we need bother with.)
      *
      * @param savedInstanceState If the activity is being re-initialized after
      *        previously being shut down then this Bundle contains the data that was most
@@ -42,13 +52,18 @@ public class FragmentVersionSkeleton extends Activity {
 
         // First time init, create the UI.
         if (savedInstanceState == null) {
-            getFragmentManager().beginTransaction().add(android.R.id.content,
-                    new UiFragment()).commit();
+            getFragmentManager()
+                    .beginTransaction()
+                    .add(android.R.id.content, new UiFragment())
+                    .commit();
         } else {
             Log.i(TAG, "Bundle savedInstanceState is not null");
         }
     }
 
+    /**
+     * 
+     */
     void showDialog() {
         // DialogFragment.show() will take care of adding the fragment
         // in a transaction.  We also want to remove any currently showing
