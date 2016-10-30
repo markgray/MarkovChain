@@ -62,7 +62,14 @@ public class FragmentVersionSkeleton extends Activity {
     }
 
     /**
-     * 
+     * Create and show a MyDialogFragment DialogFragment. First we get the FragmentManager and
+     * instruct it to create a FragmentTransaction ft and to begin a series of fragment transactions
+     * on the Fragment's associated with this FragmentManager. Next we ask the FragmentManager to
+     * search for a fragment with the tag "dialog" and save the results in Fragment prev. If prev
+     * is not null we use FragmentTransaction ft to remove that Fragment. We next tell ft to add
+     * the transaction to the back stack. Next we create a new instance of DialogFragment newFragment
+     * using some dummy data for its label and text. Finally we instruct DialogFragment newFragment
+     * to show itself using the tag "dialog".
      */
     void showDialog() {
         // DialogFragment.show() will take care of adding the fragment
@@ -84,12 +91,23 @@ public class FragmentVersionSkeleton extends Activity {
      * This is a fragment showing UI that will be updated from work done
      * in the retained fragment.
      */
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public static class UiFragment extends Fragment {
-        RetainedFragment mWorkFragment;
-        View v;
+        RetainedFragment mWorkFragment; // A reference to our example retained Fragment
+        View v; // View containing our layout file
 
         /**
+         * Called to have the fragment instantiate its user interface view. First we use the
+         * LayoutInflater passed us to inflate our layout file R.layout.fragment_retain_instance
+         * saving a reference to it in our field View v. We locate the Button R.id.restart ("RESTART")
+         * and set its OnClickListener to an anonymous class which will instruct RetainedFragment
+         * mWorkFragment to restart itself. Then we locate the Button R.id.toastme ("TOAST VALUE")
+         * and set its OnClickListener to an anonymous class which creates and show a Toast showing
+         * the value of RetainedFragment's static field int mPosition. Next it locates the view
+         * R.id.main_view (which has a visibility of GONE until mWorkFragment flips the visibility
+         * of the view containing the ProgressBar to GONE and it to  VISIBLE btw) and sets its
+         * OnLongClickListener to an anonymous class which displays an informative Toast and instructs
+         * our Activity FragmentVersionSkeleton to show its dialog. Finally we return our View v to
+         * our caller.
          *
          * @param inflater The LayoutInflater object that can be used to inflate
          *        any views in the fragment,
@@ -109,6 +127,12 @@ public class FragmentVersionSkeleton extends Activity {
             // Watch for button clicks.
             Button button = (Button) v.findViewById(R.id.restart);
             button.setOnClickListener(new View.OnClickListener() {
+                /**
+                 * Called when the R.id.restart Button is clicked.
+                 *
+                 * @param v View of Button that was clicked
+                 */
+                @Override
                 public void onClick(View v) {
                     mWorkFragment.restart();
                 }
@@ -171,7 +195,6 @@ public class FragmentVersionSkeleton extends Activity {
      * activity instances.  It represents some ongoing work, here a thread
      * we have that sits around incrementing a progress indicator.
      */
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public static class RetainedFragment extends Fragment {
 
         ProgressBar mProgressBar;
@@ -384,7 +407,8 @@ public class FragmentVersionSkeleton extends Activity {
             ((TextView)tv).setText(mText);
 
             // Watch for button clicks.
-            Button button = (Button)v.findViewById(R.id.show);
+            Button button = (Button)v.findViewById(R.id.dismiss);
+
             button.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     // When button is clicked, call up to owning activity.
