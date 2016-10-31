@@ -20,7 +20,7 @@ public class DoneListener {
      * Thread instance created using an anonymous Runnable class whose run() method simply calls
      * onDoneDo(View view).
      *
-     * @param view View to provide Context for a Toast or other use that needs a Context.
+     * @param view View to provide Context for a Toast or other use that needs a View or Context.
      */
     public void onDone(final View view) {
         ((Activity) view.getContext()).runOnUiThread(new Thread(new Runnable()

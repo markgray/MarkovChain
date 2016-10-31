@@ -128,7 +128,9 @@ public class FragmentVersionSkeleton extends Activity {
             Button button = (Button) v.findViewById(R.id.restart);
             button.setOnClickListener(new View.OnClickListener() {
                 /**
-                 * Called when the R.id.restart Button is clicked.
+                 * Called when the R.id.restart Button is clicked. We simply instruct our
+                 * RetainedFragment mWorkFragment to restart the count at zero by calling
+                 * the method RetainedFragment.restart().
                  *
                  * @param v View of Button that was clicked
                  */
@@ -140,6 +142,12 @@ public class FragmentVersionSkeleton extends Activity {
 
             button = (Button) v.findViewById(R.id.toastme);
             button.setOnClickListener(new View.OnClickListener() {
+                /**
+                 * Called when the R.id.toastme Button is clicked. We simply show a Toast displaying
+                 * the current value of the public static int mPosition field of RetainedFragment.
+                 *
+                 * @param v View of Button that was clicked.
+                 */
                 @Override
                 public void onClick(View v) {
                     Toast.makeText(getActivity(), "The value is:" + RetainedFragment.mPosition, Toast.LENGTH_LONG).show();
@@ -148,6 +156,15 @@ public class FragmentVersionSkeleton extends Activity {
 
             TextView textView = (TextView) v.findViewById(R.id.main_view);
             textView.setOnLongClickListener(new View.OnLongClickListener() {
+                /**
+                 * Called when the R.id.main_view View has been long clicked. We make a Toast
+                 * reporting: "I have been long clicked" and call showDialog of our Activity to
+                 * create and show a MyDialogFragment DialogFragment. Finally we return true to
+                 * indicate to our caller that we have consumed the long click.
+                 *
+                 * @param view View that was long clicked
+                 * @return true if the callback consumed the long click, false otherwise.
+                 */
                 @Override
                 public boolean onLongClick(View view) {
                     Toast.makeText(getActivity(), "I have been long clicked", Toast.LENGTH_LONG).show();
@@ -158,6 +175,35 @@ public class FragmentVersionSkeleton extends Activity {
             return v;
         }
 
+        /**
+         * Called when the fragment's activity has been created and this
+         * fragment's view hierarchy instantiated.  It can be used to do final
+         * initialization once these pieces are in place, such as retrieving
+         * views or restoring state.  It is also useful for fragments that use
+         * {@link #setRetainInstance(boolean)} to retain their instance,
+         * as this callback tells the fragment when it is fully associated with
+         * the new activity instance.  This is called after {@link #onCreateView}
+         * and before {@link #onViewStateRestored(Bundle)}.
+         *
+         * First we call through to our super's implementation of onActivityCreated. Next we set our
+         * variable android.app.FragmentManager fm to the FragmentManager for interacting with
+         * fragments associated with this fragment's activity. Then we use <code>fm</code> to look
+         * for a fragment with the tag "work" and use it to set our field RetainedFragment
+         * mWorkFragment, and if null was returned (the Fragment was not found) we create a new
+         * instance of RetainedFragment for RetainedFragment mWorkFragment, set <code>this</code>
+         * to be the target Fragment for mWorkFragment, and then use <code>fm</code> to start a
+         * series of edit operations on the Fragments associated with this FragmentManager, use
+         * the FragmentTransaction returned to add the Fragment <code>mWorkFragment</code> to the
+         * Activity with the Tag "work", and the method chain terminates with a call to commit()
+         * to schedule a commit of this transaction. Finally we call mWorkFragment.setDoneListener
+         * to set the DoneListener of mWorkFragment to DoneListener mIamDone which swaps the
+         * visibility of TextView R.id.main_view and the LinearLayout R.id.progress_view_linear_layout.
+         * (The two share the same space in a FrameLayout, and R.id.progress_view_linear_layout starts
+         * out with a visibility of VISIBLE which is changed to GONE, and R.id.main_view starts out
+         * with a visibility of GONE which is changed to VISIBLE.)
+         *
+         * @param savedInstanceState we do not override onSaveInstanceState so ignore the value
+         */
         @Override
         public void onActivityCreated(Bundle savedInstanceState) {
             super.onActivityCreated(savedInstanceState);
@@ -177,7 +223,17 @@ public class FragmentVersionSkeleton extends Activity {
             mWorkFragment.setDoneListener(mIamDone, v);
         }
 
+        /**
+         * DoneListener for mWorkFragment. When mWorkFragment is done it calls DoneListener.onDone
+         * which in turn calls our override of onDoneDo which changes the visibility of LinearLayout
+         * R.id.progress_view_linear_layout from VISIBLE to GONE, and the visibility of TextView
+         * R.id.main_view from GONE to VISIBLE.
+         */
         DoneListener mIamDone = new DoneListener() {
+            /**
+             *
+             * @param v View of our inflated layout file.
+             */
             @Override
             public void onDoneDo(View v) {
                 TextView mMainView = (TextView) v.findViewById(R.id.main_view);
