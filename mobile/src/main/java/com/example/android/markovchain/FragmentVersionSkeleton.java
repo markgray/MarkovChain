@@ -7,6 +7,7 @@ import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,22 +22,56 @@ import com.example.android.common.DoneListener;
 /**
  * Just a test Activity for experimenting with retained fragments.
  */
+@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class FragmentVersionSkeleton extends Activity {
+    final String TAG = "FragmentVersionSkeleton";
 
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+    /**
+     * Called when the activity is starting. First we call through to our super's implementation of
+     * onCreate. If this is the first time we are called (Bundle savedInstanceState == null) we need
+     * to:
+     *     1. Get the FragmentManager for interacting with fragments associated with this activity.
+     *     2. Start a series of edit operations on the Fragments associated with this FragmentManager.
+     *     3. Add a new instance of our UiFragment fragment to the activity state
+     *     4. Schedule a commit of this transaction. The commit does not happen immediately; it will
+     *        be scheduled as work on the main thread to be done the next time that thread is ready.
+     *
+     * If we are being recreated after an orientation change or other event, then the fragment api
+     * will have saved its state in Bundle savedInstanceState so it will not be null. (We however do
+     * not override onSaveInstanceState, so there is nothing in the Bundle we need bother with.)
+     *
+     * @param savedInstanceState If the activity is being re-initialized after
+     *        previously being shut down then this Bundle contains the data that was most
+     *        recently supplied in {@link #onSaveInstanceState}. In addition FragmentManager
+     *        will save information in the Bundle so it will be non-null when we are recreated
+     *        as the result of an orientation change iff we contain a retained Fragment.
+     */
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         // First time init, create the UI.
         if (savedInstanceState == null) {
-            getFragmentManager().beginTransaction().add(android.R.id.content,
-                    new UiFragment()).commit();
+            getFragmentManager()
+                    .beginTransaction()
+                    .add(android.R.id.content, new UiFragment())
+                    .commit();
+        } else {
+            Log.i(TAG, "Bundle savedInstanceState is not null");
         }
     }
 
+    /**
+     * Create and show a MyDialogFragment DialogFragment. First we get the FragmentManager and
+     * instruct it to create a FragmentTransaction ft and to begin a series of fragment transactions
+     * on the Fragment's associated with this FragmentManager. Next we ask the FragmentManager to
+     * search for a fragment with the tag "dialog" and save the results in Fragment prev. If prev
+     * is not null we use FragmentTransaction ft to remove that Fragment. We next tell ft to add
+     * the transaction to the back stack. Next we create a new instance of DialogFragment newFragment
+     * using some dummy data for its label and text. Finally we instruct DialogFragment newFragment
+     * to show itself using the tag "dialog".
+     */
     void showDialog() {
-
         // DialogFragment.show() will take care of adding the fragment
         // in a transaction.  We also want to remove any currently showing
         // dialog, so make our own transaction and take care of that here.
@@ -56,11 +91,34 @@ public class FragmentVersionSkeleton extends Activity {
      * This is a fragment showing UI that will be updated from work done
      * in the retained fragment.
      */
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public static class UiFragment extends Fragment {
-        RetainedFragment mWorkFragment;
-        View v;
+        RetainedFragment mWorkFragment; // A reference to our example retained Fragment
+        View v; // View containing our layout file
 
+        /**
+         * Called to have the fragment instantiate its user interface view. First we use the
+         * LayoutInflater passed us to inflate our layout file R.layout.fragment_retain_instance
+         * saving a reference to it in our field View v. We locate the Button R.id.restart ("RESTART")
+         * and set its OnClickListener to an anonymous class which will instruct RetainedFragment
+         * mWorkFragment to restart itself. Then we locate the Button R.id.toastme ("TOAST VALUE")
+         * and set its OnClickListener to an anonymous class which creates and show a Toast showing
+         * the value of RetainedFragment's static field int mPosition. Next it locates the view
+         * R.id.main_view (which has a visibility of GONE until mWorkFragment flips the visibility
+         * of the view containing the ProgressBar to GONE and it to  VISIBLE btw) and sets its
+         * OnLongClickListener to an anonymous class which displays an informative Toast and instructs
+         * our Activity FragmentVersionSkeleton to show its dialog. Finally we return our View v to
+         * our caller.
+         *
+         * @param inflater The LayoutInflater object that can be used to inflate
+         *        any views in the fragment,
+         * @param container If non-null, this is the parent view that the fragment's UI
+         *        should be attached to.  The fragment should not add the view itself,
+         *        but this can be used to generate the LayoutParams of the view.
+         * @param savedInstanceState If non-null, this fragment is being re-constructed
+         *        from a previous saved state as given here.
+         *
+         * @return Return the View for the fragment's UI, or null.
+         */
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
@@ -69,6 +127,14 @@ public class FragmentVersionSkeleton extends Activity {
             // Watch for button clicks.
             Button button = (Button) v.findViewById(R.id.restart);
             button.setOnClickListener(new View.OnClickListener() {
+                /**
+                 * Called when the R.id.restart Button is clicked. We simply instruct our
+                 * RetainedFragment mWorkFragment to restart the count at zero by calling
+                 * the method RetainedFragment.restart().
+                 *
+                 * @param v View of Button that was clicked
+                 */
+                @Override
                 public void onClick(View v) {
                     mWorkFragment.restart();
                 }
@@ -76,6 +142,12 @@ public class FragmentVersionSkeleton extends Activity {
 
             button = (Button) v.findViewById(R.id.toastme);
             button.setOnClickListener(new View.OnClickListener() {
+                /**
+                 * Called when the R.id.toastme Button is clicked. We simply show a Toast displaying
+                 * the current value of the public static int mPosition field of RetainedFragment.
+                 *
+                 * @param v View of Button that was clicked.
+                 */
                 @Override
                 public void onClick(View v) {
                     Toast.makeText(getActivity(), "The value is:" + RetainedFragment.mPosition, Toast.LENGTH_LONG).show();
@@ -84,6 +156,15 @@ public class FragmentVersionSkeleton extends Activity {
 
             TextView textView = (TextView) v.findViewById(R.id.main_view);
             textView.setOnLongClickListener(new View.OnLongClickListener() {
+                /**
+                 * Called when the R.id.main_view View has been long clicked. We make a Toast
+                 * reporting: "I have been long clicked" and call showDialog of our Activity to
+                 * create and show a MyDialogFragment DialogFragment. Finally we return true to
+                 * indicate to our caller that we have consumed the long click.
+                 *
+                 * @param view View that was long clicked
+                 * @return true if the callback consumed the long click, false otherwise.
+                 */
                 @Override
                 public boolean onLongClick(View view) {
                     Toast.makeText(getActivity(), "I have been long clicked", Toast.LENGTH_LONG).show();
@@ -94,6 +175,35 @@ public class FragmentVersionSkeleton extends Activity {
             return v;
         }
 
+        /**
+         * Called when the fragment's activity has been created and this
+         * fragment's view hierarchy instantiated.  It can be used to do final
+         * initialization once these pieces are in place, such as retrieving
+         * views or restoring state.  It is also useful for fragments that use
+         * {@link #setRetainInstance(boolean)} to retain their instance,
+         * as this callback tells the fragment when it is fully associated with
+         * the new activity instance.  This is called after {@link #onCreateView}
+         * and before {@link #onViewStateRestored(Bundle)}.
+         *
+         * First we call through to our super's implementation of onActivityCreated. Next we set our
+         * variable android.app.FragmentManager fm to the FragmentManager for interacting with
+         * fragments associated with this fragment's activity. Then we use <code>fm</code> to look
+         * for a fragment with the tag "work" and use it to set our field RetainedFragment
+         * mWorkFragment, and if null was returned (the Fragment was not found) we create a new
+         * instance of RetainedFragment for RetainedFragment mWorkFragment, set <code>this</code>
+         * to be the target Fragment for mWorkFragment, and then use <code>fm</code> to start a
+         * series of edit operations on the Fragments associated with this FragmentManager, use
+         * the FragmentTransaction returned to add the Fragment <code>mWorkFragment</code> to the
+         * Activity with the Tag "work", and the method chain terminates with a call to commit()
+         * to schedule a commit of this transaction. Finally we call mWorkFragment.setDoneListener
+         * to set the DoneListener of mWorkFragment to DoneListener mIamDone which swaps the
+         * visibility of TextView R.id.main_view and the LinearLayout R.id.progress_view_linear_layout.
+         * (The two share the same space in a FrameLayout, and R.id.progress_view_linear_layout starts
+         * out with a visibility of VISIBLE which is changed to GONE, and R.id.main_view starts out
+         * with a visibility of GONE which is changed to VISIBLE.)
+         *
+         * @param savedInstanceState we do not override onSaveInstanceState so ignore the value
+         */
         @Override
         public void onActivityCreated(Bundle savedInstanceState) {
             super.onActivityCreated(savedInstanceState);
@@ -113,7 +223,17 @@ public class FragmentVersionSkeleton extends Activity {
             mWorkFragment.setDoneListener(mIamDone, v);
         }
 
+        /**
+         * DoneListener for mWorkFragment. When mWorkFragment is done it calls DoneListener.onDone
+         * which in turn calls our override of onDoneDo which changes the visibility of LinearLayout
+         * R.id.progress_view_linear_layout from VISIBLE to GONE, and the visibility of TextView
+         * R.id.main_view from GONE to VISIBLE.
+         */
         DoneListener mIamDone = new DoneListener() {
+            /**
+             *
+             * @param v View of our inflated layout file.
+             */
             @Override
             public void onDoneDo(View v) {
                 TextView mMainView = (TextView) v.findViewById(R.id.main_view);
@@ -131,7 +251,6 @@ public class FragmentVersionSkeleton extends Activity {
      * activity instances.  It represents some ongoing work, here a thread
      * we have that sits around incrementing a progress indicator.
      */
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public static class RetainedFragment extends Fragment {
 
         ProgressBar mProgressBar;
@@ -344,7 +463,8 @@ public class FragmentVersionSkeleton extends Activity {
             ((TextView)tv).setText(mText);
 
             // Watch for button clicks.
-            Button button = (Button)v.findViewById(R.id.show);
+            Button button = (Button)v.findViewById(R.id.dismiss);
+
             button.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     // When button is clicked, call up to owning activity.
