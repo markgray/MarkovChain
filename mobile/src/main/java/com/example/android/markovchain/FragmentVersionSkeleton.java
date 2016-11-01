@@ -93,7 +93,7 @@ public class FragmentVersionSkeleton extends Activity {
      */
     public static class UiFragment extends Fragment {
         RetainedFragment mWorkFragment; // A reference to our example retained Fragment
-        View v; // View containing our layout file
+        View mView; // View containing our layout file
 
         /**
          * Called to have the fragment instantiate its user interface view. First we use the
@@ -106,8 +106,8 @@ public class FragmentVersionSkeleton extends Activity {
          * R.id.main_view (which has a visibility of GONE until mWorkFragment flips the visibility
          * of the view containing the ProgressBar to GONE and it to  VISIBLE btw) and sets its
          * OnLongClickListener to an anonymous class which displays an informative Toast and instructs
-         * our Activity FragmentVersionSkeleton to show its dialog. Finally we return our View v to
-         * our caller.
+         * our Activity FragmentVersionSkeleton to show its dialog. Finally we return our View mView
+         * to our caller.
          *
          * @param inflater The LayoutInflater object that can be used to inflate
          *        any views in the fragment,
@@ -120,12 +120,11 @@ public class FragmentVersionSkeleton extends Activity {
          * @return Return the View for the fragment's UI, or null.
          */
         @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            v = inflater.inflate(R.layout.fragment_retain_instance, container, false);
+        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+            mView = inflater.inflate(R.layout.fragment_retain_instance, container, false);
 
             // Watch for button clicks.
-            Button button = (Button) v.findViewById(R.id.restart);
+            Button button = (Button) mView.findViewById(R.id.restart);
             button.setOnClickListener(new View.OnClickListener() {
                 /**
                  * Called when the R.id.restart Button is clicked. We simply instruct our
@@ -140,7 +139,7 @@ public class FragmentVersionSkeleton extends Activity {
                 }
             });
 
-            button = (Button) v.findViewById(R.id.toastme);
+            button = (Button) mView.findViewById(R.id.toastme);
             button.setOnClickListener(new View.OnClickListener() {
                 /**
                  * Called when the R.id.toastme Button is clicked. We simply show a Toast displaying
@@ -154,7 +153,7 @@ public class FragmentVersionSkeleton extends Activity {
                 }
             });
 
-            TextView textView = (TextView) v.findViewById(R.id.main_view);
+            TextView textView = (TextView) mView.findViewById(R.id.main_view);
             textView.setOnLongClickListener(new View.OnLongClickListener() {
                 /**
                  * Called when the R.id.main_view View has been long clicked. We make a Toast
@@ -172,7 +171,7 @@ public class FragmentVersionSkeleton extends Activity {
                     return true;
                 }
             });
-            return v;
+            return mView;
         }
 
         /**
@@ -220,7 +219,7 @@ public class FragmentVersionSkeleton extends Activity {
                 mWorkFragment.setTargetFragment(this, 0);
                 fm.beginTransaction ().add(mWorkFragment, "work").commit();
             }
-            mWorkFragment.setDoneListener(mIamDone, v);
+            mWorkFragment.setDoneListener(mIamDone, mView);
         }
 
         /**
@@ -231,6 +230,11 @@ public class FragmentVersionSkeleton extends Activity {
          */
         DoneListener mIamDone = new DoneListener() {
             /**
+             * Called by DoneListener.onDone. First we locate the TextView R.id.main_view in our
+             * layout file and save a reference in TextView mMainView, then we locate the
+             * LinearLayout R.id.progress_view_linear_layout and save a reference to it in
+             * LinearLayout mProgressViewLinearLayout. Finally we set the visibility of
+             * mProgressViewLinearLayout to GONE, and the visibility of mMainView to visible.
              *
              * @param v View of our inflated layout file.
              */
@@ -242,8 +246,6 @@ public class FragmentVersionSkeleton extends Activity {
                 mMainView.setVisibility(View.VISIBLE);
             }
         };
-
-
     }
 
     /**
@@ -253,13 +255,12 @@ public class FragmentVersionSkeleton extends Activity {
      */
     public static class RetainedFragment extends Fragment {
 
-        ProgressBar mProgressBar;
-        public static int mPosition;
-        boolean mReady = false;
-        boolean mQuiting = false;
+        ProgressBar mProgressBar; // ProgressBar in our layout that we update to latest mPosition
+        public static int mPosition; // Counter that we increment and use to set mProgressBar
+        boolean mReady = false; // Flag set by our UIFragment to stop our work thread
+        boolean mQuiting = false; // Flag set in onDestroy callback to stop our work thread
         LinearLayout mProgressViewLinearLayout;
         TextView mMainView;
-//        Handler mHandler = new Handler();
         private DoneListener doneListener;
         private View view;
 
@@ -289,12 +290,6 @@ public class FragmentVersionSkeleton extends Activity {
                             if (mQuiting) {
                                 return;
                             }
-//                            mHandler.post(new Runnable() {
-//                                public void run() {
-//                                    mProgressViewLinearLayout.setVisibility(View.GONE);
-//                                    mMainView.setVisibility(View.VISIBLE);
-//                                }
-//                            });
                             doneListener.onDone(view);
 
                             try {
@@ -466,6 +461,7 @@ public class FragmentVersionSkeleton extends Activity {
             Button button = (Button)v.findViewById(R.id.dismiss);
 
             button.setOnClickListener(new View.OnClickListener() {
+                @Override
                 public void onClick(View v) {
                     // When button is clicked, call up to owning activity.
                     ((FragmentVersionSkeleton)getActivity()).showDialog();
