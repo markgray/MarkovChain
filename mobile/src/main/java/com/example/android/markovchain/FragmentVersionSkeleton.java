@@ -259,11 +259,18 @@ public class FragmentVersionSkeleton extends Activity {
         public static int mPosition; // Counter that we increment and use to set mProgressBar
         boolean mReady = false; // Flag set by our UIFragment to stop our work thread
         boolean mQuiting = false; // Flag set in onDestroy callback to stop our work thread
-        LinearLayout mProgressViewLinearLayout;
-        TextView mMainView;
-        private DoneListener doneListener;
-        private View view;
+        LinearLayout mProgressViewLinearLayout; // LinearLayout in our layout that contains our ProgressBar
+        TextView mMainView; // TextView in our layout that is used for results
+        private DoneListener doneListener; // DoneListener instance used when our work thread finishes
+        private View view; // View passed to setDoneListener, used in call to DoneListener.onDone
 
+        /**
+         * Sets our fields DoneListener doneListener, and View view which are used by our work thread
+         * when it finishes its task.
+         *
+         * @param doneListener DoneListener to use when work thread is done
+         * @param view View to pass to doneListener.onDone(View) when work thread is done.
+         */
         public void setDoneListener(DoneListener doneListener, View view) {
             this.view = view;
             this.doneListener = doneListener;
@@ -274,6 +281,10 @@ public class FragmentVersionSkeleton extends Activity {
          * the progress up until it has reached the top, then stops and waits.
          */
         final Thread mThread = new Thread() {
+            /**
+             * We override Thread.run() to provide the code that runs when mThread.run() is called.
+             *
+             */
             @Override
             public void run() {
                 // We'll figure the real value out later.
