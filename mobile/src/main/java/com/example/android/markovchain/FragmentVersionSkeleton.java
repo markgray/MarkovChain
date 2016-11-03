@@ -263,32 +263,22 @@ public class FragmentVersionSkeleton extends Activity {
         TextView mMainView; // TextView in our layout that is used for results
         private DoneListener doneListener; // DoneListener instance used when our work thread finishes
         private View view; // View passed to setDoneListener, used in call to DoneListener.onDone
-
         /**
-         * Sets our fields DoneListener doneListener, and View view which are used by our work thread
-         * when it finishes its task.
-         *
-         * @param doneListener DoneListener to use when work thread is done
-         * @param view View to pass to doneListener.onDone(View) when work thread is done.
-         */
-        public void setDoneListener(DoneListener doneListener, View view) {
-            this.view = view;
-            this.doneListener = doneListener;
-        }
-
-        /**
-         * This is the thread that will do our work.  It sits in a loop running
-         * the progress up until it has reached the top, then stops and waits.
+         * This is the thread that will do our work.  It sits in a loop setting the ProgressBar higher
+         * until it has reached the top, then stops and waits until killed.
          */
         final Thread mThread = new Thread() {
             /**
-             * We override Thread.run() to provide the code that runs when mThread.run() is called.
+             * We override Thread.run() to provide the code that runs when mThread.run() is called
+             * by the background thread after we call mThread.start() in onCreate. First we initialize
+             * our variable <code>int max</code> by retrieving the upper limit of the progress bar's
+             * range which is set by the attribute android:max="500" in the layout file. Then we loop
+             * forever 
              *
              */
             @Override
             public void run() {
-                // We'll figure the real value out later.
-                int max = 10000;
+                int max = mProgressBar.getMax(); // Read the ProgressBar upper limit android:max="500" from layout file
 
                 // This thread runs almost forever.
                 while (true) {
@@ -314,7 +304,6 @@ public class FragmentVersionSkeleton extends Activity {
                         // we touch the progress bar with the lock held, so it
                         // doesn't disappear on us.
                         mPosition++;
-                        max = mProgressBar.getMax();
                         mProgressBar.setProgress(mPosition);
                     }
 
@@ -407,6 +396,18 @@ public class FragmentVersionSkeleton extends Activity {
             }
 
             super.onDetach();
+        }
+
+        /**
+         * Sets our fields DoneListener doneListener, and View view which are used by our work thread
+         * when it finishes its task.
+         *
+         * @param doneListener DoneListener to use when work thread is done
+         * @param view View to pass to doneListener.onDone(View) when work thread is done.
+         */
+        public void setDoneListener(DoneListener doneListener, View view) {
+            this.view = view;
+            this.doneListener = doneListener;
         }
 
         /**
