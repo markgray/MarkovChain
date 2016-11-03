@@ -273,7 +273,8 @@ public class FragmentVersionSkeleton extends Activity {
              * by the background thread after we call mThread.start() in onCreate. First we initialize
              * our variable <code>int max</code> by retrieving the upper limit of the progress bar's
              * range which is set by the attribute android:max="500" in the layout file. Then we loop
-             * forever 
+             * forever, using Thread mThread (this for us) to synchronize with the UI Thread. In our
+             * first <code>synchronized</code> block we 
              *
              */
             @Override
@@ -286,7 +287,7 @@ public class FragmentVersionSkeleton extends Activity {
                     // Update our shared state with the UI.
                     synchronized (this) {
                         // Our thread is stopped if the UI is not ready
-                        // or it has completed its work.
+                        // or we have completed our work.
                         while (!mReady || mPosition >= max) {
                             if (mQuiting) {
                                 return;
