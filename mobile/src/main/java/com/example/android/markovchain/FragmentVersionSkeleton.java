@@ -257,7 +257,7 @@ public class FragmentVersionSkeleton extends Activity {
 
         ProgressBar mProgressBar; // ProgressBar in our layout that we update to latest mPosition
         public static int mPosition; // Counter that we increment and use to set mProgressBar
-        boolean mReady = false; // Flag set by our UIFragment to stop our work thread
+        boolean mReady = false; // Flag set by our UIFragment to start (true) and stop (false) our work thread
         boolean mQuiting = false; // Flag set in onDestroy callback to stop our work thread
         LinearLayout mProgressViewLinearLayout; // LinearLayout in our layout that contains our ProgressBar
         TextView mMainView; // TextView in our layout that is used for results
@@ -274,8 +274,18 @@ public class FragmentVersionSkeleton extends Activity {
              * our variable <code>int max</code> by retrieving the upper limit of the progress bar's
              * range which is set by the attribute android:max="500" in the layout file. Then we loop
              * forever, using Thread mThread (this for us) to synchronize with the UI Thread. In our
-             * first <code>synchronized</code> block we 
-             *
+             * first <code>synchronized</code> block we check whether <code>mReady</code> is false
+             * (the UI thread is not ready for us to continue) or our <code>mPosition</code> counter
+             * is >= max (our work is done) and if either conditions hold we check whether the flag
+             * <code>mQuiting</code> has been set (set in <code>onDestroy</code> and if so we return
+             * to the caller ending this thread. If <code>mQuiting</code> has not been set we have
+             * finished our work (mPosition >= max) so we call the onDone method of our field
+             * DoneListener doneListener which swaps the visibility of views from the ProgressBar
+             * we have been moving to the main View (results View if you would). If the UI is ready
+             * for us to continue AND we are not finished with our "work", we increment our counter
+             * mPosition and set the ProgressBar mProgressBar to this position. In the second
+             * <code>synchronized</code> block we simply <code>wait</code> for 50 milliseconds before
+             * continuing our inifinite loop.
              */
             @Override
             public void run() {
