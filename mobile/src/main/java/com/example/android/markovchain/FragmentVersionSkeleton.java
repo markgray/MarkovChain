@@ -255,6 +255,7 @@ public class FragmentVersionSkeleton extends Activity {
      */
     public static class RetainedFragment extends Fragment {
 
+        private String TAG = "RetainedFragment";
         ProgressBar mProgressBar; // ProgressBar in our layout that we update to latest mPosition
         public static int mPosition; // Counter that we increment and use to set mProgressBar
         boolean mReady = false; // Flag set by our UIFragment to start (true) and stop (false) our work thread
@@ -285,7 +286,7 @@ public class FragmentVersionSkeleton extends Activity {
              * for us to continue AND we are not finished with our "work", we increment our counter
              * mPosition and set the ProgressBar mProgressBar to this position. In the second
              * <code>synchronized</code> block we simply <code>wait</code> for 50 milliseconds before
-             * continuing our inifinite loop.
+             * continuing our infinite loop.
              */
             @Override
             public void run() {
@@ -332,8 +333,15 @@ public class FragmentVersionSkeleton extends Activity {
         };
 
         /**
-         * Fragment initialization.  We way we want to be retained and
-         * start our thread.
+         * Fragment initialization. First we call through to our super's implementation of onCreate,
+         * then call setRetainInstance(true) to indicate to the system that this fragment instance
+         * should be retained across Activity re-creation (such as from a configuration change), and
+         * finally we start our thread.
+         *
+         * @param savedInstanceState we do not override onSaveInstanceState so are not interested
+         *        in it, and even if we did override onSaveInstanceState onCreate would not be called
+         *        again because we call setRetainInstance(true) and our fragment will not need to be
+         *        recreated.
          */
         @Override
         public void onCreate(Bundle savedInstanceState) {
@@ -347,20 +355,24 @@ public class FragmentVersionSkeleton extends Activity {
         }
 
         /**
-         * This is called when the Fragment's Activity is ready to go, after
-         * its content view has been installed; it is called both after
-         * the initial fragment creation and after the fragment is re-attached
-         * to a new activity.
+         * This is called when the Fragment's Activity is ready to go, after its content view has
+         * been installed; it is called both after the initial fragment creation and after the
+         * fragment is re-attached to a new activity. First we call through to our super's
+         * implementation of onActivityCreated, then we fetch a reference to our UIFragment
+         * (<code>Fragment targetFragment</code>) by calling getTargetFragment and use it to get
+         * its root view (the one it returned from onCreateView)
+         *
+         * @param savedInstanceState we do not override onSaveInstanceState so do not use this
          */
         @Override
         public void onActivityCreated(Bundle savedInstanceState) {
             super.onActivityCreated(savedInstanceState);
 
             // Retrieve the progress bar from the target's view hierarchy.
-            Fragment tarGetFragment = getTargetFragment();
+            Fragment targetFragment = getTargetFragment();
             View gotView = null;
-            if (tarGetFragment != null) {
-                gotView = tarGetFragment.getView();
+            if (targetFragment != null) {
+                gotView = targetFragment.getView();
             }
             if (gotView != null) {
                 mProgressBar = (ProgressBar) gotView.findViewById(R.id.progress_horizontal);
