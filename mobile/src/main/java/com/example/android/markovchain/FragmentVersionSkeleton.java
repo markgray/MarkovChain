@@ -360,13 +360,23 @@ public class FragmentVersionSkeleton extends Activity {
          * fragment is re-attached to a new activity. First we call through to our super's
          * implementation of onActivityCreated, then we fetch a reference to our UIFragment
          * (<code>Fragment targetFragment</code>) by calling getTargetFragment and use it to get
-         * its root view (the one it returned from onCreateView)
+         * its root view (the one it returned from onCreateView) which we use to set our variable
+         * <code>View gotView</code>. If we have successfully set gotView to our root view, we use
+         * it to initialize our field <code>ProgressBar mProgressBar</code> to the ProgressBar
+         * (R.id.progress_horizontal), our field <code>LinearLayout mProgressViewLinearLayout</code>
+         * to the LinearLayout holding the ProgressBar (R.id.progress_view_linear_layout), and our
+         * field <code>TextView mMainView</code> to the TextView that is to be made visible after our
+         * "work" is done (R.id.main_view). Finally in a <code>synchronized mThread</code> statement
+         * we set the boolean mReady flag to true and notify our worker Thread mThread(which is
+         * waiting on "this") allowing it to run after the synchronized statement completes and
+         * releases the lock on mThread.
          *
          * @param savedInstanceState we do not override onSaveInstanceState so do not use this
          */
         @Override
         public void onActivityCreated(Bundle savedInstanceState) {
             super.onActivityCreated(savedInstanceState);
+            Log.i(TAG, "onActivityCreated has been called");
 
             // Retrieve the progress bar from the target's view hierarchy.
             Fragment targetFragment = getTargetFragment();
@@ -388,8 +398,15 @@ public class FragmentVersionSkeleton extends Activity {
         }
 
         /**
-         * This is called when the fragment is going away.  It is NOT called
-         * when the fragment is being propagated between activity instances.
+         * This is called when the fragment is going away.  It is NOT called when the fragment is
+         * being propagated between activity instances (such as after an orientation change). In
+         * a synchronized statement using <code>mThread mThread</code> as its intrinsic lock, we
+         * set the <code>boolean mReady</code> flag to false (a signal to our worker thread that it
+         * should check the flag <code>boolean mQuiting</code> when it is awoken by notify()), set
+         * the <code>boolean mQuiting</code> flag to true (a signal to our worker thread that its
+         * run() method should exit by returning to its caller), and then awaken our worker Thread
+         * mThread (which is wait()'ing on this) by calling mThread.notify(). Finally we call
+         * through to our super's implementation of onDestroy.
          */
         @Override
         public void onDestroy() {
@@ -404,8 +421,14 @@ public class FragmentVersionSkeleton extends Activity {
         }
 
         /**
-         * This is called right before the fragment is detached from its
-         * current activity instance.
+         * This is called right before the fragment is detached from its current activity instance.
+         * In a synchronized statement using <code>mThread mThread</code> as its intrinsic lock, we
+         * set the field <code>ProgressBar mProgressBar</code> to null because the new Activity will
+         * need to find its version of mProgressBar in onActivityCreated before we can use it. We
+         * then set mReady to false to signal to our "work" Thread that it should wait until the
+         * new Activity is created before it continues, then awaken our worker Thread mThread (which
+         * is currently wait()'ing on this) by calling mThread.notify(). Finally we call through to
+         * our super's implementation of onDetach().
          */
         @Override
         public void onDetach() {
@@ -434,7 +457,10 @@ public class FragmentVersionSkeleton extends Activity {
         }
 
         /**
-         * API for our UI to restart the progress thread.
+         * API for our UI to restart the progress thread when the Button R.id.restart ("RESTART") is
+         * clicked. In a synchronized statement using <code>Thread mThread</code> as the intrinsic
+         * lock, we set the field <code>int mPosition</code> to 0, then awaken the worker Thread
+         * mThread (which is currently waiting on "this") by calling mThread,notify()
          */
         public void restart() {
             synchronized (mThread) {
@@ -444,6 +470,9 @@ public class FragmentVersionSkeleton extends Activity {
         }
     }
 
+    /**
+     * 
+     */
     public static class MyDialogFragment extends DialogFragment {
 
         String mLabel;
