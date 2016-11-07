@@ -471,16 +471,21 @@ public class FragmentVersionSkeleton extends Activity {
     }
 
     /**
-     * 
+     * This is a skeletal DialogFragment which was stuck into this Activity in order to experiment
+     * with using DialogFragment's. When show() is called it just displays the label and text that
+     * were passed as parameters to newInstance.
      */
     public static class MyDialogFragment extends DialogFragment {
 
-        String mLabel;
-        String mText;
+        String mLabel; // "label" to display
+        String mText;  // "text" to display
 
         /**
-         * Create a new instance of MyDialogFragment providing
-         * "label" and "text" as arguments.
+         * Create a new instance of MyDialogFragment providing "label" and "text" as arguments.
+         * First we create an instance of <code>MyDialogFragment f</code>, then we create a
+         * <code>Bundle args</code> and add our parameter label under the key "label" and our
+         * parameter text under the key "text". We use this Bundle to set the construction arguments
+         * for <code>MyDialogFragment f</code>, and finally we return <code>f</code> to the caller.
          *
          * @param label Label to use for dialog
          * @param text  Text body for dialog
@@ -499,9 +504,18 @@ public class FragmentVersionSkeleton extends Activity {
             return f;
         }
 
+        /**
+         * Called to do initial creation of a fragment. First we call through to our super's
+         * implementation of onCreate, then we set our field mLabel to the argument stored by
+         * newInstance under the key "label", and our field mText to the argument it stored under
+         * the key "text". Finally we set the style of our DialogFragment to STYLE_NORMAL.
+         *
+         * @param savedInstanceState we do not override onSaveInstanceState so do not use this
+         */
         @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
+
             mLabel = getArguments().getString("label");
             mText = getArguments().getString("text");
 
@@ -510,25 +524,33 @@ public class FragmentVersionSkeleton extends Activity {
             setStyle(style, theme);
         }
 
+        /**
+         * Called to have the fragment instantiate its user interface view.
+         *
+         * @param inflater The LayoutInflater object that can be used to inflate any views in the fragment,
+         * @param container If non-null, this is the parent view that the fragment's UI should be
+         *        attached to. The fragment should not add the view itself, but this can be used to
+         *        generate the LayoutParams of the view.
+         * @param savedInstanceState we do not override onSaveInstanceState so do not use this
+         *
+         * @return Return the View for the fragment's UI.
+         */
         @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View v = inflater.inflate(R.layout.bible_dialog, container, false);
+        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+            View v = inflater.inflate(R.layout.frag_vers_skel_dialog, container, false);
+
             View tv = v.findViewById(R.id.label);
-            String dialogLabel = mLabel;
-            ((TextView)tv).setText(dialogLabel);
+            ((TextView)tv).setText(mLabel);
 
             tv = v.findViewById(R.id.text);
             ((TextView)tv).setText(mText);
 
             // Watch for button clicks.
             Button button = (Button)v.findViewById(R.id.dismiss);
-
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    // When button is clicked, call up to owning activity.
-                    ((FragmentVersionSkeleton)getActivity()).showDialog();
+                    dismiss();
                 }
             });
 
