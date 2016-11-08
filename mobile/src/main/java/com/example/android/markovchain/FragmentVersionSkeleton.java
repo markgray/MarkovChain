@@ -525,7 +525,14 @@ public class FragmentVersionSkeleton extends Activity {
         }
 
         /**
-         * Called to have the fragment instantiate its user interface view.
+         * Called to have the fragment instantiate its user interface view. First we inflate our
+         * layout R.layout.frag_vers_skel_dialog into <code>View v</code>, then we locate the
+         * <code>TextView</code> for our label (R.id.label) and set its text to the contents of our
+         * field <code>String mLabel</code>, locate the <code>TextView</code> for our text (R.id.text)
+         * and set its text to the contents of our field <code>String mText</code>, and then we
+         * locate the <code>Button</code> R.id.dismiss and set its OnClickListener to an anonymous
+         * class which simply dismisses this <code>DialogFragment MyDialogFragment</code>. Finally
+         * we return <code>View v</code> to the caller.
          *
          * @param inflater The LayoutInflater object that can be used to inflate any views in the fragment,
          * @param container If non-null, this is the parent view that the fragment's UI should be
