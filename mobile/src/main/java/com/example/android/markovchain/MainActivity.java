@@ -44,7 +44,12 @@ public class MainActivity extends Activity {
 
     /**
      * Adds a <code>Button</code> to the <code>ViewGroup parent</code> designed to launch a different
-     * Activity when it is clicked.
+     * Activity when it is clicked. First we create a <code>Button button</code>, then we set its
+     * text to the parameter <code>String description</code>, and we set its OnClickListener to an
+     * anonymous class which will (when the <code>Button</code> is clicked) create an Intent to
+     * launch the <code>Activity</code> given in our parameter <code>Class destination</code> and
+     * start that <code>Activity</code>. Finally it adds <code>Button button</code> to the
+     * <code>ViewGroup parent</code> (our vertical <code>LinearLayout</code>)
      *
      * @param destination Activity Class to be started by an Intent we create and start
      *        when the Button is clicked
@@ -53,6 +58,7 @@ public class MainActivity extends Activity {
      */
     public void addButton(final Class destination, String description, ViewGroup parent) {
         Button button = new Button(this);
+        button.setText(description);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,11 +66,17 @@ public class MainActivity extends Activity {
                 startActivity(intent);
             }
         });
-
-        button.setText(description);
         parent.addView(button);
     }
 
+    /**
+     * Adds a TextView containing the String text to the ViewGroup parent. First we create a TextView
+     * text, then we set the text of <code>TextView text</code> to the String text, and finally we
+     * add the TextView text to the ViewGroup parent (our vertical LinearLayout).
+     *
+     * @param text text to display in the TextView we add to ViewGroup parent
+     * @param parent ViewGroup to add our TextView to
+     */
     public void addText(String text, ViewGroup parent) {
         TextView mText = new TextView(this);
         mText.setText(text);
