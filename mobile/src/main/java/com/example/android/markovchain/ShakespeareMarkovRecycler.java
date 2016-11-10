@@ -18,13 +18,36 @@ import com.example.android.common.Shakespeare;
 import java.io.IOException;
 import java.io.StringReader;
 
+/**
+ * This Activity displays the random nonsense spouted by Markov when Shakespeare's sonnets are used
+ * to create the Markov chain state table that Markov uses.
+ */
 public class ShakespeareMarkovRecycler extends Activity {
-    public final String TAG = "ShakespeareMarkovR...";
-    RecyclerView mRecyclerView;
-    RecyclerView.LayoutManager mLayoutManager;
-    protected MarkovAdapter mAdapter;
+    public final String TAG = "ShakespeareMarkovR..."; // TAG used for logging
+    /**
+     * Markov instance used to generate nonsense text
+     */
     protected Markov mMarkov = new Markov();
+    /**
+     * RecyclerView in our layout file
+     */
+    RecyclerView mRecyclerView;
+    /**
+     * LayoutManager used by our RecyclerView
+     */
+    RecyclerView.LayoutManager mLayoutManager;
+    /**
+     * RecyclerView.Adapter<MarkovAdapter.ViewHolder> MarkovAdapter used by our RecyclerView
+     */
+    protected MarkovAdapter mAdapter;
 
+    /**
+     * Called when the activity is starting. First we call through to our super's implementation of onCreate,
+     * then we set our content view to our layout file R.layout.activity_shakespeare_markov_recycler.
+     *
+     *
+     * @param savedInstanceState since we do not override onSaveInstanceState we do not use this
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +55,7 @@ public class ShakespeareMarkovRecycler extends Activity {
         mLayoutManager = new LinearLayoutManager(getApplicationContext());
         mRecyclerView = (RecyclerView) findViewById(R.id.shakespeare_markov_recyclerview);
         StringBuilder stringBuilder = new StringBuilder();
-        for (String quotes: Shakespeare.SONNETS) {
+        for (String quotes : Shakespeare.SONNETS) {
             stringBuilder.append(quotes);
         }
 
