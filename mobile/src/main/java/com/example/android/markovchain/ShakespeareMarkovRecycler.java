@@ -14,6 +14,7 @@ import com.example.android.common.DoneListener;
 import com.example.android.common.Markov;
 import com.example.android.common.MarkovAdapter;
 import com.example.android.common.Shakespeare;
+import com.example.android.common.ShakespeareSmall;
 
 import java.io.IOException;
 import java.io.StringReader;
@@ -55,7 +56,7 @@ public class ShakespeareMarkovRecycler extends Activity {
         mLayoutManager = new LinearLayoutManager(getApplicationContext());
         mRecyclerView = (RecyclerView) findViewById(R.id.shakespeare_markov_recyclerview);
         StringBuilder stringBuilder = new StringBuilder();
-        for (String quotes : Shakespeare.SONNETS) {
+        for (String quotes : ShakespeareSmall.SONNETS) {
             stringBuilder.append(quotes);
         }
 
