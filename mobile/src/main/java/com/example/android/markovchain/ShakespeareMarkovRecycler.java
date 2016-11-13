@@ -70,6 +70,15 @@ public class ShakespeareMarkovRecycler extends Activity {
         mLayoutManager = new LinearLayoutManager(getApplicationContext());
         mRecyclerView = (RecyclerView) findViewById(R.id.shakespeare_markov_recycler_view);
 
+        initMarkovState();
+
+        mAdapter = new MarkovAdapter(mMarkov, mLayoutManager);
+        // Set CustomAdapter as the adapter for RecyclerView.
+        mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+    }
+
+    private void initMarkovState() {
         StringBuilder stringBuilder = new StringBuilder();
         for (String quotes : ShakespeareSmall.SONNETS) {
             stringBuilder.append(quotes);
@@ -90,10 +99,5 @@ public class ShakespeareMarkovRecycler extends Activity {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        mAdapter = new MarkovAdapter(mMarkov, mLayoutManager);
-        // Set CustomAdapter as the adapter for RecyclerView.
-        mRecyclerView.setAdapter(mAdapter);
-        mRecyclerView.setLayoutManager(mLayoutManager);
     }
 }
