@@ -33,7 +33,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         ViewGroup linearLayout = (ViewGroup) findViewById(R.id.linear_layout);
-        addButton(ShakespeareRecylcler.class, "Shakespeare", linearLayout);
+        addButton(ShakespeareRecycler.class, "Shakespeare", linearLayout);
         addButton(ShakespeareMarkovRecycler.class, "Shakespeare Markov", linearLayout);
         addButton(BibleMain.class, "Bible", linearLayout);
         addButton(BibleMarkovFragment.class, "Bible Markov", linearLayout);

@@ -9,17 +9,28 @@ import android.util.Log;
 import com.example.android.common.Shakespeare;
 import com.example.android.common.StringArrayAdapter;
 
-public class ShakespeareRecylcler extends Activity {
+/**
+ * This Activity lets you read Shakespeare's sonnets in a RecyclerView.
+ */
+public class ShakespeareRecycler extends Activity {
 
-    public final String TAG = "ShakespeareRecycler";
-    RecyclerView mRecyclerView;
-    RecyclerView.LayoutManager mLayoutManager;
-    protected StringArrayAdapter mAdapter;
+    public final String TAG = "ShakespeareRecycler"; // TAG for logging
+    RecyclerView mRecyclerView; // The RecyclerView in our layout
+    RecyclerView.LayoutManager mLayoutManager; // LayoutManager for our RecyclerView (LinearLayout)
+    protected StringArrayAdapter mAdapter; // Adapter for our RecyclerView
 
+    /**
+     * Called when the activity is starting. First we call through to our super's implementation of
+     * onCreate, then we set our content view to our layout file R.layout.activity_shakespeare_recylcler.
+     * 
+     *
+     * @param savedInstanceState we do not override onSaveInstanceState so ignore this
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shakespeare_recylcler);
+
         mLayoutManager = new LinearLayoutManager(getApplicationContext());
         mRecyclerView = (RecyclerView) findViewById(R.id.shakespeare_recyclerview);
         mAdapter = new StringArrayAdapter(Shakespeare.SONNETS, mLayoutManager);

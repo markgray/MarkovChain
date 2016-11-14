@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ShakespeareRecylcler"
+            android:name=".ShakespeareRecycler"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ShakespeareMarkovRecycler"

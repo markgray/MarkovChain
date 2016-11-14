@@ -47,18 +47,12 @@ public class ShakespeareMarkovRecycler extends Activity {
      * onCreate, then we cause our layout file R.layout.activity_shakespeare_markov_recycler to be
      * inflated and set it to be our content view. Next we initialize our field mLayoutManager with
      * an instance of LinearLayoutManager and we initialize our field mRecyclerView by locating the
-     * RecyclerView in our layout R.id.shakespeare_markov_recycler_view. Then we create an instance
-     * of StringBuilder stringBuilder and use it to append all the sonnets in the String[] array
-     * ShakespeareSmall.SONNETS into one very long String. We set the DoneListener of our field
-     * Markov mMarkov to an anonymous class which simply Toast's a different Toast then the default
-     * implementation and "clicks" the RecyclerView mRecyclerView.
-     * TODO: refactor our mMarkov.make to use same technique as BibleMarkovFragment
-     * Then wrapped in a try block we initialize the state table in our Markov mMarkov by using
-     * mMarkov.make on a StringReader created from the String value of StringBuilder stringBuilder.
-     * We initialize our field MarkovAdapter mAdapter with an instance of MarkovAdapter which uses
-     * Markov mMarkov as its Markov instance, and RecyclerView.LayoutManager mLayoutManager as its
-     * LayoutManager. Finally we set the adapter of our RecyclerView mRecyclerView to our field
-     * MarkovAdapter mAdapter, and the LayoutManager to our field mLayoutManager.
+     * RecyclerView in our layout R.id.shakespeare_markov_recycler_view. Then we initialize the
+     * Markov state table of Markov mMarkov by calling initMarkovState. We initialize our field
+     * MarkovAdapter mAdapter with an instance of MarkovAdapter which uses Markov mMarkov as its
+     * Markov instance, and RecyclerView.LayoutManager mLayoutManager as its LayoutManager. Finally
+     * we set the adapter of our RecyclerView mRecyclerView to our field MarkovAdapter mAdapter, and
+     * the LayoutManager to our field mLayoutManager.
      *
      * @param savedInstanceState since we do not override onSaveInstanceState we do not use this
      */
@@ -78,6 +72,17 @@ public class ShakespeareMarkovRecycler extends Activity {
         mRecyclerView.setLayoutManager(mLayoutManager);
     }
 
+    /**
+     * Initialize the Markov state table of field Markov mMarkov using the String[] array containing
+     * Shakespeare's sonnets with all lowercase letters: ShakespeareSmall.SONNETS. First we create an
+     * instance of StringBuilder stringBuilder and use it to append all the sonnets in the String[]
+     * array ShakespeareSmall.SONNETS into one very long String. We set the DoneListener of our field
+     * Markov mMarkov to an anonymous class which simply Toast's a different Toast then the default
+     * implementation and "clicks" the RecyclerView mRecyclerView.
+     * TODO: refactor our mMarkov.make to use same technique as BibleMarkovFragment
+     * Then wrapped in a try block we initialize the state table in our Markov mMarkov by using
+     * mMarkov.make on a StringReader created from the String value of StringBuilder stringBuilder.
+     */
     private void initMarkovState() {
         StringBuilder stringBuilder = new StringBuilder();
         for (String quotes : ShakespeareSmall.SONNETS) {
