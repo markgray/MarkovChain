@@ -22,7 +22,13 @@ public class ShakespeareRecycler extends Activity {
     /**
      * Called when the activity is starting. First we call through to our super's implementation of
      * onCreate, then we set our content view to our layout file R.layout.activity_shakespeare_recylcler.
-     * 
+     * Next we initialize our field RecyclerView.LayoutManager mLayoutManage with an instance of
+     * LinearLayoutManager. We locate the RecyclerView in our layout (R.id.shakespeare_recyclerview)
+     * and initialize our field RecyclerView mRecyclerView with it. We create a new instance of
+     * StringArrayAdapter using Shakespeare.SONNETS (the String[] array of Shakespeare's sonnets),
+     * and mLayoutManager as arguments to the constructor and initialize our field mAdapter to it.
+     * Finally we set the adapter for the RecyclerView mRecyclerView to StringArrayAdapter mAdapter,
+     * and set the layout manager for it to RecyclerView.LayoutManager mLayoutManager.
      *
      * @param savedInstanceState we do not override onSaveInstanceState so ignore this
      */
