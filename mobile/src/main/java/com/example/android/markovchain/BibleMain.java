@@ -346,7 +346,7 @@ public class BibleMain extends Activity {
      * allows us to use readLine on the characters coming from the InputStreamReader). Then we
      * set the doneReading flag to false so that other code does not try to access our data until
      * it is ready to be used. Then we create the Thread mThread to read in the data from
-     * <code>reader</code> and start that thread running.
+     * <b>reader</b> and start that thread running.
      */
     private void initDataSet() {
         final InputStream inputStream = getApplicationContext().getResources().openRawResource(R.raw.king_james_text_and_verse);
@@ -354,14 +354,14 @@ public class BibleMain extends Activity {
         doneReading = false;
 
         /**
-         * This is the thread that will do our work. First it calls <code>close()</code> on the
+         * This is the thread that will do our work. First it calls <b>close()</b> on the
          * ConditionVariable mDoneReading so that other Thread's may block on mDoneReading until
-         * we call <code>open()</code>. Then it proceeds to read and process every line in reader
+         * we call <b>open()</b>. Then it proceeds to read and process every line in reader
          * until readLine() returns null (EOF). The processing consists of separating the text
          * into the citation for each verse (first line of a paragraph) which it adds to the field
          * ArrayList<String> bookChapterVerse, and the lines of the text of the verse (all the
          * lines until an empty line is encountered) which it appends to the StringBuilder builder.
-         * When the empty line terminating the verse is found (<code>line.length() == 0</code>), it
+         * When the empty line terminating the verse is found (<b>line.length() == 0</b>), it
          * converts StringBuilder build to a String and adds it to ArrayList<String> stringList,
          * then it replaces the StringBuilder builder with a new instance of StringBuilder and
          * breaks from the verse building loop in order to start reading in the next citation and

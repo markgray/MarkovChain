@@ -30,9 +30,9 @@ public class BibleSearch extends DialogFragment {
 
     /**
      * Create and initialize a BibleSearch DialogFragment. First we create a new BibleSearch instance
-     * "f", we create a Bundle "args" and store our parameter <code>label</code> in it under the key
-     * "label" and our parameter <code>text</code> under the key "text". We set the arguments of our
-     * BibleSearch instance <code>f</code> to the Bundle args and return <code>f</code> to the caller.
+     * "f", we create a Bundle "args" and store our parameter <b>label</b> in it under the key
+     * "label" and our parameter <b>text</b> under the key "text". We set the arguments of our
+     * BibleSearch instance <b>f</b> to the Bundle args and return <b>f</b> to the caller.
      *
      * @param label Label to use
      * @param text  Text to use
@@ -53,9 +53,9 @@ public class BibleSearch extends DialogFragment {
     /**
      * Remove punctuation characters .,;:()!? from the verse passed it. First we create a StringBuilder
      * stringBuilder, then looping through all the characters in our parameter String text we grab
-     * each <code>char c</code> from <code>text</code> and if it is not one of the punctuation
-     * characters ".,;:()!?" we append it to our <code>StringBuilder stringBuilder</code>, otherwise
-     * we ignore it. Finally we return the String contents of <code>stringBuilder</code> to the
+     * each <b>char c</b> from <b>text</b> and if it is not one of the punctuation
+     * characters ".,;:()!?" we append it to our <b>StringBuilder stringBuilder</b>, otherwise
+     * we ignore it. Finally we return the String contents of <b>stringBuilder</b> to the
      * caller.
      *
      * @param text Verse containing punctuation characters
@@ -78,9 +78,9 @@ public class BibleSearch extends DialogFragment {
      * to the set using Collections.addAll. This has the effect of only adding a String if it is not
      * already present in the set (thus removing the duplicates). We create Object[] tempObjectArray
      * to temporarily hold a copy of all of the Objects in our setOfStrings (necessary because
-     * <code>HashSet<String>.toArray()</code> returns an array of Object's, not String's). Then we
-     * create the array <code>String[] returnStringArray</code> and loop through the Object's in
-     * <code>tempObjectArray</code>, casting them to String before storing them in returnStringArray.
+     * <b>HashSet<String>.toArray()</b> returns an array of Object's, not String's). Then we
+     * create the array <b>String[] returnStringArray</b> and loop through the Object's in
+     * <b>tempObjectArray</b>, casting them to String before storing them in returnStringArray.
      * Finally we return returnStringArray to our caller.
      *
      * @param strings String array with possible duplicate string members
@@ -109,13 +109,13 @@ public class BibleSearch extends DialogFragment {
      * created, see {@link #onActivityCreated(Bundle)}.
      *
      * First we call through to our super's implementation of onCreate, then we initialize our
-     * fields <code>mLabel</code> and <code>mText</code> from our arguments using the keys "label"
-     * and "text" respectively. Then we initialize our field <code>String[] mSuggestions</code>
+     * fields <b>mLabel</b> and <b>mText</b> from our arguments using the keys "label"
+     * and "text" respectively. Then we initialize our field <b>String[] mSuggestions</b>
      * (the array of suggestions for our EditText) by first removing all punctuation characters
-     * from <code>mText</code>, splitting the result into a String array using the delimiter " ",
-     * and removing all duplicates from that array using our method <code>uniq</code>. We then
-     * initialize our field <code>ArrayAdapter<String> mAdapter</code> using <code>mSuggestions</code>
-     * as the constants to be used in the ListView when <code>mAdapter</code> is used for the
+     * from <b>mText</b>, splitting the result into a String array using the delimiter " ",
+     * and removing all duplicates from that array using our method <b>uniq</b>. We then
+     * initialize our field <b>ArrayAdapter<String> mAdapter</b> using <b>mSuggestions</b>
+     * as the constants to be used in the ListView when <b>mAdapter</b> is used for the
      * suggestions in our EditText. Finally we set our DialogFragment style to STYLE_NORMAL (for
      * no better reason then it was done in the sample code we studied.
      * TODO: Improve the styles used for all DialogFragment's and Spinner's
@@ -141,13 +141,13 @@ public class BibleSearch extends DialogFragment {
     /**
      * Called to have the fragment instantiate its user interface view. First we inflate our layout
      * file R.layout.bible_search into View v. Then we locate the TextView R.id.label and set its
-     * text to <code>mLabel</code>, and locate the TextView R.id.text and set its text to
-     * <code>mText</code>. We locate our <code>MultiAutoCompleteTextView textView</code> R.id.edit
-     * set its Adapter to <code>mAdapter</code> and set its tokenizer to a new instance of our class
+     * text to <b>mLabel</b>, and locate the TextView R.id.text and set its text to
+     * <b>mText</b>. We locate our <b>MultiAutoCompleteTextView textView</b> R.id.edit
+     * set its Adapter to <b>mAdapter</b> and set its tokenizer to a new instance of our class
      * SpaceTokenizer. Next we locate the "SEARCH" Button (R.id.show) and set its OnClickListener to
      * an anonymous class which when the Button is clicked will create an Intent to do a Google
-     * search on the text which has been entered in our <code>MultiAutoCompleteTextView textView</code>.
-     * Finally we return <code>View v</code> to our caller.
+     * search on the text which has been entered in our <b>MultiAutoCompleteTextView textView</b>.
+     * Finally we return <b>View v</b> to our caller.
 
      * @param inflater The LayoutInflater object that can be used to inflate
      *                 any views in the fragment,
@@ -180,9 +180,9 @@ public class BibleSearch extends DialogFragment {
         button.setOnClickListener(new View.OnClickListener() {
             /**
              * Called when the "SEARCH" Button (R.id.show) is clicked. First we retrieve the String
-             * query from <code>MultiAutoCompleteTextView textView</code>, create an Intent intent
+             * query from <b>MultiAutoCompleteTextView textView</b>, create an Intent intent
              * with the action ACTION_WEB_SEARCH (Perform a web search), add extended data to the
-             * intent containing our <code>String query</code> and using SearchManager.QUERY as the
+             * intent containing our <b>String query</b> and using SearchManager.QUERY as the
              * name of the extra value, and then we launch the Activity we specified in the Intent.
              * We make sure that the BibleDialog that launched us has an up to date value for its
              * fields mLabel and mText, and finally we dismiss this BibleSearch DialogFragment.
