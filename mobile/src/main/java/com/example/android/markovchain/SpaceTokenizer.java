@@ -1,9 +1,9 @@
 package com.example.android.markovchain;
 
 
-import android.text.SpannableString;
-import android.text.Spanned;
-import android.text.TextUtils;
+//import android.text.SpannableString;
+//import android.text.Spanned;
+//import android.text.TextUtils;
 import android.widget.MultiAutoCompleteTextView;
 
 /**
@@ -11,6 +11,7 @@ import android.widget.MultiAutoCompleteTextView;
  * only spaces as the delimiter. It is used to split up the String which is going to be used by
  * BibleSearch for the MultiAutoCompleteTextView Tokenizer.
  */
+@SuppressWarnings("WeakerAccess")
 public class SpaceTokenizer implements MultiAutoCompleteTextView.Tokenizer {
 
     /**
@@ -68,31 +69,17 @@ public class SpaceTokenizer implements MultiAutoCompleteTextView.Tokenizer {
     }
 
     /**
-     * Returns <b>text</b>, modified, if necessary, to ensure that
-     * it ends with a space character
+     * Returns <b>text</b>, modified, if necessary, to ensure that it ends with a space character.
+     * If the last char of text is already a blank we return text, otherwise we append a blank to
+     * the end of text and return that.
      *
      * @param text Text we are working on
-     * @return text terminated by single space
+     * @return text terminated by at least one space
      */
     @Override
     public CharSequence terminateToken(CharSequence text) {
-        int i = text.length();
-
-        while (i > 0 && text.charAt(i - 1) == ' ') {
-            i--;
-        }
-
-        if (i > 0 && text.charAt(i - 1) == ' ') {
-            return text;
-        } else {
-            if (text instanceof Spanned) {
-                SpannableString sp = new SpannableString(text + " ");
-                TextUtils.copySpansFrom((Spanned) text, 0, text.length(), Object.class, sp, 0);
-                return sp;
-            } else {
-                return text + " ";
-            }
-        }
+        if (text.charAt(text.length() - 1) == ' ') return text;
+        return text + " ";
     }
 }
 
