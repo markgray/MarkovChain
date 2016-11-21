@@ -34,4 +34,5 @@
     <string name="benchmark_results">Benchmark results\n</string>
     <string name="space_only" />
     <string name="go">GO</string>
+    <string name="steps_in_progressbar">Steps in ProgressBar</string>
 </resources>
