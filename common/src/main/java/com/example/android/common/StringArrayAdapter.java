@@ -66,7 +66,7 @@ public class StringArrayAdapter extends RecyclerView.Adapter<StringArrayAdapter.
      * Note that unlike {@link ListView}, RecyclerView will not call this
      * method again if the position of the item changes in the data set unless the item itself
      * is invalidated or the new position cannot be determined. For this reason, you should only
-     * use the <code>position</code> parameter while acquiring the related data item inside this
+     * use the <b>position</b> parameter while acquiring the related data item inside this
      * method and should not keep a copy of it. If you need the position of an item later on
      * (e.g. in a click listener), use {@link ViewHolder#getPosition()} which will have the
      * updated position.

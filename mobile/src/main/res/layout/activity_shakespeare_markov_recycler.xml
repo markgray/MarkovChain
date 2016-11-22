@@ -6,7 +6,7 @@
     tools:context="com.example.android.markovchain.ShakespeareMarkovRecycler">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/shakespeare_markov_recyclerview"
+        android:id="@+id/shakespeare_markov_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:divider="@null" />

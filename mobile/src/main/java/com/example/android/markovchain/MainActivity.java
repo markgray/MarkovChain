@@ -11,7 +11,7 @@ import android.widget.TextView;
 /**
  * This is the main Activity which launches all the other Activity's when their "launching Button"
  * is clicked. Its layout file (R.layout.activity_main) consists only of a vertical
- * <code>LinearLayout</code> wrapped in a <code>ScrollView</code> and Button's and TextView's are
+ * <b>LinearLayout</b> wrapped in a <b>ScrollView</b> and Button's and TextView's are
  * added to the LinearLayout using java code.
  */
 public class MainActivity extends Activity {
@@ -19,9 +19,9 @@ public class MainActivity extends Activity {
     /**
      * Called when the activity is starting. First we call through to our super's implementation of
      * onCreate, then we set our content view to our layout file R.layout.activity_main. We locate
-     * the <code>LinearLayout linearLayout</code> in our layout (R.id.linear_layout) and use the
-     * reference <code>linearLayout</code> to add Button's using method <code>addButton</code> and
-     * a TextView using our method <code>addText</code>. The Button's are intended to launch the
+     * the <b>LinearLayout linearLayout</b> in our layout (R.id.linear_layout) and use the
+     * reference <b>linearLayout</b> to add Button's using method <b>addButton</b> and
+     * a TextView using our method <b>addText</b>. The Button's are intended to launch the
      * other Activity's in our app, and the TextView merely separates the "featured" Activity's from
      * experimental ones added to the end of the LinearLayout.
      *
@@ -33,7 +33,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         ViewGroup linearLayout = (ViewGroup) findViewById(R.id.linear_layout);
-        addButton(ShakespeareRecylcler.class, "Shakespeare", linearLayout);
+        addButton(ShakespeareRecycler.class, "Shakespeare", linearLayout);
         addButton(ShakespeareMarkovRecycler.class, "Shakespeare Markov", linearLayout);
         addButton(BibleMain.class, "Bible", linearLayout);
         addButton(BibleMarkovFragment.class, "Bible Markov", linearLayout);
@@ -43,18 +43,18 @@ public class MainActivity extends Activity {
     }
 
     /**
-     * Adds a <code>Button</code> to the <code>ViewGroup parent</code> designed to launch a different
-     * Activity when it is clicked. First we create a <code>Button button</code>, then we set its
-     * text to the parameter <code>String description</code>, and we set its OnClickListener to an
-     * anonymous class which will (when the <code>Button</code> is clicked) create an Intent to
-     * launch the <code>Activity</code> given in our parameter <code>Class destination</code> and
-     * start that <code>Activity</code>. Finally it adds <code>Button button</code> to the
-     * <code>ViewGroup parent</code> (our vertical <code>LinearLayout</code>)
+     * Adds a <b>Button</b> to the <b>ViewGroup parent</b> designed to launch a different
+     * Activity when it is clicked. First we create a <b>Button button</b>, then we set its
+     * text to the parameter <b>String description</b>, and we set its OnClickListener to an
+     * anonymous class which will (when the <b>Button</b> is clicked) create an Intent to
+     * launch the <b>Activity</b> given in our parameter <b>Class destination</b> and
+     * start that <b>Activity</b>. Finally it adds <b>Button button</b> to the
+     * <b>ViewGroup parent</b> (our vertical <b>LinearLayout</b>)
      *
      * @param destination Activity Class to be started by an Intent we create and start
      *        when the Button is clicked
      * @param description text for the Button
-     * @param parent the LinearLayout we are adding the Button to using <code>ViewGroup.addView</code>
+     * @param parent the LinearLayout we are adding the Button to using <b>ViewGroup.addView</b>
      */
     public void addButton(final Class destination, String description, ViewGroup parent) {
         Button button = new Button(this);
@@ -71,7 +71,7 @@ public class MainActivity extends Activity {
 
     /**
      * Adds a TextView containing the String text to the ViewGroup parent. First we create a TextView
-     * text, then we set the text of <code>TextView text</code> to the String text, and finally we
+     * text, then we set the text of <b>TextView text</b> to the String text, and finally we
      * add the TextView text to the ViewGroup parent (our vertical LinearLayout).
      *
      * @param text text to display in the TextView we add to ViewGroup parent

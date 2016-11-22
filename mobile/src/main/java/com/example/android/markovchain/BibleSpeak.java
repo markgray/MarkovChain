@@ -31,7 +31,7 @@ public class BibleSpeak extends DialogFragment implements OnInitListener {
      * passed us. First we create a new instance of BibleSpeak f, then we create Bundle args and
      * insert the label parameter under key "label" and the text parameter under key "text".
      * We use Bundle f to supply the construction arguments for the BibleSpeak DialogFragment by
-     * calling f.setArguments(args). The arguments in <code>args</code> can then be retrieved in
+     * calling f.setArguments(args). The arguments in <b>args</b> can then be retrieved in
      * BibleSpeak.onCreate(). The arguments supplied here will be retained across fragment destroy
      * and creation.
      *

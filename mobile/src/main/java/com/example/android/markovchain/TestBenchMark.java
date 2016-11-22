@@ -6,33 +6,53 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import java.text.NumberFormat;
-import java.util.ArrayList;
-import java.util.Locale;
-
 import com.example.android.common.CalcTask;
-import com.example.android.common.Shakespeare;
+
+import java.text.NumberFormat;
+import java.util.Locale;
 
 /**
  * This activity is useful to benchmark two different implementations of a method
  */
 public class TestBenchMark extends Activity {
-    String TAG = "TestBenchMark";
-    Button startButtonOne;
-    Button startButtonTwo;
-    Button abortButton;
-    ProgressBar mProgressBar;
-    TextView mResults;
-    Button mTryAgain;
+    String TAG = "TestBenchMark"; // TAG used for logging
+
+    /**
+     * LinearLayout that contains <b>ProgressBar mProgressBar</b>, the two start Buttons, and
+     * the "ABORT" button. It shares a FrameLayout with <b>LinearLayout mResultsLinearLayout</b>
+     * and starts out VISIBLE then switches to GONE when a benchmark finishes so that the results
+     * can be seen.
+     */
     LinearLayout mProgressLayout;
+    Button startButtonOne; // Button used to start version one of code
+    Button startButtonTwo; // Button used to start version two of code
+    Button abortButton; // Button currently used to finish() this Activity
+    ProgressBar mProgressBar; // ProgressBar in our layout used to show progress
+
+    /**
+     * LinearLayout that contains <b>TextView mResults</b>, and <b>Button mTryAgain</b>. It shares
+     * a FrameLayout with <b>LinearLayout mProgressLayout</b> and starts out GONE then switches to
+     * VISIBLE when a benchmark finishes so that the results displayed in <b>TextView mResults</b>
+     * can be seen.
+     */
     LinearLayout mResultsLinearLayout;
-    ControlClass mControlInstance;
-    final Long PROGRESS_STEPS = 100L;
-    final Long LOOP_REPETITIONS = 100000L;
+    TextView mResults; // TextView used to display results
+    Button mTryAgain; // Button in mResultsLinearLayout that "returns" us to mProgressLayout
+
+    ControlClass mControlInstance; // Instance of ControlClass that is currently being benchmarked
+
+    /**
+     * TODO: make these two settable in LinearLayout mProgressLayout
+     */
+    Long PROGRESS_STEPS = 100L; // Number of steps in ProgressBar
+    Long ITERATIONS_PER_STEP = 1000000L; // Number of repetitions per ProgressBar step.
+    EditText progressSteps; // EditText in layout used to change PROGRESS_STEPS
+    EditText iterationsPerStep; // EditText in layout used to change ITERATIONS_PER_STEP
 
     /**
      * Called when the activity is starting, it sets the content view to the layout
@@ -57,14 +77,15 @@ public class TestBenchMark extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_bench_mark);
+
         mProgressBar = (ProgressBar) findViewById(R.id.progress_horizontal);
         startButtonOne = (Button) findViewById(R.id.start_one);
         startButtonOne.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.i(TAG, "Start button clicked");
-                mControlInstance = new ControlClass3();
-                mControlInstance.execute(LOOP_REPETITIONS, PROGRESS_STEPS);
+                mControlInstance = new ControlClass1();
+                mControlInstance.execute(ITERATIONS_PER_STEP, PROGRESS_STEPS);
             }
         });
         startButtonTwo = (Button) findViewById(R.id.start_two);
@@ -72,8 +93,8 @@ public class TestBenchMark extends Activity {
             @Override
             public void onClick(View v) {
                 Log.i(TAG, "Start button clicked");
-                mControlInstance = new ControlClass4();
-                mControlInstance.execute(LOOP_REPETITIONS, PROGRESS_STEPS);
+                mControlInstance = new ControlClass2();
+                mControlInstance.execute(ITERATIONS_PER_STEP, PROGRESS_STEPS);
             }
         });
         abortButton = (Button) findViewById(R.id.abort);
@@ -81,8 +102,15 @@ public class TestBenchMark extends Activity {
             @Override
             public void onClick(View v) {
                 Log.i(TAG, "Abort button clicked");
+                finish();
             }
         });
+
+        progressSteps = (EditText) findViewById(R.id.progress_steps);
+        progressSteps.setText(PROGRESS_STEPS.toString());
+        iterationsPerStep = (EditText) findViewById(R.id.iterations_per_step);
+        iterationsPerStep.setText(ITERATIONS_PER_STEP.toString());
+
         mProgressLayout = (LinearLayout) findViewById(R.id.progress_view_linear_layout);
         mResultsLinearLayout = (LinearLayout) findViewById(R.id.results_linear_layout);
 
@@ -117,7 +145,7 @@ public class TestBenchMark extends Activity {
         protected void onPostExecute(Long result) {
             super.onPostExecute(result);
             Log.i(TAG, "Benchmark took " + result + " milliseconds");
-            String formattedIterations = NumberFormat.getNumberInstance(Locale.US).format(PROGRESS_STEPS* LOOP_REPETITIONS);
+            String formattedIterations = NumberFormat.getNumberInstance(Locale.US).format(PROGRESS_STEPS* ITERATIONS_PER_STEP);
             String formattedResult = NumberFormat.getNumberInstance(Locale.US).format(result);
             mResults.append("Executed " + formattedIterations + " times in\n" + formattedResult + " milliseconds\n");
             mProgressLayout.setVisibility(View.GONE);
@@ -142,8 +170,8 @@ public class TestBenchMark extends Activity {
      * This is a simple example use of ControlClass designed to benchmark division.
      */
     private class ControlClass1 extends ControlClass {
-        public double acc = 1.000000001;
-        public double div = 0.999999999;
+        double acc = 1.000000001;
+        double div = 0.999999999;
         /**
          * This method should be overridden by a method which performs whatever computation
          * you wish to benchmark.
@@ -158,8 +186,8 @@ public class TestBenchMark extends Activity {
      * This is a simple example use of ControlClass designed to benchmark multiplication.
      */
     private class ControlClass2 extends ControlClass {
-        public double acc = 1.000000001;
-        public double mul = 0.999999999;
+        double acc = 1.000000001;
+        double mul = 0.999999999;
         /**
          * This method should be overridden by a method which performs whatever computation
          * you wish to benchmark.
@@ -168,70 +196,6 @@ public class TestBenchMark extends Activity {
         public void testMethod() {
             acc = acc * mul;
         }
-    }
-
-    private class ControlClass3 extends ControlClass {
-        /**
-         * This method should be overridden by a method which performs whatever computation
-         * you wish to benchmark.
-         */
-        @Override
-        public void testMethod() {
-            init();
-            findFromCitation1("not here", "not here either");
-        }
-    }
-
-    private class ControlClass4 extends ControlClass {
-        /**
-         * This method should be overridden by a method which performs whatever computation
-         * you wish to benchmark.
-         */
-        @Override
-        public void testMethod() {
-            init();
-            findFromCitation2("not here", "not here either");
-        }
-    }
-
-
-    static ArrayList<String> bookChapterVerse = null;
-    public void init() {
-        if (bookChapterVerse != null) {
-            return;
-        }
-        bookChapterVerse = new ArrayList<>();
-        for (String s :
-                Shakespeare.SONNETS) {
-            bookChapterVerse.add(s);
-        }
-    }
-
-    public static int findFromCitation1(String citation, String fallback) {
-        int fallBackIndex = 0;
-        for (int i = 0; i < bookChapterVerse.size(); i++) {
-            if (citation.equals(bookChapterVerse.get(i))) {
-                return i;
-            }
-            if (fallback.equals(bookChapterVerse.get(i))) {
-                fallBackIndex = i;
-            }
-        }
-        return fallBackIndex;
-    }
-
-    public static int findFromCitation2(String citation, String fallback) {
-        int fallBackIndex = 0;
-        for (int i = 0; i < bookChapterVerse.size(); i++) {
-            String stringToCheck = bookChapterVerse.get(i);
-            if (citation.equals(stringToCheck)) {
-                return i;
-            }
-            if (fallback.equals(stringToCheck)) {
-                fallBackIndex = i;
-            }
-        }
-        return fallBackIndex;
     }
 
 
