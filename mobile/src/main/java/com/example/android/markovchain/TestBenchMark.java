@@ -49,10 +49,10 @@ public class TestBenchMark extends Activity {
     /**
      * TODO: make these two settable in LinearLayout mProgressLayout
      */
-    Long PROGRESS_STEPS = 100L; // Number of steps in ProgressBar
-    Long ITERATIONS_PER_STEP = 1000000L; // Number of repetitions per ProgressBar step.
-    EditText progressSteps; // EditText in layout used to change PROGRESS_STEPS
-    EditText iterationsPerStep; // EditText in layout used to change ITERATIONS_PER_STEP
+    Long progressSteps = 100L; // Number of steps in ProgressBar
+    Long iterationsPerStep = 1000000L; // Number of repetitions per ProgressBar step.
+    EditText mProgressSteps; // EditText in layout used to change progressSteps
+    EditText mIterationsPerStep; // EditText in layout used to change ITERATIONS_PER_STEP
 
     /**
      * Called when the activity is starting, it sets the content view to the layout
@@ -73,6 +73,7 @@ public class TestBenchMark extends Activity {
      *
      * @param savedInstanceState always null since onSaveInstanceState is not overridden
      */
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,8 +85,9 @@ public class TestBenchMark extends Activity {
             @Override
             public void onClick(View v) {
                 Log.i(TAG, "Start button clicked");
+                updateIterationValues();
                 mControlInstance = new ControlClass1();
-                mControlInstance.execute(ITERATIONS_PER_STEP, PROGRESS_STEPS);
+                mControlInstance.execute(iterationsPerStep, progressSteps);
             }
         });
         startButtonTwo = (Button) findViewById(R.id.start_two);
@@ -93,8 +95,9 @@ public class TestBenchMark extends Activity {
             @Override
             public void onClick(View v) {
                 Log.i(TAG, "Start button clicked");
+                updateIterationValues();
                 mControlInstance = new ControlClass2();
-                mControlInstance.execute(ITERATIONS_PER_STEP, PROGRESS_STEPS);
+                mControlInstance.execute(iterationsPerStep, progressSteps);
             }
         });
         abortButton = (Button) findViewById(R.id.abort);
@@ -106,10 +109,10 @@ public class TestBenchMark extends Activity {
             }
         });
 
-        progressSteps = (EditText) findViewById(R.id.progress_steps);
-        progressSteps.setText(PROGRESS_STEPS.toString());
-        iterationsPerStep = (EditText) findViewById(R.id.iterations_per_step);
-        iterationsPerStep.setText(ITERATIONS_PER_STEP.toString());
+        mProgressSteps = (EditText) findViewById(R.id.progress_steps);
+        mProgressSteps.setText(progressSteps.toString());
+        mIterationsPerStep = (EditText) findViewById(R.id.iterations_per_step);
+        mIterationsPerStep.setText(iterationsPerStep.toString());
 
         mProgressLayout = (LinearLayout) findViewById(R.id.progress_view_linear_layout);
         mResultsLinearLayout = (LinearLayout) findViewById(R.id.results_linear_layout);
@@ -124,6 +127,11 @@ public class TestBenchMark extends Activity {
         });
 
         mResults = (TextView) findViewById(R.id.results_view);
+    }
+
+    private void updateIterationValues() {
+        progressSteps = Long.parseLong(String.valueOf(mProgressSteps.getText()));
+        iterationsPerStep = Long.parseLong(String.valueOf(mIterationsPerStep.getText()));
     }
 
     /**
@@ -145,7 +153,7 @@ public class TestBenchMark extends Activity {
         protected void onPostExecute(Long result) {
             super.onPostExecute(result);
             Log.i(TAG, "Benchmark took " + result + " milliseconds");
-            String formattedIterations = NumberFormat.getNumberInstance(Locale.US).format(PROGRESS_STEPS* ITERATIONS_PER_STEP);
+            String formattedIterations = NumberFormat.getNumberInstance(Locale.US).format(progressSteps* iterationsPerStep);
             String formattedResult = NumberFormat.getNumberInstance(Locale.US).format(result);
             mResults.append("Executed " + formattedIterations + " times in\n" + formattedResult + " milliseconds\n");
             mProgressLayout.setVisibility(View.GONE);
