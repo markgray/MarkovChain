@@ -23,36 +23,36 @@ public class TestBenchMark extends Activity {
     String TAG = "TestBenchMark"; // TAG used for logging
 
     /**
-     * LinearLayout that contains <b>ProgressBar mProgressBar</b>, the two start Buttons, and
-     * the "ABORT" button. It shares a FrameLayout with <b>LinearLayout mResultsLinearLayout</b>
+     * LinearLayout that contains <b>ProgressBar vProgressBar</b>, the two start Buttons, and
+     * the "ABORT" button. It shares a FrameLayout with <b>LinearLayout vResultsLinearLayout</b>
      * and starts out VISIBLE then switches to GONE when a benchmark finishes so that the results
      * can be seen.
      */
-    LinearLayout mProgressLayout;
-    Button startButtonOne; // Button used to start version one of code
-    Button startButtonTwo; // Button used to start version two of code
-    Button abortButton; // Button currently used to finish() this Activity
-    ProgressBar mProgressBar; // ProgressBar in our layout used to show progress
+    LinearLayout vProgressLayout;
+    Button vStartButtonOne; // Button used to start version one of code
+    Button vStartButtonTwo; // Button used to start version two of code
+    Button vAbortButton; // Button currently used to finish() this Activity
+    ProgressBar vProgressBar; // ProgressBar in our layout used to show progress
 
     /**
-     * LinearLayout that contains <b>TextView mResults</b>, and <b>Button mTryAgain</b>. It shares
-     * a FrameLayout with <b>LinearLayout mProgressLayout</b> and starts out GONE then switches to
-     * VISIBLE when a benchmark finishes so that the results displayed in <b>TextView mResults</b>
+     * LinearLayout that contains <b>TextView vResults</b>, and <b>Button vTryAgain</b>. It shares
+     * a FrameLayout with <b>LinearLayout vProgressLayout</b> and starts out GONE then switches to
+     * VISIBLE when a benchmark finishes so that the results displayed in <b>TextView vResults</b>
      * can be seen.
      */
-    LinearLayout mResultsLinearLayout;
-    TextView mResults; // TextView used to display results
-    Button mTryAgain; // Button in mResultsLinearLayout that "returns" us to mProgressLayout
+    LinearLayout vResultsLinearLayout;
+    TextView vResults; // TextView used to display results
+    Button vTryAgain; // Button in vResultsLinearLayout that "returns" us to vProgressLayout
 
-    ControlClass mControlInstance; // Instance of ControlClass that is currently being benchmarked
+    ControlClass mControlInstance; // Instance of ControlClass that is currently being used
 
     /**
-     * TODO: make these two settable in LinearLayout mProgressLayout
+     * TODO: make these two settable in LinearLayout vProgressLayout
      */
-    Long progressSteps = 100L; // Number of steps in ProgressBar
-    Long iterationsPerStep = 1000000L; // Number of repetitions per ProgressBar step.
-    EditText mProgressSteps; // EditText in layout used to change progressSteps
-    EditText mIterationsPerStep; // EditText in layout used to change ITERATIONS_PER_STEP
+    Long mProgressSteps = 100L; // Number of steps in ProgressBar
+    Long mIterationsPerStep = 1000000L; // Number of repetitions per ProgressBar step.
+    EditText vProgressSteps; // EditText in layout used to change mProgressSteps
+    EditText vIterationsPerStep; // EditText in layout used to change ITERATIONS_PER_STEP
 
     /**
      * Called when the activity is starting, it sets the content view to the layout
@@ -64,11 +64,11 @@ public class TestBenchMark extends Activity {
      * OnClickListener to just Log a message TODO: Implement an "abort" function
      * It locates the LinearLayout containing the ProgressBar (R.id.progress_view_linear_layout)
      * and the LinearLayout containing the result View (R.id.results_linear_layout) and squirrels
-     * them away in mProgressLayout, and mResultsLinearLayout to use later to swap visibility of
+     * them away in vProgressLayout, and vResultsLinearLayout to use later to swap visibility of
      * these two views. It locates the "TRY AGAIN" button in the results LinearLayout and set its
      * OnClickListener to swap the visibility from the results LinearLayout to the progress
      * LinearLayout. It then locates the TextView for the results of the benchmark (R.id.results_view)
-     * and squirrels it away in mResults for use by the benchmarking to append the output of the
+     * and squirrels it away in vResults for use by the benchmarking to append the output of the
      * results.
      *
      * @param savedInstanceState always null since onSaveInstanceState is not overridden
@@ -79,29 +79,29 @@ public class TestBenchMark extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_bench_mark);
 
-        mProgressBar = (ProgressBar) findViewById(R.id.progress_horizontal);
-        startButtonOne = (Button) findViewById(R.id.start_one);
-        startButtonOne.setOnClickListener(new View.OnClickListener() {
+        vProgressBar = (ProgressBar) findViewById(R.id.progress_horizontal);
+        vStartButtonOne = (Button) findViewById(R.id.start_one);
+        vStartButtonOne.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.i(TAG, "Start button clicked");
                 updateIterationValues();
                 mControlInstance = new ControlClass1();
-                mControlInstance.execute(iterationsPerStep, progressSteps);
+                mControlInstance.execute(mIterationsPerStep, mProgressSteps);
             }
         });
-        startButtonTwo = (Button) findViewById(R.id.start_two);
-        startButtonTwo.setOnClickListener(new View.OnClickListener() {
+        vStartButtonTwo = (Button) findViewById(R.id.start_two);
+        vStartButtonTwo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.i(TAG, "Start button clicked");
                 updateIterationValues();
                 mControlInstance = new ControlClass2();
-                mControlInstance.execute(iterationsPerStep, progressSteps);
+                mControlInstance.execute(mIterationsPerStep, mProgressSteps);
             }
         });
-        abortButton = (Button) findViewById(R.id.abort);
-        abortButton.setOnClickListener(new View.OnClickListener() {
+        vAbortButton = (Button) findViewById(R.id.abort);
+        vAbortButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.i(TAG, "Abort button clicked");
@@ -109,29 +109,29 @@ public class TestBenchMark extends Activity {
             }
         });
 
-        mProgressSteps = (EditText) findViewById(R.id.progress_steps);
-        mProgressSteps.setText(progressSteps.toString());
-        mIterationsPerStep = (EditText) findViewById(R.id.iterations_per_step);
-        mIterationsPerStep.setText(iterationsPerStep.toString());
+        vProgressSteps = (EditText) findViewById(R.id.progress_steps);
+        vProgressSteps.setText(mProgressSteps.toString());
+        vIterationsPerStep = (EditText) findViewById(R.id.iterations_per_step);
+        vIterationsPerStep.setText(mIterationsPerStep.toString());
 
-        mProgressLayout = (LinearLayout) findViewById(R.id.progress_view_linear_layout);
-        mResultsLinearLayout = (LinearLayout) findViewById(R.id.results_linear_layout);
+        vProgressLayout = (LinearLayout) findViewById(R.id.progress_view_linear_layout);
+        vResultsLinearLayout = (LinearLayout) findViewById(R.id.results_linear_layout);
 
-        mTryAgain = (Button) findViewById(R.id.try_again);
-        mTryAgain.setOnClickListener(new View.OnClickListener() {
+        vTryAgain = (Button) findViewById(R.id.try_again);
+        vTryAgain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mResultsLinearLayout.setVisibility(View.GONE);
-                mProgressLayout.setVisibility(View.VISIBLE);
+                vResultsLinearLayout.setVisibility(View.GONE);
+                vProgressLayout.setVisibility(View.VISIBLE);
             }
         });
 
-        mResults = (TextView) findViewById(R.id.results_view);
+        vResults = (TextView) findViewById(R.id.results_view);
     }
 
     private void updateIterationValues() {
-        progressSteps = Long.parseLong(String.valueOf(mProgressSteps.getText()));
-        iterationsPerStep = Long.parseLong(String.valueOf(mIterationsPerStep.getText()));
+        mProgressSteps = Long.parseLong(String.valueOf(vProgressSteps.getText()));
+        mIterationsPerStep = Long.parseLong(String.valueOf(vIterationsPerStep.getText()));
     }
 
     /**
@@ -153,11 +153,11 @@ public class TestBenchMark extends Activity {
         protected void onPostExecute(Long result) {
             super.onPostExecute(result);
             Log.i(TAG, "Benchmark took " + result + " milliseconds");
-            String formattedIterations = NumberFormat.getNumberInstance(Locale.US).format(progressSteps* iterationsPerStep);
+            String formattedIterations = NumberFormat.getNumberInstance(Locale.US).format(mProgressSteps* mIterationsPerStep);
             String formattedResult = NumberFormat.getNumberInstance(Locale.US).format(result);
-            mResults.append("Executed " + formattedIterations + " times in\n" + formattedResult + " milliseconds\n");
-            mProgressLayout.setVisibility(View.GONE);
-            mResultsLinearLayout.setVisibility(View.VISIBLE);
+            vResults.append("Executed " + formattedIterations + " times in\n" + formattedResult + " milliseconds\n");
+            vProgressLayout.setVisibility(View.GONE);
+            vResultsLinearLayout.setVisibility(View.VISIBLE);
         }
 
         /**
@@ -170,7 +170,7 @@ public class TestBenchMark extends Activity {
         @Override
         protected void onProgressUpdate(Long... progress) {
             super.onProgressUpdate(progress);
-            mProgressBar.setProgress(progress[0].intValue());
+            vProgressBar.setProgress(progress[0].intValue());
         }
     }
 
