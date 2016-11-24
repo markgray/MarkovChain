@@ -5,7 +5,7 @@ import android.util.Log;
 
 /**
  * Background task to benchmark
-*/
+ */
 public class CalcTask extends AsyncTask<Long, Long, Long> {
     private final static String TAG = "CalcTask"; // TAG for logging
 
@@ -24,7 +24,6 @@ public class CalcTask extends AsyncTask<Long, Long, Long> {
      *
      * @param reps [0] Number of repetitions the for loop should run for each publish period
      *             [1] Number of publish progress periods
-     *
      * @return Time in milliseconds that the benchmark took
      */
     @Override
@@ -34,8 +33,8 @@ public class CalcTask extends AsyncTask<Long, Long, Long> {
         int totalNumber = 0;
 
         benchMark.start();
-        for (int j=0; j < publish; j++) {
-            for (int i = 0; i < repeats ; i++) {
+        for (int j = 0; j < publish; j++) {
+            for (int i = 0; i < repeats; i++) {
                 totalNumber++;
                 testMethod();
             }

@@ -29,10 +29,10 @@ public class TestBenchMark extends Activity {
      * can be seen.
      */
     LinearLayout vProgressLayout;
+    ProgressBar vProgressBar; // ProgressBar in our layout used to show progress
     Button vStartButtonOne; // Button used to start version one of code
     Button vStartButtonTwo; // Button used to start version two of code
     Button vAbortButton; // Button currently used to finish() this Activity
-    ProgressBar vProgressBar; // ProgressBar in our layout used to show progress
 
     /**
      * LinearLayout that contains <b>TextView vResults</b>, and <b>Button vTryAgain</b>. It shares
@@ -46,22 +46,20 @@ public class TestBenchMark extends Activity {
 
     ControlClass mControlInstance; // Instance of ControlClass that is currently being used
 
-    /**
-     * TODO: make these two settable in LinearLayout vProgressLayout
-     */
     Long mProgressSteps = 100L; // Number of steps in ProgressBar
     Long mIterationsPerStep = 1000000L; // Number of repetitions per ProgressBar step.
     EditText vProgressSteps; // EditText in layout used to change mProgressSteps
-    EditText vIterationsPerStep; // EditText in layout used to change ITERATIONS_PER_STEP
+    EditText vIterationsPerStep; // EditText in layout used to change mIterationsPerStep
 
     /**
-     * Called when the activity is starting, it sets the content view to the layout
-     * activity_test_bench_mark, locates the ProgressBar View R.id.progress_horizontal
-     * and squirrels it away for later use, locates the Button R.id.start_one in the layout,
-     * and sets the OnClickListener of the Button to run the first method's benchmark, locates
+     * Called when the activity is starting. First we call through to our super's implementation of
+     * onCreate, then we set the content view to the layout activity_test_bench_mark. Next we locate
+     * the ProgressBar R.id.progress_horizontal and squirrel it away for later use, locate the
+     * Button R.id.start_one in the layout, and sets the OnClickListener of the Button to run the first method's benchmark, locates
      * the Button R.id.start_two in the layout, and sets the OnClickListener of the Button to
      * run the second method's benchmark. It then locates the Button R.id.abort and sets its
-     * OnClickListener to just Log a message TODO: Implement an "abort" function
+     * OnClickListener to an anonymous class which calls <b>Activity.finish()</b> to stop this
+     * Activity and return to <b>MainActivity</b>. TODO: change to just stop current benchmark
      * It locates the LinearLayout containing the ProgressBar (R.id.progress_view_linear_layout)
      * and the LinearLayout containing the result View (R.id.results_linear_layout) and squirrels
      * them away in vProgressLayout, and vResultsLinearLayout to use later to swap visibility of
@@ -154,7 +152,7 @@ public class TestBenchMark extends Activity {
         protected void onPostExecute(Long result) {
             super.onPostExecute(result);
             Log.i(TAG, "Benchmark took " + result + " milliseconds");
-            String formattedIterations = NumberFormat.getNumberInstance(Locale.US).format(mProgressSteps* mIterationsPerStep);
+            String formattedIterations = NumberFormat.getNumberInstance(Locale.US).format(mProgressSteps * mIterationsPerStep);
             String formattedResult = NumberFormat.getNumberInstance(Locale.US).format(result);
             vResults.append("Executed " + formattedIterations + " times in\n" + formattedResult + " milliseconds\n");
             vProgressLayout.setVisibility(View.GONE);
@@ -181,6 +179,7 @@ public class TestBenchMark extends Activity {
     private class ControlClass1 extends ControlClass {
         double acc = 1.000000001;
         double div = 0.999999999;
+
         /**
          * This method should be overridden by a method which performs whatever computation
          * you wish to benchmark.
@@ -197,6 +196,7 @@ public class TestBenchMark extends Activity {
     private class ControlClass2 extends ControlClass {
         double acc = 1.000000001;
         double mul = 0.999999999;
+
         /**
          * This method should be overridden by a method which performs whatever computation
          * you wish to benchmark.
