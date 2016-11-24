@@ -131,6 +131,7 @@ public class TestBenchMark extends Activity {
 
     private void updateIterationValues() {
         mProgressSteps = Long.parseLong(String.valueOf(vProgressSteps.getText()));
+        vProgressBar.setMax(mProgressSteps.intValue());
         mIterationsPerStep = Long.parseLong(String.valueOf(vIterationsPerStep.getText()));
     }
 

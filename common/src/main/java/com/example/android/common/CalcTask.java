@@ -1,11 +1,13 @@
 package com.example.android.common;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 /**
  * Background task to benchmark
 */
 public class CalcTask extends AsyncTask<Long, Long, Long> {
+    private final static String TAG = "CalcTask"; // TAG for logging
 
     @SuppressWarnings("WeakerAccess")
     public BenchMark benchMark = new BenchMark(); // Create a BenchMark timer instance
@@ -29,14 +31,18 @@ public class CalcTask extends AsyncTask<Long, Long, Long> {
     protected Long doInBackground(Long... reps) {
         Long repeats = reps[0];
         Long publish = reps[1];
+        int totalNumber = 0;
 
         benchMark.start();
         for (int j=0; j < publish; j++) {
             for (int i = 0; i < repeats ; i++) {
+                totalNumber++;
                 testMethod();
             }
             publishProgress((long) j);
         }
+        publishProgress(publish);
+        Log.i(TAG, "Total number of iterations: " + totalNumber);
         return benchMark.stop();
     }
 
