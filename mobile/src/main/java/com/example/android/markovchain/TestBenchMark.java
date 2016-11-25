@@ -55,19 +55,28 @@ public class TestBenchMark extends Activity {
      * Called when the activity is starting. First we call through to our super's implementation of
      * onCreate, then we set the content view to the layout activity_test_bench_mark. Next we locate
      * the ProgressBar R.id.progress_horizontal and squirrel it away for later use, locate the
-     * Button R.id.start_one in the layout, and sets the OnClickListener of the Button to run the first method's benchmark, locates
-     * the Button R.id.start_two in the layout, and sets the OnClickListener of the Button to
-     * run the second method's benchmark. It then locates the Button R.id.abort and sets its
+     * Button R.id.start_one in the layout, and set the OnClickListener of the Button to an anonymous
+     * class that will run the first method's benchmark when the Button is clicked, locate the Button
+     * R.id.start_two in the layout, and set the OnClickListener of the Button to an anonymous class
+     * that will run the second method's benchmark. We then locate the Button R.id.abort and set its
      * OnClickListener to an anonymous class which calls <b>Activity.finish()</b> to stop this
      * Activity and return to <b>MainActivity</b>. TODO: change to just stop current benchmark
-     * It locates the LinearLayout containing the ProgressBar (R.id.progress_view_linear_layout)
-     * and the LinearLayout containing the result View (R.id.results_linear_layout) and squirrels
+     * We locate the EditText used to change the maximum number of steps in the ProgressBar
+     * (R.id.progress_steps) in order to initialize our field <b>EditText vProgressSteps</b> and
+     * set the text of <b>vProgressSteps</b> to the String value of the current value of our field
+     * <b>Long mProgressSteps</b>, and we locate the EditText used to change the number of iterations
+     * per progress step (R.id.iterations_per_step) to initialize our field <b>EditText vIterationsPerStep</b>
+     * and set the text of <b>vIterationsPerStep</b> to the String value of the current value of our field
+     * <b>Long mIterationsPerStep</b>.
+     * <p>
+     * We locate the LinearLayout containing the ProgressBar (R.id.progress_view_linear_layout)
+     * and the LinearLayout containing the result View (R.id.results_linear_layout) and squirrel
      * them away in vProgressLayout, and vResultsLinearLayout to use later to swap visibility of
-     * these two views. It locates the "TRY AGAIN" button in the results LinearLayout and set its
-     * OnClickListener to swap the visibility from the results LinearLayout to the progress
-     * LinearLayout. It then locates the TextView for the results of the benchmark (R.id.results_view)
-     * and squirrels it away in vResults for use by the benchmarking to append the output of the
-     * results.
+     * these two views. We locate the "TRY AGAIN" button in the results LinearLayout and set its
+     * OnClickListener to an anonymous class that will swap the visibility from the results
+     * LinearLayout to the progress LinearLayout. We then locate the TextView for the results of
+     * the benchmark (R.id.results_view) and squirrel it away in vResults for use by the benchmarking
+     * to append the output of the current benchmark results.
      *
      * @param savedInstanceState always null since onSaveInstanceState is not overridden
      */
@@ -127,6 +136,14 @@ public class TestBenchMark extends Activity {
         vResults = (TextView) findViewById(R.id.results_view);
     }
 
+    /**
+     * This method reads the text in the <b>EditText vProgressSteps</b>, converts it to Long in order
+     * to update the value of our field <b>Long mProgressSteps</b>, the uses it to set the max number
+     * of steps for our <b>ProgressBar vProgressBar</b>, and then reads the text in the
+     * <b>EditText vIterationsPerStep</b>, converts it to Long in order to update the value of our
+     * field <b>Long mIterationsPerStep</b>. These two Long values are used as arguments to the
+     * benchmarking framework.
+     */
     private void updateIterationValues() {
         mProgressSteps = Long.parseLong(String.valueOf(vProgressSteps.getText()));
         vProgressBar.setMax(mProgressSteps.intValue());
