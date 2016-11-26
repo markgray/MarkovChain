@@ -142,7 +142,7 @@ public class TestBenchMark extends Activity {
      * of steps for our <b>ProgressBar vProgressBar</b>, and then reads the text in the
      * <b>EditText vIterationsPerStep</b>, converts it to Long in order to update the value of our
      * field <b>Long mIterationsPerStep</b>. These two Long values are used as arguments to the
-     * benchmarking framework.
+     * benchmarking framework (as arguments to ControlInstance.execute).
      */
     private void updateIterationValues() {
         mProgressSteps = Long.parseLong(String.valueOf(vProgressSteps.getText()));
