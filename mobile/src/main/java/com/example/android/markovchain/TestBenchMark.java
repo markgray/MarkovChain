@@ -23,16 +23,21 @@ public class TestBenchMark extends Activity {
     String TAG = "TestBenchMark"; // TAG used for logging
 
     /**
-     * LinearLayout that contains <b>ProgressBar vProgressBar</b>, the two start Buttons, and
-     * the "ABORT" button. It shares a FrameLayout with <b>LinearLayout vResultsLinearLayout</b>
-     * and starts out VISIBLE then switches to GONE when a benchmark finishes so that the results
-     * can be seen.
+     * LinearLayout that contains <b>ProgressBar vProgressBar</b>, the two start Buttons, the "ABORT"
+     * button, <b>EditText vProgressSteps</b>, and <b>EditText vIterationsPerStep</b>. It shares a
+     * FrameLayout with <b>LinearLayout vResultsLinearLayout</b> and starts out VISIBLE then switches
+     * to GONE when a benchmark finishes so that the results can be seen.
      */
     LinearLayout vProgressLayout;
     ProgressBar vProgressBar; // ProgressBar in our layout used to show progress
     Button vStartButtonOne; // Button used to start version one of code
     Button vStartButtonTwo; // Button used to start version two of code
     Button vAbortButton; // Button currently used to finish() this Activity
+    EditText vProgressSteps; // EditText in layout used to change mProgressSteps
+    EditText vIterationsPerStep; // EditText in layout used to change mIterationsPerStep
+
+    Long mProgressSteps = 100L; // Number of steps in ProgressBar
+    Long mIterationsPerStep = 1000000L; // Number of repetitions per ProgressBar step.
 
     /**
      * LinearLayout that contains <b>TextView vResults</b>, and <b>Button vTryAgain</b>. It shares
@@ -45,11 +50,6 @@ public class TestBenchMark extends Activity {
     Button vTryAgain; // Button in vResultsLinearLayout that "returns" us to vProgressLayout
 
     ControlClass mControlInstance; // Instance of ControlClass that is currently being used
-
-    Long mProgressSteps = 100L; // Number of steps in ProgressBar
-    Long mIterationsPerStep = 1000000L; // Number of repetitions per ProgressBar step.
-    EditText vProgressSteps; // EditText in layout used to change mProgressSteps
-    EditText vIterationsPerStep; // EditText in layout used to change mIterationsPerStep
 
     /**
      * Called when the activity is starting. First we call through to our super's implementation of
@@ -165,8 +165,11 @@ public class TestBenchMark extends Activity {
          *
          * First we call through to our super's implementation of onPostExecute. Then we format a
          * String for the number of iterations performed (mProgressSteps * mIterationsPerStep), and
-         * format a String of our parameter <b>Long result</b> (total benchmark time in milliseconds)
-         *
+         * format a String of our parameter <b>Long result</b> (total benchmark time in milliseconds).
+         * We then append a formatted String containing those two strings to <b>TextView vResults</b>.
+         * Finally we set the visibility of <b>LinearLayout vProgressLayout</b> to GONE and the
+         * visibility of <b>LinearLayout vResultsLinearLayout</b> to VISIBLE in order to see the
+         * results displayed.
          *
          * @param result The elapsed time the benchmark took.
          */
@@ -185,6 +188,9 @@ public class TestBenchMark extends Activity {
          * Runs on the UI thread after publishProgress(Long...) is invoked.
          * The specified values are the values passed to publishProgress(Long...).
          * Override this to advance a progress bar
+         * <p>
+         * First we call through to our super's implementation of onProgressUpdate, then we set the
+         * <b>ProgressBar vProgressBar</b> progress to the integer value of our parameter.
          *
          * @param progress The values indicating progress.
          */
@@ -199,12 +205,13 @@ public class TestBenchMark extends Activity {
      * This is a simple example use of ControlClass designed to benchmark division.
      */
     private class ControlClass1 extends ControlClass {
-        double acc = 1.000000001;
-        double div = 0.999999999;
+        double acc = 1.000000001; // Accumulator register for repeated divisions
+        double div = 0.999999999; // Divisor register for repeated divisions
 
         /**
          * This method should be overridden by a method which performs whatever computation
-         * you wish to benchmark.
+         * you wish to benchmark. Here we just divide our Accumulator register by our Divisor
+         * register.
          */
         @Override
         public void testMethod() {
@@ -216,18 +223,17 @@ public class TestBenchMark extends Activity {
      * This is a simple example use of ControlClass designed to benchmark multiplication.
      */
     private class ControlClass2 extends ControlClass {
-        double acc = 1.000000001;
-        double mul = 0.999999999;
+        double acc = 1.000000001; // Accumulator register for repeated multiplications
+        double mul = 0.999999999; // Multiplicand register for repeated multiplications
 
         /**
          * This method should be overridden by a method which performs whatever computation
-         * you wish to benchmark.
+         * you wish to benchmark. Here we just multiply our Accumulator register by our
+         * Multiplicand register
          */
         @Override
         public void testMethod() {
             acc = acc * mul;
         }
     }
-
-
 }
