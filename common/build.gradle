@@ -19,6 +19,7 @@ android {
             minifyEnabled false
         }
     }
+    return void
 }
 
 dependencies {

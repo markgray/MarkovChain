@@ -23,7 +23,7 @@ android {
     dexOptions {
         javaMaxHeapSize "2g"
     }
-
+    return void
 }
 
 dependencies {
