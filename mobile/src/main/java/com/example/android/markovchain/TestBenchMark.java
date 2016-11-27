@@ -163,6 +163,11 @@ public class TestBenchMark extends Activity {
          * This method won't be invoked if the task was cancelled.
          * Override this to make use of the elapsed time value returned.
          *
+         * First we call through to our super's implementation of onPostExecute. Then we format a
+         * String for the number of iterations performed (mProgressSteps * mIterationsPerStep), and
+         * format a String of our parameter <b>Long result</b> (total benchmark time in milliseconds)
+         *
+         *
          * @param result The elapsed time the benchmark took.
          */
         @Override
