@@ -16,9 +16,13 @@ public class CalcTask extends AsyncTask<Long, Long, Long> {
     /**
      * This method performs a computation contained in the method testMethod
      * reps[0]*reps[1] times on a background thread.
+     *
      * The specified parameters are the parameters passed to execute(Long...)
      * by the caller of this task. This method calls publishProgress(Long...)
      * to publish updates on the UI thread.
+     *
+     * First we retrieve local copies of our parameters <b>Long repeats</b> and <b>Long publish</b>
+     * in order to make the code more readable.
      *
      * @param reps [0] Number of repetitions the for loop should run for each publish period
      *             [1] Number of publish progress periods
