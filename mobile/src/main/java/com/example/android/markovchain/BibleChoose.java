@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 /**
  * This DialogFragment allows a user to choose a specific verse of the Bible
+ * The last attempt to sync screwed things up so hopefully this will fix it.
  */
 public class BibleChoose extends DialogFragment {
     public final static String TAG = "BibleChoose"; // TAG used for logging
