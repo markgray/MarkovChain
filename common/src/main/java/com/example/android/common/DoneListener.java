@@ -6,7 +6,7 @@ import android.widget.Toast;
 
 /**
  * This class allows an application to set a DoneListener on a View, and override the
- * onDone method in an anonymous class to perform some action on the UI thread when a
+ * onDoneDo method in an anonymous class to perform some action on the UI thread when a
  * method in a separate thread is done. It is recommended to create a method
  * void setDoneListener(DoneListener doneListener, View view) which will save the arguments
  * in fields for later use when background thread is done, then you can use that DoneListener
@@ -23,8 +23,7 @@ public class DoneListener {
      * @param view View to provide Context for a Toast or other use that needs a View or Context.
      */
     public void onDone(final View view) {
-        ((Activity) view.getContext()).runOnUiThread(new Thread(new Runnable()
-        {
+        ((Activity) view.getContext()).runOnUiThread(new Thread(new Runnable() {
             /**
              * When our Thread is run, we simply call onDoneDo(View view), where View view is
              * the View passed to onDone.

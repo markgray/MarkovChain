@@ -117,7 +117,7 @@ public class StringArrayAdapter extends RecyclerView.Adapter<StringArrayAdapter.
                     return true;
                 }
             });
-            textView = (TextView) v.findViewById(R.id.textView);
+            textView = (TextView) v.findViewById(R.id.vTextView);
         }
 
         public TextView getTextView() {

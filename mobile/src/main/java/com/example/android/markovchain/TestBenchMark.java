@@ -37,7 +37,7 @@ public class TestBenchMark extends Activity {
     EditText vIterationsPerStep; // EditText in layout used to change mIterationsPerStep
 
     Long mProgressSteps = 100L; // Number of steps in ProgressBar
-    Long mIterationsPerStep = 1000000L; // Number of repetitions per ProgressBar step.
+    Long mIterationsPerStep = 10000L; // Number of repetitions per ProgressBar step.
 
     /**
      * LinearLayout that contains <b>TextView vResults</b>, and <b>Button vTryAgain</b>. It shares
