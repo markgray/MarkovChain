@@ -2,8 +2,10 @@ package com.example.android.common;
 
 import android.os.SystemClock;
 
-@SuppressWarnings("WeakerAccess")
-public class BenchMark {
+/**
+ * This class is used to benchmark areas of code, and includes start() and stop() methods
+ */
+class BenchMark {
 
     private long mStartTime; // Milliseconds since boot when instance created or start() called.
 
@@ -11,7 +13,7 @@ public class BenchMark {
      * Create a new BenchMark instance initialized to current time. We simply call our method start()
      * to initialize our field long mStartTime to the time in milliseconds since boot.
      */
-    public BenchMark() {
+    BenchMark() {
         this.start();
     }
 

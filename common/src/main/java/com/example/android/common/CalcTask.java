@@ -9,11 +9,9 @@ import android.util.Log;
 public class CalcTask extends AsyncTask<Long, Long, Long> {
     private final static String TAG = "CalcTask"; // TAG for logging
 
-    @SuppressWarnings("WeakerAccess")
-    public BenchMark benchMark = new BenchMark(); // Create a BenchMark timer instance
+    private BenchMark benchMark = new BenchMark(); // Create a BenchMark timer instance
     private double acc = 1.000000001; // Start value for example use
-    @SuppressWarnings("FieldCanBeLocal")
-    private double div = 0.999999999; // Dividend for example use
+    private final static double div = 0.999999999; // Dividend for example use
 
     /**
      * This method performs a computation contained in the method testMethod

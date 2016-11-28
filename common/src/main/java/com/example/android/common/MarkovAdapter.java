@@ -47,7 +47,7 @@ public class MarkovAdapter extends RecyclerView.Adapter<MarkovAdapter.ViewHolder
          * to a random verse, and shows a Toast to that effect.
          * TODO: Pop up a DialogFragment that allows us to explore all variations starting from first two words.
          *
-         * Finally we find the TextView textView (R.id.textView) that we will use to later to display
+         * Finally we find the TextView textView (R.id.vTextView) that we will use to later to display
          * the line of generated nonsense.
          *
          * @param v View inflated by onCreateViewHolder for us to use for our current line
@@ -70,7 +70,7 @@ public class MarkovAdapter extends RecyclerView.Adapter<MarkovAdapter.ViewHolder
                     return true;
                 }
             });
-            textView = (TextView) v.findViewById(R.id.textView);
+            textView = (TextView) v.findViewById(R.id.vTextView);
         }
 
         /**

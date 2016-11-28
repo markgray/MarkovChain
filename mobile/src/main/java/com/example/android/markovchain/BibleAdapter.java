@@ -113,13 +113,13 @@ public class BibleAdapter extends RecyclerView.Adapter<BibleAdapter.ViewHolder> 
      */
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        private final TextView textView; // TextView in our layout to use for the verse we display
+        private final TextView vTextView; // TextView in our layout to use for the verse we display
 
         /**
          * Initializes a new instance of a ViewHolder. Sets the onClickListener to Toast the
          * canonical Bible citation for the verse that the view will hold, and sets the
          * onLongClickListener to launch a BibleDialog DialogFragment for the verse. Finally it
-         * finds the TextView for displaying the verse and squirrels it away in the textView field
+         * finds the TextView for displaying the verse and squirrels it away in the vTextView field
          * for later use.
          *
          * @param v View that this is the ViewHolder for
@@ -153,21 +153,21 @@ public class BibleAdapter extends RecyclerView.Adapter<BibleAdapter.ViewHolder> 
                 public boolean onLongClick(View view) {
 
                     ((BibleMain) view.getContext()).showDialog(makeCitation(mChapterAndVerse.get(getLayoutPosition())),
-                            (String) textView.getText());
+                            (String) vTextView.getText());
                     BibleMain.dialogVerse = getAdapterPosition();
                     return true;
                 }
             });
-            textView = (TextView) v.findViewById(R.id.textView);
+            vTextView = (TextView) v.findViewById(R.id.vTextView);
         }
 
         /**
-         * Gets the value contained in the TextView textView field
+         * Gets the value contained in the TextView vTextView field
          *
-         * @return the TextView textView field
+         * @return the TextView vTextView field
          */
         public TextView getTextView() {
-            return textView;
+            return vTextView;
         }
 
 
