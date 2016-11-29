@@ -3,7 +3,8 @@ package com.example.android.common;
 import android.os.SystemClock;
 
 /**
- * This class is used to benchmark areas of code, and includes start() and stop() methods
+ * This class is used to benchmark areas of code, and includes start() and stop() methods (which will
+ * return the elapsed time since creation of the instance or time since start() was called.)
  */
 class BenchMark {
 
