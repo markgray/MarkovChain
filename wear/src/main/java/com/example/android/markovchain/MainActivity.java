@@ -27,6 +27,7 @@ public class MainActivity extends WearableActivity {
 
         mContainerView = (BoxInsetLayout) findViewById(R.id.container);
         mTextView = (TextView) findViewById(R.id.text);
+        mTextView.setText("Goodbye cruel world!");
         mClockView = (TextView) findViewById(R.id.clock);
     }
 
