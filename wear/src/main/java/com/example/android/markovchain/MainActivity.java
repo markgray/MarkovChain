@@ -6,15 +6,19 @@ import android.support.wearable.view.BoxInsetLayout;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.android.common.Shakespeare;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Random;
 
 public class MainActivity extends WearableActivity {
 
     private static final SimpleDateFormat AMBIENT_DATE_FORMAT =
             new SimpleDateFormat("HH:mm", Locale.US);
 
+    private Random rand;
     private BoxInsetLayout mContainerView;
     private TextView mTextView;
     private TextView mClockView;
@@ -27,8 +31,10 @@ public class MainActivity extends WearableActivity {
 
         mContainerView = (BoxInsetLayout) findViewById(R.id.container);
         mTextView = (TextView) findViewById(R.id.text);
-        mTextView.setText("Goodbye cruel world!");
         mClockView = (TextView) findViewById(R.id.clock);
+        rand = new Random();
+
+        setRandomText();
     }
 
     @Override
@@ -64,5 +70,10 @@ public class MainActivity extends WearableActivity {
             mTextView.setTextColor(getResources().getColor(android.R.color.black));
             mClockView.setVisibility(View.GONE);
         }
+    }
+
+    private void setRandomText() {
+        int selection = Math.abs(rand.nextInt()) % Shakespeare.SONNETS.length;
+        mTextView.setText(Shakespeare.SONNETS[selection]);
     }
 }

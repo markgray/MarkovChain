@@ -9,12 +9,18 @@
     tools:context="com.example.android.markovchain.MainActivity"
     tools:deviceIds="wear">
 
-    <TextView
-        android:id="@+id/text"
-        android:layout_width="match_parent"
+    <ScrollView
         android:layout_height="match_parent"
-        android:text="@string/hello_world"
-        app:layout_box="all" />
+        android:layout_width="match_parent">
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/hello_world"
+            app:layout_box="all" />
+    </ScrollView>
+
 
     <TextView
         android:id="@+id/clock"
