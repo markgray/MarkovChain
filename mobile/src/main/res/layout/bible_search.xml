@@ -29,7 +29,7 @@
         android:id="@+id/edit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:popupBackground="#000000"/>
+        android:popupBackground="#808080"/>
 
     <Button
         android:id="@+id/show"
