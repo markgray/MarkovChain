@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.wearable.activity.WearableActivity;
 import android.support.wearable.view.BoxInsetLayout;
 import android.view.View;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.example.android.common.Shakespeare;
@@ -22,6 +23,7 @@ public class MainActivity extends WearableActivity {
     private BoxInsetLayout mContainerView;
     private TextView mTextView;
     private TextView mClockView;
+    private ScrollView mScrollView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,11 +33,22 @@ public class MainActivity extends WearableActivity {
 
         mContainerView = (BoxInsetLayout) findViewById(R.id.container);
         mTextView = (TextView) findViewById(R.id.text);
+        mTextView.setOnLongClickListener(listener);
+        mScrollView = (ScrollView) findViewById(R.id.scroll_view);
         mClockView = (TextView) findViewById(R.id.clock);
         rand = new Random();
 
         setRandomText();
     }
+
+    View.OnLongClickListener listener = new View.OnLongClickListener() {
+        @Override
+        public boolean onLongClick(View v) {
+            setRandomText();
+            mScrollView.scrollTo(0, 0);
+            return true;
+        }
+    };
 
     @Override
     public void onEnterAmbient(Bundle ambientDetails) {
