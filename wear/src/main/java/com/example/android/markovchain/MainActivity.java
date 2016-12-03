@@ -16,11 +16,13 @@ import java.util.Random;
 
 public class MainActivity extends WearableActivity {
 
-    private static final SimpleDateFormat AMBIENT_DATE_FORMAT =
-            new SimpleDateFormat("HH:mm", Locale.US);
+    /**
+     * Date format used to update the time displayed in <b>TextView mClockView</b>
+     */
+    private static final SimpleDateFormat AMBIENT_DATE_FORMAT = new SimpleDateFormat("HH:mm", Locale.US);
 
-    private Random rand;
-    private BoxInsetLayout mContainerView;
+    private Random rand; // Random instance for choosing sonnets from Shakespeare.SONNETS[]
+    private BoxInsetLayout mContainerView; // R.id.container main View in our layout
     private TextView mTextView;
     private TextView mClockView;
     private ScrollView mScrollView;
