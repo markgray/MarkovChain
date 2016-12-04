@@ -23,7 +23,7 @@ public class MainActivity extends WearableActivity {
 
     private Random rand; // Random instance for choosing sonnets from Shakespeare.SONNETS[]
     private BoxInsetLayout mContainerView; // R.id.container main View in our layout
-    private TextView mTextView;
+    private TextView mTextView; // TextView we write our sonnets to
     private TextView mClockView;
     private ScrollView mScrollView;
 
