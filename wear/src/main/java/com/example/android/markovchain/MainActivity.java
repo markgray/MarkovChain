@@ -24,8 +24,8 @@ public class MainActivity extends WearableActivity {
     private Random rand; // Random instance for choosing sonnets from Shakespeare.SONNETS[]
     private BoxInsetLayout mContainerView; // R.id.container main View in our layout
     private TextView mTextView; // TextView we write our sonnets to
-    private TextView mClockView;
-    private ScrollView mScrollView;
+    private TextView mClockView; // TextView used to write time to -- might disapear in a future version
+    private ScrollView mScrollView; // ScrollView containing mTextView
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
