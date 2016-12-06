@@ -27,6 +27,13 @@ public class MainActivity extends WearableActivity {
     private TextView mClockView; // TextView used to write time to -- might disapear in a future version
     private ScrollView mScrollView; // ScrollView containing mTextView
 
+    /**
+     * Called on WearableActivity start. First we call through to our super's implementation of
+     * onCreate, then we set our contents view to our layout file R.layout.activity_main, and set
+     * ambient display to be enabled.
+     *
+     * @param savedInstanceState we do not override onSaveInstanceState so do not use
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
