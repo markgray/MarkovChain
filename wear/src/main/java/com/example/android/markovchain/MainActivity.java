@@ -30,7 +30,8 @@ public class MainActivity extends WearableActivity {
     /**
      * Called on WearableActivity start. First we call through to our super's implementation of
      * onCreate, then we set our contents view to our layout file R.layout.activity_main, and set
-     * ambient display to be enabled.
+     * ambient display to be enabled. We initialize our field <b>BoxInsetLayout mContainerView</b>
+     * by locating the view with id R.id.container.
      *
      * @param savedInstanceState we do not override onSaveInstanceState so do not use
      */
