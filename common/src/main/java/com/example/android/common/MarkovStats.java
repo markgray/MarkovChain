@@ -1,4 +1,4 @@
-package com.example.android.markovchain;
+package com.example.android.common;
 
 import java.util.ArrayList;
 
