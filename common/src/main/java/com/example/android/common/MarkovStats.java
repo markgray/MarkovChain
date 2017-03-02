@@ -2,6 +2,7 @@ package com.example.android.common;
 
 import java.util.ArrayList;
 
+@SuppressWarnings({"WeakerAccess", "unused"})
 public class MarkovStats {
     public ArrayList<Integer> variations;
 
@@ -19,7 +20,7 @@ public class MarkovStats {
         int totalVariations = 1;
         for (Integer choices :variations) {
             returnString.append(choices).append("x");
-            totalVariations *= choices.intValue();
+            totalVariations *= choices;
         }
         return returnString.toString() + totalVariations;
     }
