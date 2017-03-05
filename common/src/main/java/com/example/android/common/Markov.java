@@ -40,7 +40,7 @@ public class Markov {
      * but any kind of BufferedReader will work.
      *
      * @param reader BufferedReader to read a existing Markov chain into
-     * @throws IOException
+     * @throws IOException If an I/O error occurs
      */
     public void load (BufferedReader reader) throws IOException {
         chain = new Chain();
@@ -54,7 +54,7 @@ public class Markov {
      *
      * @param reader Reader of raw text to read in order to construct  construct the Markov chain
      *               our instance will use.
-     * @throws IOException
+     * @throws IOException If an I/O error occurs
      */
     public void make (Reader reader) throws IOException {
         chain = new Chain();
@@ -70,6 +70,10 @@ public class Markov {
      */
     public String line() {
         return chain.line();
+    }
+
+    public String line(Integer possibles) {
+        return chain.line(possibles);
     }
 
     /**
@@ -102,7 +106,7 @@ public class Markov {
          * onDone of that OnDoneListener passing it the view passed to setOnDoneListener.
          *
          * @param quotes Reader which is read and parsed into words which are then added to the state table
-         * @throws IOException
+         * @throws IOException If an I/O error occurs
          */
         void build(Reader quotes) throws IOException {
             if (loaded) return;
@@ -274,6 +278,37 @@ public class Markov {
                     return "Error!";
                 }
                 r = Math.abs(rand.nextInt()) % (s.length - 2);
+                suf = s[r + 2];
+
+                if (suf.equals(NONWORD)) {
+                    Log.i(TAG, "Suffix at " + r + " is NONWORD");
+                    Log.i(TAG, "Size of Vector s is: " + s.length);
+                    prefix = new Prefix(NONWORD);
+                } else {
+                    builder.append(suf).append(" ");
+                    prefix.pref[0] = prefix.pref[1];
+                    prefix.pref[1] = suf;
+                }
+            }
+            return capitalize(builder.toString());
+        }
+
+        public String line(Integer possibles) {
+            possibles = 1;
+            StringBuilder builder = new StringBuilder(120);
+            String suf = "";
+            int r;
+
+            init();
+            while (notEnd(suf)) {
+                String[] s = stateTable.get(prefix);
+                if (s == null) {
+                    Log.d(TAG, "internal error: no state");
+                    return "Error!";
+                }
+                int suffixes = s.length - 2;
+                possibles *= suffixes;
+                r = Math.abs(rand.nextInt()) % suffixes;
                 suf = s[r + 2];
 
                 if (suf.equals(NONWORD)) {
