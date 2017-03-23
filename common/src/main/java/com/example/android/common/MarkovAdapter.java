@@ -34,6 +34,7 @@ public class MarkovAdapter extends RecyclerView.Adapter<MarkovAdapter.ViewHolder
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         private final TextView textView; // TextView to write our Markov chain generated lines to.
+        private Integer possibles; //
 
         /**
          * Constructor for our RecyclerView.ViewHolder to be used by onCreateViewHolder. First we
@@ -71,6 +72,7 @@ public class MarkovAdapter extends RecyclerView.Adapter<MarkovAdapter.ViewHolder
                 }
             });
             textView = (TextView) v.findViewById(R.id.vTextView);
+            possibles = 1;
         }
 
         /**
@@ -80,6 +82,14 @@ public class MarkovAdapter extends RecyclerView.Adapter<MarkovAdapter.ViewHolder
          */
         public TextView getTextView() {
             return textView;
+        }
+
+        public Integer getPossibles() {
+            return possibles;
+        }
+
+        public void setPossibles(Integer possibles) {
+            this.possibles = possibles;
         }
     }
 
@@ -153,9 +163,11 @@ public class MarkovAdapter extends RecyclerView.Adapter<MarkovAdapter.ViewHolder
     public void onBindViewHolder(ViewHolder holder, int position) {
         Log.d(TAG, "Element " + position + " set.");
 
-        // Get element from your dataset at this position and replace the contents of the view
+        Integer possibles = 1;
+        // Get element from your data set at this position and replace the contents of the view
         // with that element
-        if (mMarkov.chain.loaded) holder.getTextView().setText(mMarkov.line());
+        if (mMarkov.chain.loaded) holder.getTextView().setText(mMarkov.line(possibles));
+        holder.setPossibles(possibles);
     }
 
     /**

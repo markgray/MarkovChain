@@ -1,5 +1,10 @@
 The keyboard shortcut Ctrl+K enables you to quickly invoke the Commit Changes dialog.
 This dialog shows all modifications in project, gives summary information of file 
 status and suggests improvements before check-in.
------------------------------------------------------------------------------------
-
+-------------------------------------------------------------------------------
+It is very easy to toggle between find and replace functionality.
+When you perform search and replace in a file, pressing Ctrl+F shows the search pane.
+Pressing Ctrl+R adds field, where you can type the replace string.
+While in the Find in Path dialog, you can switch to replace by pressing Ctrl+Shift+R.
+Same way, press Ctrl+Shift+F to hide the Replace with field, and switch to mere search.
+-------------------------------------------------------------------------------
