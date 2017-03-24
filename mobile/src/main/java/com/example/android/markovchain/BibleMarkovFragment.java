@@ -60,7 +60,7 @@ public class BibleMarkovFragment extends Activity {
         mLayoutManager = new LinearLayoutManager(getApplicationContext());
 
         initMarkov();
-        mAdapter = new MarkovAdapter(mMarkov, mLayoutManager);
+        mAdapter = new MarkovAdapter(mMarkov);
         // Set CustomAdapter as the adapter for RecyclerView.
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setLayoutManager(mLayoutManager);

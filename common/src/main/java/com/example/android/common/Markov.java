@@ -19,6 +19,7 @@ public class Markov {
     public Chain chain; // Our instance's Markov chain instance
     private DoneListener doneListener; // Optional callback class instance to invoke when class is ready to use
     private View view; // Optional View for above DoneListener to use for Toast context
+    public int mPossibles;
 
     /**
      * Sets the DoneListener doneListener and View view for this instance of Markov.
@@ -294,7 +295,6 @@ public class Markov {
         }
 
         public String line(Integer possibles) {
-            possibles = 1;
             StringBuilder builder = new StringBuilder(120);
             String suf = "";
             int r;

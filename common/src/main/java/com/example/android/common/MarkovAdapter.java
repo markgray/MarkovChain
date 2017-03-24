@@ -1,6 +1,6 @@
 package com.example.android.common;
 
-import android.support.v7.widget.LinearLayoutManager;
+import android.annotation.SuppressLint;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,8 +10,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.Random;
-
 /**
  * An implementation of RecyclerView.Adapter<MarkovAdapter.ViewHolder> designed to be used by an
  * Activity that needs to populate a RecyclerView using lines obtained from an instance of Markov
@@ -20,9 +18,7 @@ public class MarkovAdapter extends RecyclerView.Adapter<MarkovAdapter.ViewHolder
 
     private static final String TAG = "MarkovAdapter"; // TAG used for Log
     private static final int NLINES = 10000; // Just used as an arbitrary number for getItemCount
-    private static Random rand = new Random(); // Used to choose a random line to go to (a rather silly concept) TODO: Remove
     private Markov mMarkov; // The Markov instance we are reading from.
-    private static LinearLayoutManager mLayoutManager; // LayoutManager instance used by the RecyclerView
 
     /**
      * Provide a reference to the type of views that you are using (custom ViewHolder). Each ViewHolder
@@ -34,7 +30,7 @@ public class MarkovAdapter extends RecyclerView.Adapter<MarkovAdapter.ViewHolder
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         private final TextView textView; // TextView to write our Markov chain generated lines to.
-        private Integer possibles; //
+        private Integer mPossibles; //
 
         /**
          * Constructor for our RecyclerView.ViewHolder to be used by onCreateViewHolder. First we
@@ -53,6 +49,7 @@ public class MarkovAdapter extends RecyclerView.Adapter<MarkovAdapter.ViewHolder
          *
          * @param v View inflated by onCreateViewHolder for us to use for our current line
          */
+        @SuppressLint("UseValueOf")
         public ViewHolder(View v) {
             super(v);
             // Define click listener for the ViewHolder's View.
@@ -65,14 +62,13 @@ public class MarkovAdapter extends RecyclerView.Adapter<MarkovAdapter.ViewHolder
             v.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick (View view) {
-                    int selection = Math.abs(rand.nextInt()) % NLINES;
-                    mLayoutManager.scrollToPositionWithOffset(selection, 0);
-                    Toast.makeText(view.getContext(), "Moving to verse " + selection, Toast.LENGTH_LONG).show();
+                    Toast.makeText(view.getContext(), "Number of possibilities:\n" + getPossibles(), Toast.LENGTH_LONG).show();
                     return true;
                 }
             });
             textView = (TextView) v.findViewById(R.id.vTextView);
-            possibles = 1;
+            //noinspection UnnecessaryBoxing
+            mPossibles = new Integer(1);
         }
 
         /**
@@ -85,11 +81,11 @@ public class MarkovAdapter extends RecyclerView.Adapter<MarkovAdapter.ViewHolder
         }
 
         public Integer getPossibles() {
-            return possibles;
+            return mPossibles;
         }
 
         public void setPossibles(Integer possibles) {
-            this.possibles = possibles;
+            mPossibles = possibles;
         }
     }
 
@@ -99,11 +95,9 @@ public class MarkovAdapter extends RecyclerView.Adapter<MarkovAdapter.ViewHolder
      * RecyclerView.LayoutManager layoutManager.
      *
      * @param markov Markov class used to generate lines for the RecyclerView
-     * @param layoutManager LayoutManager to be used by the RecyclerView
      */
-    public MarkovAdapter(Markov markov, RecyclerView.LayoutManager layoutManager) {
+    public MarkovAdapter(Markov markov) {
         mMarkov = markov;
-        mLayoutManager = (LinearLayoutManager) layoutManager;
     }
 
     /**
@@ -163,7 +157,8 @@ public class MarkovAdapter extends RecyclerView.Adapter<MarkovAdapter.ViewHolder
     public void onBindViewHolder(ViewHolder holder, int position) {
         Log.d(TAG, "Element " + position + " set.");
 
-        Integer possibles = 1;
+        //noinspection UnnecessaryBoxing
+        @SuppressLint("UseValueOf") Integer possibles = new  Integer(1);
         // Get element from your data set at this position and replace the contents of the view
         // with that element
         if (mMarkov.chain.loaded) holder.getTextView().setText(mMarkov.line(possibles));
