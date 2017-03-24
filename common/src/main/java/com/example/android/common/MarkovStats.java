@@ -19,9 +19,9 @@ public class MarkovStats {
         StringBuilder returnString = new StringBuilder();
         int totalVariations = 1;
         for (Integer choices :variations) {
-            returnString.append(choices).append("x");
+            returnString.append("x").append(choices);
             totalVariations *= choices;
         }
-        return returnString.toString() + totalVariations;
+        return returnString.toString() + " = " + totalVariations;
     }
 }

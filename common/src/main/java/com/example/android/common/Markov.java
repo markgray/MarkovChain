@@ -19,7 +19,6 @@ public class Markov {
     public Chain chain; // Our instance's Markov chain instance
     private DoneListener doneListener; // Optional callback class instance to invoke when class is ready to use
     private View view; // Optional View for above DoneListener to use for Toast context
-    public int mPossibles;
 
     /**
      * Sets the DoneListener doneListener and View view for this instance of Markov.
@@ -73,7 +72,7 @@ public class Markov {
         return chain.line();
     }
 
-    public String line(Integer possibles) {
+    public String line(MarkovStats possibles) {
         return chain.line(possibles);
     }
 
@@ -294,7 +293,7 @@ public class Markov {
             return capitalize(builder.toString());
         }
 
-        public String line(Integer possibles) {
+        public String line(MarkovStats possibles) {
             StringBuilder builder = new StringBuilder(120);
             String suf = "";
             int r;
@@ -307,7 +306,7 @@ public class Markov {
                     return "Error!";
                 }
                 int suffixes = s.length - 2;
-                possibles *= suffixes;
+                possibles.add(suffixes);
                 r = Math.abs(rand.nextInt()) % suffixes;
                 suf = s[r + 2];
 
