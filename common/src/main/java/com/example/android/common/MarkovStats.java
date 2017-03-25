@@ -4,8 +4,15 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Locale;
 
-@SuppressWarnings({"WeakerAccess", "unused"})
+/**
+ * Class used to store and report stats of Markov generated verses
+ */
+@SuppressWarnings("WeakerAccess")
 public class MarkovStats {
+    /**
+     * {@code List} of number of possible suffixes for each two word {@code Prefix} involved in
+     * generating the Markov verse we are connected to
+     */
     public ArrayList<Integer> variations;
 
     public MarkovStats() {
