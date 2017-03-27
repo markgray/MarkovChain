@@ -1,6 +1,11 @@
 package com.example.android.common;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,6 +24,23 @@ public class MarkovAdapter extends RecyclerView.Adapter<MarkovAdapter.ViewHolder
     private static final String TAG = "MarkovAdapter"; // TAG used for Log
     private static final int NLINES = 10000; // Just used as an arbitrary number for getItemCount
     private Markov mMarkov; // The Markov instance we are reading from.
+    private static Activity mActivity;
+
+    /**
+     * Constructor for this instance of MarkovAdapter. We set our field Markov mMarkov to our
+     * parameter Markov markov, and our field LinearLayoutManager mLayoutManager to our parameter
+     * RecyclerView.LayoutManager layoutManager.
+     *
+     * @param markov Markov class used to generate lines for the RecyclerView
+     */
+    public MarkovAdapter(Markov markov) {
+        mMarkov = markov;
+    }
+
+    public MarkovAdapter(Activity activity, Markov markov) {
+        mActivity = activity;
+        mMarkov = markov;
+    }
 
     /**
      * Provide a reference to the type of views that you are using (custom ViewHolder). Each ViewHolder
@@ -57,12 +79,21 @@ public class MarkovAdapter extends RecyclerView.Adapter<MarkovAdapter.ViewHolder
                 @Override
                 public void onClick(View v) {
                     Log.d(TAG, "Element " + getLayoutPosition() + " clicked.");
+                    Toast.makeText(v.getContext(), "Number of possibilities:\n" + getPossibles(), Toast.LENGTH_LONG).show();
                 }
             });
             v.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick (View view) {
-                    Toast.makeText(view.getContext(), "Number of possibilities:\n" + getPossibles(), Toast.LENGTH_LONG).show();
+                    MarkovDialog markovDialog = MarkovDialog.newInstance("" + getPossibles(), "" + ((TextView)view).getText());
+                    FragmentManager fragmentManager = mActivity.getFragmentManager();
+                    FragmentTransaction ft = fragmentManager.beginTransaction();
+                    Fragment prev = fragmentManager.findFragmentByTag("dialog");
+                    if (prev != null) {
+                        ft.remove(prev);
+                    }
+                    ft.addToBackStack(null);
+                    markovDialog.show(ft, "dialog");
                     return true;
                 }
             });
@@ -87,17 +118,6 @@ public class MarkovAdapter extends RecyclerView.Adapter<MarkovAdapter.ViewHolder
         public void setPossibles(MarkovStats possibles) {
             markovStats = possibles;
         }
-    }
-
-    /**
-     * Constructor for this instance of MarkovAdapter. We set our field Markov mMarkov to our
-     * parameter Markov markov, and our field LinearLayoutManager mLayoutManager to our parameter
-     * RecyclerView.LayoutManager layoutManager.
-     *
-     * @param markov Markov class used to generate lines for the RecyclerView
-     */
-    public MarkovAdapter(Markov markov) {
-        mMarkov = markov;
     }
 
     /**

@@ -19,7 +19,7 @@ public class MarkovDialog extends DialogFragment {
     public String mVerse;  // verse of the current verse
 
 
-    MarkovDialog newInstance(String possibles, String verse) {
+    public static MarkovDialog newInstance(String possibles, String verse) {
         MarkovDialog f = new MarkovDialog();
 
         Bundle args = new Bundle();
