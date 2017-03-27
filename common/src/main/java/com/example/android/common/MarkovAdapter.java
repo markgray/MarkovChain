@@ -25,6 +25,7 @@ public class MarkovAdapter extends RecyclerView.Adapter<MarkovAdapter.ViewHolder
     private static final int NLINES = 10000; // Just used as an arbitrary number for getItemCount
     private Markov mMarkov; // The Markov instance we are reading from.
     private static Activity mActivity;
+    private static FragmentManager mFragmentManager;
 
     /**
      * Constructor for this instance of MarkovAdapter. We set our field Markov mMarkov to our
@@ -33,12 +34,8 @@ public class MarkovAdapter extends RecyclerView.Adapter<MarkovAdapter.ViewHolder
      *
      * @param markov Markov class used to generate lines for the RecyclerView
      */
-    public MarkovAdapter(Markov markov) {
-        mMarkov = markov;
-    }
-
-    public MarkovAdapter(Activity activity, Markov markov) {
-        mActivity = activity;
+    public MarkovAdapter(FragmentManager fragmentManager, Markov markov) {
+        mFragmentManager = fragmentManager;
         mMarkov = markov;
     }
 
@@ -85,10 +82,12 @@ public class MarkovAdapter extends RecyclerView.Adapter<MarkovAdapter.ViewHolder
             v.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick (View view) {
-                    MarkovDialog markovDialog = MarkovDialog.newInstance("" + getPossibles(), "" + ((TextView)view).getText());
-                    FragmentManager fragmentManager = mActivity.getFragmentManager();
-                    FragmentTransaction ft = fragmentManager.beginTransaction();
-                    Fragment prev = fragmentManager.findFragmentByTag("dialog");
+                    String possibles = getPossibles().toString();
+                    String verse = (String) textView.getText();
+                    MarkovDialog markovDialog = MarkovDialog.newInstance(possibles, verse);
+
+                    FragmentTransaction ft = mFragmentManager.beginTransaction();
+                    Fragment prev = mFragmentManager.findFragmentByTag("dialog");
                     if (prev != null) {
                         ft.remove(prev);
                     }

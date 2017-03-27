@@ -57,6 +57,6 @@ public class MarkovDialog extends DialogFragment {
             }
         });
 
-        return super.onCreateView(inflater, container, savedInstanceState);
+        return v;
     }
 }

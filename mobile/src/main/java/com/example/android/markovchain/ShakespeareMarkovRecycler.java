@@ -66,7 +66,7 @@ public class ShakespeareMarkovRecycler extends Activity {
 
         initMarkovState();
 
-        mAdapter = new MarkovAdapter(this, mMarkov);
+        mAdapter = new MarkovAdapter(getFragmentManager(), mMarkov);
         // Set CustomAdapter as the adapter for RecyclerView.
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setLayoutManager(mLayoutManager);
