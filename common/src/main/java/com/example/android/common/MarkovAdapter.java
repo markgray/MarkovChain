@@ -1,11 +1,8 @@
 package com.example.android.common;
 
-import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -24,15 +21,17 @@ public class MarkovAdapter extends RecyclerView.Adapter<MarkovAdapter.ViewHolder
     private static final String TAG = "MarkovAdapter"; // TAG used for Log
     private static final int NLINES = 10000; // Just used as an arbitrary number for getItemCount
     private Markov mMarkov; // The Markov instance we are reading from.
-    private static Activity mActivity;
     private static FragmentManager mFragmentManager;
 
     /**
-     * Constructor for this instance of MarkovAdapter. We set our field Markov mMarkov to our
-     * parameter Markov markov, and our field LinearLayoutManager mLayoutManager to our parameter
-     * RecyclerView.LayoutManager layoutManager.
+     * Constructor for this instance of MarkovAdapter. First we set {@code FragmentManager mFragmentManager}
+     * to the handle to the the FragmentManager for interacting with fragments associated with the activity
+     * using us that is passed us in our parameter {@code FragmentManager fragmentManager}. Then we set our
+     * field {@code Markov mMarkov} to our parameter {@code Markov markov}.
      *
-     * @param markov Markov class used to generate lines for the RecyclerView
+     * @param fragmentManager handle to the the FragmentManager for interacting with fragments associated
+     *                        with the activity using us
+     * @param markov          Markov class used to generate lines for the RecyclerView
      */
     public MarkovAdapter(FragmentManager fragmentManager, Markov markov) {
         mFragmentManager = fragmentManager;
@@ -43,32 +42,32 @@ public class MarkovAdapter extends RecyclerView.Adapter<MarkovAdapter.ViewHolder
      * Provide a reference to the type of views that you are using (custom ViewHolder). Each ViewHolder
      * will be used to display an individual data item of the RecyclerView's data set, and should
      * contain any information needed by onBindViewHolder to more efficiently display the data for
-     * the position called for (TextView textView in our case).
+     * the position called for (TextView textView, and {@code MarkovStats markovStats} in our case).
      */
     @SuppressWarnings("WeakerAccess")
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         private final TextView textView; // TextView to write our Markov chain generated lines to.
-        private MarkovStats markovStats;
+        private MarkovStats markovStats; // MarkovStats instance used to report number of possibilities
 
         /**
          * Constructor for our RecyclerView.ViewHolder to be used by onCreateViewHolder. First we
          * call our super's constructor.
-         *
-         * Then we set our OnClickListener to a placeholder anonymous class which simply logs the
-         * current layout position.
-         * TODO: Make this do something useful like Display the odds of that combination of words occurring
-         *
-         * Then we set our OnLongClickListener to a placeholder anonymous class which simply "moves"
-         * to a random verse, and shows a Toast to that effect.
-         * TODO: Pop up a DialogFragment that allows us to explore all variations starting from first two words.
-         *
+         * <p>
+         * Then we set our OnClickListener to an anonymous class which toasts the number of possibilities
+         * for the text in our {@code View v} given the first two words of the generated verse. (As
+         * determined by {@code Markov} and stored in {@code MarkovStats markovStats}).
+         * <p>
+         * Then we set our OnLongClickListener to an anonymous class which will create and display a
+         * {@code MarkovDialog} {@code DialogFragment} containing the text in our {@code View v} given
+         * the first two words of the generated verse. (As determined by {@code Markov} and stored in
+         * {@code MarkovStats markovStats}).
+         * <p>
          * Finally we find the TextView textView (R.id.vTextView) that we will use to later to display
          * the line of generated nonsense.
          *
          * @param v View inflated by onCreateViewHolder for us to use for our current line
          */
-        @SuppressLint("UseValueOf")
         public ViewHolder(View v) {
             super(v);
             // Define click listener for the ViewHolder's View.
@@ -81,7 +80,7 @@ public class MarkovAdapter extends RecyclerView.Adapter<MarkovAdapter.ViewHolder
             });
             v.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
-                public boolean onLongClick (View view) {
+                public boolean onLongClick(View view) {
                     String possibles = getPossibles().toString();
                     String verse = (String) textView.getText();
                     MarkovDialog markovDialog = MarkovDialog.newInstance(possibles, verse);
@@ -131,7 +130,7 @@ public class MarkovAdapter extends RecyclerView.Adapter<MarkovAdapter.ViewHolder
      * {@link #onBindViewHolder(ViewHolder, int)}. Since it will be re-used to display different
      * items in the data set, it is a good idea to cache references to sub views of the View to
      * avoid unnecessary {@link View#findViewById(int)} calls.
-     *
+     * <p>
      * We simply create a View v by inflating our item layout file R.layout.line_list_item, then
      * return a ViewHolder created using this View v.
      *
@@ -163,7 +162,7 @@ public class MarkovAdapter extends RecyclerView.Adapter<MarkovAdapter.ViewHolder
      * method and should not keep a copy of it. If you need the position of an item later on
      * (e.g. in a click listener), use {@link ViewHolder#getPosition()} which will have the
      * updated position.
-     *
+     * <p>
      * We first check to see if our Markov chain has finished being loaded (or built) and if so
      * set the text in ViewHolder holder to the sentence of random nonsense generated by calling
      * Markov.line().
