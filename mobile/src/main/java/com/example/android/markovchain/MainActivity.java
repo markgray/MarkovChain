@@ -37,6 +37,7 @@ public class MainActivity extends Activity {
         addButton(ShakespeareMarkovRecycler.class, "Shakespeare Markov", linearLayout);
         addButton(BibleMain.class, "Bible", linearLayout);
         addButton(BibleMarkovFragment.class, "Bible Markov", linearLayout);
+        addButton(ClockTrisect.class, "Clock Trisect", linearLayout);
         addText("Obsolete activities", linearLayout);
         addButton(FragmentVersionSkeleton.class, "Fragment Skeleton", linearLayout);
         addButton(TestBenchMark.class, "Test BenchMark", linearLayout);

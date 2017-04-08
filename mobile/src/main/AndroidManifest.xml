@@ -39,7 +39,11 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".TestBenchMark"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ClockTrisect"
+            android:label="@string/title_activity_clock_trisect"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

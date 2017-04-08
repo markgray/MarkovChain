@@ -35,4 +35,6 @@
     <string name="space_only" />
     <string name="go">GO</string>
     <string name="steps_in_progressbar">Steps in ProgressBar</string>
+    <string name="title_activity_clock_trisect">ClockTrisect</string>
+    <string name="hello_you_son_of_a_gun">Hello you son of a gun</string>
 </resources>

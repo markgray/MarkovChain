@@ -8,3 +8,19 @@ Pressing Ctrl+R adds field, where you can type the replace string.
 While in the Find in Path dialog, you can switch to replace by pressing Ctrl+Shift+R.
 Same way, press Ctrl+Shift+F to hide the Replace with field, and switch to mere search.
 -------------------------------------------------------------------------------
+You may easily override methods of the base class by pressing Ctrl+O (Code | Override Methods).
+To implement methods of the interfaces that the current class implements (or of the abstract
+base class), use Ctrl+I (Code | Implement methods).
+-------------------------------------------------------------------------------
+The SmartType code completion greatly helps to find methods and variables that are suitable
+in the current context, by analyzing the expected type of the whole expression. So doing,
+Android Studio pinpoints the top five most suitable results and highlights them on the blue
+background. For example, type
+
+   Calendar now = new GregorianCalendar(T)
+
+and press Ctrl+Shift+Space:
+
+The SmartType completion also works after the return keyword, in an assignment, in an argument
+ list of a method call and other places.
+-------------------------------------------------------------------------------
