@@ -15,35 +15,27 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".ShakespeareRecycler"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:name=".ShakespeareRecycler" />
         <activity
-            android:name=".ShakespeareMarkovRecycler"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:name=".ShakespeareMarkovRecycler" />
         <activity
             android:name=".BibleMain"
             android:configChanges="keyboardHidden|orientation|screenSize"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:screenOrientation="portrait" />
         <activity
-            android:name=".BibleMarkovFragment"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:name=".BibleMarkovFragment" />
         <!-- Old or test activities not expected to be used except for learning purposes -->
         <activity
-            android:name=".FragmentVersionSkeleton"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:name=".FragmentVersionSkeleton" />
         <activity
-            android:name=".TestBenchMark"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:name=".TestBenchMark" />
         <activity
             android:name=".ClockTrisect"
-            android:label="@string/title_activity_clock_trisect"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:label="@string/title_activity_clock_trisect" />
     </application>
 
 </manifest>
