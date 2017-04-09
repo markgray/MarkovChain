@@ -24,3 +24,8 @@ and press Ctrl+Shift+Space:
 The SmartType completion also works after the return keyword, in an assignment, in an argument
  list of a method call and other places.
 -------------------------------------------------------------------------------
+When using Code Completion, you can accept the currently highlighted selection in the popup list
+with Tab key. Unlike accepting with the Enter key, the selected name will overwrite the rest of the
+name to the right of the caret. This can be especially useful for replacing one method or variable
+name with another.
+-------------------------------------------------------------------------------
