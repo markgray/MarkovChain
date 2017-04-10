@@ -19,23 +19,29 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ShakespeareRecycler" />
+            android:name=".ShakespeareRecycler"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ShakespeareMarkovRecycler" />
+            android:name=".ShakespeareMarkovRecycler"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".BibleMain"
             android:configChanges="keyboardHidden|orientation|screenSize"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".BibleMarkovFragment" />
         <!-- Old or test activities not expected to be used except for learning purposes -->
         <activity
-            android:name=".FragmentVersionSkeleton" />
+            android:name=".FragmentVersionSkeleton"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".TestBenchMark" />
+            android:name=".TestBenchMark"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ClockTrisect"
-            android:label="@string/title_activity_clock_trisect" />
+            android:label="@string/title_activity_clock_trisect"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
