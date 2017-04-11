@@ -29,3 +29,5 @@ with Tab key. Unlike accepting with the Enter key, the selected name will overwr
 name to the right of the caret. This can be especially useful for replacing one method or variable
 name with another.
 -------------------------------------------------------------------------------
+Using Alt+Insert (Code | Generate) in the editor, you can easily generate getter and setter methods for any fields of your class.
+-------------------------------------------------------------------------------
