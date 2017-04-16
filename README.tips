@@ -31,3 +31,6 @@ name with another.
 -------------------------------------------------------------------------------
 Using Alt+Insert (Code | Generate) in the editor, you can easily generate getter and setter methods for any fields of your class.
 -------------------------------------------------------------------------------
+Use the Ctrl+Shift+V shortcut to choose and insert recent clipboard contents into the text.
+-------------------------------------------------------------------------------
+
