@@ -33,4 +33,8 @@ Using Alt+Insert (Code | Generate) in the editor, you can easily generate getter
 -------------------------------------------------------------------------------
 Use the Ctrl+Shift+V shortcut to choose and insert recent clipboard contents into the text.
 -------------------------------------------------------------------------------
+To see the inheritance hierarchy for a selected class, press Ctrl+H (Navigate | Type Hierarchy). 
+You can also invoke the hierarchy view right from the editor to see the hierarchy for the currently 
+edited class.
+-------------------------------------------------------------------------------
 
