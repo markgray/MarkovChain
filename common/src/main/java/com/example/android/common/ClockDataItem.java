@@ -21,6 +21,14 @@ public class ClockDataItem implements Comparator {
         timeSecond = second;
     }
 
+    public double badness() {
+        double diff = (angleHour < angleMinute) ? angleMinute - angleMinute : angleHour - angleMinute;
+        if (diff > 180.0) {
+            diff -= 120.0;
+        }
+        return Math.abs(120.0 - diff);
+    }
+
     @Override
     public int compare(Object o1, Object o2) {
         ClockDataItem clock1 = (ClockDataItem) o1;
