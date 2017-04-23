@@ -1,12 +1,14 @@
 package com.example.android.common;
 
+import android.support.annotation.NonNull;
+
 import java.util.Comparator;
 
 /**
  * Contains data and methods for holding a time of day, and the corresponding clock hand angles.
  */
 @SuppressWarnings("WeakerAccess")
-public class ClockDataItem implements Comparator {
+public class ClockDataItem implements Comparable<ClockDataItem> {
 
     public int timeHour;
     public int timeMinute;
@@ -19,6 +21,9 @@ public class ClockDataItem implements Comparator {
         timeHour = hour;
         timeMinute = minute;
         timeSecond = second;
+        angleSecond = 6.0 * second;
+        angleMinute = 6.0 * (minute + second/60.0);
+        angleHour = 30.0 * (hour + minute/60.0 + second/3600.0);
     }
 
     public double badness() {
@@ -29,12 +34,21 @@ public class ClockDataItem implements Comparator {
         return Math.abs(120.0 - diff);
     }
 
+    /**
+     * Compares this object with the specified object for order.  Returns a
+     * negative integer, zero, or a positive integer as this object is less
+     * than, equal to, or greater than the specified object.
+     *
+     * @param   o the object to be compared.
+     * @return  a negative integer, zero, or a positive integer as this object
+     *          is less than, equal to, or greater than the specified object.
+     *
+     * @throws NullPointerException if the specified object is null
+     * @throws ClassCastException if the specified object's type prevents it
+     *         from being compared to this object.
+     */
     @Override
-    public int compare(Object o1, Object o2) {
-        ClockDataItem clock1 = (ClockDataItem) o1;
-        ClockDataItem clock2 = (ClockDataItem) o2;
-        Double pieSlice1 = Math.abs(clock1.angleHour - clock1.angleMinute);
-        Double pieSlice2 = Math.abs(clock2.angleHour - clock2.angleMinute);
-        return Double.compare(pieSlice1 - 120.0, pieSlice2 - 120.0);
+    public int compareTo(@NonNull ClockDataItem o) {
+        return  Double.compare(this.badness(), o.badness());
     }
 }
