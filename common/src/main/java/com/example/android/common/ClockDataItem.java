@@ -58,12 +58,26 @@ public class ClockDataItem implements Comparable<ClockDataItem> {
      *
      * @return {@code angleHour, angleMinute, angleSecond} in sorted order
      */
-    public ArrayList<Double> ordered() {
+    public Double[] orderedAngles() {
         ArrayList<Double> returnList = new ArrayList<>();
         returnList.add(angleHour);
         returnList.add(angleMinute);
         returnList.add(angleSecond);
         Collections.sort(returnList);
-        return returnList;
+        return (Double[]) returnList.toArray();
+    }
+
+    /**
+     * Calculates the angular sizes of the three pie slices of the clock face.
+     *
+     * @return The pie slice arc angles of the clock face
+     */
+    public Double[] pieSlices() {
+        Double[] returnArray = new Double[3];
+        Double[] angles = orderedAngles();
+        returnArray[0] = angles[1] - angles[0];
+        returnArray[1] = angles[2] - angles[1];
+        returnArray[2] = (360.0 - angles[2]) + angles[0];
+        return returnArray;
     }
 }
