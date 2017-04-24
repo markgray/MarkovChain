@@ -2,7 +2,8 @@ package com.example.android.common;
 
 import android.support.annotation.NonNull;
 
-import java.util.Comparator;
+import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Contains data and methods for holding a time of day, and the corresponding clock hand angles.
@@ -50,5 +51,19 @@ public class ClockDataItem implements Comparable<ClockDataItem> {
     @Override
     public int compareTo(@NonNull ClockDataItem o) {
         return  Double.compare(this.badness(), o.badness());
+    }
+
+    /**
+     * Sorts the angles of the clock hands into sorted order.
+     *
+     * @return {@code angleHour, angleMinute, angleSecond} in sorted order
+     */
+    public ArrayList<Double> ordered() {
+        ArrayList<Double> returnList = new ArrayList<>();
+        returnList.add(angleHour);
+        returnList.add(angleMinute);
+        returnList.add(angleSecond);
+        Collections.sort(returnList);
+        return returnList;
     }
 }
