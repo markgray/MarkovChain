@@ -64,7 +64,11 @@ public class ClockDataItem implements Comparable<ClockDataItem> {
         returnList.add(angleMinute);
         returnList.add(angleSecond);
         Collections.sort(returnList);
-        return (Double[]) returnList.toArray();
+        Double[] returnArray = new Double[3];
+        for (int i = 0; i < 3; i++) {
+            returnArray[i] = returnList.get(i);
+        }
+        return returnArray;
     }
 
     /**
@@ -83,7 +87,9 @@ public class ClockDataItem implements Comparable<ClockDataItem> {
 
     @Override
     public String toString() {
-        String s = timeHour + ":" + timeMinute + ":" + timeSecond;
-        return s;
+        Double[] pie = pieSlices();
+        return timeHour + ":" + timeMinute + ":" + timeSecond + "\n"
+                + pie[0] + "," + pie[1] + pie[2] + "\n"
+                + badness();
     }
 }
