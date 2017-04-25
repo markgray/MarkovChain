@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.android.common.ClockDataItem;
+
 public class ClockTrisect extends Activity {
 
     @Override
@@ -21,7 +23,8 @@ public class ClockTrisect extends Activity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addText("Well?", linearLayout);
+                ClockDataItem clockDataItem = new ClockDataItem(3, 4, 50.);
+                addText(clockDataItem + "\n", linearLayout);
             }
         });
     }

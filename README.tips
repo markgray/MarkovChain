@@ -46,3 +46,10 @@ The Escape key in any tool window moves the focus to the editor.
 Shift+Escape moves the focus to the editor and also hides the current (or last active) tool window.
 The F12 key moves the focus from the editor to the last focused tool window.
 -------------------------------------------------------------------------------
+You can avoid escaping backslashes in your regular expressions. Start typing a regular expression,
+ then press Alt+Enter and choose Edit RegExp. The regular expression opens in a separate tab in 
+the editor, where you can type backslashes as is. All changes are synchronized with the original 
+regular expression, and escapes are presented automatically. When ready, just press Escape to close 
+the regular expression editor.
+-------------------------------------------------------------------------------
+

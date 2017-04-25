@@ -80,4 +80,10 @@ public class ClockDataItem implements Comparable<ClockDataItem> {
         returnArray[2] = (360.0 - angles[2]) + angles[0];
         return returnArray;
     }
+
+    @Override
+    public String toString() {
+        String s = timeHour + ":" + timeMinute + ":" + timeSecond;
+        return s;
+    }
 }
