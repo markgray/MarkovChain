@@ -1,7 +1,6 @@
 package com.example.android.markovchain;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +22,7 @@ public class ClockTrisect extends Activity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ClockDataItem clockDataItem = new ClockDataItem(3, 4, 50.);
+                ClockDataItem clockDataItem = new ClockDataItem(5, 49, 9.);
                 addText(clockDataItem + "\n", linearLayout);
             }
         });

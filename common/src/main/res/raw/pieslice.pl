@@ -32,7 +32,7 @@ for my $hour (1..12) {
                      abs($slices[1]-120.0) +
                      abs($slices[2]-120.0);
 
-      print "$clock ($slices[0], $slices[1], $slices[2]) $niceness\n";
+#     print "$clock ($slices[0], $slices[1], $slices[2]) $niceness\n";
       $rankings{$clock} = $niceness;
     }
   }

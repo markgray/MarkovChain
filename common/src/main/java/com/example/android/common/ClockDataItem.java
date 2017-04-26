@@ -27,12 +27,19 @@ public class ClockDataItem implements Comparable<ClockDataItem> {
         angleHour = 30.0 * (hour + minute/60.0 + second/3600.0);
     }
 
+    /** Cache storage for {@code badness} method */
+    double badnessCache;
+    /**
+     *
+     * @return a value indicating how far from a perfect trisection this ClockDataItem is
+     */
     public double badness() {
-        double diff = (angleHour < angleMinute) ? angleMinute - angleMinute : angleHour - angleMinute;
-        if (diff > 180.0) {
-            diff -= 120.0;
+        badnessCache = (angleHour < angleMinute) ? angleMinute - angleMinute : angleHour - angleMinute;
+        if (badnessCache > 180.0) {
+            badnessCache -= 120.0;
         }
-        return Math.abs(120.0 - diff);
+        badnessCache = Math.abs(120.0 - badnessCache);
+        return badnessCache;
     }
 
     /**
@@ -53,43 +60,51 @@ public class ClockDataItem implements Comparable<ClockDataItem> {
         return  Double.compare(this.badness(), o.badness());
     }
 
+    /** Cache storage for our {@code orderedAngles} method */
+    Double[] orderedAnglesCache;
     /**
      * Sorts the angles of the clock hands into sorted order.
      *
      * @return {@code angleHour, angleMinute, angleSecond} in sorted order
      */
     public Double[] orderedAngles() {
-        ArrayList<Double> returnList = new ArrayList<>();
-        returnList.add(angleHour);
-        returnList.add(angleMinute);
-        returnList.add(angleSecond);
-        Collections.sort(returnList);
-        Double[] returnArray = new Double[3];
-        for (int i = 0; i < 3; i++) {
-            returnArray[i] = returnList.get(i);
+        if (orderedAnglesCache == null) {
+            ArrayList<Double> returnList = new ArrayList<>();
+            returnList.add(angleHour);
+            returnList.add(angleMinute);
+            returnList.add(angleSecond);
+            Collections.sort(returnList);
+            orderedAnglesCache = new Double[3];
+            for (int i = 0; i < 3; i++) {
+                orderedAnglesCache[i] = returnList.get(i);
+            }
         }
-        return returnArray;
+        return orderedAnglesCache;
     }
 
+    /** Cache storage fo our {@code pieSlices} method */
+    Double[] pieSlicesCache;
     /**
      * Calculates the angular sizes of the three pie slices of the clock face.
      *
      * @return The pie slice arc angles of the clock face
      */
     public Double[] pieSlices() {
-        Double[] returnArray = new Double[3];
-        Double[] angles = orderedAngles();
-        returnArray[0] = angles[1] - angles[0];
-        returnArray[1] = angles[2] - angles[1];
-        returnArray[2] = (360.0 - angles[2]) + angles[0];
-        return returnArray;
+        if (pieSlicesCache == null) {
+            pieSlicesCache = new Double[3];
+            Double[] angles = orderedAngles();
+            pieSlicesCache[0] = angles[1] - angles[0];
+            pieSlicesCache[1] = angles[2] - angles[1];
+            pieSlicesCache[2] = (360.0 - angles[2]) + angles[0];
+        }
+        return pieSlicesCache;
     }
 
     @Override
     public String toString() {
         Double[] pie = pieSlices();
         return timeHour + ":" + timeMinute + ":" + timeSecond + "\n"
-                + pie[0] + "," + pie[1] + pie[2] + "\n"
+                + pie[0] + "\n" + pie[1] + "\n" + pie[2] + "\n"
                 + badness();
     }
 }
