@@ -28,17 +28,22 @@ public class ClockDataItem implements Comparable<ClockDataItem> {
     }
 
     /** Cache storage for {@code badness} method */
-    double badnessCache;
+    double badnessCache = -1.0;
     /**
      *
      * @return a value indicating how far from a perfect trisection this ClockDataItem is
      */
     public double badness() {
-        badnessCache = (angleHour < angleMinute) ? angleMinute - angleMinute : angleHour - angleMinute;
-        if (badnessCache > 180.0) {
-            badnessCache -= 120.0;
+        if (badnessCache >= 0.0) {
+            return badnessCache;
         }
-        badnessCache = Math.abs(120.0 - badnessCache);
+        if (pieSlicesCache == null) {
+            pieSlices();
+        }
+        badnessCache = 0.0;
+        for (Double slice : pieSlicesCache) {
+            badnessCache += Math.abs(120.0 - slice);
+        }
         return badnessCache;
     }
 
