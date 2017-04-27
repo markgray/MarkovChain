@@ -52,4 +52,7 @@ the editor, where you can type backslashes as is. All changes are synchronized w
 regular expression, and escapes are presented automatically. When ready, just press Escape to close 
 the regular expression editor.
 -------------------------------------------------------------------------------
+Use Basic Completion (Ctrl+Space) for completing words in text and comments in files of many different types.
+All the words from the current file that start with the typed prefix will appear in the lookup list.
+-------------------------------------------------------------------------------
 
