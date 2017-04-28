@@ -10,20 +10,28 @@ import android.widget.TextView;
 
 import com.example.android.common.ClockDataItem;
 
+import java.util.Random;
+
 public class ClockTrisect extends Activity {
+    private int h = 1;
+    private int m = 0;
+    private double s = 0.0;
+    private static Random rand = new Random(); // Random number generator used for random time.
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_clock_trisect);
-        final LinearLayout linearLayout = (LinearLayout) findViewById(R.id.linear_layout);
-        addText("Hello World", linearLayout);
-        Button button = addButton("Push to start clock", linearLayout);
+        final LinearLayout outputLinearLayout = (LinearLayout) findViewById(R.id.linear_layout);
+        Button button = (Button) findViewById(R.id.start_the_clock);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ClockDataItem clockDataItem = new ClockDataItem(5, 49, 9.);
-                addText(clockDataItem + "\n", linearLayout);
+                ClockDataItem clockDataItem = new ClockDataItem(h, m, s);
+                addText(clockDataItem + "\n", outputLinearLayout);
+                h = Math.abs(rand.nextInt()) % 12 + 1;
+                m = Math.abs(rand.nextInt()) % 60;
+                s = Math.abs(rand.nextInt()) % 60;
             }
         });
     }
@@ -39,25 +47,6 @@ public class ClockTrisect extends Activity {
     public void addText(String text, final ViewGroup parent) {
         TextView mText = new TextView(this);
         mText.setText(text);
-        parent.addView(mText);
-    }
-
-    /**
-     * Adds a <b>Button</b> to the <b>ViewGroup parent</b> designed to launch a different
-     * Activity when it is clicked. First we create a <b>Button button</b>, then we set its
-     * text to the parameter <b>String description</b>, and we set its OnClickListener to an
-     * anonymous class which will (when the <b>Button</b> is clicked) create an Intent to
-     * launch the <b>Activity</b> given in our parameter <b>Class destination</b> and
-     * start that <b>Activity</b>. Finally it adds <b>Button button</b> to the
-     * <b>ViewGroup parent</b> (our vertical <b>LinearLayout</b>)
-     *
-     * @param description text for the Button
-     * @param parent the LinearLayout we are adding the Button to using <b>ViewGroup.addView</b>
-     */
-    public Button addButton(String description, ViewGroup parent) {
-        Button button = new Button(this);
-        button.setText(description);
-        parent.addView(button);
-        return button;
+        parent.addView(mText, 0);
     }
 }

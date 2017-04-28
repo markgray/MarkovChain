@@ -121,11 +121,11 @@ public class MarkovAdapter extends RecyclerView.Adapter<MarkovAdapter.ViewHolder
     /**
      * Called when RecyclerView needs a new {@link ViewHolder} of the given type to represent
      * an item.
-     * <p/>
+     * <p>
      * This new ViewHolder should be constructed with a new View that can represent the items
      * of the given type. You can either create a new View manually or inflate it from an XML
      * layout file.
-     * <p/>
+     * <p>
      * The new ViewHolder will be used to display items of the adapter using
      * {@link #onBindViewHolder(ViewHolder, int)}. Since it will be re-used to display different
      * items in the data set, it is a good idea to cache references to sub views of the View to
