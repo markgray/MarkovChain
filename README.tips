@@ -55,4 +55,8 @@ the regular expression editor.
 Use Basic Completion (Ctrl+Space) for completing words in text and comments in files of many different types.
 All the words from the current file that start with the typed prefix will appear in the lookup list.
 -------------------------------------------------------------------------------
+The shortcuts such as Ctrl+Q (View | Quick Documentation), Ctrl+P (View | Parameter Info), 
+Ctrl+B (Navigate | Declaration) and others can be used not only in the editor but in the 
+code completion popup list as well.
+-------------------------------------------------------------------------------
 
