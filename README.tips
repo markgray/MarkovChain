@@ -59,4 +59,15 @@ The shortcuts such as Ctrl+Q (View | Quick Documentation), Ctrl+P (View | Parame
 Ctrl+B (Navigate | Declaration) and others can be used not only in the editor but in the 
 code completion popup list as well.
 -------------------------------------------------------------------------------
+To debug services, insert this line of code in the onCreate of the service:
+
+android.os.Debug.waitForDebugger(); // wait for the debugger to attach
+
+Then attach the debugger to the service. In order to locate the service process,
+be sure to name the service process in AndroidManifest.xml like so:
+
+        <service
+            android:name=".app.RemoteService"
+            android:process=":remote" />
+-------------------------------------------------------------------------------
 
