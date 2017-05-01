@@ -4,12 +4,18 @@ import android.os.AsyncTask;
 
 import com.example.android.common.ClockDataItem;
 
+import java.util.Calendar;
+
 /**
  * This background task will cycle through all the seconds in a day, creating a list of ClockDataItem's
  * sorted by the {@code badness()} results of each.
  */
 public class ClockDataTask extends AsyncTask<ClockDataItem, ClockDataItem, ClockDataItem> {
-    public ClockDataItem clock = new ClockDataItem(12, 0, 0.0);
+    Calendar now = Calendar.getInstance();
+    int h = now.get(Calendar.HOUR_OF_DAY);
+    int m = now.get(Calendar.MINUTE);
+    double s = now.get(Calendar.SECOND);
+    public ClockDataItem clock = new ClockDataItem(h, m, s);
     /**
      * Runs on the UI thread before {@link #doInBackground}.
      *
