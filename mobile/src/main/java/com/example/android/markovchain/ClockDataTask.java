@@ -1,6 +1,9 @@
 package com.example.android.markovchain;
 
+import android.content.Context;
 import android.os.AsyncTask;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.android.common.ClockDataItem;
 
@@ -16,6 +19,13 @@ public class ClockDataTask extends AsyncTask<ClockDataItem, ClockDataItem, Clock
     int m = now.get(Calendar.MINUTE);
     double s = now.get(Calendar.SECOND);
     public ClockDataItem clock = new ClockDataItem(h, m, s);
+    Context context;
+    ViewGroup outputView;
+
+    public ClockDataTask(Context c, ViewGroup viewGroup) {
+        context = c;
+        outputView = viewGroup;
+    }
     /**
      * Runs on the UI thread before {@link #doInBackground}.
      *
@@ -99,6 +109,9 @@ public class ClockDataTask extends AsyncTask<ClockDataItem, ClockDataItem, Clock
      */
     @Override
     protected void onPostExecute(ClockDataItem aClockDataItem) {
+        TextView tv = new TextView(context);
+        tv.setText(aClockDataItem.toString());
+        outputView.addView(tv, 0);
         super.onPostExecute(aClockDataItem);
     }
 
