@@ -17,12 +17,13 @@ public class ClockTrisect extends Activity {
     private int m = 0;
     private double s = 0.0;
     private static Random rand = new Random(); // Random number generator used for random time.
+    LinearLayout outputLinearLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_clock_trisect);
-        final LinearLayout outputLinearLayout = (LinearLayout) findViewById(R.id.linear_layout);
+        outputLinearLayout = (LinearLayout) findViewById(R.id.linear_layout);
         Button button = (Button) findViewById(R.id.start_the_clock);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,6 +33,7 @@ public class ClockTrisect extends Activity {
                 h = Math.abs(rand.nextInt()) % 12 + 1;
                 m = Math.abs(rand.nextInt()) % 60;
                 s = Math.abs(rand.nextInt()) % 60;
+                clockDataTask.execute(clockDataItem);
             }
         });
     }
@@ -49,4 +51,16 @@ public class ClockTrisect extends Activity {
         mText.setText(text);
         parent.addView(mText, 0);
     }
+
+    ClockDataTask clockDataTask = new ClockDataTask() {
+        @Override
+        protected void onPostExecute(ClockDataItem aClockDataItem) {
+            addText(aClockDataItem + "\n", outputLinearLayout);
+        }
+
+        @Override
+        protected void onProgressUpdate(ClockDataItem... values) {
+            addText(values[0] + "\n", outputLinearLayout);
+        }
+    };
 }
