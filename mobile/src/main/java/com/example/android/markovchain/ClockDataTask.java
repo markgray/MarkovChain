@@ -17,6 +17,8 @@ public class ClockDataTask extends AsyncTask<ClockDataItem, ClockDataItem, Clock
     int m = now.get(Calendar.MINUTE);
     double s = now.get(Calendar.SECOND);
     public ClockDataItem clock = new ClockDataItem(h, m, s);
+    public ClockDataItem bestClock = clock;
+    double bestBadness = clock.badness();
 
     /**
      * Override this method to perform a computation on a background thread. The
@@ -36,7 +38,24 @@ public class ClockDataTask extends AsyncTask<ClockDataItem, ClockDataItem, Clock
      */
     @Override
     protected ClockDataItem doInBackground(ClockDataItem... params) {
-        publishProgress(clock);
-        return clock;
+
+        for (int i = 0; i<60; i++) {
+            publishProgress(clock);
+            s += 1.0;
+            if (s >= 60.0) {
+                s = 0.0;
+                m++;
+                if (m >= 60) {
+                    m = 0;
+                    h++;
+                }
+            }
+            clock = new ClockDataItem(h, m, s);
+            if (clock.badness() < bestBadness) {
+                bestBadness = clock.badness();
+                bestClock = clock;
+            }
+        }
+        return bestClock;
     }
 }
