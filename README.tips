@@ -74,4 +74,6 @@ When using Code Completion, you can accept the currently highlighted selection i
 list with the period character (.), comma (,), semicolon (;), space and other characters.
 The selected name is automatically entered in the editor followed by the entered character.
 -------------------------------------------------------------------------------
+Use: long threadID = Thread.currentThread().getId(); to get thread id.
+-------------------------------------------------------------------------------
 
