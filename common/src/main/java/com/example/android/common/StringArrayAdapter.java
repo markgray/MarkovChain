@@ -19,7 +19,7 @@ public class StringArrayAdapter extends RecyclerView.Adapter<StringArrayAdapter.
     private static LinearLayoutManager mLayoutManager;
 
     /**
-     * Initialize the dataset of the Adapter.
+     * Initialize the data set of the Adapter.
      *
      * @param dataSet String[] containing the data to populate views to be used by RecyclerView.
      */
@@ -79,7 +79,7 @@ public class StringArrayAdapter extends RecyclerView.Adapter<StringArrayAdapter.
     public void onBindViewHolder(ViewHolder viewHolder, int position) {
         Log.d(TAG, "Element " + position + " set.");
 
-        // Get element from your dataset at this position and replace the contents of the view
+        // Get element from your data set at this position and replace the contents of the view
         // with that element
         viewHolder.getTextView().setText(mDataSet[position]);
 
@@ -95,6 +95,7 @@ public class StringArrayAdapter extends RecyclerView.Adapter<StringArrayAdapter.
         return mDataSet.length;
     }
 
+    @SuppressWarnings("WeakerAccess")
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         private final TextView textView;
