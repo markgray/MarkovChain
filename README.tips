@@ -76,4 +76,7 @@ The selected name is automatically entered in the editor followed by the entered
 -------------------------------------------------------------------------------
 Use: long threadID = Thread.currentThread().getId(); to get thread id.
 -------------------------------------------------------------------------------
+The shortcut Ctrl-E pops up a list of the most recent files edited as well as the
+a way to select the available tool windows
+-------------------------------------------------------------------------------
 
