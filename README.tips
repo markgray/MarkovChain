@@ -79,4 +79,9 @@ Use: long threadID = Thread.currentThread().getId(); to get thread id.
 The shortcut Ctrl-E pops up a list of the most recent files edited as well as the
 a way to select the available tool windows
 -------------------------------------------------------------------------------
+To convert List<String> languages to an array of Strings:
+
+   String[] languageStrings = languages.toArray(new String[languages.size()]);
+
+-------------------------------------------------------------------------------
 
