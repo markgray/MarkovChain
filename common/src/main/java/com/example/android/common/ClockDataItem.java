@@ -79,10 +79,7 @@ public class ClockDataItem implements Comparable<ClockDataItem> {
             returnList.add(angleMinute);
             returnList.add(angleSecond);
             Collections.sort(returnList);
-            orderedAnglesCache = new Double[3];
-            for (int i = 0; i < 3; i++) {
-                orderedAnglesCache[i] = returnList.get(i);
-            }
+            orderedAnglesCache = returnList.toArray(new Double[3]);
         }
         return orderedAnglesCache;
     }
