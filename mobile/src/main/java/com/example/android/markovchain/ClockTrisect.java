@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.android.common.ClockDataAdapter;
 import com.example.android.common.ClockDataItem;
 
 import java.util.Random;
@@ -18,6 +19,7 @@ public class ClockTrisect extends Activity {
     private double s = 0.0;
     private static Random rand = new Random(); // Random number generator used for random time.
     LinearLayout outputLinearLayout;
+    ClockDataAdapter adapter = new ClockDataAdapter();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,11 +58,13 @@ public class ClockTrisect extends Activity {
         @Override
         protected void onPostExecute(ClockDataItem aClockDataItem) {
             addText(aClockDataItem + "\n", outputLinearLayout);
+            adapter.sortList();
         }
 
         @Override
         protected void onProgressUpdate(ClockDataItem... values) {
             addText(values[0] + "\n", outputLinearLayout);
+            adapter.addToDataSet(values[0]);
         }
     };
 }
