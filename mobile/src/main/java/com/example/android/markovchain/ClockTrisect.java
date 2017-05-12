@@ -20,6 +20,7 @@ public class ClockTrisect extends Activity {
     private static Random rand = new Random(); // Random number generator used for random time.
     LinearLayout outputLinearLayout;
     ClockDataAdapter adapter = new ClockDataAdapter();
+    ClockDataTask clockDataTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +36,7 @@ public class ClockTrisect extends Activity {
                 h = Math.abs(rand.nextInt()) % 12 + 1;
                 m = Math.abs(rand.nextInt()) % 60;
                 s = Math.abs(rand.nextInt()) % 60;
+                createClockDataTask();
                 clockDataTask.execute(clockDataItem);
             }
         });
@@ -54,17 +56,24 @@ public class ClockTrisect extends Activity {
         parent.addView(mText, 0);
     }
 
-    ClockDataTask clockDataTask = new ClockDataTask() {
-        @Override
-        protected void onPostExecute(ClockDataItem aClockDataItem) {
-            addText(aClockDataItem + "\n", outputLinearLayout);
-            adapter.sortList();
-        }
+    public void createClockDataTask() {
+        clockDataTask = new ClockDataTask() {
+            @Override
+            protected void onPreExecute() {
+                outputLinearLayout.removeAllViews();
+            }
 
-        @Override
-        protected void onProgressUpdate(ClockDataItem... values) {
-            addText(values[0] + "\n", outputLinearLayout);
-            adapter.addToDataSet(values[0]);
-        }
-    };
+            @Override
+            protected void onPostExecute(ClockDataItem aClockDataItem) {
+                addText(aClockDataItem + "\n", outputLinearLayout);
+                adapter.sortList();
+            }
+
+            @Override
+            protected void onProgressUpdate(ClockDataItem... values) {
+                addText(values[0] + "\n", outputLinearLayout);
+                adapter.addToDataSet(values[0]);
+            }
+        };
+    }
 }

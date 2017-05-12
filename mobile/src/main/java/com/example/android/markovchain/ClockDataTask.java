@@ -38,8 +38,11 @@ public class ClockDataTask extends AsyncTask<ClockDataItem, ClockDataItem, Clock
      */
     @Override
     protected ClockDataItem doInBackground(ClockDataItem... params) {
+        h = params[0].timeHour;
+        m = params[0].timeMinute;
+        s = params[0].timeSecond;
 
-        for (int i = 0; i<60; i++) {
+        for (int i = 0; i<3600; i++) {
             publishProgress(clock);
             s += 1.0;
             if (s >= 60.0) {
