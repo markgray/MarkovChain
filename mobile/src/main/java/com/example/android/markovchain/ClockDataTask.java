@@ -43,7 +43,6 @@ public class ClockDataTask extends AsyncTask<ClockDataItem, ClockDataItem, Clock
         s = params[0].timeSecond;
 
         for (int i = 0; i<3600; i++) {
-            publishProgress(clock);
             s += 1.0;
             if (s >= 60.0) {
                 s = 0.0;
@@ -55,6 +54,7 @@ public class ClockDataTask extends AsyncTask<ClockDataItem, ClockDataItem, Clock
             }
             clock = new ClockDataItem(h, m, s);
             if (clock.badness() < bestBadness) {
+                publishProgress(clock);
                 bestBadness = clock.badness();
                 bestClock = clock;
             }
