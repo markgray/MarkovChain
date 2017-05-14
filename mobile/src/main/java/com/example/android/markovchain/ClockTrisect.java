@@ -65,7 +65,7 @@ public class ClockTrisect extends Activity {
 
             @Override
             protected void onPostExecute(ClockDataItem aClockDataItem) {
-                addText(aClockDataItem + "\n", outputLinearLayout);
+                addText("Final Result:\n" + aClockDataItem + "\n", outputLinearLayout);
                 adapter.sortList();
             }
 

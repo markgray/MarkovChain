@@ -42,7 +42,7 @@ public class ClockDataTask extends AsyncTask<ClockDataItem, ClockDataItem, Clock
         m = params[0].timeMinute;
         s = params[0].timeSecond;
 
-        for (int i = 0; i<3600; i++) {
+        for (int i = 0; i<3600*12; i++) {
             s += 1.0;
             if (s >= 60.0) {
                 s = 0.0;
@@ -50,6 +50,9 @@ public class ClockDataTask extends AsyncTask<ClockDataItem, ClockDataItem, Clock
                 if (m >= 60) {
                     m = 0;
                     h++;
+                    if (h > 12) {
+                        h = 1;
+                    }
                 }
             }
             clock = new ClockDataItem(h, m, s);

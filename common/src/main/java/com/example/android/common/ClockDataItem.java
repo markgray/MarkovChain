@@ -107,6 +107,6 @@ public class ClockDataItem implements Comparable<ClockDataItem> {
         Double[] pie = pieSlices();
         return timeHour + ":" + timeMinute + ":" + timeSecond + "\n"
                 + pie[0] + "\n" + pie[1] + "\n" + pie[2] + "\n"
-                + badness();
+                + badness() + " Badness";
     }
 }
