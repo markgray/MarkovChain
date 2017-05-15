@@ -19,6 +19,16 @@ public class ClockDataTask extends AsyncTask<ClockDataItem, ClockDataItem, Clock
     public ClockDataItem clock = new ClockDataItem(h, m, s);
     public ClockDataItem bestClock = clock;
     double bestBadness = clock.badness();
+    public ClockDataItem[] hourlyBestClock = new ClockDataItem[13];
+    double[] hourlyBestBadness = new double[13];
+
+    public ClockDataTask() {
+        super();
+        for (int i = 0; i < 13; i++) {
+            hourlyBestClock[i] = new ClockDataItem(i, 0, 0);
+            hourlyBestBadness[i] = hourlyBestClock[i].badness();
+        }
+    }
 
     /**
      * Override this method to perform a computation on a background thread. The
@@ -43,23 +53,27 @@ public class ClockDataTask extends AsyncTask<ClockDataItem, ClockDataItem, Clock
         s = params[0].timeSecond;
 
         for (int i = 0; i<3600*12; i++) {
+            clock = new ClockDataItem(h, m, s);
+            if (clock.badness() < bestBadness) {
+                bestBadness = clock.badness();
+                bestClock = clock;
+            }
+            if (clock.badness() < hourlyBestBadness[h]) {
+                hourlyBestBadness[h] = clock.badness();
+                hourlyBestClock[h] = clock;
+            }
             s += 1.0;
             if (s >= 60.0) {
                 s = 0.0;
                 m++;
                 if (m >= 60) {
+                    publishProgress(hourlyBestClock[h]);
                     m = 0;
                     h++;
                     if (h > 12) {
                         h = 1;
                     }
                 }
-            }
-            clock = new ClockDataItem(h, m, s);
-            if (clock.badness() < bestBadness) {
-                publishProgress(clock);
-                bestBadness = clock.badness();
-                bestClock = clock;
             }
         }
         return bestClock;
