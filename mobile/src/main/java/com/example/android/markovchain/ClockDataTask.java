@@ -15,12 +15,18 @@ public class ClockDataTask extends AsyncTask<ClockDataItem, ClockDataItem, Clock
     Calendar now = Calendar.getInstance();
     int h = now.get(Calendar.HOUR_OF_DAY);
     int m = now.get(Calendar.MINUTE);
+    double increment = 1.0;
     double s = now.get(Calendar.SECOND);
     public ClockDataItem clock = new ClockDataItem(h, m, s);
     public ClockDataItem bestClock = clock;
     double bestBadness = clock.badness();
     public ClockDataItem[] hourlyBestClock = new ClockDataItem[13];
     double[] hourlyBestBadness = new double[13];
+
+    public ClockDataTask(double inc) {
+        this();
+        increment = inc;
+    }
 
     public ClockDataTask() {
         super();
@@ -51,8 +57,9 @@ public class ClockDataTask extends AsyncTask<ClockDataItem, ClockDataItem, Clock
         h = params[0].timeHour;
         m = params[0].timeMinute;
         s = params[0].timeSecond;
+        double secondsToTry = 3600.0 * 12.0;
 
-        for (int i = 0; i<3600*12; i++) {
+        for (double secondsTried = 0.0; secondsTried < secondsToTry; secondsTried += increment) {
             clock = new ClockDataItem(h, m, s);
             if (clock.badness() < bestBadness) {
                 bestBadness = clock.badness();
@@ -62,7 +69,7 @@ public class ClockDataTask extends AsyncTask<ClockDataItem, ClockDataItem, Clock
                 hourlyBestBadness[h] = clock.badness();
                 hourlyBestClock[h] = clock;
             }
-            s += 1.0;
+            s += increment;
             if (s >= 60.0) {
                 s = 0.0;
                 m++;

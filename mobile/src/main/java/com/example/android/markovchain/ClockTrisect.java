@@ -17,6 +17,7 @@ public class ClockTrisect extends Activity {
     private int h = 1;
     private int m = 0;
     private double s = 0.0;
+    private double increment = 1.0;
     private static Random rand = new Random(); // Random number generator used for random time.
     LinearLayout outputLinearLayout;
     ClockDataAdapter adapter = new ClockDataAdapter();
@@ -37,6 +38,7 @@ public class ClockTrisect extends Activity {
                 m = Math.abs(rand.nextInt()) % 60;
                 s = Math.abs(rand.nextInt()) % 60;
                 createClockDataTask();
+                increment /= 10.0;
                 clockDataTask.execute(clockDataItem);
             }
         });
@@ -57,7 +59,7 @@ public class ClockTrisect extends Activity {
     }
 
     public void createClockDataTask() {
-        clockDataTask = new ClockDataTask() {
+        clockDataTask = new ClockDataTask(increment) {
             @Override
             protected void onPreExecute() {
                 outputLinearLayout.removeAllViews();
