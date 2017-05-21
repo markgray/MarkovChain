@@ -10,7 +10,10 @@ import android.widget.TextView;
 
 import com.example.android.common.ClockDataAdapter;
 import com.example.android.common.ClockDataItem;
+import com.example.android.common.BenchMark;
 
+import java.text.NumberFormat;
+import java.util.Locale;
 import java.util.Random;
 
 public class ClockTrisect extends Activity {
@@ -22,6 +25,7 @@ public class ClockTrisect extends Activity {
     LinearLayout outputLinearLayout;
     ClockDataAdapter adapter = new ClockDataAdapter();
     ClockDataTask clockDataTask;
+    BenchMark benchMark;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +43,7 @@ public class ClockTrisect extends Activity {
                 s = Math.abs(rand.nextInt()) % 60;
                 createClockDataTask();
                 increment /= 10.0;
+                benchMark = new BenchMark();
                 clockDataTask.execute(clockDataItem);
             }
         });
@@ -67,7 +72,8 @@ public class ClockTrisect extends Activity {
 
             @Override
             protected void onPostExecute(ClockDataItem aClockDataItem) {
-                addText("Final Result:\n" + aClockDataItem + "\n", outputLinearLayout);
+                String benchResult = NumberFormat.getNumberInstance(Locale.US).format(benchMark.stop());
+                addText("Final Result: " + benchResult + " milliseconds\n" + aClockDataItem + "\n", outputLinearLayout);
                 adapter.sortList();
             }
 

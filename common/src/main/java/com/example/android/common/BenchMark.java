@@ -6,7 +6,7 @@ import android.os.SystemClock;
  * This class is used to benchmark areas of code, and includes start() and stop() methods (which will
  * return the elapsed time since creation of the instance or time since start() was called.)
  */
-class BenchMark {
+public class BenchMark {
 
     private long mStartTime; // Milliseconds since boot when instance created or start() called.
 
@@ -14,7 +14,7 @@ class BenchMark {
      * Create a new BenchMark instance initialized to current time. We simply call our method start()
      * to initialize our field long mStartTime to the time in milliseconds since boot.
      */
-    BenchMark() {
+    public BenchMark() {
         this.start();
     }
 
