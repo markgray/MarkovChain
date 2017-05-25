@@ -84,4 +84,6 @@ To convert List<String> languages to an array of Strings:
    String[] languageStrings = languages.toArray(new String[languages.size()]);
 
 -------------------------------------------------------------------------------
+Use Basic Completion (Ctrl+Space) within HTML, CSS and other files, for completing image file names.
+-------------------------------------------------------------------------------
 
