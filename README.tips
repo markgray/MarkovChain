@@ -86,4 +86,8 @@ To convert List<String> languages to an array of Strings:
 -------------------------------------------------------------------------------
 Use Basic Completion (Ctrl+Space) within HTML, CSS and other files, for completing image file names.
 -------------------------------------------------------------------------------
+Use Ctrl+Shift+I (View | Quick Definition), to quickly review definition or content of the symbol 
+at caret, without the need to open it in a new editor tab.
+-------------------------------------------------------------------------------
 
+ 
