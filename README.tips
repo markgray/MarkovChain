@@ -89,5 +89,7 @@ Use Basic Completion (Ctrl+Space) within HTML, CSS and other files, for completi
 Use Ctrl+Shift+I (View | Quick Definition), to quickly review definition or content of the symbol 
 at caret, without the need to open it in a new editor tab.
 -------------------------------------------------------------------------------
+The Quick Definition Viewer (Ctrl+Shift+I) can also be used for items in lookup lists that appear 
+on code completion and class/file/symbol navigaton commands.
+-------------------------------------------------------------------------------
 
- 
