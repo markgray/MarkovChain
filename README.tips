@@ -92,4 +92,8 @@ at caret, without the need to open it in a new editor tab.
 The Quick Definition Viewer (Ctrl+Shift+I) can also be used for items in lookup lists that appear 
 on code completion and class/file/symbol navigaton commands.
 -------------------------------------------------------------------------------
+Navigation bar is a quick alternative to the Project view.
+Use Alt+Home keyboard shortcut to show the navigation bar, 
+and arrow keys to locate the necessary files or folders.
+-------------------------------------------------------------------------------
 
