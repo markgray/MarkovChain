@@ -108,4 +108,20 @@ To quickly find a menu command or toolbar action, you do not need to look throug
 the menus. Just press Ctrl+Shift+A (Help | Find Action on the main menu) and 
 start typing the name of the action. Choose the desired action from the suggestion list.
 -------------------------------------------------------------------------------
+Example code for scaling dp value to int pixels:
+
+protected void onDraw(Canvas canvas) {
+   final float scale = getResources().getDisplayMetrics().density;
+   int x = (int) (10 * scale);
+   int y = (int) (10 * scale);
+   int width = (int) (300 * scale);
+   int height = (int) (50 * scale);
+
+   for (Drawable dr : mDrawables) {
+       dr.setBounds(x, y, x + width, y + height);
+       dr.draw(canvas);
+       y += height + (int) (5 * scale);
+   }
+}
+-------------------------------------------------------------------------------
 
