@@ -104,4 +104,8 @@ caret at the symbol's name or at its usage in code and press:
 
  scroll the list and click the desired usage.
 -------------------------------------------------------------------------------
+To quickly find a menu command or toolbar action, you do not need to look through 
+the menus. Just press Ctrl+Shift+A (Help | Find Action on the main menu) and 
+start typing the name of the action. Choose the desired action from the suggestion list.
+-------------------------------------------------------------------------------
 
