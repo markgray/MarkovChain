@@ -124,4 +124,9 @@ protected void onDraw(Canvas canvas) {
    }
 }
 -------------------------------------------------------------------------------
+You can create code constructs using statement completion. 
+Start typing a method declaration or a statement, and 
+press Ctrl+Shift+Enter after the opening parenthesis. 
+The braces are created, with the caret placed inside:
+-------------------------------------------------------------------------------
 
