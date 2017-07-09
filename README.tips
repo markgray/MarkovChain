@@ -129,4 +129,8 @@ Start typing a method declaration or a statement, and
 press Ctrl+Shift+Enter after the opening parenthesis. 
 The braces are created, with the caret placed inside:
 -------------------------------------------------------------------------------
+You can view all methods of the implemented interfaces in a class, 
+if you place the caret at the implements keyword in the class declaration, 
+press Ctrl+Shift+F7, and select the desired interface from the list.
+-------------------------------------------------------------------------------
 
