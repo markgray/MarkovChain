@@ -133,4 +133,9 @@ You can view all methods of the implemented interfaces in a class,
 if you place the caret at the implements keyword in the class declaration, 
 press Ctrl+Shift+F7, and select the desired interface from the list.
 -------------------------------------------------------------------------------
+You can view all statements within the method where certain exceptions can be 
+caught. Just place the caret at the throws keyword in a method declaration, 
+press Ctrl+Shift+F7 and select the desired exception class from the list. 
+This will also work for try and catch.
+-------------------------------------------------------------------------------
 
