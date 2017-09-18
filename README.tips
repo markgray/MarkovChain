@@ -138,4 +138,9 @@ caught. Just place the caret at the throws keyword in a method declaration,
 press Ctrl+Shift+F7 and select the desired exception class from the list. 
 This will also work for try and catch.
 -------------------------------------------------------------------------------
+Postfix code completion is applied "from right to left" and lets you avoid 
+backward caret jumps when coding. After the code fragment that you want to change, 
+type a dot (.), optionally press Ctrl+J and select the desired option.
+-------------------------------------------------------------------------------
+
 
