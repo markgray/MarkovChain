@@ -38,4 +38,5 @@
     <string name="title_activity_clock_trisect">ClockTrisect</string>
     <string name="hello_you_son_of_a_gun">Hello you son of a gun</string>
     <string name="start_the_clock">Start the clock</string>
+    <string name="title_activity_what_is_man">WhatIsMan</string>
 </resources>

@@ -38,6 +38,7 @@ public class MainActivity extends Activity {
         addButton(BibleMain.class, "Bible", linearLayout);
         addButton(BibleMarkovFragment.class, "Bible Markov", linearLayout);
         addButton(ClockTrisect.class, "Clock Trisect", linearLayout);
+        addButton(WhatIsMan.class, "What is man?", linearLayout);
         addText("Obsolete activities", linearLayout);
         addButton(FragmentVersionSkeleton.class, "Fragment Skeleton", linearLayout);
         addButton(TestBenchMark.class, "Test BenchMark", linearLayout);
@@ -78,6 +79,7 @@ public class MainActivity extends Activity {
      * @param text text to display in the TextView we add to ViewGroup parent
      * @param parent ViewGroup to add our TextView to
      */
+    @SuppressWarnings("SameParameterValue")
     public void addText(String text, ViewGroup parent) {
         TextView mText = new TextView(this);
         mText.setText(text);

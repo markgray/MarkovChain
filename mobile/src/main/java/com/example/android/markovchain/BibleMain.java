@@ -165,6 +165,7 @@ public class BibleMain extends Activity {
      *
      * @return      verse number stored in shared preferences, or the default value passed it
      */
+    @SuppressWarnings("SameParameterValue")
     public int restoreVerseNumber(int verse, String key) {
         SharedPreferences pref = getSharedPreferences(CLASS, Context.MODE_PRIVATE);
         return pref.getInt(key, verse);
@@ -261,6 +262,7 @@ public class BibleMain extends Activity {
      *
      * @return Tag for the fragment, as per FragmentTransaction.add.
      */
+    @SuppressWarnings("UnusedReturnValue")
     public int showDialog(DialogFragment dialogFragment) {
         // dialogFragment must already have setArguments set to bundle!
         // DialogFragment.show() will take care of adding the fragment
@@ -348,6 +350,7 @@ public class BibleMain extends Activity {
      * it is ready to be used. Then we create the Thread mThread to read in the data from
      * <b>reader</b> and start that thread running.
      */
+    @SuppressWarnings("DanglingJavadoc")
     private void initDataSet() {
         final InputStream inputStream = getApplicationContext().getResources().openRawResource(R.raw.king_james_text_and_verse);
         final BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));

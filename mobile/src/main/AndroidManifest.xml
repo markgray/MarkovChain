@@ -15,6 +15,7 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -29,8 +30,7 @@
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".BibleMarkovFragment" />
+        <activity android:name=".BibleMarkovFragment" />
         <!-- Old or test activities not expected to be used except for learning purposes -->
         <activity
             android:name=".FragmentVersionSkeleton"
@@ -42,6 +42,10 @@
             android:name=".ClockTrisect"
             android:label="@string/title_activity_clock_trisect"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".WhatIsMan"
+            android:label="@string/title_activity_what_is_man"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
