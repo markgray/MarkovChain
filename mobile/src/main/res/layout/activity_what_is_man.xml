@@ -11,6 +11,13 @@
         android:id="@+id/what_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:divider="@null" />
+        android:divider="@null"
+        android:visibility="invisible" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/what_is_man"
+        android:visibility="visible" />
 
 </FrameLayout>

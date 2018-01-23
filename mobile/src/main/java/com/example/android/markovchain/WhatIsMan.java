@@ -1,10 +1,10 @@
 package com.example.android.markovchain;
 
+import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 
-public class WhatIsMan extends AppCompatActivity {
+public class WhatIsMan extends Activity {
     RecyclerView whatIsMan;
 
     @Override
