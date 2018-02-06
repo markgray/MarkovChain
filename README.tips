@@ -148,4 +148,8 @@ the selected string, but also will do its best to turn current code construct
 into syntactically correct one (balance parentheses, add missing braces and 
 semicolons, etc.)
 -------------------------------------------------------------------------------
+            <root type="simple" url="file://$USER_HOME$/Development/sdk/docs/reference" />
+            <root type="simple" url="http://developer.android.com/reference/" />
+~/.AndroidStudio/config/options/jdk.table.xml
+-------------------------------------------------------------------------------
 
