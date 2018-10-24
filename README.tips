@@ -229,4 +229,37 @@ and add this attribute to AndroidManifest.xml in the application element:
 
          android:networkSecurityConfig="@xml/network_security_config"
 -------------------------------------------------------------------------------
+Best way to add permission requests for Marshmallow and beyond:
+
+    /**
+     * Permissions we need to ask for.
+     */
+    public String[] permissions = {
+            Manifest.permission.READ_CONTACTS,
+    };
+
+    /**
+     * Called when the main window associated with the activity has been attached to the window
+     * manager. First we call our super's implementation of {@code onAttachedToWindow}, then we
+     * ask the user for the required permissions by calling {@code requestPermissions}.
+     */
+    @Override
+    public void onAttachedToWindow() {
+        super.onAttachedToWindow();
+        ActivityCompat.requestPermissions(this, permissions, 1);
+    }
+
+for when using ActivityCompat, and for Activity:
+
+    /**
+     * Called when the main window associated with the activity has been attached to the window
+     * manager. First we call our super's implementation of {@code onAttachedToWindow}, then we
+     * ask the user for the required permissions by calling {@code requestPermissions}.
+     */
+    @Override
+    public void onAttachedToWindow() {
+        super.onAttachedToWindow();
+        this.requestPermissions(permissions, 1);
+    }
+-------------------------------------------------------------------------------
 
