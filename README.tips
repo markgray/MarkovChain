@@ -262,4 +262,11 @@ for when using ActivityCompat, and for Activity:
         this.requestPermissions(permissions, 1);
     }
 -------------------------------------------------------------------------------
+To read an mbox format file do:
+
+     user@host:~/News> <mbox_file formail -s perl -e 'system "cat >folder/$ENV{FILENO}"'
+
+then in emacs gnus group, enter: GD
+then open the directory News/folder
+-------------------------------------------------------------------------------
 
