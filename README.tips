@@ -271,4 +271,11 @@ then open the directory News/folder
 -------------------------------------------------------------------------------
 Use *&#47;*  in javadoc for */*
 -------------------------------------------------------------------------------
+How to check if current thread is not main thread:
+
+Looper.myLooper() == Looper.getMainLooper()
+
+if this returns true, then you're on the UI thread!
+-------------------------------------------------------------------------------
+
 
