@@ -269,4 +269,6 @@ To read an mbox format file do:
 then in emacs gnus group, enter: GD
 then open the directory News/folder
 -------------------------------------------------------------------------------
+Use *&#47;*  in javadoc for */*
+-------------------------------------------------------------------------------
 
