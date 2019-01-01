@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 28
     buildToolsVersion '28.0.3'
 
     defaultConfig {
         applicationId "com.example.android.markovchain"
         minSdkVersion 21
-        targetSdkVersion 27
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
     }
@@ -31,9 +31,9 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     wearApp project(':wear')
     api 'com.google.android.gms:play-services-wearable:12.0.0'
-    api 'com.android.support:recyclerview-v7:27.1.0'
-    api 'com.android.support:support-v4:27.1.0'
-    api 'com.android.support:appcompat-v7:27.1.0'
+    api 'androidx.recyclerview:recyclerview:1.1.0-alpha01'
+    api 'androidx.legacy:legacy-support-v4:1.0.0'
+    api 'androidx.appcompat:appcompat:1.1.0-alpha01'
     implementation project(':common')
 }
 
