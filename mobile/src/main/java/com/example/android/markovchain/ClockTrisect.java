@@ -22,21 +22,53 @@ import java.util.Locale;
  */
 public class ClockTrisect extends Activity {
     /**
-     * Current hour of the day.
+     * Hour of the day to start search at.
      */
     private int h = 1;
+    /**
+     * Minute of the hour to start search at.
+     */
     private int m = 0;
+    /**
+     * Second of the minute to start search at.
+     */
     private double s = 0.0;
+    /**
+     * Amount to increment seconds by for each trial {@code ClockDataItem}
+     */
     private double increment = 1.0;
+    /**
+     * {@code LinearLayout} we add our results to TODO: Change to RecyclerView you lazy bum.
+     */
     LinearLayout outputLinearLayout;
+    /**
+     * The {@code RecyclerView.Adapter} we will eventually use instead of {@code LinearLayout outputLinearLayout}
+     */
     ClockDataAdapter adapter = new ClockDataAdapter();
+    /**
+     * The {@code AsyncTask} which does all our calculations
+     */
     ClockDataTask clockDataTask;
+    /**
+     * The {@code BenchMark} which times how long it takes to do all our calculations
+     */
     BenchMark benchMark;
 
+    /**
+     * Called when the {@code Activity} is starting. First we call our super's implementation of
+     * {@code onCreate}, then we set our content view to our layout file R.layout.activity_clock_trisect.
+     * We initialize our field {@code LinearLayout outputLinearLayout} by finding the view with id
+     * R.id.linear_layout, and our variable {@code Button button} by finding the view with id
+     * R.id.start_the_clock ("Start the clock"). Finally we set the {@code OnClickListener} of
+     * {@code button} to an anonymous class whose {@code onClick} override
+     *
+     * @param savedInstanceState we do not override {@code onSaveInstanceState} so do not use.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_clock_trisect);
+
         outputLinearLayout = findViewById(R.id.linear_layout);
         Button button = findViewById(R.id.start_the_clock);
         button.setOnClickListener(new View.OnClickListener() {
