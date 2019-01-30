@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+@SuppressWarnings("WeakerAccess")
 public class ClockDataAdapter extends RecyclerView.Adapter<ClockDataAdapter.ViewHolder> {
     public List<ClockDataItem> dataSet = new ArrayList<>(3600);
 

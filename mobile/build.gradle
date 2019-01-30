@@ -28,7 +28,6 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    testImplementation 'junit:junit:4.12'
     wearApp project(':wear')
     api 'com.google.android.gms:play-services-wearable:12.0.0'
     api 'androidx.recyclerview:recyclerview:1.1.0-alpha01'
