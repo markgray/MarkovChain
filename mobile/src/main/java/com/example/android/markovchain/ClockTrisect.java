@@ -1,5 +1,6 @@
 package com.example.android.markovchain;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,20 +9,25 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.android.common.BenchMark;
 import com.example.android.common.ClockDataAdapter;
 import com.example.android.common.ClockDataItem;
-import com.example.android.common.BenchMark;
 
 import java.text.NumberFormat;
 import java.util.Locale;
-import java.util.Random;
 
+/**
+ * Searches for the time of day when the hands of a clock comes closest to trisecting the face of
+ * the clock.
+ */
 public class ClockTrisect extends Activity {
+    /**
+     * Current hour of the day.
+     */
     private int h = 1;
     private int m = 0;
     private double s = 0.0;
     private double increment = 1.0;
-    private static Random rand = new Random(); // Random number generator used for random time.
     LinearLayout outputLinearLayout;
     ClockDataAdapter adapter = new ClockDataAdapter();
     ClockDataTask clockDataTask;
@@ -31,16 +37,13 @@ public class ClockTrisect extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_clock_trisect);
-        outputLinearLayout = (LinearLayout) findViewById(R.id.linear_layout);
-        Button button = (Button) findViewById(R.id.start_the_clock);
+        outputLinearLayout = findViewById(R.id.linear_layout);
+        Button button = findViewById(R.id.start_the_clock);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ClockDataItem clockDataItem = new ClockDataItem(h, m, s);
                 addText(clockDataItem + "\n", outputLinearLayout);
-                h = Math.abs(rand.nextInt()) % 12 + 1;
-                m = Math.abs(rand.nextInt()) % 60;
-                s = Math.abs(rand.nextInt()) % 60;
                 createClockDataTask();
                 increment /= 10.0;
                 benchMark = new BenchMark();
@@ -63,6 +66,7 @@ public class ClockTrisect extends Activity {
         parent.addView(mText, 0);
     }
 
+    @SuppressLint("StaticFieldLeak")
     public void createClockDataTask() {
         clockDataTask = new ClockDataTask(increment) {
             @Override
