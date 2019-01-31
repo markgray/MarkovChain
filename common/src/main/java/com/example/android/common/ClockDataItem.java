@@ -84,7 +84,7 @@ public class ClockDataItem implements Comparable<ClockDataItem> {
         return orderedAnglesCache;
     }
 
-    /** Cache storage fo our {@code pieSlices} method */
+    /** Cache storage for our {@code pieSlices} method */
     Double[] pieSlicesCache;
     /**
      * Calculates the angular sizes of the three pie slices of the clock face.
@@ -102,10 +102,14 @@ public class ClockDataItem implements Comparable<ClockDataItem> {
         return pieSlicesCache;
     }
 
+    @NonNull
     @Override
     public String toString() {
         Double[] pie = pieSlices();
-        return timeHour + ":" + timeMinute + ":" + timeSecond + "\n"
+        String sH = timeHour < 10 ? "0" + timeHour : "" + timeHour;
+        String sM = timeMinute < 10 ? "0" + timeMinute: "" + timeSecond;
+        String sS = timeSecond < 10 ? "0" + timeSecond : "" + timeSecond;
+        return sH + ":" + sM + ":" + sS + "\n"
                 + pie[0] + "\n" + pie[1] + "\n" + pie[2] + "\n"
                 + badness() + " Badness";
     }

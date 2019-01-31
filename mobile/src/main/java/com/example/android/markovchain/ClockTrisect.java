@@ -14,6 +14,7 @@ import com.example.android.common.ClockDataAdapter;
 import com.example.android.common.ClockDataItem;
 
 import java.text.NumberFormat;
+import java.util.Calendar;
 import java.util.Locale;
 
 /**
@@ -74,6 +75,8 @@ public class ClockTrisect extends Activity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                h = Calendar.getInstance().get(Calendar.HOUR);
+                if(h == 0) h =12;
                 ClockDataItem clockDataItem = new ClockDataItem(h, m, s);
                 addText(clockDataItem + "\n", outputLinearLayout);
                 createClockDataTask();
