@@ -61,7 +61,12 @@ public class ClockTrisect extends Activity {
      * We initialize our field {@code LinearLayout outputLinearLayout} by finding the view with id
      * R.id.linear_layout, and our variable {@code Button button} by finding the view with id
      * R.id.start_the_clock ("Start the clock"). Finally we set the {@code OnClickListener} of
-     * {@code button} to an anonymous class whose {@code onClick} override
+     * {@code button} to an anonymous class whose {@code onClick} override calls our method
+     * {@code createClockDataTask} to initialize our field {@code ClockDataTask clockDataTask},
+     * initializes our field {@code BenchMark benchMark} (starting its clock) then calls the
+     * {@code execute} method of {@code clockDataTask} to start it running (its {@code doInBackground}
+     * method will be called with the value of {@code clockDataItem} as its parameter).
+     * TODO: Remove all the crud!
      *
      * @param savedInstanceState we do not override {@code onSaveInstanceState} so do not use.
      */
@@ -88,9 +93,10 @@ public class ClockTrisect extends Activity {
     }
 
     /**
-     * Adds a TextView containing the String text to the ViewGroup parent. First we create a TextView
-     * text, then we set the text of <b>TextView text</b> to the String text, and finally we
-     * add the TextView text to the ViewGroup parent (our vertical LinearLayout).
+     * Adds a TextView containing the {@code String text} to the {@code ViewGroup parent}. First we
+     * create a {@code TextView mText}, then we set the text of {@code TextView mText} to the
+     * {@code String text}, and finally we add the {@code TextView text} to the {@code ViewGroup parent}
+     * (our vertical {@code LinearLayout} in our case).
      *
      * @param text text to display in the TextView we add to ViewGroup parent
      * @param parent ViewGroup to add our TextView to
@@ -101,14 +107,28 @@ public class ClockTrisect extends Activity {
         parent.addView(mText, 0);
     }
 
+    /**
+     * Creates an anonymous {@code ClockDataTask} for the current value of our field {@code double increment},
+     * overriding the {@code onPreExecute}, {@code onPostExecute}, and {@code onProgressUpdate} methods.
+     */
     @SuppressLint("StaticFieldLeak")
     public void createClockDataTask() {
         clockDataTask = new ClockDataTask(increment) {
+            /**
+             * Runs on the UI thread before {@link #doInBackground}. We call the {@code removeAllViews}
+             * method of our field {@code LinearLayout outputLinearLayout} to have it remove all of
+             * its child views.
+             */
             @Override
             protected void onPreExecute() {
                 outputLinearLayout.removeAllViews();
             }
-
+            /**
+             * Runs on the UI thread after {@link #doInBackground}. {@code ClockDataItem aClockDataItem}
+             * is the value returned by {@link #doInBackground}.
+             *
+             * @param aClockDataItem The result of the operation computed by {@link #doInBackground}.
+             */
             @Override
             protected void onPostExecute(ClockDataItem aClockDataItem) {
                 String benchResult = NumberFormat.getNumberInstance(Locale.US).format(benchMark.stop());

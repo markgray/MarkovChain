@@ -107,7 +107,7 @@ public class ClockDataItem implements Comparable<ClockDataItem> {
     public String toString() {
         Double[] pie = pieSlices();
         String sH = timeHour < 10 ? "0" + timeHour : "" + timeHour;
-        String sM = timeMinute < 10 ? "0" + timeMinute: "" + timeSecond;
+        String sM = timeMinute < 10 ? "0" + timeMinute: "" + timeMinute;
         String sS = timeSecond < 10 ? "0" + timeSecond : "" + timeSecond;
         return sH + ":" + sM + ":" + sS + "\n"
                 + pie[0] + "\n" + pie[1] + "\n" + pie[2] + "\n"

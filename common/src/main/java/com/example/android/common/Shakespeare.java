@@ -3,6 +3,7 @@ package com.example.android.common;
 /**
  * Shakespeare's complete sonnets
  */
+@SuppressWarnings("SpellCheckingInspection")
 public final class Shakespeare {
 
     /**
