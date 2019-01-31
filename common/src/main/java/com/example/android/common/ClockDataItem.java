@@ -11,13 +11,40 @@ import java.util.Collections;
 @SuppressWarnings("WeakerAccess")
 public class ClockDataItem implements Comparable<ClockDataItem> {
 
+    /**
+     * The hour of the day we represent
+     */
     public int timeHour;
+    /**
+     * The minute of the hour we represent
+     */
     public int timeMinute;
+    /**
+     * The second of the minute we represent
+     */
     public double timeSecond;
+    /**
+     * Angle of the hour hand on the face of the clock
+     */
     public double angleHour;
+    /**
+     * Angle of the minute hand on the face of the clock
+     */
     public double angleMinute;
+    /**
+     * Angle of the second hand on the face of the clock
+     */
     public double angleSecond;
 
+    /**
+     * Our constructor. We save our parameters in the fields we use for them, then use our parameters
+     * to calculate the angles of the hands of the clock for that time of day which we save in our
+     * fields {@code double angleSecond}, {@code double angleMinute}, and {@code double angleHour}.
+     *
+     * @param hour the hour we represent
+     * @param minute minute we represent
+     * @param second the second we represent
+     */
     public ClockDataItem(int hour, int minute, double second) {
         timeHour = hour;
         timeMinute = minute;
@@ -27,9 +54,13 @@ public class ClockDataItem implements Comparable<ClockDataItem> {
         angleHour = 30.0 * (hour + minute/60.0 + second/3600.0);
     }
 
-    /** Cache storage for {@code badness} method */
+    /**
+     * Cache storage for {@code badness} method
+     */
     double badnessCache = -1.0;
     /**
+     * Calculates how far the size of pie slices of the clock face created by the positions of the
+     * clock hands misses the perfect trisection: (120,120,120).
      *
      * @return a value indicating how far from a perfect trisection this ClockDataItem is
      */
