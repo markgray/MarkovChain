@@ -60,7 +60,13 @@ public class ClockDataItem implements Comparable<ClockDataItem> {
     double badnessCache = -1.0;
     /**
      * Calculates how far the size of pie slices of the clock face created by the positions of the
-     * clock hands misses the perfect trisection: (120,120,120).
+     * clock hands misses the perfect trisection: (120,120,120). First we check whether there is a
+     * cached result in our badness cache field {@code double badnessCache} and if so we return that
+     * value. We then check to see if our pie slice cache {@code Double[] pieSlicesCache} is null and
+     * if it is we call our method {@code pieSlices} to initialize it. Next we initialize our field
+     * {@code badnessCache} to 0.0 then loop through all the {@code Double slice} is {@code pieSlicesCache}
+     * adding the absolute value of the difference between 120.0 and {@code slice} to {@code badnessCache}.
+     * When done we return {@code badnessCache} to the caller.
      *
      * @return a value indicating how far from a perfect trisection this ClockDataItem is
      */
@@ -79,17 +85,15 @@ public class ClockDataItem implements Comparable<ClockDataItem> {
     }
 
     /**
-     * Compares this object with the specified object for order.  Returns a
-     * negative integer, zero, or a positive integer as this object is less
-     * than, equal to, or greater than the specified object.
+     * Compares this object with the specified object for order. Returns a negative integer, zero,
+     * or a positive integer as this object is less than, equal to, or greater than the specified
+     * object. We just return the value returned by the {@code compare} method of {@code Double}
+     * returns when passed the badness value of our {@code ClockDataItem} and the badness value of
+     * our parameter {@code ClockDataItem o}.
      *
      * @param   o the object to be compared.
      * @return  a negative integer, zero, or a positive integer as this object
      *          is less than, equal to, or greater than the specified object.
-     *
-     * @throws NullPointerException if the specified object is null
-     * @throws ClassCastException if the specified object's type prevents it
-     *         from being compared to this object.
      */
     @Override
     public int compareTo(@NonNull ClockDataItem o) {
@@ -99,7 +103,12 @@ public class ClockDataItem implements Comparable<ClockDataItem> {
     /** Cache storage for our {@code orderedAngles} method */
     Double[] orderedAnglesCache;
     /**
-     * Sorts the angles of the clock hands into sorted order.
+     * Sorts the angles of the clock hands into sorted order. If our cache of order angles in our
+     * field {@code Double[] orderedAnglesCache} is null we initialize {@code ArrayList<Double> returnList}
+     * with a new instance, add our fields {@code angleHour}, {@code angleMinute}, and {@code angleSecond}
+     * to it, use the {@code sort} method of {@code Collections} to sort {@code returnList} then initialize
+     * {@code orderedAnglesCache} to the {@code Double[3]} array that the {@code toArray} creates from
+     * {@code returnList}. Finally we return {@code orderedAnglesCache} to the caller.
      *
      * @return {@code angleHour, angleMinute, angleSecond} in sorted order
      */
@@ -118,7 +127,13 @@ public class ClockDataItem implements Comparable<ClockDataItem> {
     /** Cache storage for our {@code pieSlices} method */
     Double[] pieSlicesCache;
     /**
-     * Calculates the angular sizes of the three pie slices of the clock face.
+     * Calculates the angular sizes of the three pie slices of the clock face. If our cache of pie
+     * slices in {@code Double[] pieSlicesCache} is null we initialize it with a new instance of
+     * 3 {@code Double} objects, initialize {@code Double[] angles} with the ordered angles returned
+     * by our method {@code orderedAngles} then set {@code pieSlicesCache[0]} to {@code angles[1]}
+     * minus {@code angles[0]}, set {@code pieSlicesCache[1]} to {@code angles[2]} minus {@code angles[1]},
+     * and set {@code pieSlicesCache[2]} to 360.0 minus {@code angles[2]} plus {@code angles[0]}.
+     * Finally we return {@code pieSlicesCache} to the caller.
      *
      * @return The pie slice arc angles of the clock face
      */
@@ -133,6 +148,22 @@ public class ClockDataItem implements Comparable<ClockDataItem> {
         return pieSlicesCache;
     }
 
+    /**
+     * Returns a string representation of our {@code ClockDataItem}. We initialize our variable
+     * {@code Double[] pie} with the array of pie slices calculated by our method {@code pieSlices},
+     * then initialize {@code String sH} with the string value of {@code timeHour} (adding a leading
+     * 0 if it is less than 10), initialize {@code String sM} with the string value of {@code timeMinute}
+     * (adding a leading 0 if it is less than 10), and initialize {@code String sS} with the string
+     * value of {@code timeSecond} (adding a leading 0 if it is less than 10). Finally we return the
+     * string formed by concatenating {@code sH} followed by the ":" character, followed by {@code sM}
+     * followed by the ":" character, {@code sS} followed by the newline character, followed by the
+     * string value of {@code pie[0]} followed by the newline character, followed by the string value
+     * of {@code pie[1]} followed by the newline character, followed by the string value of {@code pie[2]}
+     * followed by the newline character, followed by the string value of the badness value returned
+     * by our {@code badness} method followed by the string " Badness".
+     *
+     * @return a string representation of our {@code ClockDataItem}.
+     */
     @NonNull
     @Override
     public String toString() {
@@ -143,5 +174,14 @@ public class ClockDataItem implements Comparable<ClockDataItem> {
         return sH + ":" + sM + ":" + sS + "\n"
                 + pie[0] + "\n" + pie[1] + "\n" + pie[2] + "\n"
                 + badness() + " Badness";
+    }
+
+    /**
+     * Returns the minute of the day that this {@code ClockDataItem} belongs to (0-719).
+     *
+     * @return the minute of the day that this {@code ClockDataItem} belongs to (0-719).
+     */
+    public int motd() {
+        return timeHour * 60 + timeMinute;
     }
 }

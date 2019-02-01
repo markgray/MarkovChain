@@ -15,13 +15,15 @@ public class ClockDataTask extends AsyncTask<ClockDataItem, ClockDataItem, Clock
     Calendar now = Calendar.getInstance();
     int h = now.get(Calendar.HOUR_OF_DAY);
     int m = now.get(Calendar.MINUTE);
-    double increment = 1.0;
     double s = now.get(Calendar.SECOND);
+    double increment = 1.0;
     public ClockDataItem clock = new ClockDataItem(h, m, s);
     public ClockDataItem bestClock = clock;
     double bestBadness = clock.badness();
     public ClockDataItem[] hourlyBestClock = new ClockDataItem[13];
     double[] hourlyBestBadness = new double[13];
+    public ClockDataItem[] minutelyBestClock = new ClockDataItem[780];
+    double[] minutelyBestBadness = new double[780];
 
     public ClockDataTask(double inc) {
         this();
@@ -33,6 +35,11 @@ public class ClockDataTask extends AsyncTask<ClockDataItem, ClockDataItem, Clock
         for (int i = 0; i < 13; i++) {
             hourlyBestClock[i] = new ClockDataItem(i, 0, 0);
             hourlyBestBadness[i] = hourlyBestClock[i].badness();
+            for (int j = 0; j < 60; j++) {
+                ClockDataItem temp = new ClockDataItem(i, j, 0);
+                minutelyBestClock[temp.motd()] = temp;
+                minutelyBestBadness[temp.motd()] = temp.badness();
+            }
         }
     }
 
