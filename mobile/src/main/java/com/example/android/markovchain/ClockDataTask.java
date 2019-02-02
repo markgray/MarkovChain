@@ -4,21 +4,19 @@ import android.os.AsyncTask;
 
 import com.example.android.common.ClockDataItem;
 
-import java.util.Calendar;
-
 /**
  * This background task will cycle through all the seconds in a day, creating a list of ClockDataItem's
  * sorted by the {@code doBadness()} results of each.
  */
 @SuppressWarnings("WeakerAccess")
 public class ClockDataTask extends AsyncTask<ClockDataItem, ClockDataItem, ClockDataItem> {
-    Calendar now = Calendar.getInstance();
-    int h = now.get(Calendar.HOUR_OF_DAY);
-    int m = now.get(Calendar.MINUTE);
-    double s = now.get(Calendar.SECOND);
+
+    int h;
+    int m;
+    double s;
     double increment = 1.0;
-    public ClockDataItem clock = new ClockDataItem(h, m, s);
-    public ClockDataItem bestClock = clock;
+    public ClockDataItem clock = new ClockDataItem(0, 0, 0);
+    public ClockDataItem bestClock;
     double bestBadness = clock.badness;
     public ClockDataItem[] hourlyBestClock = new ClockDataItem[13];
     double[] hourlyBestBadness = new double[13];
@@ -65,16 +63,26 @@ public class ClockDataTask extends AsyncTask<ClockDataItem, ClockDataItem, Clock
         m = params[0].timeMinute;
         s = params[0].timeSecond;
         double secondsToTry = 3600.0 * 12.0;
+        boolean publishedLastHour = false;
 
         for (double secondsTried = 0.0; secondsTried < secondsToTry; secondsTried += increment) {
-            clock = new ClockDataItem(h, m, s);
+            publishedLastHour = false;
+            clock.set(h, m, s);
             if (clock.badness < bestBadness) {
                 bestBadness = clock.badness;
-                bestClock = clock;
+                if (bestClock == null) {
+                    bestClock = new ClockDataItem(h, m, s);
+                } else {
+                    bestClock.set(h, m, s);
+                }
             }
             if (clock.badness < hourlyBestBadness[h]) {
                 hourlyBestBadness[h] = clock.badness;
-                hourlyBestClock[h] = clock;
+                if (hourlyBestClock[h] == null) {
+                    hourlyBestClock[h] = new ClockDataItem(h, m, s);
+                } else {
+                    hourlyBestClock[h].set(h, m, s);
+                }
             }
             s += increment;
             if (s >= 60.0) {
@@ -82,10 +90,15 @@ public class ClockDataTask extends AsyncTask<ClockDataItem, ClockDataItem, Clock
                 m++;
                 if (m >= 60) {
                     publishProgress(hourlyBestClock[h]);
+                    publishedLastHour = true;
                     m = 0;
                     h++;
+                    if (h == 12) break;
                 }
             }
+        }
+        if(!publishedLastHour) {
+            publishProgress(hourlyBestClock[h]);
         }
         return bestClock;
     }

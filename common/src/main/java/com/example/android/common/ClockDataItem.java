@@ -41,9 +41,7 @@ public class ClockDataItem implements Comparable<ClockDataItem> {
     public double badness;
 
     /**
-     * Our constructor. We save our parameters in the fields we use for them, then use our parameters
-     * to calculate the angles of the hands of the clock for that time of day which we save in our
-     * fields {@code double angleSecond}, {@code double angleMinute}, and {@code double angleHour}.
+     * Our constructor. We just call our method {@code init} with our parameters.
      *
      * @param hour the hour we represent
      * @param minute minute we represent
@@ -51,6 +49,20 @@ public class ClockDataItem implements Comparable<ClockDataItem> {
      */
     public ClockDataItem(int hour, int minute, double second) {
         init(hour, minute, second);
+    }
+
+    /**
+     * Sets the time of this {@code ClockDataItem} to its parameters. We just call our method
+     * {@code init} with our parameters and return 'this'.
+     *
+     * @param hour   the hour we represent
+     * @param minute minute we represent
+     * @param second the second we represent
+     * @return this {@code ClockDataItem} set to the new time
+     */
+    public ClockDataItem set(int hour, int minute, double second) {
+        init(hour, minute, second);
+        return this;
     }
 
     private void init(int hour, int minute, double second) {
@@ -76,9 +88,7 @@ public class ClockDataItem implements Comparable<ClockDataItem> {
      * @return a value indicating how far from a perfect trisection this ClockDataItem is
      */
     public double doBadness() {
-        if (pieSlicesCache == null) {
-            pieSlices();
-        }
+        pieSlices();
         double badnessValue = 0.0;
         for (Double slice : pieSlicesCache) {
             badnessValue += Math.abs(120.0 - slice);
@@ -103,7 +113,7 @@ public class ClockDataItem implements Comparable<ClockDataItem> {
     }
 
     /** Cache storage for our {@code orderedAngles} method */
-    Double[] orderedAnglesCache;
+    Double[] orderedAnglesCache = new Double[3];
     /**
      * Sorts the angles of the clock hands into sorted order. If our cache of order angles in our
      * field {@code Double[] orderedAnglesCache} is null we initialize {@code ArrayList<Double> returnList}
@@ -111,23 +121,18 @@ public class ClockDataItem implements Comparable<ClockDataItem> {
      * to it, use the {@code sort} method of {@code Collections} to sort {@code returnList} then initialize
      * {@code orderedAnglesCache} to the {@code Double[3]} array that the {@code toArray} creates from
      * {@code returnList}. Finally we return {@code orderedAnglesCache} to the caller.
-     *
-     * @return {@code angleHour, angleMinute, angleSecond} in sorted order
      */
-    public Double[] orderedAngles() {
-        if (orderedAnglesCache == null) {
-            ArrayList<Double> returnList = new ArrayList<>();
-            returnList.add(angleHour);
-            returnList.add(angleMinute);
-            returnList.add(angleSecond);
-            Collections.sort(returnList);
-            orderedAnglesCache = returnList.toArray(new Double[3]);
-        }
-        return orderedAnglesCache;
+    public void orderedAngles() {
+        ArrayList<Double> returnList = new ArrayList<>();
+        returnList.add(angleHour);
+        returnList.add(angleMinute);
+        returnList.add(angleSecond);
+        Collections.sort(returnList);
+        orderedAnglesCache = returnList.toArray(orderedAnglesCache);
     }
 
     /** Cache storage for our {@code pieSlices} method */
-    Double[] pieSlicesCache;
+    Double[] pieSlicesCache = new Double[3];
     /**
      * Calculates the angular sizes of the three pie slices of the clock face. If our cache of pie
      * slices in {@code Double[] pieSlicesCache} is null we initialize it with a new instance of
@@ -140,13 +145,10 @@ public class ClockDataItem implements Comparable<ClockDataItem> {
      * @return The pie slice arc angles of the clock face
      */
     public Double[] pieSlices() {
-        if (pieSlicesCache == null) {
-            pieSlicesCache = new Double[3];
-            Double[] angles = orderedAngles();
-            pieSlicesCache[0] = angles[1] - angles[0];
-            pieSlicesCache[1] = angles[2] - angles[1];
-            pieSlicesCache[2] = (360.0 - angles[2]) + angles[0];
-        }
+        orderedAngles();
+        pieSlicesCache[0] = orderedAnglesCache[1] - orderedAnglesCache[0];
+        pieSlicesCache[1] = orderedAnglesCache[2] - orderedAnglesCache[1];
+        pieSlicesCache[2] = (360.0 - orderedAnglesCache[2]) + orderedAnglesCache[0];
         return pieSlicesCache;
     }
 
