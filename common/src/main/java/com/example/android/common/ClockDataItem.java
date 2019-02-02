@@ -2,9 +2,6 @@ package com.example.android.common;
 
 import androidx.annotation.NonNull;
 
-import java.util.ArrayList;
-import java.util.Collections;
-
 /**
  * Contains data and methods for holding a time of day, and the corresponding clock hand angles.
  */
@@ -112,25 +109,6 @@ public class ClockDataItem implements Comparable<ClockDataItem> {
         return  Double.compare(this.badness, o.badness);
     }
 
-    /** Cache storage for our {@code orderedAngles} method */
-    Double[] orderedAnglesCache = new Double[3];
-    /**
-     * Sorts the angles of the clock hands into sorted order. If our cache of order angles in our
-     * field {@code Double[] orderedAnglesCache} is null we initialize {@code ArrayList<Double> returnList}
-     * with a new instance, add our fields {@code angleHour}, {@code angleMinute}, and {@code angleSecond}
-     * to it, use the {@code sort} method of {@code Collections} to sort {@code returnList} then initialize
-     * {@code orderedAnglesCache} to the {@code Double[3]} array that the {@code toArray} creates from
-     * {@code returnList}. Finally we return {@code orderedAnglesCache} to the caller.
-     */
-    public void orderedAngles() {
-        ArrayList<Double> returnList = new ArrayList<>();
-        returnList.add(angleHour);
-        returnList.add(angleMinute);
-        returnList.add(angleSecond);
-        Collections.sort(returnList);
-        orderedAnglesCache = returnList.toArray(orderedAnglesCache);
-    }
-
     /** Cache storage for our {@code pieSlices} method */
     Double[] pieSlicesCache = new Double[3];
     /**
@@ -145,10 +123,38 @@ public class ClockDataItem implements Comparable<ClockDataItem> {
      * @return The pie slice arc angles of the clock face
      */
     public Double[] pieSlices() {
-        orderedAngles();
-        pieSlicesCache[0] = orderedAnglesCache[1] - orderedAnglesCache[0];
-        pieSlicesCache[1] = orderedAnglesCache[2] - orderedAnglesCache[1];
-        pieSlicesCache[2] = (360.0 - orderedAnglesCache[2]) + orderedAnglesCache[0];
+        double pie1, pie2, pie3;
+        if (angleHour < angleMinute && angleHour < angleSecond) {
+            pie1 = angleHour;
+            if (angleMinute < angleSecond) {
+                pie2 = angleMinute;
+                pie3 = angleSecond;
+            } else {
+                pie3 = angleMinute;
+                pie2 = angleSecond;
+            }
+        } else if (angleMinute < angleSecond && angleMinute < angleHour) {
+            pie1 = angleMinute;
+            if (angleSecond < angleHour) {
+                pie2 = angleSecond;
+                pie3 = angleHour;
+            } else {
+                pie3 = angleSecond;
+                pie2 = angleHour;
+            }
+        } else {
+            pie1 = angleSecond;
+            if (angleMinute < angleHour) {
+                pie2 = angleMinute;
+                pie3 = angleHour;
+            } else {
+                pie3 = angleMinute;
+                pie2 = angleHour;
+            }
+        }
+        pieSlicesCache[0] = pie2 - pie1;
+        pieSlicesCache[1] = pie3 - pie2;
+        pieSlicesCache[2] = (360.0 - pie3) + pie1;
         return pieSlicesCache;
     }
 
