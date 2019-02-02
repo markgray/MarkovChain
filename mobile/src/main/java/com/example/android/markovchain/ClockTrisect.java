@@ -3,6 +3,7 @@ package com.example.android.markovchain;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -14,7 +15,6 @@ import com.example.android.common.ClockDataAdapter;
 import com.example.android.common.ClockDataItem;
 
 import java.text.NumberFormat;
-import java.util.Calendar;
 import java.util.Locale;
 
 /**
@@ -23,17 +23,9 @@ import java.util.Locale;
  */
 public class ClockTrisect extends Activity {
     /**
-     * Hour of the day to start search at.
+     * TAG used for logging.
      */
-    private int h = 1;
-    /**
-     * Minute of the hour to start search at.
-     */
-    private int m = 0;
-    /**
-     * Second of the minute to start search at.
-     */
-    private double s = 0.0;
+    static final String TAG = "ClockTrisect";
     /**
      * Amount to increment seconds by for each trial {@code ClockDataItem}
      */
@@ -80,9 +72,7 @@ public class ClockTrisect extends Activity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                h = Calendar.getInstance().get(Calendar.HOUR);
-                if(h == 0) h =12;
-                ClockDataItem clockDataItem = new ClockDataItem(h, m, s);
+                ClockDataItem clockDataItem = new ClockDataItem(0, 0, 0);
                 addText(clockDataItem + "\n", outputLinearLayout);
                 createClockDataTask();
                 increment /= 10.0;
@@ -139,6 +129,7 @@ public class ClockTrisect extends Activity {
             @Override
             protected void onProgressUpdate(ClockDataItem... values) {
                 addText(values[0] + "\n", outputLinearLayout);
+                Log.i(TAG, "Posting Hourly best for: " + values[0].timeHour);
                 adapter.addToDataSet(values[0]);
             }
         };

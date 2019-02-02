@@ -1824,7 +1824,7 @@ public final class Shakespeare {
         "I may be straight though they themselves be bevel;\n" +
         "By their rank thoughts, my deeds must not be shown;\n" +
         "  Unless this general evil they maintain,\n" +
-        "  All men are bad and in their badness reign. ",
+        "  All men are bad and in their doBadness reign. ",
 
         "Thy gift, thy tables, are within my brain\n" +
         "Full character'd with lasting memory,\n" +

@@ -35,6 +35,10 @@ public class ClockDataItem implements Comparable<ClockDataItem> {
      * Angle of the second hand on the face of the clock
      */
     public double angleSecond;
+    /**
+     * How bad is our trisection (the sum of the absolute values when compared to perfect)
+     */
+    public double badness;
 
     /**
      * Our constructor. We save our parameters in the fields we use for them, then use our parameters
@@ -46,22 +50,23 @@ public class ClockDataItem implements Comparable<ClockDataItem> {
      * @param second the second we represent
      */
     public ClockDataItem(int hour, int minute, double second) {
+        init(hour, minute, second);
+    }
+
+    private void init(int hour, int minute, double second) {
         timeHour = hour;
         timeMinute = minute;
         timeSecond = second;
         angleSecond = 6.0 * second;
         angleMinute = 6.0 * (minute + second/60.0);
         angleHour = 30.0 * (hour + minute/60.0 + second/3600.0);
+        badness = doBadness();
     }
 
     /**
-     * Cache storage for {@code badness} method
-     */
-    double badnessCache = -1.0;
-    /**
      * Calculates how far the size of pie slices of the clock face created by the positions of the
      * clock hands misses the perfect trisection: (120,120,120). First we check whether there is a
-     * cached result in our badness cache field {@code double badnessCache} and if so we return that
+     * cached result in our doBadness cache field {@code double badnessCache} and if so we return that
      * value. We then check to see if our pie slice cache {@code Double[] pieSlicesCache} is null and
      * if it is we call our method {@code pieSlices} to initialize it. Next we initialize our field
      * {@code badnessCache} to 0.0 then loop through all the {@code Double slice} is {@code pieSlicesCache}
@@ -70,25 +75,22 @@ public class ClockDataItem implements Comparable<ClockDataItem> {
      *
      * @return a value indicating how far from a perfect trisection this ClockDataItem is
      */
-    public double badness() {
-        if (badnessCache >= 0.0) {
-            return badnessCache;
-        }
+    public double doBadness() {
         if (pieSlicesCache == null) {
             pieSlices();
         }
-        badnessCache = 0.0;
+        double badnessValue = 0.0;
         for (Double slice : pieSlicesCache) {
-            badnessCache += Math.abs(120.0 - slice);
+            badnessValue += Math.abs(120.0 - slice);
         }
-        return badnessCache;
+        return badnessValue;
     }
 
     /**
      * Compares this object with the specified object for order. Returns a negative integer, zero,
      * or a positive integer as this object is less than, equal to, or greater than the specified
      * object. We just return the value returned by the {@code compare} method of {@code Double}
-     * returns when passed the badness value of our {@code ClockDataItem} and the badness value of
+     * returns when passed the doBadness value of our {@code ClockDataItem} and the doBadness value of
      * our parameter {@code ClockDataItem o}.
      *
      * @param   o the object to be compared.
@@ -97,7 +99,7 @@ public class ClockDataItem implements Comparable<ClockDataItem> {
      */
     @Override
     public int compareTo(@NonNull ClockDataItem o) {
-        return  Double.compare(this.badness(), o.badness());
+        return  Double.compare(this.badness, o.badness);
     }
 
     /** Cache storage for our {@code orderedAngles} method */
@@ -159,8 +161,8 @@ public class ClockDataItem implements Comparable<ClockDataItem> {
      * followed by the ":" character, {@code sS} followed by the newline character, followed by the
      * string value of {@code pie[0]} followed by the newline character, followed by the string value
      * of {@code pie[1]} followed by the newline character, followed by the string value of {@code pie[2]}
-     * followed by the newline character, followed by the string value of the badness value returned
-     * by our {@code badness} method followed by the string " Badness".
+     * followed by the newline character, followed by the string value of the doBadness value returned
+     * by our {@code doBadness} method followed by the string " Badness".
      *
      * @return a string representation of our {@code ClockDataItem}.
      */
@@ -169,11 +171,12 @@ public class ClockDataItem implements Comparable<ClockDataItem> {
     public String toString() {
         Double[] pie = pieSlices();
         String sH = timeHour < 10 ? "0" + timeHour : "" + timeHour;
+        if(sH.equals("00")) sH = "12";
         String sM = timeMinute < 10 ? "0" + timeMinute: "" + timeMinute;
         String sS = timeSecond < 10 ? "0" + timeSecond : "" + timeSecond;
         return sH + ":" + sM + ":" + sS + "\n"
                 + pie[0] + "\n" + pie[1] + "\n" + pie[2] + "\n"
-                + badness() + " Badness";
+                + badness + " Badness";
     }
 
     /**

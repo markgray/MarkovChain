@@ -8,7 +8,7 @@ import java.util.Calendar;
 
 /**
  * This background task will cycle through all the seconds in a day, creating a list of ClockDataItem's
- * sorted by the {@code badness()} results of each.
+ * sorted by the {@code doBadness()} results of each.
  */
 @SuppressWarnings("WeakerAccess")
 public class ClockDataTask extends AsyncTask<ClockDataItem, ClockDataItem, ClockDataItem> {
@@ -19,7 +19,7 @@ public class ClockDataTask extends AsyncTask<ClockDataItem, ClockDataItem, Clock
     double increment = 1.0;
     public ClockDataItem clock = new ClockDataItem(h, m, s);
     public ClockDataItem bestClock = clock;
-    double bestBadness = clock.badness();
+    double bestBadness = clock.badness;
     public ClockDataItem[] hourlyBestClock = new ClockDataItem[13];
     double[] hourlyBestBadness = new double[13];
     public ClockDataItem[] minutelyBestClock = new ClockDataItem[780];
@@ -34,11 +34,11 @@ public class ClockDataTask extends AsyncTask<ClockDataItem, ClockDataItem, Clock
         super();
         for (int i = 0; i < 13; i++) {
             hourlyBestClock[i] = new ClockDataItem(i, 0, 0);
-            hourlyBestBadness[i] = hourlyBestClock[i].badness();
+            hourlyBestBadness[i] = hourlyBestClock[i].badness;
             for (int j = 0; j < 60; j++) {
                 ClockDataItem temp = new ClockDataItem(i, j, 0);
                 minutelyBestClock[temp.motd()] = temp;
-                minutelyBestBadness[temp.motd()] = temp.badness();
+                minutelyBestBadness[temp.motd()] = temp.badness;
             }
         }
     }
@@ -68,12 +68,12 @@ public class ClockDataTask extends AsyncTask<ClockDataItem, ClockDataItem, Clock
 
         for (double secondsTried = 0.0; secondsTried < secondsToTry; secondsTried += increment) {
             clock = new ClockDataItem(h, m, s);
-            if (clock.badness() < bestBadness) {
-                bestBadness = clock.badness();
+            if (clock.badness < bestBadness) {
+                bestBadness = clock.badness;
                 bestClock = clock;
             }
-            if (clock.badness() < hourlyBestBadness[h]) {
-                hourlyBestBadness[h] = clock.badness();
+            if (clock.badness < hourlyBestBadness[h]) {
+                hourlyBestBadness[h] = clock.badness;
                 hourlyBestClock[h] = clock;
             }
             s += increment;
@@ -84,9 +84,6 @@ public class ClockDataTask extends AsyncTask<ClockDataItem, ClockDataItem, Clock
                     publishProgress(hourlyBestClock[h]);
                     m = 0;
                     h++;
-                    if (h > 12) {
-                        h = 1;
-                    }
                 }
             }
         }
