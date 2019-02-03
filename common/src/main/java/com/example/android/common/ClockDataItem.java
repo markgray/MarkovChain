@@ -66,6 +66,23 @@ public class ClockDataItem implements Comparable<ClockDataItem> {
         return this;
     }
 
+    /**
+     * Initializes the fields of this instance to its parameters, and calculates the derived fields
+     * from the values of the other fields. We save our parameter {@code int hour} in our field
+     * {@code int timeHour}, our parameter {@code int minute} in our field {@code int timeMinute},
+     * and our parameter {@code double second} in our field {@code double timeSecond}. Then we calculate
+     * the angle of the second hand {@code double angleSecond} to be 6.0 times {@code second}, the angle
+     * of the minute hand {@code double angleMinute} to be 6.0 times the quantity {@code minute} plus
+     * 1 sixtieth of {@code second}, and the angle of the hour hand {@code double angleHour} to be
+     * 30.0 times the quantity {@code hour} plus 1 sixtieth of {@code minute} plus 1 thirty-six hundredth
+     * of {@code second}. We then set our field {@code double badness} to the value returned by our
+     * method {@code doBadness} ({@code doBadness} calls our method {@code doPieSlices} which initializes
+     * our field {@code double[] pieSlices}).
+     *
+     * @param hour the hour we are to represent
+     * @param minute the minute we are to represent
+     * @param second the second we are to represent
+     */
     private void init(int hour, int minute, double second) {
         timeHour = hour;
         timeMinute = minute;
@@ -76,6 +93,12 @@ public class ClockDataItem implements Comparable<ClockDataItem> {
         badness = doBadness();
     }
 
+    /**
+     * Copies the values of the fields of its parameter {@code ClockDataItem mom} to our fields (deep
+     * copy).
+     *
+     * @param mom the {@code ClockDataItem} whose fields we are to copy to ours.
+     */
     public void clone(ClockDataItem mom) {
         timeHour = mom.timeHour;
         timeMinute = mom.timeMinute;
@@ -91,13 +114,12 @@ public class ClockDataItem implements Comparable<ClockDataItem> {
 
     /**
      * Calculates how far the size of pie slices of the clock face created by the positions of the
-     * clock hands misses the perfect trisection: (120,120,120). First we check whether there is a
-     * cached result in our doBadness cache field {@code double badnessCache} and if so we return that
-     * value. We then check to see if our pie slice cache {@code double[] pieSlices} is null and
-     * if it is we call our method {@code doPieSlices} to initialize it. Next we initialize our field
-     * {@code badnessCache} to 0.0 then loop through all the {@code double slice} is {@code pieSlices}
-     * adding the absolute value of the difference between 120.0 and {@code slice} to {@code badnessCache}.
-     * When done we return {@code badnessCache} to the caller.
+     * clock hands misses the perfect trisection: (120,120,120). First we call our method {@code doPieSlices}
+     * to initialize our field {@code double[] pieSlices} to the size of the pie slices created by the
+     * angles of the clock hands. Then we initialize our variable {@code badnessValue} to 0.0 and loop
+     * through all the {@code double slice} values in {@code pieSlices} adding the absolute value of
+     * the difference between 120.0 and {@code slice} to {@code badnessValue}. When done we return
+     * {@code badnessValue} to the caller.
      *
      * @return a value indicating how far from a perfect trisection this ClockDataItem is
      */
@@ -113,7 +135,7 @@ public class ClockDataItem implements Comparable<ClockDataItem> {
     /**
      * Compares this object with the specified object for order. Returns a negative integer, zero,
      * or a positive integer as this object is less than, equal to, or greater than the specified
-     * object. We just return the value returned by the {@code compare} method of {@code double}
+     * object. We just return the value returned by the {@code compare} method of {@code Double}
      * returns when passed the doBadness value of our {@code ClockDataItem} and the doBadness value of
      * our parameter {@code ClockDataItem o}.
      *
@@ -123,66 +145,72 @@ public class ClockDataItem implements Comparable<ClockDataItem> {
      */
     @Override
     public int compareTo(@NonNull ClockDataItem o) {
-        return  Double.compare(this.badness, o.badness);
+        return Double.compare(this.badness, o.badness);
     }
 
     /**
-     * Calculates the angular sizes of the three pie slices of the clock face. If our cache of pie
-     * slices in {@code double[] pieSlices} is null we initialize it with a new instance of
-     * 3 {@code double} objects, initialize {@code double[] angles} with the ordered angles returned
-     * by our method {@code orderedAngles} then set {@code pieSlices[0]} to {@code angles[1]}
-     * minus {@code angles[0]}, set {@code pieSlices[1]} to {@code angles[2]} minus {@code angles[1]},
-     * and set {@code pieSlices[2]} to 360.0 minus {@code angles[2]} plus {@code angles[0]}.
-     * Finally we return {@code pieSlices} to the caller.
+     * Calculates the angular sizes of the three pie slices of the clock face. First we declare our
+     * variables {@code double angle1}, {@code double angle2}, and {@code double angle3} (these will
+     * be the clockwise-ordered angles of the three clock hands). Then we fall through a complex if
+     * else gauntlet which determines which of the clock hand angles {@code angleSecond}, {@code angleMinute}
+     * and {@code angleHour} to assign to {@code angle1}, {@code angle2}, and {@code angle3}. We then
+     * set {@code pieSlices[0]} to {@code angle2} minus {@code angle1}, set {@code pieSlices[1]} to
+     * {@code angle3} minus {@code angle2}, and set {@code pieSlices[2]} to 360.0 minus {@code angle3}
+     * plus {@code angle1}.
      */
     public void doPieSlices() {
-        double pie1, pie2, pie3;
+        double angle1, angle2, angle3;
         if (angleHour < angleMinute && angleHour < angleSecond) {
-            pie1 = angleHour;
+            angle1 = angleHour;
             if (angleMinute < angleSecond) {
-                pie2 = angleMinute;
-                pie3 = angleSecond;
+                angle2 = angleMinute;
+                angle3 = angleSecond;
             } else {
-                pie3 = angleMinute;
-                pie2 = angleSecond;
+                angle3 = angleMinute;
+                angle2 = angleSecond;
             }
         } else if (angleMinute < angleSecond && angleMinute < angleHour) {
-            pie1 = angleMinute;
+            angle1 = angleMinute;
             if (angleSecond < angleHour) {
-                pie2 = angleSecond;
-                pie3 = angleHour;
+                angle2 = angleSecond;
+                angle3 = angleHour;
             } else {
-                pie3 = angleSecond;
-                pie2 = angleHour;
+                angle3 = angleSecond;
+                angle2 = angleHour;
             }
         } else {
-            pie1 = angleSecond;
+            angle1 = angleSecond;
             if (angleMinute < angleHour) {
-                pie2 = angleMinute;
-                pie3 = angleHour;
+                angle2 = angleMinute;
+                angle3 = angleHour;
             } else {
-                pie3 = angleMinute;
-                pie2 = angleHour;
+                angle3 = angleMinute;
+                angle2 = angleHour;
             }
         }
-        pieSlices[0] = pie2 - pie1;
-        pieSlices[1] = pie3 - pie2;
-        pieSlices[2] = (360.0 - pie3) + pie1;
+        pieSlices[0] = angle2 - angle1;
+        pieSlices[1] = angle3 - angle2;
+        pieSlices[2] = (360.0 - angle3) + angle1;
     }
 
     /**
-     * Returns a string representation of our {@code ClockDataItem}. We initialize our variable
-     * {@code double[] pie} with the array of pie slices calculated by our method {@code doPieSlices},
-     * then initialize {@code String sH} with the string value of {@code timeHour} (adding a leading
-     * 0 if it is less than 10), initialize {@code String sM} with the string value of {@code timeMinute}
-     * (adding a leading 0 if it is less than 10), and initialize {@code String sS} with the string
-     * value of {@code timeSecond} (adding a leading 0 if it is less than 10). Finally we return the
-     * string formed by concatenating {@code sH} followed by the ":" character, followed by {@code sM}
-     * followed by the ":" character, {@code sS} followed by the newline character, followed by the
-     * string value of {@code pie[0]} followed by the newline character, followed by the string value
-     * of {@code pie[1]} followed by the newline character, followed by the string value of {@code pie[2]}
-     * followed by the newline character, followed by the string value of the doBadness value returned
-     * by our {@code doBadness} method followed by the string " Badness".
+     * Returns a string representation of our {@code ClockDataItem}. First we initialize our variable
+     * {@code String sH} to the string formed by prepending the character "0" to the string value of
+     * our field {@code timeHour} if {@code timeHour} is less than 10 or to the string value of {@code timeHour}
+     * if {@code timeHour} is greater than or equal to 10. If {@code sH} is "00" we set it to "12"
+     * (the {@code timeHour} 12 is stored as 0, and only needs to be converted here to the normal "12").
+     * We initialize our variable {@code String sM} to the string formed by prepending the character
+     * "0" to the string value of our field {@code timeMinute} if {@code timeMinute} is less than 10
+     * or to the string value of {@code timeMinute} if {@code timeMinute} is greater than or equal to 10,
+     * and we initialize our variable {@code String sS} to the string formed by prepending the character
+     * "0" to the string value of our field {@code timeSecond} if {@code timeSecond} is less than 10
+     * or to the string value of {@code timeSecond} if {@code timeSecond} is greater than or equal to 10.
+     * Finally we return the string formed by concatenating {@code sH} followed by the ":" character
+     * followed by {@code sM} followed by the ":" character, followed by {@code sS}, followed by the
+     * newline character, followed by the string value of {@code pieSlices[0]} followed by the newline
+     * character, followed by the string value of {@code pieSlices[1]} followed by the newline character,
+     * followed by the string value of {@code pieSlices[2]} followed by the newline character, followed
+     * by the string value of {@code badness}, and terminated by the string " Badness" to  the caller.
      *
      * @return a string representation of our {@code ClockDataItem}.
      */
