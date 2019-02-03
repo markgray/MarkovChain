@@ -73,7 +73,7 @@ public class ClockDataTask extends AsyncTask<ClockDataItem, ClockDataItem, Clock
                 if (bestClock == null) {
                     bestClock = new ClockDataItem(h, m, s);
                 } else {
-                    bestClock.set(h, m, s);
+                    bestClock.clone(clock);
                 }
             }
             if (clock.badness < hourlyBestBadness[h]) {
@@ -81,7 +81,7 @@ public class ClockDataTask extends AsyncTask<ClockDataItem, ClockDataItem, Clock
                 if (hourlyBestClock[h] == null) {
                     hourlyBestClock[h] = new ClockDataItem(h, m, s);
                 } else {
-                    hourlyBestClock[h].set(h, m, s);
+                    hourlyBestClock[h].clone(clock);
                 }
             }
             s += increment;
