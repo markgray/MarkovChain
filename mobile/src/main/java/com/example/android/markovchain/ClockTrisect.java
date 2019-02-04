@@ -70,10 +70,21 @@ public class ClockTrisect extends Activity {
         outputLinearLayout = findViewById(R.id.linear_layout);
         Button button = findViewById(R.id.start_the_clock);
         button.setOnClickListener(new View.OnClickListener() {
+            /**
+             * Called when our {@code Button button} has been clicked. We initialize our variable
+             * {@code ClockDataItem clockDataItem} with an instance whose time is set to 0 hours, 0
+             * minutes and 0 seconds. We then call our method {@code createClockDataTask} to construct
+             * and initialize our field {@code ClockDataTask clockDataTask}. We divide our field
+             * {@code double increment} by 10, initialize our field {@code BenchMark benchMark} with
+             * a new instance (starting its clock) then call the {@code execute} method of {@code clockDataTask}
+             * with {@code clockDataItem} as the parameter to be passed to its {@code doInBackground}
+             * method.
+             *
+             * @param v The view that was clicked.
+             */
             @Override
             public void onClick(View v) {
                 ClockDataItem clockDataItem = new ClockDataItem(0, 0, 0);
-                addText(clockDataItem + "\n", outputLinearLayout);
                 createClockDataTask();
                 increment /= 10.0;
                 benchMark = new BenchMark();
@@ -84,17 +95,17 @@ public class ClockTrisect extends Activity {
 
     /**
      * Adds a TextView containing the {@code String text} to the {@code ViewGroup parent}. First we
-     * create a {@code TextView mText}, then we set the text of {@code TextView mText} to the
-     * {@code String text}, and finally we add the {@code TextView text} to the {@code ViewGroup parent}
-     * (our vertical {@code LinearLayout} in our case).
+     * create a {@code TextView textView}, then we set the text of {@code TextView textView} to the
+     * {@code String text}, and finally we add the {@code TextView textView} to the {@code ViewGroup parent}
+     * (our vertical {@code LinearLayout} in our case) at index 0 (the top).
      *
      * @param text text to display in the TextView we add to ViewGroup parent
      * @param parent ViewGroup to add our TextView to
      */
     public void addText(String text, final ViewGroup parent) {
-        TextView mText = new TextView(this);
-        mText.setText(text);
-        parent.addView(mText, 0);
+        TextView textView = new TextView(this);
+        textView.setText(text);
+        parent.addView(textView, 0);
     }
 
     /**
@@ -115,7 +126,14 @@ public class ClockTrisect extends Activity {
             }
             /**
              * Runs on the UI thread after {@link #doInBackground}. {@code ClockDataItem aClockDataItem}
-             * is the value returned by {@link #doInBackground}.
+             * is the value returned by {@link #doInBackground}. We initialize our variable {@code String benchResult}
+             * with the Locale.US formatted number string of the {@code long} value (elapsed time) returned
+             * by the {@code stop} method of {@code benchMark}. We then call our {@code addText} method
+             * to have it display a {@code TextView} at the top of {@code outputLinearLayout} whose text
+             * consists of the string formed by concatenating the string "Final Result: " followed by {@code benchResult}
+             * followed by the string " milliseconds\n", followed by the string value of our parameter {@code aClockDataItem}
+             * followed by the newline character. We then call the {@code sortList} method of our field
+             * {@code ClockDataAdapter adapter} to have it sort its data set TODO: use our ClockDataAdapter
              *
              * @param aClockDataItem The result of the operation computed by {@link #doInBackground}.
              */
@@ -125,7 +143,17 @@ public class ClockTrisect extends Activity {
                 addText("Final Result: " + benchResult + " milliseconds\n" + aClockDataItem + "\n", outputLinearLayout);
                 adapter.sortList();
             }
-
+            /**
+             * Runs on the UI thread after {@link #publishProgress} is invoked. The specified values
+             * are the values passed to {@link #publishProgress}. We then call our {@code addText} method
+             * to have it display a {@code TextView} at the top of {@code outputLinearLayout} whose text
+             * consists of the string formed by concatenating the string value of our parameter
+             * {@code ClockDataItem values[0]} followed by a newline character. We then call the
+             * {@code addToDataSet} method of our field {@code ClockDataAdapter adapter} to add
+             * {@code values[0]} to its data set.
+             *
+             * @param values The {@code ClockDataItem} with the best "badness" for the hour just tried.
+             */
             @Override
             protected void onProgressUpdate(ClockDataItem... values) {
                 addText(values[0] + "\n", outputLinearLayout);
