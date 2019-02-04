@@ -10,19 +10,58 @@ import com.example.android.common.ClockDataItem;
  */
 @SuppressWarnings("WeakerAccess")
 public class ClockDataTask extends AsyncTask<ClockDataItem, ClockDataItem, ClockDataItem> {
-
+    /**
+     * The hour we are currently working on
+     */
     int h;
+    /**
+     * The minute we are currently working on
+     */
     int m;
+    /**
+     * The second we are currently working on
+     */
     double s;
+    /**
+     * The fraction of a second we are to increment by
+     */
     double increment = 1.0;
+    /**
+     * The {@code ClockDataItem} whose badness we are currently considering.
+     */
     public ClockDataItem clock = new ClockDataItem(0, 0, 0);
+    /**
+     * The best trisection of the clock face we have found so far.
+     */
     public ClockDataItem bestClock;
+    /**
+     * The {@code badness} of the best trisection of the clock face we have found so far.
+     */
     double bestBadness = clock.badness;
-    public ClockDataItem[] hourlyBestClock = new ClockDataItem[13];
-    double[] hourlyBestBadness = new double[13];
-    public ClockDataItem[] minutelyBestClock = new ClockDataItem[780];
-    double[] minutelyBestBadness = new double[780];
+    /**
+     * The best trisection of the clock face for each hour that we have found so far.
+     */
+    public ClockDataItem[] hourlyBestClock = new ClockDataItem[12];
+    /**
+     * The {@code badness} of the best trisection of the clock face for each hour.
+     */
+    double[] hourlyBestBadness = new double[12];
+    /**
+     * The best trisection of the clock face for each minute that we have found so far.
+     */
+    public ClockDataItem[] minutelyBestClock = new ClockDataItem[720];
+    /**
+     * The {@code badness} of the best trisection of the clock face for each minute.
+     */
+    double[] minutelyBestBadness = new double[720];
 
+    /**
+     * Our constructor which allows the value of our increment to be specified as its parameter. We
+     * call our zero parameter constructor then set our field {@code double increment} to our parameter
+     * {@code double inc}.
+     *
+     * @param inc the time increment in seconds we are to use to search with
+     */
     public ClockDataTask(double inc) {
         this();
         increment = inc;
@@ -30,7 +69,11 @@ public class ClockDataTask extends AsyncTask<ClockDataItem, ClockDataItem, Clock
 
     public ClockDataTask() {
         super();
-        for (int i = 0; i < 13; i++) {
+        init();
+    }
+
+    private void init() {
+        for (int i = 0; i < 12; i++) {
             hourlyBestClock[i] = new ClockDataItem(i, 0, 0);
             hourlyBestBadness[i] = hourlyBestClock[i].badness;
             for (int j = 0; j < 60; j++) {
