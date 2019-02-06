@@ -78,7 +78,7 @@ public class BibleMain extends Activity {
         initDataSet();
         setContentView(R.layout.activity_bible_fragment);
         mLayoutManager = new LinearLayoutManager(getApplicationContext());
-        mRecyclerView = (RecyclerView) findViewById(R.id.bible_recyclerview);
+        mRecyclerView = findViewById(R.id.bible_recyclerview);
         mAdapter = new BibleAdapter(stringList, bookChapterVerse, mLayoutManager);
         // Set CustomAdapter as the adapter for RecyclerView.
         mRecyclerView.setAdapter(mAdapter);
@@ -95,6 +95,7 @@ public class BibleMain extends Activity {
      */
     @Override
     protected void onPause() {
+        //noinspection ConstantConditions
         int lastFirstVisiblePosition = ((LinearLayoutManager)mRecyclerView
                 .getLayoutManager()).findFirstCompletelyVisibleItemPosition();
         saveVerseNumber(lastFirstVisiblePosition, LAST_VERSE_VIEWED);
@@ -350,13 +351,12 @@ public class BibleMain extends Activity {
      * it is ready to be used. Then we create the Thread mThread to read in the data from
      * <b>reader</b> and start that thread running.
      */
-    @SuppressWarnings("DanglingJavadoc")
     private void initDataSet() {
         final InputStream inputStream = getApplicationContext().getResources().openRawResource(R.raw.king_james_text_and_verse);
         final BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
         doneReading = false;
 
-        /**
+        /*
          * This is the thread that will do our work. First it calls <b>close()</b> on the
          * ConditionVariable mDoneReading so that other Thread's may block on mDoneReading until
          * we call <b>open()</b>. Then it proceeds to read and process every line in reader

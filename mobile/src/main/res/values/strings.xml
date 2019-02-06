@@ -40,4 +40,5 @@
     <string name="start_the_clock">Start the clock</string>
     <string name="title_activity_what_is_man">WhatIsMan</string>
     <string name="what_is_man">What is man</string>
+    <string name="waiting_for_data_to_load">Waiting for data to load…</string>
 </resources>
