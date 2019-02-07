@@ -16,10 +16,22 @@ public class WhatIsMan extends Activity {
      * {@code TextView} used to display our book chapters
      */
     TextView whatTextView;
+    /**
+     * {@code TextView} used to display "Waiting for data to load…" message while waiting
+     */
     TextView whatWaiting;
+    /**
+     * {@code LinearLayout} that we add our chapter selection {@code Button}s to.
+     */
     LinearLayout whatChapter;
+    /**
+     * {@code ScrollView} that holds the {@code LinearLayout whatChapter}
+     */
     ScrollView whatChapterScrollView;
 
+    /**
+     * List of the resource ids for the chapters in "What Is Man"
+     */
     public static final int[] resourceIDS = {
             R.raw.chapter1, R.raw.chapter2, R.raw.chapter3, R.raw.chapter4,
             R.raw.chapter5, R.raw.chapter6, R.raw.chapter7, R.raw.chapter8,
@@ -27,6 +39,9 @@ public class WhatIsMan extends Activity {
             R.raw.chapter13, R.raw.chapter14, R.raw.chapter15
     };
 
+    /**
+     * List of the titles for the chapters in "What Is Man" (used to label the selection buttons)
+     */
     public static final String[] titles = {
             "Chapter 1: What is Man?",
             "Chapter 2: The Death of Jean",
@@ -45,10 +60,30 @@ public class WhatIsMan extends Activity {
             "Chapter 15: Taming the Bicycle"
     };
 
+    /**
+     * Called when the activity is starting. First we call our super's implementation of {@code onCreate},
+     * then we set our content view to our layout file R.layout.activity_what_is_man. We initialize our
+     * field {@code LinearLayout whatChapter} by finding the view with id R.id.what_chapter (the chapter
+     * selection buttons are placed here), initialize our field {@code ScrollView whatChapterScrollView}
+     * by finding the view with id R.id.what_chapter_scrollView (holds the {@code LinearLayout whatChapter}
+     * that holds our chapter selection buttons), initialize our field {@code TextView whatTextView} by
+     * finding the view with id R.id.what_textView (the selected chapter will be displayed here), and
+     * initialize our field {@code TextView whatWaiting} by finding the view with id R.id.what_waiting
+     * (this will be displayed while our {@code WhatDataTask} loads the chapter selected from our resources).
+     * Finally we loop over {@code int i} for all of the resource ids in {@code int[] resourceIDS} calling
+     * our method {@code addButton} to add a {@code Button} to {@code whatChapter} whose title is given by
+     * {@code titles[i]} and whose {@code OnClickListener} sets the visibility of {@code whatChapterScrollView}
+     * to GONE, and calls our method {@code loadResourceHtml} to have a {@code WhatDataTask} instance load
+     * the html file with resource id {@code resourceIDS[i]} in the background into {@code whatTextView}
+     * (its {@code onPostExecute} override also changes the visibility of {@code whatWaiting} to GONE).
+     *
+     * @param savedInstanceState we do not override {@code onSaveInstanceState} so do not use
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_what_is_man);
+
         whatChapter = findViewById(R.id.what_chapter);
         whatChapterScrollView = findViewById(R.id.what_chapter_scrollView);
         whatTextView = findViewById(R.id.what_textView);
@@ -58,6 +93,18 @@ public class WhatIsMan extends Activity {
         }
     }
 
+    /**
+     * Adds a {@code Button} to its parameter {@code ViewGroup parent} whose label is given by its
+     * parameter {@code String description} and whose {@code OnClickListener} sets the visibility of
+     * the {@code ScrollView whatChapterScrollView} that holds our chapter selection UI to GONE and
+     * calls our method {@code loadResourceHtml} to have it load and display the Html resource file
+     * with id {@code int resourceID} in the background.
+     *
+     * @param resourceID  resource ID that our button's {@code OnClickListener} should call the method
+     *                    {@code loadResourceHtml}to load in the background.
+     * @param description Label for our {@code Button}
+     * @param parent      {@code ViewGroup} we should add our {@code Button} to.
+     */
     public void addButton(final int resourceID, String description, ViewGroup parent) {
         Button button = new Button(this);
         button.setText(description);
