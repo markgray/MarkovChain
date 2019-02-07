@@ -28,4 +28,19 @@
         android:visibility="visible"
         android:text="@string/waiting_for_data_to_load"/>
 
+    <ScrollView
+        android:id="@+id/what_chapter_scrollView"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent">
+
+        <LinearLayout
+            android:id="@+id/what_chapter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        </LinearLayout>
+    </ScrollView>
+
+
 </FrameLayout>
