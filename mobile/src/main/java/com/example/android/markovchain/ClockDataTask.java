@@ -29,7 +29,7 @@ public class ClockDataTask extends AsyncTask<ClockDataItem, ClockDataItem, Clock
     /**
      * The {@code ClockDataItem} whose badness we are currently considering.
      */
-    public ClockDataItem clock = new ClockDataItem(0, 0, 0);
+    public ClockDataItem trialClock = new ClockDataItem(0, 0, 0);
     /**
      * The best trisection of the clock face we have found so far.
      */
@@ -37,7 +37,7 @@ public class ClockDataTask extends AsyncTask<ClockDataItem, ClockDataItem, Clock
     /**
      * The {@code badness} of the best trisection of the clock face we have found so far.
      */
-    double bestBadness = clock.badness;
+    double bestBadness = trialClock.badness;
     /**
      * The best trisection of the clock face for each hour that we have found so far.
      */
@@ -115,18 +115,18 @@ public class ClockDataTask extends AsyncTask<ClockDataItem, ClockDataItem, Clock
      *         some increments finish looping before we have a chance to publish that last hour's best).
      *     </li>
      *     <li>
-     *         We set the time held by our field {@code ClockDataItem clock} to {@code h} hours, {@code m}
+     *         We set the time held by our field {@code ClockDataItem trialClock} to {@code h} hours, {@code m}
      *         minutes and {@code s} seconds.
      *     </li>
      *     <li>
-     *         If the {@code badness} field of {@code clock} is less than our {@code bestBadness} we have
+     *         If the {@code badness} field of {@code trialClock} is less than our {@code bestBadness} we have
      *         found a new best trisection, so we set {@code bestBadness} to the {@code badness} field of
-     *         {@code clock} and if {@code bestClock} is null we initialize it with a new instance whose
+     *         {@code trialClock} and if {@code bestClock} is null we initialize it with a new instance whose
      *         time is set to {@code h} hours, {@code m} minutes and {@code s} seconds, and if {@code bestClock}
      *         is not null we clone {@code temp} into it by calling its {@code clone} method.
      *     </li>
      *     <li>
-     *         If the {@code badness} field of {@code clock} is less than our the value for the best badness
+     *         If the {@code badness} field of {@code trialClock} is less than our the value for the best badness
      *         of hour {@code h} contained in {@code hourlyBestBadness[h]} we have found a new best trisection
      *         for hour {@code h}, so we set {@code hourlyBestBadness[h]} to the {@code badness} field of
      *         {@code temp} and if {@code hourlyBestClock[h]} is null we initialize it with a new instance whose
@@ -167,21 +167,21 @@ public class ClockDataTask extends AsyncTask<ClockDataItem, ClockDataItem, Clock
 
         for (double secondsTried = 0.0; secondsTried < secondsToTry; secondsTried += increment) {
             publishedLastHour = false;
-            clock.set(h, m, s);
-            if (clock.badness < bestBadness) {
-                bestBadness = clock.badness;
+            trialClock.set(h, m, s);
+            if (trialClock.badness < bestBadness) {
+                bestBadness = trialClock.badness;
                 if (bestClock == null) {
                     bestClock = new ClockDataItem(h, m, s);
                 } else {
-                    bestClock.clone(clock);
+                    bestClock.clone(trialClock);
                 }
             }
-            if (clock.badness < hourlyBestBadness[h]) {
-                hourlyBestBadness[h] = clock.badness;
+            if (trialClock.badness < hourlyBestBadness[h]) {
+                hourlyBestBadness[h] = trialClock.badness;
                 if (hourlyBestClock[h] == null) {
                     hourlyBestClock[h] = new ClockDataItem(h, m, s);
                 } else {
-                    hourlyBestClock[h].clone(clock);
+                    hourlyBestClock[h].clone(trialClock);
                 }
             }
             s += increment;

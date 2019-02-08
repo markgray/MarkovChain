@@ -18,8 +18,8 @@ import java.text.NumberFormat;
 import java.util.Locale;
 
 /**
- * Searches for the time of day when the hands of a clock comes closest to trisecting the face of
- * the clock.
+ * Searches for the time of day when the hands of a trialClock comes closest to trisecting the face of
+ * the trialClock.
  */
 public class ClockTrisect extends Activity {
     /**
@@ -52,10 +52,10 @@ public class ClockTrisect extends Activity {
      * {@code onCreate}, then we set our content view to our layout file R.layout.activity_clock_trisect.
      * We initialize our field {@code LinearLayout outputLinearLayout} by finding the view with id
      * R.id.linear_layout, and our variable {@code Button button} by finding the view with id
-     * R.id.start_the_clock ("Start the clock"). Finally we set the {@code OnClickListener} of
+     * R.id.start_the_clock ("Start the trialClock"). Finally we set the {@code OnClickListener} of
      * {@code button} to an anonymous class whose {@code onClick} override calls our method
      * {@code createClockDataTask} to initialize our field {@code ClockDataTask clockDataTask},
-     * initializes our field {@code BenchMark benchMark} (starting its clock) then calls the
+     * initializes our field {@code BenchMark benchMark} (starting its trialClock) then calls the
      * {@code execute} method of {@code clockDataTask} to start it running (its {@code doInBackground}
      * method will be called with the value of {@code clockDataItem} as its parameter).
      * TODO: Remove all the crud!
@@ -76,7 +76,7 @@ public class ClockTrisect extends Activity {
              * minutes and 0 seconds. We then call our method {@code createClockDataTask} to construct
              * and initialize our field {@code ClockDataTask clockDataTask}. We divide our field
              * {@code double increment} by 10, initialize our field {@code BenchMark benchMark} with
-             * a new instance (starting its clock) then call the {@code execute} method of {@code clockDataTask}
+             * a new instance (starting its trialClock) then call the {@code execute} method of {@code clockDataTask}
              * with {@code clockDataItem} as the parameter to be passed to its {@code doInBackground}
              * method.
              *
