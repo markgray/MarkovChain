@@ -25,13 +25,13 @@
         android:id="@+id/what_waiting"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="visible"
-        android:text="@string/waiting_for_data_to_load"/>
+        android:text="@string/waiting_for_data_to_load"
+        android:visibility="visible" />
 
     <ScrollView
         android:id="@+id/what_chapter_scrollView"
-        android:layout_height="match_parent"
-        android:layout_width="match_parent">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:id="@+id/what_chapter"
