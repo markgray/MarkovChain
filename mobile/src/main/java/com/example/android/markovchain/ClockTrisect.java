@@ -46,6 +46,7 @@ public class ClockTrisect extends Activity {
      * The {@code BenchMark} which times how long it takes to do all our calculations
      */
     BenchMark benchMark;
+    ClockDataItem[] minuteBestClock = null;
 
     /**
      * Called when the {@code Activity} is starting. First we call our super's implementation of
@@ -84,11 +85,10 @@ public class ClockTrisect extends Activity {
              */
             @Override
             public void onClick(View v) {
-                ClockDataItem clockDataItem = new ClockDataItem(0, 0, 0);
                 createClockDataTask();
                 increment /= 10.0;
                 benchMark = new BenchMark();
-                clockDataTask.execute(clockDataItem);
+                clockDataTask.execute(minuteBestClock);
             }
         });
     }
@@ -161,5 +161,8 @@ public class ClockTrisect extends Activity {
                 adapter.addToDataSet(values[0]);
             }
         };
+        if (minuteBestClock == null) {
+            minuteBestClock = clockDataTask.init();
+        }
     }
 }
