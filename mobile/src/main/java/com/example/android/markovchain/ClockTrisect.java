@@ -31,6 +31,10 @@ public class ClockTrisect extends Activity {
      */
     private double increment = 1.0;
     /**
+     * The precision needed to format the current {@code increment}
+     */
+    private int incrementPrecision = 0;
+    /**
      * {@code LinearLayout} we add our results to TODO: Change to RecyclerView you lazy bum.
      */
     LinearLayout outputLinearLayout;
@@ -88,8 +92,10 @@ public class ClockTrisect extends Activity {
              */
             @Override
             public void onClick(View v) {
+                ClockDataItem.secondFormat = "%0" + (incrementPrecision + 2) + "." + incrementPrecision + "f";
                 createClockDataTask();
-                increment /= 10.0;     // TODO: change button's label, and format of seconds
+                increment /= 10.0;     // TODO: change button's label
+                incrementPrecision++;
                 benchMark = new BenchMark();
                 clockDataTask.execute(minuteBestClock);
             }
