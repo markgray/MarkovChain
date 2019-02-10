@@ -1,5 +1,8 @@
 package com.example.android.common;
 
+import java.util.Formatter;
+import java.util.Locale;
+
 import androidx.annotation.NonNull;
 
 /**
@@ -8,6 +11,10 @@ import androidx.annotation.NonNull;
 @SuppressWarnings("WeakerAccess")
 public class ClockDataItem implements Comparable<ClockDataItem> {
 
+    /**
+     * Format string to use for the formatting of our {@code double timeSecond} field.
+     */
+    public static String secondFormat = "%06.4f";
     /**
      * The hour of the day we represent
      */
@@ -195,35 +202,35 @@ public class ClockDataItem implements Comparable<ClockDataItem> {
 
     /**
      * Returns a string representation of our {@code ClockDataItem}. First we initialize our variable
-     * {@code String sH} to the string formed by prepending the character "0" to the string value of
-     * our field {@code timeHour} if {@code timeHour} is less than 10 or to the string value of {@code timeHour}
-     * if {@code timeHour} is greater than or equal to 10. If {@code sH} is "00" we set it to "12"
-     * (the {@code timeHour} 12 is stored as 0, and only needs to be converted here to the normal "12").
-     * We initialize our variable {@code String sM} to the string formed by prepending the character
-     * "0" to the string value of our field {@code timeMinute} if {@code timeMinute} is less than 10
-     * or to the string value of {@code timeMinute} if {@code timeMinute} is greater than or equal to 10,
-     * and we initialize our variable {@code String sS} to the string formed by prepending the character
-     * "0" to the string value of our field {@code timeSecond} if {@code timeSecond} is less than 10
-     * or to the string value of {@code timeSecond} if {@code timeSecond} is greater than or equal to 10.
-     * Finally we return the string formed by concatenating {@code sH} followed by the ":" character
-     * followed by {@code sM} followed by the ":" character, followed by {@code sS}, followed by the
-     * newline character, followed by the string value of {@code pieSlices[0]} followed by the newline
-     * character, followed by the string value of {@code pieSlices[1]} followed by the newline character,
-     * followed by the string value of {@code pieSlices[2]} followed by the newline character, followed
-     * by the string value of {@code badness}, and terminated by the string " Badness" to  the caller.
-     * TODO: use a Formatter and a static settable format string for timeSecond
+     * {@code StringBuilder sb} with a new instance, and initialize {@code Formatter formatter} with
+     * an instance which will use {@code sb} as the destination {@code StringBuilder} and apply the
+     * US {@code Locale} for the localization. If {@code timeHour} is 0 we initialize our variable
+     * {@code int tempHour} to 12, otherwise initializing it to {@code timeHour}. We then have
+     * {@code formatter} append to {@code sb} the value of {@code tempHour} formatting using the
+     * format string "%02d:", append the value of {@code timeMinute} formatting using the format string
+     * "%02d:", and append the value of {@code timeSecond} formatting using the format string in our
+     * static public field {@code secondFormat}. We then append to {@code sb} a newline character
+     * followed by the three values in our field {@code double[] pieSlices} each terminated by a
+     * newline character, followed by the value of our {@code badness} field and ending by appending
+     * the string " Badness". Finally we return the string value of {@code sb} to the caller.
      *
      * @return a string representation of our {@code ClockDataItem}.
      */
     @NonNull
     @Override
     public String toString() {
-        String sH = timeHour < 10 ? "0" + timeHour : "" + timeHour;
-        if(sH.equals("00")) sH = "12";
-        String sM = timeMinute < 10 ? "0" + timeMinute: "" + timeMinute;
-        String sS = timeSecond < 10 ? "0" + timeSecond : "" + timeSecond;
-        return sH + ":" + sM + ":" + sS + "\n"
-                + pieSlices[0] + "\n" + pieSlices[1] + "\n" + pieSlices[2] + "\n"
-                + badness + " Badness";
+        StringBuilder sb = new StringBuilder();
+        Formatter formatter = new Formatter(sb, Locale.US);
+
+        int tempHour = timeHour == 0 ? 12 : timeHour;
+        formatter.format("%02d:", tempHour);
+        formatter.format("%02d:", timeMinute);
+        formatter.format(secondFormat, timeSecond);
+        sb.append("\n");
+        sb.append(pieSlices[0]).append("\n");
+        sb.append(pieSlices[1]).append("\n");
+        sb.append(pieSlices[2]).append("\n");
+        sb.append(badness).append(" Badness");
+        return sb.toString();
     }
 }
