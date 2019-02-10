@@ -50,6 +50,56 @@ public class ClockDataTask extends AsyncTask<ClockDataItem, ClockDataItem, Clock
         super();
     }
 
+    /**
+     * We override this method to perform a computation on a background thread. The parameters is the
+     * {@code ClockDataItem} array containing the best trisection of the clock for every minute of
+     * the half day so far passed to {@link #execute} by the caller of this task, and entries are
+     * updated here or deleted if they are too bad to be improved by another iteration (a badness
+     * greater than 12 degrees cannot be improved by further fine adjustment of the second hand).
+     * We call {@link #publishProgress} to publish updates on the UI thread to each "best trisection".
+     * <p>
+     * We initialize our variable {@code int indexToMinute} to 0 (it will point to the {@code ClockDataItem}
+     * of the minute whose seconds we are searching for a better trisection). Then we loop over {@code h}
+     * for the 12 hours of our clock, and in an inner loop loop over {@code m} for the 60 minutes in each
+     * hour:
+     * <ul>
+     *     <li>
+     *         If the next minute's {@code ClockDataItem} in {@code params[indexToMinute]} is null, we
+     *         skip it just incrementing {@code indexToMinute}.
+     *     </li>
+     *     <li>
+     *         Otherwise we set our field {@code double s} to 0.0, then loop while {@code s} is less than
+     *         60.0, setting the time in {@code ClockDataItem trialClock} to {@code h} hour, {@code m}
+     *         minute and {@code s} second and if the {@code badness} field of {@code trialClock} is
+     *         less than the {@code badness} field of {@code params[indexToMinute]} we clone {@code trialClock}
+     *         into {@code params[indexToMinute]}, in either case we then add {@code increment} to {@code s}
+     *         and loop around for the next trial time.
+     *     </li>
+     *     <li>
+     *         When done considering all of the seconds in {@code params[indexToMinute]} if the {@code badness}
+     *         field of {@code params[indexToMinute]} is less than 12.0 we call {@code publishProgress} to
+     *         have the {@code onProgressUpdate} override output the string value of {@code params[indexToMinute]}.
+     *         If on the other hand the {@code badness} is greater than or equal to 12.0 we set {@code params[indexToMinute]}
+     *         to null so it will no longer be considered (a second spans a 6 degree arc so no further fine
+     *         adjustment of the second can possibly correct for this).
+     *     </li>
+     *     <li>
+     *         We then increment {@code indexToMinute} and loop around to explore the next minute in
+     *         {@code ClockDataItem[] params}.
+     *     </li>
+     * </ul>
+     * When done with all the minutes in {@code params} we initialize {@code ClockDataItem bestClock}
+     * with a new instance for the time 12:00:00 (a very bad {@code badness} needless to say) then
+     * loop through all the {@code ClockDataItem clockDataItem} in {@code params} and if the {@code badness}
+     * of the current {@code ClockDataItem clockDataItem} is not null we check whether its {@code badness}
+     * field is less than the {@code badness} field of {@code bestClock} and if so we clone {@code clockDataItem}
+     * into {@code bestClock}. When done searching {@code params} we return {@code bestClock} to the
+     * caller to have our {@code onPostExecute} override output it to the user.
+     *
+     * @param params a {@code ClockDataItem[]} array containing the best trisection for every minute
+     *               as calculated by previous running of {@code ClockDataTask}
+     * @return a {@code ClockDataItem} representing the best trisection of the clock
+     */
     protected ClockDataItem doInBackground(ClockDataItem... params) {
         int indexToMinute = 0;
         for (h = 0; h < 12; h++) {

@@ -211,6 +211,7 @@ public class ClockDataItem implements Comparable<ClockDataItem> {
      * character, followed by the string value of {@code pieSlices[1]} followed by the newline character,
      * followed by the string value of {@code pieSlices[2]} followed by the newline character, followed
      * by the string value of {@code badness}, and terminated by the string " Badness" to  the caller.
+     * TODO: use a Formatter and a static settable format string for timeSecond
      *
      * @return a string representation of our {@code ClockDataItem}.
      */
@@ -224,14 +225,5 @@ public class ClockDataItem implements Comparable<ClockDataItem> {
         return sH + ":" + sM + ":" + sS + "\n"
                 + pieSlices[0] + "\n" + pieSlices[1] + "\n" + pieSlices[2] + "\n"
                 + badness + " Badness";
-    }
-
-    /**
-     * Returns the minute of the day that this {@code ClockDataItem} belongs to (0-719).
-     *
-     * @return the minute of the day that this {@code ClockDataItem} belongs to (0-719).
-     */
-    public int motd() {
-        return timeHour * 60 + timeMinute;
     }
 }

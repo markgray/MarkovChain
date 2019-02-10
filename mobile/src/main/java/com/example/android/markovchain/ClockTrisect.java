@@ -46,6 +46,9 @@ public class ClockTrisect extends Activity {
      * The {@code BenchMark} which times how long it takes to do all our calculations
      */
     BenchMark benchMark;
+    /**
+     * The array of {@code ClockDataItem} objects for the best trisection for each minute on the clock
+     */
     ClockDataItem[] minuteBestClock = null;
 
     /**
@@ -86,7 +89,7 @@ public class ClockTrisect extends Activity {
             @Override
             public void onClick(View v) {
                 createClockDataTask();
-                increment /= 10.0;
+                increment /= 10.0;     // TODO: change button's label, and format of seconds
                 benchMark = new BenchMark();
                 clockDataTask.execute(minuteBestClock);
             }
@@ -111,6 +114,8 @@ public class ClockTrisect extends Activity {
     /**
      * Creates an anonymous {@code ClockDataTask} for the current value of our field {@code double increment},
      * overriding the {@code onPreExecute}, {@code onPostExecute}, and {@code onProgressUpdate} methods.
+     * If our field {@code ClockDataItem[] minuteBestClock} is null, we initialize it with the array
+     * returned by the {@code init} method of {@code clockDataTask}. TODO: move init() into this class
      */
     @SuppressLint("StaticFieldLeak")
     public void createClockDataTask() {
@@ -145,7 +150,7 @@ public class ClockTrisect extends Activity {
             }
             /**
              * Runs on the UI thread after {@link #publishProgress} is invoked. The specified values
-             * are the values passed to {@link #publishProgress}. We then call our {@code addText} method
+             * are the values passed to {@link #publishProgress}. We call our {@code addText} method
              * to have it display a {@code TextView} at the top of {@code outputLinearLayout} whose text
              * consists of the string formed by concatenating the string value of our parameter
              * {@code ClockDataItem values[0]} followed by a newline character. We then call the
