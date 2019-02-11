@@ -120,6 +120,7 @@ public class WhatIsMan extends Activity {
             @Override
             public void onClick(View v) {
                 whatChapterScrollView.setVisibility(View.GONE);
+                whatWaiting.setVisibility(View.VISIBLE);
                 loadResourceHtml(resourceID);
             }
         });
