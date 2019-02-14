@@ -11,7 +11,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.android.common.BenchMark;
-import com.example.android.common.ClockDataAdapter;
 import com.example.android.common.ClockDataItem;
 
 import java.text.NumberFormat;
@@ -35,13 +34,9 @@ public class ClockTrisect extends Activity {
      */
     private int incrementPrecision = 0;
     /**
-     * {@code LinearLayout} we add our results to TODO: Change to RecyclerView you lazy bum.
+     * {@code LinearLayout} we add our results to
      */
     LinearLayout outputLinearLayout;
-    /**
-     * The {@code RecyclerView.Adapter} we will eventually use instead of {@code LinearLayout outputLinearLayout}
-     */
-    ClockDataAdapter adapter = new ClockDataAdapter();
     /**
      * The {@code AsyncTask} which does all our calculations
      */
@@ -143,8 +138,7 @@ public class ClockTrisect extends Activity {
              * to have it display a {@code TextView} at the top of {@code outputLinearLayout} whose text
              * consists of the string formed by concatenating the string "Final Result: " followed by {@code benchResult}
              * followed by the string " milliseconds\n", followed by the string value of our parameter {@code aClockDataItem}
-             * followed by the newline character. We then call the {@code sortList} method of our field
-             * {@code ClockDataAdapter adapter} to have it sort its data set TODO: use our ClockDataAdapter
+             * followed by the newline character.
              *
              * @param aClockDataItem The result of the operation computed by {@link #doInBackground}.
              */
@@ -152,7 +146,6 @@ public class ClockTrisect extends Activity {
             protected void onPostExecute(ClockDataItem aClockDataItem) {
                 String benchResult = NumberFormat.getNumberInstance(Locale.US).format(benchMark.stop());
                 addText("Final Result: " + benchResult + " milliseconds\n" + aClockDataItem + "\n", outputLinearLayout);
-                adapter.sortList();
             }
             /**
              * Runs on the UI thread after {@link #publishProgress} is invoked. The specified values
@@ -169,7 +162,6 @@ public class ClockTrisect extends Activity {
             protected void onProgressUpdate(ClockDataItem... values) {
                 addText(values[0] + "\n", outputLinearLayout);
                 Log.i(TAG, "Posting Hourly best for: " + values[0].timeHour);
-                adapter.addToDataSet(values[0]);
             }
         };
         if (minuteBestClock == null) {
