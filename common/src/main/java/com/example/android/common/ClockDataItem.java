@@ -44,7 +44,8 @@ public class ClockDataItem implements Comparable<ClockDataItem> {
      */
     public double[] pieSlices = new double[3];
     /**
-     * How bad is our trisection (the sum of the absolute values when compared to perfect trisection)
+     * How bad is our trisection (the sum of the absolute values when each {@code double[] pieSlice}
+     * is compared to a perfect trisection of 120 degrees)
      */
     public double badness;
 
@@ -74,9 +75,9 @@ public class ClockDataItem implements Comparable<ClockDataItem> {
     }
 
     /**
-     * Initializes the fields of this instance to its parameters, and calculates the derived fields
-     * from the values of the other fields. We save our parameter {@code int hour} in our field
-     * {@code int timeHour}, our parameter {@code int minute} in our field {@code int timeMinute},
+     * Initializes the time of day fields of this instance to its parameters, and calculates the
+     * derived fields from the values of the these fields. We save our parameter {@code int hour} in
+     * our field {@code int timeHour}, our parameter {@code int minute} in our field {@code int timeMinute},
      * and our parameter {@code double second} in our field {@code double timeSecond}. Then we calculate
      * the angle of the second hand {@code double angleSecond} to be 6.0 times {@code second}, the angle
      * of the minute hand {@code double angleMinute} to be 6.0 times the quantity {@code minute} plus
@@ -101,8 +102,8 @@ public class ClockDataItem implements Comparable<ClockDataItem> {
     }
 
     /**
-     * Copies the values of the fields of its parameter {@code ClockDataItem mom} to our fields (deep
-     * copy).
+     * Copies the values of all the fields of its parameter {@code ClockDataItem mom} to our fields
+     * (deep copy).
      *
      * @param mom the {@code ClockDataItem} whose fields we are to copy to ours.
      */
@@ -142,9 +143,9 @@ public class ClockDataItem implements Comparable<ClockDataItem> {
     /**
      * Compares this object with the specified object for order. Returns a negative integer, zero,
      * or a positive integer as this object is less than, equal to, or greater than the specified
-     * object. We just return the value returned by the {@code compare} method of {@code Double}
-     * returns when passed the doBadness value of our {@code ClockDataItem} and the doBadness value of
-     * our parameter {@code ClockDataItem o}.
+     * object. We just return the value that the {@code compare} method of {@code Double} returns
+     * when passed the {@code badness} field of our {@code ClockDataItem} and the {@code badness}
+     * field of our parameter {@code ClockDataItem o}.
      *
      * @param   o the object to be compared.
      * @return  a negative integer, zero, or a positive integer as this object
@@ -163,7 +164,7 @@ public class ClockDataItem implements Comparable<ClockDataItem> {
      * and {@code angleHour} to assign to {@code angle1}, {@code angle2}, and {@code angle3}. We then
      * set {@code pieSlices[0]} to {@code angle2} minus {@code angle1}, set {@code pieSlices[1]} to
      * {@code angle3} minus {@code angle2}, and set {@code pieSlices[2]} to 360.0 minus {@code angle3}
-     * plus {@code angle1}.
+     * plus {@code angle1}. TODO: benchmark the gauntlet versus a library sort of the angles
      */
     public void doPieSlices() {
         double angle1, angle2, angle3;
@@ -210,9 +211,10 @@ public class ClockDataItem implements Comparable<ClockDataItem> {
      * format string "%02d:", append the value of {@code timeMinute} formatting using the format string
      * "%02d:", and append the value of {@code timeSecond} formatting using the format string in our
      * static public field {@code secondFormat}. We then append to {@code sb} a newline character
-     * followed by the three values in our field {@code double[] pieSlices} each terminated by a
-     * newline character, followed by the value of our {@code badness} field and ending by appending
-     * the string " Badness". Finally we return the string value of {@code sb} to the caller.
+     * followed by the string value of the three values in our field {@code double[] pieSlices} each
+     * terminated by a newline character, followed by the string value of our {@code badness} field
+     * and ending by appending the string " Badness". Finally we return the string value of {@code sb}
+     * to the caller.
      *
      * @return a string representation of our {@code ClockDataItem}.
      */
