@@ -3,6 +3,8 @@ package com.example.android.common;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -95,7 +97,7 @@ public class MarkovAdapter extends RecyclerView.Adapter<MarkovAdapter.ViewHolder
                     return true;
                 }
             });
-            textView = (TextView) v.findViewById(R.id.vTextView);
+            textView = v.findViewById(R.id.vTextView);
             //noinspection UnnecessaryBoxing
             markovStats = new MarkovStats();
         }
@@ -113,6 +115,7 @@ public class MarkovAdapter extends RecyclerView.Adapter<MarkovAdapter.ViewHolder
             return markovStats;
         }
 
+        @SuppressWarnings("unused")
         public void setPossibles(MarkovStats possibles) {
             markovStats = possibles;
         }
@@ -141,8 +144,9 @@ public class MarkovAdapter extends RecyclerView.Adapter<MarkovAdapter.ViewHolder
      * @see #getItemViewType(int)
      * @see #onBindViewHolder(ViewHolder, int)
      */
+    @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         // Create a new view.
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.line_list_item, parent, false);
@@ -172,7 +176,7 @@ public class MarkovAdapter extends RecyclerView.Adapter<MarkovAdapter.ViewHolder
      * @param position The position of the item within the adapter's data set.
      */
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Log.d(TAG, "Element " + position + " set.");
 
         // Get element from your data set at this position and replace the contents of the view
@@ -181,7 +185,7 @@ public class MarkovAdapter extends RecyclerView.Adapter<MarkovAdapter.ViewHolder
     }
 
     /**
-     * Returns the total number of items in the data set hold by the adapter. We just return an
+     * Returns the total number of items in the data set held by the adapter. We just return an
      * arbitrary number since Markov starts over at the beginning of its state table whenever
      * it encounters the end of the table thus generating an infinite number of random lines.
      * TODO: ponder returning a more useful value.

@@ -4,8 +4,6 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.os.Build;
 import android.os.Bundle;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -16,9 +14,11 @@ import com.example.android.common.Markov;
 import com.example.android.common.MarkovAdapter;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1)
 public class BibleMarkovFragment extends Activity {
@@ -55,8 +55,8 @@ public class BibleMarkovFragment extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bible_markov_fragment);
 
-        mProgressBar = (ProgressBar) findViewById(R.id.bible_markov_fragment_progress);
-        mRecyclerView = (RecyclerView) findViewById(R.id.bible_markov_fragment);
+        mProgressBar = findViewById(R.id.bible_markov_fragment_progress);
+        mRecyclerView = findViewById(R.id.bible_markov_fragment);
         mLayoutManager = new LinearLayoutManager(getApplicationContext());
 
         initMarkov();
@@ -110,18 +110,14 @@ public class BibleMarkovFragment extends Activity {
         InputStream inputStream = getApplicationContext().getResources().openRawResource(R.raw.king_james_state_table);
         final BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
 
-        /**
+        /*
          * This is the thread that will do our work. Pretty much self explanatory since Markov.load
          * does all the work. We just wrap the call in a "try" in order to catch IOException
          */
         final Thread mThread = new Thread() {
             @Override
             public void run() {
-                try {
-                    mMarkov.load(reader);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                mMarkov.load(reader);
             }
         };
         mThread.start();

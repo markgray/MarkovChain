@@ -15,17 +15,32 @@ import java.util.*;
  */
 @SuppressWarnings("WeakerAccess")
 public class Markov {
-    static final String TAG = "Markov"; // Used for log.i calls
-    public Chain chain; // Our instance's Markov chain instance
-    private DoneListener doneListener; // Optional callback class instance to invoke when class is ready to use
-    private View view; // Optional View for above DoneListener to use for Toast context
+    /**
+     * Used for log.i calls
+     */
+    static final String TAG = "Markov";
+    /**
+     * Our instance's Markov {@code Chain} instance
+     */
+    public Chain chain;
+    /**
+     * Optional callback class instance to invoke when class is ready to be used
+     */
+    private DoneListener doneListener;
+    /**
+     * Optional View for above DoneListener to use for Toast context
+     */
+    private View view;
 
     /**
-     * Sets the DoneListener doneListener and View view for this instance of Markov.
+     * Sets the fields {@code DoneListener doneListener} and {@code View view} for this instance of
+     * {@code Markov}.
      *
-     * @param doneListener DoneListener for thread calling us, we will call doneListener.onDone(view)
-     *        on the UI thread when long running process finishes.
-     * @param view View that will be passed to onDone(View), used for context
+     * @param doneListener DoneListener for thread calling us, we will call the {@code onDone(view)}
+     *                     method of {@code doneListener} on the UI thread when one of our long
+     *                     running processes finishes (either {@code build} or {@code loadStateTable})
+     * @param view         {@code View} that will be passed to {@code onDone}, it can then be used
+     *                     for {@code Context} in any {@code onDoneDo} override of {@code doneListener}
      */
     public void setDoneListener(DoneListener doneListener, View view) {
         this.view = view;
@@ -33,26 +48,31 @@ public class Markov {
     }
 
     /**
-     * This method initializes this instance of Markov by reading an existing pre-built Markov chain
-     * from a BufferedReader. It is currently called only from BibleMarkovFragment in order to read
-     * the state table for the King James Bible using a BufferedReader created from an
-     * InputStreamReader which is created from an InputStream for the file R.raw.king_james_state_table,
-     * but any kind of BufferedReader will work.
+     * This method initializes this instance of {@code Markov} by reading an existing pre-built Markov
+     * chain from a {@code BufferedReader}. It is currently called only from {@code BibleMarkovFragment}
+     * in order to read the state table for the King James Bible using a {@code BufferedReader} created
+     * from an {@code InputStreamReader} which is created from an {@code InputStream} for the file
+     * R.raw.king_james_state_table, but any kind of {@code BufferedReader} will work. We initialize
+     * our field {@code Chain chain} with a new instance then call its {@code loadStateTable} method
+     * to have it read our parameter {@code reader} and parse each line to fill its {@code stateTable}
+     * hash table field with the information contained in {@code reader}.
      *
-     * @param reader BufferedReader to read a existing Markov chain into
-     * @throws IOException If an I/O error occurs
+     * @param reader BufferedReader to read an existing Markov chain from
      */
-    public void load (BufferedReader reader) throws IOException {
+    public void load (BufferedReader reader) {
         chain = new Chain();
         chain.loadStateTable(reader);
     }
 
     /**
-     * This method initializes this instance of Markov by reading text from a reader and then
-     * building a Markov chain from that text. It is currently called only with a StringReader from
-     * ShakespeareMarkovRecycler but any kind of Reader could be used.
+     * This method initializes this instance of {@code Markov} by reading text from a {@code Reader}
+     * and then building a Markov chain from that text. It is currently called only with a {@code StringReader}
+     * from {@code ShakespeareMarkovRecycler} but any kind of {@code Reader} could be used. We initialize
+     * our field {@code Chain chain} with a new instance then call its {@code build} method to have
+     * it read our parameter {@code reader} and parse each line to fill its {@code stateTable} hash
+     * table field with the state table calculated from the text of {@code reader}.
      *
-     * @param reader Reader of raw text to read in order to construct  construct the Markov chain
+     * @param reader {@code Reader} of raw text to read in order to construct the Markov {@code Chain}
      *               our instance will use.
      * @throws IOException If an I/O error occurs
      */
@@ -62,9 +82,9 @@ public class Markov {
     }
 
     /**
-     * Called to retrieve the next sentence that is randomly generated from this instances's
-     * state table. Simply a convenience function to access the Chain.line() method of our
-     * instance's Chain chain instance.
+     * Called to retrieve the next sentence that is randomly generated from this instance's state
+     * table. Simply a convenience function to access the {@code line()} method of our instance's
+     * {@code Chain chain} instance. UNUSED apparently
      *
      * @return The next sentence generated from the Markov chain.
      */
@@ -72,19 +92,43 @@ public class Markov {
         return chain.line();
     }
 
+    /**
+     * Called to retrieve the next sentence that is randomly generated from this instance's state
+     * table, with its parameter used to store statistics about how many other random sentences could
+     * have been generated at this point instead of the one returned. Simply a convenience function
+     * to access the {@code line(MarkovStats)} method of our instance's {@code Chain chain} instance.
+     *
+     * @param possibles a {@code MarkovStats} instance to contain info about how many possible random
+     *                  lines could have been generated at this point instead of the one returned.
+     * @return The next sentence generated from the Markov chain.
+     */
     public String line(MarkovStats possibles) {
         return chain.line(possibles);
     }
 
     /**
-     * This class is used to contain, build and interact with the Markov chain state table
-     * maintained in Hashtable<Prefix, String[]> stateTable
+     * This class is used to contain, build and interact with the Markov chain state table maintained
+     * in its {@code Hashtable<Prefix, String[]> stateTable} field.
      */
     public class Chain {
-        static final String NONWORD = "%"; // "word" that can't appear
-        Hashtable<Prefix, String[]> stateTable = new Hashtable<>(); // key = Prefix, value = suffix Array
-        Prefix prefix = new Prefix(NONWORD); // initial prefix
-        Random rand = new Random(); // Used to pick a random word from suffix array to follow up the Prefix
+        /**
+         * "word" that can't appear
+         */
+        static final String NONWORD = "%";
+        /**
+         * {@code Hashtable} which is accessed by a {@code Prefix} key constructed from the last two
+         * words used to construct a sentence, and whose value is an array of words which have been
+         * known to follow those two words in the original source text.
+         */
+        Hashtable<Prefix, String[]> stateTable = new Hashtable<>();
+        /**
+         * {@code Prefix} that we are currently working with, the initial prefix is two NONWORD "words"
+         */
+        Prefix prefix = new Prefix(NONWORD);
+        /**
+         * Used to pick a random word from suffix array to follow up the Prefix
+         */
+        Random rand = new Random();
         boolean firstLine = true; // Used in method init() to decide if the Prefix prefix needs to be reset to NONWORD (TODO: necessary?)
         public boolean loaded = false; // set once chain is loaded
 
@@ -97,7 +141,7 @@ public class Markov {
          * more word or number characters), and finally specify that all characters between 0 and the
          * the space character are to be treated as whitespace characters. Having initialized our
          * StreamTokenizer to our liking we read and parse the entire Reader quotes into words
-         * (stopping when the word is of ttype StreamTokenizer.TT_EOF (the end of the stream)), and
+         * (stopping when the word is of type StreamTokenizer.TT_EOF (the end of the stream)), and
          * "add" each word to our state table by adding the word to the end of our current Prefix
          * String[] array of suffixes, and updating our Prefix prefix using the new word as the second
          * word of "prefix" and the old second word as the first word. When TT_EOF is reached we add
