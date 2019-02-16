@@ -230,19 +230,23 @@ public class Markov {
         }
 
         /**
-         * Chain add: add word to suffix list, update prefix. First we retrieve the suffix String[]
-         * array for the current Prefix prefix from our Hashtable<Prefix, String[]> stateTable, and
-         * if it is null (no prior occurrence of prefix encountered) we create a String[3] suf, set
-         * suf[0] to the first word of the current prefix, suf[1] to the second word of prefix, and
-         * set suf[2] to our argument String word, and then we create a new Prefix from the current
-         * Prefix prefix and enter the suf array into our stateTable using prefix as the key. If it
-         * is not null we need to add the new word to the end of the String suf[] array, and to do
-         * this we first create a String[] newSuf that is one String longer than the current suf,
-         * copy the current suf to newSuf, place our argument String word as the last entry in newSuf
-         * and then use newSuf to replace the current entry in our stateTable for the Prefix prefix.
-         * Finally we update the current Prefix prefix by setting the first word of prefix
-         * (prefix.pref[0]) to the second word (prefix.pref[1]), and the second word of prefix
-         * (prefix.pref[1]) to the argument String word passed to us by our caller.
+         * Chain add: add word to suffix list of {@code Prefix prefix}, and update {@code prefix}.
+         * First we retrieve the suffix array {@code String[] suf} for the current {@code Prefix prefix}
+         * from our state table {@code Hashtable<Prefix, String[]> stateTable}, and if it is null (no
+         * prior occurrence of {@code prefix} encountered) we allocate a {@code String[3]} array for
+         * {@code suf}, set {@code suf[0]} to the first word of the current prefix, {@code suf[1]}
+         * to the second word of prefix, and set {@code suf[2]} to our argument {@code String word},
+         * and then we create a new {@code Prefix} from the current {@code Prefix prefix} and store
+         * the {@code suf} array into our {@code stateTable} using {@code prefix} as the key. On the
+         * other hand if {@code suf} is not null we need to add the new word to the end of the
+         * {@code String suf[]} array, and to do this we first create a {@code String[] newSuf} that
+         * is one String longer than the current {@code suf}, copy the current {@code suf} to {@code newSuf},
+         * place our argument {@code String word} as the last entry in {@code newSuf} and then use
+         * {@code newSuf} to replace the current entry in our {@code stateTable} for the {@code Prefix prefix}.
+         * Finally we update the current {@code prefix} by setting the first word of {@code prefix}
+         * ({@code prefix.pref[0]}) to the second word ({@code prefix.pref[1]}), and the second word
+         * of {@code prefix} ({@code prefix.pref[1]}) to the argument {@code String word} passed to
+         * us by our caller.
          *
          * @param word Word to be added to the suffix list of the current Prefix prefix
          */
@@ -266,8 +270,9 @@ public class Markov {
         }
 
         /**
-         * We initialize Prefix prefix with a new instance of Prefix pointing to the first entry
-         * in the Markov chain state table: ["%", "%"]
+         * If {@code firstLine} is true (we are processing the first line of original text) we initialize
+         * {@code Prefix prefix} with a new instance of {@code Prefix} pointing to the first entry in the
+         * Markov chain state table: ["%", "%"], and set {@code firstLine} to false.
          */
         void init() {
             if (firstLine) {
@@ -279,7 +284,7 @@ public class Markov {
         /**
          * This method is used to check if the word passed it was not an end of sentence word in the
          * original text (does not contain ".", "?", or "!") and should just be added to the line
-         * being formed (returns true). If it does contain ".", "?", or "!" it returns false and'
+         * being formed (returns true). If it does contain ".", "?", or "!" it returns false and
          * the caller should start a new line after adding the word to the line being formed.
          *
          * @param word Word to check for end of sentence punctuation.
@@ -291,9 +296,9 @@ public class Markov {
 
         /**
          * This method is used to capitalize the first word of a sentence. It does this by isolating
-         * the char at position 0 (first char of the line), feeding it to the method Character.toUpperCase
-         * and concatenating that capitalized char with the rest of the original line starting at
-         * position 1 (second char of line.)
+         * the char at position 0 (first char of the line), feeding it to the {@code toUpperCase} method
+         * of {@code Character} and concatenating that capitalized char with the rest of the original
+         * line starting at position 1 (second char of line.)
          *
          * @param line String which needs the first letter capitalized (Beginning word of sentence).
          * @return String which consists of the capitalization of the first char concatenated with
@@ -305,20 +310,25 @@ public class Markov {
 
         /**
          * Uses the Markov chain state table to generate a single random sentence. First we do some
-         * initialization: create StringBuilder builder with an initial capacity of 120 characters,
-         * set our String suf to the empty string, allocate int r to hold our random number, and
-         * call init to make sure Prefix prefix is initialized.
-         * Then while our String suf is not an end of sentence word in the original text, we loop
-         * first fetching the suffix String[] array of the current Prefix prefix from the state
-         * table, performing a sanity check to make sure there is an entry for prefix (Returning the
-         * string "Error!" as our line if there is none). Then we choose a random word from the
-         * String[] array s and set String suf to it. If suf is a NONWORD (NONWORD is stored as a
-         * suffix entry when the current two word Prefix prefix occurs as the last two words in the
-         * original text) we reset the current Prefix prefix to the beginning of the state table
-         * ([NONWORD, NONWORD]) thus starting another pass through the table. Finally when we have
+         * initialization: create {@code StringBuilder builder} with an initial capacity of 120
+         * characters, initialize our variable {@code String suf} to the empty string, declare
+         * {@code int r} to hold our random number, and call {@code init} to make sure {@code Prefix prefix}
+         * is already initialized. Then while our {@code String suf} is not an end of sentence word
+         * in the original text, we loop first fetching the suffix {@code String[] s} array of the
+         * current {@code Prefix prefix} from the state table, performing a sanity check to make sure
+         * there is an entry for {@code prefix} (Returning the string "Error!" as our line if there
+         * is none). Then we choose a random word from the {@code String[]} array {@code s} and set
+         * {@code String suf} to it. If {@code suf} is a NONWORD (NONWORD is stored as a suffix entry
+         * when the current two word {@code Prefix prefix} occurs as the last two words in the original
+         * text) we reset the current {@code Prefix prefix} to the beginning of the state table
+         * ([NONWORD, NONWORD]) thus starting another pass through the table to look for a new value
+         * of {@code suf}. If {@code suf} is not NONWORD, we append {@code suf} to the end of {@code builder}
+         * followed by a space character, set the first word of {@code prefix} ({@code prefix.pref[0]})
+         * to the second word ({@code prefix.pref[1]}) and set the second word ({@code prefix.pref[1]})
+         * to {@code suf} and loop around to chose to choose another random word. Finally when we have
          * reached a random word which was at the end of a sentence in the original text, we convert
-         * our Builder builder to a String, capitalize the first word of that generated String and
-         * return it to the caller.
+         * our {@code StringBuilder builder} to a String, capitalize the first word of that generated
+         * String and return it to the caller.
          *
          * @return String to use as the next sentence of the generated nonsense.
          */
@@ -350,6 +360,35 @@ public class Markov {
             return capitalize(builder.toString());
         }
 
+        /**
+         * Uses the Markov chain state table to generate a single random sentence and updates its
+         * parameter {@code MarkovStats possibles} with statistics about that random sentence. First
+         * we do some initialization: create {@code StringBuilder builder} with an initial capacity
+         * of 120 characters, initialize our variable {@code String suf} to the empty string, declare
+         * {@code int r} to hold our random number, and call {@code init} to make sure {@code Prefix prefix}
+         * is already initialized. Then while our {@code String suf} is not an end of sentence word
+         * in the original text, we loop first fetching the suffix {@code String[] s} array of the
+         * current {@code Prefix prefix} from the state table, performing a sanity check to make sure
+         * there is an entry for {@code prefix} (Returning the string "Error!" as our line if there
+         * is none). We initialize our variable {@code int suffixes} with the length of {@code s} minus
+         * 2 and add {@code suffixes} to our parameter {@code MarkovStats possibles}. Then we set {@code r}
+         * to a random position in {@code s} and set {@code suf} to that random word. If {@code suf}
+         * is a NONWORD (NONWORD is stored as a suffix entry when the current two word {@code Prefix prefix}
+         * occurs as the last two words in the original text) we reset the current {@code Prefix prefix}
+         * to the beginning of the state table ([NONWORD, NONWORD]) thus starting another pass through
+         * the table to look for a new value of {@code suf}. If {@code suf} is not NONWORD, we append
+         * {@code suf} to the end of {@code builder} followed by a space character, set the first word
+         * of {@code prefix} ({@code prefix.pref[0]}) to the second word ({@code prefix.pref[1]}) and
+         * set the second word ({@code prefix.pref[1]}) to {@code suf} and loop around to chose to
+         * choose another random word. Finally when we have reached a random word which was at the
+         * end of a sentence in the original text, we convert our {@code StringBuilder builder} to a
+         * String, capitalize the first word of that generated String and return it to the caller.
+         *
+         * @param possibles {@code MarkovStats} instance to update with statistics about the random
+         *                  sentence we return.
+         * @return String to use as the next sentence of the generated nonsense, and an updated parameter
+         * {@code MarkovStats possibles}
+         */
         public String line(MarkovStats possibles) {
             StringBuilder builder = new StringBuilder(120);
             String suf = "";
@@ -384,18 +423,24 @@ public class Markov {
 
     /**
      * This class holds two words that appear next to each other in the original text and is used
-     * to index into a String[] array of words that were found to follow those two words in the
-     * original text that is the value of the two word key in the Markov chain state table
-     * Hashtable<Prefix, String[]> stateTable.
+     * as the key to access a {@code String[]} array of words that were found to follow those two
+     * words in the original text which is stored as the value in the Markov chain state table
+     * {@code Hashtable<Prefix, String[]> stateTable}.
      */
     public class Prefix {
-        public String[] pref;    // NPREF adjacent words from input
-        static final int MULTIPLIER = 31;    // for hashCode()
+        /**
+         * Two adjacent words from original text
+         */
+        public String[] pref;
+        /**
+         * Constant used by {@code hashCode()}
+         */
+        static final int MULTIPLIER = 31;
 
         /**
-         * Prefix constructor: duplicate existing prefix. We first allocate a String[] array of size
-         * 2 for our field String[] pref, then we copy the contents of our parameter's field to this
-         * instances field.
+         * {@code Prefix} constructor: duplicate existing prefix. We first allocate a {@code String[]}
+         * array of size 2 for our field {@code String[] pref}, then we copy the contents of our parameter's
+         * fields to this instances field.
          *
          * @param p Prefix to duplicate
          */
@@ -406,8 +451,10 @@ public class Markov {
         }
 
         /**
-         * Prefix constructor: Both words of this Prefix are set to str (only used when
-         * creating a "start of state table" key from 2 NONWORD's)
+         * {@code Prefix} constructor: Both words of this {@code Prefix} are set to our parameter
+         * {@code String str} (currently only used when creating a "start of state table" key from
+         * 2 NONWORD's). We first allocate a {@code String[]} array of size 2 for our field
+         * {@code String[] pref}, then we copy our parameter {@code str} to both of its entries.
          *
          * @param str String which will be used for both words of this Prefix
          */
@@ -419,23 +466,24 @@ public class Markov {
 
         /**
          * Prefix hashCode: generate hash from both prefix words. We use the recommended algorithm
-         * of adding the hashCode of one field to 31 times the hashCode of the other field.
+         * of adding the {@code hashCode()} of one field to 31 times the {@code hashCode()} of the
+         * other field.
          *
-         * @return Hash code value used by the system when the Hashtable<Prefix, String[]> stateTable
-         *         Markov chain state table is accessed.
+         * @return Hash code value used by the system when the Markov chain state table
+         * {@code Hashtable<Prefix, String[]> stateTable} is accessed.
          */
         @Override
         public int hashCode() {
             return MULTIPLIER * pref[0].hashCode() + pref[1].hashCode();
         }
 
-        // Prefix equals: compare two prefixes for equal words
-
         /**
-         * Indicates whether some other Object o is "equal to" this Prefix Object. First we make sure
-         * the Object o is an instance of Prefix, and if not immediately return false. Then we cast
-         * our Object o parameter in Prefix p and return true iff both pref[0] and pref[1] of p are
-         * equal to this instances pref[0] and pref[1] respectively.
+         * Indicates whether some other {@code Object o} is "equal to" this {@code Prefix} Object.
+         * First we make sure the {@code Object o} is an instance of {@code Prefix}, and if not we
+         * immediately return false. Then we cast our {@code Object o} parameter to a {@code Prefix}
+         * to initialize {@code Prefix p} and return true iff the {@code pref[0]} and {@code pref[1]}
+         * fields of {@code p} are both equal to this instances {@code pref[0]} and {@code pref[1]}
+         * fields respectively.
          *
          * @param o the reference object with which to compare.
          * @return {@code true} if this object is the same as the o argument; {@code false} otherwise.
