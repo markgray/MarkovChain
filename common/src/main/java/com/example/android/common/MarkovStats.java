@@ -4,6 +4,8 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Locale;
 
+import androidx.annotation.NonNull;
+
 /**
  * Class used to store and report stats of Markov generated verses
  */
@@ -11,7 +13,7 @@ import java.util.Locale;
 public class MarkovStats {
     /**
      * {@code List} of number of possible suffixes for each two word {@code Prefix} involved in
-     * generating the Markov generated line we are connected to
+     * generating the {@code Markov} generated line we are associated with.
      */
     public ArrayList<Integer> variations;
 
@@ -34,10 +36,19 @@ public class MarkovStats {
     }
 
     /**
-     * Creates a String representation of the data in this instance.
+     * Creates a String representation of the data in this instance. First we initialize our variable
+     * {@code StringBuilder returnString} with a new instance whose initial contents are the string "1",
+     * and initialize our variable {@code long totalVariations} to 1. Then for each of the {@code Integer choices}
+     * in our field {@code ArrayList<Integer> variations} we append the string "x" to {@code returnString}
+     * followed by the string value of {@code choices} and multiply {@code totalVariations} by {@code choices}.
+     * When done with the choices in {@code variations} we initialize our variable {@code String formattedResult}
+     * with a US locale formatted string version of {@code totalVariations}, then return the string formed by
+     * concatenating the string value of {@code returnString} followed by the string " = ", followed by
+     * {@code formattedResult} to the caller.
      *
      * @return formatted String for displaying the data we contain
      */
+    @NonNull
     public String toString() {
         StringBuilder returnString = new StringBuilder("1");
         long totalVariations = 1;

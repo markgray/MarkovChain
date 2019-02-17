@@ -1,7 +1,7 @@
 package com.example.android.common;
 
 /**
- * Shakespeare's complete sonnets small letters and less punctuation.
+ * Shakespeare's complete sonnets using small letters and less punctuation.
  */
 @SuppressWarnings("SpellCheckingInspection")
 public final class ShakespeareSmall {

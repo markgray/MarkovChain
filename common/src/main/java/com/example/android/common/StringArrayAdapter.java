@@ -1,5 +1,6 @@
 package com.example.android.common;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
@@ -12,9 +13,17 @@ import android.widget.Toast;
 import java.util.Random;
 
 public class StringArrayAdapter extends RecyclerView.Adapter<StringArrayAdapter.ViewHolder>  {
-
+    /**
+     * TAG used for logging
+     */
     private static final String TAG = "StringArrayAdapter";
+    /**
+     * Random number generator used to select a random verse
+     */
     private static Random rand = new Random();
+    /**
+     * Our data set.
+     */
     private static String[] mDataSet;
     private static LinearLayoutManager mLayoutManager;
 
@@ -49,8 +58,9 @@ public class StringArrayAdapter extends RecyclerView.Adapter<StringArrayAdapter.
      * @see #getItemViewType(int)
      * @see #onBindViewHolder(ViewHolder, int)
      */
+    @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
         // Create a new view.
         View v = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.line_list_item, viewGroup, false);
@@ -76,7 +86,7 @@ public class StringArrayAdapter extends RecyclerView.Adapter<StringArrayAdapter.
      * @param position The position of the item within the adapter's data set.
      */
     @Override
-    public void onBindViewHolder(ViewHolder viewHolder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
         Log.d(TAG, "Element " + position + " set.");
 
         // Get element from your data set at this position and replace the contents of the view
@@ -118,7 +128,7 @@ public class StringArrayAdapter extends RecyclerView.Adapter<StringArrayAdapter.
                     return true;
                 }
             });
-            textView = (TextView) v.findViewById(R.id.vTextView);
+            textView = v.findViewById(R.id.vTextView);
         }
 
         public TextView getTextView() {
