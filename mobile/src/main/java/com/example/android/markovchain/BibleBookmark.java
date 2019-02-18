@@ -2,34 +2,43 @@ package com.example.android.markovchain;
 
 import android.app.DialogFragment;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+
 /**
-` * This DialogFragment will (eventually) save a bookmark with the date it was bookmarked
- * and an optional comment to an SQL database.
+ * This {@code DialogFragment} will (eventually) save a bookmark to a particular verse with the date
+ * it was bookmarked and an optional comment to an SQL database.
  */
 public class BibleBookmark extends DialogFragment {
-    public final static String TAG = "BibleBookmark"; // TAG for logging
-    public String mLabel; // Canonical Bible citation for current verse
-    public String mText;  // Current verse
+    /**
+     * TAG for logging
+     */
+    public final static String TAG = "BibleBookmark";
+    /**
+     * Canonical Bible citation for current verse
+     */
+    public String mLabel;
+    /**
+     * Text of the current verse
+     */
+    public String mText;
 
     /**
-     * Create a new BibleBookmark DialogFragment. We create a new instance of BibleBookmark f,
-     * create a Bundle args, add our parameter String label to args using the index "label", add
-     * our parameter String text to args using the index "text", and then set the arguments for
-     * f to our Bundle args. Finally we return BibleBook f to our caller.
+     * Create a new {@code BibleBookmark DialogFragment}. We initialize {@code BibleBookmark f}, with
+     * a new instance, then initialize {@code Bundle args} with a new instance, add our parameter
+     * {@code String label} to {@code args} using the index "label", add our parameter {@code String text}
+     * to {@code args} using the index "text", and then set the arguments for {@code f} to {@code args}.
+     * Finally we return {@code f} to our caller.
      *
      * @param label Canonical Bible citation for the verse being bookmarked
      * @param text  Text of the verse being bookmarked
-     *
-     * @return A BibleBookmark instance with the arguments bundle set with the
-     *         label and text passed to the method
+     * @return A {@code BibleBookmark} instance with the arguments bundle containing the parameters
+     * {@code label} and {@code text} passed to us.
      */
     public static BibleBookmark newInstance(String label, String text) {
         Log.i(TAG, " newInstance called with: " + label + " " + text);
@@ -43,25 +52,21 @@ public class BibleBookmark extends DialogFragment {
     }
 
     /**
-     * Called to do initial creation of a DialogFragment.  This is called after
-     * onAttach(Activity) and before
-     * onCreateView(LayoutInflater, ViewGroup, Bundle).
+     * Called to do initial creation of a {@code DialogFragment}. This is called after {@code onAttach(Activity)}
+     * and before {@code onCreateView(LayoutInflater, ViewGroup, Bundle)}.
+     * <p>
+     * Note that this can be called while the fragment's activity is still in the process of being
+     * created. As such, you can not rely on things like the activity's content view hierarchy being
+     * initialized at this point.  If you want to do work once the activity itself is created, see
+     * {@link #onActivityCreated(Bundle)}.
+     * <p>
+     * First we call through to our super's implementation of {@code onCreate}, then we initialize our
+     * field {@code String mLabel} set to the {@code String} stored under the key "label" in our argument
+     * {@code Bundle}, and {@code String mText} set to the {@code String} stored under the key "text"
+     * in that {@code Bundle}. Finally we set the style of our {@code DialogFragment} to be STYLE_NORMAL
+     * (for a reason which escapes me right now).
      *
-     * <p>Note that this can be called while the fragment's activity is
-     * still in the process of being created.  As such, you can not rely
-     * on things like the activity's content view hierarchy being initialized
-     * at this point.  If you want to do work once the activity itself is
-     * created, see {@link #onActivityCreated(Bundle)}.
-     *
-     * First we call through to our super's implementation of onCreate, then we read the construction
-     * arguments used when creating this DialogFragment with our field mLabel set to the String
-     * stored under the key "label", and mText set to the String stored under the key "text". Finally
-     * we set the style of the DialogFragment to be STYLE_NORMAL (for a reason which escapes me right
-     * now. TODO: figure out better style usage here.
-     *
-     * @param savedInstanceState If the fragment is being re-created from
-     * a previous saved state, this is the state. (Always null since onSaveInstanceState
-     * is not overridden.
+     * @param savedInstanceState We do not override {@code onSaveInstanceState} so do not use.
      */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -75,31 +80,27 @@ public class BibleBookmark extends DialogFragment {
     }
 
     /**
-     * Called to have the fragment instantiate its user interface view.
-     * This is optional, and non-graphical fragments can return null (which
-     * is the default implementation).  This will be called between
+     * Called to have the fragment instantiate its user interface view. This will be called between
      * {@link #onCreate(Bundle)} and {@link #onActivityCreated(Bundle)}.
+     * <p>
+     * If you return a View from here, you will later be called in {@link #onDestroyView} when the
+     * view is being released.
+     * <p>
+     * First we initialize {@code View v} by using our parameter {@code LayoutInflater inflater} to
+     * inflate our layout file R.layout.bible_bookmark using our parameter {@code ViewGroup container}
+     * for layout params without attaching to is, then we initialize {@code View tv} by finding the
+     * view in {@code v} with id R.id.label and set its text to our field {@code String mLabel}, and
+     * then we set {@code tv} to the view with id R.id.text and set its text to our field {@code String mText}.
+     * Finally we locate the "DISMISS" Button (view with id R.id.dismiss) and set its {@code OnClickListener}
+     * to an anonymous class which will dismiss this {@code BibleBookmark DialogFragment} when clicked,
+     * while updating the label and text used by the {@code BibleDialog} which launched us and to which
+     * we will be returning to.
      *
-     * <p>If you return a View from here, you will later be called in
-     * {@link #onDestroyView} when the view is being released.
-     *
-     * First we create View v by inflating our layout file R.layout.bible_bookmark, then we locate
-     * the TextView that we will use to display our field mLabel (R.id.label) and set its text to
-     * that String, and we the locate the TextView that we will use to display our field mText
-     * (R.id.text) and set its text to that String. Finally we locate the "DISMISS" Button
-     * (R.id.dismiss) and set its OnClickListener to an anonymous class which will dismiss this
-     * BibleBookmark DialogFragment when clicked, while updating the label and text used by the
-     * BibleDialog which launched us and to which we will be returning to.
-     * TODO: is this really necessary?
-     *
-     * @param inflater The LayoutInflater object that can be used to inflate
-     * any views in the fragment,
-     * @param container If non-null, this is the parent view that the fragment's
-     * UI should be attached to.  The fragment should not add the view itself,
-     * but this can be used to generate the LayoutParams of the view.
-     * @param savedInstanceState If non-null, this fragment is being re-constructed
-     * from a previous saved state as given here. (Always null since onSaveInstanceState
-     * is not overridden.)
+     * @param inflater  The LayoutInflater object that can be used to inflate any views in the fragment,
+     * @param container If non-null, this is the parent view that the fragment's UI should be attached to.
+     *                  The fragment should not add the view itself, but this can be used to generate
+     *                  the {@code LayoutParams} of the view.
+     * @param savedInstanceState We do not override {@code onSaveInstanceState} so do not use
      *
      * @return Return the View for the fragment's UI, or null.
      */
@@ -108,18 +109,17 @@ public class BibleBookmark extends DialogFragment {
     public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Log.i(TAG, "onCreateView called");
         View v = inflater.inflate(R.layout.bible_bookmark, container, false);
-        View tv = v.findViewById(R.id.label);
-        String dialogLabel = mLabel;
-        ((TextView) tv).setText(dialogLabel);
-
+        TextView tv = v.findViewById(R.id.label);
+        tv.setText(mLabel);
         tv = v.findViewById(R.id.text);
-        ((TextView) tv).setText(mText);
+        tv.setText(mText);
 
-        Button dismiss = (Button) v.findViewById(R.id.dismiss);
-        dismiss.setOnClickListener(new View.OnClickListener() {
+        v.findViewById(R.id.dismiss).setOnClickListener(new View.OnClickListener() {
             /**
-             * Dismiss this DialogFragment, and make sure that the BibleDialog which we are
-             * returning to uses the correct dialogTitle and dialogText
+             * Dismiss this {@code DialogFragment}, and make sure that the {@code BibleDialog bibleDialog}
+             * which we are returning to uses the correct {@code dialogTitle} for its {@code mLabel}
+             * field and correct {@code dialogText} for its {@code mText} field (in case we changed the
+             * verse being shown).
              *
              * @param v Button which was clicked
              */

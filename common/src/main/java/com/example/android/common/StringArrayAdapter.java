@@ -25,12 +25,16 @@ public class StringArrayAdapter extends RecyclerView.Adapter<StringArrayAdapter.
      * Our data set.
      */
     private static String[] mDataSet;
+    /**
+     * {@code LinearLayoutManager} used by the {@code RecyclerView} we are the adapter for
+     */
     private static LinearLayoutManager mLayoutManager;
 
     /**
-     * Initialize the data set of the Adapter.
+     * Our constructor, just saves its parameters in their respective fields.
      *
      * @param dataSet String[] containing the data to populate views to be used by RecyclerView.
+     * @param layoutManager {@code LayoutManager} used by our {@code RecyclerView}
      */
     public StringArrayAdapter(String[] dataSet, RecyclerView.LayoutManager layoutManager) {
         mDataSet = dataSet;
@@ -50,10 +54,16 @@ public class StringArrayAdapter extends RecyclerView.Adapter<StringArrayAdapter.
      * {@link #onBindViewHolder(ViewHolder, int)}. Since it will be re-used to display different
      * items in the data set, it is a good idea to cache references to sub views of the View to
      * avoid unnecessary {@link View#findViewById(int)} calls.
+     * <p>
+     * We initialize our variable {@code View v} with the view we construct by using the {@code LayoutInflater}
+     * that the {@code from} method of {@code LayoutInflater} obtains from the {@code Context} of our parameter
+     * {@code ViewGroup viewGroup} to inflate our item layout file R.layout.line_list_item using {@code viewGroup}
+     * for the layout params without attaching to it. Then we return a new instance of {@code ViewHolder} constructed
+     * to use {@code v} as its {@code View}.
      *
      * @param viewGroup The ViewGroup into which the new View will be added after it is bound to
-     *                 an adapter position.
-     * @param viewType The view type of the new View.
+     *                  an adapter position.
+     * @param viewType  The view type of the new View.
      * @return A new ViewHolder that holds a View of the given view type.
      * @see #getItemViewType(int)
      * @see #onBindViewHolder(ViewHolder, int)
@@ -80,10 +90,14 @@ public class StringArrayAdapter extends RecyclerView.Adapter<StringArrayAdapter.
      * method and should not keep a copy of it. If you need the position of an item later on
      * (e.g. in a click listener), use {@link ViewHolder#getPosition()} which will have the
      * updated position.
+     * <p>
+     * We call the {@code getTextView} of our parameter {@code ViewHolder viewHolder} to fetch the
+     * {@code TextView} it holds, and set its text to the {@code String} in our dataset {@code String[] mDataSet}
+     * that is in position {@code position}.
      *
      * @param viewHolder The ViewHolder which should be updated to represent the contents of the
-     *                 item at the given position in the data set.
-     * @param position The position of the item within the adapter's data set.
+     *                   item at the given position in the data set.
+     * @param position   The position of the item within the adapter's data set.
      */
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
@@ -96,7 +110,8 @@ public class StringArrayAdapter extends RecyclerView.Adapter<StringArrayAdapter.
     }
 
     /**
-     * Returns the total number of items in the data set hold by the adapter.
+     * Returns the total number of items in the data set hold by the adapter. We just return the length
+     * of our dataset {@code String[] mDataSet}.
      *
      * @return The total number of items in this adapter.
      */
@@ -105,21 +120,56 @@ public class StringArrayAdapter extends RecyclerView.Adapter<StringArrayAdapter.
         return mDataSet.length;
     }
 
+    /**
+     * {@code ViewHolder} class that our {@code Adapter} uses.
+     */
     @SuppressWarnings("WeakerAccess")
     public class ViewHolder extends RecyclerView.ViewHolder {
 
+        /**
+         * The {@code TextView} in the {@code View} that we hold which displays our items.
+         */
         private final TextView textView;
 
+        /**
+         * Our constructor. First we call our super's constructor. Then we set the {@code OnClickListener}
+         * of our parameter {@code View v} to an anonymous class whose {@code onClick} override just logs
+         * which position was clicked, and we set the {@code OnLongClickListener} to an anonymous class
+         * which picks a random selection, instructs the {@code LinearLayoutManager mLayoutManager} to
+         * scroll to that random selection, toasts what it just did, and returns true to consume the
+         * event. Finally we initialize our field {@code TextView textView} by finding the view with
+         * id R.id.vTextView in {@code v}.
+         *
+         * @param v {@code View} that we should hold
+         */
         public ViewHolder(View v) {
             super(v);
             // Define click listener for the ViewHolder's View.
             v.setOnClickListener(new View.OnClickListener() {
+                /**
+                 * Called when the {@code View} we hold is clicked. We just log the adapter position
+                 * of our {@code View}.
+                 *
+                 * @param v {@code View} that was clicked.
+                 */
                 @Override
                 public void onClick(View v) {
                     Log.d(TAG, "Element " + getLayoutPosition() + " clicked.");
                 }
             });
+            // Define long click listener for the ViewHolder's View.
             v.setOnLongClickListener(new View.OnLongClickListener() {
+                /**
+                 * Called when the {@code View} we hold is long clicked. We initialize our variable
+                 * {@code int selection} by choosing a random index into our adapter's dataset
+                 * {@code String[] mDataSet} then call the {@code scrollToPositionWithOffset} of our
+                 * field {@code LinearLayoutManager mLayoutManager} to have it scroll to position
+                 * {@code selection} and toast a message telling what we just did. Finally we return
+                 * true to the caller to consume the long click here.
+                 *
+                 * @param view {@code View} that was long clicked
+                 * @return true to consume the long click here
+                 */
                 @Override
                 public boolean onLongClick(View view) {
                     int selection = Math.abs(rand.nextInt()) % mDataSet.length;
@@ -131,6 +181,11 @@ public class StringArrayAdapter extends RecyclerView.Adapter<StringArrayAdapter.
             textView = v.findViewById(R.id.vTextView);
         }
 
+        /**
+         * A getter for our instance's {@code TextView textView} field.
+         *
+         * @return current value of our instance's {@code TextView textView} field
+         */
         public TextView getTextView() {
             return textView;
         }
