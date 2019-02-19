@@ -13,18 +13,29 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 public class BibleDialog extends DialogFragment {
-    private static final String TAG = "BibleDialog"; // TAG used for logging
-    public String mLabel; // label for the DialogFragment (we use the canonical Bible citation)
-    public String mText;  // text of the current verse
-    public Button repeatButton; // Button to use to repeat last operation selected in the Spinner
+    /**
+     * TAG used for logging
+     */
+    private static final String TAG = "BibleDialog";
+    /**
+     * label for the {@code DialogFragment} (we use the canonical Bible citation for the verse)
+     */
+    public String mLabel;
+    /**
+     * text of the current verse
+     */
+    public String mText;
+    /**
+     * Button to use to repeat last operation selected in the Spinner
+     */
+    public Button repeatButton;
 
     /**
-     * Create and initialize a BibleDialog DialogFragment. It does this by first creating a new
-     * instance of BibleDialog f, then creates an instance of Bundle args, putString's the label
-     * parameter under the index "label", and putStrings's the text parameter under the index
-     * "text' in this Bundle args, and finally uses this Bundle to set the arguments of the
-     * BibleDialog f using the method Fragment.setArguments. Finally it returns the BibleDialog f
-     * to the caller.
+     * Create and initialize a {@code BibleDialog} {@code DialogFragment}. First we initialize our
+     * variable {@code BibleDialog f} with a new instance and our variable {@code Bundle args} with
+     * a new instance. We store our parameter {@code String label} in {@code args} under the key "label",
+     * and our parameter {@code String text} under the key "text" then set the argument {@code Bundle}
+     * of {@code f} to {@code args}. Finally we return {@code f} to the caller.
      *
      * @param label Label to use
      * @param text  Text to use
@@ -42,8 +53,14 @@ public class BibleDialog extends DialogFragment {
         return f;
     }
 
-    TextView lastLabelView; // TextView in our inflated layout used for the Bible citation label
-    TextView lastTextView;  // TextView in our inflated layout used for the text of the current verse
+    /**
+     * {@code TextView} in our inflated layout used for the Bible citation label
+     */
+    TextView lastLabelView;
+    /**
+     * {@code TextView} in our inflated layout used for the text of the current verse
+     */
+    TextView lastTextView;
     /**
      * Update the text displayed in the BibleDialog for a new verse. This is necessary only after
      * moving to a random verse at the moment because the same BibleDialog DialogFragment is
@@ -62,15 +79,15 @@ public class BibleDialog extends DialogFragment {
     }
 
     /**
-     * Called to do initial creation of a DialogFragment.  This is called after
-     * onAttach(Activity) and before onCreateView(LayoutInflater, ViewGroup, Bundle).
-     * First we call our super's onCreate, then we fetch from our arguments the String
-     * stored with the index "label" and save it in the field String mLabel, and then
-     * we fetch the String stored with the index "text" and save it it the field String
-     * mText. We set the style of our BibleDialog DialogFragment to DialogFragment.STYLE_NORMAL
-     * TODO: SEE if this is necessary
+     * Called to do initial creation of a {@code DialogFragment}. This is called after {@code onAttach(Activity)}
+     * and before {@code onCreateView(LayoutInflater, ViewGroup, Bundle)}.
+     * <p>
+     * First we call our super's implementation of {@code onCreate}, then we fetch from our arguments
+     * the String stored under the index "label" and save it in our field {@code mLabel}, and we fetch
+     * the String stored under the index "text" and save it it our field {@code mText}. Finally we set
+     * the style of our {@code BibleDialog} {@code DialogFragment} to STYLE_NORMAL.
      *
-     * @param savedInstanceState Always null since onSaveInstanceState is not overridden.
+     * @param savedInstanceState We do not override {@code onSaveInstanceState} so do not use.
      */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -81,38 +98,71 @@ public class BibleDialog extends DialogFragment {
         setStyle(DialogFragment.STYLE_NORMAL, 0);
     }
 
-    //  Object used in the ArrayAdapter used for our Spinner
+    /**
+     * Objects used in the ArrayAdapter used for our Spinner
+     */
     public String[] spinChoices = {"Choose Action", "Random verse", "Google",
                                    "Bookmark", "Go to verse", "Read aloud"};
-    public String spinChosen = ""; // Which spinChoices action has been chosen
-    public int spinIndex = 0;      // The index of the action chosen in the Spinner
-    public int lastIndex = 0;      // Used to determine if Spinner has chosen a new action or
-                                   // whether the "REPEAT" Button should be visible
-    public static final int CHOICE_NONE = 0;         // "Choose Action"
-    public static final int CHOICE_RANDOM_VERSE = 1; // "Random verse"
-    public static final int CHOICE_GOOGLE = 2;       // "Google"
-    public static final int CHOICE_BOOKMARK = 3;     // "Bookmark"
-    public static final int CHOICE_GO_TO_VERSE = 4;  // "Go to verse"
-    public static final int CHOICE_READ_ALOUD = 5;   // "Read aloud"
+    /**
+     * Which spinChoices action has been chosen
+     */
+    public String spinChosen = "";
+    /**
+     * The index of the action chosen in the Spinner
+     */
+    public int spinIndex = 0;
+    /**
+     * Used to determine if Spinner has chosen a new action or
+     * whether the "REPEAT" Button should be visible
+     */
+    public int lastIndex = 0;
+
+    // Index values for items chosen in the Spinner, must match entries in String[] spinChoices
+    /**
+     * "Choose Action"
+     */
+    public static final int CHOICE_NONE = 0;
+    /**
+     * "Random verse"
+     */
+    public static final int CHOICE_RANDOM_VERSE = 1;
+    /**
+     * "Google"
+     */
+    public static final int CHOICE_GOOGLE = 2;
+    /**
+     * "Bookmark"
+     */
+    public static final int CHOICE_BOOKMARK = 3;
+    /**
+     * "Go to verse"
+     */
+    public static final int CHOICE_GO_TO_VERSE = 4;
+    /**
+     * "Read aloud"
+     */
+    public static final int CHOICE_READ_ALOUD = 5;
 
     /**
-     * AdapterView.OnItemSelectedListener used for the function chooser spinner
+     * {@code AdapterView.OnItemSelectedListener} used for the function chooser {@code Spinner}
      */
     public AdapterView.OnItemSelectedListener spinSelected = new AdapterView.OnItemSelectedListener() {
         /**
          * Callback method to be invoked when an item in this view has been selected.
          * This callback is invoked only when the newly selected position is different
          * from the previously selected position or if there was no selected item.
-         *
+         * <p>
          * Implementers can call getItemAtPosition(position) if they need to access the data
          * associated with the selected item.
-         *
-         * First we save the position selected and the string associated with that position in
-         * the fields spinIndex and spinChosen respectively. Then if it is not the same as the
-         * as the lastIndex chosen we call handleAction to perform whatever action is required
-         * when that spinIndex is chosen, and on return we save this position as the new lastIndex.
-         * If the index was not 0 (our "Choose Action" prompt) we set the visibility of our "REPEAT"
-         * Button to VISIBLE (It starts out with a visibility of GONE.)
+         * <p>
+         * First we save the position selected {@code int position} and the string associated with that
+         * position we find in our array {@code spinChoices} in the fields {@code spinIndex} and
+         * {@code spinChosen} respectively. Then if it is not the same as the as the {@code lastIndex}
+         * chosen we call the {@code handleAction} method of our parent {@code BibleMain} activity to
+         * perform whatever action is required when that {@code spinIndex} is chosen, and on return we
+         * save this position as the new {@code lastIndex}. If the index was not 0 (our "Choose Action"
+         * prompt) we set the visibility of our "REPEAT" {@code Button repeatButton} to VISIBLE (It
+         * starts out with a visibility of GONE.)
          *
          * @param parent The AdapterView where the selection happened
          * @param view The view within the AdapterView that was clicked
@@ -136,9 +186,9 @@ public class BibleDialog extends DialogFragment {
         /**
          * Callback method to be invoked when the selection disappears from this view.
          * The selection can disappear for instance when touch is activated or when
-         * the adapter becomes empty.
+         * the adapter becomes empty. We do nothing.
          *
-         * @param parent The AdapterView that now contains no selected item.
+         * @param parent The {@code AdapterView} that now contains no selected item.
          */
         @Override
         public void onNothingSelected(AdapterView<?> parent) {
@@ -147,7 +197,10 @@ public class BibleDialog extends DialogFragment {
 
     /**
      * Called to have the fragment instantiate its user interface view. This will be called between
-     * onCreate(Bundle) and onActivityCreated(Bundle). Here we locate and inflate our layout
+     * {@code onCreate(Bundle)} and {@code onActivityCreated(Bundle)}.
+     * <p>
+     * First
+     * Here we locate and inflate our layout
      * (R.layout.bible_dialog) into View v. Find the TextView for our label (R.id.label), save it
      * in lastLabelView and set the text of that TextView to the contents of the String mLabel.
      * Find the TextView for our verses text (R.id.text), save it in lastTextView and set the text
@@ -173,16 +226,15 @@ public class BibleDialog extends DialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.bible_dialog, container, false);
-        View tv = v.findViewById(R.id.label);
-        lastLabelView = (TextView) tv;
-        String dialogLabel = mLabel;
-        ((TextView) tv).setText(dialogLabel);
+        TextView tv = v.findViewById(R.id.label);
+        lastLabelView = tv;
+        tv.setText(mLabel);
 
         tv = v.findViewById(R.id.text);
-        lastTextView = (TextView) tv;
-        ((TextView) tv).setText(mText);
+        lastTextView = tv;
+        tv.setText(mText);
 
-        Spinner spin = (Spinner) v.findViewById(R.id.spinner);
+        Spinner spin = v.findViewById(R.id.spinner);
 
         ArrayAdapter<String> spinnerArrayAdapter =
                 new ArrayAdapter<>(v.getContext(),
@@ -193,10 +245,12 @@ public class BibleDialog extends DialogFragment {
         spin.setOnItemSelectedListener(spinSelected);
 
         // Watch for button clicks.
-        repeatButton = (Button) v.findViewById(R.id.repeat);
+        repeatButton = v.findViewById(R.id.repeat);
         repeatButton.setOnClickListener(new View.OnClickListener() {
             /**
-             * Repeat the last action processed when clicked
+             * Repeat the last action processed when clicked. We call the {@code handleAction} method
+             * of our {@code BibleMain} parent activity to handle a repeat of the {@code spinIndex}
+             * action.
              *
              * @param v REPEAT Button which has been clicked
              */
@@ -206,7 +260,7 @@ public class BibleDialog extends DialogFragment {
             }
         });
 
-        Button button = (Button) v.findViewById(R.id.dismiss);
+        Button button = v.findViewById(R.id.dismiss);
         button.setOnClickListener(new View.OnClickListener() {
             /**
              * Dismiss this BibleDialog. It does this by fetching the activity our DialogFragment
