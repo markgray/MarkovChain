@@ -199,28 +199,33 @@ public class BibleDialog extends DialogFragment {
      * Called to have the fragment instantiate its user interface view. This will be called between
      * {@code onCreate(Bundle)} and {@code onActivityCreated(Bundle)}.
      * <p>
-     * First
-     * Here we locate and inflate our layout
-     * (R.layout.bible_dialog) into View v. Find the TextView for our label (R.id.label), save it
-     * in lastLabelView and set the text of that TextView to the contents of the String mLabel.
-     * Find the TextView for our verses text (R.id.text), save it in lastTextView and set the text
-     * of this TextView to the String mText. It next locates our Spinner in the layout (R.id.spinner)
-     * and sets Spinner spin to it, creates ArrayAdapter<String> spinnerArrayAdapter from spinChoices
-     * (our String array of actions that the BibleDialog can launch for us), configures it and sets
-     * it as the adapter that Spinner spin will use, and sets the AdapterView.OnItemSelectedListener
-     * to the spinSelected instance defined above. It next locates our "REPEAT" Button (R.id.repeat)
-     * and sets the OnClickListener to an anonymous class which will cause the last action performed
-     * to be repeated, and locates our "DISMISS" Button (R.id.dismiss) and sets the OnClickListener
-     * to an anonymous class which will dismiss our BibleDialog. We finally return the View v we have
-     * created and configured.
+     * First we initialize our variable {@code View v} by using our parameter {@code LayoutInflater inflater}
+     * to inflate our layout file R.layout.bible_dialog using our parameter {@code ViewGroup container} for
+     * the layout params without attaching to it. We initialize {@code TextView tv} by finding the view
+     * in {@code v} with id R.id.label, set our field {@code lastLabelView} to {@code tv} and set the
+     * text of {@code tv} to our field {@code mLabel}. Next we set {@code tv} by finding the view in {@code v}
+     * with id R.id.text, set our field {@code lastTextView} to {@code tv} and set the text of {@code tv}
+     * to our field {@code mText}.
+     * <p>
+     * Next we initialize our variable {@code Spinner spin} by finding the view in {@code v} with id
+     * R.id.spinner, and initialize our variable {@code ArrayAdapter<String> spinnerArrayAdapter} with
+     * a new instance which uses the {@code Context} of {@code v}, uses the system layout file
+     * android.R.layout.simple_spinner_item to instantiate views and uses our field {@code String[] spinChoices}
+     * as the data set it will represent. We set android.R.layout.simple_spinner_dropdown_item to be
+     * the layout file {@code spinnerArrayAdapter} uses for the drop down views, then set the adapter
+     * of {@code spin} to {@code spinnerArrayAdapter}, and set the {@code OnItemSelectedListener} of
+     * {@code spin} to be our field {@code spinSelected}.
+     * <p>
+     * We next initialize our field {@code Button repeatButton} by finding the view in {@code v} with
+     * id R.id.repeat ("REPEAT") and sets its {@code OnClickListener} to an anonymous class which will
+     * cause the last action performed to be repeated. We initialize our variable {@code Button button}
+     * by finding the view with id R.id.dismiss ("DISMISS") and set its {@code OnClickListener} to an
+     * anonymous class which will {@code dismiss} our {@code BibleDialog}. Finally we return {@code v}
+     * to the caller.
      *
-     * @param inflater The LayoutInflater object that can be used to inflate
-     * any views in the fragment,
-     * @param container If non-null, this is the parent view that the fragment's
-     * UI should be attached to.  The fragment should not add the view itself,
-     * but this can be used to generate the LayoutParams of the view.
-     * @param savedInstanceState Always null since onSaveInstanceState is not overridden.
-     *
+     * @param inflater The LayoutInflater object that can be used to inflate any views in the fragment
+     * @param container If non-null, this is the parent view that the fragment's UI will be attached to.
+     * @param savedInstanceState We do not override {@code onSaveInstanceState} so do not use
      * @return Return the View for the fragment's UI.
      */
     @Override
@@ -263,9 +268,9 @@ public class BibleDialog extends DialogFragment {
         Button button = v.findViewById(R.id.dismiss);
         button.setOnClickListener(new View.OnClickListener() {
             /**
-             * Dismiss this BibleDialog. It does this by fetching the activity our DialogFragment
-             * is associated with (BibleMain) and using this to access the convenience function
-             * dismissDialog which will dismiss us.
+             * Dismiss this BibleDialog. It does this by fetching the activity our {@code DialogFragment}
+             * is associated with ({@code BibleMain}) and using this to access the convenience function
+             * {@code dismissDialog} which will dismiss us.
              *
              * @param v DISMISS Button which has been clicked
              */
@@ -280,8 +285,8 @@ public class BibleDialog extends DialogFragment {
 
     /**
      * Called when the fragment is visible to the user and actively running.
-     * This is generally tied to Activity.onResume of the containing Activity's
-     * lifecycle. I just override for educational purposes.
+     * This is generally tied to {@code Activity.onResume} of the containing
+     * {@code Activity}'s lifecycle. I just override for educational purposes.
      */
     @Override
     public void onResume() {

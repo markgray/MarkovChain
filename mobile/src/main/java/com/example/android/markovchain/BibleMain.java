@@ -25,47 +25,93 @@ import java.util.ArrayList;
  * This is the main activity of our Bible Text reading function.
  */
 public class BibleMain extends Activity {
-
-    public final String TAG = "BibleMain"; // TAG for logging
-    public static final String LAST_VERSE_VIEWED = "LAST_VERSE_VIEWED"; // Key for shared preference to save verse number
-    private static final String CLASS = BibleMain.class.getSimpleName(); // Used to access shared preference file
-    @SuppressLint("StaticFieldLeak")
-    public static Context bibleContext; // Application Context for BibleMain to use when necessary
-    RecyclerView mRecyclerView; // Reference to the RecyclerView in our layout
-    RecyclerView.LayoutManager mLayoutManager; // LayoutManager for our RecyclerView
-    public static boolean doneReading = false; // Flag used to signal that we are done reading in the Bible
-    public static ConditionVariable mDoneReading = new ConditionVariable(); // Used to block until reading is finished
-    protected BibleAdapter mAdapter; // The Adapter used to fill our RecyclerView
-    ArrayList<String> stringList = new ArrayList<>(); // List of Bible verses
-    static ArrayList<String> bookChapterVerse = new ArrayList<>(); // List of citations corresponding to each stringList verse
-    @SuppressLint("StaticFieldLeak")
-    public static BibleDialog bibleDialog; // Contains reference to the BibleDialog launched by long clicking a verse
-    public static String dialogTitle; // Canonical Bible citation used in bibleDialog
-    public static String dialogText;  // Verse text used in bibleDialog
-    public static int dialogVerse;    // Verse number used in bibleDialog
-    public static TextToSpeech textToSpeech; // TextToSpeech instance used by BibleSpeak
+    /**
+     * TAG for logging
+     */
+    public static final String TAG = "BibleMain";
+    /**
+     * Key for shared preference to save verse number
+     */
+    public static final String LAST_VERSE_VIEWED = "LAST_VERSE_VIEWED";
+    /**
+     * Used to access shared preference file
+     */
+    private static final String CLASS = BibleMain.class.getSimpleName();
+    /**
+     * Application Context for {@code BibleMain} and dialogs to use when necessary
+     */
+    @SuppressLint("StaticFieldLeak") // Only one BibleMain ever exists so this is benign.
+    public static Context bibleContext;
+    /**
+     * Reference to the {@code RecyclerView} in our layout
+     */
+    RecyclerView mRecyclerView;
+    /**
+     * {@code LayoutManager} for our {@code RecyclerView}
+     */
+    RecyclerView.LayoutManager mLayoutManager;
+    /**
+     * Flag used to signal that we are done reading in the Bible
+     */
+    public static boolean doneReading = false;
+    /**
+     * Used to block until reading is finished
+     */
+    public static ConditionVariable mDoneReading = new ConditionVariable();
+    /**
+     * The Adapter used to fill our {@code RecyclerView}
+     */
+    protected BibleAdapter mAdapter;
+    /**
+     * List of Bible verses
+     */
+    ArrayList<String> stringList = new ArrayList<>();
+    /**
+     * List of citations corresponding to each {@code stringList} verse
+     */
+    static ArrayList<String> bookChapterVerse = new ArrayList<>();
+    /**
+     * Contains reference to the {@code BibleDialog} launched by long clicking a verse
+     */
+    @SuppressLint("StaticFieldLeak") // TODO: Create only one BibleDialog ever!
+    public static BibleDialog bibleDialog;
+    /**
+     * Canonical Bible citation used as label for {@code BibleDialog} and the other dialogs
+     */
+    public static String dialogTitle;
+    /**
+     * Verse text used as text contents for {@code BibleDialog} and the other dialogs
+     */
+    public static String dialogText;
+    /**
+     * Verse number used in {@code BibleDialog} and the other dialogs
+     */
+    public static int dialogVerse;
+    /**
+     * {@code TextToSpeech} instance used by {@code BibleSpeak}
+     */
+    public static TextToSpeech textToSpeech;
 
     /**
-     * Called when the activity is starting. First we call through to the super class's
-     * implementation of this method. We set the field mDoneReading to false so that our
-     * UI thread knows to wait until our text file is read into memory before trying to
-     * access the data. We Reset the ConditionVariable mDoneReading to the closed state
-     * so that any threads that call block() will block until someone calls open. We next
-     * set the field Context bibleContext to the context of the single, global Application
-     * object of the current process. This is because we will later need a Context whose
-     * lifecycle is separate from the current context, that is tied to the lifetime of
-     * the process rather than the current component. We next call the method initDataSet
-     * which will spawn a background thread to read in the data file we will be using
-     * (R.raw.king_james_text_and_verse) and create the data structures needed by our
-     * activity. Then we set the content View to our layout file (R.layout.activity_bible_fragment),
-     * locate the RecyclerView in the layout (R.id.bible_recyclerview) and save it in the
-     * field RecyclerView mRecyclerView. Create BibleAdapter mAdapter from the List containing the
-     * text (ArrayList<String> stringList), the List containing chapter and verse annotation for
-     * each paragraph (ArrayList<String> bookChapterVerse), and the layout manager to use for the
-     * RecyclerView.Adapter created (RecyclerView.LayoutManager mLayoutManager -- an instance of
-     * LinearLayoutManager created above). We now set the adapter of our RecyclerView mRecyclerView
-     * to the BibleAdapter mAdapter we just created, and the layout manager to be used to the
-     * RecyclerView.LayoutManager mLayoutManager.
+     * Called when the activity is starting. First we call our super's implementation of {@code onCreate}.
+     * We set the field {@code mDoneReading} to false so that our UI thread knows to wait until our
+     * text file is read into memory before trying to access the data. We reset the ConditionVariable
+     * {@code mDoneReading} to the closed state so that any threads that call {@code block()} will
+     * block until someone calls {@code open()}. We next set the field {@code Context bibleContext}
+     * to the context of the single, global Application object of the current process. This is because
+     * we will later need a {@code Context} whose lifecycle is separate from the current context, that
+     * is tied to the lifetime of the process rather than the current component (I forget why we need
+     * this though??). We next call our method {@code initDataSet} which will spawn a background thread
+     * to read in the data file we will be using (R.raw.king_james_text_and_verse) and create the data
+     * structures needed by our activity. Then we set our content View to our layout file
+     * (R.layout.activity_bible_fragment), locate the {@code RecyclerView} in the layout with the id
+     * R.id.bible_recyclerview and save a reference to it in our field {@code RecyclerView mRecyclerView}.
+     * We initialize our field {@code BibleAdapter mAdapter} to a new instance using the List containing
+     * the text ({@code ArrayList<String> stringList}), the List containing chapter and verse annotation
+     * for each paragraph ({@code ArrayList<String> bookChapterVerse}), and using the layout manager
+     * {@code RecyclerView.LayoutManager mLayoutManager} (an instance of {@code LinearLayoutManager}
+     * created above). We now set the adapter of {@code mRecyclerView} to {@code mAdapter}, and the
+     * layout manager to be used to {@code mLayoutManager}.
      *
      * @param savedInstanceState always null since onSaveInstanceState is not overridden
      */
@@ -86,12 +132,12 @@ public class BibleMain extends Activity {
     }
 
     /**
-     * Called as part of the activity lifecycle when an activity is going into the background,
-     * but has not (yet) been killed.  The counterpart to onResume. We fetch the verse number
-     * of the first completely visible verse by calling findFirstCompletelyVisibleItemPosition,
-     * then call saveVerseNumber to save the verse number to our shared preference file under
-     * the index LAST_VERSE_VIEWED. Finally we call through to our super's implementation of
-     * onPause.
+     * Called as part of the activity lifecycle when an activity is going into the background, but
+     * has not (yet) been killed. We initialize our variable {@code int lastFirstVisiblePosition} to
+     * the verse number of the first completely visible verse by calling the {@code findFirstCompletelyVisibleItemPosition}
+     * method of the {@code LayoutManager} of {@code mRecyclerView} then call our method {@code saveVerseNumber}
+     * to save the verse number to our shared preference file under the index LAST_VERSE_VIEWED. Finally
+     * we call our super's implementation of {@code onPause}.
      */
     @Override
     protected void onPause() {
@@ -103,13 +149,13 @@ public class BibleMain extends Activity {
     }
 
     /**
-     * Called after onRestoreInstanceState, onRestart, or onPause, for your activity to start
-     * interacting with the user. This is a good place to begin animations, open exclusive-access
-     * devices (such as the camera), etc.
-     *
-     * Our first action is to retrieve the last verse viewed number from our shared preference file
-     * by calling restoreVerseNumber, then we use this number to move our BibleAdapter to this verse.
-     * Finally we call through to our super's implementation of onResume.
+     * Called after {@code onRestoreInstanceState}, {@code onRestart}, or {@code onPause}, for our
+     * activity to start interacting with the user.
+     * <p>
+     * Our first action is to initialize our variable {@code int lastFirstVisiblePosition} to the
+     * number of the last verse viewed from our shared preference file by calling {@code restoreVerseNumber},
+     * then we use this number to move our {@code BibleAdapter} to this verse. Finally we call our
+     * super's implementation of {@code onResume}.
      */
     @Override
     protected void onResume() {
@@ -119,12 +165,12 @@ public class BibleMain extends Activity {
     }
 
     /**
-     * Perform any final cleanup before an activity is destroyed. If textToSpeech is not null we
-     * have been using text to speech in BibleSpeak so we interrupt the current utterance and discard
-     * other utterances in the queue by calling TextToSpeech.stop(), release the resources used
-     * by the TextToSpeech engine by calling TextToSpeech.shutdown() and then set textToSpeech to
-     * null (unnecessary since we are in onDestroy, but better safe than sorry!). Finally we call
-     * through to our super's implementation of of onDestroy().
+     * Perform any final cleanup before our activity is destroyed. If {@code textToSpeech} is not null
+     * we have been using text to speech in {@code BibleSpeak} so we interrupt the current utterance
+     * other utterances in the queue by calling the {@code stop()} method of {@code textToSpeech},
+     * release the resources used by the {@code TextToSpeech} engine by calling its {@code shutdown()}
+     * method and then set textToSpeech to null (unnecessary since we are in {@code onDestroy}, but
+     * better safe than sorry!). Finally we call our super's implementation of of {@code onDestroy()}.
      */
     @Override
     public void onDestroy() {
@@ -139,14 +185,15 @@ public class BibleMain extends Activity {
     }
 
     /**
-     * Save the currently viewed verse (or any other int) to shared preferences file under the
-     * key "key". First we retrieve a reference to the preferences file for the Class BibleMain and
-     * save it in SharedPreferences pref. We create an SharedPreferences.Editor editor from pref,
-     * use this Editor to save as an int value our parameter verse using the key "key", and finally
-     * commit our changes from our Editor to SharedPreferences pref. (Only memory copy is written to,
-     * an asynchronous commit is started to write to disk.)
+     * Saves the currently viewed verse (or any other int) to shared preferences file under the
+     * key "key". First we initialize our variable {@code SharedPreferences pref} to a reference to
+     * the preferences file for the class {@code CLASS} ({@code BibleMain}'s class). We create an
+     * {@code SharedPreferences.Editor editor} from {@code pref}, use this {@code Editor} to save as
+     * an int value our parameter verse using the key {@code key}, and finally commit our changes from
+     * our {@code Editor} to {@code pref}. (Only memory copy is written to, an asynchronous {@code commit}
+     * is started to write to disk.)
      *
-     * @param verse verse number
+     * @param verse verse number or other int
      * @param key   key to store it under (presently only "LAST_VERSE_VIEWED")
      */
     public static void saveVerseNumber(int verse, String key) {
@@ -157,13 +204,14 @@ public class BibleMain extends Activity {
     }
 
     /**
-     * Retrieve the last viewed verse from shared preferences file. First we retrieve a reference
-     * to the preferences file for the Class BibleMain and save it in SharedPreferences pref, then
-     * we retrieve and return the int value stored in the preference file under the key "key".
+     * Retrieve the last viewed verse from shared preferences file. First we initialize our variable
+     * {@code SharedPreferences pref} to a reference to the preferences file for the class {@code CLASS}
+     * ({@code BibleMain} in our case), then we retrieve and return the int value stored in {@code pref}
+     * under the key {@code key} (defaulting to our parameter {@code int verse} if no value is stored
+     * yet).
      *
-     * @param verse verse number default value
+     * @param verse verse number default value to return if no value stored yet
      * @param key   key it was stored under (presently only "LAST_VERSE_VIEWED")
-     *
      * @return      verse number stored in shared preferences, or the default value passed it
      */
     @SuppressWarnings("SameParameterValue")
