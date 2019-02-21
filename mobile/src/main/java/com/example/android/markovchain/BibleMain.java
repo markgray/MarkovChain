@@ -221,19 +221,20 @@ public class BibleMain extends Activity {
     }
 
     /**
-     * Finds the verse index of a given standard Bible citation, using the fallback citation
-     * in case there are no exact matches for the given citation. We start by initializing
-     * fallBackIndex to 0 so that if neither citation nor fallback is found by exact match
-     * we will return 0 (very beginning of Bible). Then we search through our entire list of
-     * citations ArrayList<String> bookChapterVerse checking whether "citation" matches (in
-     * which case we immediately return the index for the verse in question) or "fallback"
-     * matches (in which case we set fallBackIndex to the index for the verse "fallback"
-     * matches). Finally if an exact match for citation has not been found in our bookChapterVerse
-     * list we return fallBackIndex.
+     * Finds the verse index number of a given standard Bible citation {@code String citation}, or of
+     * the fallback citation {@code String fallback} in case there are no exact matches for the given
+     * citation. We start by initializing our variable {@code int fallBackIndex} to 0 so that if neither
+     * {@code citation} nor {@code fallback} is found by exact match we will return 0 (very beginning
+     * of Bible). Then we loop over {@code int i} through the entire list of citations in our list
+     * {@code ArrayList<String> bookChapterVerse} checking whether the {@code String candidateVerse}
+     * in position {@code i} of {@code bookChapterVerse} is equal to {@code citation} (in which case
+     * we immediately return the index {@code i} for the verse in question) or whether {@code candidateVerse}
+     * is equal to {@code fallback} (in which case we set {@code fallBackIndex} to the index {@code i}).
+     * Finally if an exact match for {@code citation} has not been found in our {@code bookChapterVerse}
+     * list we return {@code fallBackIndex} to the caller.
      *
      * @param citation Bible citation we are looking for
      * @param fallback a fallback citation to use if that citation is not found
-     *
      * @return Index of the verse we are interested in
      */
     public static int findFromCitation(String citation, String fallback) {
@@ -251,16 +252,16 @@ public class BibleMain extends Activity {
     }
 
     /**
-     *  Returns the book number index for a citation which uses the name instead of the number.
-     *  First we strip off the book name from the citation (all characters up to the first ":")
-     *  into the variable String bookLook. Then we "foreach loop" through all the book names in
-     *  the String[] BibleAdapter.books incrementing the int indexOf (starts at zero) every time
-     *  the book from BibleAdapter.books fails to match our target bookLook, if they do match we
-     *  immediately return indexOf as our result. If none of the books in BibleAdapter.books
-     *  match we return 0.
+     * Returns the book number index for a citation {@code String citation} which uses the name instead
+     * of the number. First we strip off the book name from the citation into {@code String bookLook}
+     * (all characters up to the first ":"), and initialize our variable {@code int indexOf} to 0.
+     * Then we "foreach loop" through all the book names {@code String book} in the array
+     * {@code String[] BibleAdapter.books} incrementing {@code indexOf} every time the {@code book}
+     * from {@code books} fails to match our target {@code bookLook}, and if they do match we
+     * immediately return {@code indexOf} as our result. If none of the books in {@code books} match
+     * we return 0.
      *
      * @param citation Standard Bible citation
-     *
      * @return Index of the book name
      */
     public static int indexFromCitation(String citation) {
@@ -276,11 +277,14 @@ public class BibleMain extends Activity {
     }
 
     /**
-     * Convenience function for starting a BibleDialog fragment. First we set our fields String dialogTitle
-     * and String dialogText to our arguments for later use, then we call the factory method
-     * BibleDialog.newInstance to create a BibleDialog bibleDialog and save it in our static field
-     * for later use. Finally we call our overloaded method showDialog(DialogFragment) to pop up
-     * the instance of BibleDialog we just created.
+     * Convenience function for starting a {@code BibleDialog} fragment. First we set our fields
+     * {@code String dialogTitle} and {@code String dialogText} to our arguments for later use, then
+     * we call the factory method {@code newInstance} of {@code BibleDialog} to create a new
+     * {@code BibleDialog bibleDialog} using our parameters {@code label} and {@code text} for its
+     * label and text and save it in our static field {@code BibleDialog bibleDialog} for later use.
+     * Finally we call our overloaded method {@code showDialog(DialogFragment)} to pop up the instance
+     * of BibleDialog we just created in {@code bibleDialog}.
+     * TODO: Create only one BibleDialog ever!
      *
      * @param label citation for verse contained in text
      * @param text  text of current verse
@@ -290,26 +294,26 @@ public class BibleMain extends Activity {
         dialogText = text;
 
         // Create and show the dialog.
-        bibleDialog = BibleDialog.newInstance(label, text);
+        bibleDialog = BibleDialog.newInstance(label, text); // TODO: Create only one BibleDialog ever!
         showDialog(bibleDialog);
     }
 
     /**
-     * Shows the DialogFragment passed to it. First we fetch a reference to the FragmentManager used
-     * for interacting with fragments associated with this activity and use it to start a series of
-     * Fragment edit operations using our variable FragmentTransaction ft which is initialized to an
-     * instance of FragmentTransaction using FragmentManager.beginTransaction(). Next we use the
-     * FragmentManager to search for any existing Fragment's with the tag "dialog" (the tag used for
-     * all the DialogFragment's we display), and if one is found (Fragment prev not equal null) we
-     * use the FragmentTransaction ft to remove it. We add FragmentTransaction ft to the BackStack
-     * so that the back Button will remember this transaction once we commit the transaction then we
-     * call  DialogFragment.show to display the dialog, adding the fragment using FragmentTransaction
-     * ft and then committing the transaction.
+     * Shows the {@code DialogFragment dialogFragment} passed to it. First we fetch a reference to
+     * the {@code FragmentManager} used for interacting with fragments associated with this activity
+     * and use it to start a series of {@code Fragment} edit operations using our variable
+     * {@code FragmentTransaction ft}. Next we initialize our variable {@code Fragment prev} by using
+     * the {@code FragmentManager} to search for any existing {@code Fragment}'s with the tag "dialog"
+     * (the tag used for all the {@code DialogFragment}'s we display), and if one is found ({@code prev}
+     * is not equal to null) we use {@code ft} to remove it. We add {@code ft} to the BackStack so
+     * that the back Button will remember this transaction once we commit the transaction, then we
+     * call the {@code show} method of our parameter {{@code dialogFragment}} to display the dialog,
+     * adding the fragment using {@code ft}, with the tag "dialog" and then committing that
+     * {@code FragmentTransaction}.
      *
      * @param dialogFragment DialogFragment subclass which already has had setArguments
      *                       called to attach a Bundle of arguments
-     *
-     * @return Tag for the fragment, as per FragmentTransaction.add.
+     * @return identifier of the committed transaction, as per {@code FragmentTransaction.commit()}.
      */
     @SuppressWarnings("UnusedReturnValue")
     public int showDialog(DialogFragment dialogFragment) {
@@ -327,37 +331,59 @@ public class BibleMain extends Activity {
     }
 
     /**
-     * Convenience function to dismiss the main BibleDialog DialogFragment. This is called only
-     * from the OnClickListener for the "DISMISS" Button in BibleDialog, and exists due to errors
-     * encountered calling DialogFragment.dismiss() directly from that callback. We simply use our
-     * reference to the BibleDialog DialogFragment instance to call DialogFragment.dismiss().
+     * Convenience function to dismiss the main {@code BibleDialog} {@code BibleDialog bibleDialog}.
+     * This is called only from the {@code OnClickListener} for the "DISMISS" Button in {@code BibleDialog},
+     * and exists due to errors encountered calling {@code DialogFragment.dismiss()} directly from that
+     * callback. We simply use our reference to it in {@code BibleDialog bibleDialog} to call its
+     * {@code dismiss()} method, then set our field {@code BibleDialog bibleDialog} in hopes it will
+     * be garbage collected. TODO: Create only one BibleDialog ever!
      */
     public void dismissDialog() {
         bibleDialog.dismiss();
+        bibleDialog = null;
     }
 
     /**
-     * Handle whichever action was chosen in the Spinner contained in the BibleDialog fragment.
-     * This is called from BibleDialog both in the onItemSelected callback for the Spinner, and in
-     * the onClick callback for the "REPEAT" Button. We switch based on the parameter spinIndex
-     * which is the position of the Spinner view which was selected:
-     *
-     *      CHOICE_NONE Do nothing
-     *      CHOICE_RANDOM_VERSE Instruct the BibleAdapter to move to a random verse by calling
-     *          moveToRandom (the View v is passed so that it can toast the citation for the
-     *          verse moved to), then instruct the bibleDialog to refresh its display of the
-     *          citation and verse chosen.
-     *      CHOICE_GOOGLE Launch an instance of DialogFragment BibleSearch using the current
-     *          dialogTitle (citation) and dialogText (verse).
-     *      CHOICE_BOOKMARK Launch an instance of DialogFragment BibleBookmark using the current
-     *          dialogTitle (citation) and dialogText (verse).
-     *      CHOICE_GO_TO_VERSE Launch an instance of DialogFragment BibleChoose using the current
-     *          dialogTitle (citation) and dialogText (verse).
-     *      CHOICE_READ_ALOUD Launch an instance of DialogFragment BibleSpeak using the current
-     *          dialogTitle (citation) and dialogText (verse).
-     *
-     * If it is none of the above, then we do nothing, although this could only happen as the result
-     * of a programming error.
+     * Handle whichever action was chosen in the {@code Spinner} contained in the {@code BibleDialog}
+     * fragment. This is called from {@code BibleDialog} both in the {@code onItemSelected} callback
+     * for the {@code Spinner}, and in the {@code onClick} callback for the "REPEAT" Button. We switch
+     * based on the parameter {@code spinIndex} which is the position of the Spinner view which was
+     * selected:
+     * <ul>
+     *     <li>
+     *         CHOICE_NONE: Do nothing, and break.
+     *     </li>
+     *     <li>
+     *         CHOICE_RANDOM_VERSE: Instruct the BibleAdapter to move to a random verse by calling
+     *         its {@code moveToRandom} method (the {@code View v} is passed so that it can toast the
+     *          verse moved to), then instruct the {@code BibleDialog bibleDialog} to refresh its
+     *          display of the citation and verse that was chosen, then break.
+     *     </li>
+     *     <li>
+     *         CHOICE_GOOGLE: Launch a new instance of the {@code BibleSearch} {@code DialogFragment}
+     *         using the current {@code dialogTitle} (citation) and {@code dialogText} (verse), then
+     *         break.
+     *     </li>
+     *     <li>
+     *         CHOICE_BOOKMARK: Launch a new instance of the {@code BibleBookmark} {@code DialogFragment}
+     *         using the current {@code dialogTitle} (citation) and {@code dialogText} (verse), then
+     *         break.
+     *     </li>
+     *     <li>
+     *         CHOICE_GO_TO_VERSE: Launch a new instance of the {@code BibleChoose} {@code DialogFragment}
+     *         using the current {@code dialogTitle} (citation) and {@code dialogText} (verse), then
+     *         break.
+     *     </li>
+     *     <li>
+     *         CHOICE_READ_ALOUD: Launch a new instance of the {@code BibleSpeak} {@code DialogFragment}
+     *         using the current {@code dialogTitle} (citation) and {@code dialogText} (verse), then
+     *         break.
+     *     </li>
+     *     <li>
+     *         default: If it is none of the above, then just break, although this could only happen
+     *         as the result of a programming error so we should probably throw an exception.
+     *     </li>
+     * </ul>
      *
      * @param v Just a view passed to give context for creating a Toast when called for
      * @param spinIndex Spinner index chosen
@@ -388,16 +414,16 @@ public class BibleMain extends Activity {
     }
 
     /**
-     * Reads the raw file king_james_text_and_verse.txt, separating it into citations
-     * (bookChapterVerse) and verse text (stringList). First we open InputStream inputStream
-     * to read our copy of the Bible (R.raw.king_james_text_and_verse) from our raw resource
-     * directory. Then we create BufferedReader reader from an instance of InputStreamReader
-     * created from inputStream (InputStreamReader does the character conversion needed to convert
-     * the byte stream coming from the InputStream inputStream to characters, and BufferedReader
-     * allows us to use readLine on the characters coming from the InputStreamReader). Then we
-     * set the doneReading flag to false so that other code does not try to access our data until
-     * it is ready to be used. Then we create the Thread mThread to read in the data from
-     * <b>reader</b> and start that thread running.
+     * Reads the raw file king_james_text_and_verse.txt, separating it into citations (the list in
+     * {@code ArrayList<String> bookChapterVerse}), and verse text (the list {@code ArrayList<String> stringList}).
+     * First we open {@code InputStream inputStream} to read our copy of the Bible (R.raw.king_james_text_and_verse)
+     * from our raw resource directory. Then we create {@code BufferedReader reader} from an instance of
+     * {@code InputStreamReader} created from {@code inputStream} ({@code InputStreamReader} does the
+     * character conversion needed to convert the byte stream coming from the {@code inputStream} to
+     * characters, and {@code BufferedReader} allows us to use {@code readLine} on the characters coming
+     * from the {@code InputStreamReader}). Then we set the {@code doneReading} flag to false so that
+     * other code does not try to access our data until it is ready to be used. Then we create the
+     * {@code Thread mThread} to read in the data from {@code reader} and start that thread running.
      */
     private void initDataSet() {
         final InputStream inputStream = getApplicationContext().getResources().openRawResource(R.raw.king_james_text_and_verse);
@@ -414,16 +440,27 @@ public class BibleMain extends Activity {
          * lines until an empty line is encountered) which it appends to the StringBuilder builder.
          * When the empty line terminating the verse is found (<b>line.length() == 0</b>), it
          * converts StringBuilder build to a String and adds it to ArrayList<String> stringList,
-         * then it replaces the StringBuilder builder with a new instance of StringBuilder and
-         * breaks from the verse building loop in order to start reading in the next citation and
-         * verse. Once it is done reading all the lines in BufferedReader reader (reader.readLine()
-         * returns null) it closes BufferedReader reader (which also closes the InputStreamReader
-         * and InputStream it was reading from (I hope)), opens the ConditionVariable mDoneReading
-         * and sets doneReading to true.
+         * then it sets the length of StringBuilder builder to 0 and breaks from the verse building
+         * loop in order to start reading in the next citation and verse. Once it is done reading
+         * all the lines in BufferedReader reader (reader.readLine() returns null) it closes
+         * BufferedReader reader (which also closes the InputStreamReader and InputStream it was
+         * reading from (I hope)), opens the ConditionVariable mDoneReading and sets doneReading to true.
          */
         final Thread mThread = new Thread() {
+            /**
+             * Line read from {@code BufferedReader reader}
+             */
             String line;
+            /**
+             * {@code StringBuilder} used to assemble the lines of the current verse.
+             */
             StringBuilder builder = new StringBuilder();
+            /**
+             * Called when the {@code Thread}'s {@code start()} method is called. First we call the
+             * {@code close()} method of our field {@code ConditionVariable mDoneReading} so that other
+             * {@code Thread}'s may block on {@code mDoneReading} until we call its {@code open()} method.
+             * Then wrapped in a try block intended to catch and log IOException
+             */
             @Override
             public void run() {
                 mDoneReading.close();
@@ -434,7 +471,7 @@ public class BibleMain extends Activity {
                             builder.append(line);
                             if (line.length() == 0) {
                                 stringList.add(builder.toString());
-                                builder = new StringBuilder();
+                                builder.setLength(0);
                                 break;
                             } else {
                                 builder.append(" ");
