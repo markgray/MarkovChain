@@ -20,35 +20,61 @@ import java.io.InputStreamReader;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+/**
+ * This {@code Activity} generates random gibberish using a Markov chain state table that was generated
+ * from the King James Bible offline.
+ */
 @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1)
 public class BibleMarkovFragment extends Activity {
-    public final String TAG = "BibleMarkovFragment"; // TAG for logging
-    ProgressBar mProgressBar; // ProgressBar in our layout file
-    RecyclerView mRecyclerView; // RecyclerView in our layout file
-    RecyclerView.LayoutManager mLayoutManager; // LayoutManager use for our RecyclerView
-    protected MarkovAdapter mAdapter; // MarkovAdapter used by our RecyclerView
-    protected Markov mMarkov = new Markov(); // Markov instance used to generate random text to display
+    /**
+     * TAG for logging
+     */
+    public final String TAG = "BibleMarkovFragment";
+    /**
+     * {@code ProgressBar} in our layout file that is displayed while the Markov chain state table
+     * is being loaded.
+     */
+    ProgressBar mProgressBar;
+    /**
+     * {@code RecyclerView} in our layout file that displays the random gibberish verses.
+     */
+    RecyclerView mRecyclerView;
+    /**
+     * {@code LayoutManager} used for our {@code RecyclerView}
+     */
+    RecyclerView.LayoutManager mLayoutManager;
+    /**
+     * {@code MarkovAdapter} used as the adapter fo our {@code RecyclerView}
+     */
+    protected MarkovAdapter mAdapter;
+    /**
+     * {@code Markov} instance used to generate random text to display
+     */
+    protected Markov mMarkov = new Markov();
 
     /**
      * Called when the activity is starting. First we call through to our super's implementation of
-     * onCreate, and then we set our content view to our layout file R.layout.activity_bible_markov_fragment.
-     * We initialize our field ProgressBar mProgressBar by locating the ProgressBar in our layout
-     * (R.id.bible_markov_fragment_progress), our field RecyclerView mRecyclerView by locating the
-     * RecyclerView in our layout, and our field our field RecyclerView.LayoutManager mLayoutManager
-     * by creating a new instance of LinearLayoutManager. Then we call our method initMarkov() which
-     * starts a background thread to read in our offline generated Markov state table using
-     * mMarkov.load(), we initialize our field MarkovAdapter mAdapter with and instance of MarkovAdapter
-     * created using Markov mMarkov and RecyclerView.LayoutManager mLayoutManager, set the adapter
-     * used by RecyclerView mRecyclerView to mAdapter and its LayoutManager to mLayoutManager. We set
-     * the OnClickListener of ProgressBar mProgressBar to an anonymous class which will switch the
-     * switch the visibility of mProgressBar to INVISIBLE, switch the visibility of mRecyclerView to
-     * VISIBLE and tell the MarkovAdapter that the data set has changed so that it will refresh the
-     * contents of mRecyclerView (this is done so that the DoneListener for mMarkov can just call
-     * mProgressBar.callOnClick then it is done loading the Markov state table in order to switch
-     * from the ProgressBar to the RecyclerView). Finally we set the DoneListener of mMarkov to an
-     * anonymous class which will call mProgressBar.callOnClick when onDoneDo(mProgressBar) is called.
+     * {@code onCreate}, then we set our content view to our layout file R.layout.activity_bible_markov_fragment.
+     * We initialize our field {@code ProgressBar mProgressBar} by fining the view in our layout with id
+     * R.id.bible_markov_fragment_progress, our field {@code RecyclerView mRecyclerView} by finding the
+     * view with id R.id.bible_markov_fragment, and initialize our field {@code LayoutManager mLayoutManager}
+     * with a new instance of {@code LinearLayoutManager}. Then we call our method {@code initMarkov()} which
+     * starts a background thread to read in our offline generated Markov state table using the {@code load}
+     * method of our field {@code Markov mMarkov} and we initialize our field {@code MarkovAdapter mAdapter}
+     * with an instance of {@code MarkovAdapter} constructed to use {@code Markov mMarkov} as its data
+     * generator and {@code RecyclerView.LayoutManager mLayoutManager} as its {@code LayoutManager}.
+     * Next we set the adapter used by {@code mRecyclerView} to {@code mAdapter} and its {@code LayoutManager}
+     * to {@code mLayoutManager}. We set the {@code OnClickListener} of {@code mProgressBar} to an anonymous
+     * class which will switch the switch the visibility of {@code mProgressBar} to INVISIBLE, switch the
+     * visibility of {@code mRecyclerView} to VISIBLE and tell {@code MarkovAdapter mAdapter} that its data
+     * set has changed so that it will refresh the contents of {@code mRecyclerView} (this is done so that
+     * the {@code DoneListener} for {@code mMarkov} can just call the {@code callOnClick} method of
+     * {@code mProgressBar} when it is done loading the Markov state table in order to switch from the
+     * {@code ProgressBar} to the {@code RecyclerView}). Finally we set the {@code DoneListener} of
+     * {@code mMarkov} to an anonymous class which will call {@code callOnClick} method of {@code mProgressBar}
+     * when {@code onDoneDo(mProgressBar)} is called.
      *
-     * @param savedInstanceState always null since onSaveInstanceState is not overridden
+     * @param savedInstanceState we do not override {@code onSaveInstanceState} so do not use.
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,11 +93,11 @@ public class BibleMarkovFragment extends Activity {
 
         mProgressBar.setOnClickListener(new View.OnClickListener() {
             /**
-             * Called when the ProgressBar is clicked or View.callOnClick is called on it. We set the
-             * visibility of ProgressBar mProgressBar to INVISIBLE, set the visibility of RecyclerView
-             * mRecyclerView to VISIBLE, and notify the MarkovAdapter mAdapter that the data set has
-             * changed so that it will fill mRecyclerView with random verses generated by Markov
-             * mMarkov.
+             * Called when the {@code ProgressBar} is clicked or {@code View.callOnClick} is called on
+             * it. We set the visibility of {@code ProgressBar mProgressBar} to INVISIBLE, set the visibility
+             * of {@code RecyclerView mRecyclerView} to VISIBLE, and notify {@code MarkovAdapter mAdapter}
+             * that the data set has changed so that it will fill {@code mRecyclerView} with random verses
+             * generated by {@code Markov mMarkov}.
              *
              * @param view View of the ProgressBar which was clicked
              */
@@ -84,9 +110,9 @@ public class BibleMarkovFragment extends Activity {
         });
         mMarkov.setDoneListener(new DoneListener() {
             /**
-             * Called by DoneListener.onDone by Markov when it is done reading in the Markov state
-             * table. We simply call callOnClick using the view passed us. (The Toast is just there
-             * for debugging purposes)
+             * Called by {@code DoneListener.onDone} by {@code Markov} when it is done reading in the
+             * Markov state table. We simply call {@code callOnClick} using the view passed us. (The
+             * Toast is just there for debugging purposes)
              *
              * @param view a View for Context for a Toast or other possible uses.
              */
@@ -100,7 +126,15 @@ public class BibleMarkovFragment extends Activity {
 
     /**
      * This method reads in the Markov state table contained in raw/king_james_state_table.txt
-     * using a background thread.
+     * using a background thread. We initialize our variable {@code InputStream inputStream} by using
+     * the context of the single, global Application object of the current process to fetch a {@code Resources}
+     * instance for the application's package and use it to open a data stream for reading the raw resource
+     * with id R.raw.king_james_state_table. Then we initialize {@code BufferedReader reader} with a new
+     * instance that uses an {@code InputStreamReader} that uses the default charset when reading from
+     * {@code inputStream}. Next we initialize {@code Thread mThread} with an anonymous class whose
+     * {@code run} override just calls the {@code load} method of {@code Markov mMarkov} read from {@code reader}
+     * in order to have {@code mMarkov} construct its state table from its contents. Finally we call the
+     * {@code start} method of {@code mThread} to start the {@code Thread} running.
      */
     private void initMarkov() {
 

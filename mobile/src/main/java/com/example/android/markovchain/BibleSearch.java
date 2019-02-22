@@ -18,18 +18,33 @@ import java.util.Collections;
 import java.util.HashSet;
 
 /**
- * This DialogFragment allows you to search for words or phrases in the current verse on the web
- * using Google search.
+ * This {@code DialogFragment} allows you to search for words or phrases in the current verse on the
+ * web using Google search.
  */
 public class BibleSearch extends DialogFragment {
-    public final static String TAG = "BibleSearch"; // TAG used for logging
-    public String mLabel; // Canonical Bible citation for current verse
-    public String mText;  // Current verse
-    public String[] mSuggestions; // Array containing all words in current verse (duplicates removed)
-    public ArrayAdapter<String> mAdapter; // Suggestions Adapter for MultiAutoCompleteTextView textView
+    /**
+     * TAG used for logging
+     */
+    public final static String TAG = "BibleSearch";
+    /**
+     * Canonical Bible citation for current verse
+     */
+    public String mLabel;
+    /**
+     * Current verse
+     */
+    public String mText;
+    /**
+     * Array containing all words in current verse (duplicates removed)
+     */
+    public String[] mSuggestions;
+    /**
+     * Suggestions Adapter for the {@code MultiAutoCompleteTextView} with id R.id.edit
+     */
+    public ArrayAdapter<String> mAdapter;
 
     /**
-     * Create and initialize a BibleSearch DialogFragment. First we create a new BibleSearch instance
+     * Create and initialize a {@code BibleSearch} {@code DialogFragment}. First we create a new BibleSearch instance
      * "f", we create a Bundle "args" and store our parameter <b>label</b> in it under the key
      * "label" and our parameter <b>text</b> under the key "text". We set the arguments of our
      * BibleSearch instance <b>f</b> to the Bundle args and return <b>f</b> to the caller.
@@ -171,12 +186,12 @@ public class BibleSearch extends DialogFragment {
         tv = v.findViewById(R.id.text);
         ((TextView) tv).setText(mText);
 
-        final MultiAutoCompleteTextView textView = (MultiAutoCompleteTextView) v.findViewById(R.id.edit);
+        final MultiAutoCompleteTextView textView = v.findViewById(R.id.edit);
         textView.setAdapter(mAdapter);
         textView.setTokenizer(new SpaceTokenizer());
 
         // Watch for button clicks.
-        Button button = (Button) v.findViewById(R.id.show);
+        Button button = v.findViewById(R.id.show);
         button.setOnClickListener(new View.OnClickListener() {
             /**
              * Called when the "SEARCH" Button (R.id.show) is clicked. First we retrieve the String

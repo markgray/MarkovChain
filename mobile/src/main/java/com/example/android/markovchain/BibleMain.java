@@ -459,7 +459,26 @@ public class BibleMain extends Activity {
              * Called when the {@code Thread}'s {@code start()} method is called. First we call the
              * {@code close()} method of our field {@code ConditionVariable mDoneReading} so that other
              * {@code Thread}'s may block on {@code mDoneReading} until we call its {@code open()} method.
-             * Then wrapped in a try block intended to catch and log IOException
+             * Then wrapped in a try block intended to catch and log IOException we read each {@code line}
+             * from {@code reader} until EOF is indicated by a null return. The structure of the file
+             * is such that the first line is the citation followed by the lines of the verse, terminated
+             * by an empty line, so in an outer loop we add the citation {@code line} to our list of
+             * citations {@code ArrayList<String> bookChapterVerse}, then in an inner loop we append the
+             * {@code line} to {@code builder} then branch on whether the length of {@code line} was
+             * 0 or not:
+             * <ul>
+             *     <li>
+             *         The length of {@code line} is 0: we add the string value of {@code builder} to our
+             *         list of verses {@code ArrayList<String> stringList}, set the length of {@code builder}
+             *         to 0, and  break out of the inner loop to work on the next citation and its verse.
+             *     </li>
+             *     <li>
+             *         The length of {@code line} is NOT 0: We append a space character to {@code builder}
+             *     </li>
+             * </ul>
+             * When we have reached the EOF we log the number of verses read, close {@code reader} and
+             * exit the try block. Having read in the file we open {@code ConditionVariable mDoneReading}
+             * and set our done reading flag {@code boolean doneReading} to true.
              */
             @Override
             public void run() {
