@@ -1,6 +1,5 @@
 package com.example.android.markovchain;
 
-
 import android.app.DialogFragment;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
@@ -16,24 +15,36 @@ import android.speech.tts.TextToSpeech.OnInitListener;
 import java.util.Locale;
 
 /**
- * This DialogFragment reads the current verse using the systems text to speech synthesizer.
+ * This {@code DialogFragment} reads the current verse using the systems text to speech synthesizer.
  */
 public class BibleSpeak extends DialogFragment implements OnInitListener {
-
-    private static final String TAG = "BibleSpeak"; // TAG used for logging
-    public String mLabel; // canonical Bible citation for current verse
-    public String mText;  // text of current verse
-    private TextToSpeech mTts; // TextToSpeech instance we will use to synthesize speech
-    private View mView; // View containing our layout inflated in onCreateView
+    /**
+     * TAG used for logging
+     */
+    private static final String TAG = "BibleSpeak";
+    /**
+     * canonical Bible citation for current verse
+     */
+    public String mLabel;
+    /**
+     * text of current verse
+     */
+    public String mText;
+    /**
+     * {@code TextToSpeech} instance we will use to synthesize speech
+     */
+    private TextToSpeech mTts;
+    /**
+     * {@code View} containing our layout, inflated in {@code onCreateView}
+     */
+    private View mView;
 
     /**
-     * Create a new instance of BibleSpeak f with its arguments set to the values of the parameters
-     * passed us. First we create a new instance of BibleSpeak f, then we create Bundle args and
-     * insert the label parameter under key "label" and the text parameter under key "text".
-     * We use Bundle f to supply the construction arguments for the BibleSpeak DialogFragment by
-     * calling f.setArguments(args). The arguments in <b>args</b> can then be retrieved in
-     * BibleSpeak.onCreate(). The arguments supplied here will be retained across fragment destroy
-     * and creation.
+     * Create a new instance of {@code BibleSpeak} with its arguments set to the values of the parameters
+     * passed us. First we create a new instance to initialize our variable {@code BibleSpeak f}. Then
+     * we initialize our variable {@code Bundle args} with a new instance, store our parameter {@code String label}
+     * in it under the key "label", and our parameter {@code String text} under the key "text". Finally
+     * we set the argument bundle of {@code f} to {@code args} and return {@code f} to the caller.
      *
      * @param label canonical Bible citation for current verse
      * @param text  text of current verse
@@ -52,29 +63,23 @@ public class BibleSpeak extends DialogFragment implements OnInitListener {
     }
 
     /**
-     * Called to have the fragment instantiate its user interface view.
-     * This is optional, and non-graphical fragments can return null (which
-     * is the default implementation).  This will be called between
-     * {@link #onCreate(Bundle)} and {@link #onActivityCreated(Bundle)}.
+     * Called to have the fragment instantiate its user interface view. First we initialize our field
+     * {@code View mView} by using our parameter {@code LayoutInflater inflater} to inflate our layout
+     * file R.layout.bible_speak using our parameter {@code ViewGroup container} for the layout params
+     * without attaching to it. We then call our method {@code setDisplayedText} to set the label and
+     * text of {@code mView} to our fields {@code String mLabel} and {@code String mText} respectively.
+     * Next we initialize our variable {@code Button button} by finding the view in {@code mView} with
+     * id R.id.dismiss ("DISMISS") and set its {@code OnClickListener} to an anonymous class whose
+     * {@code onClick} override will dismiss this {@code BibleSpeak} BibleSpeak{@code BibleSpeak},
+     * and then we set {@code button} to the view in {@code mView} with id R.id.next ("NEXT") and
+     * set its {@code OnClickListener} to an anonymous class whose {@code onClick} override will move
+     * to the next verse of the Bible and speak it out loud. Finally we return {@code View mView} to
+     * the caller.
      *
-     * <p>If you return a View from here, you will later be called in
-     * {@link #onDestroyView} when the view is being released.</p>
-     *
-     * First we inflate our layout into our field View mView, then we call our method
-     * setDisplayedText to set the label of our View mView to the String mLabel and the
-     * text of our View mView to the String mText. Next we locate the Button "DISMISS"
-     * (R.id.dismiss) and set its OnClickListener to an anonymous class which will dismiss
-     * this BibleSpeak DialogFragment, and then we locate the Button "NEXT" (R.id.next) and
-     * set its OnClickListener to an anonymous class which will move to the next verse of the
-     * Bible and speak it out loud. Finally we return View mView to the caller.
-     *
-     * @param inflater The LayoutInflater object that can be used to inflate
-     *        any views in the fragment,
-     * @param container If non-null, this is the parent view that the fragment's
-     *        UI should be attached to.  The fragment should not add the view itself,
-     *        but this can be used to generate the LayoutParams of the view.
-     * @param savedInstanceState always null since onSaveInstanceState is not overridden
-     *
+     * @param inflater  A LayoutInflater object that can be used to inflate an XML layout file
+     * @param container If non-null, this is the parent {@code ViewGroup} that the fragment's UI will
+     *                  be attached to.
+     * @param savedInstanceState We do not override {@code onSaveInstanceState} so do not use.
      * @return Return the View for the fragment's UI.
      */
     @Nullable
@@ -85,7 +90,7 @@ public class BibleSpeak extends DialogFragment implements OnInitListener {
         setDisplayedText(mView);
 
         // Watch for dismiss button clicks
-        Button button = (Button) mView.findViewById(R.id.dismiss);
+        Button button = mView.findViewById(R.id.dismiss);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // When button is clicked, dismiss this DialogFragment
@@ -95,7 +100,7 @@ public class BibleSpeak extends DialogFragment implements OnInitListener {
             }
         });
         // Watch for NEXT  button clicks
-        button = (Button) mView.findViewById(R.id.next);
+        button = mView.findViewById(R.id.next);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // When button is clicked, move to the next verse and speak it
@@ -112,25 +117,25 @@ public class BibleSpeak extends DialogFragment implements OnInitListener {
     }
 
     /**
-     * Set the label and text of the view to those saved in mLabel and mText. First we locate the
-     * View tv for the label (R.id.label) and set its text to the String mLabel, then we locate the
-     * View for the text (R.id.text) and set its text to the String mText.
+     * Set the label and text of the {@code View v} passed us to those saved in the fields {@code mLabel}
+     * and {@code mText} respectively. First we initialize our variable {@code TextView tv} by finding
+     * the view in our parameter {@code View v} with id R.id.label and set its text to our field
+     * {@code String mLabel}, then we set {@code tv} to the view found in {@code v} with id R.id.text
+     * and set its text to our field {@code String mText}.
      *
      * @param v Main View for the DialogFragment (always mView at the moment)
      */
     public void setDisplayedText(View v) {
-        View tv = v.findViewById(R.id.label);
-        ((TextView) tv).setText(mLabel);
+        TextView tv = v.findViewById(R.id.label);
+        tv.setText(mLabel);
 
         tv = v.findViewById(R.id.text);
-        ((TextView) tv).setText(mText);
+        tv.setText(mText);
     }
 
     /**
-     * Called to do initial creation of a fragment.  This is called after
-     * onAttach(Activity) and before onCreateView(LayoutInflater, ViewGroup, Bundle).
-     *
-     * First we call through to our super's implementation of onCreate, then we initialize our field
+     * Called to do initial creation of a fragment. First we call through to our super's implementation
+     * of {@code onCreate}, then we initialize our field
      * String mLabel using what was stored in our arguments under the key "label", and our field
      * String mText using what was stored in our arguments under the key "text" (the canonical Bible
      * citation for the current verse, and the text of the current verse respectively). Then we set
@@ -144,7 +149,7 @@ public class BibleSpeak extends DialogFragment implements OnInitListener {
      * TextToSpeech instance we delay instructing it to speak until the onInit callback is called
      * to signal the completion of the TextToSpeech engine initialization).
      *
-     * @param savedInstanceState always null since onSaveInstanceState is not overridden
+     * @param savedInstanceState We do not override {@code onSaveInstanceState} so do not use.
      */
     @Override
     public void onCreate(Bundle savedInstanceState) {

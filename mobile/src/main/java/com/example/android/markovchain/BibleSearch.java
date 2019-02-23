@@ -44,14 +44,15 @@ public class BibleSearch extends DialogFragment {
     public ArrayAdapter<String> mAdapter;
 
     /**
-     * Create and initialize a {@code BibleSearch} {@code DialogFragment}. First we create a new BibleSearch instance
-     * "f", we create a Bundle "args" and store our parameter <b>label</b> in it under the key
-     * "label" and our parameter <b>text</b> under the key "text". We set the arguments of our
-     * BibleSearch instance <b>f</b> to the Bundle args and return <b>f</b> to the caller.
+     * Create and initialize a {@code BibleSearch} {@code DialogFragment}. First we initialize our
+     * variable {@code BibleSearch f} with a new instance. We initialize our variable {@code Bundle args}
+     * with a new instance then store our parameter {@code String label} in it under the key "label"
+     * and our parameter {@code String text} under the key "text". We set the argument bundle of
+     * {@code f} to {@code args} and return {@code f} to the caller.
      *
      * @param label Label to use
      * @param text  Text to use
-     * @return Initialized BibleSearch
+     * @return Configured {@code BibleSearch} instance
      */
     static BibleSearch newInstance(String label, String text) {
         Log.i(TAG, " newInstance called with: " + label + " " + text);
@@ -66,12 +67,12 @@ public class BibleSearch extends DialogFragment {
     }
 
     /**
-     * Remove punctuation characters .,;:()!? from the verse passed it. First we create a StringBuilder
-     * stringBuilder, then looping through all the characters in our parameter String text we grab
-     * each <b>char c</b> from <b>text</b> and if it is not one of the punctuation
-     * characters ".,;:()!?" we append it to our <b>StringBuilder stringBuilder</b>, otherwise
-     * we ignore it. Finally we return the String contents of <b>stringBuilder</b> to the
-     * caller.
+     * Removes punctuation characters .,;:()!? from the verse passed it. First we initialize our
+     * variable {@code StringBuilder stringBuilder} with a new instance. Then looping over {@code i}
+     * through all the characters in our parameter {@code String text} we grab each {@code char c}
+     * from {@code text} and if it is not one of the punctuation characters ".,;:()!?" we append it
+     * to {@code stringBuilder}, otherwise we ignore it. Finally we return the String value of
+     * {@code stringBuilder} to the caller.
      *
      * @param text Verse containing punctuation characters
      * @return Same verse minus all punctuation
@@ -88,15 +89,18 @@ public class BibleSearch extends DialogFragment {
     }
 
     /**
-     * Given an array of strings which might contain duplicate strings remove all duplicates. First
-     * we create HashSet<String> setOfStrings, then we add all the String's in our parameter string
-     * to the set using Collections.addAll. This has the effect of only adding a String if it is not
-     * already present in the set (thus removing the duplicates). We create Object[] tempObjectArray
-     * to temporarily hold a copy of all of the Objects in our setOfStrings (necessary because
-     * <b>HashSet<String>.toArray()</b> returns an array of Object's, not String's). Then we
-     * create the array <b>String[] returnStringArray</b> and loop through the Object's in
-     * <b>tempObjectArray</b>, casting them to String before storing them in returnStringArray.
-     * Finally we return returnStringArray to our caller.
+     * Given an array of strings which might contain duplicate strings, remove all duplicates. First
+     * we initialize our variable {@code HashSet<String> setOfStrings} with a new instance with an
+     * initial capacity as large as the length of our parameter {@code String[] strings}, then we add
+     * all the String's in {@code strings} to {@code setOfStrings} using the {@code addAll} method of
+     * {@code Collections} (this has the effect of only adding a String if it is not already present
+     * in the set ,thus removing the duplicates). We initialize {@code Object[] tempObjectArray} to
+     * the array of string objects returned by the {@code toArray} method of {@code setOfStrings}
+     * (necessary because {@code toArray} returns an array of {@code Object} instead of strings),
+     * and allocate an array of strings the same size as {@code setOfStrings} to initialize our variable
+     * {@code String[] returnStringArray}. Then we loop over {@code int i} setting {@code returnStringArray[i]}
+     * to {@code tempObjectArray[i]} (casting it to {@code String} of course). Finally we return
+     * {@code returnStringArray} to our caller.
      *
      * @param strings String array with possible duplicate string members
      * @return Same array with only single occurrences of strings
@@ -113,29 +117,21 @@ public class BibleSearch extends DialogFragment {
     }
 
     /**
-     * Called to do initial creation of a DialogFragment.  This is called after
-     * onAttach(Activity) and before
-     * onCreateView(LayoutInflater, ViewGroup, Bundle).
-     *
-     * <p>Note that this can be called while the fragment's activity is
-     * still in the process of being created.  As such, you can not rely
-     * on things like the activity's content view hierarchy being initialized
-     * at this point.  If you want to do work once the activity itself is
-     * created, see {@link #onActivityCreated(Bundle)}.
-     *
-     * First we call through to our super's implementation of onCreate, then we initialize our
-     * fields <b>mLabel</b> and <b>mText</b> from our arguments using the keys "label"
-     * and "text" respectively. Then we initialize our field <b>String[] mSuggestions</b>
-     * (the array of suggestions for our EditText) by first removing all punctuation characters
-     * from <b>mText</b>, splitting the result into a String array using the delimiter " ",
-     * and removing all duplicates from that array using our method <b>uniq</b>. We then
-     * initialize our field <b>ArrayAdapter<String> mAdapter</b> using <b>mSuggestions</b>
-     * as the constants to be used in the ListView when <b>mAdapter</b> is used for the
-     * suggestions in our EditText. Finally we set our DialogFragment style to STYLE_NORMAL (for
-     * no better reason then it was done in the sample code we studied.
+     * Called to do initial creation of a DialogFragment. This is called after {@code onAttach(Activity)}
+     * and before {@code onCreateView(LayoutInflater, ViewGroup, Bundle)}. First we call through to
+     * our super's implementation of {@code onCreate}, then we initialize our field {@code String mLabel}
+     * to the string stored in our argument {@code Bundle} under the key "label", and our field
+     * {@code String mText} to the string stored in our argument {@code Bundle} under the key "text".
+     * We initialize our field {@code String[] mSuggestions} (the array of suggestions for our {@code EditText})
+     * by first removing all punctuation characters from {@code mText} using our {@code noPunct} method,
+     * splitting the result into a String array using the delimiter " ", and removing all duplicates
+     * from that array using our method {@code uniq}. We then initialize our field {@code ArrayAdapter<String> mAdapter}
+     * using {@code mSuggestions} as the constants to be used in the {@code ListView} when {@code mAdapter}
+     * is used for the suggestions in our {@code EditText}. Finally we set our {@code DialogFragment}
+     * style to STYLE_NORMAL (for no better reason then it was done in the sample code we studied).
      * TODO: Improve the styles used for all DialogFragment's and Spinner's
      *
-     * @param savedInstanceState always null since onSaveInstanceState is not overridden.
+     * @param savedInstanceState We do not override {@code onSaveInstanceState} so do not use.
      */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -154,25 +150,25 @@ public class BibleSearch extends DialogFragment {
     }
 
     /**
-     * Called to have the fragment instantiate its user interface view. First we inflate our layout
-     * file R.layout.bible_search into View v. Then we locate the TextView R.id.label and set its
-     * text to <b>mLabel</b>, and locate the TextView R.id.text and set its text to
-     * <b>mText</b>. We locate our <b>MultiAutoCompleteTextView textView</b> R.id.edit
-     * set its Adapter to <b>mAdapter</b> and set its tokenizer to a new instance of our class
-     * SpaceTokenizer. Next we locate the "SEARCH" Button (R.id.show) and set its OnClickListener to
-     * an anonymous class which when the Button is clicked will create an Intent to do a Google
-     * search on the text which has been entered in our <b>MultiAutoCompleteTextView textView</b>.
-     * Finally we return <b>View v</b> to our caller.
+     * Called to have the fragment instantiate its user interface view. First we initialize our variable
+     * {@code View v} by using our parameter {@code LayoutInflater inflater} to inflate our layout
+     * file R.layout.bible_search using our parameter {@code ViewGroup container} for the layout params
+     * without attaching to it. We initialize our variable {@code TextView tv} by finding the view in
+     * {@code v} with id R.id.label and set its text to our field {@code String mLabel}, then we set
+     * {@code tv} by finding the view in {@code v} with id R.id.text and set its text to our field
+     * {@code String mText}. We initialize our variable {@code MultiAutoCompleteTextView textView} by
+     * finding the view in {@code v} with id R.id.edit, set its adapter to our field {@code ArrayAdapter<String> mAdapter}
+     * and set its {@code Tokenizer} to a new instance of our class {@code SpaceTokenizer} (splits the
+     * text the user enters into words using only spaces as the delimiter). We initialize our variable
+     * {@code Button button} by finding the view in {@code v} with id R.id.show ("SEARCH") and set its
+     * {@code OnClickListener} to an anonymous class whose {@code onClick} override will create an
+     * {@code Intent} to do a Google search on the text which has been entered in {@code textView}.
+     * Finally we return {@code v} to our caller.
 
-     * @param inflater The LayoutInflater object that can be used to inflate
-     *                 any views in the fragment,
-     * @param container If non-null, this is the parent view that the fragment's UI should be
-     *                  attached to.  The fragment should not add the view itself, but this can
-     *                  be used to generate the LayoutParams of the view.
-     * @param savedInstanceState If non-null, this fragment is being re-constructed from a previous
-     *                           saved state as given here.
-     *
-     * @return Return the View for the fragment's UI, or null.
+     * @param inflater A {@code LayoutInflater} object that can be used to inflate an XML layout file
+     * @param container If non-null, this is the parent view that the fragment's UI will be attached to.
+     * @param savedInstanceState We do not override {@code onSaveInstanceState} so do not use.
+     * @return Return the View for the fragment's UI.
      */
     @Nullable
     @Override
@@ -180,11 +176,11 @@ public class BibleSearch extends DialogFragment {
         Log.i(TAG, "onCreateView called");
         View v = inflater.inflate(R.layout.bible_search, container, false);
 
-        View tv = v.findViewById(R.id.label);
-        ((TextView) tv).setText(mLabel);
+        TextView tv = v.findViewById(R.id.label);
+        tv.setText(mLabel);
 
         tv = v.findViewById(R.id.text);
-        ((TextView) tv).setText(mText);
+        tv.setText(mText);
 
         final MultiAutoCompleteTextView textView = v.findViewById(R.id.edit);
         textView.setAdapter(mAdapter);
@@ -195,12 +191,13 @@ public class BibleSearch extends DialogFragment {
         button.setOnClickListener(new View.OnClickListener() {
             /**
              * Called when the "SEARCH" Button (R.id.show) is clicked. First we retrieve the String
-             * query from <b>MultiAutoCompleteTextView textView</b>, create an Intent intent
-             * with the action ACTION_WEB_SEARCH (Perform a web search), add extended data to the
-             * intent containing our <b>String query</b> and using SearchManager.QUERY as the
-             * name of the extra value, and then we launch the Activity we specified in the Intent.
-             * We make sure that the BibleDialog that launched us has an up to date value for its
-             * fields mLabel and mText, and finally we dismiss this BibleSearch DialogFragment.
+             * query from our field {@code MultiAutoCompleteTextView textView} to initialize our variable
+             * {@code String query}, initialize our variable {@code Intent intent} with a new instance
+             * whose action is ACTION_WEB_SEARCH, add {@code query} as extended data to {@code intent}
+             * using SearchManager.QUERY as the name of the data, and then we launch the {@code Activity}
+             * we specified in {@code Intent intent}. We make sure that the {@code BibleDialog} that
+             * launched us has an up to date value for its fields {@code mLabel} and {@code mText},
+             * and finally we dismiss this {@code BibleSearch} {@code DialogFragment} instance.
              *
              * @param v View of Button that was clicked.
              */
