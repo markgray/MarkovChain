@@ -38,7 +38,7 @@
         </Button>
 
         <Button
-            android:id="@+id/toastme"
+            android:id="@+id/toast_me"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

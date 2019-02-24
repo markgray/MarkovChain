@@ -5,8 +5,12 @@ import android.os.AsyncTask;
 import com.example.android.common.ClockDataItem;
 
 /**
- * This background task will cycle through all the seconds in a day, creating a list of ClockDataItem's
- * sorted by the {@code doBadness()} results of each.
+ * The first time this background task is run it will cycle through all the seconds in a day, and if
+ * the {@code badness} field of the best {@code ClockDataItem} for a particular minute is less than
+ * 12 it will publish this {@code ClockDataItem} to the UI thread, and if not it will remove it from
+ * future consideration for fractional seconds. When done it will return the {@code ClockDataItem}
+ * that has the best {@code badness} field. In subsequent runs with fractional increments for the
+ * seconds it only looks at minutes which survived the previous pass.
  */
 @SuppressWarnings("WeakerAccess")
 public class ClockDataTask extends AsyncTask<ClockDataItem, ClockDataItem, ClockDataItem> {
@@ -51,12 +55,13 @@ public class ClockDataTask extends AsyncTask<ClockDataItem, ClockDataItem, Clock
     }
 
     /**
-     * We override this method to perform a computation on a background thread. The parameters is the
+     * We override this method to perform a computation on a background thread. The parameters is a
      * {@code ClockDataItem} array containing the best trisection of the clock for every minute of
      * the half day so far passed to {@link #execute} by the caller of this task, and entries are
      * updated here or deleted if they are too bad to be improved by another iteration (a badness
      * greater than 12 degrees cannot be improved by further fine adjustment of the second hand).
-     * We call {@link #publishProgress} to publish updates on the UI thread to each "best trisection".
+     * We call {@link #publishProgress} to publish updates on the UI thread when a minute is found
+     * to have a badness that is less than 12.
      * <p>
      * We initialize our variable {@code int indexToMinute} to 0 (it will point to the {@code ClockDataItem}
      * of the minute whose seconds we are searching for a better trisection). Then we loop over {@code h}
@@ -73,7 +78,7 @@ public class ClockDataTask extends AsyncTask<ClockDataItem, ClockDataItem, Clock
      *         minute and {@code s} second and if the {@code badness} field of {@code trialClock} is
      *         less than the {@code badness} field of {@code params[indexToMinute]} we clone {@code trialClock}
      *         into {@code params[indexToMinute]}, in either case we then add {@code increment} to {@code s}
-     *         and loop around for the next trial time.
+     *         and loop around for the next value of {@code s}.
      *     </li>
      *     <li>
      *         When done considering all of the seconds in {@code params[indexToMinute]} if the {@code badness}

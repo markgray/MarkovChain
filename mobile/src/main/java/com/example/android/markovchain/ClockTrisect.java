@@ -61,7 +61,6 @@ public class ClockTrisect extends Activity {
      * initializes our field {@code BenchMark benchMark} (starting its clock) then calls the
      * {@code execute} method of {@code clockDataTask} to start it running (its {@code doInBackground}
      * method will be called with the value of {@code clockDataItem} as its parameter).
-     * TODO: Remove all the crud!
      *
      * @param savedInstanceState we do not override {@code onSaveInstanceState} so do not use.
      */
@@ -74,14 +73,18 @@ public class ClockTrisect extends Activity {
         Button button = findViewById(R.id.start_the_clock);
         button.setOnClickListener(new View.OnClickListener() {
             /**
-             * Called when our {@code Button button} has been clicked. We initialize our variable
-             * {@code ClockDataItem clockDataItem} with an instance whose time is set to 0 hours, 0
-             * minutes and 0 seconds. We then call our method {@code createClockDataTask} to construct
-             * and initialize our field {@code ClockDataTask clockDataTask}. We divide our field
-             * {@code double increment} by 10, initialize our field {@code BenchMark benchMark} with
-             * a new instance (starting its clock) then call the {@code execute} method of {@code clockDataTask}
-             * with {@code clockDataItem} as the parameter to be passed to its {@code doInBackground}
-             * method.
+             * Called when our {@code Button button} has been clicked. We set the static field {@code secondFormat}
+             * of the class {@code ClockDataItem} to a string formed by concatenating the string "%0"
+             * followed by 2 plus the current value of our field {@code incrementPrecision} followed
+             * by the string "." followed by the current value of our field {@code incrementPrecision}
+             * followed by the string "f" (this is the string that the {@code toString} method of
+             * {@code ClockDataItem} will use to format its {@code timeSecond} field). We then call
+             * our method {@code createClockDataTask} to construct and initialize our field
+             * {@code ClockDataTask clockDataTask}. We divide our field {@code double increment} by 10,
+             * increment our field {@code int incrementPrecision}, initialize our field {@code BenchMark benchMark}
+             * with a new instance (starting its clock) then call the {@code execute} method of {@code clockDataTask}
+             * with our field {@code ClockDataItem[] minuteBestClock} as the parameter to be passed to its
+             * {@code doInBackground} method.
              *
              * @param v The view that was clicked.
              */
@@ -113,10 +116,10 @@ public class ClockTrisect extends Activity {
     }
 
     /**
-     * Creates an anonymous {@code ClockDataTask} for the current value of our field {@code double increment},
-     * overriding the {@code onPreExecute}, {@code onPostExecute}, and {@code onProgressUpdate} methods.
-     * If our field {@code ClockDataItem[] minuteBestClock} is null, we initialize it with the array
-     * returned by the {@code init} method of {@code clockDataTask}. TODO: move init() into this class
+     * Initializes our field {@code ClockDataTask clockDataTask} to an anonymous {@code ClockDataTask}
+     * for the current value of our field {@code double increment}, overriding the {@code onPreExecute},
+     * {@code onPostExecute}, and {@code onProgressUpdate} methods. If our field {@code ClockDataItem[] minuteBestClock}
+     * is null, we initialize it with the array returned by the {@code init} method of {@code clockDataTask}.
      */
     @SuppressLint("StaticFieldLeak")
     public void createClockDataTask() {
@@ -152,9 +155,7 @@ public class ClockTrisect extends Activity {
              * are the values passed to {@link #publishProgress}. We call our {@code addText} method
              * to have it display a {@code TextView} at the top of {@code outputLinearLayout} whose text
              * consists of the string formed by concatenating the string value of our parameter
-             * {@code ClockDataItem values[0]} followed by a newline character. We then call the
-             * {@code addToDataSet} method of our field {@code ClockDataAdapter adapter} to add
-             * {@code values[0]} to its data set.
+             * {@code ClockDataItem values[0]} followed by a newline character.
              *
              * @param values The {@code ClockDataItem} with the best "badness" for the hour just tried.
              */

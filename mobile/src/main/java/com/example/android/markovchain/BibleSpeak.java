@@ -135,19 +135,21 @@ public class BibleSpeak extends DialogFragment implements OnInitListener {
 
     /**
      * Called to do initial creation of a fragment. First we call through to our super's implementation
-     * of {@code onCreate}, then we initialize our field
-     * String mLabel using what was stored in our arguments under the key "label", and our field
-     * String mText using what was stored in our arguments under the key "text" (the canonical Bible
-     * citation for the current verse, and the text of the current verse respectively). Then we set
-     * the style of our DialogFragment to STYLE_NORMAL (for no reason I can think of.) Finally if
-     * BibleMain.textToSpeech is null (first time BibleSpeak has been called) we create a new
-     * instance of TextToSpeech and save it in our field TextToSpeech mTts as well as a permanent
-     * copy in BibleMain.textToSpeech, otherwise we initialize our field TextToSpeech mTts from the
-     * existing TextToSpeech instance in BibleMain.textToSpeech and immediately instruct mTts to
-     * speak our String mText (since it is preexisting, the TextToSpeech instance has already
-     * finished its initialization phase and is ready to use, for the first use of a newly created
-     * TextToSpeech instance we delay instructing it to speak until the onInit callback is called
-     * to signal the completion of the TextToSpeech engine initialization).
+     * of {@code onCreate}, then we initialize our field {@code String mLabel} to the value stored in
+     * our argument bundle under the key "label", and our field {@code String mText} to the value stored
+     * under the key "text" (the canonical Bible citation for the current verse, and the text of the
+     * current verse respectively). Then we set the style of our {@code DialogFragment} to STYLE_NORMAL
+     * (for no reason I can think of). Finally if the {@code textToSpeech} field of {@code BibleMain}
+     * is null (first time {@code BibleSpeak} has been launched) we create a new instance of
+     * {@code TextToSpeech} that uses 'this' as its {@code OnInitListener} (our {@code onInit} override
+     * will be called when the engine is ready for use) and save it in our field {@code TextToSpeech mTts}
+     * as well as a permanent copy in the {@code textToSpeech} field of {@code BibleMain}, otherwise we
+     * initialize our field {@code TextToSpeech mTts} from the existing {@code TextToSpeech} instance
+     * in the {@code textToSpeech} field of {@code BibleMain} and immediately instruct {@code mTts} to
+     * speak our {@code String mText} (since it is preexisting, the {@code TextToSpeech} instance has
+     * already finished its initialization phase and is ready to use, for the first use of a newly created
+     * {@code TextToSpeech} instance we delay instructing it to speak until our {@code onInit} callback
+     * is called to signal the completion of the {@code TextToSpeech} engine initialization).
      *
      * @param savedInstanceState We do not override {@code onSaveInstanceState} so do not use.
      */
@@ -173,12 +175,12 @@ public class BibleSpeak extends DialogFragment implements OnInitListener {
     }
 
     /**
-     * Called to signal the completion of the TextToSpeech engine initialization. If the status
-     * passed us is TextToSpeech.SUCCESS, we try to set the language of TextToSpeech mTts to Locale.US
+     * Called to signal the completion of the {@code TextToSpeech} engine initialization. If the status
+     * passed us is SUCCESS, we try to set the language of our field {@code TextToSpeech mTts} to Locale.US
      * (Locale constant for en_US) and if the result of that attempt is either LANG_MISSING_DATA or
-     * LANG_NOT_SUPPORTED we just log the error and return, otherwise we instruct TextToSpeech mTts
-     * to speak our String mText. If the status passed to us was not TextToSpeech.SUCCESS we log
-     * our failure to initialize the TextToSpeech engine.
+     * LANG_NOT_SUPPORTED we just log the error and return, otherwise we instruct {@code mTts} to speak
+     * our field {@code String mText}. If the status passed to us was not SUCCESS we log our failure
+     * to initialize the {@code TextToSpeech} engine.
      *
      * @param status {@link TextToSpeech#SUCCESS} or {@link TextToSpeech#ERROR}.
      */
