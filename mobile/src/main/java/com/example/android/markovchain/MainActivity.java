@@ -11,28 +11,28 @@ import android.widget.TextView;
 /**
  * This is the main Activity which launches all the other Activity's when their "launching Button"
  * is clicked. Its layout file (R.layout.activity_main) consists only of a vertical
- * <b>LinearLayout</b> wrapped in a <b>ScrollView</b> and Button's and TextView's are
- * added to the LinearLayout using java code.
+ * {@code LinearLayout} wrapped in a {@code ScrollView} and {@code Button}'s and {@code TextView}'s
+ * are added to the {@code LinearLayout} using java code.
  */
 public class MainActivity extends Activity {
 
     /**
      * Called when the activity is starting. First we call through to our super's implementation of
-     * onCreate, then we set our content view to our layout file R.layout.activity_main. We locate
-     * the <b>LinearLayout linearLayout</b> in our layout (R.id.linear_layout) and use the
-     * reference <b>linearLayout</b> to add Button's using method <b>addButton</b> and
-     * a TextView using our method <b>addText</b>. The Button's are intended to launch the
-     * other Activity's in our app, and the TextView merely separates the "featured" Activity's from
-     * experimental ones added to the end of the LinearLayout.
+     * {@code onCreate}, then we set our content view to our layout file R.layout.activity_main. We
+     * initialize our variable {@code ViewGroup linearLayout} by finding the view in our content view
+     * with id R.id.linear_layout. We then use our {@code addButton} method to add buttons that will
+     * launch each of our activities to {@code linearLayout} as well as using our method {@code addText}
+     * to add a {@code TextView} to separate the "featured" Activity's from experimental ones added
+     * to the end of {@code linearLayout}.
      *
-     * @param savedInstanceState we do not override onSaveInstanceState so do not use this
+     * @param savedInstanceState we do not override {@code onSaveInstanceState} so do not use this
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ViewGroup linearLayout = (ViewGroup) findViewById(R.id.linear_layout);
+        ViewGroup linearLayout = findViewById(R.id.linear_layout);
         addButton(ShakespeareRecycler.class, "Shakespeare", linearLayout);
         addButton(ShakespeareMarkovRecycler.class, "Shakespeare Markov", linearLayout);
         addButton(BibleMain.class, "Bible", linearLayout);
@@ -45,13 +45,14 @@ public class MainActivity extends Activity {
     }
 
     /**
-     * Adds a <b>Button</b> to the <b>ViewGroup parent</b> designed to launch a different
-     * Activity when it is clicked. First we create a <b>Button button</b>, then we set its
-     * text to the parameter <b>String description</b>, and we set its OnClickListener to an
-     * anonymous class which will (when the <b>Button</b> is clicked) create an Intent to
-     * launch the <b>Activity</b> given in our parameter <b>Class destination</b> and
-     * start that <b>Activity</b>. Finally it adds <b>Button button</b> to the
-     * <b>ViewGroup parent</b> (our vertical <b>LinearLayout</b>)
+     * Constructs and adds a {@code Button} to the {@code ViewGroup parent} designed to launch a
+     * different Activity when it is clicked. First we initialize our variable {@code Button button}
+     * with a new instance, then we set its text to the parameter {@code String description}, and we
+     * set its {@code OnClickListener} to an anonymous class which will (when the {@code Button} is
+     * clicked) create an {@code Intent} to launch the {@code Activity} whose {@code Class} is given
+     * in our parameter {@code Class destination} and start that {@code Activity}. Finally we add
+     * {@code Button button} to the parameter {@code ViewGroup parent} (the {@code LinearLayout} in
+     * our layout file in our case).
      *
      * @param destination Activity Class to be started by an Intent we create and start
      *        when the Button is clicked

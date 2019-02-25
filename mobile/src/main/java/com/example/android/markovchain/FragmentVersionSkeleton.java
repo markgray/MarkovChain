@@ -323,23 +323,23 @@ public class FragmentVersionSkeleton extends Activity {
          */
         final Thread mThread = new Thread() {
             /**
-             * We override Thread.run() to provide the code that runs when mThread.run() is called
-             * by the background thread after we call mThread.start() in onCreate. First we initialize
-             * our variable <b>int max</b> by retrieving the upper limit of the progress bar's
-             * range which is set by the attribute android:max="500" in the layout file. Then we loop
-             * forever, using Thread mThread (this for us) to synchronize with the UI Thread. In our
-             * first <b>synchronized</b> block we check whether <b>mReady</b> is false
-             * (the UI thread is not ready for us to continue) or our <b>mPosition</b> counter
-             * is >= max (our work is done) and if either conditions hold we check whether the flag
-             * <b>mQuiting</b> has been set (set in <b>onDestroy</b> and if so we return
-             * to the caller ending this thread. If <b>mQuiting</b> has not been set we have
-             * finished our work (mPosition >= max) so we call the onDone method of our field
-             * DoneListener doneListener which swaps the visibility of views from the ProgressBar
-             * we have been moving to the main View (results View if you would). If the UI is ready
-             * for us to continue AND we are not finished with our "work", we increment our counter
-             * mPosition and set the ProgressBar mProgressBar to this position. In the second
-             * <b>synchronized</b> block we simply <b>wait</b> for 50 milliseconds before
-             * continuing our infinite loop.
+             * We override the {@code run()} method of {@code Thread} to provide the code that runs
+             * when the background thread is started after we call {@code mThread.start()} in our
+             * {@code onCreate} override. First we initialize our variable {@code int max} by retrieving
+             * the upper limit of the range of {@code ProgressBar mProgressBar}, (which is set by the
+             * attribute android:max="500" in the layout file). Then we loop forever using 'this' to
+             * synchronize with the UI Thread. In our first synchronized block we check whether our
+             * field {@code mReady} is false (the UI thread is not ready for us to continue) or our
+             * counter {@code mPosition} is >= {@code max} (our work is done) and if either condition
+             * holds we check whether the flag {@code mQuiting} is true, and if it is we return ending
+             * this thread ({@code mQuiting} is set in {@code onDestroy}). If {@code mQuiting} has not
+             * been set we have finished our work ({@code mPosition} >= {@code max}) so we call the
+             * {@code onDone} method of our field {@code DoneListener doneListener} which swaps the
+             * visibility of views from the {@code ProgressBar} we have been moving to the main View
+             * (results View if you would). If the UI is ready for us to continue AND we are not yet
+             * finished with our "work", we increment our counter {@code mPosition} and set {@code mProgressBar}
+             * to this position. In the second synchronized block we simply {@code wait} for 50 milliseconds
+             * before continuing our infinite loop.
              */
             @Override
             public void run() {
@@ -386,10 +386,10 @@ public class FragmentVersionSkeleton extends Activity {
         };
 
         /**
-         * Fragment initialization. First we call through to our super's implementation of onCreate,
-         * then call setRetainInstance(true) to indicate to the system that this fragment instance
+         * Fragment initialization. First we call through to our super's implementation of {@code onCreate},
+         * then we call {@code setRetainInstance(true)} to indicate to the system that this fragment instance
          * should be retained across Activity re-creation (such as from a configuration change), and
-         * finally we start our thread.
+         * finally we start our thread {@code Thread mThread} running.
          *
          * @param savedInstanceState we do not override onSaveInstanceState so are not interested
          *        in it, and even if we did override onSaveInstanceState onCreate would not be called
@@ -409,22 +409,23 @@ public class FragmentVersionSkeleton extends Activity {
 
         /**
          * This is called when the Fragment's Activity is ready to go, after its content view has
-         * been installed; it is called both after the initial fragment creation and after the
+         * been installed. It is called both after the initial fragment creation and after the
          * fragment is re-attached to a new activity. First we call through to our super's
-         * implementation of onActivityCreated, then we fetch a reference to our UIFragment
-         * (<b>Fragment targetFragment</b>) by calling getTargetFragment and use it to get
-         * its root view (the one it returned from onCreateView) which we use to set our variable
-         * <b>View gotView</b>. If we have successfully set gotView to our root view, we use
-         * it to initialize our field <b>ProgressBar mProgressBar</b> to the ProgressBar
-         * (R.id.progress_horizontal), our field <b>LinearLayout mProgressViewLinearLayout</b>
-         * to the LinearLayout holding the ProgressBar (R.id.progress_view_linear_layout), and our
-         * field <b>TextView mMainView</b> to the TextView that is to be made visible after our
-         * "work" is done (R.id.main_view). Finally in a <b>synchronized mThread</b> statement
-         * we set the boolean mReady flag to true and notify our worker Thread mThread(which is
-         * waiting on "this") allowing it to run after the synchronized statement completes and
+         * implementation of {@code onActivityCreated}, then we fetch a reference to our UIFragment
+         * to initialize our variable {@code Fragment targetFragment} by calling {@code getTargetFragment}.
+         * We initialize our variable {@code View gotView} to null, and if {@code targetFragment} is
+         * not null we set {@code gotView} to the root view for the layout of {@code targetFragment}
+         * (the one returned by {@link #onCreateView}). If we have successfully set {@code gotView}
+         * is not null we set our field {@code ProgressBar mProgressBar} to the view in {@code gotView}
+         * with id R.id.progress_horizontal, our field {@code LinearLayout mProgressViewLinearLayout}
+         * to the view in {@code gotView} with id R.id.progress_view_linear_layout, and our field
+         * {@code TextView mMainView} to the view in {@code gotView} with id R.id.main_view. Finally
+         * synchronized on {@code Thread mThread} we set our field {@code mReady} to true, and call
+         * the {@code notify()} method of {@code mThread} to wake that thread up (it is currently
+         * waiting on its 'this') allowing it to run after our synchronized statement completes and
          * releases the lock on mThread.
          *
-         * @param savedInstanceState we do not override onSaveInstanceState so do not use this
+         * @param savedInstanceState we do not override {@code onSaveInstanceState} so do not use
          */
         @Override
         public void onActivityCreated(Bundle savedInstanceState) {
@@ -451,15 +452,16 @@ public class FragmentVersionSkeleton extends Activity {
         }
 
         /**
-         * This is called when the fragment is going away.  It is NOT called when the fragment is
+         * This is called when the fragment is going away. It is NOT called when the fragment is
          * being propagated between activity instances (such as after an orientation change). In
-         * a synchronized statement using <b>mThread mThread</b> as its intrinsic lock, we
-         * set the <b>boolean mReady</b> flag to false (a signal to our worker thread that it
-         * should check the flag <b>boolean mQuiting</b> when it is awoken by notify()), set
-         * the <b>boolean mQuiting</b> flag to true (a signal to our worker thread that its
-         * run() method should exit by returning to its caller), and then awaken our worker Thread
-         * mThread (which is wait()'ing on this) by calling mThread.notify(). Finally we call
-         * through to our super's implementation of onDestroy.
+         * a synchronized statement using {@code Thread mThread} as its intrinsic lock, we
+         * set the {@code boolean mReady} flag to false (a signal to our worker thread that it
+         * should check the flag {@code boolean mQuiting} when it is awoken by {@code notify()}), set
+         * the {@code boolean mQuiting} flag to true (a signal to our worker thread that its
+         * {@code run()} method should exit by returning to its caller), and then awaken our worker
+         * {@code Thread mThread} (which is {@code wait()}'ing on its 'this' which is locked while
+         * we are in our synchronized block) by calling the {@code notify()} method of {@code mThread}.
+         * Finally we call through to our super's implementation of {@code onDestroy()}.
          */
         @Override
         public void onDestroy() {
@@ -475,13 +477,14 @@ public class FragmentVersionSkeleton extends Activity {
 
         /**
          * This is called right before the fragment is detached from its current activity instance.
-         * In a synchronized statement using <b>mThread mThread</b> as its intrinsic lock, we
-         * set the field <b>ProgressBar mProgressBar</b> to null because the new Activity will
-         * need to find its version of mProgressBar in onActivityCreated before we can use it. We
-         * then set mReady to false to signal to our "work" Thread that it should wait until the
-         * new Activity is created before it continues, then awaken our worker Thread mThread (which
-         * is currently wait()'ing on this) by calling mThread.notify(). Finally we call through to
-         * our super's implementation of onDetach().
+         * In a synchronized block using {@code Thread mThread} as its intrinsic lock, we set the field
+         * {@code ProgressBar mProgressBar} to null because the new Activity will need to find its own
+         * version of {@code mProgressBar} in onActivityCreated before it can use it. We then set
+         * {@code mReady} to false to signal to our "worker" {@code Thread} that it should wait until
+         * the new Activity is created before it continues, then awaken our worker {@code Thread mThread}
+         * is currently {@code wait()}'ing for its 'this' to be unlocked by our exiting the synchronized
+         * block) by calling the {@code notify()} method of {@code mThread}. Finally we call through
+         * to our super's implementation of {@code onDetach()}.
          */
         @Override
         public void onDetach() {
@@ -498,8 +501,8 @@ public class FragmentVersionSkeleton extends Activity {
         }
 
         /**
-         * Sets our fields DoneListener doneListener, and View view which are used by our work thread
-         * when it finishes its task.
+         * Sets our fields {@code DoneListener doneListener}, and {@code View view} which are used by
+         * our work thread when it finishes its task.
          *
          * @param doneListener DoneListener to use when work thread is done
          * @param view View to pass to doneListener.onDone(View) when work thread is done.
@@ -510,10 +513,11 @@ public class FragmentVersionSkeleton extends Activity {
         }
 
         /**
-         * API for our UI to restart the progress thread when the Button R.id.restart ("RESTART") is
-         * clicked. In a synchronized statement using <b>Thread mThread</b> as the intrinsic
-         * lock, we set the field <b>int mPosition</b> to 0, then awaken the worker Thread
-         * mThread (which is currently waiting on "this") by calling mThread,notify()
+         * API for our UI to restart the progress thread when the {@code Button} R.id.restart ("RESTART")
+         * is clicked. In a synchronized block using {@code Thread mThread} as the intrinsic lock, we
+         * set the field {@code int mPosition} to 0, then awaken the worker {@code Thread mThread}
+         * (which is currently waiting for us to release its 'this') by calling the {@code notify()}
+         * method of {@code mThread}.
          */
         public void restart() {
             synchronized (mThread) {
@@ -524,21 +528,27 @@ public class FragmentVersionSkeleton extends Activity {
     }
 
     /**
-     * This is a skeletal DialogFragment which was stuck into this Activity in order to experiment
-     * with using DialogFragment's. When show() is called it just displays the label and text that
-     * were passed as parameters to newInstance.
+     * This is a skeletal {@code DialogFragment} which was just stuck into this Activity in order to
+     * experiment with using {@code DialogFragment}'s. When {@code show()} is called it just displays
+     * the label and text that were passed as parameters to its {@code newInstance} method.
      */
     public static class MyDialogFragment extends DialogFragment {
-
-        String mLabel; // "label" to display
-        String mText;  // "text" to display
+        /**
+         * "label" to display
+         */
+        String mLabel;
+        /**
+         * "text" to display
+         */
+        String mText;
 
         /**
-         * Create a new instance of MyDialogFragment providing "label" and "text" as arguments.
-         * First we create an instance of <b>MyDialogFragment f</b>, then we create a
-         * <b>Bundle args</b> and add our parameter label under the key "label" and our
-         * parameter text under the key "text". We use this Bundle to set the construction arguments
-         * for <b>MyDialogFragment f</b>, and finally we return <b>f</b> to the caller.
+         * Create a new instance of {@code MyDialogFragment} providing values for "label" and "text"
+         * in its argument {@code Bundle}. First we initialize {@code MyDialogFragment f} with a new
+         * instance, then we initialize {@code Bundle args} with a new instance. We store our parameter
+         * {@code String label} in {@code args} under the key "label" and our parameter {@code String text}
+         * under the key "text". We then set the construction arguments for {@code f} to {@code args}
+         * and return {@code f} to the caller.
          *
          * @param label Label to use for dialog
          * @param text  Text body for dialog
@@ -560,9 +570,10 @@ public class FragmentVersionSkeleton extends Activity {
 
         /**
          * Called to do initial creation of a fragment. First we call through to our super's
-         * implementation of onCreate, then we set our field mLabel to the argument stored by
-         * newInstance under the key "label", and our field mText to the argument it stored under
-         * the key "text". Finally we set the style of our DialogFragment to STYLE_NORMAL.
+         * implementation of {@code onCreate}, then we set our field {@code mLabel} to the argument
+         * stored in our argument {@code Bundle} by {@code newInstance} under the key "label", and
+         * our field {@code mText} to the argument it stored under the key "text". Finally we set
+         * the style of our {@code DialogFragment} to STYLE_NORMAL.
          *
          * @param savedInstanceState we do not override onSaveInstanceState so do not use this
          */
@@ -579,16 +590,19 @@ public class FragmentVersionSkeleton extends Activity {
         }
 
         /**
-         * Called to have the fragment instantiate its user interface view. First we inflate our
-         * layout R.layout.frag_vers_skel_dialog into <b>View v</b>, then we locate the
-         * <b>TextView</b> for our label (R.id.label) and set its text to the contents of our
-         * field <b>String mLabel</b>, locate the <b>TextView</b> for our text (R.id.text)
-         * and set its text to the contents of our field <b>String mText</b>, and then we
-         * locate the <b>Button</b> R.id.dismiss and set its OnClickListener to an anonymous
-         * class which simply dismisses this <b>DialogFragment MyDialogFragment</b>. Finally
-         * we return <b>View v</b> to the caller.
+         * Called to have the fragment instantiate its user interface view. First we initialize our
+         * variable {@code View v} by using our parameter {@code LayoutInflater inflater} to inflate
+         * our layout file R.layout.frag_vers_skel_dialog using our parameter {@code ViewGroup container}
+         * for the layout params without attaching to it, then we initialize our variable {@code TextView tv}
+         * by finding the view in {@code v} with the id R.id.label and set its text to the contents
+         * of our field {@code String mLabel}, then we set {@code tv} to the view in {@code v} we find
+         * with the R.id.text and set its text to the contents of our field {@code String mText}. We
+         * next initialize our variable {@code Button button} by finding the view in {@code v} with
+         * id R.id.dismiss ("DISMISS") and set its {@code OnClickListener} to an anonymous class which
+         * simply dismisses this dialog by calling the {@code dismiss()} method. Finally we return
+         * {@code v} to the caller.
          *
-         * @param inflater The LayoutInflater object that can be used to inflate any views in the fragment,
+         * @param inflater The LayoutInflater object that can be used to inflate any views in the fragment
          * @param container If non-null, this is the parent view that the fragment's UI should be
          *        attached to. The fragment should not add the view itself, but this can be used to
          *        generate the LayoutParams of the view.
@@ -600,15 +614,21 @@ public class FragmentVersionSkeleton extends Activity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             View v = inflater.inflate(R.layout.frag_vers_skel_dialog, container, false);
 
-            View tv = v.findViewById(R.id.label);
-            ((TextView)tv).setText(mLabel);
+            TextView tv = v.findViewById(R.id.label);
+            tv.setText(mLabel);
 
             tv = v.findViewById(R.id.text);
-            ((TextView)tv).setText(mText);
+            tv.setText(mText);
 
             // Watch for button clicks.
             Button button = v.findViewById(R.id.dismiss);
             button.setOnClickListener(new View.OnClickListener() {
+                /**
+                 * Called when the "DISMISS" {@code Button} is clicked, we just call the {@code dismiss()}
+                 * method to dismiss our dialog.
+                 *
+                 * @param v {@code View} that was clicked
+                 */
                 @Override
                 public void onClick(View v) {
                     dismiss();
