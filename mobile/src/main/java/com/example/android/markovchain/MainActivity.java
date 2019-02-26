@@ -63,6 +63,15 @@ public class MainActivity extends Activity {
         Button button = new Button(this);
         button.setText(description);
         button.setOnClickListener(new View.OnClickListener() {
+            /**
+             * Called when the button is clicked. We initialize our variable {@code Intent intent}
+             * with a new new instance whose application package {@code Context} is that of 'this'
+             * instance of {@code MainActivity} and whose component class that is to be executed is
+             * the {@code Class destination} parameter of the {@code addButton} method. We then launch
+             * the activity specified by {@code intent}.
+             *
+             * @param v {@code View} that was clicked
+             */
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, destination);
@@ -73,12 +82,13 @@ public class MainActivity extends Activity {
     }
 
     /**
-     * Adds a TextView containing the String text to the ViewGroup parent. First we create a TextView
-     * text, then we set the text of <b>TextView text</b> to the String text, and finally we
-     * add the TextView text to the ViewGroup parent (our vertical LinearLayout).
+     * Adds a {@code TextView} displaying the {@code String text} to the {@code ViewGroup parent}.
+     * First we initialize our variable {@code TextView mText} with a new instance, then we set its
+     * text to our parameter {@code String text}, and finally we add it to our parameter
+     * {@code ViewGroup parent}.
      *
-     * @param text text to display in the TextView we add to ViewGroup parent
-     * @param parent ViewGroup to add our TextView to
+     * @param text text to display in the {@code TextView} we add to {@code ViewGroup parent}
+     * @param parent {@code ViewGroup} to add our {@code TextView} to
      */
     @SuppressWarnings("SameParameterValue")
     public void addText(String text, ViewGroup parent) {
