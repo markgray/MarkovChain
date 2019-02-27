@@ -101,7 +101,7 @@ public class WhatIsMan extends Activity {
      * with id {@code int resourceID} in the background.
      *
      * @param resourceID  resource ID that our button's {@code OnClickListener} should call the method
-     *                    {@code loadResourceHtml}to load in the background.
+     *                    {@code loadResourceHtml} to load in the background.
      * @param description Label for our {@code Button}
      * @param parent      {@code ViewGroup} we should add our {@code Button} to.
      */
@@ -112,7 +112,8 @@ public class WhatIsMan extends Activity {
             /**
              * Called when the {@code Button} is clicked. We just set the visibility of our field
              * {@code ScrollView whatChapterScrollView} to GONE (disappears our chapter selection
-             * buttons) and call our method {@code loadResourceHtml} to load the file whose resource
+             * buttons), set the visibility of our field {@code TextView whatWaiting} to VISIBLE
+             * and call our method {@code loadResourceHtml} to load the file whose resource
              * ID is that given by the {@code addButton} method's parameter {@code resourceID}.
              *
              * @param v {@code View} that was clicked.

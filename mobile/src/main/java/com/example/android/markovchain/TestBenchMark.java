@@ -131,6 +131,20 @@ public class TestBenchMark extends Activity {
         vProgressBar = findViewById(R.id.progress_horizontal);
         vStartButtonOne = findViewById(R.id.start_one);
         vStartButtonOne.setOnClickListener(new View.OnClickListener() {
+            /**
+             * Called when the "START ONE" {@code Button} is clicked. First we log the fact that we
+             * were clicked. Then we call our {@code updateIterationValues()} method to read the
+             * value entered in {@code EditText vProgressSteps} to update the number of steps for
+             * the {@code ProgressBar} storing it in our field {@code mProgressSteps} and the value
+             * entered in {@code EditText vIterationsPerStep} to update {@code mIterationsPerStep}.
+             * We then initialize our field {@code ControlClass mControlInstance} with an instance
+             * of {@code ControlClass1} and call its {@code execute} method to have it run its
+             * {@code testMethod} override {@code mIterationsPerStep} times {@code mProgressSteps}
+             * times updating the {@code ProgressBar} by one step every {@code mIterationsPerStep}
+             * iterations.
+             *
+             * @param v {@code View} that was clicked
+             */
             @Override
             public void onClick(View v) {
                 Log.i(TAG, "Start button clicked");
@@ -141,6 +155,20 @@ public class TestBenchMark extends Activity {
         });
         vStartButtonTwo = findViewById(R.id.start_two);
         vStartButtonTwo.setOnClickListener(new View.OnClickListener() {
+            /**
+             * Called when the "START TWO" {@code Button} is clicked. First we log the fact that we
+             * were clicked. Then we call our {@code updateIterationValues()} method to read the
+             * value entered in {@code EditText vProgressSteps} to update the number of steps for
+             * the {@code ProgressBar} storing it in our field {@code mProgressSteps} and the value
+             * entered in {@code EditText vIterationsPerStep} to update {@code mIterationsPerStep}.
+             * We then initialize our field {@code ControlClass mControlInstance} with an instance
+             * of {@code ControlClass1} and call its {@code execute} method to have it run its
+             * {@code testMethod} override {@code mIterationsPerStep} times {@code mProgressSteps}
+             * times updating the {@code ProgressBar} by one step every {@code mIterationsPerStep}
+             * iterations.
+             *
+             * @param v {@code View} that was clicked
+             */
             @Override
             public void onClick(View v) {
                 Log.i(TAG, "Start button clicked");
@@ -151,6 +179,12 @@ public class TestBenchMark extends Activity {
         });
         vAbortButton = findViewById(R.id.abort);
         vAbortButton.setOnClickListener(new View.OnClickListener() {
+            /**
+             * Called when the "ABORT" {@code Button} is clicked. First we log the fact that we were
+             * clicked, then we call the {@code finish()} method to close this {@code Activity}.
+             *
+             * @param v {@code View} that was clicked.
+             */
             @Override
             public void onClick(View v) {
                 Log.i(TAG, "Abort button clicked");
@@ -168,6 +202,13 @@ public class TestBenchMark extends Activity {
 
         vTryAgain = findViewById(R.id.try_again);
         vTryAgain.setOnClickListener(new View.OnClickListener() {
+            /**
+             * Called when the "TRY AGAIN" {@code Button} is clicked. We just set the visibility of
+             * {@code LinearLayout vResultsLinearLayout} to GONE, and the visibility of
+             * {@code LinearLayout vProgressLayout} to VISIBLE.
+             *
+             * @param v {@code View} that was clicked.
+             */
             @Override
             public void onClick(View v) {
                 vResultsLinearLayout.setVisibility(View.GONE);
@@ -179,12 +220,12 @@ public class TestBenchMark extends Activity {
     }
 
     /**
-     * This method reads the text in the <b>EditText vProgressSteps</b>, converts it to Long in order
-     * to update the value of our field <b>Long mProgressSteps</b>, the uses it to set the max number
-     * of steps for our <b>ProgressBar vProgressBar</b>, and then reads the text in the
-     * <b>EditText vIterationsPerStep</b>, converts it to Long in order to update the value of our
-     * field <b>Long mIterationsPerStep</b>. These two Long values are used as arguments to the
-     * benchmarking framework (as arguments to ControlInstance.execute).
+     * This method reads the text in the {@code EditText vProgressSteps}, converts that String to
+     * {@code Long} and uses that value to update the contents of our field {@code mProgressSteps},
+     * and also uses it to set the max number of steps for our {@code ProgressBar vProgressBar}. It
+     * then reads the text in {@code EditText vIterationsPerStep}, converts it to {@code Long} and
+     * uses that value to update the contents of our field {@code mIterationsPerStep}. These two
+     * values are used as arguments to the {@code execute} method of {@code ControlInstance}.
      */
     private void updateIterationValues() {
         mProgressSteps = Long.parseLong(String.valueOf(vProgressSteps.getText()));
@@ -194,25 +235,22 @@ public class TestBenchMark extends Activity {
 
     /**
      * This class should be extended by classes which wish to benchmark their code in the
-     * overridden method testMethod().
+     * overridden method {@code testMethod()}.
      */
     @SuppressLint("StaticFieldLeak")
     private class ControlClass extends CalcTask {
-
-        @SuppressLint("SetTextI18n")
-        /*
-         * Runs on the UI thread after doInBackground(Long...).
-         * The specified result is the value returned by doInBackground(Long...).
-         * This method won't be invoked if the task was cancelled.
-         * Override this to make use of the elapsed time value returned.
-         *
-         * First we call through to our super's implementation of onPostExecute. Then we format a
-         * String for the number of iterations performed (mProgressSteps * mIterationsPerStep), and
-         * format a String of our parameter <b>Long result</b> (total benchmark time in milliseconds).
-         * We then append a formatted String containing those two strings to <b>TextView vResults</b>.
-         * Finally we set the visibility of <b>LinearLayout vProgressLayout</b> to GONE and the
-         * visibility of <b>LinearLayout vResultsLinearLayout</b> to VISIBLE in order to see the
-         * results displayed.
+        /**
+         * Runs on the UI thread after {@code doInBackground(Long...)}. The {@code Long result} parameter
+         * is the value returned by {@code doInBackground(Long...)}. We override this to make use of
+         * the elapsed time value returned.
+         * <p>
+         * First we call through to our super's implementation of {@code onPostExecute}. Then we format
+         * a {@code String formattedIterations} to display the number of iterations performed just done
+         * ({@code mProgressSteps*mIterationsPerStep}), and format a {@code String formattedResult} to
+         * display our parameter {@code Long result} (total benchmark time in milliseconds). We then
+         * append a {@code String} containing those two strings to {@code TextView vResults}. Finally
+         * we set the visibility of {@code LinearLayout vProgressLayout} to GONE and the visibility of
+         * {@code LinearLayout vResultsLinearLayout} to VISIBLE in order to see the results displayed.
          *
          * @param result The elapsed time the benchmark took.
          */
@@ -228,12 +266,12 @@ public class TestBenchMark extends Activity {
         }
 
         /**
-         * Runs on the UI thread after publishProgress(Long...) is invoked.
-         * The specified values are the values passed to publishProgress(Long...).
-         * Override this to advance a progress bar
+         * Runs on the UI thread after {@code publishProgress(Long...)} is invoked. The parameter
+         * {@code progress} is the value passed to {@code publishProgress(Long...)}. We override
+         * this to advance our progress bar.
          * <p>
-         * First we call through to our super's implementation of onProgressUpdate, then we set the
-         * <b>ProgressBar vProgressBar</b> progress to the integer value of our parameter.
+         * First we call through to our super's implementation of {@code onProgressUpdate}, then we
+         * set the {@code ProgressBar vProgressBar} progress to the integer value of our parameter.
          *
          * @param progress The values indicating progress.
          */
@@ -249,8 +287,14 @@ public class TestBenchMark extends Activity {
      */
     @SuppressLint("StaticFieldLeak")
     private class ControlClass1 extends ControlClass {
-        double acc = 1.000000001; // Accumulator register for repeated divisions
-        double div = 0.999999999; // Divisor register for repeated divisions
+        /**
+         * Accumulator register for repeated divisions
+         */
+        double acc = 1.000000001;
+        /**
+         * Divisor register for repeated divisions
+         */
+        double div = 0.999999999;
 
         /**
          * This method should be overridden by a method which performs whatever computation
@@ -268,8 +312,14 @@ public class TestBenchMark extends Activity {
      */
     @SuppressLint("StaticFieldLeak")
     private class ControlClass2 extends ControlClass {
-        double acc = 1.000000001; // Accumulator register for repeated multiplications
-        double mul = 0.999999999; // Multiplicand register for repeated multiplications
+        /**
+         * Accumulator register for repeated multiplications
+         */
+        double acc = 1.000000001;
+        /**
+         * Multiplicand register for repeated multiplications
+         */
+        double mul = 0.999999999;
 
         /**
          * This method should be overridden by a method which performs whatever computation
