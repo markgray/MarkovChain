@@ -1,63 +1,18 @@
-                          THE CONDUCT OF LIFE
-
-
-
-
-This eBook is for the use of anyone anywhere at no cost and with almost
-no restrictions whatsoever. You may copy it, give it away or re-use it
-under the terms of the Project Gutenberg License included with this
-eBook or online at http://www.gutenberg.org/license.
-
-
-Title: The Conduct of Life
-
-Author: Ralph Waldo Emerson
-
-Release Date: May 27, 2012 [EBook #39827]
-
-Language: English
-
-Character set encoding: UTF-8
-
-
-*** START OF THIS PROJECT GUTENBERG EBOOK THE CONDUCT OF LIFE ***
-
-
-
-
-Produced by Al Haines.
-
-
-
-
-
                                   THE
-
                             CONDUCT OF LIFE.
 
-
                                    BY
-
                              R. W. EMERSON.
-
-
-
 
                                 BOSTON:
                       JAMES R. OSGOOD AND COMPANY,
             LATE TICKNOR & FIELDS, AND FIELDS, OSGOOD, & Co.
                                  1871.
 
-
-
-
        Entered according to Act of Congress, in the year 1860, by
                              R. W. EMERSON,
      in the Clerk’s Office of the District Court of the District of
                              Massachusetts
-
-
-
 
                                CONTENTS.
 
@@ -71,13 +26,8 @@ Produced by Al Haines.
    VIII. Beauty
      IX. Illusions
 
-
-
                                    I.
-
-
                                  FATE.
-
 
     Delicate omens traced in air
     To the lone bard true witness bare;
@@ -94,11 +44,7 @@ Produced by Al Haines.
     Or say, the foresight that awaits
     Is the same Genius that creates.
 
-
-
-
                                  FATE.
-
 
 It chanced during one winter, a few years ago, that our cities were bent
 on discussing the theory of the Age.  By an odd coincidence, four or
@@ -115,10 +61,10 @@ course, if we must accept an irresistible dictation.
 
 In our first steps to gain our wishes, we come upon immovable
 limitations.  We are fired with the hope to reform men.  After many
-experiments, we find that we must begin earlier,—at school.  But the
+experiments, we find that we must begin earlier — at school.  But the
 boys and girls are not docile; we can make nothing of them.  We decide
 that they are not of good stock.  We must begin our reform earlier
-still,—at generation: that is to say, there is Fate, or laws of the
+still — at generation: that is to say, there is Fate, or laws of the
 world.
 
 But if there be irresistible dictation, this dictation understands
@@ -158,7 +104,7 @@ The Hindoo, under the wheel, is as firm.  Our Calvinists, in the last
 generation, had something of the same dignity.  They felt that the
 weight of the Universe held them down to their place. What could _they_
 do?  Wise men feel that there is something which cannot be talked or
-voted away,—a strap or belt which girds the world.
+voted away — a strap or belt which girds the world.
 
     "The Destiny, minister general,
     That executeth in the world o’er all,
@@ -182,17 +128,17 @@ election or favoritism.  And, now and then, an amiable parson, like Jung
 Stilling, or Robert Huntington, believes in a pistareen-Providence,
 which, whenever the good man wants a dinner, makes that somebody shall
 knock at his door, and leave a half-dollar.  But Nature is no
-sentimentalist,—does not cosset or pamper us.  We must see that the
+sentimentalist — does not cosset or pamper us.  We must see that the
 world is rough and surly, and will not mind drowning a man or a woman;
 but swallows your ship like a grain of dust.  The cold, inconsiderate of
 persons, tingles your blood, benumbs your feet, freezes a man like an
 apple.  The diseases, the elements, fortune, gravity, lightning, respect
 no persons.  The way of Providence is a little rude. The habit of snake
 and spider, the snap of the tiger and other leapers and bloody jumpers,
-the crackle of the bones of his prey in the coil of the anaconda,—these
+the crackle of the bones of his prey in the coil of the anaconda - these
 are in the system, and our habits are like theirs.  You have just dined,
 and, however scrupulously the slaughter-house is concealed in the
-graceful distance of miles, there is complicity,—expensive races,—race
+graceful distance of miles, there is complicity - expensive races - race
 living at the expense of race.  The planet is liable to shocks from
 comets, perturbations from planets, rendings from earthquake and
 volcano, alterations of climate, precessions of equinoxes.  Rivers dry
@@ -209,7 +155,7 @@ concern us, or counting how many species of parasites hang on a bombyx;
 or groping after intestinal parasites, or infusory biters, or the
 obscurities of alternate generation;—the forms of the shark, the
 _labrus_, the jaw of the sea-wolf paved with crushing teeth, the weapons
-of the grampus, and other warriors hidden in the sea,—are hints of
+of the grampus, and other warriors hidden in the sea - are hints of
 ferocity in the interiors of nature. Let us not deny it up and down.
 Providence has a wild, rough, incalculable road to its end, and it is of
 no use to try to whitewash its huge, mixed instrumentalities, or to
@@ -243,15 +189,15 @@ you had not yet told.  Find the part which black eyes, and which blue
 eyes, play severally in the company.  How shall a man escape from his
 ancestors, or draw off from his veins the black drop which he drew from
 his father’s or his mother’s life?  It often appears in a family, as if
-all the qualities of the progenitors were potted in several jars,—some
-ruling quality in each son or daughter of the house,—and sometimes the
+all the qualities of the progenitors were potted in several jars - some
+ruling quality in each son or daughter of the house - and sometimes the
 unmixed temperament, the rank unmitigated elixir, the family vice, is
 drawn off in a separate individual, and the others are proportionally
 relieved. We sometimes see a change of expression in our companion, and
 say, his father, or his mother, comes to the windows of his eyes, and
 sometimes a remote relative.  In different hours, a man represents each
 of several of his ancestors, as if there were seven or eight of us
-rolled up in each man’s skin,--seven or eight ancestors at least,—and
+rolled up in each man’s skin - seven or eight ancestors at least - and
 they constitute the variety of notes for that new piece of music which
 his life is.  At the corner of the street, you read the possibility of
 each passenger, in the facial angle, in the complexion, in the depth of
@@ -280,7 +226,7 @@ drones perish, the better for the hive.  If, later, they give birth to
 some superior individual, with force enough to add to this animal a new
 aim, and a complete apparatus to work it out, all the ancestors are
 gladly forgotten.  Most men and most women are merely one couple more.
-Now and then, one has a new cell or camarilla opened in his brain,—an
+Now and then, one has a new cell or camarilla opened in his brain - an
 architectural, a musical, or a philological knack, some stray taste or
 talent for flowers, or chemistry, or pigments, or story-telling, a good
 hand for drawing, a good foot for dancing, an athletic frame for wide
@@ -304,7 +250,7 @@ nothing but the deeds committed in a prior state of existence."  I find
 the coincidence of the extremes of eastern and western speculation in
 the daring statement of Schelling, "there is in every man a certain
 feeling, that he has been what he is from all eternity, and by no means
-became such in time."  To say it less sublimely,—in the history of the
+became such in time."  To say it less sublimely - in the history of the
 individual is always an account of his condition, and he knows himself
 to be a party to his present estate.
 
@@ -335,14 +281,14 @@ we know of the egg, from each successive discovery, is, _another
 vesicle_; and if, after five hundred years, you get a better observer,
 or a better glass, he finds within the last observed another.  In
 vegetable and animal tissue, it is just alike, and all that the primary
-power or spasm operates, is, still, vesicles, vesicles.  Yes,—but the
+power or spasm operates, is, still, vesicles, vesicles.  Yes - but the
 tyrannical Circumstance!  A vesicle in new circumstances, a vesicle
 lodged in darkness, Oken thought, became animal; in light, a plant.
 Lodged in the parent animal, it suffers changes, which end in
 unsheathing miraculous capability in the unaltered vesicle, and it
 unlocks itself to fish, bird, or quadruped, head and foot, eye and claw.
 The Circumstance is Nature.  Nature is, what you may do.  There is much
-you may not.  We have two things,—the circumstance, and the life.  Once
+you may not.  We have two things - the circumstance, and the life.  Once
 we thought, positive power was all.  Now we learn, that negative power,
 or circumstance, is half. Nature is the tyrannous circumstance, the
 thick skull, the sheathed snake, the ponderous, rock-like jaw;
@@ -352,11 +298,11 @@ mischief off of it; or skates, which are wings on the ice, but fetters
 on the ground.
 
 The book of Nature is the book of Fate.  She turns the gigantic
-pages,—leaf after leaf,—never re-turning one.  One leaf she lays down, a
+pages - leaf after leaf - never re-turning one.  One leaf she lays down, a
 floor of granite; then a thousand ages, and a bed of slate; a thousand
 ages, and a measure of coal; a thousand ages, and a layer of marl and
 mud: vegetable forms appear; her first misshapen animals, zoophyte,
-trilobium, fish; then, saurians,—rude forms, in which she has only
+trilobium, fish; then, saurians - rude forms, in which she has only
 blocked her future statue, concealing under these unwieldly monsters the
 fine type of her coming king.  The face of the planet cools and dries,
 the races meliorate, and man is born.  But when a race has lived its
@@ -461,8 +407,8 @@ god.  The limitations refine as the soul purifies, but the ring of
 necessity is always perched at the top.
 
 When the gods in the Norse heaven were unable to bind the Fenris Wolf
-with steel or with weight of mountains,—the one he snapped and the other
-he spurned with his heel,—they put round his foot a limp band softer
+with steel or with weight of mountains - the one he snapped and the other
+he spurned with his heel - they put round his foot a limp band softer
 than silk or cobweb, and this held him: the more he spurned it, the
 stiffer it drew.  So soft and so stanch is the ring of Fate. Neither
 brandy, nor nectar, nor sulphuric ether, nor hell-fire, nor ichor, nor
@@ -485,7 +431,7 @@ too large, but show the natural bounds or essential distinctions, and
 seek to do justice to the other elements as well.
 
 
-Thus we trace Fate, in matter, mind, and morals,—in race, in
+Thus we trace Fate, in matter, mind, and morals - in race, in
 retardations of strata, and in thought and character as well.  It is
 everywhere bound or limitation.  But Fate has its lord; limitation its
 limits; is different seen from above and from below; from within and
@@ -497,17 +443,17 @@ what is this criticism that pries into the matter?  Man is not order of
 nature, sack and sack, belly and members, link in a chain, nor any
 ignominious baggage, but a stupendous antagonism, a dragging together of
 the poles of the Universe.  He betrays his relation to what is below
-him,—thick-skulled, small-brained, fishy, quadrumanous,—quadruped
+him - thick-skulled, small-brained, fishy, quadrumanous - quadruped
 ill-disguised, hardly escaped into biped, and has paid for the new
 powers by loss of some of the old ones.  But the lightning which
 explodes and fashions planets, maker of planets and suns, is in him.  On
 one side, elemental order, sandstone and granite, rock-ledges, peat-bog,
 forest, sea and shore; and, on the other part, thought, the spirit which
-composes and decomposes nature,—here they are, side by side, god and
+composes and decomposes nature - here they are, side by side, god and
 devil, mind and matter, king and conspirator, belt and spasm, riding
 peacefully together in the eye and brain of every man.
 
-Nor can he blink the freewill.  To hazard the contradiction,—freedom is
+Nor can he blink the freewill.  To hazard the contradiction - freedom is
 necessary.  If you please to plant yourself on the side of Fate, and
 say, Fate is all; then we say, a part of Fate is the freedom of man.
 Forever wells up the impulse of choosing and acting in the soul.
@@ -574,7 +520,7 @@ It is of the maker, not of what is made.  All things are touched and
 changed by it.  This uses, and is not used.  It distances those who
 share it, from those who share it not.  Those who share it not are
 flocks and herds.  It dates from itself;—not from former men or better
-men,—gospel, or constitution, or college, or custom.  Where it shines,
+men - gospel, or constitution, or college, or custom.  Where it shines,
 Nature is no longer intrusive, but all things make a musical or
 pictorial impression.  The world of men show like a comedy without
 laughter:—populations, interests, government, history;—’tis all toy
@@ -695,7 +641,7 @@ genius, and make you foremost men of time. Cold and sea will train an
 imperial Saxon race, which nature cannot bear to lose, and, after
 cooping it up for a thousand years in yonder England, gives a hundred
 Englands, a hundred Mexicos.  All the bloods it shall absorb and
-domineer: and more than Mexicos,—the secrets of water and steam, the
+domineer: and more than Mexicos - the secrets of water and steam, the
 spasms of electricity, the ductility of metals, the chariot of the air,
 the ruddered balloon are awaiting you.
 
@@ -729,24 +675,24 @@ the world; and time he shall lengthen, and shorten space.
 It has not fared much otherwise with higher kinds of steam.  The opinion
 of the million was the terror of the world, and it was attempted, either
 to dissipate it, by amusing nations, or to pile it over with strata of
-society,—a layer of soldiers; over that, a layer of lords; and a king on
+society - a layer of soldiers; over that, a layer of lords; and a king on
 the top; with clamps and hoops of castles, garrisons, and police.  But,
 sometimes, the religious principle would get in, and burst the hoops,
 and rive every mountain laid on top of it.  The Fultons and Watts of
 politics, believing in unity, saw that it was a power, and, by
 satisfying it, (as justice satisfies everybody,) through a different
-disposition of society,—grouping it on a level, instead of piling it
-into a mountain,—they have contrived to make of this terror the most
+disposition of society - grouping it on a level, instead of piling it
+into a mountain - they have contrived to make of this terror the most
 harmless and energetic form of a State.
 
 Very odious, I confess, are the lessons of Fate. Who likes to have a
 dapper phrenologist pronouncing on his fortunes?  Who likes to believe
 that he has hidden in his skull, spine, and pelvis, all the vices of a
-Saxon or Celtic race, which will be sure to pull him down,—with what
-grandeur of hope and resolve he is fired,—into a selfish, huckstering,
+Saxon or Celtic race, which will be sure to pull him down - with what
+grandeur of hope and resolve he is fired - into a selfish, huckstering,
 servile, dodging animal?  A learned physician tells us, the fact is
 invariable with the Neapolitan, that, when mature, he assumes the forms
-of the unmistakable scoundrel.  That is a little overstated,—but may
+of the unmistakable scoundrel.  That is a little overstated - but may
 pass.
 
 But these are magazines and arsenals.  A man must thank his defects, and
@@ -756,13 +702,13 @@ other side.  The sufferance, which is the badge of the Jew, has made
 him, in these days, the ruler of the rulers of the earth. If Fate is ore
 and quarry, if evil is good in the making, if limitation is power that
 shall be, if calamities, oppositions, and weights are wings and
-means,—we are reconciled.
+means - we are reconciled.
 
 Fate involves the melioration.  No statement of the Universe can have
 any soundness, which does not admit its ascending effort.  The direction
 of the whole, and of the parts, is toward benefit, and in proportion to
 the health.  Behind every individual, closes organization: before him,
-opens liberty,—the Better, the Best.  The first and worst races are
+opens liberty - the Better, the Best.  The first and worst races are
 dead.  The second and imperfect races are dying out, or remain for the
 maturing of higher.  In the latest race, in man, every generosity, every
 new perception, the love and praise he extorts from his fellows, are
@@ -770,10 +716,10 @@ certificates of advance out of fate into freedom.  Liberation of the
 will from the sheaths and clogs of organization which he has outgrown,
 is the end and aim of this world.  Every calamity is a spur and valuable
 hint; and where his endeavors do not yet fully avail, they tell as
-tendency. The whole circle of animal life,—tooth against
-tooth,—devouring war, war for food, a yelp of pain and a grunt of
+tendency. The whole circle of animal life - tooth against
+tooth - devouring war, war for food, a yelp of pain and a grunt of
 triumph, until, at last, the whole menagerie, the whole chemical mass is
-mellowed and refined for higher use,—pleases at a sufficient
+mellowed and refined for higher use - pleases at a sufficient
 perspective.
 
 But to see how fate slides into freedom, and freedom into fate, observe
@@ -815,14 +761,14 @@ us!
 How is this effected?  Nature is no spendthrift, but takes the shortest
 way to her ends.  As the general says to his soldiers, "if you want a
 fort, build a fort," so nature makes every creature do its own work and
-get its living,—is it planet, animal, or tree.  The planet makes itself.
-The animal cell makes itself;—then, what it wants.  Every creature,—wren
-or dragon,—shall make its own lair. As soon as there is life, there is
+get its living - is it planet, animal, or tree.  The planet makes itself.
+The animal cell makes itself;—then, what it wants.  Every creature - wren
+or dragon - shall make its own lair. As soon as there is life, there is
 self-direction, and absorbing and using of material.  Life is
-freedom,—life in the direct ratio of its amount.  You may be sure, the
+freedom - life in the direct ratio of its amount.  You may be sure, the
 new-born man is not inert.  Life works both voluntarily and
 supernaturally in its neighborhood. Do you suppose, he can be estimated
-by his weight in pounds, or, that he is contained in his skin,—this
+by his weight in pounds, or, that he is contained in his skin - this
 reaching, radiating, jaculating fellow? The smallest candle fills a mile
 with its rays, and the papillæ of a man run out to every star.
 
@@ -855,11 +801,11 @@ Hafiz sings,
     Alas! till now I had not known,
     My guide and fortune’s guide are one.
 
-All the toys that infatuate men, and which they play for,—houses, land,
+All the toys that infatuate men, and which they play for - houses, land,
 money, luxury, power, fame, are the selfsame thing, with a new gauze or
 two of illusion overlaid.  And of all the drums and rattles by which men
 are made willing to have their heads broke, and are led out solemnly
-every morning to parade,—the most admirable is this by which we are
+every morning to parade - the most admirable is this by which we are
 brought to believe that events are arbitrary, and independent of
 actions.  At the conjuror’s, we detect the hair by which he moves his
 puppet, but we have not eyes sharp enough to descry the thread that ties
@@ -871,7 +817,7 @@ waders to the sea margin, hunters to the forest, clerks to
 counting-rooms, soldiers to the frontier.  Thus events grow on the same
 stem with persons; are sub-persons. The pleasure of life is according to
 the man that lives it, and not according to the work or the place. Life
-is an ecstasy.  We know what madness belongs to love,—what power to
+is an ecstasy.  We know what madness belongs to love - what power to
 paint a vile object in hues of heaven.  As insane persons are
 indifferent to their dress, diet, and other accommodations, and, as we
 do in dreams, with equanimity, the most absurd acts, so, a drop more of
@@ -880,7 +826,7 @@ Each creature puts forth from itself its own condition and sphere, as
 the slug sweats out its slimy house on the pear-leaf, and the woolly
 aphides on the apple perspire their own bed, and the fish its shell.  In
 youth, we clothe ourselves with rainbows, and go as brave as the zodiac.
-In age, we put out another sort of perspiration,—gout, fever,
+In age, we put out another sort of perspiration - gout, fever,
 rheumatism, caprice, doubt, fretting, and avarice.
 
 A man’s fortunes are the fruit of his character. A man’s friends are his
@@ -908,7 +854,7 @@ Fitchburg, Holyoke, Portland, and many another noisy mart.  Each of
 these men, if they were transparent, would seem to you not so much men,
 as walking cities, and, wherever you put them, they would build one.
 
-History is the action and reaction of these two,—Nature and Thought;—two
+History is the action and reaction of these two - Nature and Thought;—two
 boys pushing each other on the curb-stone of the pavement. Everything is
 pusher or pushed: and matter and mind are in perpetual tilt and balance,
 so.  Whilst the man is weak, the earth takes up him.  He plants his
@@ -924,7 +870,7 @@ man?  The granite was reluctant, but his hands were stronger, and it
 came.  Iron was deep in the ground, and well combined with stone; but
 could not hide from his fires.  Wood, lime, stuffs, fruits, gums, were
 dispersed over the earth and sea, in vain.  Here they are, within reach
-of every man’s day-labor,—what he wants of them. The whole world is the
+of every man’s day-labor - what he wants of them. The whole world is the
 flux of matter over the wires of thought to the poles or points where it
 would build.  The races of men rise out of the ground preoccupied with a
 thought which rules them, and divided into parties ready armed and angry
@@ -939,7 +885,7 @@ air, and the most impressionable brain will announce it first, but all
 will announce it a few minutes later.  So women, as most susceptible,
 are the best index of the coming hour. So the great man, that is, the
 man most imbued with the spirit of the time, is the impressionable
-man,—of a fibre irritable and delicate, like iodine to light.  He feels
+man - of a fibre irritable and delicate, like iodine to light.  He feels
 the infinitesimal attractions. His mind is righter than others, because
 he yields to a current so feeble as can be felt only by a needle
 delicately poised.
@@ -1029,7 +975,7 @@ Let us build altars to the Beautiful Necessity. If we thought men were
 free in the sense, that, in a single exception one fantastical will
 could prevail over the law of things, it were all one as if a child’s
 hand could pull down the sun.  If, in the least particular, one could
-derange the order of nature,—who would accept the gift of life?
+derange the order of nature - who would accept the gift of life?
 
 Let us build altars to the Beautiful Necessity, which secures that all
 is made of one piece; that plaintiff and defendant, friend and enemy,
@@ -1042,8 +988,8 @@ us build to the Beautiful Necessity, which makes man brave in believing
 that he cannot shun a danger that is appointed, nor incur one that is
 not; to the Necessity which rudely or softly educates him to the
 perception that there are no contingencies; that Law rules throughout
-existence, a Law which is not intelligent but intelligence,—not personal
-nor impersonal,—it disdains words and passes understanding; it dissolves
+existence, a Law which is not intelligent but intelligence - not personal
+nor impersonal - it disdains words and passes understanding; it dissolves
 persons; it vivifies nature; yet solicits the pure in heart to draw on
 all its omnipotence.
 
@@ -1074,8 +1020,8 @@ there be such a tie, that, wherever the mind of man goes, nature will
 accompany him, perhaps there are men whose magnetisms are of that force
 to draw material and elemental powers, and, where they appear, immense
 instrumentalities organize around them.  Life is a search after power;
-and this is an element with which the world is so saturated,—there is no
-chink or crevice in which it is not lodged,—that no honest seeking goes
+and this is an element with which the world is so saturated - there is no
+chink or crevice in which it is not lodged - that no honest seeking goes
 unrewarded.  A man should prize events and possessions as the ore in
 which this fine mineral is found; and he can well afford to let events
 and possessions, and the breath of the body go, if their value has been
@@ -1085,26 +1031,26 @@ man, wise to know and bold to perform, is the end to which nature works,
 and the education of the will is the flowering and result of all this
 geology and astronomy.
 
-All successful men have agreed in one thing,—they were _causationists_.
+All successful men have agreed in one thing - they were _causationists_.
 They believed that things went not by luck, but by law; that there was
 not a weak or a cracked link in the chain that joins the first and last
 of things.  A belief in causality, or strict connection between every
 trifle and the principle of being, and, in consequence, belief in
-compensation, or, that nothing is got for nothing,—characterizes all
+compensation, or, that nothing is got for nothing - characterizes all
 valuable minds, and must control every effort that is made by an
 industrious one. The most valiant men are the best believers in the
 tension of the laws.  "All the great captains," said Bonaparte, "have
-performed vast achievements by conforming with the rules of the art,—by
+performed vast achievements by conforming with the rules of the art - by
 adjusting efforts to obstacles."
 
 The key to the age may be this, or that, or the other, as the young
 orators describe;—the key to all ages is—Imbecility; imbecility in the
 vast majority of men, at all times, and, even in heroes, in all but
 certain eminent moments; victims of gravity, custom, and fear.  This
-gives force to the strong,—that the multitude have no habit of
+gives force to the strong - that the multitude have no habit of
 self-reliance or original action.
 
-We must reckon success a constitutional trait. Courage,—the old
+We must reckon success a constitutional trait. Courage - the old
 physicians taught, (and their meaning holds, if their physiology is a
 little mythical,)—courage, or the degree of life, is as the degree of
 circulation of the blood in the arteries. "During passion, anger, fury,
@@ -1118,7 +1064,7 @@ extraordinary health.  If Eric is in robust health, and has slept well,
 and is at the top of his condition, and thirty years old, at his
 departure from Greenland, he will steer west, and his ships will reach
 Newfoundland.  But take out Eric, and put in a stronger and bolder
-man,—Biorn, or Thorfin,—and the ships will, with just as much ease, sail
+man - Biorn, or Thorfin - and the ships will, with just as much ease, sail
 six hundred, one thousand, fifteen hundred miles further, and reach
 Labrador and New England.  There is no chance in results.  With adults,
 as with children, one class enter cordially into the game, and whirl
@@ -1159,14 +1105,14 @@ young man," said Hafiz, "sparkles no gem so gracious as enterprise."
 Import into any stationary district, as into an old Dutch population in
 New York or Pennsylvania, or among the planters of Virginia, a colony of
 hardy Yankees, with seething brains, heads full of steam-hammer, pulley,
-crank, and toothed wheel,—and everything begins to shine with values.
+crank, and toothed wheel - and everything begins to shine with values.
 What enhancement to all the water and land in England, is the arrival of
 James Watt or Brunel!  In every company, there is not only the active
 and passive sex, but, in both men and women, a deeper and more important
 _sex of mind_, namely, the inventive or creative class of both men and
 women, and the uninventive or accepting class. Each _plus_ man
 represents his set, and, if he have the accidental advantage of personal
-ascendency,—which implies neither more nor less of talent, but merely
+ascendency - which implies neither more nor less of talent, but merely
 the temperamental or taming eye of a soldier or a schoolmaster, (which
 one has, and one has not, as one has a black moustache and one a blond,)
 then quite easily and without envy or resistance, all his coadjutors and
@@ -1201,11 +1147,11 @@ this is an affair of presence of mind, of attitude, of aplomb: the
 opponent has the sun and wind, and, in every cast, the choice of weapon
 and mark; and, when he himself is matched with some other antagonist,
 his own shafts fly well and hit. ’Tis a question of stomach and
-constitution.  The second man is as good as the first,—perhaps better;
+constitution.  The second man is as good as the first - perhaps better;
 but has not stoutness or stomach, as the first has, and so his wit seems
 over-fine or under-fine.
 
-Health is good,—power, life, that resists disease, poison, and all
+Health is good - power, life, that resists disease, poison, and all
 enemies, and is conservative, as well as creative.  Here is question,
 every spring, whether to graft with wax, or whether with clay; whether
 to whitewash or to potash, or to prune; but the one point is the thrifty
@@ -1224,18 +1170,18 @@ found at last in harmony with moral laws.
 We watch in children with pathetic interest, the degree in which they
 possess recuperative force. When they are hurt by us, or by each other,
 or go to the bottom of the class, or miss the annual prizes, or are
-beaten in the game,—if they lose heart, and remember the mischance in
+beaten in the game - if they lose heart, and remember the mischance in
 their chamber at home, they have a serious check.  But if they have the
 buoyancy and resistance that preoccupies them with new interest in the
-new moment,—the wounds cicatrize, and the fibre is the tougher for the
+new moment - the wounds cicatrize, and the fibre is the tougher for the
 hurt.
 
 One comes to value this _plus_ health, when he sees that all
 difficulties vanish before it.  A timid man listening to the alarmists
 in Congress, and in the newspapers, and observing the profligacy of
-party,—sectional interests urged with a fury which shuts its eyes to
+party - sectional interests urged with a fury which shuts its eyes to
 consequences, with a mind made up to desperate extremities, ballot in
-one hand, and rifle in the other,—might easily believe that he and his
+one hand, and rifle in the other - might easily believe that he and his
 country have seen their best days, and he hardens himself the best he
 can against the coming ruin.  But, after this has been foretold with
 equal confidence fifty times, and government six per cents have not
@@ -1261,10 +1207,10 @@ exigencies of English experience.  The commerce of rivers, the commerce
 of railroads, and who knows but the commerce of air-balloons, must add
 an American extension to the pond-hole of admiralty.  As long as our
 people quote English standards, they will miss the sovereignty of power;
-but let these rough riders,—legislators in shirt-sleeves,—Hoosier,
-Sucker, Wolverine, Badger,—or whatever hard head Arkansas, Oregon, or
+but let these rough riders - legislators in shirt-sleeves - Hoosier,
+Sucker, Wolverine, Badger - or whatever hard head Arkansas, Oregon, or
 Utah sends, half orator, half assassin, to represent its wrath and
-cupidity at Washington,—let these drive as they may; and the disposition
+cupidity at Washington - let these drive as they may; and the disposition
 of territories and public lands, the necessity of balancing and keeping
 at bay the snarling majorities of German, Irish, and of native millions,
 will bestow promptness, address, and reason, at last, on our
@@ -1280,12 +1226,12 @@ it; not Webster, but Benton and Calhoun.
 
 This power, to be sure, is not clothed in satin. ’Tis the power of Lynch
 law, of soldiers and pirates; and it bullies the peaceable and loyal.
-But it brings its own antidote; and here is my point,—that all kinds of
+But it brings its own antidote; and here is my point - that all kinds of
 power usually emerge at the same time; good energy, and bad; power of
 mind, with physical health; the ecstasies of devotion, with the
 exasperations of debauchery.  The same elements are always present, only
 sometimes these conspicuous, and sometimes those; what was yesterday
-foreground, being to-day background,—what was surface, playing now a not
+foreground, being to-day background - what was surface, playing now a not
 less effective part as basis.  The longer the drought lasts, the more is
 the atmosphere surcharged with water.  The faster the ball falls to the
 sun, the force to fly off is by so much augmented.  And, in morals, wild
@@ -1296,7 +1242,7 @@ to engender an intolerable tyrant in the next age. On the other hand,
 conservatism, ever more timorous and narrow, disgusts the children, and
 drives them for a mouthful of fresh air into radicalism.
 
-Those who have most of this coarse energy,—the ’bruisers,’ who have run
+Those who have most of this coarse energy - the ’bruisers,’ who have run
 the gauntlet of caucus and tavern through the county or the state, have
 their own vices, but they have the good nature of strength and courage.
 Fierce and unscrupulous, they are usually frank and direct, and above
@@ -1304,7 +1250,7 @@ falsehood. Our politics fall into bad hands, and churchmen and men of
 refinement, it seems agreed, are not fit persons to send to Congress.
 Politics is a deleterious profession, like some poisonous handicrafts.
 Men in power have no opinions, but may be had cheap for any opinion, for
-any purpose,—and if it be only a question between the most civil and the
+any purpose - and if it be only a question between the most civil and the
 most forcible, I lean to the last.  These Hoosiers and Suckers are
 really better than the snivelling opposition.  Their wrath is at least
 of a bold and manly cast.  They see, against the unanimous declarations
@@ -1318,7 +1264,7 @@ indignation, which, in the course of events, is sure to be belied.
 In trade, also, this energy usually carries a trace of ferocity.
 Philanthropic and religious bodies do not commonly make their executive
 officers out of saints.  The communities hitherto founded by
-Socialists,—the Jesuits, the Port-Royalists, the American communities at
+Socialists - the Jesuits, the Port-Royalists, the American communities at
 New Harmony, at Brook Farm, at Zoar, are only possible, by installing
 Judas as steward.  The rest of the offices may be filled by good
 burgesses.  The pious and charitable proprietor has a foreman not quite
@@ -1357,12 +1303,12 @@ house, and paid his keeping, by setting up his new trap on the
 landlord’s premises.
 
 Whilst thus the energy for originating and executing work, deforms
-itself by excess, and so our axe chops off our own fingers,—this evil is
+itself by excess, and so our axe chops off our own fingers - this evil is
 not without remedy.  All the elements whose aid man calls in, will
 sometimes become his masters, especially those of most subtle force.
 Shall he, then, renounce steam, fire, and electricity, or, shall he
 learn to deal with them?  The rule for this whole class of agencies
-is,—all _plus_ is good; only put it in the right place.
+is - all _plus_ is good; only put it in the right place.
 
 Men of this surcharge of arterial blood cannot live on nuts, herb-tea,
 and elegies; cannot read novels, and play whist; cannot satisfy all
@@ -1417,7 +1363,7 @@ cannibals in the Pacific.
 
 In history, the great moment is, when the savage is just ceasing to be a
 savage, with all his hairy Pelasgic strength directed on his opening
-sense of beauty:—and you have Pericles and Phidias,—not yet passed over
+sense of beauty:—and you have Pericles and Phidias - not yet passed over
 into the Corinthian civility. Everything good in nature and the world is
 in that moment of transition, when the swarthy juices still flow
 plentifully from nature, but their astringency or acridity is got out by
@@ -1481,7 +1427,7 @@ whether our dissipations are coarse or fine; property and its cares,
 friends, and a social habit, or politics, or music, or feasting.
 Everything is good which takes away one plaything and delusion more, and
 drives us home to add one stroke of faithful work.  Friends, books,
-pictures, lower duties, talents, flatteries, hopes,—all are distractions
+pictures, lower duties, talents, flatteries, hopes - all are distractions
 which cause oscillations in our giddy balloon, and make a good poise and
 a straight course impossible.  You must elect your work; you shall take
 what your brain can, and drop all the rest.  Only so, can that amount of
@@ -1505,10 +1451,10 @@ in the whole city, but one street in which Pericles was ever seen, the
 street which led to the market-place and the council house.  He declined
 all invitations to banquets, and all gay assemblies and company.  During
 the whole period of his administration, he never dined at the table of a
-friend."  Or if we seek an example from trade,—"I hope," said a good man
+friend."  Or if we seek an example from trade - "I hope," said a good man
 to Rothschild, "your children are not too fond of money and business: I
 am sure you would not wish that."—"I am sure I should wish that: I wish
-them to give mind, soul, heart, and body to business,—that is the way to
+them to give mind, soul, heart, and body to business - that is the way to
 be happy.  It requires a great deal of boldness and a great deal of
 caution, to make a great fortune, and when you have got it, it requires
 ten times as much wit to keep it.  If I were to listen to all the
@@ -1520,7 +1466,7 @@ Gazette."
 
 Many men are knowing, many are apprehensive and tenacious, but they do
 not rush to a decision. But in our flowing affairs a decision must be
-made,—the best, if you can; but any is better than none.  There are
+made - the best, if you can; but any is better than none.  There are
 twenty ways of going to a point, and one is the shortest; but set out at
 once on one.  A man who has that presence of mind which can bring to him
 on the instant all he knows, is worth for action a dozen men who know as
@@ -1598,7 +1544,7 @@ the value of talent and superficial success.  We can easily overpraise
 the vulgar hero.  There are sources on which we have not drawn.  I know
 what I abstain from.  I adjourn what I have to say on this topic to the
 chapters on Culture and Worship.  But this force or spirit, being the
-means relied on by Nature for bringing the work of the day about,—as far
+means relied on by Nature for bringing the work of the day about - as far
 as we attach importance to household life, and the prizes of the world,
 we must respect that.  And I hold, that an economy may be applied to it;
 it is as much a subject of exact law and arithmetic as fluids and gases
@@ -1774,7 +1720,7 @@ is born to be rich.  He is thoroughly related; and is tempted out by his
 appetites and fancies to the conquest of this and that piece of nature,
 until he finds his well-being in the use of his planet, and of more
 planets than his own.  Wealth requires, besides the crust of bread and
-the roof,—the freedom of the city, the freedom of the earth, travelling,
+the roof - the freedom of the city, the freedom of the earth, travelling,
 machinery, the benefits of science, music, and fine arts, the best
 culture, and the best company.  He is the rich man who can avail himself
 of all men’s faculties.  He is the richest man who knows how to draw a
@@ -1783,7 +1729,7 @@ countries, and in past times.  The same correspondence that is between
 thirst in the stomach, and water in the spring, exists between the whole
 of man and the whole of nature.  The elements offer their service to
 him.  The sea, washing the equator and the poles, offers its perilous
-aid, and the power and empire that follow it,—day by day to his craft
+aid, and the power and empire that follow it - day by day to his craft
 and audacity.  "Beware of me," it says, "but if you can hold me, I am
 the key to all the lands."  Fire offers, on its side, an equal power.
 Fire, steam, lightning, gravity, ledges of rock, mines of iron, lead,
@@ -1803,7 +1749,7 @@ of the world; now, for a thousand years, the leading race, and by
 nothing more than their quality of personal independence, and, in its
 special modification, pecuniary independence. No reliance for bread and
 games on the government, no clanship, no patriarchal style of living by
-the revenues of a chief, no marrying-on,—no system of clientship suits
+the revenues of a chief, no marrying-on - no system of clientship suits
 them; but every man must pay his scot.  The English are prosperous and
 peaceable, with their habit of considering that every man must take care
 of himself, and has himself to thank, if he do not maintain and improve
@@ -1844,7 +1790,7 @@ carries a quiet heart and assured manners, and deals on even terms with
 men of any condition. The artist has made his picture so true, that it
 disconcerts criticism.  The statue is so beautiful, that it contracts no
 stain from the market, but makes the market a silent gallery for itself.
-The case of the young lawyer was pitiful to disgust,—a paltry matter of
+The case of the young lawyer was pitiful to disgust - a paltry matter of
 buttons or tweezer-cases; but the determined youth saw in it an aperture
 to insert his dangerous wedges, made the insignificance of the thing
 forgotten, and gave fame by his sense and energy to the name and affairs
@@ -1857,7 +1803,7 @@ it ends in cosseting.  But, if this were the main use of surplus
 capital, it would bring us to barricades, burned towns, and tomahawks,
 presently.  Men of sense esteem wealth to be the assimilation of nature
 to themselves, the converting of the sap and juices of the planet to the
-incarnation and nutriment of their design.  Power is what they want,—not
+incarnation and nutriment of their design.  Power is what they want - not
 candy;—power to execute their design, power to give legs and feet, form
 and actuality to their thought, which, to a clear-sighted man, appears
 the end for which the Universe exists, and all its resources might be
@@ -1868,7 +1814,7 @@ the planet have more truly belonged to it.  But he was forced to leave
 much of his map blank. His successors inherited his map, and inherited
 his fury to complete it.
 
-So the men of the mine, telegraph, mill, map, and survey,—the
+So the men of the mine, telegraph, mill, map, and survey - the
 monomaniacs, who talk up their project in marts, and offices, and
 entreat men to subscribe:—how did our factories get built? how did North
 America get netted with iron rails, except by the importunity of these
@@ -1964,9 +1910,9 @@ exhibition; and the use which any man can make of them is rare, and
 their value, too, is much enhanced by the numbers of men who can share
 their enjoyment.  In the Greek cities, it was reckoned profane, that any
 person should pretend a property in a work of art, which belonged to all
-who could behold it.  I think sometimes,—could I only have music on my
+who could behold it.  I think sometimes - could I only have music on my
 own terms;—could I live in a great city, and know where I could go
-whenever I wished the ablution and inundation of musical waves,—that
+whenever I wished the ablution and inundation of musical waves - that
 were a bath and a medicine.
 
 If properties of this kind were owned by states, towns, and lyceums,
@@ -1995,7 +1941,7 @@ persuaded of the truths of arithmetic.  There is always a reason, _in
 the man_, for his good or bad fortune, and so, in making money.  Men
 talk as if there were some magic about this, and believe in magic, in
 all parts of life.  He knows, that all goes on the old road, pound for
-pound, cent for cent,—for every effect a perfect cause,—and that good
+pound, cent for cent - for every effect a perfect cause - and that good
 luck is another name for tenacity of purpose.  He insures himself in
 every transaction, and likes small and sure gains.  Probity and
 closeness to the facts are the basis, but the masters of the art add a
@@ -2006,9 +1952,9 @@ without any compromise of safety.  Napoleon was fond of telling the
 story of the Marseilles banker, who said to his visitor, surprised at
 the contrast between the splendor of the banker’s chateau and
 hospitality, and the meanness of the counting-room in which he had seen
-him,—"Young man, you are too young to understand how masses are
-formed,—the true and only power,—whether composed of money, water, or
-men, it is all alike,—a mass is an immense centre of motion, but it must
+him - "Young man, you are too young to understand how masses are
+formed - the true and only power - whether composed of money, water, or
+men, it is all alike - a mass is an immense centre of motion, but it must
 be begun, it must be kept up:"—and he might have added, that the way in
 which it must be begun and kept up, is, by obedience to the law of
 particles.
@@ -2037,7 +1983,7 @@ curious is its susceptibility to metaphysical changes.  It is the finest
 barometer of social storms, and announces revolutions.
 
 Every step of civil advancement makes every man’s dollar worth more.  In
-California, the country where it grew,—what would it buy?  A few years
+California, the country where it grew - what would it buy?  A few years
 since, it would buy a shanty, dysentery, hunger, bad company, and crime.
 There are wide countries, like Siberia, where it would buy little else
 to-day, than some petty mitigation of suffering. In Rome, it will buy
@@ -2050,7 +1996,7 @@ mountain of dollars. A dollar in Florida is not worth a dollar in
 Massachusetts.  A dollar is not value, but representative of value, and,
 at last, of moral values.  A dollar is rated for the corn it will buy,
 or to speak strictly, not for the corn or house-room, but for Athenian
-corn, and Roman house-room,—for the wit, probity, and power, which we
+corn, and Roman house-room - for the wit, probity, and power, which we
 eat bread and dwell in houses to share and exert.  Wealth is mental;
 wealth is moral.  The value of a dollar is, to buy just things: a dollar
 goes on increasing in value with all the genius, and all the virtue of
@@ -2065,15 +2011,15 @@ equity?  If a trader refuses to sell his vote, or adheres to some odious
 right, he makes so much more equity in Massachusetts; and every acre in
 the State is more worth, in the hour of his action. If you take out of
 State-street the ten honestest merchants, and put in ten roguish
-persons, controlling the same amount of capital,—the rates of insurance
+persons, controlling the same amount of capital - the rates of insurance
 will indicate it; the soundness of banks will show it: the highways will
 be less secure: the schools will feel it; the children will bring home
 their little dose of the poison: the judge will sit less firmly on the
 bench, and his decisions be less upright; he has lost so much support
-and constraint,—which all need; and the pulpit will betray it, in a
+and constraint - which all need; and the pulpit will betray it, in a
 laxer rule of life.  An apple-tree, if you take out every day for a
 number of days, a load of loam, and put in a load of sand about its
-roots,—will find it out.  An apple-tree is a stupid kind of creature,
+roots - will find it out.  An apple-tree is a stupid kind of creature,
 but if this treatment be pursued for a short time, I think it would
 begin to mistrust something.  And if you should take out of the powerful
 class engaged in trade a hundred good men, and put in a hundred bad, or,
@@ -2125,7 +2071,7 @@ and petty tricks which we suicidally play off on each other, every man
 has a certain satisfaction, whenever his dealing touches on the
 inevitable facts; when he sees that things themselves dictate the price,
 as they always tend to do, and, in large manufactures, are seen to do.
-Your paper is not fine or coarse enough,—is too heavy, or too thin.  The
+Your paper is not fine or coarse enough - is too heavy, or too thin.  The
 manufacturer says, he will furnish you with just that thickness or
 thinness you want; the pattern is quite indifferent to him; here is his
 schedule;—any variety of paper, as cheaper or dearer, with the prices
@@ -2208,7 +2154,7 @@ considerations complicate the problem.
 There are a few measures of economy which will bear to be named without
 disgust; for the subject is tender, and we may easily have too much of
 it; and therein resembles the hideous animalcules of which our bodies
-are built up,—which, offensive in the particular, yet compose valuable
+are built up - which, offensive in the particular, yet compose valuable
 and effective masses.  Our nature and genius force us to respect ends,
 whilst we use means.  We must use the means, and yet, in our most
 accurate using, somehow screen and cloak them, as we can only give them
@@ -2228,7 +2174,7 @@ were to neutralize the special strength and helpfulness of each mind. Do
 your work, respecting the excellence of the work, and not its
 acceptableness.  This is so much economy, that, rightly read, it is the
 sum of economy.  Profligacy consists not in spending years of time or
-chests of money,—but in spending them off the line of your career.  The
+chests of money - but in spending them off the line of your career.  The
 crime which bankrupts men and states, is, job-work;—declining from your
 main design, to serve a turn here or there. Nothing is beneath you, if
 it is in the direction of your life: nothing is great or desirable, if
@@ -2241,10 +2187,10 @@ Allston, the painter, was wont to say, that he built a plain house, and
 filled it with plain furniture, because he would hold out no bribe to
 any to visit him, who had not similar tastes to his own.  We are
 sympathetic, and, like children, want everything we see.  But it is a
-large stride to independence,—when a man, in the discovery of his proper
+large stride to independence - when a man, in the discovery of his proper
 talent, has sunk the necessity for false expenses.  As the betrothed
 maiden, by one secure affection, is relieved from a system of
-slaveries,—the daily inculcated necessity of pleasing all,—so the man
+slaveries - the daily inculcated necessity of pleasing all - so the man
 who has found what he can do, can spend on that, and leave all other
 spending.  Montaigne said, "When he was a younger brother, he went brave
 in dress and equipage, but afterward his chateau and farms might answer
@@ -2356,7 +2302,7 @@ kept his work even: hoed his potatoes, mowed his hay, reaped his rye;
 well knowing that no man could afford to hire labor, without selling his
 land.  In autumn, a farmer could sell an ox or a hog, and get a little
 money to pay taxes withal. Now, the farmer buys almost all he
-consumes,—tin-ware, cloth, sugar, tea, coffee, fish, coal,
+consumes - tin-ware, cloth, sugar, tea, coffee, fish, coal,
 railroad-tickets, and newspapers.
 
 A master in each art is required, because the practice is never with
@@ -2485,7 +2431,7 @@ like, which does not admit of an extended sense.  The counting-room
 maxims liberally expounded are laws of the Universe.  The merchant’s
 economy is a coarse symbol of the soul’s economy.  It is, to spend for
 power, and not for pleasure.  It is to invest income; that is to say, to
-take up particulars into generals; days into integral eras,—literary,
+take up particulars into generals; days into integral eras - literary,
 emotive, practical, of its life, and still to ascend in its investment.
 The merchant has but one rule, _absorb and invest_: he is to be
 capitalist: the scraps and filings must be gathered back into the
@@ -2581,7 +2527,7 @@ interest from the bystanders, as we have seen children, who, finding
 themselves of no account when grown people come in, will cough till they
 choke, to draw attention.
 
-This distemper is the scourge of talent,—of artists, inventors, and
+This distemper is the scourge of talent - of artists, inventors, and
 philosophers.  Eminent spiritualists shall have an incapacity of putting
 their act or word aloof from them, and seeing it bravely for the nothing
 it is.  Beware of the man who says, "I am on the eve of a revelation."
@@ -2624,14 +2570,14 @@ admiration.
 
 But after a man has discovered that there are limits to the interest
 which his private history has for mankind, he still converses with his
-family, or a few companions,—perhaps with half a dozen personalities
+family, or a few companions - perhaps with half a dozen personalities
 that are famous in his neighborhood.  In Boston, the question of life is
 the names of some eight or ten men.  Have you seen Mr. Allston, Doctor
 Channing, Mr. Adams, Mr. Webster, Mr. Greenough?  Have you heard
 Everett, Garrison, Father Taylor, Theodore Parker?  Have you talked with
 Messieurs Turbinewheel, Summitlevel, and Lacofrupees?  Then you may as
 well die.  In New York, the question is of some other eight, or ten, or
-twenty.  Have you seen a few lawyers, merchants, and brokers,—two or
+twenty.  Have you seen a few lawyers, merchants, and brokers - two or
 three scholars, two or three capitalists, two or three editors of
 newspapers?  New York is a sucked orange.  All conversation is at an
 end, when we have discharged ourselves of a dozen personalities,
@@ -2672,7 +2618,7 @@ certain fancy goods called fine arts and philosophy.  In the Norse
 legend, Allfadir did not get a drink of Mimir’s spring, (the fountain of
 wisdom,) until he left his eye in pledge.  And here is a pedant that
 cannot unfold his wrinkles, nor conceal his wrath at interruption by the
-best, if their conversation do not fit his impertinency,—here is he to
+best, if their conversation do not fit his impertinency - here is he to
 afflict us with his personalities.  ’Tis incident to scholars, that each
 of them fancies he is pointedly odious in his community. Draw him out of
 this limbo of irritability. Cleanse with healthy blood his parchment
@@ -2767,8 +2713,8 @@ loves guns, fishing-rods, horses, and boats.  Well, the boy is right;
 and you are not fit to direct his bringing up, if your theory leaves out
 his gymnastic training. Archery, cricket, gun and fishing-rod, horse and
 boat, are all educators, liberalizers; and so are dancing, dress, and
-the street-talk; and,—provided only the boy has resources, and is of a
-noble and ingenuous strain,—these will not serve him less than the
+the street-talk; and - provided only the boy has resources, and is of a
+noble and ingenuous strain - these will not serve him less than the
 books.  He learns chess, whist, dancing, and theatricals.  The father
 observes that another boy has learned algebra and geometry in the same
 time.  But the first boy has acquired much more than these poor games
@@ -2896,7 +2842,7 @@ says, that "William, Earl of Nassau, won a subject from the King of
 Spain, every time he put off his hat."  You cannot have one well-bred
 man, without a whole society of such.  They keep each other up to any
 high point.  Especially women;—it requires a great many cultivated
-women,—saloons of bright, elegant, reading women, accustomed to ease and
+women - saloons of bright, elegant, reading women, accustomed to ease and
 refinement, to spectacles, pictures, sculpture, poetry, and to elegant
 society, in order that you should have one Madame de Staël.  The head of
 a commercial house, or a leading lawyer or politician is brought into
@@ -2909,8 +2855,8 @@ that, in such a vast variety of people and conditions, one can believe
 there is room for persons of romantic character to exist, and that the
 poet, the mystic, and the hero may hope to confront their counterparts.
 
-I wish cities could teach their best lesson,—of quiet manners.  It is
-the foible especially of American youth,—pretension.  The mark of the
+I wish cities could teach their best lesson - of quiet manners.  It is
+the foible especially of American youth - pretension.  The mark of the
 man of the world is absence of pretension.  He does not make a speech;
 he takes a low business-tone, avoids all brag, is nobody, dresses
 plainly, promises not at all, performs much, speaks in monosyllables,
@@ -2919,7 +2865,7 @@ from evil tongues their sharpest weapon.  His conversation clings to the
 weather and the news, yet he allows himself to be surprised into
 thought, and the unlocking of his learning and philosophy.  How the
 imagination is piqued by anecdotes of some great man passing incognito,
-as a king in gray clothes,—of Napoleon affecting a plain suit at his
+as a king in gray clothes - of Napoleon affecting a plain suit at his
 glittering levee; of Burns, or Scott, or Beethoven, or Wellington, or
 Goethe, or any container of transcendent power, passing for nobody; of
 Epaminondas, "who never says anything, but will listen eternally;" of
@@ -2945,7 +2891,7 @@ Not much otherwise Milnes writes, in the "Lay of the Humble,"
     They wear no masks with me."
 
 
-’Tis odd that our people should have—not water on the brain,—but a
+’Tis odd that our people should have—not water on the brain - but a
 little gas there.  A shrewd foreigner said of the Americans, that,
 "whatever they say has a little the air of a speech."  Yet one of the
 traits down in the books as distinguishing the Anglo-Saxon, is, a trick
@@ -2956,7 +2902,7 @@ features, with a face like red dough, unexpectedly discloses wit,
 learning, a wide range of topics, and personal familiarity with good men
 in all parts of the world, until you think you have fallen upon some
 illustrious personage.  Can it be that the American forest has refreshed
-some weeds of old Pictish barbarism just ready to die out,—the love of
+some weeds of old Pictish barbarism just ready to die out - the love of
 the scarlet feather, of beads, and tinsel?  The Italians are fond of red
 clothes, peacock plumes, and embroidery; and I remember one rainy
 morning in the city of Palermo, the street was in a blaze with scarlet
@@ -3026,7 +2972,7 @@ factory, three looms, six looms, but pays off the mortgage on the
 paternal farm, and then goes back cheerfully to work again.
 
 We can ill spare the commanding social benefits of cities; they must be
-used; yet cautiously, and haughtily,—and will yield their best values to
+used; yet cautiously, and haughtily - and will yield their best values to
 him who best can do without them.  Keep the town for occasions, but the
 habits should be formed to retirement.  Solitude, the safeguard of
 mediocrity, is to genius the stern friend, the cold, obscure shelter
@@ -3034,7 +2980,7 @@ where moult the wings which will bear it farther than suns and stars.
 He who should inspire and lead his race must be defended from travelling
 with the souls of other men, from living, breathing, reading, and
 writing in the daily, time-worn yoke of their opinions.  "In the
-morning,—solitude;" said Pythagoras; that Nature may speak to the
+morning - solitude;" said Pythagoras; that Nature may speak to the
 imagination, as she does never in company, and that her favorite may
 make acquaintance with those divine strengths which disclose themselves
 to serious and abstracted thought.  ’Tis very certain that Plato,
@@ -3044,7 +2990,7 @@ the wise instructor will press this point of securing to the young soul
 in the disposition of time and the arrangements of living, periods and
 habits of solitude.  The high advantage of university-life is often the
 mere mechanical one, I may call it, of a separate chamber and
-fire,—which parents will allow the boy without hesitation at Cambridge,
+fire - which parents will allow the boy without hesitation at Cambridge,
 but do not think needful at home.  We say solitude, to mark the
 character of the tone of thought; but if it can be shared between two or
 more than two, it is happier, and not less noble. "We four," wrote
@@ -3066,7 +3012,7 @@ main, unfavorable. The poet, as a craftsman, is only interested in the
 praise accorded to him, and not in the censure, though it be just.  And
 the poor little poet hearkens only to that, and rejects the censure, as
 proving incapacity in the critic.  But the poet _cultivated_ becomes a
-stockholder in both companies,—say Mr. Curfew,—in the Curfew stock, and
+stockholder in both companies - say Mr. Curfew - in the Curfew stock, and
 in the _humanity_ stock; and, in the last, exults as much in the
 demonstration of the unsoundness of Curfew, as his interest in the
 former gives him pleasure in the currency of Curfew.  For, the
@@ -3104,7 +3050,7 @@ said to have arrived at self-possession.  I suffer, every day, from the
 want of perception of beauty in people.  They do not know the charm with
 which all moments and objects can be embellished, the charm of manners,
 of self-command, of benevolence.  Repose and cheerfulness are the badge
-of the gentleman,—repose in energy.  The Greek battle-pieces are calm;
+of the gentleman - repose in energy.  The Greek battle-pieces are calm;
 the heroes, in whatever violent actions engaged, retain a serene aspect;
 as we say of Niagara, that it falls without speed.  A cheerful,
 intelligent face is the end of culture, and success enough. For it
@@ -3183,7 +3129,7 @@ is none of the social goods that may not be purchased too dear, and mere
 amiableness must not take rank with high aims and self-subsistency.
 
 Bettine replies to Goethe’s mother, who chides her disregard of
-dress,—"If I cannot do as I have a mind, in our poor Frankfort, I shall
+dress - "If I cannot do as I have a mind, in our poor Frankfort, I shall
 not carry things far."  And the youth must rate at its true mark the
 inconceivable levity of local opinion. The longer we live, the more we
 must endure the elementary existence of men and women; and every brave
@@ -3229,8 +3175,8 @@ Christianity with its charity; if Trade with its money; if Art with its
 portfolios; if Science with her telegraphs through the deeps of space
 and time; can set his dull nerves throbbing, and by loud taps on the
 tough chrysalis, can break its walls, and let the new creature emerge
-erect and free,—make way, and sing pæan!  The age of the quadruped is to
-go out,—the age of the brain and of the heart is to come in.  The time
+erect and free - make way, and sing pæan!  The age of the quadruped is to
+go out - the age of the brain and of the heart is to come in.  The time
 will come when the evil forms we have known can no more be organized.
 Man’s culture can spare nothing, wants all the material.  He is to
 convert all impediments into instruments, all enemies into power.  The
@@ -3291,7 +3237,7 @@ controlling the movements of the body, the speech and behavior?
 
 There is always a best way of doing everything, if it be to boil an egg.
 Manners are the happy ways of doing things; each once a stroke of genius
-or of love,—now repeated and hardened into usage. They form at last a
+or of love - now repeated and hardened into usage. They form at last a
 rich varnish, with which the routine of life is washed, and its details
 adorned. If they are superficial, so are the dew-drops which give such a
 depth to the morning meadows. Manners are very communicable: men catch
@@ -3302,7 +3248,7 @@ manners, which the baron and the baroness copy very fast, and, by the
 advantage of a palace, better the instruction.  They stereotype the
 lesson they have learned into a mode.
 
-The power of manners is incessant,—an element as unconcealable as fire.
+The power of manners is incessant - an element as unconcealable as fire.
 The nobility cannot in any country be disguised, and no more in a
 republic or a democracy, than in a kingdom.  No man can resist their
 influence.  There are certain manners which are learned in good society,
@@ -3323,11 +3269,11 @@ recover their self-possession.
 Every day bears witness to their gentle rule. People who would obtrude,
 now do not obtrude. The mediocre circle learns to demand that which
 belongs to a high state of nature or of culture. Your manners are always
-under examination, and by committees little suspected,—a police in
-citizens’ clothes,—but are awarding or denying you very high prizes when
+under examination, and by committees little suspected - a police in
+citizens’ clothes - but are awarding or denying you very high prizes when
 you least think of it.
 
-We talk much of utilities,—but ’tis our manners that associate us.  In
+We talk much of utilities - but ’tis our manners that associate us.  In
 hours of business, we go to him who knows, or has, or does this or that
 which we want, and we do not let our taste or feeling stand in the way.
 But this activity over, we return to the indolent state, and wish for
@@ -3343,8 +3289,8 @@ divination is required in us, for the reading of this fine telegraph, we
 see what range the subject has, and what relations to convenience,
 power, and beauty.
 
-Their first service is very low,—when they are the minor morals: but
-’tis the beginning of civility,—to make us, I mean, endurable to each
+Their first service is very low - when they are the minor morals: but
+’tis the beginning of civility - to make us, I mean, endurable to each
 other. We prize them for their rough-plastic, abstergent force; to get
 people out of the quadruped state; to get them washed, clothed, and set
 up on end; to slough their animal husks and habits; compel them to be
@@ -3362,7 +3308,7 @@ barking him out of sight:—I have seen men who neigh like a horse when
 you contradict them, or say something which they do not understand:—then
 the overbold, who make their own invitation to your hearth; the
 persevering talker, who gives you his society in large, saturating
-doses; the pitiers of themselves,—a perilous class; the frivolous
+doses; the pitiers of themselves - a perilous class; the frivolous
 Asmodeus, who relies on you to find him in ropes of sand to twist; the
 monotones; in short, every stripe of absurdity;—these are social
 inflictions which the magistrate cannot cure or defend you from, and
@@ -3423,8 +3369,8 @@ Manners are partly factitious, but, mainly, there must be capacity for
 culture in the blood.  Else all culture is vain.  The obstinate
 prejudice in favor of blood, which lies at the base of the feudal and
 monarchical fabrics of the old world, has some reason in common
-experience.  Every man,—mathematician, artist, soldier, or
-merchant,—looks with confidence for some traits and talents in his own
+experience.  Every man - mathematician, artist, soldier, or
+merchant - looks with confidence for some traits and talents in his own
 child, which he would not dare to presume in the child of a stranger.
 The Orientalists are very orthodox on this point.  "Take a thorn-bush,"
 said the emir Abdel-Kader, "and sprinkle it for a whole year with
@@ -3470,7 +3416,7 @@ and there is no end to the catalogue of its performances, whether in
 indolent vision, (that of health and beauty,) or in strained vision,
 (that of art and labor.)
 
-Eyes are bold as lions,—roving, running, leaping, here and there, far
+Eyes are bold as lions - roving, running, leaping, here and there, far
 and near.  They speak all languages.  They wait for no introduction;
 they are no Englishmen; ask no leave of age, or rank; they respect
 neither poverty nor riches, neither learning nor power, nor virtue, nor
@@ -3506,13 +3452,13 @@ addressed to him, and yet, if in sympathy with the society, he shall not
 have a sense of this fact, such a stream of life has been flowing into
 him, and out from him, through the eyes.  There are eyes, to be sure,
 that give no more admission into the man than blueberries.  Others are
-liquid and deep,—wells that a man might fall into;—others are aggressive
+liquid and deep - wells that a man might fall into;—others are aggressive
 and devouring, seem to call out the police, take all too much notice,
 and require crowded Broadways, and the security of millions, to protect
 individuals against them.  The military eye I meet, now darkly sparkling
 under clerical, now under rustic brows.  ’Tis the city of Lacedæmon;
 ’tis a stack of bayonets.  There are asking eyes, asserting eyes,
-prowling eyes; and eyes full of fate,—some of good, and some of sinister
+prowling eyes; and eyes full of fate - some of good, and some of sinister
 omen. The alleged power to charm down insanity, or ferocity in beasts,
 is a power behind the eye.  It must be a victory achieved in the will,
 before it can be signified in the eye.  ’Tis very certain that each man
@@ -3566,11 +3512,11 @@ and, it seems, ought to have.  But if he finds the scholar apart from
 his companions, it is then the enthusiast’s turn, and the scholar has no
 defence, but must deal on his terms.  Now they must fight the battle out
 on their private strengths.  What is the talent of that character so
-common,—the successful man of the world,—in all marts, senates, and
+common - the successful man of the world - in all marts, senates, and
 drawing-rooms?  Manners: manners of power; sense to see his advantage,
 and manners up to it.  See him approach his man.  He knows that troops
 behave as they are handled at first;—that is his cheap secret; just what
-happens to every two persons who meet on any affair,—one instantly
+happens to every two persons who meet on any affair - one instantly
 perceives that he has the key of the situation, that his will
 comprehends the other’s will, as the cat does the mouse; and he has only
 to use courtesy, and furnish good-natured reasons to his victim to cover
@@ -3627,7 +3573,7 @@ himself at home, wherever he is; should impart comfort by his own
 security and good-nature to all beholders.  The hero is suffered to be
 himself.  A person of strong mind comes to perceive that for him an
 immunity is secured so long as he renders to society that service which
-is native and proper to him,—an immunity from all the observances, yea,
+is native and proper to him - an immunity from all the observances, yea,
 and duties, which society so tyrannically imposes on the rank and file
 of its members.  "Euripides," says Aspasia, "has not the fine manners of
 Sophocles; but,"—she adds good-humoredly, "the movers and masters of our
@@ -3682,7 +3628,7 @@ everything around him becomes variable with expression.  No carpenter’s
 rule, no rod and chain, will measure the dimensions of any house or
 house-lot: go into the house: if the proprietor is constrained and
 deferring, ’tis of no importance how large his house, how beautiful his
-grounds,—you quickly come to the end of all: but if the man is
+grounds - you quickly come to the end of all: but if the man is
 self-possessed, happy, and at home, his house is deep-founded,
 indefinitely large and interesting, the roof and dome buoyant as the
 sky.  Under the humblest roof, the commonest person in plain clothes
@@ -3691,11 +3637,11 @@ sits there massive, cheerful, yet formidable like the Egyptian colossi.
 Neither Aristotle, nor Leibnitz, nor Junius, nor Champollion has set
 down the grammar-rules of this dialect, older than Sanscrit; but they
 who cannot yet read English, can read this.  Men take each other’s
-measure, when they meet for the first time,—and every time they meet.
+measure, when they meet for the first time - and every time they meet.
 How do they get this rapid knowledge, even before they speak, of each
 other’s power and dispositions?  One would say, that the persuasion of
-their speech is not in what they say,—or, that men do not convince by
-their argument,—but by their personality, by who they are, and what they
+their speech is not in what they say - or, that men do not convince by
+their argument - but by their personality, by who they are, and what they
 said and did heretofore. A man already strong is listened to, and
 everything he says is applauded.  Another opposes him with sound
 argument, but the argument is scouted, until by and by it gets into the
@@ -3707,13 +3653,13 @@ where school education is universal, we have a superficial culture, and
 a profusion of reading and writing and expression.  We parade our
 nobilities in poems and orations, instead of working them up into
 happiness. There is a whisper out of the ages to him who can understand
-it,—’whatever is known to thyself alone, has always very great value.’
+it - ’whatever is known to thyself alone, has always very great value.’
 There is some reason to believe, that, when a man does not write his
 poetry, it escapes by other vents through him, instead of the one vent
 of writing; clings to his form and manners, whilst poets have often
 nothing poetical about them except their verses.  Jacobi said, that
 "when a man has fully expressed his thought, he has somewhat less
-possession of it."  One would say, the rule is,—What a man is
+possession of it."  One would say, the rule is - What a man is
 irresistibly urged to say, helps him and us.  In explaining his thought
 to others, he explains it to himself: but when he opens it for show, it
 corrupts him.
@@ -3739,7 +3685,7 @@ novels are as useful as Bibles, if they teach you the secret, that the
 best of life is conversation, and the greatest success is confidence, or
 perfect understanding between sincere people.  ’Tis a French definition
 of friendship, _rien que s’entendre_, good understanding. The highest
-compact we can make with our fellow, is,—’Let there be truth between us
+compact we can make with our fellow, is - ’Let there be truth between us
 two for evermore.’  That is the charm in all good novels, as it is the
 charm in all good histories, that the heroes mutually understand, from
 the first, and deal loyally, and with a profound trust in each other. It
@@ -3815,7 +3761,7 @@ companion.  We must be as courteous to a man as we are to a picture,
 which we are willing to give the advantage of a good light.  Special
 precepts are not to be thought of: the talent of well-doing contains
 them all.  Every hour will show a duty as paramount as that of my whim
-just now; and yet I will write it,—that there is one topic peremptorily
+just now; and yet I will write it - that there is one topic peremptorily
 forbidden to all well-bred, to all rational mortals, namely, their
 distempers.  If you have not slept, or if you have slept, or if you have
 headache, or sciatica, or leprosy, or thunder-stroke, I beseech you, by
@@ -3833,7 +3779,7 @@ As respects the delicate question of culture, I do not think that any
 other than negative rules can be laid down.  For positive rules, for
 suggestion, Nature alone inspires it.  Who dare assume to guide a youth,
 a maid, to perfect manners?—the golden mean is so delicate,
-difficult,—say frankly, unattainable.  What finest hands would not be
+difficult - say frankly, unattainable.  What finest hands would not be
 clumsy to sketch the genial precepts of the young girl’s demeanor?  The
 chances seem infinite against success; and yet success is continually
 attained. There must not be secondariness, and ’tis a thousand to one
@@ -3902,7 +3848,7 @@ I see not why we should give ourselves such sanctified airs.  If the
 Divine Providence has hid from men neither disease, nor deformity, nor
 corrupt society, but has stated itself out in passions, in war, in
 trade, in the love of power and pleasure, in hunger and need, in
-tyrannies, literatures, and arts,—let us not be so nice that we cannot
+tyrannies, literatures, and arts - let us not be so nice that we cannot
 write these facts down coarsely as they stand, or doubt but there is a
 counter-statement as ponderous, which we can arrive at, and which, being
 put, will make all square.  The solar system has no anxiety about its
@@ -3933,7 +3879,7 @@ We are born believing.  A man bears beliefs, as a tree bears apples.  A
 self-poise belongs to every particle; and a rectitude to every mind, and
 is the Nemesis and protector of every society.  I and my neighbors have
 been bred in the notion, that, unless we came soon to some good
-church,—Calvinism, or Behmenism, or Romanism, or Mormonism,—there would
+church - Calvinism, or Behmenism, or Romanism, or Mormonism - there would
 be a universal thaw and dissolution. No Isaiah or Jeremy has arrived.
 Nothing can exceed the anarchy that has followed in our skies. The stern
 old faiths have all pulverized.  ’Tis a whole population of gentlemen
@@ -3958,7 +3904,7 @@ In the last chapters, we treated some particulars of the question of
 culture.  But the whole state of man is a state of culture; and its
 flowering and completion may be described as Religion, or Worship.
 There is always some religion, some hope and fear extended into the
-invisible,—from the blind boding which nails a horseshoe to the mast or
+invisible - from the blind boding which nails a horseshoe to the mast or
 the threshold, up to the song of the Elders in the Apocalypse.  But the
 religion cannot rise above the state of the votary.  Heaven always bears
 some proportion to earth.  The god of the cannibals will be a cannibal,
@@ -3981,7 +3927,7 @@ disciple Rand, who refused to believe.
 
     ⁵ Iliad, Book xxi. 1. 455.
 
-Christianity, in the romantic ages, signified European culture,—the
+Christianity, in the romantic ages, signified European culture - the
 grafted or meliorated tree in a crab forest.  And to marry a pagan wife
 or husband, was to marry Beast, and voluntarily to take a step backwards
 towards the baboon.
@@ -4019,7 +3965,7 @@ extraordinary confusion of heaven and earth in the picture of Dido.
 
 
 With these grossnesses, we complacently compare our own taste and
-decorum.  We think and speak with more temperance and gradation,—but is
+decorum.  We think and speak with more temperance and gradation - but is
 not indifferentism as bad as superstition?
 
 We live in a transition period, when the old faiths which comforted
@@ -4032,11 +3978,11 @@ intellect; scortatory religions; slave-holding and slave-trading
 religions; and, even in the decent populations, idolatries wherein the
 whiteness of the ritual covers scarlet indulgence.  The lover of the old
 religion complains that our contemporaries, scholars as well as
-merchants, succumb to a great despair,—have corrupted into a timorous
+merchants, succumb to a great despair - have corrupted into a timorous
 conservatism, and believe in nothing.  In our large cities, the
-population is godless, materialized,—no bond, no fellow-feeling, no
+population is godless, materialized - no bond, no fellow-feeling, no
 enthusiasm.  These are not men, but hungers, thirsts, fevers, and
-appetites walking.  How is it people manage to live on,—so aimless as
+appetites walking.  How is it people manage to live on - so aimless as
 they are?  After their peppercorn aims are gained, it seems as if the
 lime in their bones alone held them together, and not any worthy
 purpose.  There is no faith in the intellectual, none in the moral
@@ -4097,13 +4043,13 @@ class.  If a pickpocket intrude into the society of gentlemen, they
 exert what moral force they have, and he finds himself uncomfortable,
 and glad to get away.  But if an adventurer go through all the forms,
 procure himself to be elected to a post of trust, as of senator, or
-president,—though by the same arts as we detest in the house-thief,—the
+president - though by the same arts as we detest in the house-thief - the
 same gentlemen who agree to discountenance the private rogue, will be
 forward to show civilities and marks of respect to the public one: and
 no amount of evidence of his crimes will prevent them giving him
 ovations, complimentary dinners, opening their own houses to him, and
 priding themselves on his acquaintance.  We were not deceived by the
-professions of the private adventurer,—the louder he talked of his
+professions of the private adventurer - the louder he talked of his
 honor, the faster we counted our spoons; but we appeal to the sanctified
 preamble of the messages and proclamations of the public sinner, as the
 proof of sincerity.  It must be that they who pay this homage have said
@@ -4142,14 +4088,14 @@ consists with total inexperience of it.  It is the order of the world to
 educate with accuracy the senses and the understanding; and the enginery
 at work to draw out these powers in priority, no doubt, has its office.
 But we are never without a hint that these powers are mediate and
-servile, and that we are one day to deal with real being,—essences with
+servile, and that we are one day to deal with real being - essences with
 essences. Even the fury of material activity has some results friendly
 to moral health.  The energetic action of the times develops
 individualism, and the religious appear isolated.  I esteem this a step
 in the right direction.  Heaven deals with us on no representative
 system.  Souls are not saved in bundles.  The Spirit saith to the man,
 ’How is it with thee? thee personally? is it well? is it ill?’  For a
-great nature, it is a happiness to escape a religious training,—religion
+great nature, it is a happiness to escape a religious training - religion
 of character is so apt to be invaded. Religion must always be a crab
 fruit: it cannot be grafted and keep its wild beauty.  "I have seen,"
 said a traveller who had known the extremes of society, "I have seen
@@ -4172,7 +4118,7 @@ morality,"—which is much as if one should say, ’poor God, with nobody to
 help him.’  I find the omnipresence and the almightiness in the reaction
 of every atom in Nature.  I can best indicate by examples those
 reactions by which every part of Nature replies to the purpose of the
-actor,—beneficently to the good, penally to the bad.  Let us replace
+actor - beneficently to the good, penally to the bad.  Let us replace
 sentimentalism by realism, and dare to uncover those simple and terrible
 laws which, be they seen or unseen, pervade and govern.
 
@@ -4198,7 +4144,7 @@ genius takes its rise out of the mountains of rectitude; that all beauty
 and power which men covet, are somehow born out of that Alpine district;
 that any extraordinary degree of beauty in man or woman involves a moral
 charm.  Thus, I think, we very slowly admit in another man a higher
-degree of moral sentiment than our own,—a finer conscience, more
+degree of moral sentiment than our own - a finer conscience, more
 impressionable, or, which marks minuter degrees; an ear to hear acuter
 notes of right and wrong, than we can.  I think we listen suspiciously
 and very slowly to any evidence to that point.  But, once satisfied of
@@ -4210,7 +4156,7 @@ by our private, but by our public force, can we share and know the
 nature of things.
 
 There is an intimate interdependence of intellect and morals.  Given the
-equality of two intellects,—which will form the most reliable judgments,
+equality of two intellects - which will form the most reliable judgments,
 the good, or the bad hearted?  "The heart has its arguments, with which
 the understanding is not acquainted."  For the heart is at once aware of
 the state of health or disease, which is the controlling state, that is,
@@ -4246,7 +4192,7 @@ of passion, and the commandments of duty are opened: and the next lesson
 taught, is, the continuation of the inflexible law of matter into the
 subtile kingdom of will, and of thought; that, if, in sidereal ages,
 gravity and projection keep their craft, and the ball never loses its
-way in its wild path through space,—a secreter gravitation, a secreter
+way in its wild path through space - a secreter gravitation, a secreter
 projection, rule not less tyrannically in human history, and keep the
 balance of power from age to age unbroken.  For, though the new element
 of freedom and an individual has been admitted, yet the primordial atoms
@@ -4278,7 +4224,7 @@ as he eats, so he thinks: as he deals, so he is, and so he appears; he
 does not see, that his son is the son of his thoughts and of his
 actions; that fortunes are not exceptions but fruits; that relation and
 connection are not somewhere and sometimes, but everywhere and always;
-no miscellany, no exemption, no anomaly,—but method, and an even web;
+no miscellany, no exemption, no anomaly - but method, and an even web;
 and what comes out, that was put in.  As we are, so we do; and as we do,
 so is it done to us; we are the builders of our fortunes; cant and lying
 and the attempt to secure a good which does not belong to us, are, once
@@ -4309,7 +4255,7 @@ necessary to the order and existence of society?  He misses this, and
 the commanding eye of his neighborhood, which held him to decorum. This
 is the peril of New York, of New Orleans, of London, of Paris, to young
 men.  But after a little experience, he makes the discovery that there
-are no large cities,—none large enough to hide in; that the censors of
+are no large cities - none large enough to hide in; that the censors of
 action are as numerous and as near in Paris, as in Littleton or
 Portland; that the gossip is as prompt and vengeful.  There is no
 concealment, and, for each offence, a several vengeance; that, reaction,
@@ -4373,8 +4319,8 @@ his work for a reply, not into the market, not into opinion, not into
 patronage.  In every variety of human employment, in the mechanical and
 in the fine arts, in navigation, in farming, in legislating, there are
 among the numbers who do their task perfunctorily, as we say, or just to
-pass, and as badly as they dare,—there are the working-men, on whom the
-burden of the business falls,—those who love work, and love to see it
+pass, and as badly as they dare - there are the working-men, on whom the
+burden of the business falls - those who love work, and love to see it
 rightly done, who finish their task for its own sake; and the state and
 the world is happy, that has the most of such finishers.  The world will
 always do justice at last to such finishers: it cannot otherwise. He who
@@ -4387,8 +4333,8 @@ yet, if witnesses are wanted, witnesses are near.  There was never a man
 born so wise or good, but one or more companions came into the world
 with him, who delight in his faculty, and report it.  I cannot see
 without awe, that no man thinks alone, and no man acts alone, but the
-divine assessors who came up with him into life,—now under one disguise,
-now under another,—like a police in citizens’ clothes, walk with him,
+divine assessors who came up with him into life - now under one disguise,
+now under another - like a police in citizens’ clothes, walk with him,
 step for step, through all the kingdom of time.
 
 This reaction, this sincerity is the property of all things.  To make
@@ -4432,7 +4378,7 @@ Holy Father, any longer: here is no miracle, for here is no humility."
 We need not much mind what people please to say, but what they must say;
 what their natures say, though their busy, artful, Yankee understandings
 try to hold back, and choke that word, and to articulate something
-different.  If we will sit quietly,—what they ought to say is said, with
+different.  If we will sit quietly - what they ought to say is said, with
 their will, or against their will.  We do not care for you, let us
 pretend what we will:—we are always looking through you to the dim
 dictator behind you.  Whilst your habit or whim chatters, we civilly and
@@ -4478,7 +4424,7 @@ the service which can escape its remuneration?  What is vulgar, and the
 essence of all vulgarity, but the avarice of reward? ’Tis the difference
 of artisan and artist, of talent and genius, of sinner and saint.  The
 man whose eyes are nailed not on the nature of his act, but on the
-wages, whether it be money, or office, or fame,—is almost equally low.
+wages, whether it be money, or office, or fame - is almost equally low.
 He is great, whose eyes are opened to see that the reward of actions
 cannot be escaped, because he is transformed into his action, and taketh
 its nature, which bears its own fruit, like every other tree.  A great
@@ -4501,7 +4447,7 @@ or pestilence, with duty for his guide.  He feels the insurance of a
 just employment.  I am not afraid of accident, as long as I am in my
 place.  It is strange that superior persons should not feel that they
 have some better resistance against cholera, than avoiding green peas
-and salads.  Life is hardly respectable,—is it? if it has no generous,
+and salads.  Life is hardly respectable - is it? if it has no generous,
 guaranteeing task, no duties or affections, that constitute a necessity
 of existing.  Every man’s task is his life-preserver.  The conviction
 that his work is dear to God and cannot be spared, defends him.  The
@@ -4622,15 +4568,15 @@ virtue is always against the law.
 Miracle comes to the miraculous, not to the arithmetician.  Talent and
 success interest me but moderately.  The great class, they who affect
 our imagination, the men who could not make their hands meet around
-their objects, the rapt, the lost, the fools of ideas,—they suggest what
+their objects, the rapt, the lost, the fools of ideas - they suggest what
 they cannot execute.  They speak to the ages, and are heard from afar.
 The Spirit does not love cripples and malformations.  If there ever was
 a good man, be certain, there was another, and will be more.
 
 And so in relation to that future hour, that spectre clothed with beauty
-at our curtain by night, at our table by day,—the apprehension, the
+at our curtain by night, at our table by day - the apprehension, the
 assurance of a coming change.  The race of mankind have always offered
-at least this implied thanks for the gift of existence,—namely, the
+at least this implied thanks for the gift of existence - namely, the
 terror of its being taken away; the insatiable curiosity and appetite
 for its continuation.  The whole revelation that is vouchsafed us, is,
 the gentle trust, which, in our experience we find, will cover also with
@@ -4641,7 +4587,7 @@ well, that it is sure it will be well.  It asks no questions of the
 Supreme Power. The son of Antiochus asked his father, when he would join
 battle?  "Dost thou fear," replied the King, "that thou only in all the
 army wilt not hear the trumpet?"  ’Tis a higher thing to confide, that,
-if it is best we should live, we shall live,—’tis higher to have this
+if it is best we should live, we shall live - ’tis higher to have this
 conviction, than to have the lease of indefinite centuries and
 millenniums and æons.  Higher than the question of our duration is the
 question of our deserving.  Immortality will come to such as are fit for
@@ -4693,7 +4639,7 @@ be.  It shall send man home to his central solitude, shame these social,
 supplicating manners, and make him know that much of the time he must
 have himself to his friend.  He shall expect no coöperation, he shall
 walk with no companion.  The nameless Thought, the nameless Power, the
-superpersonal Heart,—he shall repose alone on that.  He needs only his
+superpersonal Heart - he shall repose alone on that.  He needs only his
 own verdict.  No good fame can help, no bad fame can hurt him.  The Laws
 are his consolers, the good Laws themselves are alive, they know if he
 have kept them, they animate him with the leading of great duty, and an
@@ -4723,7 +4669,7 @@ high causes.
     Who has little, to him who has less, can spare,
     And thou, Cyndyllan’s son! beware
     Ponderous gold and stuffs to bear,
-    To falter ere thou thy task fulfil,—
+    To falter ere thou thy task fulfil - 
     Only the light-armed climb the hill.
     The richest of all lords is Use,
     And ruddy Health the loftiest Muse.
@@ -4815,7 +4761,7 @@ streets, we grow cynical.  The men we meet are coarse and torpid.  The
 finest wits have their sediment.  What quantities of fribbles, paupers,
 invalids, epicures, antiquaries, politicians, thieves, and triflers of
 both sexes, might be advantageously spared!  Mankind divides itself into
-two classes,—benefactors and malefactors.  The second class is vast, the
+two classes - benefactors and malefactors.  The second class is vast, the
 first a handful.  A person seldom falls sick, but the bystanders are
 animated with a faint hope that he will die:—quantities of poor lives;
 of distressing invalids; of cases for a gun. Franklin said, "Mankind are
@@ -4860,7 +4806,7 @@ mankind, she is contented if she yields one master in a century.  The
 more difficulty there is in creating good men, the more they are used
 when they come.  I once counted in a little neighborhood, and found that
 every able-bodied man had, say from twelve to fifteen persons dependent
-on him for material aid,—to whom he is to be for spoon and jug, for
+on him for material aid - to whom he is to be for spoon and jug, for
 backer and sponsor, for nursery and hospital, and many functions beside:
 nor does it seem to make much difference whether he is bachelor or
 patriarch; if he do not violently decline the duties that fall to him,
@@ -4915,7 +4861,7 @@ good of evil.  Good is a good doctor, but Bad is sometimes a better.
 crushing despotism, that made possible the inspirations of _Magna
 Charta_ under John.  Edward I. wanted money, armies, castles, and as
 much as he could get.  It was necessary to call the people together by
-shorter, swifter ways,—and the House of Commons arose.  To obtain
+shorter, swifter ways - and the House of Commons arose.  To obtain
 subsidies, he paid in privileges.  In the twenty-fourth year of his
 reign, he decreed, "that no tax should be levied without consent of
 Lords and Commons;"—which is the basis of the English Constitution.
@@ -4953,8 +4899,8 @@ western country, a general jail-delivery of all the rowdies of the
 rivers.  Some of them went with honest purposes, some with very bad
 ones, and all of them with the very commonplace wish to find a short way
 to wealth.  But Nature watches over all, and turns this malfaisance to
-good.  California gets peopled and subdued,—civilized in this immoral
-way,—and, on this fiction, a real prosperity is rooted and grown.  ’Tis
+good.  California gets peopled and subdued - civilized in this immoral
+way - and, on this fiction, a real prosperity is rooted and grown.  ’Tis
 a decoy-duck; ’tis tubs thrown to amuse the whale: but real ducks, and
 whales that yield oil, are caught.  And, out of Sabine rapes, and out of
 robbers’ forays, real Romes and their heroisms come in fulness of time.
@@ -4963,7 +4909,7 @@ In America, the geography is sublime, but the men are not: the
 inventions are excellent, but the inventors one is sometimes ashamed of.
 The agencies by which events so grand as the opening of California, of
 Texas, of Oregon, and the junction of the two oceans, are effected, are
-paltry,—coarse selfishness, fraud, and conspiracy: and most of the great
+paltry - coarse selfishness, fraud, and conspiracy: and most of the great
 results of history are brought about by discreditable means.
 
 The benefaction derived in Illinois, and the great West, from railroads
@@ -4986,8 +4932,8 @@ dangerous water, but, he thought, they would soon touch bottom, and then
 swim to the top. This is bold practice, and there are many failures to a
 good escape.  Yet one would say, that a good understanding would suffice
 as well as moral sensibility to keep one erect; the gratifications of
-the passions are so quickly seen to be damaging, and,—what men like
-least,—seriously lowering them in social rank.  Then all talent sinks
+the passions are so quickly seen to be damaging, and - what men like
+least - seriously lowering them in social rank.  Then all talent sinks
 with character.
 
 "_Croyez moi, l’erreur aussi a son mérite_," said Voltaire.  We see
@@ -5006,7 +4952,7 @@ there is no man who is not indebted to his foibles; that, according to
 the old oracle, "the Furies are the bonds of men;" that the poisons are
 our principal medicines, which kill the disease, and save the life.  In
 the high prophetic phrase, _He causes the wrath of man to praise him_,
-and twists and wrenches our evil to our good. Shakspeare wrote,—
+and twists and wrenches our evil to our good. Shakspeare wrote - 
 
     "’Tis said, best men are moulded of their faults;"
 
@@ -5014,7 +4960,7 @@ and great educators and lawgivers, and especially generals, and leaders
 of colonies, mainly rely on this stuff, and esteem men of irregular and
 passional force the best timber.  A man of sense and energy, the late
 head of the Farm School in Boston harbor, said to me, "I want none of
-your good boys,—give me the bad ones."  And this is the reason, I
+your good boys - give me the bad ones."  And this is the reason, I
 suppose, why, as soon as the children are good, the mothers are scared,
 and think they are going to die.  Mirabeau said, "There are none but men
 of strong passions capable of going to greatness; none but such capable
@@ -5080,7 +5026,7 @@ after the earthquake, on ghastly diagrams of cloven mountains, upheaved
 plains, and the dry bed of the sea.
 
 In our life and culture, everything is worked up, and comes in
-use,—passion, war, revolt, bankruptcy, and not less, folly and blunders,
+use - passion, war, revolt, bankruptcy, and not less, folly and blunders,
 insult, ennui, and bad company.  Nature is a rag-merchant, who works up
 every shred and ort and end into new creations; like a good chemist,
 whom I found, the other day, in his laboratory, converting his old
@@ -5093,7 +5039,7 @@ another aim.
 If now in this connection of discourse, we should venture on laying down
 the first obvious rules of life, I will not here repeat the first rule
 of economy, already propounded once and again, that every man shall
-maintain himself,—but I will say, get health.  No labor, pains,
+maintain himself - but I will say, get health.  No labor, pains,
 temperance, poverty, nor exercise, that can gain it, must be grudged.
 For sickness is a cannibal which eats up all the life and youth it can
 lay hold of, and absorbs its own sons and daughters.  I figure it as a
@@ -5103,7 +5049,7 @@ afflicting other souls with meanness and mopings, and with ministration
 to its voracity of trifles.  Dr. Johnson said severely, "Every man is a
 rascal as soon as he is sick."  Drop the cant, and treat it sanely.  In
 dealing with the drunken, we do not affect to be drunk. We must treat
-the sick with the same firmness, giving them, of course, every aid,—but
+the sick with the same firmness, giving them, of course, every aid - but
 withholding ourselves.  I once asked a clergyman in a retired town, who
 were his companions? what men of ability he saw? he replied, that he
 spent his time with the sick and the dying.  I said, he seemed to me to
@@ -5176,7 +5122,7 @@ anticipate the question at the gates of each town.
 Genial manners are good, and power of accommodation to any circumstance,
 but the high prize of life, the crowning fortune of a man is to be born
 with a bias to some pursuit, which finds him in employment and
-happiness,—whether it be to make baskets, or broadswords, or canals, or
+happiness - whether it be to make baskets, or broadswords, or canals, or
 statutes, or songs.  I doubt not this was the meaning of Socrates, when
 he pronounced artists the only truly wise, as being actually, not
 apparently so.
@@ -5217,7 +5163,7 @@ life.  What a difference in the hospitality of minds!  Inestimable is he
 to whom we can say what we cannot say to ourselves.  Others are
 involuntarily hurtful to us, and bereave us of the power of thought,
 impound and imprison us.  As, when there is sympathy, there needs but
-one wise man in a company, and all are wise,—so, a blockhead makes a
+one wise man in a company, and all are wise - so, a blockhead makes a
 blockhead of his companion.  Wonderful power to benumb possesses this
 brother.  When he comes into the office or public room, the society
 dissolves; one after another slips out, and the apartment is at his
@@ -5235,7 +5181,7 @@ quite wrong, and he only is right.  Hence all the dozen inmates are soon
 perverted, with whatever virtues and industries they have, into
 contradictors, accusers, explainers, and repairers of this one
 malefactor; like a boat about to be overset, or a carriage run away
-with,—not only the foolish pilot or driver, but everybody on board is
+with - not only the foolish pilot or driver, but everybody on board is
 forced to assume strange and ridiculous attitudes, to balance the
 vehicle and prevent the upsetting.  For remedy, whilst the case is yet
 mild, I recommend phlegm and truth: let all the truth that is spoken or
@@ -5250,7 +5196,7 @@ and I am I.
 
 Conversation is an art in which a man has all mankind for his
 competitors, for it is that which all are practising every day while
-they live.  Our habit of thought,—take men as they rise,—is not
+they live.  Our habit of thought - take men as they rise - is not
 satisfying; in the common experience, I fear, it is poor and squalid.
 The success which will content them, is, a bargain, a lucrative
 employment, an advantage gained over a competitor, a marriage, a
@@ -5262,7 +5208,7 @@ with thoughts, show them their native riches, what gifts they have, how
 indispensable each is, what magical powers over nature and men; what
 access to poetry, religion, and the powers which constitute character;
 he wakes in them the feeling of worth, his suggestions require new ways
-of living, new books, new men, new arts and sciences,—then we come out
+of living, new books, new men, new arts and sciences - then we come out
 of our egg-shell existence into the great dome, and see the zenith over
 and the nadir under us.  Instead of the tanks and buckets of knowledge
 to which we are daily confined, we come down to the shore of the sea,
@@ -5287,7 +5233,7 @@ great.  There is a sublime attraction in him to whatever virtue is in
 us.  How he flings wide the doors of existence!  What questions we ask
 of him! what an understanding we have! how few words are needed!  It is
 the only real society.  An Eastern poet, Ali Ben Abu Taleb, writes with
-sad truth,—
+sad truth - 
 
     "He who has a thousand friends has not a friend to spare,
     And he who has one enemy shall meet him everywhere."
@@ -5305,7 +5251,7 @@ estrangement, of condition, of reputation.  And yet we do not provide
 for the greatest good of life.  We take care of our health; we lay up
 money; we make our roof tight, and our clothing sufficient; but who
 provides wisely that he shall not be wanting in the best property of
-all,—friends? We know that all our training is to fit us for this, and
+all - friends? We know that all our training is to fit us for this, and
 we do not take the step towards it.  How long shall we sit and wait for
 these benefactors?
 
@@ -5317,8 +5263,8 @@ these things are forgotten so quickly, and leave no effect.  But it
 counts much whether we have had good companions, in that time;—almost as
 much as what we have been doing.  And see the overpowering importance of
 neighborhood in all association.  As it is marriage, fit or unfit, that
-makes our home, so it is who lives near us of equal social degree,—a few
-people at convenient distance, no matter how bad company,—these, and
+makes our home, so it is who lives near us of equal social degree - a few
+people at convenient distance, no matter how bad company - these, and
 these only, shall be your life’s companions: and all those who are
 native, congenial, and by many an oath of the heart, sacramented to you,
 are gradually and totally lost.  You cannot deal systematically with
@@ -5353,12 +5299,12 @@ fair.  If you are proposing only your own, the other party must deal a
 little hardly by you.  If you deal generously, the other, though selfish
 and unjust, will make an exception in your favor, and deal truly with
 you. When I asked an iron-master about the slag and cinder in railroad
-iron,—"O," he said, "there’s always good iron to be had: if there’s
+iron - "O," he said, "there’s always good iron to be had: if there’s
 cinder in the iron, ’tis because there was cinder in the pay."
 
 But why multiply these topics, and their illustrations, which are
 endless?  Life brings to each his task, and, whatever art you select,
-algebra, planting, architecture, poems, commerce, politics,—all are
+algebra, planting, architecture, poems, commerce, politics - all are
 attainable, even to the miraculous triumphs, on the same terms, of
 selecting that for which you are apt;—begin at the beginning, proceed in
 order, step by step.  ’Tis as easy to twist iron anchors, and braid
@@ -5377,7 +5323,7 @@ have forgotten that they made a vow.  The individuals are fugitive, and
 in the act of becoming something else, and irresponsible.  The race is
 great, the ideal fair, but the men whiffling and unsure.  The hero is he
 who is immovably centred.  The main difference between people seems to
-be, that one man can come under obligations on which you can rely,—is
+be, that one man can come under obligations on which you can rely - is
 obligable; and another is not.  As he has not a law within him, there’s
 nothing to tie him to.
 
@@ -5386,7 +5332,7 @@ exaggerate them.  But all rests at last on that integrity which dwarfs
 talent, and can spare it.  Sanity consists in not being subdued by your
 means.  Fancy prices are paid for position, and for the culture of
 talent, but to the grand interests, superficial success is of no
-account. The man,—it is his attitude,—not feats, but forces,—not on set
+account. The man - it is his attitude - not feats, but forces - not on set
 days and public occasions, but, at all hours, and in repose alike as in
 energy, still formidable, and not to be disposed of.  The populace says,
 with Horne Tooke, "If you would be powerful, pretend to be powerful."  I
@@ -5397,9 +5343,9 @@ from him, the greater he looked."  _Plus on lui ôte, plus il est grand_.
 The secret of culture is to learn, that a few great points steadily
 reappear, alike in the poverty of the obscurest farm, and in the
 miscellany of metropolitan life, and that these few are alone to be
-regarded,—the escape from all false ties; courage to be what we are; and
+regarded - the escape from all false ties; courage to be what we are; and
 love of what is simple and beautiful; independence, and cheerful
-relation, these are the essentials,—these, and the wish to serve,—to add
+relation, these are the essentials - these, and the wish to serve - to add
 somewhat to the well-being of men.
 
 
@@ -5472,7 +5418,7 @@ hint was true and divine, the soul’s avowal of its large relations, and,
 that climate, century, remote natures, as well as near, are part of its
 biography.  Chemistry takes to pieces, but it does not construct.
 Alchemy which sought to transmute one element into another, to prolong
-life, to arm with power,—that was in the right direction.  All our
+life, to arm with power - that was in the right direction.  All our
 science lacks a human side. The tenant is more than the house.  Bugs and
 stamens and spores, on which we lavish so many years, are not
 finalities, and man, when his powers unfold in order, will take Nature
@@ -5495,7 +5441,7 @@ that the heart’s blessing can heal; that love can exalt talent; can
 overcome all odds.  From a great heart secret magnetisms flow
 incessantly to draw great events. But we prize very humble utilities, a
 prudent husband, a good son, a voter, a citizen, and deprecate any
-romance of character; and perhaps reckon only his money value,—his
+romance of character; and perhaps reckon only his money value - his
 intellect, his affection, as a sort of bill of exchange, easily
 convertible into fine chambers, pictures, music, and wine.
 
@@ -5559,7 +5505,7 @@ faces of children, the beauty of school-girls, "the sweet seriousness of
 sixteen," the lofty air of well-born, well-bred boys, the passionate
 histories in the looks and manners of youth and early manhood, and the
 varied power in all that well-known company that escort us through
-life,—we know how these forms thrill, paralyze, provoke, inspire, and
+life - we know how these forms thrill, paralyze, provoke, inspire, and
 enlarge us.
 
 Beauty is the form under which the intellect prefers to study the world.
@@ -5628,7 +5574,7 @@ or organism, any real increase of fitness to its end, is an increase of
 beauty.
 
 The lesson taught by the study of Greek and of Gothic art, of antique
-and of Pre-Raphaelite painting, was worth all the research,—namely, that
+and of Pre-Raphaelite painting, was worth all the research - namely, that
 all beauty must be organic; that outside embellishment is deformity.  It
 is the soundness of the bones that ultimates itself in a peach-bloom
 complexion: health of constitution that makes the sparkle and the power
@@ -5645,7 +5591,7 @@ organic action pleases the beholder. A man leading a horse to water, a
 farmer sowing seed, the labors of haymakers in the field, the carpenter
 building a ship, the smith at his forge, or, whatever useful labor, is
 becoming to the wise eye. But if it is done to be seen, it is mean.  How
-beautiful are ships on the sea! but ships in the theatre,—or ships kept
+beautiful are ships on the sea! but ships in the theatre - or ships kept
 for picturesque effect on Virginia Water, by George IV., and men hired
 to stand in fitting costumes at a penny an hour!—What a difference in
 effect between a battalion of troops marching to action, and one of our
@@ -5664,7 +5610,7 @@ is, that an order and method has been communicated to stones, so that
 they speak and geometrize, become tender or sublime with expression.
 Beauty is the moment of transition, as if the form were just ready to
 flow into other forms.  Any fixedness, heaping, or concentration on one
-feature,—a long nose, a sharp chin, a hump-back,—is the reverse of the
+feature - a long nose, a sharp chin, a hump-back - is the reverse of the
 flowing, and therefore deformed.  Beautiful as is the symmetry of any
 form, if the form can move, we seek a more excellent symmetry.  The
 interruption of equilibrium stimulates the eye to desire the restoration
@@ -5697,7 +5643,7 @@ planets, the annual wave of vegetation, the action and reaction of
 Nature: and, if we follow it out, this demand in our thought for an
 ever-onward action, is the argument for the immortality.
 
-One more text from the mythologists is to the same purpose,—_Beauty
+One more text from the mythologists is to the same purpose - _Beauty
 rides on a lion_.  Beauty rests on necessities.  The line of beauty is
 the result of perfect economy.  The cell of the bee is built at that
 angle which gives the most strength with the least wax; the bone or the
@@ -5783,7 +5729,7 @@ That Beauty is the normal state, is shown by the perpetual effort of
 Nature to attain it.  Mirabeau had an ugly face on a handsome ground;
 and we see faces every day which have a good type, but have been marred
 in the casting: a proof that we are all entitled to beauty, should have
-been beautiful, if our ancestors had kept the laws,—as every lily and
+been beautiful, if our ancestors had kept the laws - as every lily and
 every rose is well.  But our bodies do not fit us, but caricature and
 satirize us.  Thus, short legs, which constrain us to short, mincing
 steps, are a kind of personal insult and contumely to the owner; and
@@ -5814,7 +5760,7 @@ ill-favored. And petulant old gentlemen, who have chanced to suffer some
 intolerable weariness from pretty people, or who have seen cut flowers
 to some profusion, or who see, after a world of pains have been
 successfully taken for the costume, how the least mistake in sentiment
-takes all the beauty out of your clothes,—affirm, that the secret of
+takes all the beauty out of your clothes - affirm, that the secret of
 ugliness consists not in irregularity, but in being uninteresting.
 
 We love any forms, however ugly, from which great qualities shine.  If
@@ -5884,7 +5830,7 @@ his countrywomen, that
 The new virtue which constitutes a thing beautiful, is a certain
 cosmical quality, or, a power to suggest relation to the whole world,
 and so lift the object out of a pitiful individuality.  Every natural
-feature,—sea, sky, rainbow, flowers, musical tone,—has in it somewhat
+feature - sea, sky, rainbow, flowers, musical tone - has in it somewhat
 which is not private, but universal, speaks of that central benefit
 which is the soul of Nature, and thereby is beautiful.  And, in chosen
 men and women, I find somewhat in form, speech, and manners, which is
@@ -5925,7 +5871,7 @@ familiar that the fine touch of the eye, or a grace of manners, or a
 phrase of poetry, plants wings at our shoulders; as if the Divinity, in
 his approaches, lifts away mountains of obstruction, and deigns to draw
 a truer line, which the mind knows and owns.  This is that haughty force
-of beauty, "_vis superba formæ_" which the poets praise,—under calm and
+of beauty, "_vis superba formæ_" which the poets praise - under calm and
 precise outline, the immeasurable and divine: Beauty hiding all wisdom
 and power in its calm sky.
 
@@ -5935,7 +5881,7 @@ proportion to the depth of thought.  Gross and obscure natures, however
 decorated, seem impure shambles; but character gives splendor to youth,
 and awe to wrinkled skin and gray hairs.  An adorer of truth we cannot
 choose but obey, and the woman who has shared with us the moral
-sentiment,—her locks must appear to us sublime.  Thus there is a
+sentiment - her locks must appear to us sublime.  Thus there is a
 climbing scale of culture, from the first agreeable sensation which a
 sparkling gem or a scarlet stain affords the eye, up through fair
 outlines and details of the landscape, features of the human face and
@@ -5945,7 +5891,7 @@ steps tend: an ascent from the joy of a horse in his trappings, up to
 the perception of Newton, that the globe on which we ride is only a
 larger apple falling from a larger tree; up to the perception of Plato,
 that globe and universe are rude and early expressions of an
-all-dissolving Unity,—the first stair on the scale to the temple of the
+all-dissolving Unity - the first stair on the scale to the temple of the
 Mind.
 
 
@@ -5988,7 +5934,7 @@ Mind.
     And phantoms and nothings
     Return to be things,
     And endless imbroglio
-    Is law and the world,—
+    Is law and the world - 
     Then first shalt thou know,
     That in the wild turmoil,
     Horsed on the Proteus,
@@ -6004,14 +5950,14 @@ Some years ago, in company with an agreeable party, I spent a long
 summer day in exploring the Mammoth Cave in Kentucky.  We traversed,
 through spacious galleries affording a solid masonry foundation for the
 town and county overhead, the six or eight black miles from the mouth of
-the cavern to the innermost recess which tourists visit,—a niche or
+the cavern to the innermost recess which tourists visit - a niche or
 grotto made of one seamless stalactite, and called, I believe, Serena’s
 Bower.  I lost the light of one day.  I saw high domes, and bottomless
 pits; heard the voice of unseen waterfalls; paddled three quarters of a
 mile in the deep Echo River, whose waters are peopled with the blind
 fish; crossed the streams "Lethe" and "Styx;" plied with music and guns
 the echoes in these alarming galleries; saw every form of stalagmite and
-stalactite in the sculptured and fretted chambers,—icicle,
+stalactite in the sculptured and fretted chambers - icicle,
 orange-flower, acanthus, grapes, and snowball.  We shot Bengal lights
 into the vaults and groins of the sparry cathedrals, and examined all
 the masterpieces which the four combined engineers, water, limestone,
@@ -6085,8 +6031,8 @@ D’Alembert, "_qu’un état de vapeur était un état trés fâchieux,
 parcequ’il nous faisait voir les choses comme elles sont._"  I find men
 victims of illusion in all parts of life. Children, youths, adults, and
 old men, all are led by one bawble or another.  Yoganidra, the goddess
-of illusion, Proteus, or Momus, or Gylfi’s Mocking,—for the Power has
-many names,—is stronger than the Titans, stronger than Apollo.  Few have
+of illusion, Proteus, or Momus, or Gylfi’s Mocking - for the Power has
+many names - is stronger than the Titans, stronger than Apollo.  Few have
 overheard the gods, or surprised their secret.  Life is a succession of
 lessons which must be lived to be understood.  All is riddle, and the
 key to a riddle is another riddle.  There are as many pillows of
@@ -6113,11 +6059,11 @@ What then? Pears and cakes are good for something; and because you,
 unluckily, have an eye or nose too keen, why need you spoil the comfort
 which the rest of us find in them?  I knew a humorist, who, in a good
 deal of rattle, had a grain or two of sense.  He shocked the company by
-maintaining that the attributes of God were two,—power and risibility;
+maintaining that the attributes of God were two - power and risibility;
 and that it was the duty of every pious man to keep up the comedy.  And
 I have known gentlemen of great stake in the community, but whose
-sympathies were cold,—presidents of colleges, and governors, and
-senators,—who held themselves bound to sign every temperance pledge, and
+sympathies were cold - presidents of colleges, and governors, and
+senators - who held themselves bound to sign every temperance pledge, and
 act with Bible societies, and missions, and peace-makers, and cry
 _Hist-a-boy!_ to every good dog.  We must not carry comity too far, but
 we all have kind impulses in this direction.  When the boys come into my
@@ -6260,7 +6206,7 @@ good; it is the undisciplined will that is whipped with bad thoughts and
 bad fortunes. When we break the laws, we lose our hold on the central
 reality.  Like sick men in hospitals, we change only from bed to bed,
 from one folly to another; and it cannot signify much what becomes of
-such castaways,—wailing, stupid, comatose creatures,—lifted from bed to
+such castaways - wailing, stupid, comatose creatures - lifted from bed to
 bed, from the nothing of life to the nothing of death.
 
 In this kingdom of illusions we grope eagerly for stays and foundations.
@@ -6331,7 +6277,7 @@ that he should resist their will, and think or act for himself?  Every
 moment, new changes, and new showers of deceptions, to baffle and
 distract him.  And when, by and by, for an instant, the air clears, and
 the cloud lifts a little, there are the gods still sitting around him on
-their thrones,—they alone with him alone.
+their thrones - they alone with him alone.
 
 
 
