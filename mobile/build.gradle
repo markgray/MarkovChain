@@ -28,6 +28,8 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'com.google.android.material:material:1.0.0-beta01'
     wearApp project(':wear')
     api 'com.google.android.gms:play-services-wearable:12.0.0'
     api 'androidx.recyclerview:recyclerview:1.1.0-alpha01'
@@ -35,6 +37,3 @@ dependencies {
     api 'androidx.appcompat:appcompat:1.1.0-alpha01'
     implementation project(':common')
 }
-
-
-
