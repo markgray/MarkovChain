@@ -4710,7 +4710,7 @@ Let us infer his ends from this pomp of means.  Mirabeau said, "Why
 should we feel ourselves to be men, unless it be to succeed in
 everything, everywhere.  You must say of nothing, _That is beneath me_,
 nor feel that anything can be out of your power.  Nothing is impossible
-to the man who can will.  _Is that necessary?  That shall be_:—this is
+to the man who can will.  _Is that necessary?  That shall be_: this is
 the only law of success."  Whoever said it, this is in the right key.
 But this is not the tone and genius of the men in the street. In the
 streets, we grow cynical.  The men we meet are coarse and torpid.  The
@@ -4719,7 +4719,7 @@ invalids, epicures, antiquaries, politicians, thieves, and triflers of
 both sexes, might be advantageously spared!  Mankind divides itself into
 two classes - benefactors and malefactors.  The second class is vast, the
 first a handful.  A person seldom falls sick, but the bystanders are
-animated with a faint hope that he will die:—quantities of poor lives;
+animated with a faint hope that he will die: quantities of poor lives;
 of distressing invalids; of cases for a gun. Franklin said, "Mankind are
 very superficial and dastardly: they begin upon a thing, but, meeting
 with a difficulty, they fly from it discouraged: but they have
@@ -4820,7 +4820,7 @@ much as he could get.  It was necessary to call the people together by
 shorter, swifter ways - and the House of Commons arose.  To obtain
 subsidies, he paid in privileges.  In the twenty-fourth year of his
 reign, he decreed, "that no tax should be levied without consent of
-Lords and Commons;"—which is the basis of the English Constitution.
+Lords and Commons;" which is the basis of the English Constitution.
 Plutarch affirms that the cruel wars which followed the march of
 Alexander, introduced the civility, language, and arts of Greece into
 the savage East; introduced marriage; built seventy cities; and united
@@ -5057,7 +5057,6 @@ translation:—
     But what torments of pain you endured
       From evils that never arrived!
 
-
 There are three wants which never can be satisfied: that of the rich,
 who wants something more; that of the sick, who wants something
 different; and that of the traveller, who says, ’Anywhere but here.’
@@ -5098,7 +5097,7 @@ Berkshire; they reach Vermont; they look at the farms - good farms, high
 mountain-sides: but where is the seclusion?  The farm is near this; ’tis
 near that; they have got far from Boston, but ’tis near Albany, or near
 Burlington, or near Montreal.  They explore a farm, but the house is
-small, old, thin; discontented people lived there, and are gone:—there’s
+small, old, thin; discontented people lived there, and are gone: there’s
 too much sky, too much out-doors; too public.  The youth aches for
 solitude.  When he comes to the house, he passes through the house. That
 does not make the deep recess he sought. ’Ah! now, I perceive,’ he says,
@@ -5106,9 +5105,9 @@ does not make the deep recess he sought. ’Ah! now, I perceive,’ he says,
 there is a great dearth, this year, of friends; hard to find, and hard
 to have when found: they are just going away: they too are in the whirl
 of the flitting world, and have engagements and necessities.  They are
-just starting for Wisconsin; have letters from Bremen:—see you again,
+just starting for Wisconsin; have letters from Bremen: see you again,
 soon.  Slow, slow to learn the lesson, that there is but one depth, but
-one interior, and that is—his purpose.  When joy or calamity or genius
+one interior, and that is his purpose.  When joy or calamity or genius
 shall show him it, then woods, then farms, then city shopmen and
 cab-drivers, indifferently with prophet or friend, will mirror back to
 him its unfathomable heaven, its populous solitude.
@@ -5272,7 +5271,7 @@ terms. Their attraction for you is the pledge that they are within your
 reach.  Our prayers are prophets. There must be fidelity, and there must
 be adherence.  How respectable the life that clings to its objects!
 Youthful aspirations are fine things, your theories and plans of life
-are fair and commendable:—but will you stick?  Not one, I fear, in that
+are fair and commendable: but will you stick?  Not one, I fear, in that
 Common full of people, or, in a thousand, but one: and, when you tax
 them with treachery, and remind them of their high resolutions, they
 have forgotten that they made a vow.  The individuals are fugitive, and
@@ -5293,7 +5292,7 @@ days and public occasions, but, at all hours, and in repose alike as in
 energy, still formidable, and not to be disposed of.  The populace says,
 with Horne Tooke, "If you would be powerful, pretend to be powerful."  I
 prefer to say, with the old prophet, "Seekest thou great things? seek
-them not:"—or, what was said of a Spanish prince, "The more you took
+them not:" or, what was said of a Spanish prince, "The more you took
 from him, the greater he looked."  _Plus on lui ôte, plus il est grand_.
 
 The secret of culture is to learn, that a few great points steadily
@@ -5305,13 +5304,8 @@ relation, these are the essentials - these, and the wish to serve - to add
 somewhat to the well-being of men.
 
 
-
-
                                  VIII.
-
-
                                 BEAUTY.
-
 
     Was never form and never face
     So sweet to SEYD as only grace
