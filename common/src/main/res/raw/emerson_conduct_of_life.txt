@@ -5916,7 +5916,7 @@ and, on looking upwards, I saw or seemed to see the night heaven thick
 with stars glimmering more or less brightly over our heads, and even
 what seemed a comet flaming among them.  All the party were touched with
 astonishment and pleasure.  Our musical friends sung with much feeling a
-pretty song, "The stars are in the quiet sky," &c., and I sat down on
+pretty song, "The stars are in the quiet sky," etc., and I sat down on
 the rocky floor to enjoy the serene picture.  Some crystal specks in the
 black ceiling high overhead, reflecting the light of a half-hid lamp,
 yielded this magnificent effect.
@@ -6173,7 +6173,7 @@ toiling, afraid of heat and cold, and keeping within doors, has any
 advantage of them. The permanent interest of every man is, never to be
 in a false position, but to have the weight of Nature to back him in all
 that he does.  Riches and poverty are a thick or thin costume; and our
-life—the life of all of us—identical.  For we transcend the circumstance
+life — the life of all of us — identical.  For we transcend the circumstance
 continually, and taste the real quality of existence; as in our
 employments, which only differ in the manipulations, but express the
 same laws; or in our thoughts, which wear no silks, and taste no
@@ -6199,7 +6199,7 @@ on a stage of nations, or in the obscurest hamlet in Maine or
 California, the same elements offer the same choices to each new comer,
 and, according to his election, he fixes his fortune in absolute Nature.
 It would be hard to put more mental and moral philosophy than the
-Persians have thrown into a sentence:—
+Persians have thrown into a sentence:
 
     "Fooled thou must be, though wisest of the wise:
     Then be the fool of virtue, not of vice."
