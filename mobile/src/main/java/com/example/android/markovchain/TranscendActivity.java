@@ -63,6 +63,22 @@ public class TranscendActivity extends Activity {
             "Emerson Representative Men", "Thoreau Excursions", "Bulfinch’s Mythology"
     };
 
+    /**
+     * Called when the activity is starting. First we call our super's implementation of {@code onCreate},
+     * then we set our content view to our layout file R.layout.activity_transcend. We initialize our
+     * field {@code RecyclerView.LayoutManager mLayoutManager} with a new {@code LinearLayoutManager}
+     * instance, initialize our field {@code LinearLayout transcendBooks} by finding the view with
+     * id R.id.transcend_books, initialize our field {@code ScrollView transcendBooksScrollView} by
+     * finding the view with id R.id.transcend_books_scrollView, initialize our field
+     * {@code RecyclerView transcendRecyleView} by finding the view with id R.id.transcend_recycle_view,
+     * and initialize our field {@code TextView transcendWaiting} by finding the view with id
+     * R.id.transcend_waiting. Then we loop over {@code int i} for all the resource id's in the array
+     * {@code int[] resourceIDS} calling our method {@code addButton} to add a button to our field
+     * {@code transcendBooks} with the label {@code titles[i]} which will load and display the raw
+     * text file whose resource id is {@code resourceIDS[i]} when the button is clicked.
+     *
+     * @param savedInstanceState we do not override {@code onSaveInstanceState} so do not use
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,11 +98,11 @@ public class TranscendActivity extends Activity {
      * Adds a {@code Button} to its parameter {@code ViewGroup parent} whose label is given by its
      * parameter {@code String description} and whose {@code OnClickListener} sets the visibility of
      * the {@code ScrollView transcendBooksScrollView} that holds our Books selection UI to GONE and
-     * calls our method {@code loadResourceHtml} to have it load and display the Html resource file
+     * calls our method {@code loadResourceTextFile} to have it load and display the resource file
      * with id {@code int resourceID} in the background.
      *
      * @param resourceID  resource ID that our button's {@code OnClickListener} should call the method
-     *                    {@code loadResourceHtml} to load in the background.
+     *                    {@code loadResourceTextFile} to load in the background.
      * @param description Label for our {@code Button}
      * @param parent      {@code ViewGroup} we should add our {@code Button} to.
      */
@@ -98,13 +114,14 @@ public class TranscendActivity extends Activity {
              * Called when the {@code Button} is clicked. We just set the visibility of our field
              * {@code ScrollView transcendBooksScrollView} to GONE (disappears our Books selection
              * buttons), set the visibility of our field {@code TextView transcendWaiting} to VISIBLE
-             * and call our method {@code loadResourceHtml} to load the file whose resource
-             * ID is that given by the {@code addButton} method's parameter {@code resourceID}.
+             * and call our method {@code loadResourceTextFile} to load and display the file whose
+             * resource ID is that given by the {@code addButton} method's parameter {@code resourceID}.
              *
              * @param v {@code View} that was clicked.
              */
             @Override
             public void onClick(View v) {
+                transcendBooks.setVisibility(View.GONE);
                 transcendBooksScrollView.setVisibility(View.GONE);
                 transcendWaiting.setVisibility(View.VISIBLE);
                 loadResourceTextFile(resourceID);
@@ -113,16 +130,27 @@ public class TranscendActivity extends Activity {
         parent.addView(button);
     }
 
+    /**
+     * Causes the utf8 text file with resource ID {@code int resourceID} to be read in by a background
+     * task, and then displays the {@code List<String> results} the task returns in our field
+     * {@code RecyclerView transcendRecyleView}.
+     *
+     * @param resourceID resource ID of the raw file we are to read in the background and then display
+     *                   in {@code RecyclerView transcendRecyleView} once the background task is done.
+     */
     private void loadResourceTextFile(int resourceID) {
         @SuppressLint("StaticFieldLeak")
         TranscendDataTask mtranscendDataTask = new TranscendDataTask(getApplicationContext()) {
             /**
              * Runs on the UI thread after {@link #doInBackground}. The parameter
              * {@code List<String> results} is the value returned by {@link #doInBackground}.
-             * TODO: save create a StringListAdapter from results
-             * {@code TextView transcendTextView} to our parameter {@code s}, set the visibility of our
-             * field {@code TextView transcendWaiting} to GONE, then set the visibility of {@code transcendTextView}
-             * to VISIBLE.
+             * We initialize our field {@code StringListAdapter transcendAdapter} with a new instance
+             * which will use our parameter {@code List<String> results} as its data set, and our field
+             * {@code RecyclerView.LayoutManager mLayoutManager} as its {@code LayoutManager}, set the
+             * adapter of {@code RecyclerView transcendRecyleView} to {@code transcendAdapter} and set
+             * the {@code LayoutManager} that {@code transcendRecyleView} will use to be our field
+             * {@code mLayoutManager}. Finally we set the visibility of our field {@code TextView transcendWaiting}
+             * to GONE, and set the visibility of {@code transcendRecyleView} to VISIBLE.
              *
              * @param results The result of the operation computed by {@link #doInBackground}.
              */

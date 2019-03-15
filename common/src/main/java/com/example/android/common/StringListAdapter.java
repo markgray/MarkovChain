@@ -34,7 +34,32 @@ public class StringListAdapter extends RecyclerView.Adapter<StringListAdapter.Vi
     private static LinearLayoutManager mLayoutManager;
 
     /**
-     * Our constructor, just saves its parameters in their respective fields.
+     * {@code OnLongClickListener} used by all of the views of our {@code ViewHolder}
+     */
+    private static final View.OnLongClickListener onLongClickListener = new View.OnLongClickListener() {
+        /**
+         * Called when any of our {@code View}'s are long clicked. We initialize our variable
+         * {@code int selection} by choosing a random index into our adapter's dataset
+         * {@code String[] mDataSet} then call the {@code scrollToPositionWithOffset} of our
+         * field {@code LinearLayoutManager mLayoutManager} to have it scroll to position
+         * {@code selection} and toast a message telling what we just did. Finally we return
+         * true to the caller to consume the long click here.
+         *
+         * @param view {@code View} that was long clicked
+         * @return true to consume the long click here
+         */
+        @Override
+        public boolean onLongClick(View view) {
+            int selection = Math.abs(rand.nextInt()) % mDataSet.size();
+            mLayoutManager.scrollToPositionWithOffset(selection, 0);
+            Toast.makeText(view.getContext(), "Moving to verse " + selection, Toast.LENGTH_LONG).show();
+            return true;
+        }
+    };
+
+    /**
+     * Our constructor, just saves its parameters in their respective fields, and calls our super's
+     * implementation of {@code setHasStableIds(true)} to indicate that we have stable ids.
      *
      * @param dataSet String[] containing the data to populate views to be used by RecyclerView.
      * @param layoutManager {@code LayoutManager} used by our {@code RecyclerView}
@@ -42,8 +67,20 @@ public class StringListAdapter extends RecyclerView.Adapter<StringListAdapter.Vi
     public StringListAdapter(List<String> dataSet, RecyclerView.LayoutManager layoutManager) {
         mDataSet = dataSet;
         mLayoutManager = (LinearLayoutManager) layoutManager;
+        super.setHasStableIds(true);
     }
 
+
+    /**
+     * Return the stable ID for the item at <code>position</code>. We just return the position passed.
+     *
+     * @param position Adapter position to query
+     * @return the stable ID of the item at position
+     */
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
 
     /**
      * Called when RecyclerView needs a new {@link ViewHolder} of the given type to represent
@@ -135,52 +172,18 @@ public class StringListAdapter extends RecyclerView.Adapter<StringListAdapter.Vi
         private final TextView textView;
 
         /**
-         * Our constructor. First we call our super's constructor. Then we set the {@code OnClickListener}
-         * of our parameter {@code View v} to an anonymous class whose {@code onClick} override just logs
-         * which position was clicked, and we set the {@code OnLongClickListener} to an anonymous class
-         * which picks a random selection, instructs the {@code LinearLayoutManager mLayoutManager} to
-         * scroll to that random selection, toasts what it just did, and returns true to consume the
-         * event. Finally we initialize our field {@code TextView textView} by finding the view with
-         * id R.id.vTextView in {@code v}.
+         * Our constructor. First we call our super's constructor. Then we set the {@code View v}
+         * parameter's {@code OnLongClickListener} to our {@code StringListAdapter}'s field
+         * {@code OnLongClickListener onLongClickListener} (which picks a random selection, instructs
+         * the {@code LinearLayoutManager mLayoutManager} to scroll to that random selection, toasts
+         * what it just did, and returns true to consume the event). Finally we initialize our field
+         * {@code TextView textView} by finding the view with id R.id.vTextView in {@code v}.
          *
          * @param v {@code View} that we should hold
          */
         public ViewHolder(View v) {
             super(v);
-            // Define click listener for the ViewHolder's View.
-            v.setOnClickListener(new View.OnClickListener() {
-                /**
-                 * Called when the {@code View} we hold is clicked. We just log the adapter position
-                 * of our {@code View}.
-                 *
-                 * @param v {@code View} that was clicked.
-                 */
-                @Override
-                public void onClick(View v) {
-                    Log.d(TAG, "Element " + getLayoutPosition() + " clicked.");
-                }
-            });
-            // Define long click listener for the ViewHolder's View.
-            v.setOnLongClickListener(new View.OnLongClickListener() {
-                /**
-                 * Called when the {@code View} we hold is long clicked. We initialize our variable
-                 * {@code int selection} by choosing a random index into our adapter's dataset
-                 * {@code String[] mDataSet} then call the {@code scrollToPositionWithOffset} of our
-                 * field {@code LinearLayoutManager mLayoutManager} to have it scroll to position
-                 * {@code selection} and toast a message telling what we just did. Finally we return
-                 * true to the caller to consume the long click here.
-                 *
-                 * @param view {@code View} that was long clicked
-                 * @return true to consume the long click here
-                 */
-                @Override
-                public boolean onLongClick(View view) {
-                    int selection = Math.abs(rand.nextInt()) % mDataSet.size();
-                    mLayoutManager.scrollToPositionWithOffset(selection, 0);
-                    Toast.makeText(view.getContext(), "Moving to verse " + selection, Toast.LENGTH_LONG).show();
-                    return true;
-                }
-            });
+            v.setOnLongClickListener(onLongClickListener);
             textView = v.findViewById(R.id.vTextView);
         }
 
