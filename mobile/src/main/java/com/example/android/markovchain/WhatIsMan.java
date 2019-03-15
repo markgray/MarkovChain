@@ -11,6 +11,10 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+/**
+ * This {@code Activity} loads html files from the raw resources of the app in the background, and
+ * displays them in a {@code TextView}.
+ */
 public class WhatIsMan extends Activity {
     /**
      * {@code TextView} used to display our book chapters

@@ -1,6 +1,7 @@
 package com.example.android.markovchain;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,12 +14,14 @@ import com.example.android.common.StringListAdapter;
 
 import java.util.List;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class TranscendActivity extends AppCompatActivity {
-
+/**
+ * This {@code Activity} loads text files from the raw resources of the app in the background, and
+ * displays them in a {@code RecyclerView}.
+ */
+public class TranscendActivity extends Activity {
     /**
      * {@code RecyclerView} used to display our books
      */
