@@ -109,9 +109,10 @@ public class ClockTrisect extends Activity {
      * @param text text to display in the TextView we add to ViewGroup parent
      * @param parent ViewGroup to add our TextView to
      */
-    public void addText(String text, final ViewGroup parent) {
+    public void addText(String text, ClockDataItem clockTime, final ViewGroup parent) {
         TextView textView = new TextView(this);
         textView.setText(text);
+        textView.setCompoundDrawables(new ClockFaceView(textView, clockTime).getBitmapDrawable(), null, null, null);
         parent.addView(textView, 0);
     }
 
@@ -148,7 +149,8 @@ public class ClockTrisect extends Activity {
             @Override
             protected void onPostExecute(ClockDataItem aClockDataItem) {
                 String benchResult = NumberFormat.getNumberInstance(Locale.US).format(benchMark.stop());
-                addText("Final Result: " + benchResult + " milliseconds\n" + aClockDataItem + "\n", outputLinearLayout);
+                addText("Final Result: " + benchResult + " milliseconds\n" + aClockDataItem + "\n",
+                        aClockDataItem, outputLinearLayout);
             }
             /**
              * Runs on the UI thread after {@link #publishProgress} is invoked. The specified values
@@ -161,7 +163,8 @@ public class ClockTrisect extends Activity {
              */
             @Override
             protected void onProgressUpdate(ClockDataItem... values) {
-                addText(values[0] + "\n", outputLinearLayout);
+                addText(values[0] + "\n",
+                        values[0], outputLinearLayout);
                 Log.i(TAG, "Posting Hourly best for: " + values[0].timeHour);
             }
         };
