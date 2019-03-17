@@ -1,5 +1,13 @@
 package com.example.android.common;
 
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.RectF;
+import android.graphics.drawable.BitmapDrawable;
+
 import java.util.Formatter;
 import java.util.Locale;
 
@@ -15,6 +23,12 @@ public class ClockDataItem implements Comparable<ClockDataItem> {
      * Format string to use for the formatting of our {@code double timeSecond} field.
      */
     public static String secondFormat = "%06.4f";
+
+    /**
+     * {@code Paint} that our {@code clockFace} method uses to draw the {@code BitmapDrawable} pie
+     * chart of the clock face for the time value that we hold
+     */
+    public static Paint mPaint = new Paint();
     /**
      * The hour of the day we represent
      */
@@ -199,6 +213,48 @@ public class ClockDataItem implements Comparable<ClockDataItem> {
         pieSlices[0] = angle2 - angle1;
         pieSlices[1] = angle3 - angle2;
         pieSlices[2] = (360.0 - angle3) + angle1;
+    }
+
+    /**
+     * Creates a {@code BitmapDrawable} pie chart representing the clock face for the time that we
+     * hold that is suitable to use in a call to the {@code setCompoundDrawables} method of a
+     * {@code TextView}. First we create a {@code Bitmap bitmap} that is {@code sizeOfBitmap} by
+     * {@code sizeOfBitmap} pixels, a {@code RectF oval} that is that size as well, and an
+     * {@code Canvas canvas} that will draw into {@code bitmap}. We initialize {@code float startAngle}
+     * to be the minimum angle of the angles of our three clock hands, and subtract 90 degrees from
+     * that since the {@code drawArc} method of {@code Canvas} considers 0 degrees to be 3 o'clock on
+     * a watch. We then proceed to draw the three wedges created by our clock hands, setting the color
+     * for the first wedge to RED, and drawing a {@code pieSlices[0]} degree wedge from {@code startAngle},
+     * then adding {@code pieSlices[0]} to {@code startAngle} to draw a GREEN wedge that is {@code pieSlices[1]}
+     * degrees, and finally adding {@code pieSlices[0]} to {@code startAngle} to draw a BLUE wedge that
+     * is {@code pieSlices[2]} in size. We then create {@code BitmapDrawable bmd} from {@code bitmap},
+     * set its bounds to be {@code sizeOfBitmap} by {@code sizeOfBitmap} before returning {@code bmd}
+     * to the caller.
+     *
+     * @param resources    Application {@code Resources} instance to allow {@code BitmapDrawable} to
+     *                     set the initial target density based on the display metrics of the screen.
+     * @param sizeOfBitmap Diameter of the clock face pie chart we are to generate.
+     * @return a {@code BitmapDrawable} pie chart clock face for the time value we hold
+     */
+    public BitmapDrawable clockFace(Resources resources, int sizeOfBitmap) {
+        Bitmap bitmap = Bitmap.createBitmap(sizeOfBitmap, sizeOfBitmap, Bitmap.Config.ARGB_8888);
+        RectF oval = new RectF(0, 0, sizeOfBitmap, sizeOfBitmap);
+        Canvas canvas = new Canvas(bitmap);
+        float startAngle = (float) Math.min(angleHour, Math.min(angleMinute, angleSecond));
+        startAngle -= 90;
+
+        mPaint.setColor(Color.RED);
+        canvas.drawArc(oval, startAngle, (float) pieSlices[0], true, mPaint);
+        startAngle += pieSlices[0];
+        mPaint.setColor(Color.GREEN);
+        canvas.drawArc(oval, startAngle, (float) pieSlices[1], true, mPaint);
+        startAngle += pieSlices[1];
+        mPaint.setColor(Color.BLUE);
+        canvas.drawArc(oval, startAngle, (float) pieSlices[2], true, mPaint);
+
+        BitmapDrawable bmd = new BitmapDrawable(resources, bitmap);
+        bmd.setBounds(0, 0, sizeOfBitmap, sizeOfBitmap);
+        return bmd;
     }
 
     /**

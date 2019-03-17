@@ -51,12 +51,23 @@ public class ClockTrisect extends Activity {
     ClockDataItem[] minuteBestClock = null;
 
     /**
+     * The size of the clock face pie chart in DIPs we are to display as part of our output.
+     */
+    private static final int CLOCK_SIZE_DIP = 100;
+    /**
+     * The size of the clock face pie chart in pixels we are to display as part of our output.
+     */
+    private int mClockSize;
+
+
+    /**
      * Called when the {@code Activity} is starting. First we call our super's implementation of
      * {@code onCreate}, then we set our content view to our layout file R.layout.activity_clock_trisect.
-     * We initialize our field {@code LinearLayout outputLinearLayout} by finding the view with id
-     * R.id.linear_layout, and our variable {@code Button button} by finding the view with id
-     * R.id.start_the_clock ("Start the clock"). Finally we set the {@code OnClickListener} of
-     * {@code button} to an anonymous class whose {@code onClick} override calls our method
+     * We initialize our field {@code int mClockSize} by using the logical density of the display to
+     * scale our constant CLOCK_SIZE_DIP to pixels. We initialize our field {@code LinearLayout outputLinearLayout}
+     * by finding the view with id R.id.linear_layout, and our variable {@code Button button} by finding
+     * the view with id R.id.start_the_clock ("Start the clock"). Finally we set the {@code OnClickListener}
+     * of {@code button} to an anonymous class whose {@code onClick} override calls our method
      * {@code createClockDataTask} to initialize our field {@code ClockDataTask clockDataTask},
      * initializes our field {@code BenchMark benchMark} (starting its clock) then calls the
      * {@code execute} method of {@code clockDataTask} to start it running (its {@code doInBackground}
@@ -68,6 +79,8 @@ public class ClockTrisect extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_clock_trisect);
+
+        mClockSize = (int) (CLOCK_SIZE_DIP * getResources().getDisplayMetrics().density + 0.5f);
 
         outputLinearLayout = findViewById(R.id.linear_layout);
         Button button = findViewById(R.id.start_the_clock);
@@ -103,16 +116,19 @@ public class ClockTrisect extends Activity {
     /**
      * Adds a TextView containing the {@code String text} to the {@code ViewGroup parent}. First we
      * create a {@code TextView textView}, then we set the text of {@code TextView textView} to the
-     * {@code String text}, and finally we add the {@code TextView textView} to the {@code ViewGroup parent}
+     * {@code String text}, and set the left drawable of {@code textView} to the {@code mClockSize}
+     * by {@code mClockSize} pie chart created by the {@code clockFace} method of {@code clockTime},
+     * and finally we add the {@code TextView textView} to the {@code ViewGroup parent}
      * (our vertical {@code LinearLayout} in our case) at index 0 (the top).
      *
      * @param text text to display in the TextView we add to ViewGroup parent
+     * @param clockTime the {@code ClockDataItem} that the {@code TextView} represents.
      * @param parent ViewGroup to add our TextView to
      */
     public void addText(String text, ClockDataItem clockTime, final ViewGroup parent) {
         TextView textView = new TextView(this);
         textView.setText(text);
-        textView.setCompoundDrawables(new ClockFaceView(textView, clockTime).getBitmapDrawable(), null, null, null);
+        textView.setCompoundDrawables(clockTime.clockFace(getResources(), mClockSize), null, null, null);
         parent.addView(textView, 0);
     }
 
