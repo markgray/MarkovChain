@@ -7,16 +7,11 @@
 
                                    BY
                             THOMAS  BULFINCH
-
                        COMPLETE  IN  ONE  VOLUME
-
               REVISED  AND  ENLARGED,  WITH  ILLUSTRATIONS
-
            GROSSET  &  DUNLAP  •  _Publishers_  •  NEW  YORK
-
                             COPYRIGHT, 1913,
                      BY THOMAS Y. CROWELL COMPANY.
-
                 PRINTED IN THE UNITED STATES OF AMERICA
 
                           PUBLISHERS’ PREFACE
@@ -83,7 +78,6 @@ information on the point of Wagner’s rendering of the Nibelungen legend,
 and M. I. Ebbutt’s authoritative volume on “Hero Myths and Legends of
 the British Race,” from which much of the information concerning the
 British heroes has been obtained.
-
 
                             AUTHOR’S PREFACE
 
@@ -286,13 +280,6 @@ series without leaving it incomplete.
 
                                                       THOMAS BULFINCH.
 
-[Illustration: [Map 1: Western Mediterranean]
- The World of the Ancient Greeks and Romans.]
-
-[Illustration: [Map 2: Eastern Mediterranean]
- The World of the Ancient Greeks and Romans.]
-
-
                                 CONTENTS
                        STORIES OF GODS AND HEROES
 
@@ -443,7 +430,6 @@ series without leaving it incomplete.
  LIST OF ILLUSTRATIVE PASSAGES QUOTED FROM THE POETS                  875
  INDEX AND DICTIONARY                                                 877
 
-
                          LIST OF ILLUSTRATIONS
                         (Added for convenience)
 
@@ -513,7 +499,6 @@ series without leaving it incomplete.
    |
    +--Vesta (Hestia)
 
-
   JUPITER=Juno (Hera)            JUPITER=Latona (Leto)    JUPITER=Dione
          |                              |                        |
   +------+---------+              +------------+                 |
@@ -528,7 +513,6 @@ Hebe   Mars      Vulcan     Phœbus Apollo    Diana       Venus (Aphrodite)
          |                    |
  Mercury (Hermes)   Bacchus (Dionysus)
 
-
           JUPITER=Themis             JUPITER=Mnemosyne
                  |                           |
      +-----------+---------------+       Nine Muses
@@ -536,11 +520,9 @@ Hebe   Mars      Vulcan     Phœbus Apollo    Diana       Venus (Aphrodite)
    Horæ        Parcæ           Astræa
 (The Hours) (The Fates) (Goddess of Justice)
 
-
  JUPITER=Eurynome  JUPITER=Demeter (Ceres)    JUPITER=Alcmene
        |                  |                           |
    Three Graces    Proserpina (Persephone)  Hercules (Heracles)
-
 
                        STORIES OF GODS AND HEROES
                                CHAPTER I
@@ -948,7 +930,6 @@ accented syllable in all words which appear to require it.
 
                                   ————
 
-
                                CHAPTER II
                          PROMETHEUS AND PANDORA
 
@@ -1202,7 +1183,6 @@ Bonaparte”:
                                   ————
 
                               CHAPTER III
-
        APOLLO AND DAPHNE—PYRAMUS AND THISBE—CEPHALUS AND PROCRIS
 
 THE slime with which the earth was covered by the waters of the flood
@@ -1530,7 +1510,6 @@ beginning thus:
                                   ————
 
                                CHAPTER IV
-
   JUNO AND HER RIVALS, IO AND CALLISTO—DIANA AND ACTÆON—LATONA AND THE
                                 RUSTICS
 
@@ -1892,7 +1871,6 @@ beloved. Byron alludes to Delos in his “Don Juan”:
                                   ————
 
                                CHAPTER V
-
                                 PHAËTON
 
 PHAËTON was the son of Apollo and the nymph Clymene. One day a
@@ -2156,7 +2134,6 @@ water-nymph says:
                                   ————
 
                                CHAPTER VI
-
                        MIDAS—BAUCIS AND PHILEMON
 
 BACCHUS, on a certain occasion, found his old school-master and
@@ -2382,7 +2359,6 @@ parson. The following may serve as a specimen:
                                   ————
 
                               CHAPTER VII
-
                      PROSERPINE—GLAUCUS AND SCYLLA
 
 WHEN Jupiter and his brothers had defeated the Titans and banished them
@@ -2733,7 +2709,6 @@ The following is Glaucus’s account of his feelings after his
                                   ————
 
                               CHAPTER VIII
-
         PYGMALION—DRYOPE—VENUS AND ADONIS—APOLLO AND HYACINTHUS
 
 PYGMALION saw so much to blame in women that he came at last to abhor
@@ -2963,7 +2938,6 @@ An allusion to Hyacinthus will also be recognized in Milton’s “Lycidas”:
                                   ————
 
                                CHAPTER IX
-
                 CEYX AND HALCYONE: OR, THE HALCYON BIRDS
 
 CEYX was king of Thessaly, where he reigned in peace, without violence
@@ -3209,7 +3183,6 @@ Keats, also, in “Endymion,” says:
                                   ————
 
                                CHAPTER X
-
                           VERTUMNUS AND POMONA
 
 THE Hamadryads were Wood-nymphs. Pomona was of this class, and no one
@@ -3352,7 +3325,6 @@ is invoked by Thomson:
                                   ————
 
                                CHAPTER XI
-
                             CUPID AND PSYCHE
 
 A CERTAIN king and queen had three daughters. The charms of the two
@@ -3770,7 +3742,6 @@ characters personated is Psyche—
                                   ————
 
                               CHAPTER XII
-
                           CADMUS—THE MYRMIDONS
 
 JUPITER, under the disguise of a bull, had carried away Europa, the
@@ -4007,7 +3978,6 @@ borrowed their details from him.
                                   ————
 
                               CHAPTER XIII
-
       NISUS AND SCYLLA—ECHO AND NARCISSUS—CLYTIE—HERO AND LEANDER
 
                             NISUS AND SCYLLA
@@ -4325,7 +4295,6 @@ alludes to this story:
                                   ————
 
                               CHAPTER XIV
-
                              MINERVA—NIOBE
 
                                 MINERVA
@@ -4620,7 +4589,6 @@ when recalled to mind by some wit like Moore for the sake of a joke.
                                   ————
 
                                CHAPTER XV
-
          THE GRÆÆ OR GRAY-MAIDS—PERSEUS—MEDUSA—ATLAS—ANDROMEDA
 
                         THE GRÆÆ AND THE GORGONS
@@ -4858,7 +4826,6 @@ The following allusion to Perseus is from Milman’s “Samor”:
                                   ————
 
                               CHAPTER XVI
-
                                 MONSTERS
 
   GIANTS, SPHINX, PEGASUS AND CHIMÆRA, CENTAURS, GRIFFIN, AND PYGMIES
@@ -5120,7 +5087,6 @@ Milton borrows a simile from the Griffins, “Paradise Lost,” Book II.:
                                   ————
 
                               CHAPTER XVII
-
                         THE GOLDEN FLEECE—MEDEA
 
                            THE GOLDEN FLEECE
@@ -5330,7 +5296,7 @@ magic herbs, with seeds and flowers of acrid juice, stones from the
 distant east, and sand from the shore of all-surrounding ocean; hoar
 frost, gathered by moonlight, a screech owl’s head and wings, and the
 entrails of a wolf. She added fragments of the shells or tortoises, and
-the liver of stags,—animals tenacious of life,—and the head and beak
+the liver of stags — animals tenacious of life — and the head and beak
 of a crow, that outlives nine generations of men. These with many other
 things “without a name” she boiled together for her purposed work,
 stirring them up with a dry olive branch; and behold! the branch when
@@ -5415,8 +5381,6 @@ caused the lad to be killed and his limbs to be strewn over the sea.
 son; but while he tarried to collect the scattered fragments and bestow
 upon them an honorable interment, the Argonauts escaped.
 
-
-
 In the poems of Campbell will be found a translation of one of the
 choruses of the tragedy of “Medea,” where the poet Euripides has taken
 advantage of the occasion to pay a glowing tribute to Athens, his native
@@ -5429,9 +5393,7 @@ city. It begins thus:
 
                                   ————
 
-
                              CHAPTER XVIII
-
                          MELEAGER AND ATALANTA
 
 ONE of the heroes of the Argonautic expedition was Meleager, son of
@@ -5451,7 +5413,7 @@ All common aid seemed vain; but Meleager called on the heroes of Greece
 to join in a bold hunt for the ravenous monster. Theseus and his friend
 Pirithous, Jason, Peleus, afterwards the father of Achilles, Telamon the
 father of Ajax, Nestor, then a youth, but who in his age bore arms with
-Achilles and Ajax in the Trojan war,—these and many more joined in the
+Achilles and Ajax in the Trojan war — these and many more joined in the
 enterprise. With them came Atalanta, the daughter of Iasius, king of
 Arcadia. A buckle of polished gold confined her vest, an ivory quiver
 hung on her left shoulder, and her left hand bore the bow. Her face
@@ -5541,7 +5503,7 @@ had been told, and it was to this effect: “Atalanta, do not marry;
 marriage will be your ruin.” Terrified by this oracle, she fled the
 society of men, and devoted herself to the sports of the chase. To all
 suitors (for she had many) she imposed a condition which was generally
-effectual in relieving her of their persecutions,—“I will be the prize
+effectual in relieving her of their persecutions: “I will be the prize
 of him who shall conquer me in the race; but death must be the penalty
 of all who try and fail.” In spite of this hard condition some would
 try. Hippomenes was to be judge of the race. “Can it be possible that
@@ -5597,8 +5559,6 @@ made a lioness, and of her lord and master a lion, and yoked them to her
 car, where they are still to be seen in all representations, in statuary
 or painting, of the goddess Cybele.
 
-
-
 Cybele is the Latin name of the goddess called by the Greeks Rhea and
 Ops. She was the wife of Cronos and mother of Zeus. In works of art she
 exhibits the matronly air which distinguishes Juno and Ceres. Sometimes
@@ -5606,8 +5566,6 @@ she is veiled, and seated on a throne with lions at her side, at other
 times riding in a chariot drawn by lions. She wears a mural crown, that
 is, a crown whose rim is carved in the form of towers and battlements.
 Her priests were called Corybantes.
-
-
 
 Byron, in describing the city of Venice, which is built on a low island
 in the Adriatic Sea, borrows an illustration from Cybele:
@@ -5626,17 +5584,9 @@ alludes to the story of Atalanta and Hippomenes thus:
     Or at least, like Hippomenes, turns her astray
     By the golden illusions he flings in her way.”
 
-[Illustration: CIRCE.
- From painting by Burne-Jones.]
-
-[Illustration: THE THREE FATES.
- From painting by Michael Angelo. Pitti Gallery, Florence.]
-
                                   ————
 
-
                               CHAPTER XIX
-
                        HERCULES—HEBE AND GANYMEDE
 
                                 HERCULES
@@ -5719,8 +5669,6 @@ returned with them, and though somewhat reluctantly, took his burden
 upon his shoulders again, and let Hercules return with the apples to
 Eurystheus.
 
-
-
 Milton, in his “Comus,” makes the Hesperides the daughters of Hesperus
 and nieces of Atlas:
 
@@ -5734,8 +5682,6 @@ Hence they placed in it the Isles of the Blest, the ruddy Isle Erythea,
 on which the bright oxen of Geryon were pastured, and the Isle of the
 Hesperides. The apples are supposed by some to be the oranges of Spain,
 of which the Greeks had heard some obscure accounts.
-
-
 
 A celebrated exploit of Hercules was his victory over Antæus. Antæus,
 the son of Terra, the Earth, was a mighty giant and wrestler, whose
@@ -5804,8 +5750,6 @@ resting on his club, and his lion’s skin spread over him. With a
 countenance as serene as if he were taking his place at a festal board
 he commanded Philoctetes to apply the torch. The flames spread apace and
 soon invested the whole mass.
-
-
 
 Milton thus alludes to the frenzy of Hercules:
 
