@@ -12,10 +12,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-        <activity
-            android:name=".TranscendActivity"
-            android:label="@string/title_activity_transcend"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -49,6 +45,11 @@
             android:name=".WhatIsMan"
             android:label="@string/title_activity_what_is_man"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".TranscendActivity"
+            android:label="@string/title_activity_transcend"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".TestBed" />
     </application>
 
 </manifest>
