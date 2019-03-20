@@ -14,4 +14,8 @@
         android:layout_height="wrap_content"
         android:text="Hello, I am a Button"
         tools:ignore="HardcodedText" />
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/listview"></ListView>
 </LinearLayout>
