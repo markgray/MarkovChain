@@ -12,7 +12,10 @@ class TestBed : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_test_bed)
+
         val myButton: Button = findViewById(R.id.button)
+        val string = "Button Label"
+        myButton.text = string
         val adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, Shakespeare.SONNETS)
         val listView: ListView = findViewById(R.id.listview)
         listView.adapter = adapter
