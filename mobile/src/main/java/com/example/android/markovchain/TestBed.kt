@@ -16,10 +16,11 @@ class TestBed : AppCompatActivity() {
         val myButton: Button = findViewById(R.id.button)
         val string = "Button Label"
         myButton.text = string
-        val adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, Shakespeare.SONNETS)
+        val adapter = ArrayAdapter<String>(this, 
+                android.R.layout.simple_list_item_1,
+                Shakespeare.SONNETS)
         val listView: ListView = findViewById(R.id.listview)
         listView.adapter = adapter
-
 
 
     }
