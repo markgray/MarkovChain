@@ -52,7 +52,8 @@ public class TranscendActivity extends Activity {
      */
     public static final int[] resourceIDS = {
             R.raw.emerson_conduct_of_life, R.raw.emerson_essays_second_series, R.raw.emerson_poems,
-            R.raw.emerson_representative_men, R.raw.thoreau_excursions, R.raw.bulfinch
+            R.raw.emerson_representative_men, R.raw.thoreau_excursions, R.raw.bulfinch,
+            R.raw.nietzshe
     };
 
     /**
@@ -60,7 +61,8 @@ public class TranscendActivity extends Activity {
      */
     public static final String[] titles = {
             "Emerson The Conduct of Life", "Emerson Essays, Second Series", "Emerson Poems",
-            "Emerson Representative Men", "Thoreau Excursions", "Bulfinch’s Mythology"
+            "Emerson Representative Men", "Thoreau Excursions", "Bulfinch’s Mythology",
+            "Nietzshe's Philosophy"
     };
 
     /**
