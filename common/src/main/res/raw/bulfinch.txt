@@ -7624,7 +7624,7 @@ of the stage.
 Every heart fluttered between illusion and reality, and every breast
 panted with undefined terror, quailing before the awful power that
 watches secret crimes and winds unseen the skein of destiny. At that
-moment a cry burst forth from one of the uppermost benches—“Look! look!
+moment a cry burst forth from one of the uppermost benches: “Look! look!
 comrade, yonder are the cranes of Ibycus!” And suddenly there appeared
 sailing across the sky a dark object which a moment’s inspection showed
 to be a flock of cranes flying directly over the theatre. “Of Ibycus!
@@ -7698,8 +7698,6 @@ she threw herself from the promontory of Leucadia into the sea, under a
 superstition that those who should take that “Lover’s-leap” would, if
 not destroyed, be cured of their love.
 
-
-
 Byron alludes to the story of Sappho in “Childe Harold,” Canto II.:
 
     “Childe Harold sailed and passed the barren spot
@@ -7717,9 +7715,7 @@ Those who wish to know more of Sappho and her “leap” are referred to the
 
                                   ————
 
-
                               CHAPTER XXVI
-
           ENDYMION—ORION—AURORA AND TITHONUS—ACIS AND GALATEA
 
                            DIANA AND ENDYMION
