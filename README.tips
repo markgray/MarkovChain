@@ -277,5 +277,17 @@ Looper.myLooper() == Looper.getMainLooper()
 
 if this returns true, then you're on the UI thread!
 -------------------------------------------------------------------------------
+TODO: Need to experiment with let, run, with, apply, and also.
+See: https://kotlinlang.org/docs/reference/scope-functions.html
 
+To help you choose the right scope function for your purpose, we provide the table of key differences between them.
+
+Function  Object reference  Return value   Is extension function
+let       it                Lambda result  Yes
+run       this              Lambda result  Yes
+run       -                 Lambda result  No: called without the context object
+with      this              Lambda result  No: takes the context object as an argument.
+apply     this              Context object Yes
+also      it                Context object Yes
+-------------------------------------------------------------------------------
 
