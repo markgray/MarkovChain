@@ -290,4 +290,14 @@ with      this              Lambda result  No: takes the context object as an ar
 apply     this              Context object Yes
 also      it                Context object Yes
 -------------------------------------------------------------------------------
+Here is a short guide for choosing scope functions depending on the intended purpose:
+
+    Executing a lambda on non-null objects: let
+    Introducing an expression as a variable in local scope: let
+    Object configuration: apply
+    Object configuration and computing the result: run
+    Running statements where an expression is required: non-extension run
+    Additional effects: also
+    Grouping function calls on an object: with
+-------------------------------------------------------------------------------
 
