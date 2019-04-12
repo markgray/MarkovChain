@@ -12849,8 +12849,6 @@ Iceland. The inscriptions may therefore be read with certainty, but
 hitherto very few have been found which throw the least light on
 history. They are mostly epitaphs on tombstones.
 
-
-
 Gray’s ode on the “Descent of Odin” contains an allusion to the use of
 Runic letters for incantation:
 
@@ -12882,14 +12880,14 @@ account of the region where the strange stories we have been reading had
 their origin. Let the reader contrast it for a moment with Greece, the
 parent of classical mythology:
 
-“In that strange island, Iceland,—burst up, the geologists say, by fire
+“In that strange island, Iceland — burst up, the geologists say, by fire
 from the bottom of the sea, a wild land of barrenness and lava,
 swallowed many months of every year in black tempests, yet with a wild,
 gleaming beauty in summer time, towering up there stern and grim in the
 North Ocean, with its snow yokuls [mountains], roaring geysers [boiling
 springs], sulphur pools, and horrid volcanic chasms, like the waste,
-chaotic battlefield of Frost and Fire,—where, of all places, we least
-looked for literature or written memorials,—the record of these things
+chaotic battlefield of Frost and Fire — where, of all places, we least
+looked for literature or written memorials — the record of these things
 was written down. On the seaboard of this wild land is a rim of grassy
 country, where cattle can subsist, and men by means of them and of what
 the sea yields; and it seems they were poetic men these, men who had
@@ -12987,7 +12985,7 @@ the Volsunga Saga, while lesser parts were taken from the Elder Edda and
 the Younger Edda, and others from the Nibelungen Lied, the Ecklenlied,
 and other Teutonic folklore.
 
-In the drama there are at first only four distinct races,—the gods, the
+In the drama there are at first only four distinct races: the gods, the
 giants, the dwarfs, and the nymphs. Later, by a special creation, there
 come the valkyrie and the heroes. The gods are the noblest and highest
 race, and dwell first in the mountain meadows, later in the palace of
@@ -13077,7 +13075,7 @@ forget Brunhild and fall in love with Gutrune. Under this same spell, he
 offers to bring Brunhild for wife to Günther. Now is Valhalla full of
 sorrow and despair. The gods fear the end. Wotan murmurs, “O that she
 would give back the ring to the Rhine.” But Brunhild will not give it
-up,—it is now her pledge of love. Siegfried comes, takes the ring, and
+up — it is now her pledge of love. Siegfried comes, takes the ring, and
 Brunhild is now brought to the Rhine castle of the Gibichungs, but
 Siegfried under the spell does not love her. She is to be wedded to
 Günther. She rises in wrath and denounces Siegfried. But at a hunting
@@ -13086,8 +13084,8 @@ slain by Hagan by a blow in the back, as he calls on Brunhild’s name in
 love. Then comes the end. The body of Siegfried is burned on a funeral
 pyre, a grand funeral march is heard, and Brunhild rides into the flames
 and sacrifices herself for love’s sake; the ring goes back to the
-Rhine-daughters; and the old world—of the gods of Valhalla, of passion
-and sin—is burnt up with flames, for the gods have broken moral law,
+Rhine-daughters; and the old world of the gods of Valhalla, of passion
+and sin, is burnt up with flames, for the gods have broken moral law,
 and coveted power rather than love, gold rather than truth, and
 therefore must perish. They pass, and a new era, the reign of love and
 truth, has begun.
@@ -13106,9 +13104,7 @@ There is much illuminating comment on the sources and materials in
 
                                   ————
 
-
                               CHAPTER XLI
-
                             THE DRUIDS—IONA
 
                                  DRUIDS
