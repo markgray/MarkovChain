@@ -13305,14 +13305,14 @@ original number was always kept up. Their institution was called a
 monastery and the superior an abbot, but the system had little in common
 with the monastic institutions of later times. The name by which those
 who submitted to the rule were known was that of Culdees, probably from
-the Latin “cultores Dei”—worshippers of God. They were a body of
+the Latin “cultores Dei” — worshippers of God. They were a body of
 religious persons associated together for the purpose of aiding each
 other in the common work of preaching the gospel and teaching youth, as
 well as maintaining in themselves the fervor of devotion by united
 exercises of worship. On entering the order certain vows were taken by
 the members, but they were not those which were usually imposed by
-monastic orders, for of these, which are three,—celibacy, poverty, and
-obedience.—the Culdees were bound to none except the third. To poverty
+monastic orders, for of these, which are three: celibacy, poverty, and
+obedience. The Culdees were bound to none except the third. To poverty
 they did not bind themselves; on the contrary they seem to have labored
 diligently to procure for themselves and those dependent on them the
 comforts of life. Marriage also was allowed them, and most of them seem
@@ -13322,8 +13322,6 @@ to them in an adjacent locality. Near Iona there is an island which
 still bears the name of “Eilen nam ban,” women’s island, where their
 husbands seem to have resided with them, except when duty required their
 presence in the school or the sanctuary.
-
-
 
 Campbell, in his poem of “Reullura,” alludes to the married monks of
 Iona:
@@ -13381,8 +13379,6 @@ little to be envied whose patriotism would not gain force upon the
 plains of Marathon, or whose piety would not grow warmer amid the ruins
 of Iona.”
 
-
-
 In the “Lord of the Isles” Scott beautifully contrasts the church on
 Iona with the cave of Staffa, opposite:
 
@@ -13402,13 +13398,9 @@ Iona with the cave of Staffa, opposite:
     Well hast thou done, frail child of clay!
     Thy humble powers that stately shrine
     Tasked high and hard—but witness mine!”
-
-
-
+                                  ___
 
                       KING ARTHUR AND HIS KNIGHTS
-
-
                                CHAPTER I
 
                               INTRODUCTION
@@ -13810,9 +13802,7 @@ Godefray of boloyn.”
 
                                   ————
 
-
                                CHAPTER II
-
                     THE MYTHICAL HISTORY OF ENGLAND
 
 THE illustrious poet, Milton, in his “History of England,” is the author
@@ -14188,9 +14178,7 @@ Spenser, “Faery Queene,” Book IV., Canto xi:
 
                                   ————
 
-
                               CHAPTER III
-
                                  MERLIN
 
 MERLIN was the son of no mortal father, but of an Incubus, one of a
@@ -14387,9 +14375,7 @@ iii.:
 
                                   ————
 
-
                                CHAPTER IV
-
                                  ARTHUR
 
 WE shall begin our history of King Arthur by giving those particulars of
@@ -14766,9 +14752,7 @@ citizens, entered London, and were received with acclamations.
 
                                   ————
 
-
                                CHAPTER V
-
                           ARTHUR (_Continued_)
 
 AFTER the great victory of Mount Badon, by which the Saxons were for the
@@ -15051,9 +15035,7 @@ poor knights did.
 
                                   ————
 
-
                                CHAPTER VI
-
                                SIR GAWAIN
 
 SIR GAWAIN was nephew to King Arthur, by his sister Morgana, married to
@@ -15194,9 +15176,7 @@ knight as any at Arthur’s court.
 
                                   ————
 
-
                               CHAPTER VII
-
           CARADOC BRIEFBRAS; OR, CARADOC WITH THE SHRUNKEN ARM
 
 CARADOC was the son of Ysenne, the beautiful niece of Arthur. He was
@@ -15460,9 +15440,7 @@ then concludes as follows:
 
                                   ————
 
-
                               CHAPTER VIII
-
                          LAUNCELOT OF THE LAKE
 
 KING BAN, of Brittany, the faithful ally of Arthur was attacked by his
@@ -15835,19 +15813,9 @@ and left me his, I rode in peace, and no man would have to do with me.”
 And so at that time Sir Launcelot had the greatest name of any knight of
 the world, and most was he honored of high and low.
 
-[Illustration: THE BEGUILING OF MERLIN.
- From painting by Sir Edwin Burne-Jones.]
-
-[Illustration: THE ROUND TABLE.
- From a photograph. This supposed relic of King Arthur and his
- Knights now hangs in the Great Hall of the Castle of Winchester
-   (Camelot).]
-
-
-
+                                  ————
 
                                CHAPTER IX
-
                        THE ADVENTURE OF THE CART
 
 IT befell in the month of May, Queen Guenever called to her knights of
@@ -16046,9 +16014,7 @@ Camelot.
 
                                   ————
 
-
                                CHAPTER X
-
                           THE LADY OF SHALOTT
 
 KING ARTHUR proclaimed a solemn tournament to be held at Winchester. The
@@ -16189,9 +16155,7 @@ of a poem. The catastrophe is told thus:
 
                                   ————
 
-
                                CHAPTER XI
-
                          QUEEN GUENEVER’S PERIL
 
 IT happened at this time that Queen Guenever was thrown into great peril
@@ -16321,9 +16285,7 @@ conferred on Sir Launcelot by Arthur, as a memorial of his gratitude.
 
                                   ————
 
-
                               CHAPTER XII
-
                           TRISTRAM AND ISOUDE
 
 MELIADUS was king of Leonois, or Lionesse, a country famous in the
@@ -16597,9 +16559,7 @@ of love and hatred. Boiardo thus describes the fountain of hatred:
 
                                   ————
 
-
                               CHAPTER XIII
-
                    TRISTRAM AND ISOUDE (_Continued_)
 
 AFTER this affair Tristram was banished from the kingdom, and Isoude
@@ -16853,17 +16813,9 @@ be impossible to find a more worthy companion. But Tristram had already
 departed in search of adventures, and the damsel of Queen Isoude
 returned to her mistress.
 
-[Illustration: SIR GALAHAD.
- From painting by George Frederick Watts.]
-
-[Illustration: KING ARTHUR AND QUEEN GUENEVER.
- Original drawing by A. Fredericks.]
-
-
-
+                                  ————
 
                               CHAPTER XIV
-
                 SIR TRISTRAM’S BATTLE WITH SIR LAUNCELOT
 
 SIR TRISTRAM rode through a forest and saw ten men fighting, and one man
@@ -16973,9 +16925,7 @@ name and parentage, and concludes:
 
                                   ————
 
-
                                CHAPTER XV
-
                             THE ROUND TABLE
 
 THE famous enchanter, Merlin, had exerted all his skill in fabricating
@@ -17157,9 +17107,7 @@ remained at Arthur’s court.
 
                                   ————
 
-
                               CHAPTER XVI
-
                              SIR PALAMEDES
 
 WHILE Sir Tristram and the fair Isoude abode yet at La Joyeuse Garde,
@@ -17258,9 +17206,7 @@ from Merlin counsel as to the proper course to pursue to insure success.
 
                                   ————
 
-
                               CHAPTER XVII
-
                               SIR TRISTRAM
 
 ON arriving in Brittany Tristram found King Hoel engaged in a war with a
@@ -17396,9 +17342,7 @@ thus describes:
 
                                   ————
 
-
                              CHAPTER XVIII
-
                                 PERCEVAL
 
 THE father and two elder brothers of Perceval had fallen in battle or
@@ -17622,9 +17566,7 @@ honor and respect and they returned towards Caerleon.
 
                                   ————
 
-
                               CHAPTER XIX
-
                       THE SANGREAL, OR HOLY GRAAL
 
 THE Sangreal was the cup from which our Saviour drank at his last
@@ -17821,9 +17763,7 @@ Sir Hector would not away till Sir Gawain were whole.
 
                                   ————
 
-
                                CHAPTER XX
-
                        THE SANGREAL (_Continued_)
 
                              SIR LAUNCELOT
@@ -18013,9 +17953,7 @@ he took his arms, and departed thence.
 
                                   ————
 
-
                               CHAPTER XXI
-
                        THE SANGREAL (_Continued_)
 
                                SIR BOHORT
@@ -18343,9 +18281,7 @@ so hardy as to say that he had seen the Sangreal on earth any more.
 
                                   ————
 
-
                               CHAPTER XXII
-
                          SIR AGRIVAIN’S TREASON
 
 WHEN Sir Perceval and Sir Bohort saw Sir Galahad dead they made as much
@@ -18614,9 +18550,7 @@ return with all his host to England.
 
                                   ————
 
-
                              CHAPTER XXIII
-
                              MORTE D’ARTHUR
 
 SIR MODRED was left ruler of all England, and he caused letters to be
@@ -18963,8 +18897,6 @@ Hector, Sir Blamor, and Sir Bleoberis went into the Holy Land. And these
 four knights did many battles upon the miscreants, the Turks; and there
 they died upon a Good Friday, as it pleased God.
 
-
-
 Thus endeth this noble and joyous book, entitled “La Morte d’Arthur;”
 notwithstanding it treateth of the birth, life, and acts of the said
 King Arthur, and of his noble Knights of the Round Table, their
@@ -18977,17 +18909,9 @@ the year of our Lord MCCCCLXXXV.
 
 Caxton me fieri fecit.
 
-
-
-
-                              [BLANK PAGE]
-
-
-
+                                  ————
 
                              THE MABINOGEON
-
-
                            INTRODUCTORY NOTE
 
 IT has been well known to the literati and antiquarians of Europe that
@@ -19073,9 +18997,7 @@ obligation.
 
                                   ————
 
-
                                CHAPTER I
-
                               THE BRITONS
 
 THE earliest inhabitants of Britain are supposed to have been a branch
@@ -19252,9 +19174,7 @@ Next follow some moral triads:
 
                                   ————
 
-
                                CHAPTER II
-
                         THE LADY OF THE FOUNTAIN
 
                            KYNON’S ADVENTURE
@@ -19419,9 +19339,7 @@ dominions without any other person lighting upon it.”
 
                                   ————
 
-
                               CHAPTER III
-
                  THE LADY OF THE FOUNTAIN (_Continued_)
 
                          OWAIN’S ADVENTURE[58]
@@ -19675,9 +19593,7 @@ for the space of three years.[60]
 
                                   ————
 
-
                                CHAPTER IV
-
                  THE LADY OF THE FOUNTAIN (_Continued_)
 
                            GAWAIN’S ADVENTURE
@@ -19909,9 +19825,7 @@ Arthur’s court, and she was his wife as long as she lived.
 
                                   ————
 
-
                                CHAPTER V
-
                        GERAINT, THE SON OF ERBIN
 
 ARTHUR was accustomed to hold his court at Caerleon upon Usk. And there
@@ -20268,9 +20182,7 @@ concerning Geraint.
 
                                   ————
 
-
                                CHAPTER VI
-
                 GERAINT, THE SON OF ERBIN (_Continued_)
 
 NOW this is how Arthur hunted the stag. The men and the dogs were
@@ -20522,9 +20434,7 @@ showed him he kept possession of.
 
                                   ————
 
-
                               CHAPTER VII
-
                 GERAINT, THE SON OF ERBIN (_Continued_)
 
 GERAINT, as he had been used to do when he was at Arthur’s court,
@@ -20874,9 +20784,7 @@ him and to Enid,[63] from that time forward.
 
                                   ————
 
-
                               CHAPTER VIII
-
                          PWYLL, PRINCE OF DYVED
 
 ONCE upon a time Pwyll was at Narberth, his chief palace, where a feast
@@ -21074,9 +20982,7 @@ they ruled the land prosperously that year and the next.
 
                                   ————
 
-
                                CHAPTER IX
-
                      BRANWEN, THE DAUGHTER OF LLYR
 
 BENDIGEID VRAN, the son of Llyr, was the crowned king of this island,
@@ -21360,9 +21266,7 @@ Bendigeid Vran had directed them.[67]
 
                                   ————
 
-
                                CHAPTER X
-
                                MANAWYDDAN
 
 PWYLL and Rhiannon had a son, whom they named Pryderi. And when he was
@@ -21734,9 +21638,7 @@ brought from the East by some of the first settlers or conquerors.”
 
                                   ————
 
-
                                CHAPTER XI
-
                            KILWICH AND OLWEN
 
 KILYDD, a son of Prince Kelyddon, desired a wife as a helpmate, and the
@@ -22131,9 +22033,7 @@ compassed all these marvels, thou shalt have my daughter for thy wife.”
 
                                   ————
 
-
                               CHAPTER XII
-
                     KILWICH AND OLWEN (_Continued_)
 
 ALL that day they journeyed until the evening, and then they beheld a
@@ -22352,9 +22252,7 @@ lived.
 
                                   ————
 
-
                               CHAPTER XIII
-
                                 TALIESIN
 
 GWYDDNO GARANHIR was sovereign of Gwaelod, a territory bordering on the
@@ -22609,17 +22507,9 @@ free from prison, and protect the innocence of his mistress, and silence
 the bards so that not one of them dared to say a word. Right glad was
 Elphin, right glad was Taliesin.
 
-
-
-
-                              [BLANK PAGE]
-
-
-
+                                  ————
 
                      HERO MYTHS OF THE BRITISH RACE
-
-
                                 BEOWULF
 
 NOTABLE among the names of heroes of the British race is that of
@@ -22691,7 +22581,6 @@ burial cairn, widespread and lofty, to be known thereafter as Beowulf’s
 Barrow.
 
                                   ————
-
 
                      CUCHULAIN, CHAMPION OF IRELAND
 
@@ -22835,7 +22724,6 @@ the Irish Gaels.
 
                                   ————
 
-
                            HEREWARD THE WAKE
 
 IN Hereward the Wake (or “Watchful”) is found one of those heroes whose
@@ -22929,7 +22817,6 @@ down, but rather urged him on to deeds of arms in other lands, where he
 quickly won a renown second to none.
 
                                   ————
-
 
                                ROBIN HOOD
 
@@ -23037,18 +22924,9 @@ Prince’s service, generously shares his prize with the worthy Hubert,
 and retires once more to his beloved haunts among the lights and shadows
 of the good greenwood.
 
-[Illustration: CHARLEMAGNE.
- From painting by Dürer in the Museum at Nuremburg.]
-
-[Illustration: CHARLEMAGNE RECEIVING HIS GUESTS.
- Original drawing by Byam Shaw.]
-
-
-
+                                  ————
 
                          LEGENDS OF CHARLEMAGNE
-
-
                               INTRODUCTION
 
 Those who have investigated the origin of the romantic fables relating
@@ -23354,7 +23232,6 @@ the declining empire, but not of that of Charlemagne.
 
                                   ————
 
-
                          THE PEERS, OR PALADINS
 
 The twelve most illustrious knights of Charlemagne were called Peers,
@@ -23650,7 +23527,6 @@ Saracens and Pagans.
 
                                   ————
 
-
                              THE TOURNAMENT
 
 It was the month of May, and the feast of Pentecost. Charlemagne had
@@ -23934,7 +23810,6 @@ this, effected his deliverance.
 What further adventures he met with will be told in another chapter.
 
                                   ————
-
 
                          THE SIEGE OF ALBRACCA
 
@@ -24338,7 +24213,6 @@ side, and the crown upon his head.
 
                                   ————
 
-
                    ADVENTURES OF RINALDO AND ORLANDO
 
 WE left Rinaldo when, having overcome the monster, he quitted the castle
@@ -24673,7 +24547,6 @@ the others took their way toward the west.
 
                                   ————
 
-
                          THE INVASION OF FRANCE
 
 Agramant, King of Africa, convoked the kings, his vassals, to deliberate
@@ -24985,7 +24858,6 @@ oath to wear no other blade but Durindana, which he was to wrest from
 Orlando, and thus complete the conquest of Hector’s arms.
 
                                   ————
-
 
                   THE INVASION OF FRANCE (_Continued_)
 
@@ -25336,7 +25208,6 @@ speedy return to France.
 
                                   ————
 
-
                          BRADAMANTE AND ROGERO
 
 Bradamante, the knight of the white plume and shield, whose sudden
@@ -25678,7 +25549,6 @@ vessel cuts the waves, impelled by the freshest and most favorable
 gales.
 
                                   ————
-
 
                       ASTOLPHO AND THE ENCHANTRESS
 
@@ -26042,7 +25912,6 @@ only when all other weapons were unavailing.
 
                                   ————
 
-
                                 THE ORC
 
 We left the charming Angelica at the moment when, in her flight from her
@@ -26291,7 +26160,6 @@ that there was no companionship or communication between them.
 
                                   ————
 
-
          ASTOLPHO’S ADVENTURES CONTINUED, AND ISABELLA’S BEGUN
 
 When Astolpho escaped from the cruel Alcina, after a short abode in the
@@ -26503,7 +26371,6 @@ knights to brace their helmets and stand on their guard. What the cause
 of the interruption was we shall record in another chapter.
 
                                   ————
-
 
                                  MEDORO
 
@@ -26775,7 +26642,6 @@ separate France and Spain, intending to wait at Barcelona a vessel which
 should take them on their way to the East.
 
                                   ————
-
 
                               ORLANDO MAD
 
@@ -27057,7 +26923,6 @@ terrible blow struck him on the neck. He fell from his horse, and the
 Tartar king, possessed of the spoils of his victory, rode away.
 
                                   ————
-
 
                           ZERBINO AND ISABELLA
 
@@ -27359,7 +27224,6 @@ his ambition, the horse and the sword, sailed away to his own country.
 
                                   ————
 
-
                          ASTOLPHO IN ABYSSINIA
 
 When we last parted with the adventurous paladin Astolpho, he was just
@@ -27624,7 +27488,6 @@ Swans of this kind are rare. Let monarchs know the true breed, and fail
 not to nourish with care such as may chance to appear in their time.”
 
                                   ————
-
 
                            THE WAR IN AFRICA
 
@@ -28026,7 +27889,6 @@ heard his last words, I might have given him a last kiss.” So she
 lamented, and could not be comforted.
 
                                   ————
-
 
                          ROGERO AND BRADAMANTE
 
@@ -28463,7 +28325,6 @@ conspicuously in him so availed to recommend Rogero to the Lady Beatrice
 as the hearing her future son-in-law saluted as a sovereign prince.
 
                                   ————
-
 
                        THE BATTLE OF RONCESVALLES
 
@@ -28925,7 +28786,6 @@ and quartered in Roncesvalles, amidst the execrations of the country.
 
                                   ————
 
-
                            RINALDO AND BAYARD
 
 Charlemagne was overwhelmed with grief at the loss of so many of his
@@ -29120,7 +28980,6 @@ recovery of Bayard was more than tongue can tell.
 
                                   ————
 
-
                             DEATH OF RINALDO
 
 The distress in Rinaldo’s castle for want of food grew more severe every
@@ -29311,7 +29170,6 @@ since been the patron of that place, and many wonderful works has God
 done through him, as may be seen in the legends.
 
                                   ————
-
 
                             HUON OF BORDEAUX
 
@@ -29557,7 +29415,6 @@ absolution and his blessing. Huon promised it, and forthwith set out on
 his way to Rome.
 
                                   ————
-
 
                      HUON OF BORDEAUX (_Continued_)
 
@@ -29900,7 +29757,6 @@ their journey.
 
                                   ————
 
-
                      HUON OF BORDEAUX (_Continued_)
 
 Huon had seen many beauties at his mother’s court, but his heart had
@@ -30129,7 +29985,6 @@ mother, and to the faithful liegemen of his province of Guienne and his
 city of Bordeaux, where the pair were received with transports of joy.
 
                                   ————
-
 
                             OGIER, THE DANE
 
@@ -30424,7 +30279,6 @@ and their followers to France.
 
                                   ————
 
-
                      OGIER, THE DANE (_Continued_)
 
 Charlemagne had not forgotten the offence of Geoffroy, the King of
@@ -30664,7 +30518,6 @@ punishment he deserved, from the hands of Huon of Bordeaux, as we have
 seen in a former chapter.
 
                                   ————
-
 
                      OGIER, THE DANE (_Continued_)
 
@@ -30983,9 +30836,6 @@ now resumed her power, and took him away to dwell with her in the island
 of Avalon. There, in company with the great King Arthur of Britain, he
 still lives, and when his illustrious friend shall return to resume his
 ancient reign he will doubtless return with him, and share his triumph.
-
-
-
 
                                FOOTNOTES
 
@@ -31395,9 +31245,6 @@ It is called Fata Morgana, or Mirage.
 the noble house of Este, the princes of his native state, the dukedom of
 Ferrara.
 
-
-
-
                          PROVERBIAL EXPRESSIONS
 
                             No. 1. Page 39.
@@ -31508,11 +31355,7 @@ trampling.
 He falls, unhappy, by a wound intended for another; looks up to the
 skies, and dying remembers sweet Argos.
 
-
-
-
                      LIST OF ILLUSTRATIVE PASSAGES
-
                          QUOTED FROM THE POETS
 
 Addison (attributed to), 304
@@ -31590,9 +31433,6 @@ Warton, 395
 Wordsworth, 167, 215, 302, 319
 
 Young, 126, 176, 205, 275, 318
-
-
-
 
                           INDEX AND DICTIONARY
 
@@ -33707,23 +33547,3 @@ Zo-ro-as´ter, founder of the Persian religion, which was dominant in
   Western Asia from about 550 B.C. to about 650 A.D., and is still held by
   many thousands in Persia and in India, 318-320.
 
-
-
-
-                           TRANSCRIBER NOTES
-
-Misspelled words and printer errors have been corrected. Where multiple
-spellings occur, majority use has been employed.
-
-Punctuation has been maintained except where obvious printer errors
-occur. All ellipses have been spaced.
-
-Shakspeare and Shakespeare appears several times throughout the text,
-and although obsolete, Shakspeare is a valid alternative form of
-Shakespeare, and therefore both instances appear.
-
-Some illustrations were moved to facilitate page layout and a List of
-Illustrations was created and added after the Table of Contents.
-
-All footnotes are linked and have been placed at the end of the book
-before the Appendices and Index.
