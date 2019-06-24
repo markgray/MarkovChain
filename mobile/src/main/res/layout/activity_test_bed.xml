@@ -7,15 +7,15 @@
     <TextView android:id="@+id/text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello, I am a TextView"
-        tools:ignore="HardcodedText" />
+        android:text="@string/screen_size" />
     <Button android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hello, I am a Button"
         tools:ignore="HardcodedText" />
+
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/listview"></ListView>
+        android:id="@+id/listview" />
 </LinearLayout>

@@ -43,4 +43,5 @@
     <string name="waiting_for_data_to_load">Waiting for data to load…</string>
     <string name="title_activity_transcend">TranscendActivity</string>
     <string name="transendentalist_works">Transendentalist Works</string>
+    <string name="screen_size">This is the default screen size</string>
 </resources>
