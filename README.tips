@@ -303,4 +303,8 @@ Here is a short guide for choosing scope functions depending on the intended pur
 Keywords and Operators
 https://kotlinlang.org/docs/reference/keyword-reference.html
 -------------------------------------------------------------------------------
+To update gitbash:
+
+    >  git update-git-for-windows
+-------------------------------------------------------------------------------
 
