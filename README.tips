@@ -307,4 +307,8 @@ To update gitbash:
 
     >  git update-git-for-windows
 -------------------------------------------------------------------------------
+To turn on "inferred type hints" go to the Editor/General/Appearance setting then
+click the Configure... button on the "Show parameter name hints" and in the pop-up
+enable the "Show property type hints" and "Show local variable type hints" boxes.
+-------------------------------------------------------------------------------
 
