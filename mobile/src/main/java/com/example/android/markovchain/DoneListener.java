@@ -1,4 +1,4 @@
-package com.example.android.common;
+package com.example.android.markovchain;
 
 import android.app.Activity;
 import android.view.View;
@@ -26,6 +26,7 @@ public class DoneListener {
      *
      * @param view View to provide Context for a Toast or other use that needs a View or Context.
      */
+    @SuppressWarnings("WeakerAccess")
     public void onDone(final View view) {
         ((Activity) view.getContext()).runOnUiThread(new Thread(new Runnable() {
             /**

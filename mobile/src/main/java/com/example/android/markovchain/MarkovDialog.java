@@ -1,4 +1,4 @@
-package com.example.android.common;
+package com.example.android.markovchain;
 
 import android.app.DialogFragment;
 import android.os.Bundle;

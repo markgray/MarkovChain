@@ -2,8 +2,6 @@ package com.example.android.markovchain;
 
 import android.os.AsyncTask;
 
-import com.example.android.common.ClockDataItem;
-
 /**
  * The first time this background task is run it will cycle through all the seconds in a day, and if
  * the {@code badness} field of the best {@code ClockDataItem} for a particular minute is less than

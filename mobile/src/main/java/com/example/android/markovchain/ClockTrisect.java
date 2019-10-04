@@ -10,9 +10,6 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.android.common.BenchMark;
-import com.example.android.common.ClockDataItem;
-
 import java.text.NumberFormat;
 import java.util.Locale;
 

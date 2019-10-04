@@ -5,7 +5,6 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
-import com.example.android.common.Shakespeare
 import java.util.*
 
 class TestBed : AppCompatActivity() {

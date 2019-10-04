@@ -6,9 +6,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 
-import com.example.android.common.Shakespeare;
-import com.example.android.common.StringArrayAdapter;
-
 /**
  * This Activity lets you read Shakespeare's sonnets in a RecyclerView.
  */

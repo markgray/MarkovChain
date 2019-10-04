@@ -10,11 +10,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.android.common.DoneListener;
-import com.example.android.common.Markov;
-import com.example.android.common.MarkovAdapter;
-import com.example.android.common.ShakespeareSmall;
-
 import java.io.IOException;
 import java.io.StringReader;
 

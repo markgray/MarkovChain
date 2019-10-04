@@ -9,10 +9,6 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.example.android.common.DoneListener;
-import com.example.android.common.Markov;
-import com.example.android.common.MarkovAdapter;
-
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;

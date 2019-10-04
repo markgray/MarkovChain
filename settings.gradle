@@ -1,1 +1,1 @@
-include ':mobile', ':common'
+include ':mobile'

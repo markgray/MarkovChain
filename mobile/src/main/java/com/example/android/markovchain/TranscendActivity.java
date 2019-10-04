@@ -10,8 +10,6 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-import com.example.android.common.StringListAdapter;
-
 import java.util.List;
 
 import androidx.recyclerview.widget.LinearLayoutManager;

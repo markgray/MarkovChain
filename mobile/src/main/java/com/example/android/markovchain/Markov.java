@@ -1,4 +1,4 @@
-package com.example.android.common;
+package com.example.android.markovchain;
 
 import android.util.Log;
 import android.view.View;
@@ -215,7 +215,7 @@ public class Markov {
             prefix.pref[1] = NONWORD;
             try {
                 while ((line = reader.readLine()) != null) {
-                    String words[] = line.split(" ");
+                    String[] words = line.split(" ");
                     prefix.pref[0] = words[0];
                     prefix.pref[1] = words[1];
                     stateTable.put(new Prefix(prefix), words);

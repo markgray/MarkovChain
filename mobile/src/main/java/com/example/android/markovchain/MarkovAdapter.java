@@ -1,4 +1,4 @@
-package com.example.android.common;
+package com.example.android.markovchain;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -19,6 +19,7 @@ import android.widget.Toast;
  * an Activity that needs to populate a {@code RecyclerView} using lines obtained from an instance of
  * {@code Markov}
  */
+@SuppressWarnings("WeakerAccess")
 public class MarkovAdapter extends RecyclerView.Adapter<MarkovAdapter.ViewHolder> {
 
     /**
@@ -149,7 +150,6 @@ public class MarkovAdapter extends RecyclerView.Adapter<MarkovAdapter.ViewHolder
                 }
             });
             textView = v.findViewById(R.id.vTextView);
-            //noinspection UnnecessaryBoxing
             markovStats = new MarkovStats();
         }
 

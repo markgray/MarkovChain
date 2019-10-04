@@ -1,9 +1,9 @@
-package com.example.android.common;
+package com.example.android.markovchain;
 
 /**
  * Shakespeare's complete sonnets using small letters and less punctuation.
  */
-@SuppressWarnings("SpellCheckingInspection")
+@SuppressWarnings({"SpellCheckingInspection", "WeakerAccess"})
 public final class ShakespeareSmall {
 
     /**
