@@ -1,6 +1,6 @@
 package com.example.android.markovchain;
 
-import android.app.DialogFragment;
+import androidx.fragment.app.DialogFragment;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+@SuppressWarnings("WeakerAccess")
 public class BibleDialog extends DialogFragment {
     /**
      * TAG used for logging
@@ -92,6 +93,7 @@ public class BibleDialog extends DialogFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //noinspection ConstantConditions
         mLabel = getArguments().getString("label");
         mText = getArguments().getString("text");
 
@@ -175,6 +177,7 @@ public class BibleDialog extends DialogFragment {
             spinChosen = spinChoices[position];
 
             if (spinIndex != lastIndex) {
+                //noinspection ConstantConditions
                 ((BibleMain) getActivity()).handleAction(view, spinIndex);
                 lastIndex = spinIndex;
             }
@@ -261,6 +264,7 @@ public class BibleDialog extends DialogFragment {
              */
             @Override
             public void onClick(View v) {
+                //noinspection ConstantConditions
                 ((BibleMain) getActivity()).handleAction(v, spinIndex);
             }
         });
@@ -276,6 +280,7 @@ public class BibleDialog extends DialogFragment {
              */
             @Override
             public void onClick(View v) {
+                //noinspection ConstantConditions
                 ((BibleMain) getActivity()).dismissDialog();
             }
         });

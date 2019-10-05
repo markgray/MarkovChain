@@ -1,6 +1,6 @@
 package com.example.android.markovchain;
 
-import android.app.DialogFragment;
+import androidx.fragment.app.DialogFragment;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
  * This {@code DialogFragment} will (eventually) save a bookmark to a particular verse with the date
  * it was bookmarked and an optional comment to an SQL database.
  */
+@SuppressWarnings("WeakerAccess")
 public class BibleBookmark extends DialogFragment {
     /**
      * TAG for logging
@@ -72,6 +73,7 @@ public class BibleBookmark extends DialogFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        //noinspection ConstantConditions
         mLabel = getArguments().getString("label");
         mText = getArguments().getString("text");
         Log.i(TAG, "onCreate called with: " + mLabel + " " + mText);

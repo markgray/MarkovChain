@@ -1,6 +1,6 @@
 package com.example.android.markovchain;
 
-import android.app.DialogFragment;
+import androidx.fragment.app.DialogFragment;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
 import android.util.Log;
@@ -17,6 +17,7 @@ import android.widget.TextView;
 /**
  * This {@code DialogFragment} allows a user to choose a specific verse of the Bible
  */
+@SuppressWarnings("WeakerAccess")
 public class BibleChoose extends DialogFragment {
     /**
      * TAG used for logging
@@ -76,6 +77,7 @@ public class BibleChoose extends DialogFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        //noinspection ConstantConditions
         mLabel = getArguments().getString("label");
         mText = getArguments().getString("text");
         Log.i(TAG, "onCreate called with: " + mLabel + " " + mText);

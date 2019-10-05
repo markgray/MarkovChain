@@ -1,6 +1,6 @@
 package com.example.android.markovchain;
 
-import android.app.DialogFragment;
+import androidx.fragment.app.DialogFragment;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
 import android.util.Log;
@@ -17,6 +17,7 @@ import java.util.Locale;
 /**
  * This {@code DialogFragment} reads the current verse using the systems text to speech synthesizer.
  */
+@SuppressWarnings("WeakerAccess")
 public class BibleSpeak extends DialogFragment implements OnInitListener {
     /**
      * TAG used for logging
@@ -157,6 +158,7 @@ public class BibleSpeak extends DialogFragment implements OnInitListener {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        //noinspection ConstantConditions
         mLabel = getArguments().getString("label");
         mText = getArguments().getString("text");
         Log.i(TAG, "onCreate called with: " + mLabel + " " + mText);

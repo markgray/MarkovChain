@@ -1,6 +1,6 @@
 package com.example.android.markovchain;
 
-import android.app.DialogFragment;
+import androidx.fragment.app.DialogFragment;
 import android.app.SearchManager;
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,6 +21,7 @@ import java.util.HashSet;
  * This {@code DialogFragment} allows you to search for words or phrases in the current verse on the
  * web using Google search.
  */
+@SuppressWarnings("WeakerAccess")
 public class BibleSearch extends DialogFragment {
     /**
      * TAG used for logging
@@ -137,6 +138,7 @@ public class BibleSearch extends DialogFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        //noinspection ConstantConditions
         mLabel = getArguments().getString("label");
         mText = getArguments().getString("text");
         //noinspection ConstantConditions

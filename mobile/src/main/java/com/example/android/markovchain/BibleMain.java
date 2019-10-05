@@ -1,15 +1,16 @@
 package com.example.android.markovchain;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.app.DialogFragment;
-import android.app.Fragment;
-import android.app.FragmentTransaction;
+import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentTransaction;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.ConditionVariable;
 import android.speech.tts.TextToSpeech;
+
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
@@ -24,7 +25,7 @@ import java.util.ArrayList;
 /**
  * This is the main activity of our Bible Text reading function.
  */
-public class BibleMain extends Activity {
+public class BibleMain extends FragmentActivity {
     /**
      * TAG for logging
      */
@@ -321,8 +322,8 @@ public class BibleMain extends Activity {
         // DialogFragment.show() will take care of adding the fragment
         // in a transaction.  We also want to remove any currently showing
         // dialog, so make our own transaction and take care of that here.
-        FragmentTransaction ft = getFragmentManager().beginTransaction();
-        Fragment prev = getFragmentManager().findFragmentByTag("dialog");
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        Fragment prev = getSupportFragmentManager().findFragmentByTag("dialog");
         if (prev != null) {
             ft.remove(prev);
         }
