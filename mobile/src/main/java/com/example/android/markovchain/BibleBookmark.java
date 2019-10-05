@@ -128,8 +128,9 @@ public class BibleBookmark extends DialogFragment {
             @Override
             public void onClick(View v) {
                 BibleBookmark.this.dismiss();
-                BibleMain.bibleDialog.mLabel = BibleMain.dialogTitle;
-                BibleMain.bibleDialog.mText = BibleMain.dialogText;
+                //noinspection ConstantConditions
+                BibleMain.Companion.getBibleDialog().mLabel = BibleMain.Companion.getDialogTitle();
+                BibleMain.Companion.getBibleDialog().mText = BibleMain.Companion.getDialogText();
             }
         });
 

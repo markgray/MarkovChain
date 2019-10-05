@@ -193,7 +193,7 @@ public class BibleAdapter extends RecyclerView.Adapter<BibleAdapter.ViewHolder> 
 
                     ((BibleMain) view.getContext()).showDialog(makeCitation(mChapterAndVerse.get(getLayoutPosition())),
                             (String) vTextView.getText());
-                    BibleMain.dialogVerse = getAdapterPosition();
+                    BibleMain.Companion.setDialogVerse(getAdapterPosition());
                     return true;
                 }
             });
@@ -243,17 +243,17 @@ public class BibleAdapter extends RecyclerView.Adapter<BibleAdapter.ViewHolder> 
      */
     public static void moveToVerse(View view, int selection) {
         // Make sure the BibleMain,init() thread has finished reading the text in
-        if (!BibleMain.doneReading) {
-            BibleMain.mDoneReading.block(5000);
+        if (!BibleMain.Companion.getDoneReading()) {
+            BibleMain.Companion.getMDoneReading().block(5000);
         }
         mLayoutManager.scrollToPositionWithOffset(selection, 0);
-        BibleMain.saveVerseNumber(selection, BibleMain.LAST_VERSE_VIEWED);
+        BibleMain.Companion.saveVerseNumber(selection, BibleMain.LAST_VERSE_VIEWED);
         final String citation = makeCitation(mChapterAndVerse.get(selection));
         Toast.makeText(view.getContext(), "Moving to " + citation, Toast.LENGTH_LONG).show();
 
-        BibleMain.dialogTitle = citation;
-        BibleMain.dialogText = mDataSet.get(selection);
-        BibleMain.dialogVerse = selection;
+        BibleMain.Companion.setDialogTitle(citation);
+        BibleMain.Companion.setDialogText(mDataSet.get(selection));
+        BibleMain.Companion.setDialogVerse(selection);
     }
 
     /**

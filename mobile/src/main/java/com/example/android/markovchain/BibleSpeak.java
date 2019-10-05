@@ -95,8 +95,9 @@ public class BibleSpeak extends DialogFragment implements OnInitListener {
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // When button is clicked, dismiss this DialogFragment
-                BibleMain.bibleDialog.mLabel = BibleMain.dialogTitle;
-                BibleMain.bibleDialog.mText = BibleMain.dialogText;
+                //noinspection ConstantConditions
+                BibleMain.Companion.getBibleDialog().mLabel = BibleMain.Companion.getDialogTitle();
+                BibleMain.Companion.getBibleDialog().mText = BibleMain.Companion.getDialogText();
                 BibleSpeak.this.dismiss();
             }
         });
@@ -105,9 +106,9 @@ public class BibleSpeak extends DialogFragment implements OnInitListener {
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // When button is clicked, move to the next verse and speak it
-                BibleAdapter.moveToVerse(v, BibleMain.dialogVerse+1);
-                mLabel = BibleMain.dialogTitle;
-                mText =  BibleMain.dialogText;
+                BibleAdapter.moveToVerse(v, BibleMain.Companion.getDialogVerse() +1);
+                mLabel = BibleMain.Companion.getDialogTitle();
+                mText = BibleMain.Companion.getDialogText();
                 setDisplayedText(mView);
                 //noinspection deprecation
                 mTts.speak(mText, TextToSpeech.QUEUE_ADD, null);
@@ -165,11 +166,11 @@ public class BibleSpeak extends DialogFragment implements OnInitListener {
 
         setStyle(DialogFragment.STYLE_NORMAL, 0);
 
-        if (BibleMain.textToSpeech == null) {
-            mTts = new TextToSpeech(BibleMain.bibleContext, this);
-            BibleMain.textToSpeech = mTts;
+        if (BibleMain.Companion.getTextToSpeech() == null) {
+            mTts = new TextToSpeech(BibleMain.Companion.getBibleContext(), this);
+            BibleMain.Companion.setTextToSpeech(mTts);
         } else {
-            mTts = BibleMain.textToSpeech;
+            mTts = BibleMain.Companion.getTextToSpeech();
             //noinspection deprecation
             mTts.speak(mText, TextToSpeech.QUEUE_ADD, null);
         }

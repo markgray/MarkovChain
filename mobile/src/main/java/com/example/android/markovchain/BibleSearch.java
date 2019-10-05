@@ -143,7 +143,7 @@ public class BibleSearch extends DialogFragment {
         mText = getArguments().getString("text");
         //noinspection ConstantConditions
         mSuggestions = uniq(noPunct(mText).split(" "));
-        mAdapter = new ArrayAdapter<>(BibleMain.bibleContext,
+        mAdapter = new ArrayAdapter<>(BibleMain.Companion.getBibleContext(),
                 android.R.layout.simple_dropdown_item_1line, mSuggestions);
 
         Log.i(TAG, "onCreate called with: " + mLabel + " " + mText);
@@ -211,8 +211,9 @@ public class BibleSearch extends DialogFragment {
                 intent.putExtra(SearchManager.QUERY, query); // query contains search string
                 startActivity(intent);
 
-                BibleMain.bibleDialog.mLabel = BibleMain.dialogTitle;
-                BibleMain.bibleDialog.mText = BibleMain.dialogText;
+                //noinspection ConstantConditions
+                BibleMain.Companion.getBibleDialog().mLabel = BibleMain.Companion.getDialogTitle();
+                BibleMain.Companion.getBibleDialog().mText = BibleMain.Companion.getDialogText();
                 BibleSearch.this.dismiss();
             }
         });

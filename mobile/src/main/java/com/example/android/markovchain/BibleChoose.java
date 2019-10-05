@@ -153,7 +153,7 @@ public class BibleChoose extends DialogFragment {
         spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spin.setAdapter(spinnerArrayAdapter);
         spin.setOnItemSelectedListener(spinSelected);
-        spin.setSelection(BibleMain.indexFromCitation(mLabel));
+        spin.setSelection(BibleMain.Companion.indexFromCitation(mLabel));
 
         final EditText cavEditText = v.findViewById(R.id.chapter_and_verse);
 
@@ -197,11 +197,12 @@ public class BibleChoose extends DialogFragment {
                         : BibleAdapter.numbers[bookNum] + ":" + mChapterAndVerse + ":1";
                 final String citationFallback = BibleAdapter.numbers[bookNum] + ":1:1";
                 Log.i(TAG, citationChosen + " or " + citationFallback);
-                int verseNumber = BibleMain.findFromCitation(citationChosen, citationFallback);
+                int verseNumber = BibleMain.Companion.findFromCitation(citationChosen, citationFallback);
                 BibleAdapter.moveToVerse(v, verseNumber);
                 BibleChoose.this.dismiss();
-                BibleMain.bibleDialog.mLabel = BibleMain.dialogTitle;
-                BibleMain.bibleDialog.mText = BibleMain.dialogText;
+                //noinspection ConstantConditions
+                BibleMain.Companion.getBibleDialog().mLabel = BibleMain.Companion.getDialogTitle();
+                BibleMain.Companion.getBibleDialog().mText = BibleMain.Companion.getDialogText();
             }
         });
 
