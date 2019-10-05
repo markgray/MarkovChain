@@ -149,7 +149,7 @@ public class BibleChoose extends DialogFragment {
         ArrayAdapter<String> spinnerArrayAdapter =
                 new ArrayAdapter<>(v.getContext(),
                         android.R.layout.simple_spinner_item,
-                        BibleAdapter.books);
+                        BibleAdapter.Companion.getBooks());
         spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spin.setAdapter(spinnerArrayAdapter);
         spin.setOnItemSelectedListener(spinSelected);
@@ -193,12 +193,12 @@ public class BibleChoose extends DialogFragment {
                 Log.i(TAG, mBook + " " + mChapterAndVerse);
                 int bookNum = spin.getSelectedItemPosition();
                 final String citationChosen = mChapterAndVerse.contains(":") ?
-                        BibleAdapter.numbers[bookNum] + ":" + mChapterAndVerse
-                        : BibleAdapter.numbers[bookNum] + ":" + mChapterAndVerse + ":1";
-                final String citationFallback = BibleAdapter.numbers[bookNum] + ":1:1";
+                        BibleAdapter.Companion.getNumbers()[bookNum] + ":" + mChapterAndVerse
+                        : BibleAdapter.Companion.getNumbers()[bookNum] + ":" + mChapterAndVerse + ":1";
+                final String citationFallback = BibleAdapter.Companion.getNumbers()[bookNum] + ":1:1";
                 Log.i(TAG, citationChosen + " or " + citationFallback);
                 int verseNumber = BibleMain.Companion.findFromCitation(citationChosen, citationFallback);
-                BibleAdapter.moveToVerse(v, verseNumber);
+                BibleAdapter.Companion.moveToVerse(v, verseNumber);
                 BibleChoose.this.dismiss();
                 //noinspection ConstantConditions
                 BibleMain.Companion.getBibleDialog().mLabel = BibleMain.Companion.getDialogTitle();
@@ -239,7 +239,7 @@ public class BibleChoose extends DialogFragment {
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
             bookNumber = position;
-            bookName = BibleAdapter.books[position];
+            bookName = BibleAdapter.Companion.getBooks()[position];
         }
 
         /**

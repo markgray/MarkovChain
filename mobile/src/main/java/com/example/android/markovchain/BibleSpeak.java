@@ -106,7 +106,7 @@ public class BibleSpeak extends DialogFragment implements OnInitListener {
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // When button is clicked, move to the next verse and speak it
-                BibleAdapter.moveToVerse(v, BibleMain.Companion.getDialogVerse() +1);
+                BibleAdapter.Companion.moveToVerse(v, BibleMain.Companion.getDialogVerse() +1);
                 mLabel = BibleMain.Companion.getDialogTitle();
                 mText = BibleMain.Companion.getDialogText();
                 setDisplayedText(mView);
