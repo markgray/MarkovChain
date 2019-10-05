@@ -74,19 +74,14 @@ class BibleAdapter
      * of our parameter `View v` to an anonymous class whose `onClick` override toasts
      * the canonical Bible citation for the verse that the view will hold, and sets its
      * `onLongClickListener` to an anonymous class which will launch a `BibleDialog DialogFragment`
-     * for the verse. Finally we find the `TextView` with id R.id.vTextView in `v` that
-     * is to be used for displaying the verse and squirrel it away in our `TextView vTextView`
-     * field for later use.
+     * for the verse.
      *
      * @param v View that this is the ViewHolder for
      */
     (v: View) : RecyclerView.ViewHolder(v) {
 
         /**
-         * `TextView` in our layout to use for the verse we display
-         */
-        /**
-         * Getter for the value contained in the `TextView vTextView` field.
+         * `TextView` in our layout to use for the verse we display.
          *
          * @return the current contents of the `TextView vTextView` field
          */
@@ -102,7 +97,11 @@ class BibleAdapter
                  * @param view View that was clicked
                  */
                 Log.d(TAG, "Element $layoutPosition clicked.")
-                Toast.makeText(view.context, makeCitation(mChapterAndVerse[layoutPosition]), Toast.LENGTH_LONG).show()
+                Toast.makeText(
+                        view.context,
+                        makeCitation(mChapterAndVerse[layoutPosition]),
+                        Toast.LENGTH_LONG
+                ).show()
             }
             // Define long click listener for the ViewHolder's View.
             v.setOnLongClickListener { view ->
@@ -122,13 +121,12 @@ class BibleAdapter
             }
         }
 
-
     }
 
     /**
      * Create new views (invoked by the layout manager). We create a new `View v` by using the
      * `LayoutInflater` for the `Context` of our parameter `ViewGroup viewGroup` to
-     * inflate tje layout file for our items: R.layout.line_list_item, and return a `ViewHolder`
+     * inflate the layout file for our items: R.layout.line_list_item, and return a `ViewHolder`
      * constructed using this `v`.
      *
      * @param viewGroup The `ViewGroup` into which the new `View` will be added after it
@@ -145,10 +143,9 @@ class BibleAdapter
     }
 
     /**
-     * Called by RecyclerView to display the data at the specified position. This method should update
-     * the contents of the `View` held in the `ViewHolder viewHolder` parameter to reflect
-     * the item at the given position `int position`.
-     *
+     * Called by RecyclerView to display the data at the specified position. This method should
+     * update the contents of the `View` held in the `ViewHolder viewHolder` parameter to reflect
+     * the item at the given position `Int position`.
      *
      * We simply set the text in the `TextView` returned by the `getTextView` method of our
      * parameter `ViewHolder viewHolder` to the text of the verse pointed to by our parameter
@@ -211,20 +208,33 @@ class BibleAdapter
         /**
          * Array of book numbers
          */
-        val numbers = arrayOf("01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64", "65", "66")
+        val numbers = arrayOf("01", "02", "03", "04", "05", "06", "07", "08", "09", "10",
+                "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24",
+                "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38",
+                "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52",
+                "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64", "65", "66")
         /**
          * Array of book names
          */
-        val books = arrayOf("Genesis", "Exodus", "Leviticus", "Numbers", "Deuteronomy", "Joshua", "Judges", "Ruth", "1 Samuel", "2 Samuel", "1 Kings", "2 Kings", "1 Chronicles", "2 Chronicles", "Ezra", "Nehemiah", "Esther", "Job", "Psalms", "Proverbs", "Ecclesiastes", "Song of Solomon", "Isaiah", "Jeremiah", "Lamentations", "Ezekiel", "Daniel", "Hosea", "Joel", "Amos", "Obadiah", "Jonah", "Micah", "Nahum", "Habakkuk", "Zephaniah", "Haggai", "Zechariah", "Malachi", "Matthew", "Mark", "Luke", "John", "Acts", "Romans", "1 Corinthians", "2 Corinthians", "Galatians", "Ephesians", "Philippians", "Colossians", "1 Thessalonians", "2 Thessalonians", "1 Timothy", "2 Timothy", "Titus", "Philemon", "Hebrews", "James", "1 Peter", "2 Peter", "1 John", "2 John", "3 John", "Jude", "Revelation")
+        val books = arrayOf("Genesis", "Exodus", "Leviticus", "Numbers", "Deuteronomy",
+                "Joshua", "Judges", "Ruth", "1 Samuel", "2 Samuel", "1 Kings", "2 Kings",
+                "1 Chronicles", "2 Chronicles", "Ezra", "Nehemiah", "Esther", "Job", "Psalms",
+                "Proverbs", "Ecclesiastes", "Song of Solomon", "Isaiah", "Jeremiah", "Lamentations",
+                "Ezekiel", "Daniel", "Hosea", "Joel", "Amos", "Obadiah", "Jonah", "Micah", "Nahum",
+                "Habakkuk", "Zephaniah", "Haggai", "Zechariah", "Malachi", "Matthew", "Mark", "Luke",
+                "John", "Acts", "Romans", "1 Corinthians", "2 Corinthians", "Galatians", "Ephesians",
+                "Philippians", "Colossians", "1 Thessalonians", "2 Thessalonians", "1 Timothy",
+                "2 Timothy", "Titus", "Philemon", "Hebrews", "James", "1 Peter", "2 Peter", "1 John",
+                "2 John", "3 John", "Jude", "Revelation")
 
         /**
          * Creates a Canonical Bible citation: "BookName:##:###:###" from the `String numChatVerse`
-         * passed it. It keeps the book number in the citation since it might be of use to know the relative
-         * position in the Bible. We grab the first two characters of our parameter `String numChatVerse`
-         * (the book number "01" to "66") and use it to index into `HashMap<String, String> numberToBook`
-         * to retrieve the book name corresponding to that number, and then we return that book name
-         * concatenated to the front of our argument `String numChatVerse` with a ":" to separate
-         * the two.
+         * passed it. It keeps the book number in the citation since it might be of use to know the
+         * relative position in the Bible. We grab the first two characters of our parameter
+         * `String numChatVerse` (the book number "01" to "66") and use it to index into
+         * `HashMap<String, String> numberToBook` to retrieve the book name corresponding to that
+         * number, and then we return that book name concatenated to the front of our argument
+         * `String numChatVerse` with a ":" to separate the two.
          *
          * @param numChatVerse ##:###:### index string for verse as read from text
          * @return BookName:##:###:###
@@ -246,8 +256,8 @@ class BibleAdapter
         }
 
         /**
-         * Move to a specific verse in the Bible. First we check to make sure that the background thread
-         * reading in the Bible has finished the task (the `doneReading` field of `BibleMain`
+         * Move to a specific verse in the Bible. First we check to make sure that the background
+         * thread reading in the Bible has finished the task (the `doneReading` field of `BibleMain`
          * is true), and if not we block the current thread until the `ConditionVariable mDoneReading`
          * of `BibleMain` is opened or until 5000 milliseconds have passed. When we are sure that
          * our dataset has been read in we instruct the `LinearLayoutManager mLayoutManager` that
@@ -257,10 +267,10 @@ class BibleAdapter
          * canonical Bible citation out of the `mChapterAndVerse` entry for the verse we moved to,
          * Toast this citation, save the citation in the `dialogTitle` field of `BibleMain`,
          * retrieve the verse text from `mDataSet` and save it in the `dialogText` field of
-         * `BibleMain`, and save the verse number (`selection`) in the `dialogVerse`
-         * field of `BibleMain`.
+         * `BibleMain`, and save the verse number (`selection`) in the `dialogVerse` field of
+         * `BibleMain`.
          *
-         * @param view      Just used to call the `getContext()` to get a `Context` for a Toast
+         * @param view      Just used to call the `getContext()` method to get a `Context` for a Toast
          * @param selection Verse number 0 to `mDataSet.size()-1`.
          */
         fun moveToVerse(view: View, selection: Int) {
