@@ -40,24 +40,24 @@ class BibleMain : FragmentActivity() {
 
     /**
      * Called when the activity is starting. First we call our super's implementation of `onCreate`.
-     * We set the field `mDoneReading` to false so that our UI thread knows to wait until our
-     * text file is read into memory before trying to access the data. We reset the ConditionVariable
-     * `mDoneReading` to the closed state so that any threads that call `block()` will
-     * block until someone calls `open()`. We next set the field `Context bibleContext`
-     * to the context of the single, global Application object of the current process. This is because
-     * we will later need a `Context` whose lifecycle is separate from the current context, that
-     * is tied to the lifetime of the process rather than the current component (I forget why we need
-     * this though??). We next call our method `initDataSet` which will spawn a background thread
-     * to read in the data file we will be using (R.raw.king_james_text_and_verse) and create the data
-     * structures needed by our activity. Then we set our content View to our layout file
-     * (R.layout.activity_bible_fragment), locate the `RecyclerView` in the layout with the id
-     * R.id.bible_recyclerview and save a reference to it in our field `RecyclerView mRecyclerView`.
-     * We initialize our field `BibleAdapter mAdapter` to a new instance using the List containing
-     * the text (`ArrayList<String> stringList`), the List containing chapter and verse annotation
-     * for each paragraph (`ArrayList<String> bookChapterVerse`), and using the layout manager
-     * `RecyclerView.LayoutManager mLayoutManager` (an instance of `LinearLayoutManager`
-     * created above). We now set the adapter of `mRecyclerView` to `mAdapter`, and the
-     * layout manager to be used to `mLayoutManager`.
+     * We set the field [mDoneReading] to false so that our UI thread knows to wait until our text
+     * file is read into memory before trying to access the data. We reset our [ConditionVariable]
+     * field [mDoneReading] to the closed state so that any threads that call its `block()` method
+     * will block until someone calls its `open()` method. We next set our field [Context] field
+     * [bibleContext] to the context of the single, global Application object of the current process.
+     * This is because we will later need a [Context] whose lifecycle is separate from the current
+     * context, that is tied to the lifetime of the process rather than the current component (I
+     * forget why we need this though?). We next call our method [initDataSet] which will spawn a
+     * background thread to read in the data file we will be using (R.raw.king_james_text_and_verse)
+     * and create the data structures needed by our activity. Then we set our content View to our
+     * layout file R.layout.activity_bible_fragment, locate the [RecyclerView] in the layout with
+     * the id R.id.bible_recyclerview and save a reference to it in our [RecyclerView] field
+     * [mRecyclerView]. We initialize our [BibleAdapter] field [mAdapter] to a new instance using
+     * the List containing the text (`ArrayList<String> stringList`), the List containing chapter
+     * and verse annotation for each paragraph (`ArrayList<String> bookChapterVerse`), and using the
+     * layout manager `RecyclerView.LayoutManager mLayoutManager` (an instance of `LinearLayoutManager`
+     * created above). We now set the adapter of [mRecyclerView] to [mAdapter], and the layout manager
+     * to be used to [mLayoutManager].
      *
      * @param savedInstanceState always null since onSaveInstanceState is not overridden
      */
@@ -78,16 +78,16 @@ class BibleMain : FragmentActivity() {
 
     /**
      * Called as part of the activity lifecycle when an activity is going into the background, but
-     * has not (yet) been killed. We initialize our variable `int lastFirstVisiblePosition` to
-     * the verse number of the first completely visible verse by calling the `findFirstCompletelyVisibleItemPosition`
-     * method of the `LayoutManager` of `mRecyclerView` then call our method `saveVerseNumber`
-     * to save the verse number to our shared preference file under the index LAST_VERSE_VIEWED. Finally
-     * we call our super's implementation of `onPause`.
+     * has not (yet) been killed. We initialize our [Int] `val lastFirstVisiblePosition` to the verse
+     * number of the first completely visible verse by calling the `findFirstCompletelyVisibleItemPosition`
+     * method of the `LayoutManager` of [mRecyclerView] then call our method [saveVerseNumber] to save
+     * the verse number to our shared preference file under the index LAST_VERSE_VIEWED. Finally we
+     * call our super's implementation of `onPause`.
      */
     override fun onPause() {
 
-        val lastFirstVisiblePosition = (mRecyclerView
-                .layoutManager as LinearLayoutManager).findFirstCompletelyVisibleItemPosition()
+        val lastFirstVisiblePosition = (mRecyclerView.layoutManager as LinearLayoutManager)
+                .findFirstCompletelyVisibleItemPosition()
         saveVerseNumber(lastFirstVisiblePosition, LAST_VERSE_VIEWED)
         super.onPause()
     }
@@ -96,9 +96,8 @@ class BibleMain : FragmentActivity() {
      * Called after `onRestoreInstanceState`, `onRestart`, or `onPause`, for our
      * activity to start interacting with the user.
      *
-     *
-     * Our first action is to initialize our variable `int lastFirstVisiblePosition` to the
-     * number of the last verse viewed from our shared preference file by calling `restoreVerseNumber`,
+     * Our first action is to initialize our [Int] `val lastFirstVisiblePosition` to the number of
+     * the last verse viewed from our shared preference file by calling our method [restoreVerseNumber],
      * then we use this number to move our `BibleAdapter` to this verse. Finally we call our
      * super's implementation of `onResume`.
      */
@@ -109,9 +108,9 @@ class BibleMain : FragmentActivity() {
     }
 
     /**
-     * Perform any final cleanup before our activity is destroyed. If `textToSpeech` is not null
-     * we have been using text to speech in `BibleSpeak` so we interrupt the current utterance
-     * other utterances in the queue by calling the `stop()` method of `textToSpeech`,
+     * Perform any final cleanup before our activity is destroyed. If our [textToSpeech] field is not
+     * null we have been using text to speech in `BibleSpeak` so we interrupt the current utterance
+     * and discard other utterances in the queue by calling the `stop()` method of `textToSpeech`,
      * release the resources used by the `TextToSpeech` engine by calling its `shutdown()`
      * method and then set textToSpeech to null (unnecessary since we are in `onDestroy`, but
      * better safe than sorry!). Finally we call our super's implementation of of `onDestroy()`.
@@ -174,7 +173,7 @@ class BibleMain : FragmentActivity() {
      * (the tag used for all the `DialogFragment`'s we display), and if one is found (`prev`
      * is not equal to null) we use `ft` to remove it. We add `ft` to the BackStack so
      * that the back Button will remember this transaction once we commit the transaction, then we
-     * call the `show` method of our parameter {`dialogFragment`} to display the dialog,
+     * call the `show` method of our parameter [dialogFragment] to display the dialog,
      * adding the fragment using `ft`, with the tag "dialog" and then committing that
      * `FragmentTransaction`.
      *
@@ -201,7 +200,7 @@ class BibleMain : FragmentActivity() {
      * This is called only from the `OnClickListener` for the "DISMISS" Button in `BibleDialog`,
      * and exists due to errors encountered calling `DialogFragment.dismiss()` directly from that
      * callback. We simply use our reference to it in `BibleDialog bibleDialog` to call its
-     * `dismiss()` method, then set our field `BibleDialog bibleDialog` in hopes it will
+     * `dismiss()` method, then set our field `BibleDialog bibleDialog` to *null* in hopes it will
      * be garbage collected. TODO: Create only one BibleDialog ever!
      */
     fun dismissDialog() {
@@ -215,41 +214,21 @@ class BibleMain : FragmentActivity() {
      * for the `Spinner`, and in the `onClick` callback for the "REPEAT" Button. We switch
      * based on the parameter `spinIndex` which is the position of the Spinner view which was
      * selected:
-     *
-     *  *
-     * CHOICE_NONE: Do nothing, and break.
-     *
-     *  *
-     * CHOICE_RANDOM_VERSE: Instruct the BibleAdapter to move to a random verse by calling
+     *  - CHOICE_NONE: Do nothing, and break.
+     *  - CHOICE_RANDOM_VERSE: Instruct the BibleAdapter to move to a random verse by calling
      * its `moveToRandom` method (the `View v` is passed so that it can toast the
      * verse moved to), then instruct the `BibleDialog bibleDialog` to refresh its
      * display of the citation and verse that was chosen, then break.
-     *
-     *  *
-     * CHOICE_GOOGLE: Launch a new instance of the `BibleSearch` `DialogFragment`
-     * using the current `dialogTitle` (citation) and `dialogText` (verse), then
-     * break.
-     *
-     *  *
-     * CHOICE_BOOKMARK: Launch a new instance of the `BibleBookmark` `DialogFragment`
-     * using the current `dialogTitle` (citation) and `dialogText` (verse), then
-     * break.
-     *
-     *  *
-     * CHOICE_GO_TO_VERSE: Launch a new instance of the `BibleChoose` `DialogFragment`
-     * using the current `dialogTitle` (citation) and `dialogText` (verse), then
-     * break.
-     *
-     *  *
-     * CHOICE_READ_ALOUD: Launch a new instance of the `BibleSpeak` `DialogFragment`
-     * using the current `dialogTitle` (citation) and `dialogText` (verse), then
-     * break.
-     *
-     *  *
-     * default: If it is none of the above, then just break, although this could only happen
+     *  - CHOICE_GOOGLE: Launch a new instance of the `BibleSearch` `DialogFragment`
+     * using the current `dialogTitle` (citation) and `dialogText` (verse), then break.
+     *  - CHOICE_BOOKMARK: Launch a new instance of the `BibleBookmark` `DialogFragment`
+     * using the current `dialogTitle` (citation) and `dialogText` (verse), then break.
+     *  - CHOICE_GO_TO_VERSE: Launch a new instance of the `BibleChoose` `DialogFragment`
+     * using the current `dialogTitle` (citation) and `dialogText` (verse), then break.
+     *  - CHOICE_READ_ALOUD: Launch a new instance of the `BibleSpeak` `DialogFragment`
+     * using the current `dialogTitle` (citation) and `dialogText` (verse), then break.
+     *  - default: If it is none of the above, then just break, although this could only happen
      * as the result of a programming error so we should probably throw an exception.
-     *
-     *
      *
      * @param v Just a view passed to give context for creating a Toast when called for
      * @param spinIndex Spinner index chosen
@@ -268,7 +247,7 @@ class BibleMain : FragmentActivity() {
             BibleDialog.CHOICE_READ_ALOUD -> showDialog(BibleSpeak.newInstance(dialogTitle, dialogText))
             else -> {
             }
-        }// TODO: add a set of strings to shared preferences or sql file
+        }
     }
 
     /**
@@ -276,12 +255,12 @@ class BibleMain : FragmentActivity() {
      * `ArrayList<String> bookChapterVerse`), and verse text (the list `ArrayList<String> stringList`).
      * First we open `InputStream inputStream` to read our copy of the Bible (R.raw.king_james_text_and_verse)
      * from our raw resource directory. Then we create `BufferedReader reader` from an instance of
-     * `InputStreamReader` created from `inputStream` (`InputStreamReader` does the
-     * character conversion needed to convert the byte stream coming from the `inputStream` to
-     * characters, and `BufferedReader` allows us to use `readLine` on the characters coming
-     * from the `InputStreamReader`). Then we set the `doneReading` flag to false so that
-     * other code does not try to access our data until it is ready to be used. Then we create the
-     * `Thread mThread` to read in the data from `reader` and start that thread running.
+     * `InputStreamReader` created from `inputStream` (`InputStreamReader` does the character conversion
+     * needed to convert the byte stream coming from the `inputStream` to characters, and `BufferedReader`
+     * allows us to use `readLine` on the characters coming from the `InputStreamReader`). Then we set
+     * the `doneReading` flag to false so that other code does not try to access our data until it is
+     * ready to be used. Then we create the `Thread mThread` to read in the data from `reader` and
+     * start that thread running.
      */
     private fun initDataSet() {
         val inputStream = applicationContext.resources.openRawResource(R.raw.king_james_text_and_verse)
@@ -289,14 +268,14 @@ class BibleMain : FragmentActivity() {
         doneReading = false
 
         /*
-         * This is the thread that will do our work. First it calls <b>close()</b> on the
+         * This is the thread that will do our work. First it calls *close()* on the
          * ConditionVariable mDoneReading so that other Thread's may block on mDoneReading until
-         * we call <b>open()</b>. Then it proceeds to read and process every line in reader
+         * we call *open()*. Then it proceeds to read and process every line in reader
          * until readLine() returns null (EOF). The processing consists of separating the text
          * into the citation for each verse (first line of a paragraph) which it adds to the field
          * ArrayList<String> bookChapterVerse, and the lines of the text of the verse (all the
          * lines until an empty line is encountered) which it appends to the StringBuilder builder.
-         * When the empty line terminating the verse is found (<b>line.length() == 0</b>), it
+         * When the empty line terminating the verse is found (line.isEmpty() returns *true*, it
          * converts StringBuilder build to a String and adds it to ArrayList<String> stringList,
          * then it sets the length of StringBuilder builder to 0 and breaks from the verse building
          * loop in order to start reading in the next citation and verse. Once it is done reading
@@ -315,25 +294,19 @@ class BibleMain : FragmentActivity() {
             var builder = StringBuilder()
 
             /**
-             * Called when the `Thread`'s `start()` method is called. First we call the
-             * `close()` method of our field `ConditionVariable mDoneReading` so that other
-             * `Thread`'s may block on `mDoneReading` until we call its `open()` method.
-             * Then wrapped in a try block intended to catch and log IOException we read each `line`
-             * from `reader` until EOF is indicated by a null return. The structure of the file
+             * Called when the `Thread`'s `start()` method is called. First we call the `close()`
+             * method of our field `ConditionVariable mDoneReading` so that other `Thread`'s may
+             * block on `mDoneReading` until we call its `open()` method. Then wrapped in a try block
+             * intended to catch and log IOException we call our [lineFiller] method to read each
+             * `line` from `reader` until EOF is indicated by a null return. The structure of the file
              * is such that the first line is the citation followed by the lines of the verse, terminated
              * by an empty line, so in an outer loop we add the citation `line` to our list of
              * citations `ArrayList<String> bookChapterVerse`, then in an inner loop we append the
-             * `line` to `builder` then branch on whether the length of `line` was
-             * 0 or not:
-             *
-             *  *
-             * The length of `line` is 0: we add the string value of `builder` to our
-             * list of verses `ArrayList<String> stringList`, set the length of `builder`
-             * to 0, and  break out of the inner loop to work on the next citation and its verse.
-             *
-             *  *
-             * The length of `line` is NOT 0: We append a space character to `builder`
-             *
+             * `line` to `builder` then branch on whether the `line` was empty or not:
+             *  - If the `line` is empty: we add the string value of `builder` to our list of verses
+             *  `ArrayList<String> stringList`, set the length of `builder` to 0, and  break out of
+             *  the inner loop to work on the next citation and its verse.
+             *  - If the `line` is **not** empty:: We append a space character to `builder`
              *
              * When we have reached the EOF we log the number of verses read, close `reader` and
              * exit the try block. Having read in the file we open `ConditionVariable mDoneReading`
@@ -365,6 +338,16 @@ class BibleMain : FragmentActivity() {
                 doneReading = true
             }
 
+            /**
+             * Convenience function to replace the java idiom:
+             *
+             * "while((line = reader.readLine()) != null)
+             *
+             * Reads the next line from [reader] into [line] and returns *true* if [line] is not
+             * equal to *null*.
+             *
+             * @return *true* if the [line] read is not *null* or *false* if it is (EOF occurred)
+             */
             fun lineFiller() : Boolean {
                 line = reader.readLine()
                 return line != null
@@ -402,7 +385,7 @@ class BibleMain : FragmentActivity() {
         /**
          * List of citations corresponding to each `stringList` verse
          */
-        internal var bookChapterVerse = ArrayList<String>()
+        var bookChapterVerse = ArrayList<String>()
         /**
          * Contains reference to the `BibleDialog` launched by long clicking a verse
          */
@@ -426,13 +409,13 @@ class BibleMain : FragmentActivity() {
         var textToSpeech: TextToSpeech? = null
 
         /**
-         * Saves the currently viewed verse (or any other int) to shared preferences file under the
-         * key "key". First we initialize our variable `SharedPreferences pref` to a reference to
-         * the preferences file for the class `CLASS` (`BibleMain`'s class). We create an
-         * `SharedPreferences.Editor editor` from `pref`, use this `Editor` to save as
-         * an int value our parameter verse using the key `key`, and finally commit our changes from
-         * our `Editor` to `pref`. (Only memory copy is written to, an asynchronous `commit`
-         * is started to write to disk.)
+         * Saves the currently viewed verse number (or any other int) to shared preferences file
+         * under the key "key". First we initialize our variable `SharedPreferences pref` to a
+         * reference to the preferences file for the class `CLASS` (`BibleMain`'s class). We create
+         * an `SharedPreferences.Editor editor` from `pref`, use this `Editor` to save as an int
+         * value our parameter verse using the key `key`, and finally commit our changes from our
+         * `Editor` to `pref`. (Only memory copy is written to, an asynchronous `commit` is started
+         * to write to disk.)
          *
          * @param verse verse number or other int
          * @param key   key to store it under (presently only "LAST_VERSE_VIEWED")
@@ -447,15 +430,15 @@ class BibleMain : FragmentActivity() {
         /**
          * Finds the verse index number of a given standard Bible citation `String citation`, or of
          * the fallback citation `String fallback` in case there are no exact matches for the given
-         * citation. We start by initializing our variable `int fallBackIndex` to 0 so that if neither
-         * `citation` nor `fallback` is found by exact match we will return 0 (very beginning
-         * of Bible). Then we loop over `int i` through the entire list of citations in our list
+         * citation. We start by initializing our [Int] variable ``fallBackIndex` to 0 so that if
+         * neither [citation] nor [fallback] is found by exact match we will return 0 (very beginning
+         * of Bible). Then we loop over `i` through the entire list of citations in our list
          * `ArrayList<String> bookChapterVerse` checking whether the `String candidateVerse`
-         * in position `i` of `bookChapterVerse` is equal to `citation` (in which case
-         * we immediately return the index `i` for the verse in question) or whether `candidateVerse`
-         * is equal to `fallback` (in which case we set `fallBackIndex` to the index `i`).
-         * Finally if an exact match for `citation` has not been found in our `bookChapterVerse`
-         * list we return `fallBackIndex` to the caller.
+         * in position `i` of [bookChapterVerse] is equal to [citation] (in which case we immediately
+         * return the index `i` for the verse in question) or whether `candidateVerse` is equal to
+         * `fallback` (in which case we set `fallBackIndex` to the index `i`). Finally if an exact
+         * match for `citation` has not been found in our [bookChapterVerse] list we return
+         * `fallBackIndex` to the caller.
          *
          * @param citation Bible citation we are looking for
          * @param fallback a fallback citation to use if that citation is not found
@@ -478,12 +461,11 @@ class BibleMain : FragmentActivity() {
         /**
          * Returns the book number index for a citation `String citation` which uses the name instead
          * of the number. First we strip off the book name from the citation into `String bookLook`
-         * (all characters up to the first ":"), and initialize our variable `int indexOf` to 0.
-         * Then we "foreach loop" through all the book names `String book` in the array
-         * `String[] BibleAdapter.books` incrementing `indexOf` every time the `book`
-         * from `books` fails to match our target `bookLook`, and if they do match we
-         * immediately return `indexOf` as our result. If none of the books in `books` match
-         * we return 0.
+         * (all characters up to the first ":"). We then loop for all of the pairs of [Int] `indexOf`
+         * indices and [String] `book` elements produced by the `withIndex()` method of the `books`
+         * array of book names of the [BibleAdapter] class until we find a `book` that matches our
+         * `bookLook` name upon which we return the `indexOf` corresponding to the `book` to the
+         * caller. If none of the books in `books` match we return 0.
          *
          * @param citation Standard Bible citation
          * @return Index of the book name
