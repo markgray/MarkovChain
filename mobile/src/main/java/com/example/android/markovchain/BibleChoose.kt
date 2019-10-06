@@ -14,7 +14,7 @@ import android.widget.Spinner
 import android.widget.TextView
 
 /**
- * This `DialogFragment` allows a user to choose a specific verse of the Bible
+ * This [DialogFragment] allows a user to choose a specific verse of the Bible
  */
 @Suppress("MemberVisibilityCanBePrivate")
 class BibleChoose : DialogFragment() {
@@ -31,12 +31,12 @@ class BibleChoose : DialogFragment() {
      */
     lateinit var mBook: String
     /**
-     * Chapter and verse read from the `EditText` used for that purpose
+     * Chapter and verse read from the [EditText] used for that purpose
      */
     lateinit var mChapterAndVerse: String
 
     /**
-     * Book number selected in the `Spinner`
+     * Book number of the book selected in the `Spinner`
      */
     var bookNumber = 0
     /**
@@ -54,9 +54,8 @@ class BibleChoose : DialogFragment() {
          * Implementers can call `getItemAtPosition(position)` if they need to access
          * the data associated with the selected item.
          *
-         *
-         * We simply squirrel away the `int position` passed us in the field `bookNumber`
-         * and the book name corresponding to that book number in the field `bookName`
+         * We simply squirrel away the `int position` passed us in the field [bookNumber]
+         * and the book name corresponding to that book number in the field [bookName]
          *
          * @param parent   The AdapterView where the selection happened
          * @param view     The view within the AdapterView that was clicked
@@ -71,10 +70,7 @@ class BibleChoose : DialogFragment() {
         /**
          * Callback method to be invoked when the selection disappears from this view.
          * The selection can disappear for instance when touch is activated or when
-         * the adapter becomes empty.
-         *
-         *
-         * We do nothing.
+         * the adapter becomes empty. We do nothing.
          *
          * @param parent The AdapterView that now contains no selected item.
          */
@@ -82,18 +78,16 @@ class BibleChoose : DialogFragment() {
     }
 
     /**
-     * Called to do initial creation of this `BibleChoose` `DialogFragment` instance.
-     * First we call our super's implementation of `onCreate`. We initialize our field
-     * `String mLabel` to the string stored in our argument `Bundle` under the key
-     * "label", and initialize our field `String mText` to the string stored in our argument
-     * `Bundle` under the key "text". We log the fact that we were called and finally set our
-     * style to STYLE_NORMAL with a default theme.
+     * Called to do initial creation of this [BibleChoose] instance. First we call our super's
+     * implementation of `onCreate`. We initialize our [String] field [mLabel] to the string
+     * stored in our argument [Bundle] under the key "label", and initialize our [String] field
+     * [mText] to the string stored in our argument [Bundle] under the key "text". We log the
+     * fact that we were called and finally set our style to STYLE_NORMAL with a default theme.
      *
      * @param savedInstanceState we do not override `onSaveInstanceState` so do not use
      */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
 
         mLabel = arguments!!.getString("label")
         mText = arguments!!.getString("text")
@@ -103,45 +97,44 @@ class BibleChoose : DialogFragment() {
     }
 
     /**
-     * Called to have the fragment instantiate its user interface view. We initialize our variable
-     * `View v` by using our parameter `LayoutInflater inflater` to inflate our layout
-     * field R.layout.bible_choose using our parameter `ViewGroup container` for the layout
-     * params without attaching to it. We initialize our variable `TextView tv` by finding the
-     * view in `v` with the id R.id.label and set its text to our field `String mLabel`
-     * (canonical Bible citation for our current verse). We then set `tv` to the view in `v`
-     * found with the id R.id.text and set its text to our field `String mText` (text for our
-     * current verse). We initialize our variable `Spinner spin` by finding the view in `v`
-     * with id R.id.spinner. We initialize our variable `ArrayAdapter<String> spinnerArrayAdapter`
-     * with a new instance which uses the `Context` of `v` as its context, the system
-     * layout file android.R.layout.simple_spinner_item for its item layout file, and the `books`
-     * field of `BibleMain` as its object dataset. We set the layout resource to create the drop
-     * down views of `spinnerArrayAdapter` to the file android.R.layout.simple_spinner_dropdown_item.
+     * Called to have the fragment instantiate its user interface view. We initialize our [View]
+     * `val v` by using our [LayoutInflater] parameter [inflater] to inflate our layout file
+     * R.layout.bible_choose using our [ViewGroup] parameter [container] for the layout params
+     * without attaching to it. We initialize our [TextView] `var tv` by finding the view in `v`
+     * with the id R.id.label and set its text to our [String] field [mLabel] (canonical Bible
+     * citation for our current verse). We then set `tv` to the view in `v` found with the id
+     * R.id.text and set its text to our [String] field [mText] (text for our current verse). We
+     * initialize our [Spinner] `val spin` by finding the view in `v` with id R.id.spinner. We
+     * initialize our `ArrayAdapter<String>` variable `val spinnerArrayAdapter` with a new instance
+     * which uses the `Context` of `v` as its context, the system spinner item layout file
+     * android.R.layout.simple_spinner_item for its item layout file, and the `books` field of
+     * `BibleMain` as its object dataset. We set the layout resource to create the drop down views
+     * of `spinnerArrayAdapter` to the file android.R.layout.simple_spinner_dropdown_item.
      * We then set the adapter of `spin` to `spinnerArrayAdapter`, set its `OnItemSelectedListener`
-     * to our field `AdapterView.OnItemSelectedListener spinSelected`, and set its selection to
+     * to our `AdapterView.OnItemSelectedListener` field [spinSelected], and set its selection to
      * the item number determined by the `indexFromCitation` method of `BibleMain` when
-     * passed the citation in our field `mLabel`. We next initialize our variable `EditText cavEditText`
-     * by finding the view in `v` with id R.id.chapter_and_verse. We initialize our variable `Button button`
-     * by finding the view in `v` with id R.id.show and set its `OnClickListener` to an anonymous
-     * class whose `onClick` override which loads our field `String mBook` with the data corresponding
-     * to the currently selected item in `spin` and loads our field `String mChapterAndVerse` with
-     * the text contents of `cavEditText`. If `mChapterAndVerse` contains the string ":"
-     * we initialize our variable `String citationChosen` to the string formed by concatenating
-     * the book number in the `String[] numbers` field of `BibleAdapter` in position `bookNum`
-     * to the string ":" followed by `mChapterAndVerse`, otherwise we set it to the string formed
-     * by concatenating the book number in the `String[] numbers` field of `BibleAdapter` in
-     * position `bookNum` to the string ":" followed by `mChapterAndVerse` followed by the
-     * string ":1". We initialize our variable `String citationFallback` to the string formed by
+     * passed the citation in our field [mLabel]. We next initialize our [EditText] variable
+     * `val cavEditText` by finding the view in `v` with id R.id.chapter_and_verse. We initialize
+     * our [Button] variable `val button` by finding the view in `v` with id R.id.show and set its
+     * `OnClickListener` to a lambda whose `onClick` override loads our [String] field [mBook] with
+     * the data corresponding to the currently selected item in `spin` and loads our [String] field
+     * [mChapterAndVerse] with the text contents of `cavEditText`. If [mChapterAndVerse] contains
+     * the string ":" we initialize our [String] variable `val citationChosen` to the string formed
+     * by concatenating the book number in the `String[] numbers` field of `BibleAdapter` in position
+     * `bookNum` to the string ":" followed by [mChapterAndVerse], otherwise we set it to the string
+     * formed by concatenating the book number in the `String[] numbers` field of `BibleAdapter` in
+     * position `bookNum` to the string ":" followed by [mChapterAndVerse] followed by the string
+     * ":1". We initialize our [String] variable `val citationFallback` to the string formed by
      * concatenating the book number in the `String[] numbers` field of `BibleAdapter` in
-     * position `bookNum` followed by the string ":1:1". We then initialize our variable `int verseNumber`
-     * to the value returned by the `findFromCitation` method of `BibleMain` when passed
-     * `citationChosen` and `citationFallback`. We then call the `moveToVerse` method
+     * position `bookNum` followed by the string ":1:1". We then initialize our [Int] variable
+     * `val verseNumber` to the value returned by the `findFromCitation` method of `BibleMain` when
+     * passed `citationChosen` and `citationFallback`. We then call the `moveToVerse` method
      * of `BibleAdapter` to move to verse `verseNumber`, dismiss this instance of `BibleChoose`,
      * set the `mLabel` field of the `bibleDialog` field of `BibleMain` to the `dialogTitle`
      * field of `BibleMain`, and the `mText` field of the `bibleDialog` field of `BibleMain`
      * to the `dialogText` field of `BibleMain`.
      *
-     *
-     * After setting the `OnClickListener` we return `v` to the caller.
+     * After setting this `OnClickListener` for `button` we return `v` to the caller.
      *
      * @param inflater  The LayoutInflater object that can be used to inflate
      * any views in the fragment,
@@ -176,27 +169,25 @@ class BibleChoose : DialogFragment() {
         val button = v.findViewById<Button>(R.id.show)
         button.setOnClickListener { view ->
             /**
-             * Called when the button with id R.id.show ("GO") is clicked. First we load our field
-             * `String mBook` with the data corresponding to the currently selected item in
-             * `spin` and our field `String mChapterAndVerse` with the text contents of
-             * `cavEditText`. We initialize our variable `int bookNum` to the item position
-             * of the currently selected item in `spin`. If `mChapterAndVerse` contains the
-             * string ":" we initialize our variable `String citationChosen` to the string formed
-             * by concatenating the book number in the `String[] numbers` field of `BibleAdapter`
-             * in position `bookNum` to the string ":" followed by `mChapterAndVerse`, otherwise
-             * we set it to the string formed by concatenating the book number in the `String[] numbers`
-             * field of `BibleAdapter` in position `bookNum` to the string ":" followed by
-             * `mChapterAndVerse` followed by the string ":1". We initialize our variable
-             * `String citationFallback` to the string formed by concatenating the book number
-             * in the `String[] numbers` field of `BibleAdapter` in position `bookNum`
-             * followed by the string ":1:1". We then initialize our variable `int verseNumber`
-             * to the value returned by the `findFromCitation` method of `BibleMain` when
-             * passed `citationChosen` and `citationFallback`. We then call the `moveToVerse`
-             * method of `BibleAdapter` to have it move to verse `verseNumber`, dismiss this
-             * instance of `BibleChoose`, set the `mLabel` field of the `bibleDialog`
-             * field of `BibleMain` to the `dialogTitle` field of `BibleMain`, and
-             * the `mText` field of the `bibleDialog` field of `BibleMain` to the
-             * `dialogText` field of `BibleMain`.
+             * Called when the button with id R.id.show ("GO") is clicked. First we load our [String]
+             * field [mBook] with the data corresponding to the currently selected item in `spin` and
+             * our [String] field [mChapterAndVerse] with the text contents of `cavEditText`. We
+             * initialize our [Int] variable `val bookNum` to the item position of the currently
+             * selected item in `spin`. If [mChapterAndVerse] contains the string ":" we initialize
+             * our [String] variable `val citationChosen` to the string formed by concatenating the
+             * book number in the `String[] numbers` field of `BibleAdapter` in position `bookNum`
+             * to the string ":" followed by [mChapterAndVerse], otherwise we set it to the string
+             * formed by concatenating the book number in the `String[] numbers` field of `BibleAdapter`
+             * in position `bookNum` to the string ":" followed by [mChapterAndVerse] followed by the
+             * string ":1". We initialize our [String] variable `val citationFallback` to the string
+             * formed by concatenating the book number in the `String[] numbers` field of `BibleAdapter`
+             * in position `bookNum` followed by the string ":1:1". We then initialize our [Int]
+             * variable `val verseNumber` to the value returned by the `findFromCitation` method of
+             * `BibleMain` when passed `citationChosen` and `citationFallback`. We then call the
+             * `moveToVerse` method of `BibleAdapter` to have it move to verse `verseNumber`, dismiss
+             * this instance of `BibleChoose`, set the `mLabel` field of the `bibleDialog` field of
+             * `BibleMain` to the `dialogTitle` field of `BibleMain`, and the `mText` field of the
+             * `bibleDialog` field of `BibleMain` to the `dialogText` field of `BibleMain`.
              *
              * @param view `View` that was clicked.
              */
@@ -229,16 +220,16 @@ class BibleChoose : DialogFragment() {
         const val TAG = "BibleChoose"
 
         /**
-         * Create a new `BibleChoose` `DialogFragment` instance. First we initialize our variable
-         * `BibleChoose f` with a new instance, and initialize our variable `Bundle args` with a
-         * a new instance. We add our parameter `String label` to `args` using the key "label",
-         * add our parameter `String text` to `args` using the key "text", and then we set the
-         * arguments of `f` to be the `Bundle args`. Finally we return `f` to the caller.
+         * Create a new [BibleChoose] instance. First we initialize our [BibleChoose] variable
+         * `val f` with a new instance, and initialize our [Bundle] variable `val args` with a
+         * a new instance. We add our [String] parameter [label] to `args` using the key "label",
+         * add our [String] parameter [text] to `args` using the key "text", and then we set the
+         * arguments of `f` to be the [Bundle] `args`. Finally we return `f` to the caller.
          *
          * @param label Canonical Bible citation of current verse
          * @param text  Verse text
-         * @return `BibleChoose` instance with its arguments set to a bundle that contains our parameters
-         * `label` and `text`
+         * @return [BibleChoose] instance with its arguments set to a bundle that contains our
+         * parameters `label` and `text`
          */
         fun newInstance(label: String, text: String): BibleChoose {
             Log.i(TAG, " newInstance called with: $label $text")
