@@ -96,8 +96,8 @@ public class BibleSpeak extends DialogFragment implements OnInitListener {
             public void onClick(View v) {
                 // When button is clicked, dismiss this DialogFragment
                 //noinspection ConstantConditions
-                BibleMain.Companion.getBibleDialog().mLabel = BibleMain.Companion.getDialogTitle();
-                BibleMain.Companion.getBibleDialog().mText = BibleMain.Companion.getDialogText();
+                BibleMain.Companion.getBibleDialog().setMLabel(BibleMain.Companion.getDialogTitle());
+                BibleMain.Companion.getBibleDialog().setMText(BibleMain.Companion.getDialogText());
                 BibleSpeak.this.dismiss();
             }
         });

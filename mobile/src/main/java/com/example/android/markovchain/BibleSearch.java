@@ -212,8 +212,8 @@ public class BibleSearch extends DialogFragment {
                 startActivity(intent);
 
                 //noinspection ConstantConditions
-                BibleMain.Companion.getBibleDialog().mLabel = BibleMain.Companion.getDialogTitle();
-                BibleMain.Companion.getBibleDialog().mText = BibleMain.Companion.getDialogText();
+                BibleMain.Companion.getBibleDialog().setMLabel(BibleMain.Companion.getDialogTitle());
+                BibleMain.Companion.getBibleDialog().setMText(BibleMain.Companion.getDialogText());
                 BibleSearch.this.dismiss();
             }
         });
