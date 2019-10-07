@@ -36,17 +36,16 @@ class BibleSpeak : DialogFragment(), OnInitListener {
     var mView: View? = null
 
     /**
-     * Called to have the fragment instantiate its user interface view. First we initialize our field
-     * `View mView` by using our parameter `LayoutInflater inflater` to inflate our layout
-     * file R.layout.bible_speak using our parameter `ViewGroup container` for the layout params
-     * without attaching to it. We then call our method `setDisplayedText` to set the label and
-     * text of `mView` to our fields `String mLabel` and `String mText` respectively.
-     * Next we initialize our variable `Button button` by finding the view in `mView` with
-     * id R.id.dismiss ("DISMISS") and set its `OnClickListener` to an anonymous class whose
-     * `onClick` override will dismiss this `BibleSpeak` BibleSpeak`BibleSpeak`,
-     * and then we set `button` to the view in `mView` with id R.id.next ("NEXT") and
-     * set its `OnClickListener` to an anonymous class whose `onClick` override will move
-     * to the next verse of the Bible and speak it out loud. Finally we return `View mView` to
+     * Called to have the fragment instantiate its user interface view. First we initialize our [View]
+     * field [mView] by using our [LayoutInflater] parameter [inflater] to inflate our layout file
+     * R.layout.bible_speak, using our [ViewGroup] parameter [container] for the layout params
+     * without attaching to it. We then call our method [setDisplayedText] to set the label and
+     * text of [mView] to our [String] fields [mLabel] and [mText] respectively. Next we initialize
+     * our [Button] variable `var button` by finding the view in [mView] with id R.id.dismiss
+     * ("DISMISS") and set its `OnClickListener` to a lambda whose `onClick` override will dismiss
+     * this [BibleSpeak] `DialogFragment`, and then we set `button` to the view in [mView] with id
+     * R.id.next ("NEXT") and set its `OnClickListener` to a lambda whose `onClick` override will
+     * move to the next verse of the Bible and speak it out loud. Finally we return [mView] to
      * the caller.
      *
      * @param inflater  A LayoutInflater object that can be used to inflate an XML layout file
@@ -86,11 +85,11 @@ class BibleSpeak : DialogFragment(), OnInitListener {
     }
 
     /**
-     * Set the label and text of the `View v` passed us to those saved in the fields `mLabel`
-     * and `mText` respectively. First we initialize our variable `TextView tv` by finding
-     * the view in our parameter `View v` with id R.id.label and set its text to our field
-     * `String mLabel`, then we set `tv` to the view found in `v` with id R.id.text
-     * and set its text to our field `String mText`.
+     * Set the label and text of the [View] parameter [v] passed us to the strings in our fields
+     * [mLabel] and [mText] respectively. First we initialize our [TextView] variable `var tv` by
+     * finding the view in our [View] parameter [v] with id R.id.label and set its text to our
+     * [String] field [mLabel], then we set `tv` to the view found in `v` with id R.id.text and set
+     * its text to our [String] field [mText].
      *
      * @param v Main View for the DialogFragment (always mView at the moment)
      */
