@@ -123,18 +123,17 @@ class BibleSearch : DialogFragment() {
     /**
      * Called to have the fragment instantiate its user interface view. First we initialize our [View]
      * variable `val v` by using our [LayoutInflater] parameter [inflater] to inflate our layout file
-     * R.layout.bible_search using our [ViewGroup] parameter [container] for the layout params
+     * R.layout.bible_search, using our [ViewGroup] parameter [container] for the layout params
      * without attaching to it. We initialize our [TextView] variable `var tv` by finding the view
-     * in `v` with id R.id.label and set its text to our [String] field [mLabel], then we set
-     * `tv` by finding the view in `v` with id R.id.text and set its text to our field
-     * `String mText`. We initialize our variable `MultiAutoCompleteTextView textView` by
-     * finding the view in `v` with id R.id.edit, set its adapter to our field `ArrayAdapter<String> mAdapter`
-     * and set its `Tokenizer` to a new instance of our class `SpaceTokenizer` (splits the
-     * text the user enters into words using only spaces as the delimiter). We initialize our variable
-     * `Button button` by finding the view in `v` with id R.id.show ("SEARCH") and set its
-     * `OnClickListener` to an anonymous class whose `onClick` override will create an
-     * `Intent` to do a Google search on the text which has been entered in `textView`.
-     * Finally we return `v` to our caller.
+     * in `v` with id R.id.label and set its text to our [String] field [mLabel], then we set `tv`
+     * by finding the view in `v` with id R.id.text and set its text to our field `String mText`.
+     * We initialize our [MultiAutoCompleteTextView] variable `val textView` by finding the view in
+     * `v` with id R.id.edit, set its adapter to our `ArrayAdapter<String>` field [mAdapter] and set
+     * its `Tokenizer` to a new instance of our class [SpaceTokenizer] (splits the text the user
+     * enters into words using only spaces as the delimiter). We initialize our [Button] variable
+     * `val button` by finding the view in `v` with id R.id.show ("SEARCH") and set its `OnClickListener`
+     * to an a lambda whose `onClick` override will create an [Intent] to do a Google search on the
+     * text which has been entered in `textView`. Finally we return `v` to our caller.
      *
      * @param inflater A `LayoutInflater` object that can be used to inflate an XML layout file
      * @param container If non-null, this is the parent view that the fragment's UI will be attached to.
@@ -159,13 +158,13 @@ class BibleSearch : DialogFragment() {
         val button = v.findViewById<Button>(R.id.show)
         /*
          * Called when the "SEARCH" Button (R.id.show) is clicked. First we retrieve the String
-         * query from our field `MultiAutoCompleteTextView textView` to initialize our variable
-         * `String query`, initialize our variable `Intent intent` with a new instance
+         * query from our `MultiAutoCompleteTextView` field `textView` to initialize our `String`
+         * variable `val query`, initialize our `Intent` variable `val intent` with a new instance
          * whose action is ACTION_WEB_SEARCH, add `query` as extended data to `intent`
          * using SearchManager.QUERY as the name of the data, and then we launch the `Activity`
-         * we specified in `Intent intent`. We make sure that the `BibleDialog` that
-         * launched us has an up to date value for its fields `mLabel` and `mText`,
-         * and finally we dismiss this `BibleSearch` `DialogFragment` instance.
+         * we specified in `Intent intent`. We make sure that the `BibleDialog` that launched us
+         * has an up to date value for its fields `mLabel` and `mText`, and finally we dismiss this
+         * `BibleSearch` `DialogFragment` instance.
          *
          * Parameter: View of Button that was clicked.
          */
@@ -191,11 +190,11 @@ class BibleSearch : DialogFragment() {
         const val TAG = "BibleSearch"
 
         /**
-         * Create and initialize a `BibleSearch` `DialogFragment`. First we initialize our
-         * variable `BibleSearch f` with a new instance. We initialize our variable `Bundle args`
-         * with a new instance then store our parameter `String label` in it under the key "label"
-         * and our parameter `String text` under the key "text". We set the argument bundle of
-         * `f` to `args` and return `f` to the caller.
+         * Create and initialize a [BibleSearch] `DialogFragment`. First we initialize our
+         * [BibleSearch] variable `val f` with a new instance. We initialize our [Bundle] variable
+         * `val args` with a new instance then store our [String] parameter [label] in it under the
+         * key "label" and our [String] parameter [text] under the key "text". We set the argument
+         * bundle of `f` to `args` and return `f` to the caller.
          *
          * @param label Label to use
          * @param text  Text to use

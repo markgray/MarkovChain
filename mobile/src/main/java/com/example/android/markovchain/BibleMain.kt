@@ -244,6 +244,7 @@ class BibleMain : FragmentActivity() {
             BibleDialog.CHOICE_GOOGLE -> {
                 showDialog(BibleSearch.newInstance(dialogTitle, dialogText))
                 BibleAdapter.moveToVerse(v, dialogVerse)
+                bibleDialog!!.refresh(dialogTitle, dialogText)
             }
             BibleDialog.CHOICE_BOOKMARK -> showDialog(BibleBookmark.newInstance(dialogTitle, dialogText))
             BibleDialog.CHOICE_GO_TO_VERSE -> showDialog(BibleChoose.newInstance(dialogTitle, dialogText))
