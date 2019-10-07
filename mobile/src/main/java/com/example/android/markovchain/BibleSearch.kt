@@ -41,10 +41,10 @@ class BibleSearch : DialogFragment() {
 
     /**
      * Removes punctuation characters .,;:()!? from the verse passed it. First we initialize our
-     * variable `StringBuilder stringBuilder` with a new instance. Then looping over `i`
-     * through all the characters in our parameter `String text` we grab each `char c`
-     * from `text` and if it is not one of the punctuation characters ".,;:()!?" we append it
-     * to `stringBuilder`, otherwise we ignore it. Finally we return the String value of
+     * [StringBuilder] variable `val stringBuilder` with a new instance. Then looping over `i`
+     * through all the characters in our [String] parameter [text] we grab each [Char] `val c`
+     * from [text] and if it is not one of the punctuation characters ".,;:()!?" we append it
+     * to `stringBuilder`, otherwise we ignore it. Finally we return the [String] value of
      * `stringBuilder` to the caller.
      *
      * @param text Verse containing punctuation characters
@@ -63,17 +63,13 @@ class BibleSearch : DialogFragment() {
 
     /**
      * Given an array of strings which might contain duplicate strings, remove all duplicates. First
-     * we initialize our variable `HashSet<String> setOfStrings` with a new instance with an
-     * initial capacity as large as the length of our parameter `String[] strings`, then we add
-     * all the String's in `strings` to `setOfStrings` using the `addAll` method of
-     * `Collections` (this has the effect of only adding a String if it is not already present
-     * in the set ,thus removing the duplicates). We initialize `Object[] tempObjectArray` to
-     * the array of string objects returned by the `toArray` method of `setOfStrings`
-     * (necessary because `toArray` returns an array of `Object` instead of strings),
-     * and allocate an array of strings the same size as `setOfStrings` to initialize our variable
-     * `String[] returnStringArray`. Then we loop over `int i` setting `returnStringArray`
-     * to `tempObjectArray` (casting it to `String` of course). Finally we return
-     * `returnStringArray` to our caller.
+     * we initialize our [HashSet] variable `val setOfStrings` with a new instance with an
+     * initial capacity as large as the length of our `String[]` parameter [strings]. Then we add
+     * all the String's in [strings] to `setOfStrings` using the `addAll` method of `Collections`
+     * applying the * "Spread Operator" on [strings] to convert [strings] to the *varargs* argument
+     * that `addAll` expects (this has the effect of only adding a [String] if it is not already
+     * present in the set ,thus removing the duplicates). Finally we return the `Array<String>`
+     * that its `toTypedArray` method converts `setOfStrings` to.
      *
      * @param strings String array with possible duplicate string members
      * @return Same array with only single occurrences of strings
@@ -85,18 +81,20 @@ class BibleSearch : DialogFragment() {
     }
 
     /**
-     * Called to do initial creation of a DialogFragment. This is called after `onAttach(Activity)`
-     * and before `onCreateView(LayoutInflater, ViewGroup, Bundle)`. First we call through to
-     * our super's implementation of `onCreate`, then we initialize our field `String mLabel`
-     * to the string stored in our argument `Bundle` under the key "label", and our field
-     * `String mText` to the string stored in our argument `Bundle` under the key "text".
-     * We initialize our field `String[] mSuggestions` (the array of suggestions for our `EditText`)
-     * by first removing all punctuation characters from `mText` using our `noPunct` method,
-     * splitting the result into a String array using the delimiter " ", and removing all duplicates
-     * from that array using our method `uniq`. We then initialize our field `ArrayAdapter<String> mAdapter`
-     * using `mSuggestions` as the constants to be used in the `ListView` when `mAdapter`
-     * is used for the suggestions in our `EditText`. Finally we set our `DialogFragment`
-     * style to STYLE_NORMAL (for no better reason then it was done in the sample code we studied).
+     * Called to do initial creation of a [BibleSearch] `DialogFragment`. This is called after
+     * `onAttach(Activity)` and before `onCreateView(LayoutInflater, ViewGroup, Bundle)`. First
+     * we call through to our super's implementation of `onCreate`, then we initialize our [String]
+     * field [mLabel] to the string stored in our argument [Bundle] under the key "label", and our
+     * [String] field [mText] to the string stored in our argument `Bundle` under the key "text".
+     * We initialize our `String[]` field [mSuggestions] (the array of suggestions for our `EditText`)
+     * by first removing all punctuation characters from [mText] using our [noPunct] method, then
+     * splitting the result into a [String] array using the delimiter " ", (the `dropLastWhile`
+     * method is added to the *pipeline* because the kotlin `split` adds a trailing empty `String`)
+     * and removing all duplicates from the array that the `toTypedArray` method produces from this
+     * using our method [uniq]. We then initialize our `ArrayAdapter<String>` field [mAdapter] using
+     * [mSuggestions] as the constants to be used in the `ListView` when [mAdapter] is used for the
+     * suggestions in our `EditText`. Finally we set our `DialogFragment`style to STYLE_NORMAL (for
+     * no better reason then it was done in the sample code we studied).
      * TODO: Improve the styles used for all DialogFragment's and Spinner's
      *
      * @param savedInstanceState We do not override `onSaveInstanceState` so do not use.
@@ -108,7 +106,12 @@ class BibleSearch : DialogFragment() {
         mLabel = arguments!!.getString("label")
         mText = arguments!!.getString("text")
 
-        mSuggestions = uniq(noPunct(mText!!).split(" ".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray())
+        mSuggestions = uniq(
+                noPunct(mText!!)
+                        .split(" ".toRegex())
+                        .dropLastWhile { it.isEmpty() }
+                        .toTypedArray()
+        )
         mAdapter = ArrayAdapter(BibleMain.bibleContext,
                 android.R.layout.simple_dropdown_item_1line, mSuggestions)
 
@@ -118,11 +121,11 @@ class BibleSearch : DialogFragment() {
     }
 
     /**
-     * Called to have the fragment instantiate its user interface view. First we initialize our variable
-     * `View v` by using our parameter `LayoutInflater inflater` to inflate our layout
-     * file R.layout.bible_search using our parameter `ViewGroup container` for the layout params
-     * without attaching to it. We initialize our variable `TextView tv` by finding the view in
-     * `v` with id R.id.label and set its text to our field `String mLabel`, then we set
+     * Called to have the fragment instantiate its user interface view. First we initialize our [View]
+     * variable `val v` by using our [LayoutInflater] parameter [inflater] to inflate our layout file
+     * R.layout.bible_search using our [ViewGroup] parameter [container] for the layout params
+     * without attaching to it. We initialize our [TextView] variable `var tv` by finding the view
+     * in `v` with id R.id.label and set its text to our [String] field [mLabel], then we set
      * `tv` by finding the view in `v` with id R.id.text and set its text to our field
      * `String mText`. We initialize our variable `MultiAutoCompleteTextView textView` by
      * finding the view in `v` with id R.id.edit, set its adapter to our field `ArrayAdapter<String> mAdapter`

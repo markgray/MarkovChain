@@ -241,7 +241,10 @@ class BibleMain : FragmentActivity() {
                 BibleAdapter.moveToRandom(v)
                 bibleDialog!!.refresh(dialogTitle, dialogText)
             }
-            BibleDialog.CHOICE_GOOGLE -> showDialog(BibleSearch.newInstance(dialogTitle, dialogText))
+            BibleDialog.CHOICE_GOOGLE -> {
+                showDialog(BibleSearch.newInstance(dialogTitle, dialogText))
+                BibleAdapter.moveToVerse(v, dialogVerse)
+            }
             BibleDialog.CHOICE_BOOKMARK -> showDialog(BibleBookmark.newInstance(dialogTitle, dialogText))
             BibleDialog.CHOICE_GO_TO_VERSE -> showDialog(BibleChoose.newInstance(dialogTitle, dialogText))
             BibleDialog.CHOICE_READ_ALOUD -> showDialog(BibleSpeak.newInstance(dialogTitle, dialogText))
