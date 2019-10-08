@@ -26,15 +26,15 @@ class MarkovStats {
     }
 
     /**
-     * Creates a String representation of the data in this instance. First we initialize our variable
-     * `StringBuilder returnString` with a new instance whose initial contents are the string "1",
-     * and initialize our variable `long totalVariations` to 1. Then for each of the `Integer choices`
-     * in our field `ArrayList<Integer> variations` we append the string "x" to `returnString`
-     * followed by the string value of `choices` and multiply `totalVariations` by `choices`.
-     * When done with the choices in `variations` we initialize our variable `String formattedResult`
-     * with a US locale formatted string version of `totalVariations`, then return the string formed by
-     * concatenating the string value of `returnString` followed by the string " = ", followed by
-     * `formattedResult` to the caller.
+     * Creates a String representation of the data in this instance. First we initialize our
+     * [StringBuilder] variable `val returnString` with a new instance whose initial contents are
+     * the string "1", and initialize our [Long] variable `var totalVariations` to 1. Then for each
+     * of the `choices` in our `ArrayList<Integer>` field [variations] we append the string "x" to
+     * `returnString` followed by the string value of `choices` and multiply `totalVariations` by
+     * `choices`. When done with the choices in [variations] we initialize our [String] variable
+     * `val formattedResult` with a US locale formatted string version of `totalVariations`, then
+     * return the string formed by concatenating the string value of `returnString` followed by the
+     * string " = ", followed by `formattedResult` to the caller.
      *
      * @return formatted String for displaying the data we contain
      */
