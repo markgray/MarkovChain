@@ -25,9 +25,9 @@ class MarkovDialog : DialogFragment() {
 
     /**
      * Called to do initial creation of a `DialogFragment`. First we call our super's implementation
-     * of `onCreate`. We then initialize our field `String mPossibles` with the string stored
-     * in our argument `Bundle` under the key "possibles", and our field `String mVerse` with
-     * the string stored in our argument `Bundle` under the key "verse". Finally we set our style
+     * of `onCreate`. We then initialize our [String] field [mPossibles] with the string stored
+     * in our argument [Bundle] under the key "possibles", and our [String] field [mVerse] with
+     * the string stored in our argument [Bundle] under the key "verse". Finally we set our style
      * to STYLE_NORMAL without a custom theme.
      *
      * @param savedInstanceState We do not override `onSaveInstanceState` so do not use.
@@ -43,15 +43,15 @@ class MarkovDialog : DialogFragment() {
 
     /**
      * Called to have the `DialogFragment` instantiate its user interface view. We initialize our
-     * variable `View v` by using our parameter `LayoutInflater inflater` to inflate our
-     * layout file R.layout.markov_dialog, using our parameter `ViewGroup container` for layout
-     * params without attaching to it. We initialize our variable `TextView pv` by finding the view
-     * in `v` with id R.id.possibles and set its text to our field `String mPossibles` and
-     * initialize our variable `TextView vv` by finding the view in `v` with id R.id.verse
-     * and set its text to our field `String mVerse`. Next we initialize our variable `Button db`
-     * by finding the view in `v` with id R.id.dismiss and set its `OnClickListener` to an
-     * anonymous class whose `onClick` override calls the `dismiss()` method to dismiss our
-     * fragment and its dialog. Finally we return `v` to the caller.
+     * [View] variable `val v` by using our [LayoutInflater] parameter [inflater] to inflate our
+     * layout file R.layout.markov_dialog, using our [ViewGroup] parameter [container] for layout
+     * params without attaching to it. We initialize our [TextView] variable `val pv` by finding the
+     * view in `v` with id R.id.possibles then set its text to our [String] field [mPossibles] and
+     * initialize our [TextView] variable `val vv` by finding the view in `v` with id R.id.verse
+     * and set its text to our [String] field [mVerse]. Next we initialize our [Button] variable
+     * `val db` by finding the view in `v` with id R.id.dismiss and set its `OnClickListener` to a
+     * lambda whose `onClick` override calls the `dismiss()` method to dismiss our fragment and its
+     * dialog. Finally we return `v` to the caller.
      *
      * @param inflater  The LayoutInflater object that can be used to inflate any views in the fragment
      * @param container If non-null, this is the parent view that the fragment's UI will be attached to.
@@ -73,18 +73,21 @@ class MarkovDialog : DialogFragment() {
         return v
     }
 
+    /**
+     * Our static method.
+     */
     companion object {
 
         /**
-         * Factory method for constructing and initializing a `MarkovDialog` instance. First we
-         * initialize our variables `MarkovDialog f` and `Bundle args` with new instances.
-         * Then we store our parameter `String possibles` in `args` under the key "possibles",
-         * and our parameter `String verse` under the key "verse". We set the arguments of `f`
-         * to `args` and return `f` to the caller.
+         * Factory method for constructing and initializing a [MarkovDialog] instance. First we
+         * initialize our [MarkovDialog] variable `val f` and our [Bundle] variable `val args` with
+         * new instances. Then we store our [String] parameter [possibles] in `args` under the key
+         * "possibles", and our [String] parameter [verse] under the key "verse". We set the arguments
+         * of `f` to `args` and return `f` to the caller.
          *
          * @param possibles Possibility statistics for the current verse
          * @param verse     Text of the current verse
-         * @return a `MarkovDialog` whose argument `Bundle` contains our parameters
+         * @return a [MarkovDialog] instance whose argument [Bundle] contains our parameters
          */
         fun newInstance(possibles: String, verse: String): MarkovDialog {
             val f = MarkovDialog()
