@@ -103,21 +103,20 @@ class BibleSpeak : DialogFragment(), OnInitListener {
 
     /**
      * Called to do initial creation of a fragment. First we call through to our super's implementation
-     * of `onCreate`, then we initialize our field `String mLabel` to the value stored in
-     * our argument bundle under the key "label", and our field `String mText` to the value stored
-     * under the key "text" (the canonical Bible citation for the current verse, and the text of the
-     * current verse respectively). Then we set the style of our `DialogFragment` to STYLE_NORMAL
-     * (for no reason I can think of). Finally if the `textToSpeech` field of `BibleMain`
-     * is null (first time `BibleSpeak` has been launched) we create a new instance of
-     * `TextToSpeech` that uses 'this' as its `OnInitListener` (our `onInit` override
-     * will be called when the engine is ready for use) and save it in our field `TextToSpeech mTts`
-     * as well as a permanent copy in the `textToSpeech` field of `BibleMain`, otherwise we
-     * initialize our field `TextToSpeech mTts` from the existing `TextToSpeech` instance
-     * in the `textToSpeech` field of `BibleMain` and immediately instruct `mTts` to
-     * speak our `String mText` (since it is preexisting, the `TextToSpeech` instance has
-     * already finished its initialization phase and is ready to use, for the first use of a newly created
-     * `TextToSpeech` instance we delay instructing it to speak until our `onInit` callback
-     * is called to signal the completion of the `TextToSpeech` engine initialization).
+     * of `onCreate`, then we initialize our [String] field [mLabel] to the value stored in our argument
+     * bundle under the key "label", and our [String] field [mText] to the value stored under the key
+     * "text" (the canonical Bible citation for the current verse, and the text of the current verse
+     * respectively). Then we set the style of our [DialogFragment] to STYLE_NORMAL. Finally if the
+     * `textToSpeech` field of `BibleMain` is null (first time [BibleSpeak] has been launched) we
+     * create a new instance of [TextToSpeech] that uses *this* as its `OnInitListener` (our `onInit`
+     * override will be called when the engine is ready for use) and save it in our [TextToSpeech]
+     * field [mTts] as well as a permanent copy in the `textToSpeech` field of `BibleMain`, otherwise
+     * we initialize our [TextToSpeech] field [mTts] from the existing [TextToSpeech] instance in the
+     * `textToSpeech` field of `BibleMain` and immediately instruct `mTts` to speak our [String] field
+     * [mText] (since it is preexisting, the [TextToSpeech] instance has already finished its
+     * initialization phase and is ready to use, for the first use of a newly created [TextToSpeech]
+     * instance we delay instructing it to speak until our `onInit` callback is called to signal the
+     * completion of the [TextToSpeech] engine initialization).
      *
      * @param savedInstanceState We do not override `onSaveInstanceState` so do not use.
      */
@@ -144,12 +143,12 @@ class BibleSpeak : DialogFragment(), OnInitListener {
     }
 
     /**
-     * Called to signal the completion of the `TextToSpeech` engine initialization. If the status
-     * passed us is SUCCESS, we try to set the language of our field `TextToSpeech mTts` to Locale.US
+     * Called to signal the completion of the [TextToSpeech] engine initialization. If the status
+     * passed us is SUCCESS, we try to set the language of our [TextToSpeech] field [mTts] to Locale.US
      * (Locale constant for en_US) and if the result of that attempt is either LANG_MISSING_DATA or
-     * LANG_NOT_SUPPORTED we just log the error and return, otherwise we instruct `mTts` to speak
-     * our field `String mText`. If the status passed to us was not SUCCESS we log our failure
-     * to initialize the `TextToSpeech` engine.
+     * LANG_NOT_SUPPORTED we just log the error and return, otherwise we instruct [mTts] to speak
+     * our [String] field [mText]. If the status passed to us was not SUCCESS we log our failure
+     * to initialize the [TextToSpeech] engine.
      *
      * @param status [TextToSpeech.SUCCESS] or [TextToSpeech.ERROR].
      */
@@ -177,11 +176,11 @@ class BibleSpeak : DialogFragment(), OnInitListener {
         private const val TAG = "BibleSpeak"
 
         /**
-         * Create a new instance of `BibleSpeak` with its arguments set to the values of the parameters
-         * passed us. First we create a new instance to initialize our variable `BibleSpeak f`. Then
-         * we initialize our variable `Bundle args` with a new instance, store our parameter `String label`
-         * in it under the key "label", and our parameter `String text` under the key "text". Finally
-         * we set the argument bundle of `f` to `args` and return `f` to the caller.
+         * Create a new instance of [BibleSpeak] with its arguments set to the values of the parameters
+         * passed us. First we create a new instance to initialize our [BibleSpeak] variable `val f`.
+         * Then we initialize our [Bundle] variable `val args` with a new instance, store our [String]
+         * parameter [label] in it under the key "label", and our [String] parameter [text] under the
+         * key "text". Finally we set the argument bundle of `f` to `args` and return `f` to the caller.
          *
          * @param label canonical Bible citation for current verse
          * @param text  text of current verse
