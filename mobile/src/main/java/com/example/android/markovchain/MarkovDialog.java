@@ -1,6 +1,6 @@
 package com.example.android.markovchain;
 
-import android.app.DialogFragment;
+import androidx.fragment.app.DialogFragment;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -13,6 +13,7 @@ import android.widget.TextView;
  * {@code DialogFragment} to display number of possibilities given the first two words, and the verse
  * we randomly generated using {@code Markov.line}.
  */
+@SuppressWarnings("WeakerAccess")
 public class MarkovDialog extends DialogFragment {
     /**
      * Possibility statistics for the current verse
@@ -58,6 +59,7 @@ public class MarkovDialog extends DialogFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //noinspection ConstantConditions
         mPossibles = getArguments().getString("possibles");
         mVerse = getArguments().getString("verse");
 

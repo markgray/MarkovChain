@@ -1,14 +1,15 @@
 package com.example.android.markovchain;
 
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.os.Build;
 import android.os.Bundle;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
+
+import androidx.fragment.app.FragmentActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.io.IOException;
 import java.io.StringReader;
@@ -18,7 +19,7 @@ import java.io.StringReader;
  * sonnets are used to create the Markov chain state table that {@code Markov} uses.
  */
 @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1)
-public class ShakespeareMarkovRecycler extends Activity {
+public class ShakespeareMarkovRecycler extends FragmentActivity {
     /**
      * TAG used for logging
      */
@@ -64,7 +65,7 @@ public class ShakespeareMarkovRecycler extends Activity {
 
         initMarkovState();
 
-        mAdapter = new MarkovAdapter(getFragmentManager(), mMarkov);
+        mAdapter = new MarkovAdapter(getSupportFragmentManager(), mMarkov);
         // Set CustomAdapter as the adapter for RecyclerView.
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setLayoutManager(mLayoutManager);
