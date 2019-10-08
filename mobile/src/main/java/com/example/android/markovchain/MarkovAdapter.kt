@@ -159,7 +159,7 @@ class MarkovAdapter
 
         // Get element from your data set at this position and replace the contents of the view
         // with that element
-        if (mMarkov.chain.loaded) holder.textView.text = mMarkov.line(holder.possibles)
+        if (mMarkov.chain.loaded) holder.textView.text = mMarkov.line(holder.possibles!!)
     }
 
     /**
