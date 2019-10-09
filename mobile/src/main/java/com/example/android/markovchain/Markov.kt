@@ -176,6 +176,7 @@ class Markov {
                 wordsRead++ // for debugging only
             }
             Log.i(TAG, "Words read: $wordsRead") // for debugging only
+            Log.i(TAG, "Size of HashTable: ${ stateTable.size } ")
             add(NONWORD)
             loaded = true
             if (mDoneListener != null) {
@@ -223,6 +224,7 @@ class Markov {
             }
 
             loaded = true
+            Log.i(TAG, "Size of HashTable: ${ stateTable.size } ")
             if (mDoneListener != null) {
                 mDoneListener!!.onDone(mDoneListenerView!!)
             }
