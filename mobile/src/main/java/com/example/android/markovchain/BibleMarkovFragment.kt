@@ -14,14 +14,14 @@ import java.io.BufferedReader
 import java.io.InputStreamReader
 
 /**
- * This `Activity` generates random gibberish using a Markov chain state table that was generated
+ * This `Activity` generates random gibberish using a Markov mChain state table that was generated
  * from the King James Bible offline.
  */
 @Suppress("MemberVisibilityCanBePrivate")
 @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1)
 class BibleMarkovFragment : FragmentActivity() {
     /**
-     * [ProgressBar] in our layout file that is displayed while the Markov chain state table
+     * [ProgressBar] in our layout file that is displayed while the Markov mChain state table
      * is being loaded.
      */
     lateinit var mProgressBar: ProgressBar
@@ -138,7 +138,7 @@ class BibleMarkovFragment : FragmentActivity() {
             }
         }
         mThread.start()
-        Log.i(TAG, "We are waiting for Markov chain to load")
+        Log.i(TAG, "We are waiting for Markov mChain to load")
     }
 
     /**

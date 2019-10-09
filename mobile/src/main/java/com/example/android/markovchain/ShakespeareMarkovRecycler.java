@@ -16,7 +16,7 @@ import java.io.StringReader;
 
 /**
  * This {@code Activity} displays the random nonsense spouted by {@code Markov} when Shakespeare's
- * sonnets are used to create the Markov chain state table that {@code Markov} uses.
+ * sonnets are used to create the Markov mChain state table that {@code Markov} uses.
  */
 @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1)
 public class ShakespeareMarkovRecycler extends FragmentActivity {
@@ -102,7 +102,7 @@ public class ShakespeareMarkovRecycler extends FragmentActivity {
         }, mRecyclerView);
 
         try {
-            Log.i(TAG, "making chain");
+            Log.i(TAG, "making mChain");
             mMarkov.make(new StringReader(stringBuilder.toString()));
         } catch (IOException e) {
             e.printStackTrace();
