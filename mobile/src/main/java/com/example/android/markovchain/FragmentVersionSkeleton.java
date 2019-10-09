@@ -1,6 +1,10 @@
 package com.example.android.markovchain;
 
 import android.annotation.TargetApi;
+import android.app.Activity;
+import android.app.DialogFragment;
+import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,17 +17,11 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
 /**
  * Just a test Activity for experimenting with retained fragments.
  */
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-public class FragmentVersionSkeleton extends FragmentActivity {
+public class FragmentVersionSkeleton extends Activity {
     /**
      * TAG used for logging
      */
@@ -64,9 +62,9 @@ public class FragmentVersionSkeleton extends FragmentActivity {
 
         // First time init, create the UI.
         if (savedInstanceState == null) {
-            getSupportFragmentManager()
+            getFragmentManager()
                     .beginTransaction()
-                    .add(android.R.id.content, new UiFragment(), null)
+                    .add(android.R.id.content, new UiFragment())
                     .commit();
         } else {
             Log.i(TAG, "Bundle savedInstanceState is not null");
@@ -89,8 +87,8 @@ public class FragmentVersionSkeleton extends FragmentActivity {
         // DialogFragment.show() will take care of adding the fragment
         // in a transaction.  We also want to remove any currently showing
         // dialog, so make our own transaction and take care of that here.
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        Fragment prev = getSupportFragmentManager().findFragmentByTag("dialog");
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        Fragment prev = getFragmentManager().findFragmentByTag("dialog");
         if (prev != null) {
             ft.remove(prev);
         }
@@ -105,7 +103,7 @@ public class FragmentVersionSkeleton extends FragmentActivity {
      * This is a fragment showing UI that will be updated from work done
      * in the retained fragment.
      */
-    public class UiFragment extends Fragment {
+    public static class UiFragment extends Fragment {
         /**
          * A reference to our example retained Fragment
          */
@@ -189,7 +187,6 @@ public class FragmentVersionSkeleton extends FragmentActivity {
                 @Override
                 public boolean onLongClick(View view) {
                     Toast.makeText(getActivity(), "I have been long clicked", Toast.LENGTH_LONG).show();
-                    //noinspection ConstantConditions
                     ((FragmentVersionSkeleton)getActivity()).showDialog();
                     return true;
                 }
@@ -216,7 +213,7 @@ public class FragmentVersionSkeleton extends FragmentActivity {
          * 'this' to be the target Fragment for {@code mWorkFragment}, and then use {@code fm} to start
          * a series of edit operations on the Fragments associated with this {@code FragmentManager},
          * use the {@code FragmentTransaction} returned to add the Fragment {@code mWorkFragment} to
-         * the Activity with the Tag "work", with the method mChain terminating with a call to {@code commit()}
+         * the Activity with the Tag "work", with the method chain terminating with a call to {@code commit()}
          * to schedule a commit of this transaction. Finally we call the {@code setDoneListener} method
          * of {@code mWorkFragment} to set the {@code DoneListener} of {@code mWorkFragment} to the
          * to field {@code DoneListener mIamDone} which swaps the visibility of the {@code TextView}
@@ -231,7 +228,7 @@ public class FragmentVersionSkeleton extends FragmentActivity {
         public void onActivityCreated(Bundle savedInstanceState) {
             super.onActivityCreated(savedInstanceState);
 
-            FragmentManager fm = getSupportFragmentManager();
+            android.app.FragmentManager fm = getFragmentManager();
 
             // Check to see if we have retained the worker fragment.
             mWorkFragment = (RetainedFragment) fm.findFragmentByTag("work");
@@ -280,12 +277,11 @@ public class FragmentVersionSkeleton extends FragmentActivity {
      * activity instances.  It represents some ongoing work, here a thread
      * we have that sits around incrementing a progress indicator.
      */
-    @SuppressWarnings("WeakerAccess")
     public static class RetainedFragment extends Fragment {
         /**
          * TAG used for logging.
          */
-        static String TAG = "RetainedFragment";
+        private String TAG = "RetainedFragment";
         /**
          * {@code ProgressBar} in our layout that we update to the latest value of {@code mPosition}
          */
@@ -583,7 +579,6 @@ public class FragmentVersionSkeleton extends FragmentActivity {
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
 
-            //noinspection ConstantConditions
             mLabel = getArguments().getString("label");
             mText = getArguments().getString("text");
 
