@@ -88,7 +88,7 @@ public class ShakespeareMarkovRecycler extends FragmentActivity {
      */
     private void initMarkovState() {
         StringBuilder stringBuilder = new StringBuilder();
-        for (String quotes : ShakespeareSmall.SONNETS) {
+        for (String quotes : ShakespeareSmall.INSTANCE.getSONNETS()) {
             stringBuilder.append(quotes);
         }
 
