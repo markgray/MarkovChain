@@ -19,31 +19,24 @@ class StringArrayAdapter
  * @param dataSet String[] containing the data to populate views to be used by RecyclerView.
  * @param layoutManager `LayoutManager` used by our `RecyclerView`
  */
-(dataSet: Array<String>, layoutManager: RecyclerView.LayoutManager) : RecyclerView.Adapter<StringArrayAdapter.ViewHolder>() {
+(dataSet: Array<String>, layoutManager: RecyclerView.LayoutManager)
+    : RecyclerView.Adapter<StringArrayAdapter.ViewHolder>() {
 
     init {
         mDataSet = dataSet
         mLayoutManager = layoutManager as LinearLayoutManager
     }
 
-
     /**
-     * Called when RecyclerView needs a new [ViewHolder] of the given type to represent
-     * an item.
+     * Called when our [RecyclerView] needs a new [ViewHolder] of the given type to represent an
+     * item. This new [ViewHolder] should be constructed with a new [View] that can represent the
+     * items of the given type. You can either create a new [View] manually or inflate it from an
+     * XML layout file. The new [ViewHolder] will be used to display items of the adapter using
+     * [onBindViewHolder]. Since it will be re-used to display different items in the data set, it
+     * is a good idea to cache references to sub views of the View to avoid unnecessary
+     * [View.findViewById] calls.
      *
-     *
-     * This new ViewHolder should be constructed with a new View that can represent the items
-     * of the given type. You can either create a new View manually or inflate it from an XML
-     * layout file.
-     *
-     *
-     * The new ViewHolder will be used to display items of the adapter using
-     * [.onBindViewHolder]. Since it will be re-used to display different
-     * items in the data set, it is a good idea to cache references to sub views of the View to
-     * avoid unnecessary [View.findViewById] calls.
-     *
-     *
-     * We initialize our variable `View v` with the view we construct by using the `LayoutInflater`
+     * We initialize our [View] variable `val v` with the view we construct by using the `LayoutInflater`
      * that the `from` method of `LayoutInflater` obtains from the `Context` of our parameter
      * `ViewGroup viewGroup` to inflate our item layout file R.layout.line_list_item using `viewGroup`
      * for the layout params without attaching to it. Then we return a new instance of `ViewHolder` constructed
