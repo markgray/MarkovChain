@@ -45,10 +45,10 @@ class ShakespeareMarkovRecycler : FragmentActivity() {
      * with an instance of [LinearLayoutManager] and we initialize our field [mRecyclerView]
      * by finding the [RecyclerView] with id R.id.shakespeare_markov_recycler_view. Then we
      * call our method [initMarkovState] to initialize the Markov state table of our [Markov] field
-     * [mMarkov] by calling its `make` method. We initialize our field `MarkovAdapter mAdapter` with
-     * a new instance of `MarkovAdapter` which uses `Markov mMarkov` as its `Markov`
-     * instance. Then we set the adapter of our `mRecyclerView` to our field `mAdapter`,
-     * and its `LayoutManager` to our field `mLayoutManager`.
+     * [mMarkov] by calling its `make` method. We initialize our [MarkovAdapter] field [mAdapter]
+     * with a new instance of [MarkovAdapter] which uses our [Markov] field [mMarkov] as its [Markov]
+     * instance. Then we set the adapter of our [mRecyclerView] field to our field [mAdapter],
+     * and its `LayoutManager` to our field [mLayoutManager].
      *
      * @param savedInstanceState since we do not override onSaveInstanceState we do not use this
      */
@@ -68,19 +68,18 @@ class ShakespeareMarkovRecycler : FragmentActivity() {
     }
 
     /**
-     * Initialize the Markov state table of field `Markov mMarkov` using the `String[]`
+     * Initialize the Markov state table of our [Markov] field [mMarkov] using the `String[]`
      * array containing Shakespeare's sonnets with all lowercase letters: the `SONNETS` field
-     * of `ShakespeareSmall`. First we initialize our variable `StringBuilder stringBuilder`
-     * with a new and loop over all the `String quotes` in the `SONNETS` field of
-     * `ShakespeareSmall` appending each `String quotes` to `stringBuilder`. We set
-     * the `DoneListener` of our field `Markov mMarkov` to an anonymous class which simply
-     * Toast's a different Toast than the default implementation and then calls the `callOnClick`
-     * method of `mRecyclerView` (which will be the `View view` passed to `onDoneDo`)
-     * to "click" the `RecyclerView`.
+     * of [ShakespeareSmall]. First we initialize our [StringBuilder] variable `val stringBuilder`
+     * with a new instance and loop over all the `quotes` [String]'s in the `SONNETS` field of
+     * [ShakespeareSmall] appending each `quotes` to `stringBuilder`. We set the `DoneListener` of
+     * our [Markov] field [mMarkov] to an anonymous class which simply Toast's a different Toast
+     * than the default implementation and then calls the `callOnClick` method of [mRecyclerView]
+     * (which will be the `view: View` passed to `onDoneDo`) to "click" the `RecyclerView`.
      * TODO: refactor our mMarkov.make to use same technique as BibleMarkovFragment
-     * Then wrapped in a try block intended to catch and log IOException we initialize the state table
-     * in our `Markov mMarkov` by using its `make` method on a `StringReader` created
-     * from the `String` value of `StringBuilder stringBuilder`.
+     * Then wrapped in a try block intended to catch and log IOException we initialize the state
+     * table in our [Markov] field [mMarkov] by using its `make` method on a [StringReader] created
+     * from the [String] value of our [StringBuilder] `stringBuilder`.
      */
     private fun initMarkovState() {
         val stringBuilder = StringBuilder()
