@@ -48,10 +48,10 @@ public class ShakespeareRecycler extends Activity {
 
         mLayoutManager = new LinearLayoutManager(getApplicationContext());
         mRecyclerView = findViewById(R.id.shakespeare_recyclerview);
-        mAdapter = new StringArrayAdapter(Shakespeare.SONNETS, mLayoutManager);
+        mAdapter = new StringArrayAdapter(Shakespeare.INSTANCE.getSONNETS(), mLayoutManager);
         // Set CustomAdapter as the adapter for RecyclerView.
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setLayoutManager(mLayoutManager);
-        Log.i(TAG, "Verses read: " + Shakespeare.SONNETS.length);
+        Log.i(TAG, "Verses read: " + Shakespeare.INSTANCE.getSONNETS().length);
     }
 }
