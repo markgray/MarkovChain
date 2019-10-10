@@ -8,7 +8,7 @@ import java.util.*
 import kotlin.math.abs
 
 /**
- * This class is inspired by the Markov mChain example source code that was written for the book
+ * This class is inspired by the Markov chain example source code that was written for the book
  * "The Practice of Programming". It consists of methods to build and access a table which is
  * indexed by two words that occur one after the other in a text of literature, and when those
  * two words are used to access the table an array of all the third words that occur after the
@@ -54,7 +54,7 @@ class Markov {
      * to have it read our parameter [reader] and parse each line to fill its `stateTable`
      * hash table field with the information contained in [reader].
      *
-     * @param reader BufferedReader to read an existing Markov mChain from
+     * @param reader BufferedReader to read an existing Markov chain from
      */
     fun load(reader: BufferedReader) {
         mChain = Chain()
@@ -186,7 +186,7 @@ class Markov {
         }
 
         /**
-         * Reads in a Markov mChain state table which has been prepared offline and loads it into our
+         * Reads in a Markov chain state table which has been prepared offline and loads it into our
          * `Hashtable<Prefix, String[]>` field [stateTable]. First we check to see if it has already
          * been `loaded` and if so return having done nothing. Otherwise we declare our [String]
          * variable `var line`, allocate two strings for the `String[] pref` field of our [Prefix]
@@ -202,7 +202,7 @@ class Markov {
          * callback `onDone` of that `OnDoneListener mDoneListener` passing it the `View` passed to
          * `setOnDoneListener` that is in our [mDoneListenerView] field.
          *
-         * @param reader BufferedReader for a pre-parsed Markov mChain state table
+         * @param reader BufferedReader for a pre-parsed Markov chain state table
          */
         internal fun loadStateTable(reader: BufferedReader) {
             if (loaded) return
@@ -248,7 +248,7 @@ class Markov {
          * (`prefix.pref[0]`) to the second word (`prefix.pref[1]`), and the second word of [prefix]
          * (`prefix.pref[1]`) to the [String] argument [word] passed to us by our caller.
          *
-         * @param word Word to be added to the suffix list of the current Prefix prefix
+         * @param word Word to be added to the suffix list of the current [Prefix] field [prefix].
          */
         internal fun add(word: String) {
 
@@ -265,9 +265,9 @@ class Markov {
         }
 
         /**
-         * If `firstLine` is true (we are processing the first line of original text) we initialize
-         * `Prefix prefix` with a new instance of `Prefix` pointing to the first entry in the
-         * Markov mChain state table: ["%", "%"], and set `firstLine` to false.
+         * If our [firstLine] field is true (we are processing the first line of original text) we
+         * initialize our [Prefix] field [prefix] with a new instance of [Prefix] pointing to the
+         * first entry in the Markov chain state table: `["%", "%"]`, and set [firstLine] to false.
          */
         internal fun init() {
             if (firstLine) {
@@ -292,11 +292,11 @@ class Markov {
         /**
          * This method is used to capitalize the first word of a sentence. It does this by isolating
          * the char at position 0 (first char of the line), feeding it to the `toUpperCase` method
-         * of `Character` and concatenating that capitalized char with the rest of the original
+         * of [Character] and concatenating that capitalized char with the rest of the original
          * line starting at position 1 (second char of line.)
          *
-         * @param line String which needs the first letter capitalized (Beginning word of sentence).
-         * @return String which consists of the capitalization of the first char concatenated with
+         * @param line [String] which needs the first letter capitalized (Beginning word of sentence).
+         * @return [String] which consists of the capitalization of the first char concatenated with
          * the rest of the line
          */
         private fun capitalize(line: String): String {
@@ -304,28 +304,28 @@ class Markov {
         }
 
         /**
-         * Uses the Markov mChain state table to generate a single random sentence. First we do some
-         * initialization: create `StringBuilder builder` with an initial capacity of 120
-         * characters, initialize our variable `String suf` to the empty string, declare
-         * `int r` to hold our random number, and call `init` to make sure `Prefix prefix`
-         * is already initialized. Then while our `String suf` is not an end of sentence word
-         * in the original text, we loop first fetching the suffix `String[] s` array of the
-         * current `Prefix prefix` from the state table, performing a sanity check to make sure
-         * there is an entry for `prefix` (Returning the string "Error!" as our line if there
-         * is none). Then we choose a random word from the `String[]` array `s` and set
-         * `String suf` to it. If `suf` is a NONWORD (NONWORD is stored as a suffix entry
-         * when the current two word `Prefix prefix` occurs as the last two words in the original
-         * text) we reset the current `Prefix prefix` to the beginning of the state table
-         * ([NONWORD, NONWORD]) thus starting another pass through the table to look for a new value
-         * of `suf`. If `suf` is not NONWORD, we append `suf` to the end of `builder`
-         * followed by a space character, set the first word of `prefix` (`prefix.pref[0]`)
-         * to the second word (`prefix.pref[1]`) and set the second word (`prefix.pref[1]`)
-         * to `suf` and loop around to chose to choose another random word. Finally when we have
-         * reached a random word which was at the end of a sentence in the original text, we convert
-         * our `StringBuilder builder` to a String, capitalize the first word of that generated
-         * String and return it to the caller.
+         * Uses the Markov chain state table to generate a single random sentence. First we do some
+         * initialization: construct a [StringBuilder] variable `val builder` with an initial capacity
+         * of 120 characters, initialize our [String] variable `var suf` to the empty string, declare
+         * an [Int] variable `var r` to hold our random number, and call our [init] method to make
+         * sure our [Prefix] field [prefix] is already initialized. Then while our [String] `suf` is
+         * not an end of sentence word in the original text, we loop, first fetching the suffix
+         * string array `val s` of the current [Prefix] field [prefix] from the state table, performing
+         * a sanity check to make sure there was an entry for [prefix] (Returning the string "Error!"
+         * as our line if there is none). Then we choose a random word from the string array `s` and
+         * set `suf` to it. If `suf` is a NONWORD (NONWORD is stored as a suffix entry when the current
+         * two word [Prefix] field [prefix] occurs as the last two words in the original text) we
+         * reset the current [Prefix] field [prefix] to the beginning of the state table (which is
+         * the entry for [NONWORD, NONWORD]) thus starting another pass through the table to look for
+         * a new value of `suf`. If `suf` is not NONWORD, we append `suf` to the end of `builder`
+         * followed by a space character, set the first word of [prefix] (`prefix.pref[0]`) to the
+         * second word (`prefix.pref[1]`) and set the second word (`prefix.pref[1]`) to `suf` then
+         * loop around to chose to choose another random word. Finally when we have reached a random
+         * word which was at the end of a sentence in the original text, we convert our [StringBuilder]
+         * variable `builder` to a [String], capitalize the first word of that generated [String] and
+         * return it to the caller.
          *
-         * @return String to use as the next sentence of the generated nonsense.
+         * @return [String] to use as the next sentence of the generated nonsense.
          */
         fun line(): String {
             val builder = StringBuilder(120)
@@ -356,33 +356,33 @@ class Markov {
         }
 
         /**
-         * Uses the Markov mChain state table to generate a single random sentence and updates its
-         * parameter `MarkovStats possibles` with statistics about that random sentence. First
-         * we do some initialization: create `StringBuilder builder` with an initial capacity
-         * of 120 characters, initialize our variable `String suf` to the empty string, declare
-         * `int r` to hold our random number, and call `init` to make sure `Prefix prefix`
-         * is already initialized. Then while our `String suf` is not an end of sentence word
-         * in the original text, we loop first fetching the suffix `String[] s` array of the
-         * current `Prefix prefix` from the state table, performing a sanity check to make sure
-         * there is an entry for `prefix` (Returning the string "Error!" as our line if there
-         * is none). We initialize our variable `int suffixes` with the length of `s` minus
-         * 2 and add `suffixes` to our parameter `MarkovStats possibles`. Then we set `r`
-         * to a random position in `s` and set `suf` to that random word. If `suf`
-         * is a NONWORD (NONWORD is stored as a suffix entry when the current two word `Prefix prefix`
-         * occurs as the last two words in the original text) we reset the current `Prefix prefix`
-         * to the beginning of the state table ([NONWORD, NONWORD]) thus starting another pass through
-         * the table to look for a new value of `suf`. If `suf` is not NONWORD, we append
-         * `suf` to the end of `builder` followed by a space character, set the first word
-         * of `prefix` (`prefix.pref[0]`) to the second word (`prefix.pref[1]`) and
-         * set the second word (`prefix.pref[1]`) to `suf` and loop around to chose to
-         * choose another random word. Finally when we have reached a random word which was at the
-         * end of a sentence in the original text, we convert our `StringBuilder builder` to a
-         * String, capitalize the first word of that generated String and return it to the caller.
+         * Uses the Markov chain state table to generate a single random sentence and updates its
+         * [MarkovStats] parameter [possibles] with statistics about that random sentence. First
+         * we do some initialization: create the variable [StringBuilder] `val builder` with an
+         * initial capacity of 120 characters, initialize our [String] variable `var suf` to the
+         * empty string, declare an [Int] `var r` to hold our random number, and call [init] to make
+         * sure our [Prefix] field [prefix] is already initialized. Then while our [String] `suf` is
+         * not an end of sentence word in the original text, we loop, first fetching the suffix
+         * [String] array `val s` of the current [Prefix] field [prefix] from the state table,
+         * performing a sanity check to make sure there is an entry for [prefix] (Returning the
+         * string "Error!" as our line if there is none). We initialize our [Int] variable
+         * `val suffixes` with the length of `s` minus 2 and add `suffixes` to our [MarkovStats]
+         * parameter [possibles]. Then we set `r` to a random position in `s` and set `suf` to that
+         * random word. If `suf` is a NONWORD (NONWORD is stored as a suffix entry when the current
+         * two word [Prefix] field [prefix] occurs as the last two words in the original text) we
+         * reset the current [Prefix] field [prefix] to the beginning of the state table (the entry
+         * for `[NONWORD, NONWORD]`) thus starting another pass through the table to look for a new
+         * value of `suf`. If `suf` is not NONWORD, we append `suf` to the end of `builder` followed
+         * by a space character, set the first word of `prefix` (`prefix.pref[0]`) to the second word
+         * (`prefix.pref[1]`) and set the second word (`prefix.pref[1]`) to `suf` and loop around to
+         * chose to choose another random word. Finally when we have reached a random word which was
+         * at the end of a sentence in the original text, we convert our [StringBuilder] `builder`
+         * to a String, capitalize the first word of that generated String and return it to the caller.
          *
-         * @param possibles `MarkovStats` instance to update with statistics about the random
+         * @param possibles [MarkovStats] instance to update with statistics about the random
          * sentence we return.
-         * @return String to use as the next sentence of the generated nonsense, and an updated parameter
-         * `MarkovStats possibles`
+         * @return [String] to use as the next sentence of the generated nonsense, and an updated
+         * [MarkovStats] parameter [possibles]
          */
         fun line(possibles: MarkovStats): String {
             val builder = StringBuilder(120)
@@ -418,7 +418,7 @@ class Markov {
     /**
      * This class holds two words that appear next to each other in the original text and is used
      * as the key to access a `String[]` array of words that were found to follow those two
-     * words in the original text which is stored as the value in the Markov mChain state table
+     * words in the original text which is stored as the value in the Markov chain state table
      * `Hashtable<Prefix, String[]> stateTable`.
      */
     inner class Prefix {
@@ -428,9 +428,8 @@ class Markov {
         var pref: Array<String>
 
         /**
-         * `Prefix` constructor: duplicate existing prefix. We first allocate a `String[]`
-         * array of size 2 for our field `String[] pref`, then we copy the contents of our parameter's
-         * fields to this instances field.
+         * [Prefix] constructor: duplicate existing prefix. We set our field [pref] to an array of
+         * strings holding the two words of our [Prefix] parameter [p].
          *
          * @param p Prefix to duplicate
          */
@@ -439,23 +438,23 @@ class Markov {
         }
 
         /**
-         * `Prefix` constructor: Both words of this `Prefix` are set to our parameter
-         * `String str` (currently only used when creating a "start of state table" key from
-         * 2 NONWORD's). We first allocate a `String[]` array of size 2 for our field
-         * `String[] pref`, then we copy our parameter `str` to both of its entries.
+         * [Prefix] constructor: Both words of this [Prefix] are set to our [String] parameter
+         * [str] (currently only used when creating a "start of state table" key from 2 NONWORD's).
+         * We set our field [pref] to an array of strings holding two copies of our [String]
+         * parameter [str].
          *
-         * @param str String which will be used for both words of this Prefix
+         * @param str [String] which will be used for both words of this [Prefix]
          */
         internal constructor(str: String) {
             pref = arrayOf(str, str)
         }
 
         /**
-         * Prefix hashCode: generate hash from both prefix words. We use the recommended algorithm
+         * [Prefix] hashCode: generate hash from both prefix words. We use the recommended algorithm
          * of adding the `hashCode()` of one field to 31 times the `hashCode()` of the
          * other field.
          *
-         * @return Hash code value used by the system when the Markov mChain state table
+         * @return Hash code value used by the system when the Markov chain state table
          * `Hashtable<Prefix, String[]> stateTable` is accessed.
          */
         override fun hashCode(): Int {
@@ -463,15 +462,14 @@ class Markov {
         }
 
         /**
-         * Indicates whether some other `Object o` is "equal to" this `Prefix` Object.
-         * First we make sure the `Object o` is an instance of `Prefix`, and if not we
-         * immediately return false. Then we cast our `Object o` parameter to a `Prefix`
-         * to initialize `Prefix p` and return true iff the `pref[0]` and `pref[1]`
-         * fields of `p` are both equal to this instances `pref[0]` and `pref[1]`
-         * fields respectively.
+         * Indicates whether some [other] object of type [Any] is "equal to" this [Prefix] object.
+         * First we make sure the [other] is an instance of [Prefix], and if not we immediately
+         * return false. Then we cast our [other] parameter to a [Prefix] to initialize our [Prefix]
+         * variable `val p` and return true iff the `pref[0]` and `pref[1]` fields of `p` are both
+         * equal to this instances `pref[0]` and `pref[1]` fields respectively.
          *
          * @param other the reference object with which to compare.
-         * @return `true` if this object is the same as the o argument; `false` otherwise.
+         * @return *true* if this object is the same as the [other] argument; *false* otherwise.
          */
         override fun equals(other: Any?): Boolean {
             if (other !is Prefix) {
@@ -482,6 +480,9 @@ class Markov {
         }
     }
 
+    /**
+     * Our static constants.
+     */
     companion object {
         /**
          * Used for log.i calls
