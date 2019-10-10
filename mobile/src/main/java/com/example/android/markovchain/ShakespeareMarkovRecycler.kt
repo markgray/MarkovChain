@@ -21,30 +21,31 @@ import java.io.StringReader
 @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1)
 class ShakespeareMarkovRecycler : FragmentActivity() {
     /**
-     * `Markov` instance used to generate nonsense text
+     * [Markov] instance used to generate nonsense text
      */
     var mMarkov = Markov()
     /**
-     * `RecyclerView` in our layout file
+     * [RecyclerView] in our layout file where our text is displayed.
      */
     lateinit var mRecyclerView: RecyclerView
     /**
-     * `LayoutManager` used by our `RecyclerView`
+     * [RecyclerView.LayoutManager] used by our [RecyclerView] as its `LayoutManager`
      */
     lateinit var mLayoutManager: RecyclerView.LayoutManager
     /**
-     * `MarkovAdapter` used by our RecyclerView (a `RecyclerView.Adapter<MarkovAdapter.ViewHolder>`)
+     * [MarkovAdapter] used by our [RecyclerView] field [mRecyclerView] to supply data for it to
+     * display (a `RecyclerView.Adapter<MarkovAdapter.ViewHolder>`)
      */
     lateinit var mAdapter: MarkovAdapter
 
     /**
      * Called when the activity is starting. First we call through to our super's implementation of
      * `onCreate`, then we cause our layout file R.layout.activity_shakespeare_markov_recycler
-     * to be inflated and set to be our content view. Next we initialize our field `mLayoutManager`
-     * with an instance of `LinearLayoutManager` and we initialize our field `mRecyclerView`
-     * by finding the `RecyclerView` with id R.id.shakespeare_markov_recycler_view. Then we
-     * call our method `initMarkovState()` to initialize the Markov state table of `mMarkov`
-     * by calling its `make` method. We initialize our field `MarkovAdapter mAdapter` with
+     * to be inflated and set to be our content view. Next we initialize our field [mLayoutManager]
+     * with an instance of [LinearLayoutManager] and we initialize our field [mRecyclerView]
+     * by finding the [RecyclerView] with id R.id.shakespeare_markov_recycler_view. Then we
+     * call our method [initMarkovState] to initialize the Markov state table of our [Markov] field
+     * [mMarkov] by calling its `make` method. We initialize our field `MarkovAdapter mAdapter` with
      * a new instance of `MarkovAdapter` which uses `Markov mMarkov` as its `Markov`
      * instance. Then we set the adapter of our `mRecyclerView` to our field `mAdapter`,
      * and its `LayoutManager` to our field `mLayoutManager`.
