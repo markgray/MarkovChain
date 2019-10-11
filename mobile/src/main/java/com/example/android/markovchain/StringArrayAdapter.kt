@@ -36,18 +36,16 @@ class StringArrayAdapter
      * is a good idea to cache references to sub views of the View to avoid unnecessary
      * [View.findViewById] calls.
      *
-     * We initialize our [View] variable `val v` with the view we construct by using the `LayoutInflater`
-     * that the `from` method of `LayoutInflater` obtains from the `Context` of our parameter
-     * `ViewGroup viewGroup` to inflate our item layout file R.layout.line_list_item using `viewGroup`
-     * for the layout params without attaching to it. Then we return a new instance of `ViewHolder` constructed
-     * to use `v` as its `View`.
+     * We initialize our [View] variable `val v` with a view we construct by using the [LayoutInflater]
+     * that the [LayoutInflater.from] method obtains from the `Context` of our [ViewGroup] parameter
+     * [viewGroup] to inflate our item layout file R.layout.line_list_item using [viewGroup] for the
+     * layout params without attaching to it. Then we return a new instance of [ViewHolder] constructed
+     * to use `v` as its [View].
      *
-     * @param viewGroup The ViewGroup into which the new View will be added after it is bound to
+     * @param viewGroup The [ViewGroup] into which the new [View] will be added after it is bound to
      * an adapter position.
-     * @param viewType  The view type of the new View.
-     * @return A new ViewHolder that holds a View of the given view type.
-     * @see .getItemViewType
-     * @see .onBindViewHolder
+     * @param viewType  The view type of the new [View].
+     * @return A new [ViewHolder] that holds a View of the given view type.
      */
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         // Create a new view.
@@ -58,25 +56,22 @@ class StringArrayAdapter
     }
 
     /**
-     * Called by RecyclerView to display the data at the specified position. This method
+     * Called by [RecyclerView] to display the data at the specified position. This method
      * should update the contents of the [ViewHolder.itemView] to reflect the item at
      * the given position.
      *
+     * Note that unlike [ListView], `RecyclerView` will not call this method again if the position
+     * of the item changes in the data set unless the item itself is invalidated or the new position
+     * cannot be determined. For this reason, you should only use the [position] parameter while
+     * acquiring the related data item inside this method and should not keep a copy of it. If you
+     * need the position of an item later on (e.g. in a click listener), use [ViewHolder.getPosition]
+     * which will have the updated position.
      *
-     * Note that unlike [ListView], RecyclerView will not call this
-     * method again if the position of the item changes in the data set unless the item itself
-     * is invalidated or the new position cannot be determined. For this reason, you should only
-     * use the **position** parameter while acquiring the related data item inside this
-     * method and should not keep a copy of it. If you need the position of an item later on
-     * (e.g. in a click listener), use [ViewHolder.getPosition] which will have the
-     * updated position.
+     * We call the `getTextView` method of our [ViewHolder] parameter [viewHolder] to fetch the
+     * [TextView] it holds, and set its text to the [String] in our `String[]` dataset [mDataSet]
+     * that is in position [position].
      *
-     *
-     * We call the `getTextView` of our parameter `ViewHolder viewHolder` to fetch the
-     * `TextView` it holds, and set its text to the `String` in our dataset `String[] mDataSet`
-     * that is in position `position`.
-     *
-     * @param viewHolder The ViewHolder which should be updated to represent the contents of the
+     * @param viewHolder The [ViewHolder] which should be updated to represent the contents of the
      * item at the given position in the data set.
      * @param position   The position of the item within the adapter's data set.
      */
@@ -90,8 +85,8 @@ class StringArrayAdapter
     }
 
     /**
-     * Returns the total number of items in the data set hold by the adapter. We just return the length
-     * of our dataset `String[] mDataSet`.
+     * Returns the total number of items in the data set hold by the adapter. We just return the size
+     * of our `String[]` dataset [mDataSet].
      *
      * @return The total number of items in this adapter.
      */
@@ -100,17 +95,16 @@ class StringArrayAdapter
     }
 
     /**
-     * `ViewHolder` class that our `Adapter` uses.
+     * [ViewHolder] class that our `Adapter` uses.
      */
     inner class ViewHolder
     /**
      * Our constructor. First we call our super's constructor. Then we set the `OnClickListener`
-     * of our parameter `View v` to an anonymous class whose `onClick` override just logs
-     * which position was clicked, and we set the `OnLongClickListener` to an anonymous class
-     * which picks a random selection, instructs the `LinearLayoutManager mLayoutManager` to
-     * scroll to that random selection, toasts what it just did, and returns true to consume the
-     * event. Finally we initialize our field `TextView textView` by finding the view with
-     * id R.id.vTextView in `v`.
+     * of our [View] parameter `v` to a lambda whose `onClick` override just logs which position
+     * was clicked, and we set the `OnLongClickListener` to a lambda which picks a random selection,
+     * instructs the [LinearLayoutManager] field [mLayoutManager] to scroll to that random selection,
+     * toasts what it just did, and returns true to consume the event. Finally we initialize our
+     * [TextView] field [textView] by finding the view with id R.id.vTextView in `v`.
      *
      * @param v `View` that we should hold
      */
@@ -118,9 +112,6 @@ class StringArrayAdapter
 
         /**
          * The `TextView` in the `View` that we hold which displays our items.
-         */
-        /**
-         * A getter for our instance's `TextView textView` field.
          *
          * @return current value of our instance's `TextView textView` field
          */
