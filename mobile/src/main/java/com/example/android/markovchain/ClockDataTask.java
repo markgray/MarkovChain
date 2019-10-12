@@ -111,12 +111,12 @@ public class ClockDataTask extends AsyncTask<ClockDataItem, ClockDataItem, Clock
                     s = 0.0;
                     while (s < 60.0) {
                         trialClock.set(h, m, s);
-                        if (trialClock.badness < params[indexToMinute].badness) {
+                        if (trialClock.getBadness() < params[indexToMinute].getBadness()) {
                             params[indexToMinute].clone(trialClock);
                         }
                         s += increment;
                     }
-                    if (params[indexToMinute].badness < 12.0) {
+                    if (params[indexToMinute].getBadness() < 12.0) {
                         publishProgress(params[indexToMinute]);
                     } else {
                         params[indexToMinute] = null;
@@ -131,7 +131,7 @@ public class ClockDataTask extends AsyncTask<ClockDataItem, ClockDataItem, Clock
         ClockDataItem bestClock = new  ClockDataItem(0, 0, 0);
         for (ClockDataItem clockDataItem : params) {
             if (clockDataItem != null) {
-                if (clockDataItem.badness < bestClock.badness) {
+                if (clockDataItem.getBadness() < bestClock.getBadness()) {
                     bestClock.clone(clockDataItem);
                 }
             }
