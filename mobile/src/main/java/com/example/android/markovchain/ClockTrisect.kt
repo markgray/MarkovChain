@@ -18,15 +18,15 @@ import java.util.*
 @Suppress("MemberVisibilityCanBePrivate")
 class ClockTrisect : Activity() {
     /**
-     * Amount to increment seconds by for each trial `ClockDataItem`
+     * Amount to increment seconds by for each trial [ClockDataItem]
      */
     var increment = 1.0
     /**
-     * The precision needed to format the current `increment`
+     * The precision needed to format the current [increment]
      */
     var incrementPrecision = 0
     /**
-     * `LinearLayout` we add our results to
+     * [LinearLayout] we add our results to
      */
     lateinit var outputLinearLayout: LinearLayout
     /**
@@ -34,11 +34,11 @@ class ClockTrisect : Activity() {
      */
     lateinit var clockDataTask: ClockDataTask
     /**
-     * The `BenchMark` which times how long it takes to do all our calculations
+     * The [BenchMark] which times how long it takes to do all our calculations
      */
     lateinit var benchMark: BenchMark
     /**
-     * The array of `ClockDataItem` objects for the best trisection for each minute on the clock
+     * The array of [ClockDataItem] objects with the best trisection for each minute on the clock
      */
     var minuteBestClock: Array<ClockDataItem>? = null
     /**
@@ -48,19 +48,19 @@ class ClockTrisect : Activity() {
 
 
     /**
-     * Called when the `Activity` is starting. First we call our super's implementation of
+     * Called when the [Activity] is starting. First we call our super's implementation of
      * `onCreate`, then we set our content view to our layout file R.layout.activity_clock_trisect.
-     * We initialize our field `int mClockSize` by using the logical density of the display to
-     * scale our constant CLOCK_SIZE_DIP to pixels. We initialize our field `LinearLayout outputLinearLayout`
-     * by finding the view with id R.id.linear_layout, and our variable `Button button` by finding
-     * the view with id R.id.start_the_clock ("Start the clock"). Finally we set the `OnClickListener`
-     * of `button` to an anonymous class whose `onClick` override calls our method
-     * `createClockDataTask` to initialize our field `ClockDataTask clockDataTask`,
-     * initializes our field `BenchMark benchMark` (starting its clock) then calls the
-     * `execute` method of `clockDataTask` to start it running (its `doInBackground`
-     * method will be called with the value of `clockDataItem` as its parameter).
+     * We initialize our [Int] field [mClockSize] by using the logical density of the display to
+     * scale our constant CLOCK_SIZE_DIP to pixels. We initialize our [LinearLayout] field
+     * [outputLinearLayout] by finding the view with id R.id.linear_layout, and our [Button]
+     * variable `val button` by finding the view with id R.id.start_the_clock ("Start the clock").
+     * Finally we set the `OnClickListener` of `button` to an a lambda whose `onClick` override
+     * calls our method [createClockDataTask] to initialize our [ClockDataTask] field [clockDataTask],
+     * initializes our [BenchMark] field [benchMark] (starting its clock) then calls the `execute`
+     * method of `clockDataTask` to start it running (its `doInBackground` method will be called
+     * with the value of the [minuteBestClock] array of [ClockDataItem]'s as its parameter).
      *
-     * @param savedInstanceState we do not override `onSaveInstanceState` so do not use.
+     * @param savedInstanceState we do not override [onSaveInstanceState] so do not use.
      */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -71,18 +71,17 @@ class ClockTrisect : Activity() {
         outputLinearLayout = findViewById(R.id.linear_layout)
         val button = findViewById<Button>(R.id.start_the_clock)
         /**
-         * Called when our `Button button` has been clicked. We set the static field `secondFormat`
-         * of the class `ClockDataItem` to a string formed by concatenating the string "%0"
-         * followed by 2 plus the current value of our field `incrementPrecision` followed
-         * by the string "." followed by the current value of our field `incrementPrecision`
+         * Called when our [Button] `val button` has been clicked. We set the static field
+         * `secondFormat` of the class [ClockDataItem] to a string formed by concatenating the
+         * string "%0" followed by 2 plus the current value of our field [incrementPrecision]
+         * followed by the string "." followed by the current value of our field [incrementPrecision]
          * followed by the string "f" (this is the string that the `toString` method of
-         * `ClockDataItem` will use to format its `timeSecond` field). We then call
-         * our method `createClockDataTask` to construct and initialize our field
-         * `ClockDataTask clockDataTask`. We divide our field `double increment` by 10,
-         * increment our field `int incrementPrecision`, initialize our field `BenchMark benchMark`
-         * with a new instance (starting its clock) then call the `execute` method of `clockDataTask`
-         * with our field `ClockDataItem[] minuteBestClock` as the parameter to be passed to its
-         * `doInBackground` method.
+         * [ClockDataItem] will use to format its `timeSecond` field). We then call our method
+         * [createClockDataTask] to construct and initialize our [ClockDataTask] field [clockDataTask].
+         * We divide our [Double] field [increment] by 10, increment our [Int] field [incrementPrecision],
+         * initialize our [BenchMark] field [benchMark] with a new instance (starting its clock) then
+         * call the `execute` method of [clockDataTask] with our field `ClockDataItem[] minuteBestClock`
+         * as the parameter to be passed to its `doInBackground` method.
          *
          * Parameter: The `View` that was clicked.
          */
@@ -97,12 +96,12 @@ class ClockTrisect : Activity() {
     }
 
     /**
-     * Adds a TextView containing the `String text` to the `ViewGroup parent`. First we
-     * create a `TextView textView`, then we set the text of `TextView textView` to the
-     * `String text`, and set the left drawable of `textView` to the `mClockSize`
-     * by `mClockSize` pie chart created by the `clockFace` method of `clockTime`,
-     * and finally we add the `TextView textView` to the `ViewGroup parent`
-     * (our vertical `LinearLayout` in our case) at index 0 (the top).
+     * Adds a [TextView] containing the [String] parameter [text] to the [ViewGroup] parameter [parent].
+     * First we initialize our [TextView] variable `val textView` with a new instance, then we set
+     * the text of `textView` to our [String] parameter [text], and set the left drawable of `textView`
+     * to the [mClockSize] by [mClockSize] pie chart created by the `clockFace` method of [clockTime],
+     * and finally we add `textView` to our [ViewGroup] parameter [parent] (the vertical [LinearLayout]
+     * in our UI) at index 0 (the top).
      *
      * @param text text to display in the TextView we add to ViewGroup parent
      * @param clockTime the `ClockDataItem` that the `TextView` represents.
@@ -116,31 +115,32 @@ class ClockTrisect : Activity() {
     }
 
     /**
-     * Initializes our field `ClockDataTask clockDataTask` to an anonymous `ClockDataTask`
-     * for the current value of our field `double increment`, overriding the `onPreExecute`,
-     * `onPostExecute`, and `onProgressUpdate` methods. If our field `ClockDataItem[] minuteBestClock`
-     * is null, we initialize it with the array returned by the `init` method of `clockDataTask`.
+     * Initializes our [ClockDataTask] field [clockDataTask] to an anonymous [ClockDataTask] for the
+     * current value of our [Double] field [increment], overriding its `onPreExecute`, `onPostExecute`,
+     * and `onProgressUpdate` methods. If our [ClockDataItem] array field [minuteBestClock] is null,
+     * we initialize it with the array returned by the `init` method of [clockDataTask].
      */
     @SuppressLint("StaticFieldLeak")
     fun createClockDataTask() {
         clockDataTask = object : ClockDataTask(increment) {
             /**
-             * Runs on the UI thread before [.doInBackground]. We call the `removeAllViews`
-             * method of our field `LinearLayout outputLinearLayout` to have it remove all of
-             * its child views.
+             * Runs on the UI thread before [doInBackground]. We call the `removeAllViews` method
+             * of our [LinearLayout] field [outputLinearLayout] to have it remove all of its child
+             * views.
              */
             override fun onPreExecute() {
                 outputLinearLayout.removeAllViews()
             }
 
             /**
-             * Runs on the UI thread after [.doInBackground]. `ClockDataItem aClockDataItem`
-             * is the value returned by [.doInBackground]. We initialize our variable `String benchResult`
-             * with the Locale.US formatted number string of the `long` value (elapsed time) returned
-             * by the `stop` method of `benchMark`. We then call our `addText` method
-             * to have it display a `TextView` at the top of `outputLinearLayout` whose text
-             * consists of the string formed by concatenating the string "Final Result: " followed by `benchResult`
-             * followed by the string " milliseconds\n", followed by the string value of our parameter `aClockDataItem`
+             * Runs on the UI thread after [doInBackground]. Our [ClockDataItem] parameter
+             * [aClockDataItem] is the value returned by [doInBackground]. We initialize our [String]
+             * variable `val benchResult` with the Locale.US formatted number string of the `long`
+             * value (elapsed time) returned by the `stop` method of our [BenchMark] field [benchMark].
+             * We then call our [addText] method to have it display a [TextView] at the top of our
+             * [TextView] field [outputLinearLayout] whose text consists of the string formed by
+             * concatenating the string "Final Result: " followed by `benchResult` followed by the
+             * string " milliseconds\n", followed by the string value of our parameter [aClockDataItem]
              * followed by the newline character.
              *
              * @param aClockDataItem The result of the operation computed by [.doInBackground].
@@ -152,13 +152,13 @@ class ClockTrisect : Activity() {
             }
 
             /**
-             * Runs on the UI thread after [.publishProgress] is invoked. The specified values
-             * are the values passed to [.publishProgress]. We call our `addText` method
-             * to have it display a `TextView` at the top of `outputLinearLayout` whose text
-             * consists of the string formed by concatenating the string value of our parameter
-             * `ClockDataItem values[0]` followed by a newline character.
+             * Runs on the UI thread after [publishProgress] is invoked. The specified values
+             * are the values passed to [publishProgress]. We call our [addText] method to have
+             * it display a [TextView] at the top of our [TextView] field [outputLinearLayout]
+             * whose text consists of the string formed by concatenating the string value of our
+             * [ClockDataItem] parameter `values[0]` followed by a newline character.
              *
-             * @param values The `ClockDataItem` with the best "badness" for the hour just tried.
+             * @param values The [ClockDataItem] with the best "badness" for the hour just tried.
              */
             override fun onProgressUpdate(vararg values: ClockDataItem) {
                 addText(values[0].toString() + "\n",
@@ -171,6 +171,9 @@ class ClockTrisect : Activity() {
         }
     }
 
+    /**
+     * Our static constants.
+     */
     companion object {
         /**
          * TAG used for logging.
