@@ -19,7 +19,7 @@ import kotlin.math.min
 @Suppress("MemberVisibilityCanBePrivate")
 class ClockDataItem
 /**
- * Our constructor. We just call our method `init` with our parameters.
+ * Our constructor. We just call our method [initClockDataItem] with our parameters.
  *
  * @param hour the hour we represent
  * @param minute minute we represent
@@ -55,47 +55,47 @@ class ClockDataItem
      */
     var pieSlices = DoubleArray(3)
     /**
-     * How bad is our trisection (the sum of the absolute values when each `double[] pieSlice`
+     * How bad is our trisection (the sum of the absolute values when each `Double[]` `pieSlice`
      * is compared to a perfect trisection of 120 degrees)
      */
     var badness: Double = 0.toDouble()
 
     init {
-        init(hour, minute, second)
+        initClockDataItem(hour, minute, second)
     }
 
     /**
-     * Sets the time of this `ClockDataItem` to its parameters. We just call our method
-     * `init` with our parameters and return 'this'.
+     * Sets the time of *this* [ClockDataItem] to its parameters. We just call our method
+     * [initClockDataItem] with our parameters and return *this*.
      *
      * @param hour   the hour we represent
      * @param minute minute we represent
      * @param second the second we represent
-     * @return this `ClockDataItem` set to the new time
+     * @return this [ClockDataItem] set to the new time
      */
     operator fun set(hour: Int, minute: Int, second: Double): ClockDataItem {
-        init(hour, minute, second)
+        initClockDataItem(hour, minute, second)
         return this
     }
 
     /**
      * Initializes the time of day fields of this instance to its parameters, and calculates the
-     * derived fields from the values of the these fields. We save our parameter `int hour` in
-     * our field `int timeHour`, our parameter `int minute` in our field `int timeMinute`,
-     * and our parameter `double second` in our field `double timeSecond`. Then we calculate
-     * the angle of the second hand `double angleSecond` to be 6.0 times `second`, the angle
-     * of the minute hand `double angleMinute` to be 6.0 times the quantity `minute` plus
-     * 1 sixtieth of `second`, and the angle of the hour hand `double angleHour` to be
-     * 30.0 times the quantity `hour` plus 1 sixtieth of `minute` plus 1 thirty-six hundredth
-     * of `second`. We then set our field `double badness` to the value returned by our
-     * method `doBadness` (`doBadness` calls our method `doPieSlices` which initializes
-     * our field `double[] pieSlices`).
+     * derived fields from the values of the these fields. We save our [Int] parameter [hour] in
+     * our [Int] field [timeHour], our [Int] parameter [minute] in our [Int] field [timeMinute],
+     * and our [Double] parameter [second] in our [Double] field [timeSecond]. Then we calculate
+     * the angle of the second hand, our [Double] field [angleSecond] to be 6.0 times [second], the
+     * angle of the minute hand our [Double] field [angleMinute] to be 6.0 times the quantity [minute]
+     * plus 1 sixtieth of [second], and the angle of the hour hand our [Double] field [angleHour] to
+     * be 30.0 times the quantity [hour] plus 1 sixtieth of [minute] plus 1 thirty-six hundredth
+     * of [second]. We then set our [Double] field [badness] to the value returned by our method
+     * [doBadness] ([doBadness] calls our method [doPieSlices] which initializes our field [Double]
+     * array field [pieSlices] with the angles subtended by the three pie slices of the clock face).
      *
      * @param hour the hour we are to represent
      * @param minute the minute we are to represent
      * @param second the second we are to represent
      */
-    private fun init(hour: Int, minute: Int, second: Double) {
+    private fun initClockDataItem(hour: Int, minute: Int, second: Double) {
         timeHour = hour
         timeMinute = minute
         timeSecond = second
@@ -173,32 +173,36 @@ class ClockDataItem
         val angle1: Double
         val angle2: Double
         val angle3: Double
-        if (angleHour < angleMinute && angleHour < angleSecond) {
-            angle1 = angleHour
-            if (angleMinute < angleSecond) {
-                angle2 = angleMinute
-                angle3 = angleSecond
-            } else {
-                angle3 = angleMinute
-                angle2 = angleSecond
+        when {
+            angleHour < angleMinute && angleHour < angleSecond -> {
+                angle1 = angleHour
+                if (angleMinute < angleSecond) {
+                    angle2 = angleMinute
+                    angle3 = angleSecond
+                } else {
+                    angle3 = angleMinute
+                    angle2 = angleSecond
+                }
             }
-        } else if (angleMinute < angleSecond && angleMinute < angleHour) {
-            angle1 = angleMinute
-            if (angleSecond < angleHour) {
-                angle2 = angleSecond
-                angle3 = angleHour
-            } else {
-                angle3 = angleSecond
-                angle2 = angleHour
+            angleMinute < angleSecond && angleMinute < angleHour -> {
+                angle1 = angleMinute
+                if (angleSecond < angleHour) {
+                    angle2 = angleSecond
+                    angle3 = angleHour
+                } else {
+                    angle3 = angleSecond
+                    angle2 = angleHour
+                }
             }
-        } else {
-            angle1 = angleSecond
-            if (angleMinute < angleHour) {
-                angle2 = angleMinute
-                angle3 = angleHour
-            } else {
-                angle3 = angleMinute
-                angle2 = angleHour
+            else -> {
+                angle1 = angleSecond
+                if (angleMinute < angleHour) {
+                    angle2 = angleMinute
+                    angle3 = angleHour
+                } else {
+                    angle3 = angleMinute
+                    angle2 = angleHour
+                }
             }
         }
         pieSlices[0] = angle2 - angle1
