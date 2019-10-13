@@ -106,10 +106,10 @@ class ClockDataItem
     }
 
     /**
-     * Copies the values of all the fields of its parameter `ClockDataItem mom` to our fields
+     * Copies the values of all the fields of its [ClockDataItem] parameter [mom] to our fields
      * (deep copy).
      *
-     * @param mom the `ClockDataItem` whose fields we are to copy to ours.
+     * @param mom the [ClockDataItem] whose fields we are to copy to ours.
      */
     fun clone(mom: ClockDataItem) {
         timeHour = mom.timeHour
@@ -126,14 +126,14 @@ class ClockDataItem
 
     /**
      * Calculates how far the size of pie slices of the clock face created by the positions of the
-     * clock hands misses the perfect trisection: (120,120,120). First we call our method `doPieSlices`
-     * to initialize our field `double[] pieSlices` to the size of the pie slices created by the
-     * angles of the clock hands. Then we initialize our variable `badnessValue` to 0.0 and loop
-     * through all the `double slice` values in `pieSlices` adding the absolute value of
-     * the difference between 120.0 and `slice` to `badnessValue`. When done we return
+     * clock hands misses the perfect trisection: (120,120,120). First we call our method [doPieSlices]
+     * to initialize our [Double] array field [pieSlices] to the size of the pie slices created by
+     * the angles of the clock hands. Then we initialize our [Double] variable `var badnessValue` to
+     * 0.0 and loop through all the [Double] `slice` values in [pieSlices] adding the absolute value
+     * of the difference between 120.0 and `slice` to `badnessValue`. When done we return
      * `badnessValue` to the caller.
      *
-     * @return a value indicating how far from a perfect trisection this ClockDataItem is
+     * @return a value indicating how far from a perfect trisection this [ClockDataItem] is
      */
     fun doBadness(): Double {
         doPieSlices()
@@ -147,9 +147,9 @@ class ClockDataItem
     /**
      * Compares this object with the specified object for order. Returns a negative integer, zero,
      * or a positive integer as this object is less than, equal to, or greater than the specified
-     * object. We just return the value that the `compare` method of `Double` returns
-     * when passed the `badness` field of our `ClockDataItem` and the `badness`
-     * field of our parameter `ClockDataItem o`.
+     * object. We just return the value that the `compareTo` method of [Double] returns when passed
+     * the [badness] field of our [ClockDataItem] and the [badness] field of our [ClockDataItem]
+     * parameter [other].
      *
      * @param   other the object to be compared.
      * @return  a negative integer, zero, or a positive integer as this object
@@ -161,13 +161,12 @@ class ClockDataItem
 
     /**
      * Calculates the angular sizes of the three pie slices of the clock face. First we declare our
-     * variables `double angle1`, `double angle2`, and `double angle3` (these will
-     * be the clockwise-ordered angles of the three clock hands). Then we fall through a complex if
-     * else gauntlet which determines which of the clock hand angles `angleSecond`, `angleMinute`
-     * and `angleHour` to assign to `angle1`, `angle2`, and `angle3`. We then
-     * set `pieSlices[0]` to `angle2` minus `angle1`, set `pieSlices[1]` to
-     * `angle3` minus `angle2`, and set `pieSlices[2]` to 360.0 minus `angle3`
-     * plus `angle1`. TODO: benchmark the gauntlet versus a library sort of the angles
+     * variables `Double angle1`, `Double angle2`, and `Double angle3` (these will be the clockwise
+     * ordered angles of the three clock hands). Then we fall through a complex when gauntlet which
+     * determines which of the clock hand angles [angleSecond], [angleMinute] and [angleHour] to
+     * assign to `angle1`, `angle2`, and `angle3` based on their clockwise order. We then set
+     * `pieSlices[0]` to `angle2` minus `angle1`, set `pieSlices[1]` to `angle3` minus `angle2`,
+     * and set `pieSlices[2]` to 360.0 minus `angle3` plus `angle1`.
      */
     fun doPieSlices() {
         val angle1: Double
@@ -211,20 +210,20 @@ class ClockDataItem
     }
 
     /**
-     * Creates a `BitmapDrawable` pie chart representing the clock face for the time that we
+     * Creates a [BitmapDrawable] pie chart representing the clock face for the time that we
      * hold that is suitable to use in a call to the `setCompoundDrawables` method of a
-     * `TextView`. First we create a `Bitmap bitmap` that is `sizeOfBitmap` by
-     * `sizeOfBitmap` pixels, a `RectF oval` that is that size as well, and an
-     * `Canvas canvas` that will draw into `bitmap`. We initialize `float startAngle`
-     * to be the minimum angle of the angles of our three clock hands, and subtract 90 degrees from
-     * that since the `drawArc` method of `Canvas` considers 0 degrees to be 3 o'clock on
-     * a watch. We then proceed to draw the three wedges created by our clock hands, setting the color
-     * for the first wedge to RED, and drawing a `pieSlices[0]` degree wedge from `startAngle`,
-     * then adding `pieSlices[0]` to `startAngle` to draw a GREEN wedge that is `pieSlices[1]`
-     * degrees, and finally adding `pieSlices[0]` to `startAngle` to draw a BLUE wedge that
-     * is `pieSlices[2]` in size. We then create `BitmapDrawable bmd` from `bitmap`,
-     * set its bounds to be `sizeOfBitmap` by `sizeOfBitmap` before returning `bmd`
-     * to the caller.
+     * `TextView`. First we construct a [Bitmap] variable `val bitmap` that is [sizeOfBitmap] by
+     * [sizeOfBitmap] pixels, a [RectF] variable `val oval` that is that size as well, and an
+     * [Canvas] variable `val canvas` that will draw into `bitmap`. We initialize the [Float]
+     * variable `var startAngle` to be the minimum angle of the angles of our three clock hands,
+     * and subtract 90 degrees from that since the `drawArc` method of [Canvas] considers 0 degrees
+     * to be 3 o'clock on a watch. We then proceed to draw the three wedges created by our clock
+     * hands, setting the color for the first wedge to RED, and drawing a `pieSlices[0]` degree
+     * wedge from `startAngle`, then adding `pieSlices[0]` to `startAngle` to draw a GREEN wedge
+     * that is `pieSlices[1]` degrees, and finally adding `pieSlices[0]` to `startAngle` to draw
+     * a BLUE wedge that is `pieSlices[2]` in size. We then create the [BitmapDrawable] variable
+     * `val bmd` from `bitmap`, set its bounds to be [sizeOfBitmap] by [sizeOfBitmap] and return
+     * `bmd` to the caller.
      *
      * @param resources    Application `Resources` instance to allow `BitmapDrawable` to
      * set the initial target density based on the display metrics of the screen.
@@ -253,18 +252,17 @@ class ClockDataItem
     }
 
     /**
-     * Returns a string representation of our `ClockDataItem`. First we initialize our variable
-     * `StringBuilder sb` with a new instance, and initialize `Formatter formatter` with
-     * an instance which will use `sb` as the destination `StringBuilder` and apply the
-     * US `Locale` for the localization. If `timeHour` is 0 we initialize our variable
-     * `int tempHour` to 12, otherwise initializing it to `timeHour`. We then have
-     * `formatter` append to `sb` the value of `tempHour` formatting using the
-     * format string "%02d:", append the value of `timeMinute` formatting using the format string
-     * "%02d:", and append the value of `timeSecond` formatting using the format string in our
-     * static public field `secondFormat`. We then append to `sb` a newline character
-     * followed by the string value of the three values in our field `double[] pieSlices` each
-     * terminated by a newline character, followed by the string value of our `badness` field
-     * and ending by appending the string " Badness". Finally we return the string value of `sb`
+     * Returns a string representation of our [ClockDataItem]. First we initialize our [StringBuilder]
+     * variable `val sb` with a new instance, and initialize our [Formatter] variable `var formatter`
+     * with an instance which will use `sb` as the destination `StringBuilder` and apply the US
+     * `Locale` for the localization. If [timeHour] is 0 we initialize our [Int] variable `val tempHour`
+     * to 12, otherwise initializing it to `timeHour`. We then have `formatter` append to `sb` the
+     * value of `tempHour` formatting using the format string "%02d:", append the value of [timeMinute]
+     * formatting using the format string "%02d:", and append the value of [timeSecond] formatting
+     * using the format string in our static public field [secondFormat]. We then append to `sb` a
+     * newline character followed by the string value of the three values in our [Double] array field
+     * [pieSlices] each terminated by a newline character, followed by the string value of our [badness]
+     * field and ending by appending the string " Badness". Finally we return the string value of `sb`
      * to the caller.
      *
      * @return a string representation of our `ClockDataItem`.
@@ -285,15 +283,17 @@ class ClockDataItem
         return sb.toString()
     }
 
+    /**
+     * Our static fields.
+     */
     companion object {
-
         /**
-         * Format string to use for the formatting of our `double timeSecond` field.
+         * Format string for [toString] to use for the formatting of our [Double] field [timeSecond].
          */
         var secondFormat = "%06.4f"
 
         /**
-         * `Paint` that our `clockFace` method uses to draw the `BitmapDrawable` pie
+         * [Paint] that our [clockFace] method uses to draw the [BitmapDrawable] pie
          * chart of the clock face for the time value that we hold
          */
         var mPaint = Paint()
