@@ -40,7 +40,7 @@ class ClockTrisect : Activity() {
     /**
      * The array of [ClockDataItem] objects with the best trisection for each minute on the clock
      */
-    var minuteBestClock: Array<ClockDataItem>? = null
+    var minuteBestClock: Array<ClockDataItem?>? = null
     /**
      * The size of the clock face pie chart in pixels we are to display as part of our output.
      */
@@ -91,7 +91,7 @@ class ClockTrisect : Activity() {
             increment /= 10.0     // TODO: change button's label
             incrementPrecision++
             benchMark = BenchMark()
-            clockDataTask.execute(*minuteBestClock!!)
+            clockDataTask.execute(minuteBestClock!!)
         }
     }
 
