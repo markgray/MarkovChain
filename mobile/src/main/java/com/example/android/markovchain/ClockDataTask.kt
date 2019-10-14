@@ -63,18 +63,22 @@ open class ClockDataTask
      * `var indexToMinute` to 0 (it will point to the [ClockDataItem] of the minute whose seconds we
      * are searching for a better trisection). Then we loop over our field [h] for the 12 hours of
      * our clock, and in an inner loop loop over our field [m] for the 60 minutes in each hour:
-     *  - If the next minute's [ClockDataItem] in the `indexToMinute` entry in `params` is null, we
-     *  skip it just incrementing `indexToMinute`.
-     *  - Otherwise we set our field [s] to 0.0, then loop while [s] is less than 60.0, setting the
-     *  time in our [ClockDataItem] field [trialClock] to [h] hour, [m] minute and [s] second and if
-     *  the `badness` field of [trialClock] is less than the current `badness` field of the
-     *  [ClockDataItem] in the `indexToMinute` entry in `params` we clone `trialClock` into
-     *  the [ClockDataItem] in the `indexToMinute` entry in `params`, in either case we then add
-     *  [increment] to [s] and loop around for the next value of [s].
-     *  - When done considering all of the seconds in the minute if the `badness` field of the
-     *  [ClockDataItem] in the `indexToMinute` entry in `params` is less than 12.0 we call
-     *  [publishProgress] to have the [onProgressUpdate] override output the string value of
-     *  the [ClockDataItem] in the `indexToMinute` entry in `params`
+     *  - We copy a reference to the next minute's [ClockDataItem] in the `indexToMinute` entry in
+     *  `params` to our [ClockDataItem] variable `val nextClockDataItem`.
+     *  - If the `nextClockDataItem` is null, we  skip it just incrementing `indexToMinute`.
+     *  - Otherwise we set our field [s] to 0.0 when [increment] is 1.0 or else to the `timeSecond`
+     *  field of `nextClockDataItem` minus 10 times [increment] (which is the time just before
+     *  `timeSecond` from the previous search), and initialize our [Double] variable `val endSecond`
+     *  to 60.0 when [increment] is 1.0 or else to the `timeSecond` field of `nextClockDataItem` plus
+     *  10 times [increment] (which is the time just after `timeSecond` from the previous search).
+     *  - We then loop while [s] is less than `endSecond`, setting the time in our [ClockDataItem]
+     *  field [trialClock] to [h] hour, [m] minute and [s] second and if the `badness` field of
+     *  [trialClock] is less than the current `badness` field of `nextClockDataItem` we clone
+     *  `trialClock` into `nextClockDataItem`. In either case we then add [increment] to [s] and loop
+     *  around for the next value of [s].
+     *  - When done considering all of the time in the section of the minute we were searching, if
+     *  the `badness` field of `nextClockDataItem` is less than 12.0 we call [publishProgress] to
+     *  have the [onProgressUpdate] override output the string value of `nextClockDataItem`.
      *  - If on the other hand the `badness` is greater than or equal to 12.0 we set the [ClockDataItem]
      *  in the `indexToMinute` entry in `params` to null so it will no longer be considered (a second
      *  spans a 6 degree arc so no further fine adjustment of the second can possibly correct for
