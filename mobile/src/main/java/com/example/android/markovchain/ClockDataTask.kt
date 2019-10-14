@@ -79,7 +79,6 @@ open class ClockDataTask
      *  in the `indexToMinute` entry in `params` to null so it will no longer be considered (a second
      *  spans a 6 degree arc so no further fine adjustment of the second can possibly correct for
      *  this).
-     *  TODO: add fields to ClockDataItem that allow us to narrow our search of the minute
      *  - We then increment `indexToMinute` and loop around to explore the next minute in the
      *  [ClockDataItem] array `params`.
      *
@@ -101,17 +100,25 @@ open class ClockDataTask
         while (h < 12) {
             m = 0
             while (m < 60) {
-                if (params[indexToMinute] != null) {
-                    s = 0.0
-                    while (s < 60.0) {
+                val nextClockDataItem: ClockDataItem? = params[indexToMinute]
+                if (nextClockDataItem != null) {
+                    s = when (increment) {
+                        1.0 -> 0.0
+                        else -> nextClockDataItem.timeSecond - 10.0*increment
+                    }
+                    val endSecond: Double = when (increment) {
+                        1.0 -> 60.0
+                        else -> nextClockDataItem.timeSecond + 10.0*increment
+                    }
+                    while (s < endSecond) {
                         trialClock[h, m] = s
-                        if (trialClock.badness < params[indexToMinute]!!.badness) {
-                            params[indexToMinute]!!.clone(trialClock)
+                        if (trialClock.badness < nextClockDataItem.badness) {
+                            nextClockDataItem.clone(trialClock)
                         }
                         s += increment
                     }
-                    if (params[indexToMinute]!!.badness < 12.0) {
-                        publishProgress(params[indexToMinute])
+                    if (nextClockDataItem.badness < 12.0) {
+                        publishProgress(nextClockDataItem)
                     } else {
                         params[indexToMinute] = null
                     }
