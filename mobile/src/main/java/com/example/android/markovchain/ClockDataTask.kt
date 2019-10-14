@@ -4,9 +4,9 @@ import android.os.AsyncTask
 
 /**
  * The first time this background task is run it will cycle through all the seconds in a day, and if
- * the `badness` field of the best `ClockDataItem` for a particular minute is less than
- * 12 it will publish this `ClockDataItem` to the UI thread, and if not it will remove it from
- * future consideration for fractional seconds. When done it will return the `ClockDataItem`
+ * the `badness` field of the best [ClockDataItem] for a particular minute is less than
+ * 12 it will publish this [ClockDataItem] to the UI thread, and if not it will remove it from
+ * future consideration for fractional seconds. When done it will return the [ClockDataItem]
  * that has the best `badness` field. In subsequent runs with fractional increments for the
  * seconds it only looks at minutes which survived the previous pass.
  */
@@ -27,7 +27,7 @@ open class ClockDataTask
     /**
      * The second we are currently working on
      */
-    internal var s: Double = 0.toDouble()
+    internal var s: Double = 0.0
     /**
      * The fraction of a second we are to increment by
      */
@@ -50,51 +50,45 @@ open class ClockDataTask
 
     /**
      * We override this method to perform a computation on a background thread. The parameters is a
-     * `ClockDataItem` array containing the best trisection of the clock for every minute of
-     * the half day so far passed to [.execute] by the caller of this task, and entries are
+     * [ClockDataItem] array containing the best trisection of the clock for every minute of
+     * the half day so far passed to [execute] by the caller of this task, and entries are
      * updated here or deleted if they are too bad to be improved by another iteration (a badness
      * greater than 12 degrees cannot be improved by further fine adjustment of the second hand).
-     * We call [.publishProgress] to publish updates on the UI thread when a minute is found
-     * to have a badness that is less than 12.
+     * We call [publishProgress] to publish updates on the UI thread when a minute is found
+     * to have a badness that is less than 12 (the [onProgressUpdate] override method gets called
+     * with the [ClockDataItem] we pass to [publishProgress]).
      *
+     * We retrieve a reference to the [Array] of [ClockDataItem] from our parameter [paramIn] to
+     * initialize our `Array<ClockDataItem?>` variable `val params`, and initialize our [Int] variable
+     * `var indexToMinute` to 0 (it will point to the [ClockDataItem] of the minute whose seconds we
+     * are searching for a better trisection). Then we loop over our field [h] for the 12 hours of
+     * our clock, and in an inner loop loop over our field [m] for the 60 minutes in each hour:
+     *  - If the next minute's [ClockDataItem] in the `indexToMinute` entry in `params` is null, we
+     *  skip it just incrementing `indexToMinute`.
+     *  - Otherwise we set our field [s] to 0.0, then loop while [s] is less than 60.0, setting the
+     *  time in our [ClockDataItem] field [trialClock] to [h] hour, [m] minute and [s] second and if
+     *  the `badness` field of [trialClock] is less than the current `badness` field of the
+     *  [ClockDataItem] in the `indexToMinute` entry in `params` we clone `trialClock` into
+     *  the [ClockDataItem] in the `indexToMinute` entry in `params`, in either case we then add
+     *  [increment] to [s] and loop around for the next value of [s].
+     *  - When done considering all of the seconds in the minute if the `badness` field of the
+     *  [ClockDataItem] in the `indexToMinute` entry in `params` is less than 12.0 we call
+     *  [publishProgress] to have the [onProgressUpdate] override output the string value of
+     *  the [ClockDataItem] in the `indexToMinute` entry in `params`
+     *  - If on the other hand the `badness` is greater than or equal to 12.0 we set the [ClockDataItem]
+     *  in the `indexToMinute` entry in `params` to null so it will no longer be considered (a second
+     *  spans a 6 degree arc so no further fine adjustment of the second can possibly correct for
+     *  this).
+     *  TODO: add fields to ClockDataItem that allow us to narrow our search of the minute
+     *  - We then increment `indexToMinute` and loop around to explore the next minute in the
+     *  [ClockDataItem] array `params`.
      *
-     * We initialize our variable `int indexToMinute` to 0 (it will point to the `ClockDataItem`
-     * of the minute whose seconds we are searching for a better trisection). Then we loop over `h`
-     * for the 12 hours of our clock, and in an inner loop loop over `m` for the 60 minutes in each
-     * hour:
-     *
-     *  *
-     * If the next minute's `ClockDataItem` in `params[ indexToMinute ]` is null, we
-     * skip it just incrementing `indexToMinute`.
-     *
-     *  *
-     * Otherwise we set our field `double s` to 0.0, then loop while `s` is less than
-     * 60.0, setting the time in `ClockDataItem trialClock` to `h` hour, `m`
-     * minute and `s` second and if the `badness` field of `trialClock` is
-     * less than the `badness` field of `params[ indexToMinute]` we clone `trialClock`
-     * into `params[ indexToMinute]`, in either case we then add `increment` to `s`
-     * and loop around for the next value of `s`.
-     *
-     *  *
-     * When done considering all of the seconds in `params[ indexToMinute]` if the `badness`
-     * field of `params[ indexToMinute]` is less than 12.0 we call `publishProgress` to
-     * have the `onProgressUpdate` override output the string value of `params[ indexToMinute]`.
-     * If on the other hand the `badness` is greater than or equal to 12.0 we set `params[ indexToMinute]`
-     * to null so it will no longer be considered (a second spans a 6 degree arc so no further fine
-     * adjustment of the second can possibly correct for this).
-     *
-     *  *
-     * We then increment `indexToMinute` and loop around to explore the next minute in
-     * `ClockDataItem[] params`.
-     *
-     *
-     * When done with all the minutes in `params` we initialize `ClockDataItem bestClock`
-     * with a new instance for the time 12:00:00 (a very bad `badness` needless to say) then
-     * loop through all the `ClockDataItem clockDataItem` in `params` and if the `badness`
-     * of the current `ClockDataItem clockDataItem` is not null we check whether its `badness`
-     * field is less than the `badness` field of `bestClock` and if so we clone `clockDataItem`
-     * into `bestClock`. When done searching `params` we return `bestClock` to the
-     * caller to have our `onPostExecute` override output it to the user.
+     * When done with all the minutes in `params` we initialize our [ClockDataItem] variable
+     * `val bestClock` with a new instance for the time 12:00:00 (a very bad `badness` needless to
+     * say) then loop through all the [ClockDataItem] `clockDataItem` in `params` and `clockDataItem`
+     * is not null we check whether its `badness` field is less than the `badness` field of
+     * `bestClock` and if so we clone `clockDataItem` into `bestClock`. When done searching `params`
+     * we return `bestClock` to the caller to have our [onPostExecute] override output it to the user.
      *
      * @param paramIn a `ClockDataItem[]` array containing the best trisection for every minute
      * as calculated by previous running of `ClockDataTask`
@@ -143,12 +137,12 @@ open class ClockDataTask
     }
 
     /**
-     * Initializes our results. First we initialize our variable `ClockDataItem[] minuteBestClock`
-     * by allocating room for 720 `ClockDataItem` objects, and initialize `int indexToMinute`
-     * to 0. We loop over `int i` for all 12 hours, and in an inner loop we then loop over `int j`
-     * for the sixty minutes in an hour initializing `minuteBestClock[ indexToMinute]` with a new
-     * instance whose hour is `i`, whose minute is `j` and whose second is 0. We then increment
-     * `indexToMinute` and loop back for the next minute. When done we return `minuteBestClock`
+     * Initializes our results. First we initialize our [ClockDataItem] array variable `val minuteBestClock`
+     * by allocating room for 720 *null* [ClockDataItem] objects, and initialize `int indexToMinute`
+     * to 0. We loop over [Int] `i` for all 12 hours, and in an inner loop we then loop over [Int] `j`
+     * for the sixty minutes in an hour initializing the `indexToMinute` entry in `minuteBestClock`
+     * with a new instance whose hour is `i`, whose minute is `j` and whose second is 0. We then
+     * increment `indexToMinute` and loop back for the next minute. When done we return `minuteBestClock`
      * to the caller.
      *
      * @return an `ClockDataItem[]` array that has an entry for every minute
