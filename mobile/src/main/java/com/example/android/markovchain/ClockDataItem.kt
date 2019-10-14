@@ -37,19 +37,19 @@ class ClockDataItem
     /**
      * The second of the minute we represent
      */
-    var timeSecond: Double = 0.toDouble()
+    var timeSecond: Double = 0.0
     /**
      * Angle of the hour hand on the face of the clock
      */
-    var angleHour: Double = 0.toDouble()
+    var angleHour: Double = 0.0
     /**
      * Angle of the minute hand on the face of the clock
      */
-    var angleMinute: Double = 0.toDouble()
+    var angleMinute: Double = 0.0
     /**
      * Angle of the second hand on the face of the clock
      */
-    var angleSecond: Double = 0.toDouble()
+    var angleSecond: Double = 0.0
     /**
      * The sizes of the three clock face pie slices made by the clock hands (120,120,120) is perfect.
      */
@@ -58,7 +58,7 @@ class ClockDataItem
      * How bad is our trisection (the sum of the absolute values when each `Double[]` `pieSlice`
      * is compared to a perfect trisection of 120 degrees)
      */
-    var badness: Double = 0.toDouble()
+    var badness: Double = 0.0
 
     init {
         initClockDataItem(hour, minute, second)

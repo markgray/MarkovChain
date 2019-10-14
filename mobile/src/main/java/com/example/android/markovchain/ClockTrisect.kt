@@ -122,6 +122,7 @@ class ClockTrisect : Activity() {
      */
     @SuppressLint("StaticFieldLeak")
     fun createClockDataTask() {
+        Log.i(TAG, "Trying an increment of $increment")
         clockDataTask = object : ClockDataTask(increment) {
             /**
              * Runs on the UI thread before [doInBackground]. We call the `removeAllViews` method
@@ -163,7 +164,7 @@ class ClockTrisect : Activity() {
             override fun onProgressUpdate(vararg values: ClockDataItem) {
                 addText(values[0].toString() + "\n",
                         values[0], outputLinearLayout)
-                Log.i(TAG, "Posting Hourly best for: " + values[0].timeHour)
+//                Log.i(TAG, "Posting Hourly best for: " + values[0].timeHour)
             }
         }
         if (minuteBestClock == null) {
