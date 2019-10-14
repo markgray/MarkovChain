@@ -50,6 +50,7 @@
             android:label="@string/title_activity_transcend"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".TestBed" />
+        <activity android:name=".TestBenchMarkSave" />
     </application>
 
 </manifest>
