@@ -1,16 +1,16 @@
 package com.example.android.markovchain
 
-import android.app.Activity
 import android.os.Bundle
+import android.util.Log
+import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import android.util.Log
 
 /**
  * This Activity lets you read Shakespeare's sonnets in a RecyclerView.
  */
 @Suppress("MemberVisibilityCanBePrivate")
-class ShakespeareRecycler : Activity() {
+class ShakespeareRecycler : FragmentActivity() {
     /**
      * The [RecyclerView] in our layout which display the text of Shakespeare's sonnets
      */
@@ -44,7 +44,7 @@ class ShakespeareRecycler : Activity() {
 
         mLayoutManager = LinearLayoutManager(applicationContext)
         mRecyclerView = findViewById(R.id.shakespeare_recyclerview)
-        mAdapter = StringArrayAdapter(Shakespeare.SONNETS, mLayoutManager)
+        mAdapter = StringArrayAdapter(supportFragmentManager, Shakespeare.SONNETS, mLayoutManager)
         // Set CustomAdapter as the adapter for RecyclerView.
         mRecyclerView.adapter = mAdapter
         mRecyclerView.layoutManager = mLayoutManager

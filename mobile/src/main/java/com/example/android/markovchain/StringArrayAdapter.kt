@@ -1,16 +1,14 @@
 package com.example.android.markovchain
 
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ListView
 import android.widget.TextView
-import android.widget.Toast
-import java.util.Random
-import kotlin.math.abs
+import androidx.fragment.app.FragmentManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 class StringArrayAdapter
 /**
@@ -19,12 +17,13 @@ class StringArrayAdapter
  * @param dataSet String[] containing the data to populate views to be used by RecyclerView.
  * @param layoutManager `LayoutManager` used by our `RecyclerView`
  */
-(dataSet: Array<String>, layoutManager: RecyclerView.LayoutManager)
+(fragmentManager: FragmentManager, dataSet: Array<String>, layoutManager: RecyclerView.LayoutManager)
     : RecyclerView.Adapter<StringArrayAdapter.ViewHolder>() {
 
     init {
         mDataSet = dataSet
         mLayoutManager = layoutManager as LinearLayoutManager
+        mFragmentManager = fragmentManager
     }
 
     /**
@@ -97,6 +96,7 @@ class StringArrayAdapter
     /**
      * [ViewHolder] class that our `Adapter` uses.
      */
+    @Suppress("UNUSED_ANONYMOUS_PARAMETER")
     inner class ViewHolder
     /**
      * Our constructor. First we call our super's constructor. Then we set the `OnClickListener`
@@ -115,7 +115,7 @@ class StringArrayAdapter
          *
          * @return current value of our instance's `TextView textView` field
          */
-        val textView: TextView
+        val textView: TextView = v.findViewById(R.id.vTextView)
 
         init {
             // Define click listener for the ViewHolder's View.
@@ -130,23 +130,17 @@ class StringArrayAdapter
             }
             // Define long click listener for the ViewHolder's View.
             v.setOnLongClickListener { view ->
-                /**
-                 * Called when the `View` we hold is long clicked. We initialize our variable
-                 * `int selection` by choosing a random index into our adapter's dataset
-                 * `String[] mDataSet` then call the `scrollToPositionWithOffset` of our
-                 * field `LinearLayoutManager mLayoutManager` to have it scroll to position
-                 * `selection` and toast a message telling what we just did. Finally we return
-                 * true to the caller to consume the long click here.
-                 *
-                 * Parameter: `View` that was long clicked
-                 * @return true to consume the long click here
-                 */
-                val selection = abs(rand.nextInt()) % mDataSet.size
-                mLayoutManager.scrollToPositionWithOffset(selection, 0)
-                Toast.makeText(view.context, "Moving to verse $selection", Toast.LENGTH_LONG).show()
+                val verse = textView.text as String
+                val speechDialog = SpeechDialog.newInstance(verse)
+                val ft = mFragmentManager.beginTransaction()
+                val prev = mFragmentManager.findFragmentByTag("dialog")
+                if (prev != null) {
+                    ft.remove(prev)
+                }
+                ft.addToBackStack(null)
+                speechDialog.show(ft, "dialog")
                 true
             }
-            textView = v.findViewById(R.id.vTextView)
         }
     }
 
@@ -156,10 +150,6 @@ class StringArrayAdapter
          */
         private const val TAG = "StringArrayAdapter"
         /**
-         * Random number generator used to select a random verse
-         */
-        private val rand = Random()
-        /**
          * Our data set.
          */
         private lateinit var mDataSet: Array<String>
@@ -167,6 +157,8 @@ class StringArrayAdapter
          * `LinearLayoutManager` used by the `RecyclerView` we are the adapter for
          */
         private lateinit var mLayoutManager: LinearLayoutManager
+
+        private lateinit var mFragmentManager: FragmentManager
     }
 
 }
