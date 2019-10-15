@@ -89,17 +89,15 @@ class MarkovAdapter
             }
             // Define OnLongClickListener for the ViewHolder's View.
             v.setOnLongClickListener {
-                val possibles = possibles!!.toString()
                 val verse = textView.text as String
-                val markovDialog = MarkovDialog.newInstance(possibles, verse)
-
+                val speechDialog = SpeechDialog.newInstance(verse)
                 val ft = mFragmentManager.beginTransaction()
                 val prev = mFragmentManager.findFragmentByTag("dialog")
                 if (prev != null) {
                     ft.remove(prev)
                 }
                 ft.addToBackStack(null)
-                markovDialog.show(ft, "dialog")
+                speechDialog.show(ft, "dialog")
                 true
             }
             textView = v.findViewById(R.id.vTextView)
