@@ -4,10 +4,13 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
+import java.lang.String.format
 import java.text.NumberFormat
 import java.util.*
 
@@ -62,6 +65,7 @@ class ClockTrisect : Activity() {
      *
      * @param savedInstanceState we do not override [onSaveInstanceState] so do not use.
      */
+    @SuppressLint("DefaultLocale")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_clock_trisect)
@@ -85,14 +89,28 @@ class ClockTrisect : Activity() {
          *
          * Parameter: The `View` that was clicked.
          */
-        button.setOnClickListener {
-            ClockDataItem.secondFormat = "%0" + (incrementPrecision + 2) + "." + incrementPrecision + "f"
-            createClockDataTask()
-            increment /= 10.0     // TODO: change button's label
-            incrementPrecision++
-            benchMark = BenchMark()
-            clockDataTask.execute(minuteBestClock!!)
+        button.setOnClickListener {view ->
+            if (increment > SMALLEST_INCREMENT) {
+                ClockDataItem.secondFormat = "%0" + (incrementPrecision + 2) + "." + incrementPrecision + "f"
+                createClockDataTask()
+                changeButtonLabel(view, "Increment of ${ format("%6.5g", increment) } seconds")
+                increment /= 10.0
+                incrementPrecision++
+                benchMark = BenchMark()
+                clockDataTask.execute(minuteBestClock!!)
+            } else {
+                changeButtonLabel(view, "That's all folks, $increment is too small")
+                Toast.makeText(
+                        view.context,
+                        "Significant digits of double reached, sorry.",
+                        Toast.LENGTH_LONG
+                ).show()
+            }
         }
+    }
+
+    fun changeButtonLabel(view: View, label: String) {
+        (view as Button).text = label
     }
 
     /**
@@ -180,10 +198,13 @@ class ClockTrisect : Activity() {
          * TAG used for logging.
          */
         internal const val TAG = "ClockTrisect"
-
         /**
          * The size of the clock face pie chart in DIPs we are to display as part of our output.
          */
         private const val CLOCK_SIZE_DIP = 100
+        /**
+         * Limit of significant digits of a [Double] value.
+         */
+        private const val SMALLEST_INCREMENT = 1E-14 - 1E-15
     }
 }
