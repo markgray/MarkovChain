@@ -17,7 +17,7 @@ import java.util.Locale;
 /**
  * This activity is useful to benchmark two different implementations of a method
  */
-public class TestBenchMarkSave extends Activity {
+public class TestJava extends Activity {
     /**
      * TAG used for logging
      */

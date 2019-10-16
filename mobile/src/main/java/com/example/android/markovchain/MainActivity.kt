@@ -40,9 +40,10 @@ class MainActivity : Activity() {
         addButton(WhatIsMan::class.java, "What is man?", linearLayout)
         addButton(TranscendActivity::class.java, "Transcendental", linearLayout)
         addText("Testing activities", linearLayout)
+        addButton(TestKotlin::class.java, "Test Kotlin", linearLayout)
+        addButton(TestJava::class.java, "Test Java", linearLayout)
         addButton(TestBed::class.java, "Kotlin Test Bed", linearLayout)
         addButton(FragmentVersionSkeleton::class.java, "Fragment Skeleton", linearLayout)
-        addButton(TestBenchMark::class.java, "Test BenchMark", linearLayout)
     }
 
     /**

@@ -35,7 +35,7 @@
             android:name=".FragmentVersionSkeleton"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".TestBenchMark"
+            android:name=".TestKotlin"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ClockTrisect"
@@ -50,7 +50,7 @@
             android:label="@string/title_activity_transcend"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".TestBed" />
-        <activity android:name=".TestBenchMarkSave" />
+        <activity android:name=".TestJava" />
     </application>
 
 </manifest>

@@ -18,7 +18,7 @@ import java.util.Locale
  * This activity is useful to benchmark two different implementations of a method
  */
 @Suppress("MemberVisibilityCanBePrivate")
-class TestBenchMark : Activity() {
+class TestKotlin : Activity() {
     /**
      * `LinearLayout` with id R.id.progress_view_linear_layout that contains our UI widgets:
      * `ProgressBar vProgressBar`, the two start Buttons, the `Button vAbortButton` "ABORT"
@@ -318,6 +318,6 @@ class TestBenchMark : Activity() {
         /**
          * TAG used for logging
          */
-        internal const val TAG = "TestBenchMark"
+        internal const val TAG = "TestKotlin"
     }
 }
