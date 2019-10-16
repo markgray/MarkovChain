@@ -1,10 +1,14 @@
 package com.example.android.markovchain;
 
 import android.annotation.TargetApi;
-import android.app.Activity;
-import android.app.DialogFragment;
-import android.app.Fragment;
-import android.app.FragmentTransaction;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.fragment.app.DialogFragment;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,11 +25,13 @@ import android.widget.Toast;
  * Just a test Activity for experimenting with retained fragments.
  */
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-public class FragmentVersionSkeleton extends Activity {
+public class FragmentVersionSkeleton extends FragmentActivity {
     /**
      * TAG used for logging
      */
     final static String TAG = "FragmentVersionSkeleton";
+
+    public FragmentManager mFragmentManager;
 
     /**
      * Called when the activity is starting. First we call through to our super's implementation of
@@ -60,11 +66,13 @@ public class FragmentVersionSkeleton extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        mFragmentManager = getSupportFragmentManager();
+
         // First time init, create the UI.
         if (savedInstanceState == null) {
-            getFragmentManager()
+            mFragmentManager
                     .beginTransaction()
-                    .add(android.R.id.content, new UiFragment())
+                    .add(android.R.id.content, new UiFragment(mFragmentManager))
                     .commit();
         } else {
             Log.i(TAG, "Bundle savedInstanceState is not null");
@@ -87,8 +95,8 @@ public class FragmentVersionSkeleton extends Activity {
         // DialogFragment.show() will take care of adding the fragment
         // in a transaction.  We also want to remove any currently showing
         // dialog, so make our own transaction and take care of that here.
-        FragmentTransaction ft = getFragmentManager().beginTransaction();
-        Fragment prev = getFragmentManager().findFragmentByTag("dialog");
+        FragmentTransaction ft = mFragmentManager.beginTransaction();
+        Fragment prev = mFragmentManager.findFragmentByTag("dialog");
         if (prev != null) {
             ft.remove(prev);
         }
@@ -113,6 +121,11 @@ public class FragmentVersionSkeleton extends Activity {
          */
         View mView;
 
+        FragmentManager mFM;
+
+        UiFragment(FragmentManager fragmentManager) {
+            mFM = fragmentManager;
+        }
         /**
          * Called to have the fragment instantiate its user interface view. First we use the
          * {@code LayoutInflater inflater} passed us to inflate our layout file R.layout.fragment_retain_instance
@@ -141,7 +154,22 @@ public class FragmentVersionSkeleton extends Activity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             mView = inflater.inflate(R.layout.fragment_retain_instance, container, false);
+            return mView;
+        }
 
+        /**
+         * Called immediately after {@link #onCreateView(LayoutInflater, ViewGroup, Bundle)}
+         * has returned, but before any saved state has been restored in to the view.
+         * This gives subclasses a chance to initialize themselves once
+         * they know their view hierarchy has been completely created.  The fragment's
+         * view hierarchy is not however attached to its parent at this point.
+         *
+         * @param view               The View returned by {@link #onCreateView(LayoutInflater, ViewGroup, Bundle)}.
+         * @param savedInstanceState If non-null, this fragment is being re-constructed
+         */
+        @Override
+        public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+            super.onViewCreated(view, savedInstanceState);
             // Watch for button clicks.
             Button button = mView.findViewById(R.id.restart);
             button.setOnClickListener(new View.OnClickListener() {
@@ -187,11 +215,11 @@ public class FragmentVersionSkeleton extends Activity {
                 @Override
                 public boolean onLongClick(View view) {
                     Toast.makeText(getActivity(), "I have been long clicked", Toast.LENGTH_LONG).show();
+                    //noinspection ConstantConditions
                     ((FragmentVersionSkeleton)getActivity()).showDialog();
                     return true;
                 }
             });
-            return mView;
         }
 
         /**
@@ -228,17 +256,15 @@ public class FragmentVersionSkeleton extends Activity {
         public void onActivityCreated(Bundle savedInstanceState) {
             super.onActivityCreated(savedInstanceState);
 
-            android.app.FragmentManager fm = getFragmentManager();
-
             // Check to see if we have retained the worker fragment.
-            mWorkFragment = (RetainedFragment) fm.findFragmentByTag("work");
+            mWorkFragment = (RetainedFragment) mFM.findFragmentByTag("work");
 
             // If not retained (or first time running), we need to create it.
             if (mWorkFragment == null) {
                 mWorkFragment = new RetainedFragment();
                 // Tell it who it is working with.
                 mWorkFragment.setTargetFragment(this, 0);
-                fm.beginTransaction ().add(mWorkFragment, "work").commit();
+                mFM.beginTransaction ().add(mWorkFragment, "work").commit();
             }
             mWorkFragment.setDoneListener(mIamDone, mView);
         }
@@ -277,10 +303,12 @@ public class FragmentVersionSkeleton extends Activity {
      * activity instances.  It represents some ongoing work, here a thread
      * we have that sits around incrementing a progress indicator.
      */
+    @SuppressWarnings("WeakerAccess")
     public static class RetainedFragment extends Fragment {
         /**
          * TAG used for logging.
          */
+        @SuppressWarnings("FieldCanBeLocal")
         private String TAG = "RetainedFragment";
         /**
          * {@code ProgressBar} in our layout that we update to the latest value of {@code mPosition}
@@ -341,7 +369,9 @@ public class FragmentVersionSkeleton extends Activity {
              */
             @Override
             public void run() {
-                int max = mProgressBar.getMax(); // Read the ProgressBar upper limit android:max="500" from layout file
+                int max = 500;
+                Log.i(TAG, "mPosition value:" + mPosition);
+                Log.i(TAG, "mReady value:" + mReady);
 
                 // This thread runs almost forever.
                 while (true) {
@@ -362,7 +392,6 @@ public class FragmentVersionSkeleton extends Activity {
                                 e.printStackTrace();
                             }
                         }
-
                         // Now update the progress.  Note it is important that
                         // we touch the progress bar with the lock held, so it
                         // doesn't disappear on us.
@@ -432,15 +461,25 @@ public class FragmentVersionSkeleton extends Activity {
 
             // Retrieve the progress bar from the target's view hierarchy.
             Fragment targetFragment = getTargetFragment();
-            View gotView = null;
+            View gotView;
             if (targetFragment != null) {
                 gotView = targetFragment.getView();
+            } else {
+                Log.e(TAG, "targetFragment is null");
+                throw new RuntimeException("targetFragment is null");
             }
-            if (gotView != null) {
-                mProgressBar = gotView.findViewById(R.id.progress_horizontal);
-                mProgressViewLinearLayout = gotView.findViewById(R.id.progress_view_linear_layout);
-                mMainView = gotView.findViewById(R.id.main_view);
+            if (gotView == null) {
+                Log.e(TAG, "gotView is null");
+                throw new RuntimeException("gotView is null");
             }
+
+            mProgressBar = gotView.findViewById(R.id.progress_horizontal);
+            if (mProgressBar == null) {
+                Log.e(TAG, "mProgressBar is null");
+                throw new RuntimeException("mProgressBar is null");
+            }
+            mProgressViewLinearLayout = gotView.findViewById(R.id.progress_view_linear_layout);
+            mMainView = gotView.findViewById(R.id.main_view);
 
             // We are ready for our thread to go.
             synchronized (mThread) {
@@ -579,6 +618,7 @@ public class FragmentVersionSkeleton extends Activity {
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
 
+            //noinspection ConstantConditions
             mLabel = getArguments().getString("label");
             mText = getArguments().getString("text");
 

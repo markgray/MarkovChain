@@ -9,7 +9,8 @@
     <string name="title_activity_fullscreen">FullscreenActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
-    <string name="fragment_retain_instance_msg">Please wait while loading data</string>
+    <string name="fragment_retain_instance_msg">Please wait while loading data\n
+        If you press back I will reattach when you launch FragmentVersionSkeleton again</string>
     <string name="restart">RESTART</string>
     <string name="toast_value">TOAST VALUE</string>
     <string name="this_is_the_main_view">This is the main view\nLong click me to launch dialog</string>
