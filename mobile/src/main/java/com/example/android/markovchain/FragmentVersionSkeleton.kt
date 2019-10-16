@@ -23,31 +23,25 @@ import android.widget.Toast
 @Suppress("PLATFORM_CLASS_MAPPED_TO_KOTLIN", "MemberVisibilityCanBePrivate")
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
 class FragmentVersionSkeleton : FragmentActivity() {
-
+    /**
+     * Handle to the [FragmentManager] for interacting with fragments associated with this activity
+     */
     lateinit var mFragmentManager: FragmentManager
 
     /**
      * Called when the activity is starting. First we call through to our super's implementation of
-     * onCreate. If this is the first time we are called (Bundle savedInstanceState == null) we need
-     * to:
-     *
-     *  *
-     * 1. Get the FragmentManager for interacting with fragments associated with this activity.
-     *
-     *  *
-     * 2. Start a series of edit operations on the Fragments associated with this FragmentManager.
-     *
-     *  *
-     * 3. Add a new instance of our UiFragment fragment to the activity state
-     *
-     *
-     * 4. Schedule a commit of this transaction. The commit does not happen immediately; it will
-     * be scheduled as work on the main thread to be done the next time that thread is ready.
-     *
+     * `onCreate`. If this is the first time we are called (our [Bundle] parameter [savedInstanceState]
+     * is *null*) we need to:
+     *  1. Get the [FragmentManager] for interacting with fragments associated with this activity
+     *  to initialize our [FragmentManager] field [mFragmentManager]
+     *  2. Start a series of edit operations on the Fragments associated with this [FragmentManager].
+     *  3. Add a new instance of our [UiFragment] fragment to the activity state
+     *  4. Schedule a commit of this transaction. The commit does not happen immediately; it will
+     *  be scheduled as work on the main thread to be done the next time that thread is ready.
      *
      * If we are being recreated after an orientation change or other event, then the fragment api
-     * will have saved its state in `Bundle savedInstanceState` so it will not be null. (We however do
-     * not override `onSaveInstanceState`, so there is nothing in the Bundle we need bother with.)
+     * will have saved its state in [savedInstanceState] so it will not be null. (We however do
+     * not override [onSaveInstanceState], so there is nothing in the Bundle we need bother with.)
      *
      * @param savedInstanceState If the activity is being re-initialized after
      * previously being shut down then this Bundle contains the data that was most
@@ -72,16 +66,15 @@ class FragmentVersionSkeleton : FragmentActivity() {
     }
 
     /**
-     * Create and show a `MyDialogFragment DialogFragment`. First we get the `FragmentManager`
-     * for interacting with fragments associated with this activity and instruct it to create a
-     * `FragmentTransaction ft` and by beginning a series of fragment transactions on the Fragment's
-     * associated with this `FragmentManager`. Next we initialize our variable `Fragment prev`
-     * by having the `FragmentManager` for interacting with fragments associated with this activity
-     * search for a fragment with the tag "dialog". If `prev` is not null we use `ft` to remove
-     * `prev`. We next tell `ft` to add the transaction to the back stack. Next we initialize
-     * `DialogFragment newFragment` with a new instance of `MyDialogFragment` using some dummy
-     * data for its label and text. Finally we instruct `newFragment` to show itself using the tag
-     * "dialog".
+     * Create and show a [MyDialogFragment] DialogFragment. First we use our [FragmentManager] field
+     * [mFragmentManager] to create a `FragmentTransaction` to initialize our variable `val ft` and
+     * then use `ft` to begin a series of fragment transactions on the Fragment's associated with our
+     * [FragmentManager]. Next we initialize our [Fragment] variable `val prev` by having our field
+     * [mFragmentManager] search for a fragment with the tag "dialog". If `prev` is not null after
+     * this we use `ft` to remove `prev`. We next tell `ft` to add the transaction to the back stack.
+     * Next we initialize our [DialogFragment] variable `val newFragment` with a new instance of
+     * [MyDialogFragment] using some dummy data for its label and text. Finally we instruct
+     * `newFragment` to show itself using the tag "dialog".
      */
     internal fun showDialog() {
         // DialogFragment.show() will take care of adding the fragment
@@ -95,34 +88,37 @@ class FragmentVersionSkeleton : FragmentActivity() {
         ft.addToBackStack(null)
 
         // Create and show the dialog.
-        val newFragment = MyDialogFragment.newInstance("This is label", "This is the text")
+        val newFragment = MyDialogFragment.newInstance(
+                "This is label",
+                "This is the text"
+        )
         newFragment.show(ft, "dialog")
     }
 
     /**
-     * This is a fragment showing UI that will be updated from work done
+     * This is a fragment showing the UI that will be updated from work done
      * in the retained fragment.
      */
     class UiFragment internal constructor(internal var mFM: FragmentManager) : Fragment() {
         /**
-         * A reference to our example retained Fragment
+         * A reference to our example retained [Fragment]
          */
         internal var mWorkFragment: RetainedFragment? = null
         /**
-         * View containing our layout file
+         * [View] containing our layout file
          */
         internal lateinit var mView: View
 
         /**
-         * DoneListener for `RetainedFragment mWorkFragment`. When `mWorkFragment` is done
-         * it calls the `onDone` method of `DoneListener` which in turn calls our override
+         * [DoneListener] for our [RetainedFragment] field [mWorkFragment]. When [mWorkFragment] is
+         * done it calls the `onDone` method of `DoneListener` which in turn calls our override
          * of `onDoneDo` which changes the visibility of the `LinearLayout` with id
-         * R.id.progress_view_linear_layout from VISIBLE to GONE, and the visibility of the `TextView`
+         * R.id.progress_view_linear_layout from VISIBLE to GONE, and the visibility of the [TextView]
          * with id R.id.main_view from GONE to VISIBLE.
          */
         internal var mIamDone: DoneListener = object : DoneListener() {
             /**
-             * Called by `DoneListener.onDone()`. First we locate the `TextView` with id
+             * Called by [DoneListener.onDone]. First we locate the `TextView` with id
              * R.id.main_view in our parameter `View v` and save a reference in our variable
              * `TextView mMainView`, then we locate the `LinearLayout` with id
              * R.id.progress_view_linear_layout and save a reference to it in our variable
