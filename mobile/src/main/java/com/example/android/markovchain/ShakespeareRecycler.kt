@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
 
 /**
  * This Activity lets you read Shakespeare's sonnets in a RecyclerView.
@@ -49,6 +50,8 @@ class ShakespeareRecycler : FragmentActivity() {
         mRecyclerView.adapter = mAdapter
         mRecyclerView.layoutManager = mLayoutManager
         Log.i(TAG, "Verses read: " + Shakespeare.SONNETS.size)
+        Snackbar.make(mRecyclerView,"Long click a verse to hear it read", Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show()
     }
 
     companion object {
