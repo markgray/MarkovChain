@@ -5,11 +5,10 @@ import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-
+import com.google.android.material.snackbar.Snackbar
 import java.io.IOException
 import java.io.StringReader
 
@@ -65,6 +64,8 @@ class ShakespeareMarkovRecycler : FragmentActivity() {
         // Set CustomAdapter as the adapter for RecyclerView.
         mRecyclerView.adapter = mAdapter
         mRecyclerView.layoutManager = mLayoutManager
+        Snackbar.make(mRecyclerView,"Long click a verse to hear it read", Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show()
     }
 
     /**
@@ -90,7 +91,6 @@ class ShakespeareMarkovRecycler : FragmentActivity() {
         // TODO: do this as thread
         mMarkov.setDoneListener(object : DoneListener() {
             override fun onDoneDo(view: View) {
-                Toast.makeText(view.context, "I am done OVERRIDE.", Toast.LENGTH_LONG).show()
                 view.callOnClick()
             }
         }, mRecyclerView)
