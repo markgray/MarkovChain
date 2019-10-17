@@ -32,6 +32,8 @@ class ClockTrisect : Activity() {
      * [LinearLayout] we add our results to
      */
     lateinit var outputLinearLayout: LinearLayout
+
+    lateinit var mSortedButton: Button
     /**
      * The `AsyncTask` which does all our calculations
      */
@@ -90,10 +92,13 @@ class ClockTrisect : Activity() {
          * Parameter: The `View` that was clicked.
          */
         button.setOnClickListener {view ->
+            mSortedButton.visibility = View.VISIBLE
             if (increment > SMALLEST_INCREMENT) {
                 ClockDataItem.secondFormat = "%0" + (incrementPrecision + 2) + "." + incrementPrecision + "f"
                 createClockDataTask()
-                changeButtonLabel(view, "Increment of ${ format("%6.5g", increment) } seconds")
+                changeButtonLabel(view,
+                        "Increment of ${ format("%6.5g", increment) } seconds, try smaller?"
+                )
                 increment /= 10.0
                 incrementPrecision++
                 benchMark = BenchMark()
@@ -106,6 +111,15 @@ class ClockTrisect : Activity() {
                         Toast.LENGTH_LONG
                 ).show()
             }
+        }
+        mSortedButton = findViewById(R.id.sorted_by_badness)
+        mSortedButton.setOnClickListener { view ->
+            // TODO: make this Button display minuteBestClock sorted from best to worst.
+            Toast.makeText(
+                    view.context,
+                    "This feature is a work in progress, stay tuned.",
+                    Toast.LENGTH_LONG
+            ).show()
         }
     }
 

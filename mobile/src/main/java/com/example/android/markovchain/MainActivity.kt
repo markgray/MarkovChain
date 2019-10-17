@@ -32,7 +32,7 @@ class MainActivity : Activity() {
         setContentView(R.layout.activity_main)
 
         val linearLayout = findViewById<ViewGroup>(R.id.linear_layout)
-        addButton(ShakespeareRecycler::class.java, "Shakespeare", linearLayout)
+        addButton(ShakespeareRecycler::class.java, "Shakespeare Sonnets", linearLayout)
         addButton(ShakespeareMarkovRecycler::class.java, "Shakespeare Markov", linearLayout)
         addButton(BibleMain::class.java, "Bible", linearLayout)
         addButton(BibleMarkovFragment::class.java, "Bible Markov", linearLayout)
