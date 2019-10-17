@@ -32,7 +32,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".BibleMarkovFragment" /> <!-- Old or test activities not expected to be used except for learning purposes -->
         <activity
-            android:name=".FragmentVersionSkeleton"
+            android:name=".RetainedFragmentFun"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".TestKotlin"

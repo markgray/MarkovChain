@@ -43,7 +43,7 @@ class MainActivity : Activity() {
         addButton(TestKotlin::class.java, "Test Kotlin", linearLayout)
         addButton(TestJava::class.java, "Test Java", linearLayout)
         addButton(TestBed::class.java, "Kotlin Test Bed", linearLayout)
-        addButton(FragmentVersionSkeleton::class.java, "Fragment Skeleton", linearLayout)
+        addButton(RetainedFragmentFun::class.java, "Retained Fragment", linearLayout)
     }
 
     /**

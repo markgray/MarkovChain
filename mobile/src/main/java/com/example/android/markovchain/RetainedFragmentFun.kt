@@ -22,7 +22,7 @@ import android.widget.Toast
  */
 @Suppress("PLATFORM_CLASS_MAPPED_TO_KOTLIN", "MemberVisibilityCanBePrivate")
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-class FragmentVersionSkeleton : FragmentActivity() {
+class RetainedFragmentFun : FragmentActivity() {
     /**
      * Handle to the [FragmentManager] for interacting with fragments associated with this activity
      */
@@ -45,7 +45,7 @@ class FragmentVersionSkeleton : FragmentActivity() {
      *
      * @param savedInstanceState If the activity is being re-initialized after
      * previously being shut down then this Bundle contains the data that was most
-     * recently supplied in [.onSaveInstanceState]. In addition FragmentManager
+     * recently supplied in [onSaveInstanceState]. In addition the FragmentManager
      * will save information in the Bundle so it will be non-null when we are recreated
      * as the result of an orientation change iff we contain a retained Fragment.
      */
@@ -173,7 +173,7 @@ class FragmentVersionSkeleton : FragmentActivity() {
          * R.id.main_view (which has a visibility of GONE until [mWorkFragment] flips the visibility
          * of the view containing the `ProgressBar` to GONE and it to  VISIBLE when the progress bar
          * hits its maximum value) and set its `OnLongClickListener` to an a lambda which displays
-         * an informative Toast and instructs our [FragmentVersionSkeleton] activity to show its
+         * an informative Toast and instructs our [RetainedFragmentFun] activity to show its
          * dialog.
          *
          * @param view               The View returned by [onCreateView].
@@ -210,7 +210,7 @@ class FragmentVersionSkeleton : FragmentActivity() {
             textView.setOnLongClickListener {
                 Toast.makeText(activity, "I have been long clicked", Toast.LENGTH_LONG).show()
 
-                (activity as FragmentVersionSkeleton).showDialog()
+                (activity as RetainedFragmentFun).showDialog()
                 true
             }
         }
@@ -631,7 +631,7 @@ class FragmentVersionSkeleton : FragmentActivity() {
         /**
          * TAG used for logging
          */
-        internal const val TAG = "FragmentVersionSkeleton"
+        internal const val TAG = "RetainedFragmentFun"
         /**
          * Maximum value of the [ProgressBar]
          */
