@@ -6,10 +6,10 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.ProgressBar
-import android.widget.Toast
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
 import java.io.BufferedReader
 import java.io.InputStreamReader
 
@@ -91,6 +91,8 @@ class BibleMarkovFragment : FragmentActivity() {
         mProgressBar.setOnClickListener {
             mProgressBar.visibility = View.INVISIBLE
             mRecyclerView.visibility = View.VISIBLE
+            Snackbar.make(mRecyclerView,"Long click a verse to hear it read", Snackbar.LENGTH_LONG)
+                    .setAction("Action", null).show()
             mAdapter.notifyDataSetChanged()
         }
         mMarkov.setDoneListener(object : DoneListener() {
@@ -102,7 +104,6 @@ class BibleMarkovFragment : FragmentActivity() {
              * @param view a View for Context for a Toast or other possible uses.
              */
             override fun onDoneDo(view: View) {
-                Toast.makeText(view.context, "I am done OVERRIDE.", Toast.LENGTH_LONG).show()
                 view.callOnClick()
             }
         }, mProgressBar)
