@@ -211,6 +211,7 @@ public class TestJava extends Activity {
             public void onClick(View v) {
                 vResultsLinearLayout.setVisibility(View.GONE);
                 vProgressLayout.setVisibility(View.VISIBLE);
+                vProgressBar.setProgress(0);
             }
         });
 

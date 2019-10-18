@@ -1,123 +1,118 @@
 package com.example.android.markovchain
 
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.LinearLayout
-import android.widget.ProgressBar
-import android.widget.TextView
-
+import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
 import java.text.NumberFormat
-import java.util.Locale
+import java.util.*
 
 /**
  * This activity is useful to benchmark two different implementations of a method
  */
 @Suppress("MemberVisibilityCanBePrivate")
-class TestKotlin : Activity() {
+class TestKotlin : AppCompatActivity() {
     /**
-     * `LinearLayout` with id R.id.progress_view_linear_layout that contains our UI widgets:
-     * `ProgressBar vProgressBar`, the two start Buttons, the `Button vAbortButton` "ABORT"
-     * button, `EditText vProgressSteps`, and `EditText vIterationsPerStep`. It shares a
-     * `FrameLayout` with `LinearLayout vResultsLinearLayout` and starts out VISIBLE then
-     * switches to GONE when a benchmark finishes so that the results can be seen.
+     * [LinearLayout] with id R.id.progress_view_linear_layout that contains our UI widgets:
+     * the [ProgressBar] field [vProgressBar], the two start Buttons, the [Button] field [vAbortButton]
+     * "ABORT", the [EditText] field [vProgressSteps], and the [EditText] field [vIterationsPerStep].
+     * It shares a `FrameLayout` with the [LinearLayout] field [vResultsLinearLayout] and starts out
+     * VISIBLE then switches to GONE when a benchmark finishes so that the results can be seen.
      */
     internal lateinit var vProgressLayout: LinearLayout
     /**
-     * `ProgressBar` in our layout used to show the progress of our benchmark.
+     * [ProgressBar] in our layout used to show the progress of our benchmark.
      */
     internal lateinit var vProgressBar: ProgressBar
     /**
-     * `Button` used to start version one of code
+     * [Button] used to start version one of code
      */
     internal lateinit var vStartButtonOne: Button
     /**
-     * `Button` used to start version two of code
+     * [Button] used to start version two of code
      */
     internal lateinit var vStartButtonTwo: Button
     /**
-     * `Button` currently used to `finish()` this `Activity`
+     * [Button] currently used to `finish()` this `Activity`
      */
     internal lateinit var vAbortButton: Button
 
     /**
-     * `EditText` in layout used to change `mProgressSteps`
+     * [EditText] in layout used to change [mProgressSteps]
      */
     internal lateinit var vProgressSteps: EditText
     /**
-     * `EditText` in layout used to change `mIterationsPerStep`
+     * [EditText] in layout used to change [mIterationsPerStep]
      */
     internal lateinit var vIterationsPerStep: EditText
 
     /**
-     * Number of steps in `ProgressBar`
+     * Number of steps in the [ProgressBar] field [vProgressBar]
      */
-    internal var mProgressSteps: Long? = 100L
+    internal var mProgressSteps: Long = 100L
     /**
-     * Number of repetitions per `ProgressBar` step.
+     * Number of repetitions per [ProgressBar] step.
      */
-    internal var mIterationsPerStep: Long? = 10000L
+    internal var mIterationsPerStep: Long = 10000L
 
     /**
-     * `LinearLayout` with id R.id.results_linear_layout in our layout file that contains
-     * `TextView vResults`, and `Button vTryAgain`. It shares a `FrameLayout` with
-     * `LinearLayout vProgressLayout` and starts out GONE then switches to VISIBLE when a benchmark
-     * finishes so that the results displayed in `TextView vResults` can be seen.
+     * [LinearLayout] with id R.id.results_linear_layout in our layout file that contains
+     * the [TextView] field [vResults], and the [Button] field [vTryAgain]. It shares a `FrameLayout`
+     * with the [LinearLayout] field [vProgressLayout] and starts out GONE then switches to VISIBLE
+     * when a benchmark finishes so that the results displayed in the [TextView] field [vResults]
+     * can be seen.
      */
     internal lateinit var vResultsLinearLayout: LinearLayout
     /**
-     * `TextView` used to display results
+     * [TextView] used to display results
      */
     internal lateinit var vResults: TextView
     /**
-     * `Button` in `vResultsLinearLayout` that "returns" us to `vProgressLayout`
+     * [Button] in the [vResultsLinearLayout] field that "returns" us to [vProgressLayout]
      */
     internal lateinit var vTryAgain: Button
 
     /**
-     * Instance of `ControlClass` that is currently being used
+     * Instance of [ControlClass] that is currently being used
      */
     internal lateinit var mControlInstance: ControlClass
 
     /**
      * Called when the activity is starting. First we call through to our super's implementation of
      * `onCreate`, then we set our content view to our layout file activity_test_bench_mark.
-     * We initialize our field `ProgressBar vProgressBar` by finding the view with id
-     * R.id.progress_horizontal, initialize our field `Button vStartButtonOne` by finding the
-     * view with id R.id.start_one and set its `OnClickListener` to an anonymous class that will
-     * run the first method's benchmark (`ControlClass1`) when the `Button` is clicked,
-     * initialize our field `Button vStartButtonTwo` by finding the view with id R.id.start_two
-     * and set its `OnClickListener` to an anonymous class that will run the second method's
-     * benchmark (`ControlClass2`). We then initialize our field `Button vAbortButton` by
-     * finding the view with id R.id.abort and set its `OnClickListener` to an anonymous class
-     * which calls `Activity.finish()` to stop this `Activity` and return to `MainActivity`.
+     * We initialize our [ProgressBar] field [vProgressBar] by finding the view with id
+     * R.id.progress_horizontal, initialize our [Button] field [vStartButtonOne] by finding the
+     * view with id R.id.start_one and set its `OnClickListener` to an a lambda that will run the
+     * first method's benchmark ([ControlClass1]) when the `Button` is clicked, initialize our [Button]
+     * field [vStartButtonTwo] by finding the view with id R.id.start_two and set its `OnClickListener`
+     * to an a lambda that will run the second method's benchmark ([ControlClass2]). We then initialize
+     * our [Button] field [vAbortButton] by finding the view with id R.id.abort and set its
+     * `OnClickListener` to an a lambda which calls [finish] to stop this `Activity` and return to
+     * [MainActivity].
      * TODO: change to just stop current benchmark
      *
+     * We initialize our [EditText] field [vProgressSteps] (the [EditText] used to change the maximum
+     * number of steps in the [ProgressBar]) by finding the view with the id R.id.progress_steps and
+     * set its text to the [String] value of the current value of our [Long] field [mProgressSteps],
+     * and we initialize our [EditText] field [vIterationsPerStep] (the [EditText] used to change the
+     * number of iterations per progress step) by finding the view with id R.id.iterations_per_step
+     * and set its text to the [String] value of the current value of our [Long] field
+     * [mIterationsPerStep].
      *
-     * We initialize our field `EditText vProgressSteps` (the `EditText` used to change
-     * the maximum number of steps in the `ProgressBar`) by finding the view with the id
-     * R.id.progress_steps and set its text to the String value of the current value of our field
-     * `Long mProgressSteps`, and we initialize our field `EditText vIterationsPerStep`
-     * (the `EditText` used to change the number of iterations per progress step) by finding the
-     * view with id R.id.iterations_per_step and set its text to the String value of the current value
-     * of our field `Long mIterationsPerStep`.
-     *
-     *
-     * We initialize our field `LinearLayout vProgressLayout` by finding the view with id
-     * R.id.progress_view_linear_layout, and our field `LinearLayout vResultsLinearLayout` by
+     * We initialize our [LinearLayout] field [vProgressLayout] by finding the view with id
+     * R.id.progress_view_linear_layout, and our [LinearLayout] field [vResultsLinearLayout] by
      * finding the view with id R.id.results_linear_layout (we need these to use later to swap the
-     * visibility of these two views). We initialize our field `Button vTryAgain` by finding
-     * the view with id R.id.try_again ("TRY AGAIN") and set its `OnClickListener` to an anonymous
-     * class that will swap the visibility from the results `LinearLayout vResultsLinearLayout`
-     * to the progress `LinearLayout vProgressLayout`. We then initialize our field
-     * `TextView vResults` (the `TextView` for the results of the benchmark) by finding
-     * the view with id R.id.results_view (the current benchmark results will be appended to it).
+     * visibility of these two views). We initialize our [Button] field [vTryAgain] by finding
+     * the view with id R.id.try_again ("TRY AGAIN") and set its `OnClickListener` to an a lambda
+     * that will swap the visibility from the results [LinearLayout] field [vResultsLinearLayout]
+     * to the progress [LinearLayout] field [vProgressLayout] and set the "progress" of the [ProgressBar]
+     * field [vProgressBar] back to 0. We then initialize our [TextView] field [vResults] (the
+     * [TextView] for the results of the benchmark) by finding the view with id R.id.results_view
+     * (the current benchmark results will be appended to it).
      *
-     * @param savedInstanceState always null since onSaveInstanceState is not overridden
+     * @param savedInstanceState always null since [onSaveInstanceState] is not overridden
      */
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -180,9 +175,9 @@ class TestKotlin : Activity() {
         }
 
         vProgressSteps = findViewById(R.id.progress_steps)
-        vProgressSteps.setText(mProgressSteps!!.toString())
+        vProgressSteps.setText(mProgressSteps.toString())
         vIterationsPerStep = findViewById(R.id.iterations_per_step)
-        vIterationsPerStep.setText(mIterationsPerStep!!.toString())
+        vIterationsPerStep.setText(mIterationsPerStep.toString())
 
         vProgressLayout = findViewById(R.id.progress_view_linear_layout)
         vResultsLinearLayout = findViewById(R.id.results_linear_layout)
@@ -198,22 +193,23 @@ class TestKotlin : Activity() {
         vTryAgain.setOnClickListener {
             vResultsLinearLayout.visibility = View.GONE
             vProgressLayout.visibility = View.VISIBLE
+            vProgressBar.progress = 0
         }
 
         vResults = findViewById(R.id.results_view)
     }
 
     /**
-     * This method reads the text in the `EditText vProgressSteps`, converts that String to
-     * `Long` and uses that value to update the contents of our field `mProgressSteps`,
-     * and also uses it to set the max number of steps for our `ProgressBar vProgressBar`. It
-     * then reads the text in `EditText vIterationsPerStep`, converts it to `Long` and
-     * uses that value to update the contents of our field `mIterationsPerStep`. These two
-     * values are used as arguments to the `execute` method of `ControlInstance`.
+     * This method reads the text in the [EditText] field [vProgressSteps], converts that [String]
+     * to [Long] and uses that value to update the contents of our [ProgressBar] field [mProgressSteps],
+     * and also uses it to set the max number of steps for [vProgressBar]. It then reads the text in
+     * our [EditText] field [vIterationsPerStep], converts it to [Long] and uses that value to update
+     * the contents of our field [mIterationsPerStep]. These two values are used as arguments to the
+     * `execute` method of our current [ControlClass] field [mControlInstance].
      */
     private fun updateIterationValues() {
         mProgressSteps = java.lang.Long.parseLong(vProgressSteps.text.toString())
-        vProgressBar.max = mProgressSteps!!.toInt()
+        vProgressBar.max = mProgressSteps.toInt()
         mIterationsPerStep = java.lang.Long.parseLong(vIterationsPerStep.text.toString())
     }
 
@@ -224,25 +220,25 @@ class TestKotlin : Activity() {
     @SuppressLint("StaticFieldLeak")
     open inner class ControlClass : CalcTask() {
         /**
-         * Runs on the UI thread after `doInBackground(Long...)`. The `Long result` parameter
+         * Runs on the UI thread after `doInBackground(Long...)`. The [Long] parameter [result]
          * is the value returned by `doInBackground(Long...)`. We override this to make use of
-         * the elapsed time value returned.
-         *
+         * the elapsed time value it returned.
          *
          * First we call through to our super's implementation of `onPostExecute`. Then we format
-         * a `String formattedIterations` to display the number of iterations performed just done
-         * (`mProgressSteps*mIterationsPerStep`), and format a `String formattedResult` to
-         * display our parameter `Long result` (total benchmark time in milliseconds). We then
-         * append a `String` containing those two strings to `TextView vResults`. Finally
-         * we set the visibility of `LinearLayout vProgressLayout` to GONE and the visibility of
-         * `LinearLayout vResultsLinearLayout` to VISIBLE in order to see the results displayed.
+         * a [String] variable `val formattedIterations` to display the number of iterations just
+         * performed ([mProgressSteps] times [mIterationsPerStep]), and format a [String] variable
+         * `val formattedResult` to display our [Long] parameter [result] (total benchmark time in
+         * milliseconds). We then append a [String] containing those two strings to our [TextView]
+         * field [vResults]. Finally we set the visibility of our [LinearLayout] field [vProgressLayout]
+         * to GONE and the visibility of our [LinearLayout] field [vResultsLinearLayout] to VISIBLE
+         * in order to see the results displayed.
          *
          * @param result The elapsed time the benchmark took.
          */
         override fun onPostExecute(result: Long?) {
             super.onPostExecute(result)
             Log.i(TAG, "Benchmark took $result milliseconds")
-            val formattedIterations = NumberFormat.getNumberInstance(Locale.US).format(mProgressSteps!! * mIterationsPerStep!!)
+            val formattedIterations = NumberFormat.getNumberInstance(Locale.US).format(mProgressSteps * mIterationsPerStep)
             val formattedResult = NumberFormat.getNumberInstance(Locale.US).format(result)
             vResults.append("Executed $formattedIterations times in\n$formattedResult milliseconds\n")
             vProgressLayout.visibility = View.GONE
@@ -250,13 +246,13 @@ class TestKotlin : Activity() {
         }
 
         /**
-         * Runs on the UI thread after `publishProgress(Long...)` is invoked. The parameter
-         * `progress` is the value passed to `publishProgress(Long...)`. We override
-         * this to advance our progress bar.
-         *
+         * Runs on the UI thread after `publishProgress(Long...)` is invoked. The [Long] parameter
+         * [progress] is the value passed to `publishProgress(Long...)`. We override this to advance
+         * our progress bar.
          *
          * First we call through to our super's implementation of `onProgressUpdate`, then we
-         * set the `ProgressBar vProgressBar` progress to the integer value of our parameter.
+         * set the progress of the [ProgressBar] field [vProgressBar] to the integer value of our
+         * parameter.
          *
          * @param progress The values indicating progress.
          */
