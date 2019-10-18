@@ -33,6 +33,9 @@ class ClockTrisect : Activity() {
      */
     lateinit var outputLinearLayout: LinearLayout
 
+    /**
+     * [Button] used to display result sorted by "badness"
+     */
     lateinit var mSortedButton: Button
     /**
      * The `AsyncTask` which does all our calculations
@@ -87,7 +90,12 @@ class ClockTrisect : Activity() {
          * We divide our [Double] field [increment] by 10, increment our [Int] field [incrementPrecision],
          * initialize our [BenchMark] field [benchMark] with a new instance (starting its clock) then
          * call the `execute` method of [clockDataTask] with our field `ClockDataItem[] minuteBestClock`
-         * as the parameter to be passed to its `doInBackground` method.
+         * as the parameter to be passed to its `doInBackground` method. Finally we initialize our
+         * [Button] field [mSortedButton] by finding the view in our layout with the resource ID
+         * R.id.sorted_by_badness and set its `OnClickListener` to a lambda which calls our method
+         * [displaySortedResults] to have it clear our result [LinearLayout] field [outputLinearLayout]
+         * and redisplay the non-null contents of [minuteBestClock] sorted by the [ClockDataItem]
+         * field [ClockDataItem.badness].
          *
          * Parameter: The `View` that was clicked.
          */
@@ -118,10 +126,21 @@ class ClockTrisect : Activity() {
         }
     }
 
+    /**
+     * Sets the label of the [Button] whose [View] is [view] to the [String] parameter [label].
+     *
+     * @param view The [View] of the [Button] whose label we are to set
+     * @param label The new label for [view].
+     */
     fun changeButtonLabel(view: View, label: String) {
         (view as Button).text = label
     }
 
+    /**
+     * Clears the results displayed in our result [LinearLayout] field [outputLinearLayout]
+     * and redisplays the non-null contents of [minuteBestClock] sorted in descending order on
+     * the [ClockDataItem] field [ClockDataItem.badness].
+     */
     fun displaySortedResults() {
         outputLinearLayout.removeAllViews()
         val sortedResults = minuteBestClock!!.filterNotNull().sortedDescending()
