@@ -113,18 +113,21 @@ class ClockTrisect : Activity() {
             }
         }
         mSortedButton = findViewById(R.id.sorted_by_badness)
-        mSortedButton.setOnClickListener { view ->
-            // TODO: make this Button display minuteBestClock sorted from best to worst.
-            Toast.makeText(
-                    view.context,
-                    "This feature is a work in progress, stay tuned.",
-                    Toast.LENGTH_LONG
-            ).show()
+        mSortedButton.setOnClickListener {
+            displaySortedResults()
         }
     }
 
     fun changeButtonLabel(view: View, label: String) {
         (view as Button).text = label
+    }
+
+    fun displaySortedResults() {
+        outputLinearLayout.removeAllViews()
+        val sortedResults = minuteBestClock!!.filterNotNull().sortedDescending()
+        for (value in sortedResults) {
+            addText(value.toString(), value, outputLinearLayout)
+        }
     }
 
     /**
