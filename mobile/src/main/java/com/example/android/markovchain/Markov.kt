@@ -212,8 +212,7 @@ class Markov {
             try {
                 line = reader.readLine()
                 while (line != null) {
-                    val words = line.split(" ".toRegex())
-                            .dropLastWhile { it.isEmpty() }.toTypedArray()
+                    val words= myFastSplit(line)
                     prefix.pref[0] = words[0]
                     prefix.pref[1] = words[1]
                     stateTable[Prefix(prefix)] = words
@@ -228,6 +227,26 @@ class Markov {
             if (mDoneListener != null) {
                 mDoneListener!!.onDone(mDoneListenerView!!)
             }
+        }
+
+        internal fun myFastSplit(line: String): Array<String> {
+            var startIndex = 0
+            var endIndex = 0
+            var index = 0
+            val outPutList: MutableList<String> = ArrayList(20)
+            while (index < line.length) {
+                if (line[index] == ' ') {
+                    endIndex = index - 1
+                    val word: String = line.substring(startIndex, endIndex+1)
+                    outPutList.add(word)
+                    startIndex = index + 1
+                }
+                index++
+            }
+            if (startIndex != endIndex) {
+                outPutList.add(line.substring(startIndex))
+            }
+            return outPutList.toTypedArray()
         }
 
         /**
