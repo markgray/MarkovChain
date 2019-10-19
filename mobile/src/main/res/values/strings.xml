@@ -46,4 +46,5 @@
     <string name="transendentalist_works">Transendentalist Works</string>
     <string name="screen_size">This is the default screen size</string>
     <string name="sort_best_trisection_to_worst">Sort best trisection to worst</string>
+    <string name="iterations_per_step">Iterations per step</string>
 </resources>

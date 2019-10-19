@@ -126,7 +126,7 @@ public class TestJava extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_bench_mark);
 
-        vProgressBar = findViewById(R.id.progress_horizontal);
+        vProgressBar = findViewById(R.id.progress_of_benchmark);
         vStartButtonOne = findViewById(R.id.start_one);
         vStartButtonOne.setOnClickListener(new View.OnClickListener() {
             /**

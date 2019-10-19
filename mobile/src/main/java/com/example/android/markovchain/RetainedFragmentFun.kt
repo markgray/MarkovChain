@@ -419,7 +419,7 @@ class RetainedFragmentFun : FragmentActivity() {
                 throw RuntimeException("gotView is null")
             }
 
-            mProgressBar = gotView.findViewById(R.id.progress_horizontal)
+            mProgressBar = gotView.findViewById(R.id.progress_of_benchmark)
             if (mProgressBar == null) {
                 Log.e(TAG, "mProgressBar is null")
                 throw RuntimeException("mProgressBar is null")

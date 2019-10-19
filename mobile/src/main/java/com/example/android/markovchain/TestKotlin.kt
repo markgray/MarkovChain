@@ -119,7 +119,7 @@ class TestKotlin : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_test_bench_mark)
 
-        vProgressBar = findViewById(R.id.progress_horizontal)
+        vProgressBar = findViewById(R.id.progress_of_benchmark)
         vStartButtonOne = findViewById(R.id.start_one)
         /**
          * Called when the "START ONE" `Button` is clicked. First we log the fact that we

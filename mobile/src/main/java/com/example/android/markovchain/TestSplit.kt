@@ -22,41 +22,41 @@ class TestSplit : AppCompatActivity() {
      * It shares a `FrameLayout` with the [LinearLayout] field [vResultsLinearLayout] and starts out
      * VISIBLE then switches to GONE when a benchmark finishes so that the results can be seen.
      */
-    internal lateinit var vProgressLayout: LinearLayout
+    lateinit var vProgressLayout: LinearLayout
     /**
      * [ProgressBar] in our layout used to show the progress of our benchmark.
      */
-    internal lateinit var vProgressBar: ProgressBar
+    lateinit var vProgressBar: ProgressBar
     /**
      * [Button] used to start version one of code
      */
-    internal lateinit var vStartButtonOne: Button
+    lateinit var vStartButtonOne: Button
     /**
      * [Button] used to start version two of code
      */
-    internal lateinit var vStartButtonTwo: Button
+    lateinit var vStartButtonTwo: Button
     /**
      * [Button] currently used to `finish()` this `Activity`
      */
-    internal lateinit var vAbortButton: Button
+    lateinit var vAbortButton: Button
 
     /**
      * [EditText] in layout used to change [mProgressSteps]
      */
-    internal lateinit var vProgressSteps: EditText
+    lateinit var vProgressSteps: EditText
     /**
      * [EditText] in layout used to change [mIterationsPerStep]
      */
-    internal lateinit var vIterationsPerStep: EditText
+    lateinit var vIterationsPerStep: EditText
 
     /**
      * Number of steps in the [ProgressBar] field [vProgressBar]
      */
-    internal var mProgressSteps: Long = 1L
+    var mProgressSteps: Long = 100L
     /**
      * Number of repetitions per [ProgressBar] step.
      */
-    internal var mIterationsPerStep: Long = 10000L
+    var mIterationsPerStep: Long = 100L
 
     /**
      * [LinearLayout] with id R.id.results_linear_layout in our layout file that contains
@@ -65,22 +65,22 @@ class TestSplit : AppCompatActivity() {
      * when a benchmark finishes so that the results displayed in the [TextView] field [vResults]
      * can be seen.
      */
-    internal lateinit var vResultsLinearLayout: LinearLayout
+    lateinit var vResultsLinearLayout: LinearLayout
     /**
      * [TextView] used to display results
      */
-    internal lateinit var vResults: TextView
+    lateinit var vResults: TextView
     /**
      * [Button] in the [vResultsLinearLayout] field that "returns" us to [vProgressLayout]
      */
-    internal lateinit var vTryAgain: Button
+    lateinit var vTryAgain: Button
 
     /**
      * Instance of [ControlClass] that is currently being used
      */
-    internal lateinit var mControlInstance: ControlClass
+    lateinit var mControlInstance: ControlClass
 
-    internal val testString: String =
+    val testString: String =
             "from fairest creatures we desire increase " +
             "that thereby beauty's rose might never die " +
             "but as the riper should by time decease " +
@@ -96,8 +96,8 @@ class TestSplit : AppCompatActivity() {
             "pity the world or else this glutton be " +
             "to eat the world's due by the grave and thee. "
 
-    internal var testOutput: MutableList<String> = ArrayList(20)
-    internal var testOutputList: List<String> = ArrayList()
+    var testOutput: MutableList<String> = ArrayList(20)
+    var testOutputList: List<String> = ArrayList()
 
     /**
      * Called when the activity is starting. First we call through to our super's implementation of
@@ -139,7 +139,7 @@ class TestSplit : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_test_bench_mark)
 
-        vProgressBar = findViewById(R.id.progress_horizontal)
+        vProgressBar = findViewById(R.id.progress_of_benchmark)
         vStartButtonOne = findViewById(R.id.start_one)
         /**
          * Called when the "START ONE" `Button` is clicked. First we log the fact that we
@@ -279,7 +279,6 @@ class TestSplit : AppCompatActivity() {
          * @param progress The values indicating progress.
          */
         override fun onProgressUpdate(vararg progress: Long?) {
-            super.onProgressUpdate(*progress)
             vProgressBar.progress = progress[0]!!.toInt()
         }
     }
@@ -301,7 +300,6 @@ class TestSplit : AppCompatActivity() {
             if (timesCalled % 100000 == 0) {
                 Log.i(TAG, "Results of split: $testOutputList")
             }
-            if (testOutputList.size > 20) testOutputList = ArrayList()
         }
     }
 
@@ -319,16 +317,16 @@ class TestSplit : AppCompatActivity() {
          */
         override fun testMethod() {
             var startIndex = 0
-            var endIndext = 0
+            var endIndex = 0
             for(i in testString.indices) {
                 if (testString[i] == ' ') {
-                    val word: String = testString.substring(startIndex, endIndext+1)
+                    val word: String = testString.substring(startIndex, endIndex+1)
                     testOutput.add(word)
                     startIndex = i
                 }
-                endIndext = i
+                endIndex = i
             }
-            if (startIndex != endIndext) {
+            if (startIndex != endIndex) {
                 testOutput.add(testString.substring(startIndex))
             }
             if (timesCalled % 100000 == 0) {
@@ -342,7 +340,7 @@ class TestSplit : AppCompatActivity() {
         /**
          * TAG used for logging
          */
-        internal const val TAG = "TestKotlin"
+        internal const val TAG = "TestSplit"
 
         internal var timesCalled = 0
     }

@@ -19,7 +19,7 @@
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <ProgressBar
-            android:id="@+id/progress_horizontal"
+            android:id="@+id/progress_of_benchmark"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="200dip"
             android:layout_height="wrap_content"
