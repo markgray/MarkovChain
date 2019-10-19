@@ -40,6 +40,7 @@ class MainActivity : Activity() {
         addButton(WhatIsMan::class.java, "What is man?", linearLayout)
         addButton(TranscendActivity::class.java, "Transcendental", linearLayout)
         addText("Testing activities", linearLayout)
+        addButton(TestSplit::class.java, "Test Split Speed", linearLayout)
         addButton(TestKotlin::class.java, "Test Kotlin", linearLayout)
         addButton(TestJava::class.java, "Test Java", linearLayout)
         addButton(TestBed::class.java, "Kotlin Test Bed", linearLayout)

@@ -51,6 +51,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".TestBed" />
         <activity android:name=".TestJava" />
+        <activity android:name=".TestSplit" />
     </application>
 
 </manifest>
