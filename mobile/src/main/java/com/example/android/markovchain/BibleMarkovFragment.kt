@@ -42,6 +42,8 @@ class BibleMarkovFragment : FragmentActivity() {
      */
     var mMarkov = Markov()
 
+    var mBibleMarkovBenchMark: BenchMark = BenchMark()
+
     /**
      * Called when the activity is starting. First we call through to our super's implementation of
      * `onCreate`, then we set our content view to our layout file R.layout.activity_bible_markov_fragment.
@@ -104,6 +106,7 @@ class BibleMarkovFragment : FragmentActivity() {
              * @param view a View for Context for a Toast or other possible uses.
              */
             override fun onDoneDo(view: View) {
+                Log.i(TAG, "Loading Markov state table took ${mBibleMarkovBenchMark.stop()}")
                 view.callOnClick()
             }
         }, mProgressBar)
@@ -139,6 +142,7 @@ class BibleMarkovFragment : FragmentActivity() {
             }
         }
         mThread.start()
+        mBibleMarkovBenchMark.start()
         Log.i(TAG, "We are waiting for Markov mChain to load")
     }
 

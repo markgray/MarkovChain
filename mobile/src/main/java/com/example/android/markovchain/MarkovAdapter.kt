@@ -153,7 +153,7 @@ class MarkovAdapter
      * @param position The position of the item within the adapter's data set.
      */
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        Log.d(TAG, "Element $position set.")
+//      Log.d(TAG, "Element $position set.")
 
         // Get element from your data set at this position and replace the contents of the view
         // with that element
