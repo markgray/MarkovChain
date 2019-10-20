@@ -2,7 +2,6 @@ package com.example.android.markovchain
 
 import android.util.Log
 import android.view.View
-
 import java.io.*
 import java.util.*
 import kotlin.math.abs
@@ -229,15 +228,34 @@ class Markov {
             }
         }
 
+        /**
+         * This is a hand rolled `split` method replacement which splits its [String] parameter [line]
+         * using the space character as the delimiter and returns the result as an [Array] of [String].
+         * First we initialize our [Int] variables `var index` (pointer to the next character in [line]
+         * to be checked for being a space delimiter), `var startIndex` (the start index of the current
+         * word) and `var endIndex` (the end index of the current word) all to 0. We initialize our
+         * [MutableList] of [String] variable `val outPutList` to a new instance of [ArrayList] and
+         * then we loop while `index` is less than the length of [line]:
+         *  - If the character at position `index` in [line] is a blank character we set `endIndex`
+         *  to `index`, initialize our [String] variable `val word` to the substring of [line]
+         *  starting at `startIndex` and ending right before `endIndex`, add `word` to our [MutableList]
+         *  variable `outPutList` and then set `startIndex` to `index` plus 1.
+         *  - In any case we then increment `index` and loop around to consider the next character.
+         *
+         * When done with the loop, we add the last substring of [line] from `startIndex` to the end
+         * of the string (the add is surrounded by an *if* statement for no really good reason, I
+         * just felt nervous). Finally we return a *typed* array containing all of the elements of
+         * `outPutList` to our caller.
+         */
         internal fun myFastSplit(line: String): Array<String> {
+            var index = 0
             var startIndex = 0
             var endIndex = 0
-            var index = 0
-            val outPutList: MutableList<String> = ArrayList(20)
+            val outPutList: MutableList<String> = ArrayList()
             while (index < line.length) {
                 if (line[index] == ' ') {
-                    endIndex = index - 1
-                    val word: String = line.substring(startIndex, endIndex+1)
+                    endIndex = index
+                    val word: String = line.substring(startIndex, endIndex)
                     outPutList.add(word)
                     startIndex = index + 1
                 }

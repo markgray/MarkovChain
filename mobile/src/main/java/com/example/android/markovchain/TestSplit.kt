@@ -76,28 +76,18 @@ class TestSplit : AppCompatActivity() {
     lateinit var vTryAgain: Button
 
     /**
-     * Instance of [ControlClass] that is currently being used
+     * Instance of [ControlClass] that is currently being tested
      */
     lateinit var mControlInstance: ControlClass
 
-    val testString: String =
-            "from fairest creatures we desire increase " +
-            "that thereby beauty's rose might never die " +
-            "but as the riper should by time decease " +
-            "his tender heir might bear his memory " +
-            "but thou contracted to thine own bright eyes " +
-            "feed'st thy light's flame with self-substantial fuel " +
-            "making a famine where abundance lies " +
-            "thy self thy foe to thy sweet self too cruel " +
-            "thou that art now the world's fresh ornament " +
-            "and only herald to the gaudy spring " +
-            "within thine own bud buriest thy content " +
-            "and tender churl mak'st waste in niggarding " +
-            "pity the world or else this glutton be " +
-            "to eat the world's due by the grave and thee. "
-
-    var testOutput: MutableList<String> = ArrayList(20)
+    /**
+     * [List] used as output by our library split method in [ControlClass1]
+     */
     var testOutputList: List<String> = ArrayList()
+    /**
+     * [MutableList] used as output by our hand rolled split method in [ControlClass2]
+     */
+    var testOutput: MutableList<String> = ArrayList()
 
     /**
      * Called when the activity is starting. First we call through to our super's implementation of
@@ -284,27 +274,28 @@ class TestSplit : AppCompatActivity() {
     }
 
     /**
-     * This is a simple example use of ControlClass designed to benchmark division.
+     * This tests the idiomatic kotlin library split.
      */
     @SuppressLint("StaticFieldLeak")
     private inner class ControlClass1 : ControlClass() {
         /**
          * This method should be overridden by a method which performs whatever computation
-         * you wish to benchmark. Here we just divide our Accumulator register by our Divisor
-         * register.
+         * you wish to benchmark. Here we just split our [testString] using the library `split`
+         * method
          */
         override fun testMethod() {
+            timesCalled++
             testOutputList = testString
                     .split(" ".toRegex())
                     .dropLastWhile { it.isEmpty() }
-            if (timesCalled % 100000 == 0) {
+            if (timesCalled % 1000 == 0) {
                 Log.i(TAG, "Results of split: $testOutputList")
             }
         }
     }
 
     /**
-     * This is a simple example use of ControlClass designed to benchmark multiplication.
+     * This tests the hand rolled split method.
      */
     @SuppressLint("StaticFieldLeak")
     private inner class ControlClass2 : ControlClass() {
@@ -312,36 +303,77 @@ class TestSplit : AppCompatActivity() {
 
         /**
          * This method should be overridden by a method which performs whatever computation
-         * you wish to benchmark. Here we just multiply our Accumulator register by our
-         * Multiplicand register
+         * you wish to benchmark. Here we split our test [String] field [testString] using a
+         * hand rolled method instead of the kotlin library split method. First we increment
+         * our field [timesCalled], then we initialize our [Int] variables `var index` (pointer
+         * to the next character in [testString] to be checked for being a space delimiter),
+         * `var startIndex` (the start index of the current word) and `var endIndex` (the end
+         * index of the current word) all to 0. Then we loop while `index` is less than the length
+         * of [testString]:
+         *  - If the character at position `index` in [testString] is a blank character we set
+         *  `endIndex` to `index`, initialize our [String] variable `val word` to the substring
+         *  of [testString] starting at `startIndex` and ending right before `endIndex`, add `word`
+         *  to our [MutableList] field [testOutput] and then set `startIndex` to `index` plus 1.
+         *  - In any case we then increment `index` and loop around to consider the next character.
+         *
+         * When done with the loop, we add the last substring of [testString] from `startIndex`
+         * to the end of the string (the add is surrounded by an *if* statement for no really
+         * good reason, I just felt nervous). If [timesCalled] modulo 1,000 is 0 we log the
+         * output we created in [testOutput]. Finally we initialize [testOutput] to an empty
+         * [ArrayList].
          */
         override fun testMethod() {
+            timesCalled++
+            var index = 0
             var startIndex = 0
             var endIndex = 0
-            for(i in testString.indices) {
-                if (testString[i] == ' ') {
-                    val word: String = testString.substring(startIndex, endIndex+1)
+            while (index < testString.length) {
+                if (testString[index] == ' ') {
+                    endIndex = index
+                    val word: String = testString.substring(startIndex, endIndex)
                     testOutput.add(word)
-                    startIndex = i
+                    startIndex = index + 1
                 }
-                endIndex = i
+                index++
             }
             if (startIndex != endIndex) {
                 testOutput.add(testString.substring(startIndex))
             }
-            if (timesCalled % 100000 == 0) {
+            if (timesCalled % 1000 == 0) {
                 Log.i(TAG, "Results of split: $testOutput")
             }
-            if (testOutput.size > 20) testOutput = ArrayList(20)
+            testOutput = ArrayList()
         }
     }
 
     companion object {
         /**
+         * Number of times that `testMethod` has been called, used to throttle Log.i of results.
+         */
+        internal var timesCalled = 0
+
+        /**
          * TAG used for logging
          */
         internal const val TAG = "TestSplit"
 
-        internal var timesCalled = 0
+        /**
+         * The test `String` that our two "split" methods split.
+         */
+        internal const val testString: String =
+                "from fairest creatures we desire increase " +
+                "that thereby beauty's rose might never die " +
+                "but as the riper should by time decease " +
+                "his tender heir might bear his memory " +
+                "but thou contracted to thine own bright eyes " +
+                "feed'st thy light's flame with self-substantial fuel " +
+                "making a famine where abundance lies " +
+                "thy self thy foe to thy sweet self too cruel " +
+                "thou that art now the world's fresh ornament " +
+                "and only herald to the gaudy spring " +
+                "within thine own bud buriest thy content " +
+                "and tender churl mak'st waste in niggarding " +
+                "pity the world or else this glutton be " +
+                "to eat the world's due by the grave and thee."
     }
 }
