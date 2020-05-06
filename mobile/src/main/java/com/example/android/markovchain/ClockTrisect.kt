@@ -12,7 +12,7 @@ import android.widget.TextView
 import android.widget.Toast
 import java.lang.String.format
 import java.text.NumberFormat
-import java.util.*
+import java.util.Locale
 
 /**
  * Searches for the time of day when the hands of a clock comes closest to trisecting the face of

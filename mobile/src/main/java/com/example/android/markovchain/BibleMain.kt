@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView
 import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader
-import java.util.*
 
 /**
  * This is the main activity of our Bible Text reading function.

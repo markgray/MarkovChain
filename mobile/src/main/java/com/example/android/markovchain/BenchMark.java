@@ -20,7 +20,6 @@ public class BenchMark {
      * {@code start()} to initialize our field {@code long mStartTime} to the time in milliseconds
      * since boot.
      */
-    @SuppressWarnings("WeakerAccess")
     public BenchMark() {
         this.start();
     }

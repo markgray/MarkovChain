@@ -2,8 +2,13 @@ package com.example.android.markovchain
 
 import android.util.Log
 import android.view.View
-import java.io.*
-import java.util.*
+import java.io.BufferedReader
+import java.io.IOException
+import java.io.Reader
+import java.io.StreamTokenizer
+import java.io.StringReader
+import java.util.Hashtable
+import java.util.Random
 import kotlin.math.abs
 
 /**

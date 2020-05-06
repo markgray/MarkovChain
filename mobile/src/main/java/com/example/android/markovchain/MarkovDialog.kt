@@ -12,7 +12,7 @@ import android.widget.TextView
  * `DialogFragment` to display number of possibilities given the first two words, and the verse
  * we randomly generated using `Markov.line`.
  */
-@Suppress("MemberVisibilityCanBePrivate")
+@Suppress("MemberVisibilityCanBePrivate", "unused")
 class MarkovDialog : DialogFragment() {
     /**
      * Possibility statistics for the current verse
