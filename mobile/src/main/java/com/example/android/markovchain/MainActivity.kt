@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 
 /**
  * This is the main Activity which launches all the other Activity's when their "launching Button"
@@ -14,7 +15,7 @@ import android.widget.TextView
  * java code.
  */
 @Suppress("MemberVisibilityCanBePrivate")
-class MainActivity : Activity() {
+class MainActivity : AppCompatActivity() {
 
     /**
      * Called when the activity is starting. First we call through to our super's implementation of

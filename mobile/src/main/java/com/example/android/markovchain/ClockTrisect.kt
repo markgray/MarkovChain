@@ -10,6 +10,7 @@ import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import java.lang.String.format
 import java.text.NumberFormat
 import java.util.Locale
@@ -19,7 +20,7 @@ import java.util.Locale
  * the clock.
  */
 @Suppress("MemberVisibilityCanBePrivate")
-class ClockTrisect : Activity() {
+class ClockTrisect : AppCompatActivity() {
     /**
      * Amount to increment seconds by for each trial [ClockDataItem]
      */

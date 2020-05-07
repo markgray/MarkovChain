@@ -1,7 +1,6 @@
 package com.example.android.markovchain;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,13 +10,15 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.text.NumberFormat;
 import java.util.Locale;
 
 /**
  * This activity is useful to benchmark two different implementations of a method
  */
-public class TestJava extends Activity {
+public class TestJava extends AppCompatActivity {
     /**
      * TAG used for logging
      */
