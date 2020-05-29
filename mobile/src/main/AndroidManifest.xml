@@ -11,11 +11,10 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:ignore="AllowBackup,GoogleAppIndexingWarning">
+        tools:ignore="AllowBackup,GoogleAppIndexingWarning,LockedOrientationActivity">
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -30,7 +29,7 @@
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".BibleMarkovFragment" /> <!-- Old or test activities not expected to be used except for learning purposes -->
+        <activity android:name=".BibleMarkovFragment" />
         <activity
             android:name=".RetainedFragmentFun"
             android:theme="@style/AppTheme.NoActionBar" />

@@ -4,10 +4,14 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.*
+import android.widget.Button
+import android.widget.EditText
+import android.widget.LinearLayout
+import android.widget.ProgressBar
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import java.text.NumberFormat
-import java.util.*
+import java.util.Locale
 import kotlin.collections.ArrayList
 
 /**
@@ -250,7 +254,9 @@ class TestSplit : AppCompatActivity() {
         override fun onPostExecute(result: Long?) {
             super.onPostExecute(result)
             Log.i(TAG, "Benchmark took $result milliseconds")
-            val formattedIterations = NumberFormat.getNumberInstance(Locale.US).format(mProgressSteps * mIterationsPerStep)
+            val formattedIterations = NumberFormat
+                    .getNumberInstance(Locale.US)
+                    .format(mProgressSteps * mIterationsPerStep)
             val formattedResult = NumberFormat.getNumberInstance(Locale.US).format(result)
             vResults.append("Executed $formattedIterations times in\n$formattedResult milliseconds\n")
             vProgressLayout.visibility = View.GONE

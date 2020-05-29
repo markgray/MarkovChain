@@ -10,16 +10,17 @@ import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import java.lang.String.format
 import java.text.NumberFormat
-import java.util.*
+import java.util.Locale
 
 /**
  * Searches for the time of day when the hands of a clock comes closest to trisecting the face of
  * the clock.
  */
 @Suppress("MemberVisibilityCanBePrivate")
-class ClockTrisect : Activity() {
+class ClockTrisect : AppCompatActivity() {
     /**
      * Amount to increment seconds by for each trial [ClockDataItem]
      */

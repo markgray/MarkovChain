@@ -10,13 +10,14 @@ import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.ScrollView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 
 /**
  * This [Activity] loads html files from the raw resources of the app in the background, and
  * displays them in a [TextView].
  */
 @Suppress("MemberVisibilityCanBePrivate")
-class WhatIsMan : Activity() {
+class WhatIsMan : AppCompatActivity() {
     /**
      * [TextView] used to display our book chapters
      */

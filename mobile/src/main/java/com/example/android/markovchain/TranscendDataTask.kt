@@ -6,7 +6,6 @@ import android.os.AsyncTask
 import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader
-import java.util.*
 
 /**
  * An [AsyncTask] which loads the utf8 text file with the resource ID specified by the parameter
