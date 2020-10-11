@@ -34,7 +34,7 @@
             android:name=".RetainedFragmentFun"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".TestKotlin"
+            android:name=".benchmark.TestKotlin"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ClockTrisect"
@@ -49,8 +49,8 @@
             android:label="@string/title_activity_transcend"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".TestBed" />
-        <activity android:name=".TestJava" />
-        <activity android:name=".TestSplit" />
+        <activity android:name=".benchmark.TestJava" />
+        <activity android:name=".benchmark.TestSplit" />
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package com.example.android.markovchain
+package com.example.android.markovchain.benchmark
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -10,15 +10,15 @@ import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.android.markovchain.R
 import java.text.NumberFormat
 import java.util.Locale
-import kotlin.collections.ArrayList
 
 /**
  * This activity is useful to benchmark two different implementations of a method
  */
 @Suppress("MemberVisibilityCanBePrivate")
-class TestSplit : AppCompatActivity() {
+class TestKotlin : AppCompatActivity() {
     /**
      * [LinearLayout] with id R.id.progress_view_linear_layout that contains our UI widgets:
      * the [ProgressBar] field [vProgressBar], the two start Buttons, the [Button] field [vAbortButton]
@@ -26,41 +26,41 @@ class TestSplit : AppCompatActivity() {
      * It shares a `FrameLayout` with the [LinearLayout] field [vResultsLinearLayout] and starts out
      * VISIBLE then switches to GONE when a benchmark finishes so that the results can be seen.
      */
-    lateinit var vProgressLayout: LinearLayout
+    internal lateinit var vProgressLayout: LinearLayout
     /**
      * [ProgressBar] in our layout used to show the progress of our benchmark.
      */
-    lateinit var vProgressBar: ProgressBar
+    internal lateinit var vProgressBar: ProgressBar
     /**
      * [Button] used to start version one of code
      */
-    lateinit var vStartButtonOne: Button
+    internal lateinit var vStartButtonOne: Button
     /**
      * [Button] used to start version two of code
      */
-    lateinit var vStartButtonTwo: Button
+    internal lateinit var vStartButtonTwo: Button
     /**
      * [Button] currently used to `finish()` this `Activity`
      */
-    lateinit var vAbortButton: Button
+    internal lateinit var vAbortButton: Button
 
     /**
      * [EditText] in layout used to change [mProgressSteps]
      */
-    lateinit var vProgressSteps: EditText
+    internal lateinit var vProgressSteps: EditText
     /**
      * [EditText] in layout used to change [mIterationsPerStep]
      */
-    lateinit var vIterationsPerStep: EditText
+    internal lateinit var vIterationsPerStep: EditText
 
     /**
      * Number of steps in the [ProgressBar] field [vProgressBar]
      */
-    var mProgressSteps: Long = 100L
+    internal var mProgressSteps: Long = 100L
     /**
      * Number of repetitions per [ProgressBar] step.
      */
-    var mIterationsPerStep: Long = 100L
+    internal var mIterationsPerStep: Long = 10000L
 
     /**
      * [LinearLayout] with id R.id.results_linear_layout in our layout file that contains
@@ -69,29 +69,20 @@ class TestSplit : AppCompatActivity() {
      * when a benchmark finishes so that the results displayed in the [TextView] field [vResults]
      * can be seen.
      */
-    lateinit var vResultsLinearLayout: LinearLayout
+    internal lateinit var vResultsLinearLayout: LinearLayout
     /**
      * [TextView] used to display results
      */
-    lateinit var vResults: TextView
+    internal lateinit var vResults: TextView
     /**
      * [Button] in the [vResultsLinearLayout] field that "returns" us to [vProgressLayout]
      */
-    lateinit var vTryAgain: Button
+    internal lateinit var vTryAgain: Button
 
     /**
-     * Instance of [ControlClass] that is currently being tested
+     * Instance of [ControlClass] that is currently being used
      */
-    lateinit var mControlInstance: ControlClass
-
-    /**
-     * [List] used as output by our library split method in [ControlClass1]
-     */
-    var testOutputList: List<String> = ArrayList()
-    /**
-     * [MutableList] used as output by our hand rolled split method in [ControlClass2]
-     */
-    var testOutput: MutableList<String> = ArrayList()
+    internal lateinit var mControlInstance: ControlClass
 
     /**
      * Called when the activity is starting. First we call through to our super's implementation of
@@ -104,7 +95,7 @@ class TestSplit : AppCompatActivity() {
      * to an a lambda that will run the second method's benchmark ([ControlClass2]). We then initialize
      * our [Button] field [vAbortButton] by finding the view with id R.id.abort and set its
      * `OnClickListener` to an a lambda which calls [finish] to stop this `Activity` and return to
-     * [MainActivity].
+     * `MainActivity`.
      * TODO: change to just stop current benchmark
      *
      * We initialize our [EditText] field [vProgressSteps] (the [EditText] used to change the maximum
@@ -150,7 +141,6 @@ class TestSplit : AppCompatActivity() {
          * Parameter: `View` that was clicked
          */
         vStartButtonOne.setOnClickListener {
-            timesCalled = 0
             Log.i(TAG, "Start button clicked")
             updateIterationValues()
             mControlInstance = ControlClass1()
@@ -172,7 +162,6 @@ class TestSplit : AppCompatActivity() {
          * Parameter: `View` that was clicked
          */
         vStartButtonTwo.setOnClickListener {
-            timesCalled = 0
             Log.i(TAG, "Start button clicked")
             updateIterationValues()
             mControlInstance = ControlClass2()
@@ -275,111 +264,63 @@ class TestSplit : AppCompatActivity() {
          * @param progress The values indicating progress.
          */
         override fun onProgressUpdate(vararg progress: Long?) {
+            super.onProgressUpdate(*progress)
             vProgressBar.progress = progress[0]!!.toInt()
         }
     }
 
     /**
-     * This tests the idiomatic kotlin library split.
+     * This is a simple example use of ControlClass designed to benchmark division.
      */
     @SuppressLint("StaticFieldLeak")
     private inner class ControlClass1 : ControlClass() {
         /**
+         * Accumulator register for repeated divisions
+         */
+        var acc = 1.000000001
+        /**
+         * Divisor register for repeated divisions
+         */
+        var div = 0.999999999
+
+        /**
          * This method should be overridden by a method which performs whatever computation
-         * you wish to benchmark. Here we just split our [testString] using the library `split`
-         * method
+         * you wish to benchmark. Here we just divide our Accumulator register by our Divisor
+         * register.
          */
         override fun testMethod() {
-            timesCalled++
-            testOutputList = testString
-                    .split(" ".toRegex())
-                    .dropLastWhile { it.isEmpty() }
-            if (timesCalled % 1000 == 0) {
-                Log.i(TAG, "Results of split: $testOutputList")
-            }
+            acc /= div
         }
     }
 
     /**
-     * This tests the hand rolled split method.
+     * This is a simple example use of ControlClass designed to benchmark multiplication.
      */
     @SuppressLint("StaticFieldLeak")
     private inner class ControlClass2 : ControlClass() {
-
+        /**
+         * Accumulator register for repeated multiplications
+         */
+        var acc = 1.000000001
+        /**
+         * Multiplicand register for repeated multiplications
+         */
+        var mul = 0.999999999
 
         /**
          * This method should be overridden by a method which performs whatever computation
-         * you wish to benchmark. Here we split our test [String] field [testString] using a
-         * hand rolled method instead of the kotlin library split method. First we increment
-         * our field [timesCalled], then we initialize our [Int] variables `var index` (pointer
-         * to the next character in [testString] to be checked for being a space delimiter),
-         * `var startIndex` (the start index of the current word) and `var endIndex` (the end
-         * index of the current word) all to 0. Then we loop while `index` is less than the length
-         * of [testString]:
-         *  - If the character at position `index` in [testString] is a blank character we set
-         *  `endIndex` to `index`, initialize our [String] variable `val word` to the substring
-         *  of [testString] starting at `startIndex` and ending right before `endIndex`, add `word`
-         *  to our [MutableList] field [testOutput] and then set `startIndex` to `index` plus 1.
-         *  - In any case we then increment `index` and loop around to consider the next character.
-         *
-         * When done with the loop, we add the last substring of [testString] from `startIndex`
-         * to the end of the string (the add is surrounded by an *if* statement for no really
-         * good reason, I just felt nervous). If [timesCalled] modulo 1,000 is 0 we log the
-         * output we created in [testOutput]. Finally we initialize [testOutput] to an empty
-         * [ArrayList].
+         * you wish to benchmark. Here we just multiply our Accumulator register by our
+         * Multiplicand register
          */
         override fun testMethod() {
-            timesCalled++
-            var index = 0
-            var startIndex = 0
-            var endIndex = 0
-            while (index < testString.length) {
-                if (testString[index] == ' ') {
-                    endIndex = index
-                    val word: String = testString.substring(startIndex, endIndex)
-                    testOutput.add(word)
-                    startIndex = index + 1
-                }
-                index++
-            }
-            if (startIndex != endIndex) {
-                testOutput.add(testString.substring(startIndex))
-            }
-            if (timesCalled % 1000 == 0) {
-                Log.i(TAG, "Results of split: $testOutput")
-            }
-            testOutput = ArrayList()
+            acc *= mul
         }
     }
 
     companion object {
         /**
-         * Number of times that `testMethod` has been called, used to throttle Log.i of results.
-         */
-        internal var timesCalled = 0
-
-        /**
          * TAG used for logging
          */
-        internal const val TAG = "TestSplit"
-
-        /**
-         * The test `String` that our two "split" methods split.
-         */
-        internal const val testString: String =
-                "from fairest creatures we desire increase " +
-                "that thereby beauty's rose might never die " +
-                "but as the riper should by time decease " +
-                "his tender heir might bear his memory " +
-                "but thou contracted to thine own bright eyes " +
-                "feed'st thy light's flame with self-substantial fuel " +
-                "making a famine where abundance lies " +
-                "thy self thy foe to thy sweet self too cruel " +
-                "thou that art now the world's fresh ornament " +
-                "and only herald to the gaudy spring " +
-                "within thine own bud buriest thy content " +
-                "and tender churl mak'st waste in niggarding " +
-                "pity the world or else this glutton be " +
-                "to eat the world's due by the grave and thee."
+        internal const val TAG = "TestKotlin"
     }
 }

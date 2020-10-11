@@ -1,4 +1,4 @@
-package com.example.android.markovchain;
+package com.example.android.markovchain.benchmark;
 
 import android.os.AsyncTask;
 import android.util.Log;

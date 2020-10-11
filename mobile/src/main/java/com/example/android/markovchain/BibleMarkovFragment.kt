@@ -9,6 +9,7 @@ import android.widget.ProgressBar
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.android.markovchain.benchmark.BenchMark
 import com.google.android.material.snackbar.Snackbar
 import java.io.BufferedReader
 import java.io.InputStreamReader

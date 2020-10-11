@@ -1,4 +1,4 @@
-package com.example.android.markovchain;
+package com.example.android.markovchain.benchmark;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -11,6 +11,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.android.markovchain.R;
 
 import java.text.NumberFormat;
 import java.util.Locale;

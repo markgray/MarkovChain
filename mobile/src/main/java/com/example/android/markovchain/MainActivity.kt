@@ -7,6 +7,9 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.android.markovchain.benchmark.TestJava
+import com.example.android.markovchain.benchmark.TestKotlin
+import com.example.android.markovchain.benchmark.TestSplit
 import com.example.android.markovchain.bible.BibleMain
 
 /**

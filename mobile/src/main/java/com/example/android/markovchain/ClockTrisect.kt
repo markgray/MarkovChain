@@ -11,6 +11,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.android.markovchain.benchmark.BenchMark
 import java.lang.String.format
 import java.text.NumberFormat
 import java.util.Locale
