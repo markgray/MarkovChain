@@ -25,7 +25,7 @@
             android:name=".ShakespeareMarkovRecycler"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".BibleMain"
+            android:name=".bible.BibleMain"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />

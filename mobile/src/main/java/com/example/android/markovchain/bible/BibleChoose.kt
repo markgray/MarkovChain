@@ -1,6 +1,5 @@
-package com.example.android.markovchain
+package com.example.android.markovchain.bible
 
-import androidx.fragment.app.DialogFragment
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -12,6 +11,8 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Spinner
 import android.widget.TextView
+import androidx.fragment.app.DialogFragment
+import com.example.android.markovchain.R
 
 /**
  * This [DialogFragment] allows a user to choose a specific verse of the Bible

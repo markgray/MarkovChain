@@ -1,4 +1,4 @@
-package com.example.android.markovchain
+package com.example.android.markovchain.bible
 
 import androidx.fragment.app.DialogFragment
 import android.app.SearchManager
@@ -12,6 +12,8 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.MultiAutoCompleteTextView
 import android.widget.TextView
+import com.example.android.markovchain.R
+import com.example.android.markovchain.SpaceTokenizer
 
 import java.util.Collections
 import java.util.HashSet

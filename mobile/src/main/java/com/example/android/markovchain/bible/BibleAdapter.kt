@@ -1,14 +1,14 @@
-package com.example.android.markovchain
+package com.example.android.markovchain.bible
 
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
-
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.android.markovchain.R
 import java.util.ArrayList
 import java.util.HashMap
 import java.util.Random

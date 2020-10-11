@@ -1,4 +1,4 @@
-package com.example.android.markovchain
+package com.example.android.markovchain.bible
 
 import androidx.fragment.app.DialogFragment
 import android.os.Bundle
@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import com.example.android.markovchain.R
 
 /**
  * This `DialogFragment` will (eventually) save a bookmark to a particular verse with the date

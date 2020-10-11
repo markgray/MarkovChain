@@ -1,4 +1,4 @@
-package com.example.android.markovchain
+package com.example.android.markovchain.bible
 
 import androidx.fragment.app.DialogFragment
 import android.os.Bundle
@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.Spinner
 import android.widget.TextView
+import com.example.android.markovchain.R
 
 @Suppress("MemberVisibilityCanBePrivate")
 class BibleDialog : DialogFragment() {

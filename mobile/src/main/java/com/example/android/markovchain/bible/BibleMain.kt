@@ -1,4 +1,4 @@
-package com.example.android.markovchain
+package com.example.android.markovchain.bible
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -11,6 +11,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.android.markovchain.R
 import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader

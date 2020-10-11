@@ -1,4 +1,4 @@
-package com.example.android.markovchain
+package com.example.android.markovchain.bible
 
 import androidx.fragment.app.DialogFragment
 import android.os.Bundle
@@ -10,6 +10,7 @@ import android.widget.Button
 import android.widget.TextView
 import android.speech.tts.TextToSpeech
 import android.speech.tts.TextToSpeech.OnInitListener
+import com.example.android.markovchain.R
 
 import java.util.Locale
 

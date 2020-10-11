@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.android.markovchain.bible.BibleMain
 
 /**
  * This is the main Activity which launches all the other Activity's when their "launching Button"
