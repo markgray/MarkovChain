@@ -257,7 +257,7 @@ public class TestJava extends AppCompatActivity {
          * @param result The elapsed time the benchmark took.
          */
         @Override
-        protected void onPostExecute(Long result) {
+        public void onPostExecute(Long result) {
             super.onPostExecute(result);
             Log.i(TAG, "Benchmark took " + result + " milliseconds");
             String formattedIterations = NumberFormat.getNumberInstance(Locale.US).format(mProgressSteps * mIterationsPerStep);
@@ -278,7 +278,7 @@ public class TestJava extends AppCompatActivity {
          * @param progress The values indicating progress.
          */
         @Override
-        protected void onProgressUpdate(Long... progress) {
+        public void onProgressUpdate(Long... progress) {
             super.onProgressUpdate(progress);
             vProgressBar.setProgress(progress[0].intValue());
         }

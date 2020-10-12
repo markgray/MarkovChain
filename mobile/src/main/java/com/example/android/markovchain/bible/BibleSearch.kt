@@ -13,7 +13,7 @@ import android.widget.Button
 import android.widget.MultiAutoCompleteTextView
 import android.widget.TextView
 import com.example.android.markovchain.R
-import com.example.android.markovchain.SpaceTokenizer
+import com.example.android.markovchain.util.SpaceTokenizer
 
 import java.util.Collections
 import java.util.HashSet

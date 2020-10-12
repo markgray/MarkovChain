@@ -3,11 +3,13 @@ package com.example.android.markovchain.benchmark;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.example.android.markovchain.util.CoroutinesAsyncTask;
+
 /**
  * Background task to benchmark. This {@code AsyncTask} allows you time run a benchmark of a code
  * fragment when you extend it in a subclass that overrides the {@code testMethod()} method.
  */
-public class CalcTask extends AsyncTask<Long, Long, Long> {
+public class CalcTask extends CoroutinesAsyncTask<Long, Long, Long> {
     /**
      * TAG for logging
      */
@@ -54,7 +56,7 @@ public class CalcTask extends AsyncTask<Long, Long, Long> {
      * @return Time in milliseconds that the benchmark took
      */
     @Override
-    protected Long doInBackground(Long... reps) {
+    public Long doInBackground(Long... reps) {
         Long repeats = reps[0];
         Long publish = reps[1];
         int totalNumber = 0;
@@ -88,7 +90,7 @@ public class CalcTask extends AsyncTask<Long, Long, Long> {
      * @param progress The values indicating progress.
      */
     @Override
-    protected void onProgressUpdate(Long... progress) {
+    public void onProgressUpdate(Long... progress) {
     }
 
     /**
@@ -99,7 +101,7 @@ public class CalcTask extends AsyncTask<Long, Long, Long> {
      * @param result The elapsed time the benchmark took.
      */
     @Override
-    protected void onPostExecute(Long result) {
+    public void onPostExecute(Long result) {
     }
 
 }

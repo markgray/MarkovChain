@@ -1,4 +1,4 @@
-package com.example.android.markovchain
+package com.example.android.markovchain.util
 
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,6 +10,7 @@ import android.widget.Toast
 import java.util.Random
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.android.markovchain.R
 import kotlin.math.abs
 
 /**
