@@ -10,7 +10,6 @@ import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android.markovchain.R
-import com.example.android.markovchain.SpeechDialog
 
 class StringArrayAdapter
 /**

@@ -1,10 +1,11 @@
-package com.example.android.markovchain
+package com.example.android.markovchain.shakespeare
 
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.android.markovchain.R
 import com.example.android.markovchain.util.StringArrayAdapter
 import com.google.android.material.snackbar.Snackbar
 
@@ -32,7 +33,7 @@ class ShakespeareActivity : FragmentActivity() {
      * Next we initialize our [RecyclerView.LayoutManager] field [mLayoutManager] with an instance of
      * [LinearLayoutManager]. We locate the view with id R.id.shakespeare_recyclerview in order to
      * initialize our [RecyclerView] field [mRecyclerView] to it. We create a new instance of
-     * [StringArrayAdapter] using the `SONNETS` field of our [Shakespeare] class (the `String[]` array
+     * [StringArrayAdapter] using the `SONNETS` field of our [ShakespeareSonnets] class (the `String[]` array
      * containing Shakespeare's sonnets) as its dataset, and [mLayoutManager] as its `LayoutManager`
      * and initialize our [StringArrayAdapter] field [mAdapter] to it. Finally we set the adapter of
      * our [RecyclerView] field [mRecyclerView] to [mAdapter], and set the layout manager for it to
@@ -46,11 +47,11 @@ class ShakespeareActivity : FragmentActivity() {
 
         mLayoutManager = LinearLayoutManager(applicationContext)
         mRecyclerView = findViewById(R.id.shakespeare_recyclerview)
-        mAdapter = StringArrayAdapter(supportFragmentManager, Shakespeare.SONNETS, mLayoutManager)
+        mAdapter = StringArrayAdapter(supportFragmentManager, ShakespeareSonnets.SONNETS, mLayoutManager)
         // Set CustomAdapter as the adapter for RecyclerView.
         mRecyclerView.adapter = mAdapter
         mRecyclerView.layoutManager = mLayoutManager
-        Log.i(TAG, "Verses read: " + Shakespeare.SONNETS.size)
+        Log.i(TAG, "Verses read: " + ShakespeareSonnets.SONNETS.size)
         Snackbar.make(mRecyclerView,"Long click a verse to hear it read", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
     }

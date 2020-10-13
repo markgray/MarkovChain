@@ -5,6 +5,7 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.android.markovchain.shakespeare.ShakespeareSonnets
 
 class TestBedActivity : AppCompatActivity() {
 
@@ -17,7 +18,7 @@ class TestBedActivity : AppCompatActivity() {
         myButton.text = string
         val adapter = ArrayAdapter(this,
                 android.R.layout.simple_list_item_1,
-                Shakespeare.SONNETS)
+                ShakespeareSonnets.SONNETS)
         val listView: ListView = findViewById(R.id.listview)
         listView.adapter = adapter
         val list = mutableListOf("a", "b", "c")

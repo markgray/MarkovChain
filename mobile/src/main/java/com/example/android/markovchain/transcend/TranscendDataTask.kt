@@ -1,4 +1,4 @@
-package com.example.android.markovchain
+package com.example.android.markovchain.transcend
 
 import android.annotation.SuppressLint
 import android.content.Context

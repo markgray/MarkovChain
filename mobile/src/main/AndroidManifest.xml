@@ -19,10 +19,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ShakespeareActivity"
+            android:name=".shakespeare.ShakespeareActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ShakespeareMarkovActivity"
+            android:name=".shakespearemarkov.ShakespeareMarkovActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".bible.BibleActivity"
@@ -41,11 +41,11 @@
             android:label="@string/title_activity_clock_trisect"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".WhatIsManActivity"
+            android:name=".whatisman.WhatIsManActivity"
             android:label="@string/title_activity_what_is_man"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".TranscendActivity"
+            android:name=".transcend.TranscendActivity"
             android:label="@string/title_activity_transcend"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".TestBedActivity" />

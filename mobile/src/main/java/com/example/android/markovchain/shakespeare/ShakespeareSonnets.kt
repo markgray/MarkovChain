@@ -1,9 +1,9 @@
-package com.example.android.markovchain
+package com.example.android.markovchain.shakespeare
 
 /**
  * Shakespeare's complete sonnets
  */
-object Shakespeare {
+object ShakespeareSonnets {
 
     /**
      * Our data

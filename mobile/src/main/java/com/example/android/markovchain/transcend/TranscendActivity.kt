@@ -1,4 +1,4 @@
-package com.example.android.markovchain
+package com.example.android.markovchain.transcend
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -11,6 +11,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.android.markovchain.R
 import com.example.android.markovchain.util.StringListAdapter
 
 /**

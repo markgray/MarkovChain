@@ -1,4 +1,4 @@
-package com.example.android.markovchain
+package com.example.android.markovchain.shakespearemarkov
 
 import android.annotation.TargetApi
 import android.os.Build
@@ -8,6 +8,7 @@ import android.view.View
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.android.markovchain.R
 import com.example.android.markovchain.util.DoneListener
 import com.example.android.markovchain.util.Markov
 import com.example.android.markovchain.util.MarkovAdapter

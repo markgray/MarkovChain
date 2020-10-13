@@ -1,4 +1,4 @@
-package com.example.android.markovchain
+package com.example.android.markovchain.shakespearemarkov
 
 /**
  * Shakespeare's complete sonnets using small letters and less punctuation.

@@ -13,6 +13,10 @@ import com.example.android.markovchain.benchmark.TestSplitActivity
 import com.example.android.markovchain.bible.BibleActivity
 import com.example.android.markovchain.biblemarkov.BibleMarkovActivity
 import com.example.android.markovchain.clocktrisect.ClockTrisectActivity
+import com.example.android.markovchain.shakespeare.ShakespeareActivity
+import com.example.android.markovchain.shakespearemarkov.ShakespeareMarkovActivity
+import com.example.android.markovchain.transcend.TranscendActivity
+import com.example.android.markovchain.whatisman.WhatIsManActivity
 
 /**
  * This is the main Activity which launches all the other Activity's when their "launching Button"

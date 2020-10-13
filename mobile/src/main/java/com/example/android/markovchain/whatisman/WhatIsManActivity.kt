@@ -1,4 +1,4 @@
-package com.example.android.markovchain
+package com.example.android.markovchain.whatisman
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -11,6 +11,7 @@ import android.widget.LinearLayout
 import android.widget.ScrollView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.android.markovchain.R
 
 /**
  * This [Activity] loads html files from the raw resources of the app in the background, and

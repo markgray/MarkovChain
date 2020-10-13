@@ -1,4 +1,4 @@
-package com.example.android.markovchain
+package com.example.android.markovchain.util
 
 import android.os.Bundle
 import android.speech.tts.TextToSpeech
@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.DialogFragment
+import com.example.android.markovchain.R
 
 @Suppress("unused", "MemberVisibilityCanBePrivate")
 class SpeechDialog : DialogFragment(), TextToSpeech.OnInitListener {

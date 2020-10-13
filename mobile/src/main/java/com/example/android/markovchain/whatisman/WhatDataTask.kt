@@ -1,4 +1,4 @@
-package com.example.android.markovchain
+package com.example.android.markovchain.whatisman
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -83,7 +83,6 @@ internal constructor(
             e.printStackTrace()
         }
 
-        assert(builder != null)
         Log.i(TAG, "sizeOfInputStream: " + sizeOfInputStream + " Size of builder: " + builder!!.capacity())
         return Html.fromHtml(builder.toString(), 0)
     }
