@@ -11,6 +11,7 @@ import com.example.android.markovchain.benchmark.TestJava
 import com.example.android.markovchain.benchmark.TestKotlin
 import com.example.android.markovchain.benchmark.TestSplit
 import com.example.android.markovchain.bible.BibleMain
+import com.example.android.markovchain.clocktrisect.ClockTrisect
 
 /**
  * This is the main Activity which launches all the other Activity's when their "launching Button"

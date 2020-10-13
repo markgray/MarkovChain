@@ -37,7 +37,7 @@
             android:name=".benchmark.TestKotlin"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ClockTrisect"
+            android:name=".clocktrisect.ClockTrisect"
             android:label="@string/title_activity_clock_trisect"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity

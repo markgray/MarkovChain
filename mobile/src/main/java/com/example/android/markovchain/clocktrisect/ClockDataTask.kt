@@ -1,6 +1,7 @@
-package com.example.android.markovchain
+package com.example.android.markovchain.clocktrisect
 
 import android.os.AsyncTask
+import com.example.android.markovchain.clocktrisect.ClockDataItem
 
 /**
  * The first time this background task is run it will cycle through all the seconds in a day, and if
