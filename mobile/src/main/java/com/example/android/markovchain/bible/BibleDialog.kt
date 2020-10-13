@@ -88,7 +88,7 @@ class BibleDialog : DialogFragment() {
 
             if (spinIndex != lastIndex) {
 
-                (activity as BibleMain).handleAction(view!!, spinIndex)
+                (activity as BibleActivity).handleAction(view!!, spinIndex)
                 lastIndex = spinIndex
             }
             if (spinIndex != 0) {
@@ -206,7 +206,7 @@ class BibleDialog : DialogFragment() {
              *
              * @param view REPEAT Button which has been clicked
              */
-            (activity as BibleMain).handleAction(view, spinIndex)
+            (activity as BibleActivity).handleAction(view, spinIndex)
         }
 
         val button = v.findViewById<Button>(R.id.dismiss)
@@ -219,7 +219,7 @@ class BibleDialog : DialogFragment() {
          */
 
         button.setOnClickListener {
-            (activity as BibleMain).dismissDialog()
+            (activity as BibleActivity).dismissDialog()
         }
 
         return v

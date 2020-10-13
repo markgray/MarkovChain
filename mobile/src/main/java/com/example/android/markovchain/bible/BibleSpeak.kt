@@ -65,17 +65,17 @@ class BibleSpeak : DialogFragment(), OnInitListener {
         button.setOnClickListener {
             // When button is clicked, dismiss this DialogFragment
 
-            BibleMain.bibleDialog!!.mLabel = BibleMain.dialogTitle
-            BibleMain.bibleDialog!!.mText = BibleMain.dialogText
+            BibleActivity.bibleDialog!!.mLabel = BibleActivity.dialogTitle
+            BibleActivity.bibleDialog!!.mText = BibleActivity.dialogText
             this@BibleSpeak.dismiss()
         }
         // Watch for NEXT  button clicks
         button = mView!!.findViewById(R.id.next)
         button.setOnClickListener { v ->
             // When button is clicked, move to the next verse and speak it
-            BibleAdapter.moveToVerse(v, BibleMain.dialogVerse + 1)
-            mLabel = BibleMain.dialogTitle
-            mText = BibleMain.dialogText
+            BibleAdapter.moveToVerse(v, BibleActivity.dialogVerse + 1)
+            mLabel = BibleActivity.dialogTitle
+            mText = BibleActivity.dialogText
             setDisplayedText(mView!!)
 
             val dummyBundle: Bundle? = null
@@ -131,11 +131,11 @@ class BibleSpeak : DialogFragment(), OnInitListener {
 
         setStyle(STYLE_NORMAL, 0)
 
-        if (BibleMain.textToSpeech == null) {
-            mTts = TextToSpeech(BibleMain.bibleContext, this)
-            BibleMain.textToSpeech = mTts
+        if (BibleActivity.textToSpeech == null) {
+            mTts = TextToSpeech(BibleActivity.bibleContext, this)
+            BibleActivity.textToSpeech = mTts
         } else {
-            mTts = BibleMain.textToSpeech
+            mTts = BibleActivity.textToSpeech
 
             val dummyBundle: Bundle? = null
             mTts!!.speak(mText, TextToSpeech.QUEUE_ADD, dummyBundle, null)

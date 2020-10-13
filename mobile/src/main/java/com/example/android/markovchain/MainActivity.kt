@@ -7,11 +7,12 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.example.android.markovchain.benchmark.TestJava
-import com.example.android.markovchain.benchmark.TestKotlin
-import com.example.android.markovchain.benchmark.TestSplit
-import com.example.android.markovchain.bible.BibleMain
-import com.example.android.markovchain.clocktrisect.ClockTrisect
+import com.example.android.markovchain.benchmark.TestJavaActivity
+import com.example.android.markovchain.benchmark.TestKotlinActivity
+import com.example.android.markovchain.benchmark.TestSplitActivity
+import com.example.android.markovchain.bible.BibleActivity
+import com.example.android.markovchain.biblemarkov.BibleMarkovActivity
+import com.example.android.markovchain.clocktrisect.ClockTrisectActivity
 
 /**
  * This is the main Activity which launches all the other Activity's when their "launching Button"
@@ -38,19 +39,19 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val linearLayout = findViewById<ViewGroup>(R.id.linear_layout)
-        addButton(ShakespeareRecycler::class.java, "Shakespeare Sonnets", linearLayout)
-        addButton(ShakespeareMarkovRecycler::class.java, "Shakespeare Markov", linearLayout)
-        addButton(BibleMain::class.java, "Bible", linearLayout)
-        addButton(BibleMarkovFragment::class.java, "Bible Markov", linearLayout)
-        addButton(ClockTrisect::class.java, "Clock Trisect", linearLayout)
-        addButton(WhatIsMan::class.java, "What is man?", linearLayout)
+        addButton(ShakespeareActivity::class.java, "Shakespeare Sonnets", linearLayout)
+        addButton(ShakespeareMarkovActivity::class.java, "Shakespeare Markov", linearLayout)
+        addButton(BibleActivity::class.java, "Bible", linearLayout)
+        addButton(BibleMarkovActivity::class.java, "Bible Markov", linearLayout)
+        addButton(ClockTrisectActivity::class.java, "Clock Trisect", linearLayout)
+        addButton(WhatIsManActivity::class.java, "What is man?", linearLayout)
         addButton(TranscendActivity::class.java, "Transcendental", linearLayout)
         addText("Testing activities", linearLayout)
-        addButton(TestSplit::class.java, "Test Split Speed", linearLayout)
-        addButton(TestKotlin::class.java, "Test Kotlin", linearLayout)
-        addButton(TestJava::class.java, "Test Java", linearLayout)
-        addButton(TestBed::class.java, "Kotlin Test Bed", linearLayout)
-        addButton(RetainedFragmentFun::class.java, "Retained Fragment", linearLayout)
+        addButton(TestSplitActivity::class.java, "Test Split Speed", linearLayout)
+        addButton(TestKotlinActivity::class.java, "Test Kotlin", linearLayout)
+        addButton(TestJavaActivity::class.java, "Test Java", linearLayout)
+        addButton(TestBedActivity::class.java, "Kotlin Test Bed", linearLayout)
+        addButton(RetainedFragmentFunActivity::class.java, "Retained Fragment", linearLayout)
     }
 
     /**

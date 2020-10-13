@@ -6,7 +6,7 @@ import android.widget.Button
 import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
 
-class TestBed : AppCompatActivity() {
+class TestBedActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,6 +23,7 @@ class TestBed : AppCompatActivity() {
         val list = mutableListOf("a", "b", "c")
 
         val pair: Pair<Int, Int> = Pair(1,2)
+        @Suppress("RedundantSamConstructor")
         list.sortWith(Comparator { _, _ -> pair.first })
     }
 }

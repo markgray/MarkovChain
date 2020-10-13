@@ -8,6 +8,9 @@ import android.view.View
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.android.markovchain.util.DoneListener
+import com.example.android.markovchain.util.Markov
+import com.example.android.markovchain.util.MarkovAdapter
 import com.google.android.material.snackbar.Snackbar
 import java.io.IOException
 import java.io.StringReader
@@ -18,7 +21,7 @@ import java.io.StringReader
  */
 @Suppress("MemberVisibilityCanBePrivate")
 @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1)
-class ShakespeareMarkovRecycler : FragmentActivity() {
+class ShakespeareMarkovActivity : FragmentActivity() {
     /**
      * [Markov] instance used to generate nonsense text
      */

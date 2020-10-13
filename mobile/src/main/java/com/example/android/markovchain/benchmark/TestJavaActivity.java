@@ -20,7 +20,7 @@ import java.util.Locale;
 /**
  * This activity is useful to benchmark two different implementations of a method
  */
-public class TestJava extends AppCompatActivity {
+public class TestJavaActivity extends AppCompatActivity {
     /**
      * TAG used for logging
      */

@@ -18,7 +18,7 @@ import java.util.Locale
  * This activity is useful to benchmark two different implementations of a method
  */
 @Suppress("MemberVisibilityCanBePrivate")
-class TestKotlin : AppCompatActivity() {
+class TestKotlinActivity : AppCompatActivity() {
     /**
      * [LinearLayout] with id R.id.progress_view_linear_layout that contains our UI widgets:
      * the [ProgressBar] field [vProgressBar], the two start Buttons, the [Button] field [vAbortButton]

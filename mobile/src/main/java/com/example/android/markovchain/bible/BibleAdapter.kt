@@ -114,9 +114,9 @@ class BibleAdapter
                  * @param view View that was long clicked
                  * @return true because the callback consumed the long click
                  */
-                (view.context as BibleMain).showDialog(makeCitation(mChapterAndVerse[layoutPosition]),
+                (view.context as BibleActivity).showDialog(makeCitation(mChapterAndVerse[layoutPosition]),
                         textView.text as String)
-                BibleMain.dialogVerse = adapterPosition
+                BibleActivity.dialogVerse = adapterPosition
                 true
             }
         }
@@ -275,17 +275,17 @@ class BibleAdapter
          */
         fun moveToVerse(view: View, selection: Int) {
             // Make sure the BibleMain,init() thread has finished reading the text in
-            if (!BibleMain.doneReading) {
-                BibleMain.mDoneReading.block(5000)
+            if (!BibleActivity.doneReading) {
+                BibleActivity.mDoneReading.block(5000)
             }
             mLayoutManager.scrollToPositionWithOffset(selection, 0)
-            BibleMain.saveVerseNumber(selection, BibleMain.LAST_VERSE_VIEWED)
+            BibleActivity.saveVerseNumber(selection, BibleActivity.LAST_VERSE_VIEWED)
             val citation = makeCitation(mChapterAndVerse[selection])
             Toast.makeText(view.context, "Moving to $citation", Toast.LENGTH_LONG).show()
 
-            BibleMain.dialogTitle = citation
-            BibleMain.dialogText = mDataSet[selection]
-            BibleMain.dialogVerse = selection
+            BibleActivity.dialogTitle = citation
+            BibleActivity.dialogText = mDataSet[selection]
+            BibleActivity.dialogVerse = selection
         }
     }
 

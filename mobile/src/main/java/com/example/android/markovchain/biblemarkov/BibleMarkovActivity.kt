@@ -1,4 +1,4 @@
-package com.example.android.markovchain
+package com.example.android.markovchain.biblemarkov
 
 import android.annotation.TargetApi
 import android.os.Build
@@ -9,7 +9,11 @@ import android.widget.ProgressBar
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.android.markovchain.R
 import com.example.android.markovchain.benchmark.BenchMark
+import com.example.android.markovchain.util.DoneListener
+import com.example.android.markovchain.util.Markov
+import com.example.android.markovchain.util.MarkovAdapter
 import com.google.android.material.snackbar.Snackbar
 import java.io.BufferedReader
 import java.io.InputStreamReader
@@ -20,7 +24,7 @@ import java.io.InputStreamReader
  */
 @Suppress("MemberVisibilityCanBePrivate")
 @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1)
-class BibleMarkovFragment : FragmentActivity() {
+class BibleMarkovActivity : FragmentActivity() {
     /**
      * [ProgressBar] in our layout file that is displayed while the Markov mChain state table
      * is being loaded.

@@ -114,7 +114,7 @@ class BibleSearch : DialogFragment() {
                         .dropLastWhile { it.isEmpty() }
                         .toTypedArray()
         )
-        mAdapter = ArrayAdapter(BibleMain.bibleContext,
+        mAdapter = ArrayAdapter(BibleActivity.bibleContext,
                 android.R.layout.simple_dropdown_item_1line, mSuggestions)
 
         Log.i(TAG, "onCreate called with: $mLabel $mText")
@@ -178,8 +178,8 @@ class BibleSearch : DialogFragment() {
             startActivity(intent)
 
 
-            BibleMain.bibleDialog!!.mLabel = BibleMain.dialogTitle
-            BibleMain.bibleDialog!!.mText = BibleMain.dialogText
+            BibleActivity.bibleDialog!!.mLabel = BibleActivity.dialogTitle
+            BibleActivity.bibleDialog!!.mText = BibleActivity.dialogText
             this@BibleSearch.dismiss()
         }
         return v

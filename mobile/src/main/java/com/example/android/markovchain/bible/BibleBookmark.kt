@@ -95,8 +95,8 @@ class BibleBookmark : DialogFragment() {
         v.findViewById<View>(R.id.dismiss).setOnClickListener {
             this@BibleBookmark.dismiss()
 
-            BibleMain.bibleDialog!!.mLabel = BibleMain.dialogTitle
-            BibleMain.bibleDialog!!.mText = BibleMain.dialogText
+            BibleActivity.bibleDialog!!.mLabel = BibleActivity.dialogTitle
+            BibleActivity.bibleDialog!!.mText = BibleActivity.dialogText
         }
 
         return v

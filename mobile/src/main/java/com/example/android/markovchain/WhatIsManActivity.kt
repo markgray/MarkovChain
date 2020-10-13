@@ -17,7 +17,7 @@ import androidx.appcompat.app.AppCompatActivity
  * displays them in a [TextView].
  */
 @Suppress("MemberVisibilityCanBePrivate")
-class WhatIsMan : AppCompatActivity() {
+class WhatIsManActivity : AppCompatActivity() {
     /**
      * [TextView] used to display our book chapters
      */

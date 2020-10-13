@@ -1,4 +1,4 @@
-package com.example.android.markovchain
+package com.example.android.markovchain.util
 
 import androidx.fragment.app.DialogFragment
 import android.os.Bundle
@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import com.example.android.markovchain.R
 
 /**
  * `DialogFragment` to display number of possibilities given the first two words, and the verse

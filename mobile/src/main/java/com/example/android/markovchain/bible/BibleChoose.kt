@@ -162,7 +162,7 @@ class BibleChoose : DialogFragment() {
         spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spin.adapter = spinnerArrayAdapter
         spin.onItemSelectedListener = spinSelected
-        spin.setSelection(BibleMain.indexFromCitation(mLabel!!))
+        spin.setSelection(BibleActivity.indexFromCitation(mLabel!!))
 
         val cavEditText = v.findViewById<EditText>(R.id.chapter_and_verse)
 
@@ -203,12 +203,12 @@ class BibleChoose : DialogFragment() {
                 BibleAdapter.numbers[bookNum] + ":" + mChapterAndVerse + ":1"
             val citationFallback = BibleAdapter.numbers[bookNum] + ":1:1"
             Log.i(TAG, "$citationChosen or $citationFallback")
-            val verseNumber = BibleMain.findFromCitation(citationChosen, citationFallback)
+            val verseNumber = BibleActivity.findFromCitation(citationChosen, citationFallback)
             BibleAdapter.moveToVerse(view, verseNumber)
             this@BibleChoose.dismiss()
 
-            BibleMain.bibleDialog!!.mLabel = BibleMain.dialogTitle
-            BibleMain.bibleDialog!!.mText = BibleMain.dialogText
+            BibleActivity.bibleDialog!!.mLabel = BibleActivity.dialogTitle
+            BibleActivity.bibleDialog!!.mText = BibleActivity.dialogText
         }
 
         return v

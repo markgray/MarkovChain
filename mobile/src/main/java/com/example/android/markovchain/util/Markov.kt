@@ -1,4 +1,4 @@
-package com.example.android.markovchain
+package com.example.android.markovchain.util
 
 import android.util.Log
 import android.view.View

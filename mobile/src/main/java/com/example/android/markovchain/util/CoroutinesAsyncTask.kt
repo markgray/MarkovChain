@@ -38,9 +38,9 @@ abstract class CoroutinesAsyncTask<Params, Progress, Result> {
      * Runs on the UI thread after [publishProgress] is invoked. The specified values are the
      * values passed to [publishProgress]. The default version does nothing.
      *
-     * @param values The values indicating progress.
+     * @param progress The values indicating progress.
      */
-    open fun onProgressUpdate(vararg values: Progress?) {}
+    open fun onProgressUpdate(vararg progress: Progress?) {}
 
     /**
      * Runs on the UI thread after [doInBackground]. The specified result is the value returned

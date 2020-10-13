@@ -16,13 +16,14 @@ import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
+import com.example.android.markovchain.util.DoneListener
 
 /**
  * Just a test Activity for experimenting with retained fragments.
  */
 @Suppress("PLATFORM_CLASS_MAPPED_TO_KOTLIN", "MemberVisibilityCanBePrivate")
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-class RetainedFragmentFun : FragmentActivity() {
+class RetainedFragmentFunActivity : FragmentActivity() {
     /**
      * Handle to the [FragmentManager] for interacting with fragments associated with this activity
      */
@@ -173,7 +174,7 @@ class RetainedFragmentFun : FragmentActivity() {
          * R.id.main_view (which has a visibility of GONE until [mWorkFragment] flips the visibility
          * of the view containing the `ProgressBar` to GONE and it to  VISIBLE when the progress bar
          * hits its maximum value) and set its `OnLongClickListener` to an a lambda which displays
-         * an informative Toast and instructs our [RetainedFragmentFun] activity to show its
+         * an informative Toast and instructs our [RetainedFragmentFunActivity] activity to show its
          * dialog.
          *
          * @param view               The View returned by [onCreateView].
@@ -210,7 +211,7 @@ class RetainedFragmentFun : FragmentActivity() {
             textView.setOnLongClickListener {
                 Toast.makeText(activity, "I have been long clicked", Toast.LENGTH_LONG).show()
 
-                (activity as RetainedFragmentFun).showDialog()
+                (activity as RetainedFragmentFunActivity).showDialog()
                 true
             }
         }

@@ -12,7 +12,7 @@ import com.google.android.material.snackbar.Snackbar
  * This Activity lets you read Shakespeare's sonnets in a RecyclerView.
  */
 @Suppress("MemberVisibilityCanBePrivate")
-class ShakespeareRecycler : FragmentActivity() {
+class ShakespeareActivity : FragmentActivity() {
     /**
      * The [RecyclerView] in our layout which display the text of Shakespeare's sonnets
      */

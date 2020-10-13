@@ -19,38 +19,38 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ShakespeareRecycler"
+            android:name=".ShakespeareActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ShakespeareMarkovRecycler"
+            android:name=".ShakespeareMarkovActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".bible.BibleMain"
+            android:name=".bible.BibleActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".BibleMarkovFragment" />
+        <activity android:name=".biblemarkov.BibleMarkovActivity" />
         <activity
-            android:name=".RetainedFragmentFun"
+            android:name=".RetainedFragmentFunActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".benchmark.TestKotlin"
+            android:name=".benchmark.TestKotlinActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".clocktrisect.ClockTrisect"
+            android:name=".clocktrisect.ClockTrisectActivity"
             android:label="@string/title_activity_clock_trisect"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".WhatIsMan"
+            android:name=".WhatIsManActivity"
             android:label="@string/title_activity_what_is_man"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".TranscendActivity"
             android:label="@string/title_activity_transcend"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".TestBed" />
-        <activity android:name=".benchmark.TestJava" />
-        <activity android:name=".benchmark.TestSplit" />
+        <activity android:name=".TestBedActivity" />
+        <activity android:name=".benchmark.TestJavaActivity" />
+        <activity android:name=".benchmark.TestSplitActivity" />
     </application>
 
 </manifest>

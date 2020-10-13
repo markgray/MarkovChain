@@ -20,7 +20,7 @@ import java.io.InputStreamReader
  * This is the main activity of our Bible Text reading function.
  */
 @Suppress("MemberVisibilityCanBePrivate")
-class BibleMain : FragmentActivity() {
+class BibleActivity : FragmentActivity() {
     /**
      * Reference to the `RecyclerView` in our layout
      */
@@ -372,7 +372,7 @@ class BibleMain : FragmentActivity() {
         /**
          * Used to access shared preference file
          */
-        private val CLASS = BibleMain::class.java.simpleName
+        private val CLASS = BibleActivity::class.java.simpleName
         /**
          * Application Context for `BibleMain` and dialogs to use when necessary
          */

@@ -22,7 +22,7 @@ import java.util.Locale
  * the clock.
  */
 @Suppress("MemberVisibilityCanBePrivate")
-class ClockTrisect : AppCompatActivity() {
+class ClockTrisectActivity : AppCompatActivity() {
     /**
      * Amount to increment seconds by for each trial [ClockDataItem]
      */

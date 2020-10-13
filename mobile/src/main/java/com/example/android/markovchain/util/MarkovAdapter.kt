@@ -1,4 +1,4 @@
-package com.example.android.markovchain
+package com.example.android.markovchain.util
 
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,6 +9,8 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.android.markovchain.R
+import com.example.android.markovchain.SpeechDialog
 
 /**
  * An implementation of `RecyclerView.Adapter<MarkovAdapter.ViewHolder>` designed to be used by
