@@ -1,7 +1,6 @@
 package com.example.android.markovchain.clocktrisect
 
-import android.os.AsyncTask
-import com.example.android.markovchain.clocktrisect.ClockDataItem
+import com.example.android.markovchain.util.CoroutinesAsyncTask
 
 /**
  * The first time this background task is run it will cycle through all the seconds in a day, and if
@@ -16,7 +15,7 @@ open class ClockDataTask
 /**
  * Our zero parameter constructor, we just call our super's constructor.
  */
-() : AsyncTask<Array<ClockDataItem?>, ClockDataItem, ClockDataItem>() {
+() : CoroutinesAsyncTask<Array<ClockDataItem?>, ClockDataItem, ClockDataItem>() {
     /**
      * The hour we are currently working on
      */
@@ -59,7 +58,7 @@ open class ClockDataTask
      * to have a badness that is less than 12 (the [onProgressUpdate] override method gets called
      * with the [ClockDataItem] we pass to [publishProgress]).
      *
-     * We retrieve a reference to the [Array] of [ClockDataItem] from our parameter [paramIn] to
+     * We retrieve a reference to the [Array] of [ClockDataItem] from our parameter [params] to
      * initialize our `Array<ClockDataItem?>` variable `val params`, and initialize our [Int] variable
      * `var indexToMinute` to 0 (it will point to the [ClockDataItem] of the minute whose seconds we
      * are searching for a better trisection). Then we loop over our field [h] for the 12 hours of
@@ -94,18 +93,18 @@ open class ClockDataTask
      * `bestClock` and if so we clone `clockDataItem` into `bestClock`. When done searching `params`
      * we return `bestClock` to the caller to have our [onPostExecute] override output it to the user.
      *
-     * @param paramIn a `ClockDataItem[]` array containing the best trisection for every minute
+     * @param params a `ClockDataItem[]` array containing the best trisection for every minute
      * as calculated by previous running of `ClockDataTask`
      * @return a `ClockDataItem` representing the best trisection of the clock
      */
-    override fun doInBackground(vararg paramIn: Array<ClockDataItem?>): ClockDataItem? {
-        val params = paramIn[0]
+    override fun doInBackground(vararg params: Array<ClockDataItem?>?): ClockDataItem {
+        val paramsLocal = params[0]!!
         var indexToMinute = 0
         h = 0
         while (h < 12) {
             m = 0
             while (m < 60) {
-                val nextClockDataItem: ClockDataItem? = params[indexToMinute]
+                val nextClockDataItem: ClockDataItem? = paramsLocal[indexToMinute]
                 if (nextClockDataItem != null) {
                     s = when (increment) {
                         1.0 -> 0.0
@@ -125,7 +124,7 @@ open class ClockDataTask
                     if (nextClockDataItem.badness < 12.0) {
                         publishProgress(nextClockDataItem)
                     } else {
-                        params[indexToMinute] = null
+                        paramsLocal[indexToMinute] = null
                     }
                     indexToMinute++
                 } else {
@@ -137,7 +136,7 @@ open class ClockDataTask
         }
 
         val bestClock = ClockDataItem(0, 0, 0.0)
-        for (clockDataItem in params) {
+        for (clockDataItem in paramsLocal) {
             if (clockDataItem != null) {
                 if (clockDataItem.badness < bestClock.badness) {
                     bestClock.clone(clockDataItem)

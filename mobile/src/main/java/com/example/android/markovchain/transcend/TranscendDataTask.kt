@@ -2,13 +2,13 @@ package com.example.android.markovchain.transcend
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.os.AsyncTask
+import com.example.android.markovchain.util.CoroutinesAsyncTask
 import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader
 
 /**
- * An [AsyncTask] which loads the utf8 text file with the resource ID specified by the parameter
+ * An [CoroutinesAsyncTask] which loads the utf8 text file with the resource ID specified by the parameter
  * passed to the method `doInBackground` in the background and returns a list of strings that
  * correspond to each of the paragraphs of the text file to the caller.
  */
@@ -26,7 +26,7 @@ internal constructor(
          * to our constructor).
          */
         @field:SuppressLint("StaticFieldLeak")
-        internal var mContext: Context) : AsyncTask<Int, String, List<String>>() {
+        internal var mContext: Context) : CoroutinesAsyncTask<Int, String, List<String>>() {
 
     /**
      * We override this method to perform a computation on a background thread. The specified
@@ -55,16 +55,16 @@ internal constructor(
      * and return `results` so that the [onPostExecute] override will be called with it
      * as its parameter.
      *
-     * @param resourceId Resource ID of the utf8 text file we are to read in
+     * @param params Resource ID of the utf8 text file we are to read in
      * @return a `List<String>` of the file read with each paragraph in a seperate string.
      */
-    override fun doInBackground(vararg resourceId: Int?): List<String> {
+    override fun doInBackground(vararg params: Int?): List<String> {
         val builder = StringBuilder()
         var line: String?
         val results = ArrayList<String>()
         val inputStream = mContext
                 .resources
-                .openRawResource(resourceId[0]!!)
+                .openRawResource(params[0]!!)
 
         val reader = BufferedReader(InputStreamReader(inputStream))
         try {

@@ -5,8 +5,8 @@ import android.util.Log;
 import com.example.android.markovchain.util.CoroutinesAsyncTask;
 
 /**
- * Background task to benchmark. This {@code AsyncTask} allows you time run a benchmark of a code
- * fragment when you extend it in a subclass that overrides the {@code testMethod()} method.
+ * Background task to benchmark. This {@code CoroutinesAsyncTask} allows you time run a benchmark of
+ * a code fragment when you extend it in a subclass that overrides the {@code testMethod()} method.
  */
 public class CalcTask extends CoroutinesAsyncTask<Long, Long, Long> {
     /**

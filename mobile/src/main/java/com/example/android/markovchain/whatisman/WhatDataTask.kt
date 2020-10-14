@@ -2,18 +2,18 @@ package com.example.android.markovchain.whatisman
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.os.AsyncTask
 import android.os.Build
 import android.text.Html
 import android.text.Spanned
 import android.util.Log
 import androidx.annotation.RequiresApi
+import com.example.android.markovchain.util.CoroutinesAsyncTask
 import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader
 
 /**
- * An [AsyncTask] which loads the Html file with the resource ID specified by the parameter
+ * An [CoroutinesAsyncTask] which loads the Html file with the resource ID specified by the parameter
  * passed to the method [doInBackground] by our `execute` method in the background and returns
  * a [Spanned] string object containing the rendered Html file to the caller.
  */
@@ -31,7 +31,7 @@ internal constructor(
          * constructor).
          */
         @field:SuppressLint("StaticFieldLeak")
-        var mContext: Context) : AsyncTask<Int, String, Spanned>() {
+        var mContext: Context) : CoroutinesAsyncTask<Int, String, Spanned>() {
 
     /**
      * Loads a Html file from our resources on a background thread and returns a [Spanned] string
@@ -57,17 +57,17 @@ internal constructor(
      * Upon exiting from the try block we return the [Spanned] string created by the [Html.fromHtml]
      * method from the string value of `builder`.
      *
-     * @param resourceId the resource ID of the Html file we are to load.
+     * @param params the resource ID of the Html file we are to load.
      * @return A [Spanned] string created from the contents of the file we load.
      */
     @RequiresApi(Build.VERSION_CODES.N)
-    override fun doInBackground(vararg resourceId: Int?): Spanned {
+    override fun doInBackground(vararg params: Int?): Spanned {
         var builder: StringBuilder? = null
         var line: String?
         var sizeOfInputStream = 0
         val inputStream = mContext
                 .resources
-                .openRawResource(resourceId[0]!!)
+                .openRawResource(params[0]!!)
 
         val reader = BufferedReader(InputStreamReader(inputStream))
         try {

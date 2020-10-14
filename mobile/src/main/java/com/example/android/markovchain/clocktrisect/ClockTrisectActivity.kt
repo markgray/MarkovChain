@@ -192,21 +192,21 @@ class ClockTrisectActivity : AppCompatActivity() {
 
             /**
              * Runs on the UI thread after [doInBackground]. Our [ClockDataItem] parameter
-             * [aClockDataItem] is the value returned by [doInBackground]. We initialize our [String]
+             * [result] is the value returned by [doInBackground]. We initialize our [String]
              * variable `val benchResult` with the Locale.US formatted number string of the `long`
              * value (elapsed time) returned by the `stop` method of our [BenchMark] field [benchMark].
              * We then call our [addText] method to have it display a [TextView] at the top of our
              * [TextView] field [outputLinearLayout] whose text consists of the string formed by
              * concatenating the string "Final Result: " followed by `benchResult` followed by the
-             * string " milliseconds\n", followed by the string value of our parameter [aClockDataItem]
+             * string " milliseconds\n", followed by the string value of our parameter [result]
              * followed by the newline character.
              *
-             * @param aClockDataItem The result of the operation computed by [.doInBackground].
+             * @param result The result of the operation computed by [.doInBackground].
              */
-            override fun onPostExecute(aClockDataItem: ClockDataItem) {
+            override fun onPostExecute(result: ClockDataItem?) {
                 val benchResult = NumberFormat.getNumberInstance(Locale.US).format(benchMark.stop())
-                addText("Final Result: $benchResult milliseconds\n$aClockDataItem\n",
-                        aClockDataItem, outputLinearLayout)
+                addText("Final Result: $benchResult milliseconds\n$result\n",
+                        result!!, outputLinearLayout)
             }
 
             /**
@@ -216,11 +216,11 @@ class ClockTrisectActivity : AppCompatActivity() {
              * whose text consists of the string formed by concatenating the string value of our
              * [ClockDataItem] parameter `values[0]` followed by a newline character.
              *
-             * @param values The [ClockDataItem] with the best "badness" for the hour just tried.
+             * @param progress The [ClockDataItem] with the best "badness" for the hour just tried.
              */
-            override fun onProgressUpdate(vararg values: ClockDataItem) {
-                addText(values[0].toString() + "\n",
-                        values[0], outputLinearLayout)
+            override fun onProgressUpdate(vararg progress: ClockDataItem?) {
+                addText(progress[0].toString() + "\n",
+                        progress[0]!!, outputLinearLayout)
 //                Log.i(TAG, "Posting Hourly best for: " + values[0].timeHour)
             }
         }

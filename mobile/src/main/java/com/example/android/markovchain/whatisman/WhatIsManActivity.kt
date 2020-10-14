@@ -127,10 +127,10 @@ class WhatIsManActivity : AppCompatActivity() {
              * field `TextView whatWaiting` to GONE, then set the visibility of `whatTextView`
              * to VISIBLE.
              *
-             * @param s The result of the operation computed by [.doInBackground].
+             * @param result The result of the operation computed by [.doInBackground].
              */
-            override fun onPostExecute(s: Spanned) {
-                whatTextView.text = s
+            override fun onPostExecute(result: Spanned?) {
+                whatTextView.text = result!!
                 whatWaiting.visibility = View.GONE
                 whatTextView.visibility = View.VISIBLE
             }

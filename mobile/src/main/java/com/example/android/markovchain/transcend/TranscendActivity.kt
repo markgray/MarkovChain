@@ -134,10 +134,10 @@ class TranscendActivity : AppCompatActivity() {
              * `mLayoutManager`. Finally we set the visibility of our field `TextView transcendWaiting`
              * to GONE, and set the visibility of `transcendRecyleView` to VISIBLE.
              *
-             * @param results The result of the operation computed by [.doInBackground].
+             * @param result The result of the operation computed by [.doInBackground].
              */
-            override fun onPostExecute(results: List<String>) {
-                transcendAdapter = StringListAdapter(results, mLayoutManager)
+            override fun onPostExecute(result: List<String>?) {
+                transcendAdapter = StringListAdapter(result!!, mLayoutManager)
                 transcendRecyleView.adapter = transcendAdapter
                 transcendRecyleView.layoutManager = mLayoutManager
                 transcendWaiting.visibility = View.GONE
