@@ -1,6 +1,5 @@
 package com.example.android.markovchain.transcend
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
@@ -18,7 +17,6 @@ import com.example.android.markovchain.util.StringListAdapter
  * This `Activity` loads text files from the raw resources of the app in the background, and
  * displays them in a `RecyclerView`.
  */
-@Suppress("MemberVisibilityCanBePrivate")
 class TranscendActivity : AppCompatActivity() {
     /**
      * [RecyclerView] used to display our books
@@ -39,11 +37,11 @@ class TranscendActivity : AppCompatActivity() {
     /**
      * [LinearLayout] that we add our book selection [Button]'s to.
      */
-    lateinit var transcendBooks: LinearLayout
+    private lateinit var transcendBooks: LinearLayout
     /**
      * [ScrollView] that holds the [LinearLayout] field [transcendBooks]
      */
-    lateinit var transcendBooksScrollView: ScrollView
+    private lateinit var transcendBooksScrollView: ScrollView
 
     /**
      * Called when the activity is starting. First we call our super's implementation of `onCreate`,
@@ -90,7 +88,7 @@ class TranscendActivity : AppCompatActivity() {
      * @param description Label for our [Button]
      * @param parent      [ViewGroup] we should add our `Button` to.
      */
-    fun addButton(resourceID: Int, description: String, parent: ViewGroup) {
+    private fun addButton(resourceID: Int, description: String, parent: ViewGroup) {
         val button = Button(this)
         button.text = description
         /**
@@ -121,7 +119,6 @@ class TranscendActivity : AppCompatActivity() {
      * in the [RecyclerView] field [transcendRecyleView] once the background task is done.
      */
     private fun loadResourceTextFile(resourceID: Int) {
-        @SuppressLint("StaticFieldLeak")
         val mtranscendDataTask = object : TranscendDataTask(applicationContext) {
             /**
              * Runs on the UI thread after [doInBackground]. The parameter `List<String> results`

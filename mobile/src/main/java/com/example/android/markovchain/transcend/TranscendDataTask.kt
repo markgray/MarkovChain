@@ -1,6 +1,5 @@
 package com.example.android.markovchain.transcend
 
-import android.annotation.SuppressLint
 import android.content.Context
 import com.example.android.markovchain.util.CoroutinesAsyncTask
 import java.io.BufferedReader
@@ -25,8 +24,7 @@ internal constructor(
          * `getApplicationContext` method of the `TranscendActivity` activity and then passed
          * to our constructor).
          */
-        @field:SuppressLint("StaticFieldLeak")
-        internal var mContext: Context) : CoroutinesAsyncTask<Int, String, List<String>>() {
+        private var mContext: Context) : CoroutinesAsyncTask<Int, String, List<String>>() {
 
     /**
      * We override this method to perform a computation on a background thread. The specified

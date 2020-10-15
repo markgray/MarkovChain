@@ -17,8 +17,7 @@ public class CalcTask extends CoroutinesAsyncTask<Long, Long, Long> {
     /**
      * {@code BenchMark} timer instance we use to time our {@code doInBackground} method.
      */
-    @SuppressWarnings("FieldMayBeFinal")
-    private BenchMark benchMark = new BenchMark();
+    private final BenchMark benchMark = new BenchMark();
     /**
      * Constant start value for the use of our example {@code testMethod()}
      */

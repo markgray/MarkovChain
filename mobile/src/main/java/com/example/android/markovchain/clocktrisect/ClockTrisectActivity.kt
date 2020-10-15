@@ -1,7 +1,5 @@
 package com.example.android.markovchain.clocktrisect
 
-import com.example.android.markovchain.R
-import android.annotation.SuppressLint
 import android.app.Activity
 import android.os.Bundle
 import android.util.Log
@@ -12,6 +10,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.android.markovchain.R
 import com.example.android.markovchain.benchmark.BenchMark
 import java.lang.String.format
 import java.text.NumberFormat
@@ -21,7 +20,6 @@ import java.util.Locale
  * Searches for the time of day when the hands of a clock comes closest to trisecting the face of
  * the clock.
  */
-@Suppress("MemberVisibilityCanBePrivate")
 class ClockTrisectActivity : AppCompatActivity() {
     /**
      * Amount to increment seconds by for each trial [ClockDataItem]
@@ -30,7 +28,7 @@ class ClockTrisectActivity : AppCompatActivity() {
     /**
      * The precision needed to format the current [increment]
      */
-    var incrementPrecision = 0
+    private var incrementPrecision = 0
     /**
      * [LinearLayout] we add our results to
      */
@@ -39,11 +37,11 @@ class ClockTrisectActivity : AppCompatActivity() {
     /**
      * [Button] used to display result sorted by "badness"
      */
-    lateinit var mSortedButton: Button
+    private lateinit var mSortedButton: Button
     /**
      * The `AsyncTask` which does all our calculations
      */
-    lateinit var clockDataTask: ClockDataTask
+    private lateinit var clockDataTask: ClockDataTask
     /**
      * The [BenchMark] which times how long it takes to do all our calculations
      */
@@ -51,11 +49,11 @@ class ClockTrisectActivity : AppCompatActivity() {
     /**
      * The array of [ClockDataItem] objects with the best trisection for each minute on the clock
      */
-    var minuteBestClock: Array<ClockDataItem?>? = null
+    private var minuteBestClock: Array<ClockDataItem?>? = null
     /**
      * The size of the clock face pie chart in pixels we are to display as part of our output.
      */
-    var mClockSize: Int = 0
+    private var mClockSize: Int = 0
 
 
     /**
@@ -73,7 +71,6 @@ class ClockTrisectActivity : AppCompatActivity() {
      *
      * @param savedInstanceState we do not override [onSaveInstanceState] so do not use.
      */
-    @SuppressLint("DefaultLocale")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_clock_trisect)
@@ -107,8 +104,9 @@ class ClockTrisectActivity : AppCompatActivity() {
             if (increment > SMALLEST_INCREMENT) {
                 ClockDataItem.secondFormat = "%0" + (incrementPrecision + 2) + "." + incrementPrecision + "f"
                 createClockDataTask()
-                changeButtonLabel(view,
-                        "Increment of ${ format("%6.5g", increment) } seconds, try smaller?"
+                changeButtonLabel(
+                        view,
+                        "Increment of ${ format(Locale.US,"%6.5g", increment) } seconds, try smaller?"
                 )
                 increment /= 10.0
                 incrementPrecision++
@@ -135,7 +133,7 @@ class ClockTrisectActivity : AppCompatActivity() {
      * @param view The [View] of the [Button] whose label we are to set
      * @param label The new label for [view].
      */
-    fun changeButtonLabel(view: View, label: String) {
+    private fun changeButtonLabel(view: View, label: String) {
         (view as Button).text = label
     }
 
@@ -144,7 +142,7 @@ class ClockTrisectActivity : AppCompatActivity() {
      * and redisplays the non-null contents of [minuteBestClock] sorted in descending order on
      * the [ClockDataItem] field [ClockDataItem.badness].
      */
-    fun displaySortedResults() {
+    private fun displaySortedResults() {
         outputLinearLayout.removeAllViews()
         val sortedResults = minuteBestClock!!.filterNotNull().sortedDescending()
         for (value in sortedResults) {
@@ -177,8 +175,7 @@ class ClockTrisectActivity : AppCompatActivity() {
      * and `onProgressUpdate` methods. If our [ClockDataItem] array field [minuteBestClock] is null,
      * we initialize it with the array returned by the `init` method of [clockDataTask].
      */
-    @SuppressLint("StaticFieldLeak")
-    fun createClockDataTask() {
+    private fun createClockDataTask() {
         Log.i(TAG, "Trying an increment of $increment")
         clockDataTask = object : ClockDataTask(increment) {
             /**

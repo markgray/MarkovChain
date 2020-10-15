@@ -1,6 +1,5 @@
 package com.example.android.markovchain.bible
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.os.ConditionVariable
@@ -19,20 +18,19 @@ import java.io.InputStreamReader
 /**
  * This is the main activity of our Bible Text reading function.
  */
-@Suppress("MemberVisibilityCanBePrivate")
 class BibleActivity : FragmentActivity() {
     /**
      * Reference to the `RecyclerView` in our layout
      */
-    lateinit var mRecyclerView: RecyclerView
+    private lateinit var mRecyclerView: RecyclerView
     /**
      * `LayoutManager` for our `RecyclerView`
      */
-    lateinit var mLayoutManager: RecyclerView.LayoutManager
+    private lateinit var mLayoutManager: RecyclerView.LayoutManager
     /**
      * The Adapter used to fill our `RecyclerView`
      */
-    lateinit var mAdapter: BibleAdapter
+    private lateinit var mAdapter: BibleAdapter
     /**
      * List of Bible verses
      */
@@ -137,7 +135,7 @@ class BibleActivity : FragmentActivity() {
      * @param key   key it was stored under (presently only "LAST_VERSE_VIEWED")
      * @return      verse number stored in shared preferences, or the default value passed it
      */
-    fun restoreVerseNumber(verse: Int, key: String): Int {
+    private fun restoreVerseNumber(verse: Int, key: String): Int {
         val pref = getSharedPreferences(CLASS, Context.MODE_PRIVATE)
         return pref.getInt(key, verse)
     }
@@ -181,7 +179,7 @@ class BibleActivity : FragmentActivity() {
      * called to attach a Bundle of arguments
      * @return identifier of the committed transaction, as per `FragmentTransaction.commit()`.
      */
-    fun showDialog(dialogFragment: DialogFragment?): Int {
+    private fun showDialog(dialogFragment: DialogFragment?): Int {
         // dialogFragment must already have setArguments set to bundle!
         // DialogFragment.show() will take care of adding the fragment
         // in a transaction.  We also want to remove any currently showing
@@ -376,7 +374,6 @@ class BibleActivity : FragmentActivity() {
         /**
          * Application Context for `BibleMain` and dialogs to use when necessary
          */
-        @SuppressLint("StaticFieldLeak") // Only one BibleMain ever exists so this is benign.
         lateinit var bibleContext: Context
         /**
          * Flag used to signal that we are done reading in the Bible
@@ -393,7 +390,6 @@ class BibleActivity : FragmentActivity() {
         /**
          * Contains reference to the `BibleDialog` launched by long clicking a verse
          */
-        @SuppressLint("StaticFieldLeak") // TODO: Create only one BibleDialog ever!
         var bibleDialog: BibleDialog? = null
         /**
          * Canonical Bible citation used as label for `BibleDialog` and the other dialogs

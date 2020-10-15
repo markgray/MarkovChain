@@ -13,7 +13,6 @@ import android.widget.Spinner
 import android.widget.TextView
 import com.example.android.markovchain.R
 
-@Suppress("MemberVisibilityCanBePrivate")
 class BibleDialog : DialogFragment() {
     /**
      * label for the `DialogFragment` (we use the canonical Bible citation for the verse)
@@ -31,11 +30,11 @@ class BibleDialog : DialogFragment() {
     /**
      * `TextView` in our inflated layout used for the Bible citation label
      */
-    lateinit var lastLabelView: TextView
+    private lateinit var lastLabelView: TextView
     /**
      * `TextView` in our inflated layout used for the text of the current verse
      */
-    lateinit var lastTextView: TextView
+    private lateinit var lastTextView: TextView
 
     /**
      * Objects used in the ArrayAdapter used for our Spinner
@@ -59,7 +58,7 @@ class BibleDialog : DialogFragment() {
     /**
      * `AdapterView.OnItemSelectedListener` used for the function chooser `Spinner`
      */
-    var spinSelected: AdapterView.OnItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+    private var spinSelected: AdapterView.OnItemSelectedListener = object : AdapterView.OnItemSelectedListener {
         /**
          * Callback method to be invoked when an item in this view has been selected.
          * This callback is invoked only when the newly selected position is different

@@ -17,7 +17,6 @@ import kotlin.math.abs
 /**
  * Adapter used by `BibleMain` to populate its `RecyclerView`
  */
-@Suppress("MemberVisibilityCanBePrivate")
 class BibleAdapter
 /**
  * Our constructor. We save our parameter `ArrayList<String> dataSet` in our field
@@ -52,7 +51,7 @@ class BibleAdapter
      * @return The HashMap created (unneeded since numberToBook is also set in the method, but it
      * does give the use of the method additional flexibility)
      */
-    fun initializeNumberToBook(): HashMap<String, String> {
+    private fun initializeNumberToBook(): HashMap<String, String> {
         if (!numberToBookInitialized) {
             numberToBook = HashMap(66)
             for (i in numbers.indices) {
@@ -181,7 +180,7 @@ class BibleAdapter
         /**
          * Random number generator used for moveToRandom
          */
-        val rand = Random()
+        private val rand = Random()
         /**
          * `RecyclerView.LayoutManager` passed to our constructor
          */

@@ -10,7 +10,6 @@ import kotlinx.coroutines.withContext
  * A coroutine version of `AsyncTask`
  * TODO: make methods and comments more closely resemble AsyncTask
  */
-@Suppress("unused", "MemberVisibilityCanBePrivate")
 abstract class CoroutinesAsyncTask<Params, Progress, Result> {
 
     enum class Status {
@@ -23,7 +22,7 @@ abstract class CoroutinesAsyncTask<Params, Progress, Result> {
      * The status of this [CoroutinesAsyncTask] instance, one of [Status.PENDING], [Status.RUNNING],
      * or [Status.FINISHED]
      */
-    var status: Status = Status.PENDING
+    private var status: Status = Status.PENDING
 
     /**
      * Override this method to perform a computation on a background thread. The specified
@@ -72,7 +71,7 @@ abstract class CoroutinesAsyncTask<Params, Progress, Result> {
      *
      * @return `true` if task was cancelled before it completed
      */
-    protected var isCancelled = false
+    private var isCancelled = false
 
     /**
      * Executes the [doInBackground] task with the specified parameters. This method must be
@@ -131,8 +130,9 @@ abstract class CoroutinesAsyncTask<Params, Progress, Result> {
      * @param mayInterruptIfRunning `<tt></tt>` if the thread executing this task should be
      * interrupted; otherwise, in-progress tasks are allowed to complete.
      */
-    @Suppress("UNUSED_PARAMETER")
+    @Suppress("MemberVisibilityCanBePrivate")
     fun cancel(mayInterruptIfRunning: Boolean) {
+        if(!mayInterruptIfRunning) Log.d("cancel", "cancel called with mayInterruptIfRunning false")
         isCancelled = true
         status = Status.FINISHED
         GlobalScope.launch(Dispatchers.Main) {

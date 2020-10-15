@@ -1,7 +1,5 @@
 package com.example.android.markovchain.shakespearemarkov
 
-import android.annotation.TargetApi
-import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -20,26 +18,25 @@ import java.io.StringReader
  * This `Activity` displays the random nonsense spouted by `Markov` when Shakespeare's
  * sonnets are used to create the Markov mChain state table that `Markov` uses.
  */
-@Suppress("MemberVisibilityCanBePrivate")
-@TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1)
 class ShakespeareMarkovActivity : FragmentActivity() {
     /**
      * [Markov] instance used to generate nonsense text
      */
-    var mMarkov = Markov()
+    private var mMarkov = Markov()
     /**
      * [RecyclerView] in our layout file where our text is displayed.
      */
-    lateinit var mRecyclerView: RecyclerView
+    private var mRecyclerView: RecyclerView? = null
+
     /**
      * [RecyclerView.LayoutManager] used by our [RecyclerView] as its `LayoutManager`
      */
-    lateinit var mLayoutManager: RecyclerView.LayoutManager
+    private lateinit var mLayoutManager: RecyclerView.LayoutManager
     /**
      * [MarkovAdapter] used by our [RecyclerView] field [mRecyclerView] to supply data for it to
      * display (a `RecyclerView.Adapter<MarkovAdapter.ViewHolder>`)
      */
-    lateinit var mAdapter: MarkovAdapter
+    private lateinit var mAdapter: MarkovAdapter
 
     /**
      * Called when the activity is starting. First we call through to our super's implementation of
@@ -66,10 +63,13 @@ class ShakespeareMarkovActivity : FragmentActivity() {
 
         mAdapter = MarkovAdapter(supportFragmentManager, mMarkov)
         // Set CustomAdapter as the adapter for RecyclerView.
-        mRecyclerView.adapter = mAdapter
-        mRecyclerView.layoutManager = mLayoutManager
-        Snackbar.make(mRecyclerView,"Long click a verse to hear it read", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
+        mRecyclerView!!.adapter = mAdapter
+        mRecyclerView!!.layoutManager = mLayoutManager
+        Snackbar.make(
+                mRecyclerView!!,
+                "Long click a verse to hear it read",
+                Snackbar.LENGTH_LONG
+        ).setAction("Action", null).show()
     }
 
     /**
@@ -97,7 +97,7 @@ class ShakespeareMarkovActivity : FragmentActivity() {
             override fun onDoneDo(view: View) {
                 view.callOnClick()
             }
-        }, mRecyclerView)
+        }, mRecyclerView!!)
 
         try {
             Log.i(TAG, "making mChain")

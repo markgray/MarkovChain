@@ -10,7 +10,6 @@ import com.example.android.markovchain.util.CoroutinesAsyncTask
  * that has the best `badness` field. In subsequent runs with fractional increments for the
  * seconds it only looks at minutes which survived the previous pass.
  */
-@Suppress("MemberVisibilityCanBePrivate")
 open class ClockDataTask
 /**
  * Our zero parameter constructor, we just call our super's constructor.
@@ -31,11 +30,11 @@ open class ClockDataTask
     /**
      * The fraction of a second we are to increment by
      */
-    internal var increment = 1.0
+    private var increment = 1.0
     /**
      * The `ClockDataItem` whose badness we are currently considering.
      */
-    var trialClock = ClockDataItem(0, 0, 0.0)
+    private var trialClock = ClockDataItem(0, 0, 0.0)
 
     /**
      * Our constructor which allows the value of our increment to be specified as its parameter. We

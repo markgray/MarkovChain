@@ -1,6 +1,5 @@
 package com.example.android.markovchain.benchmark
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -13,12 +12,10 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.android.markovchain.R
 import java.text.NumberFormat
 import java.util.Locale
-import kotlin.collections.ArrayList
 
 /**
  * This activity is useful to benchmark two different implementations of a method
  */
-@Suppress("MemberVisibilityCanBePrivate")
 class TestSplitActivity : AppCompatActivity() {
     /**
      * [LinearLayout] with id R.id.progress_view_linear_layout that contains our UI widgets:
@@ -35,24 +32,24 @@ class TestSplitActivity : AppCompatActivity() {
     /**
      * [Button] used to start version one of code
      */
-    lateinit var vStartButtonOne: Button
+    private lateinit var vStartButtonOne: Button
     /**
      * [Button] used to start version two of code
      */
-    lateinit var vStartButtonTwo: Button
+    private lateinit var vStartButtonTwo: Button
     /**
      * [Button] currently used to `finish()` this `Activity`
      */
-    lateinit var vAbortButton: Button
+    private lateinit var vAbortButton: Button
 
     /**
      * [EditText] in layout used to change [mProgressSteps]
      */
-    lateinit var vProgressSteps: EditText
+    private lateinit var vProgressSteps: EditText
     /**
      * [EditText] in layout used to change [mIterationsPerStep]
      */
-    lateinit var vIterationsPerStep: EditText
+    private lateinit var vIterationsPerStep: EditText
 
     /**
      * Number of steps in the [ProgressBar] field [vProgressBar]
@@ -78,12 +75,12 @@ class TestSplitActivity : AppCompatActivity() {
     /**
      * [Button] in the [vResultsLinearLayout] field that "returns" us to [vProgressLayout]
      */
-    lateinit var vTryAgain: Button
+    private lateinit var vTryAgain: Button
 
     /**
      * Instance of [ControlClass] that is currently being tested
      */
-    lateinit var mControlInstance: ControlClass
+    private lateinit var mControlInstance: ControlClass
 
     /**
      * [List] used as output by our library split method in [ControlClass1]
@@ -129,7 +126,6 @@ class TestSplitActivity : AppCompatActivity() {
      *
      * @param savedInstanceState always null since [onSaveInstanceState] is not overridden
      */
-    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_test_bench_mark)
@@ -234,7 +230,6 @@ class TestSplitActivity : AppCompatActivity() {
      * This class should be extended by classes which wish to benchmark their code in the
      * overridden method `testMethod()`.
      */
-    @SuppressLint("StaticFieldLeak")
     open inner class ControlClass : CalcTask() {
         /**
          * Runs on the UI thread after `doInBackground(Long...)`. The [Long] parameter [result]
@@ -283,7 +278,6 @@ class TestSplitActivity : AppCompatActivity() {
     /**
      * This tests the idiomatic kotlin library split.
      */
-    @SuppressLint("StaticFieldLeak")
     private inner class ControlClass1 : ControlClass() {
         /**
          * This method should be overridden by a method which performs whatever computation
@@ -304,7 +298,6 @@ class TestSplitActivity : AppCompatActivity() {
     /**
      * This tests the hand rolled split method.
      */
-    @SuppressLint("StaticFieldLeak")
     private inner class ControlClass2 : ControlClass() {
 
 

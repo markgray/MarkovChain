@@ -12,20 +12,19 @@ import com.google.android.material.snackbar.Snackbar
 /**
  * This Activity lets you read Shakespeare's sonnets in a RecyclerView.
  */
-@Suppress("MemberVisibilityCanBePrivate")
 class ShakespeareActivity : FragmentActivity() {
     /**
      * The [RecyclerView] in our layout which display the text of Shakespeare's sonnets
      */
-    lateinit var mRecyclerView: RecyclerView
+    private lateinit var mRecyclerView: RecyclerView
     /**
      * [RecyclerView.LayoutManager] for our [RecyclerView] (a `LinearLayoutManager` instance)
      */
-    lateinit var mLayoutManager: RecyclerView.LayoutManager
+    private lateinit var mLayoutManager: RecyclerView.LayoutManager
     /**
      * Adapter for our [RecyclerView]
      */
-    lateinit var mAdapter: StringArrayAdapter
+    private lateinit var mAdapter: StringArrayAdapter
 
     /**
      * Called when the activity is starting. First we call through to our super's implementation of

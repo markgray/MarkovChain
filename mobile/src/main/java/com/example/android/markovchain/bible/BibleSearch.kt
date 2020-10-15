@@ -22,24 +22,23 @@ import java.util.HashSet
  * This `DialogFragment` allows you to search for words or phrases in the current verse on the
  * web using Google search.
  */
-@Suppress("MemberVisibilityCanBePrivate")
 class BibleSearch : DialogFragment() {
     /**
      * Canonical Bible citation for current verse
      */
-    var mLabel: String? = null
+    private var mLabel: String? = null
     /**
      * Current verse
      */
-    var mText: String? = null
+    private var mText: String? = null
     /**
      * Array containing all words in current verse (duplicates removed)
      */
-    lateinit var mSuggestions: Array<String>
+    private lateinit var mSuggestions: Array<String>
     /**
      * Suggestions Adapter for the `MultiAutoCompleteTextView` with id R.id.edit
      */
-    lateinit var mAdapter: ArrayAdapter<String>
+    private lateinit var mAdapter: ArrayAdapter<String>
 
     /**
      * Removes punctuation characters .,;:()!? from the verse passed it. First we initialize our
@@ -52,7 +51,7 @@ class BibleSearch : DialogFragment() {
      * @param text Verse containing punctuation characters
      * @return Same verse minus all punctuation
      */
-    fun noPunct(text: String): String {
+    private fun noPunct(text: String): String {
         val stringBuilder = StringBuilder()
         for (i in text.indices) {
             val c = text[i]

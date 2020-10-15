@@ -1,6 +1,5 @@
 package com.example.android.markovchain.benchmark
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -17,7 +16,6 @@ import java.util.Locale
 /**
  * This activity is useful to benchmark two different implementations of a method
  */
-@Suppress("MemberVisibilityCanBePrivate")
 class TestKotlinActivity : AppCompatActivity() {
     /**
      * [LinearLayout] with id R.id.progress_view_linear_layout that contains our UI widgets:
@@ -34,24 +32,24 @@ class TestKotlinActivity : AppCompatActivity() {
     /**
      * [Button] used to start version one of code
      */
-    internal lateinit var vStartButtonOne: Button
+    private lateinit var vStartButtonOne: Button
     /**
      * [Button] used to start version two of code
      */
-    internal lateinit var vStartButtonTwo: Button
+    private lateinit var vStartButtonTwo: Button
     /**
      * [Button] currently used to `finish()` this `Activity`
      */
-    internal lateinit var vAbortButton: Button
+    private lateinit var vAbortButton: Button
 
     /**
      * [EditText] in layout used to change [mProgressSteps]
      */
-    internal lateinit var vProgressSteps: EditText
+    private lateinit var vProgressSteps: EditText
     /**
      * [EditText] in layout used to change [mIterationsPerStep]
      */
-    internal lateinit var vIterationsPerStep: EditText
+    private lateinit var vIterationsPerStep: EditText
 
     /**
      * Number of steps in the [ProgressBar] field [vProgressBar]
@@ -77,12 +75,12 @@ class TestKotlinActivity : AppCompatActivity() {
     /**
      * [Button] in the [vResultsLinearLayout] field that "returns" us to [vProgressLayout]
      */
-    internal lateinit var vTryAgain: Button
+    private lateinit var vTryAgain: Button
 
     /**
      * Instance of [ControlClass] that is currently being used
      */
-    internal lateinit var mControlInstance: ControlClass
+    private lateinit var mControlInstance: ControlClass
 
     /**
      * Called when the activity is starting. First we call through to our super's implementation of
@@ -119,7 +117,6 @@ class TestKotlinActivity : AppCompatActivity() {
      *
      * @param savedInstanceState always null since [onSaveInstanceState] is not overridden
      */
-    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_test_bench_mark)
@@ -222,7 +219,6 @@ class TestKotlinActivity : AppCompatActivity() {
      * This class should be extended by classes which wish to benchmark their code in the
      * overridden method `testMethod()`.
      */
-    @SuppressLint("StaticFieldLeak")
     open inner class ControlClass : CalcTask() {
         /**
          * Runs on the UI thread after `doInBackground(Long...)`. The [Long] parameter [result]
@@ -272,7 +268,6 @@ class TestKotlinActivity : AppCompatActivity() {
     /**
      * This is a simple example use of ControlClass designed to benchmark division.
      */
-    @SuppressLint("StaticFieldLeak")
     private inner class ControlClass1 : ControlClass() {
         /**
          * Accumulator register for repeated divisions
@@ -296,7 +291,6 @@ class TestKotlinActivity : AppCompatActivity() {
     /**
      * This is a simple example use of ControlClass designed to benchmark multiplication.
      */
-    @SuppressLint("StaticFieldLeak")
     private inner class ControlClass2 : ControlClass() {
         /**
          * Accumulator register for repeated multiplications

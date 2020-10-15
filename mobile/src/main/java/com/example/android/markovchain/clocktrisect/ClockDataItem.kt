@@ -16,7 +16,6 @@ import kotlin.math.min
 /**
  * Contains data and methods for holding a time of day, and the corresponding clock hand angles.
  */
-@Suppress("MemberVisibilityCanBePrivate")
 class ClockDataItem
 /**
  * Our constructor. We just call our method [initClockDataItem] with our parameters.
@@ -29,11 +28,11 @@ class ClockDataItem
     /**
      * The hour of the day we represent
      */
-    var timeHour: Int = 0
+    private var timeHour: Int = 0
     /**
      * The minute of the hour we represent
      */
-    var timeMinute: Int = 0
+    private var timeMinute: Int = 0
     /**
      * The second of the minute we represent
      */
@@ -41,19 +40,19 @@ class ClockDataItem
     /**
      * Angle of the hour hand on the face of the clock
      */
-    var angleHour: Double = 0.0
+    private var angleHour: Double = 0.0
     /**
      * Angle of the minute hand on the face of the clock
      */
-    var angleMinute: Double = 0.0
+    private var angleMinute: Double = 0.0
     /**
      * Angle of the second hand on the face of the clock
      */
-    var angleSecond: Double = 0.0
+    private var angleSecond: Double = 0.0
     /**
      * The sizes of the three clock face pie slices made by the clock hands (120,120,120) is perfect.
      */
-    var pieSlices = DoubleArray(3)
+    private var pieSlices = DoubleArray(3)
     /**
      * How bad is our trisection (the sum of the absolute values when each `Double[]` `pieSlice`
      * is compared to a perfect trisection of 120 degrees)
@@ -135,7 +134,7 @@ class ClockDataItem
      *
      * @return a value indicating how far from a perfect trisection this [ClockDataItem] is
      */
-    fun doBadness(): Double {
+    private fun doBadness(): Double {
         doPieSlices()
         var badnessValue = 0.0
         for (slice in pieSlices) {
@@ -168,7 +167,7 @@ class ClockDataItem
      * `pieSlices[0]` to `angle2` minus `angle1`, set `pieSlices[1]` to `angle3` minus `angle2`,
      * and set `pieSlices[2]` to 360.0 minus `angle3` plus `angle1`.
      */
-    fun doPieSlices() {
+    private fun doPieSlices() {
         val angle1: Double
         val angle2: Double
         val angle3: Double

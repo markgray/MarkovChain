@@ -1,7 +1,5 @@
 package com.example.android.markovchain.biblemarkov
 
-import android.annotation.TargetApi
-import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -22,26 +20,24 @@ import java.io.InputStreamReader
  * This `Activity` generates random gibberish using a Markov mChain state table that was generated
  * from the King James Bible offline.
  */
-@Suppress("MemberVisibilityCanBePrivate")
-@TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1)
 class BibleMarkovActivity : FragmentActivity() {
     /**
      * [ProgressBar] in our layout file that is displayed while the Markov mChain state table
      * is being loaded.
      */
-    lateinit var mProgressBar: ProgressBar
+    private lateinit var mProgressBar: ProgressBar
     /**
      * [RecyclerView] in our layout file that displays the random gibberish verses.
      */
-    lateinit var mRecyclerView: RecyclerView
+    private lateinit var mRecyclerView: RecyclerView
     /**
      * `LayoutManager` used for our [RecyclerView]
      */
-    lateinit var mLayoutManager: RecyclerView.LayoutManager
+    private lateinit var mLayoutManager: RecyclerView.LayoutManager
     /**
      * [MarkovAdapter] used as the adapter for our [RecyclerView]
      */
-    lateinit var mAdapter: MarkovAdapter
+    private lateinit var mAdapter: MarkovAdapter
     /**
      * [Markov] instance used to generate random text to display
      */

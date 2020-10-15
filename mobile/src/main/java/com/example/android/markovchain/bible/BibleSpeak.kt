@@ -17,24 +17,23 @@ import java.util.Locale
 /**
  * This `DialogFragment` reads the current verse using the systems text to speech synthesizer.
  */
-@Suppress("MemberVisibilityCanBePrivate")
 class BibleSpeak : DialogFragment(), OnInitListener {
     /**
      * canonical Bible citation for current verse
      */
-    var mLabel: String? = null
+    private var mLabel: String? = null
     /**
      * text of current verse
      */
-    var mText: String? = null
+    private var mText: String? = null
     /**
      * `TextToSpeech` instance we will use to synthesize speech
      */
-    var mTts: TextToSpeech? = null
+    private var mTts: TextToSpeech? = null
     /**
      * `View` containing our layout, inflated in `onCreateView`
      */
-    var mView: View? = null
+    private var mView: View? = null
 
     /**
      * Called to have the fragment instantiate its user interface view. First we initialize our [View]
@@ -94,7 +93,7 @@ class BibleSpeak : DialogFragment(), OnInitListener {
      *
      * @param v Main View for the DialogFragment (always mView at the moment)
      */
-    fun setDisplayedText(v: View) {
+    private fun setDisplayedText(v: View) {
         var tv = v.findViewById<TextView>(R.id.label)
         tv.text = mLabel
 

@@ -13,16 +13,15 @@ import com.example.android.markovchain.R
  * This `DialogFragment` will (eventually) save a bookmark to a particular verse with the date
  * it was bookmarked and an optional comment to an SQL database.
  */
-@Suppress("MemberVisibilityCanBePrivate")
 class BibleBookmark : DialogFragment() {
     /**
      * Canonical Bible citation for current verse
      */
-    var mLabel: String? = null
+    private var mLabel: String? = null
     /**
      * Text of the current verse
      */
-    var mText: String? = null
+    private var mText: String? = null
 
     /**
      * Called to do initial creation of a `DialogFragment`. This is called after `onAttach(Activity)`

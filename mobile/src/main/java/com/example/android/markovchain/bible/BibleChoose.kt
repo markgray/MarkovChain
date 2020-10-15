@@ -17,24 +17,23 @@ import com.example.android.markovchain.R
 /**
  * This [DialogFragment] allows a user to choose a specific verse of the Bible
  */
-@Suppress("MemberVisibilityCanBePrivate")
 class BibleChoose : DialogFragment() {
     /**
      * Bible citation for the current verse
      */
-    var mLabel: String? = null
+    private var mLabel: String? = null
     /**
      * Text of the current verse
      */
-    var mText: String? = null
+    private var mText: String? = null
     /**
      * Name of the book chosen using the spinner
      */
-    lateinit var mBook: String
+    private lateinit var mBook: String
     /**
      * Chapter and verse read from the [EditText] used for that purpose
      */
-    lateinit var mChapterAndVerse: String
+    private lateinit var mChapterAndVerse: String
 
     /**
      * Book number of the book selected in the `Spinner`
@@ -47,7 +46,7 @@ class BibleChoose : DialogFragment() {
     /**
      * `OnItemSelectedListener` for the adapter of the `Spinner`
      */
-    var spinSelected: AdapterView.OnItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+    private var spinSelected: AdapterView.OnItemSelectedListener = object : AdapterView.OnItemSelectedListener {
         /**
          * Callback method to be invoked when an item in this view has been selected.
          * This callback is invoked only when the newly selected position is different
