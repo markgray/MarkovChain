@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import android.widget.ListView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android.markovchain.R
 
@@ -16,7 +18,6 @@ import com.example.android.markovchain.R
  * an Activity that needs to populate a [RecyclerView] using lines obtained from an instance of
  * [Markov]
  */
-@Suppress("MemberVisibilityCanBePrivate")
 class MarkovAdapter
 /**
  * Constructor for this instance of [MarkovAdapter]. First we set our [FragmentManager] field
@@ -28,7 +29,7 @@ class MarkovAdapter
  * associated with the activity using us
  * @param mMarkov         [Markov] class used to generate lines for the [RecyclerView]
  */
-(fragmentManager: FragmentManager, val mMarkov: Markov) : RecyclerView.Adapter<MarkovAdapter.ViewHolder>() {
+(fragmentManager: FragmentManager, private val mMarkov: Markov) : RecyclerView.Adapter<MarkovAdapter.ViewHolder>() {
 
     init {
         mFragmentManager = fragmentManager
@@ -51,9 +52,16 @@ class MarkovAdapter
      * the generated verse (as determined by `Markov` and stored in `MarkovStats markovStats`).
      *
      * Then we set the `OnLongClickListener` of our [View] parameter `v` to a lambda which will
-     * create and display a `MarkovDialog` `DialogFragment` containing the text in our `View v`
-     * and the number of possibilities for that text given the first two words of the generated
-     * verse. (As determined by `Markov` and stored in `MarkovStats markovStats`).
+     * create and run an instance of [SpeechDialog] to speak the verse in the [View]. It does this
+     * by initializing its [String] variable `val verse` to the text of our [TextView] field
+     * [textView], and initializing its [SpeechDialog] variable `val speechDialog` to an instance
+     * constructed to use `verse` as the text it is to read aloud. It then initializes its
+     * [FragmentTransaction] variable `val ft` by using our [FragmentManager] field [mFragmentManager]
+     * begin a new transaction. It initializes its [Fragment] variable `val prev` by using
+     * [mFragmentManager] to find a fragment with the tag "dialog", and if the result is not `null`
+     * it uses `ft` to remove it, add the transaction to the backstack, then use the `show` method
+     * of `speechDialog` to show the [SpeechDialog] adding if to [FragmentTransaction] `ft` with the
+     * tag "dialog". It then returns `true` to consume the long click.
      *
      * Finally we find the [TextView] with id (R.id.vTextView) that we will use to later display the
      * line of generated nonsense to initialize our field [textView], and initialize our [MarkovStats]
@@ -92,8 +100,8 @@ class MarkovAdapter
             v.setOnLongClickListener {
                 val verse = textView.text as String
                 val speechDialog = SpeechDialog.newInstance(verse)
-                val ft = mFragmentManager.beginTransaction()
-                val prev = mFragmentManager.findFragmentByTag("dialog")
+                val ft: FragmentTransaction = mFragmentManager.beginTransaction()
+                val prev: Fragment? = mFragmentManager.findFragmentByTag("dialog")
                 if (prev != null) {
                     ft.remove(prev)
                 }

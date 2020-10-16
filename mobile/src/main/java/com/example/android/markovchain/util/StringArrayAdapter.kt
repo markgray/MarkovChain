@@ -97,7 +97,6 @@ class StringArrayAdapter
     /**
      * [ViewHolder] class that our `Adapter` uses.
      */
-    @Suppress("UNUSED_ANONYMOUS_PARAMETER")
     inner class ViewHolder
     /**
      * Our constructor. First we call our super's constructor. Then we set the `OnClickListener`
@@ -130,7 +129,7 @@ class StringArrayAdapter
                 Log.d(TAG, "Element $layoutPosition clicked.")
             }
             // Define long click listener for the ViewHolder's View.
-            v.setOnLongClickListener { view ->
+            v.setOnLongClickListener {
                 val verse = textView.text as String
                 val speechDialog = SpeechDialog.newInstance(verse)
                 val ft = mFragmentManager.beginTransaction()

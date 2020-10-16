@@ -18,7 +18,6 @@ import kotlin.math.abs
  * two words are used to access the table an array of all the third words that occur after the
  * first two words is returned.
  */
-@Suppress("MemberVisibilityCanBePrivate")
 class Markov {
     /**
      * Our instance's Markov [Chain] instance
@@ -118,20 +117,20 @@ class Markov {
          * were used in a sentence, and whose value is an array of words which have been known to
          * follow those two words in the original source text.
          */
-        internal var stateTable = Hashtable<Prefix, Array<String>>()
+        private var stateTable = Hashtable<Prefix, Array<String>>()
         /**
          * [Prefix] that we are currently working with, the initial prefix is two [NONWORD] "words"
          */
-        internal var prefix = Prefix(NONWORD)
+        private var prefix = Prefix(NONWORD)
         /**
          * Used to pick a random word from suffix array to follow up the Prefix
          */
-        internal var rand = Random()
+        private var rand = Random()
         /**
          * Used in `init()` method to decide if the [Prefix] field [prefix] needs to be reset to
          * (NONWORD,NONWORD) (The first line indicator).
          */
-        internal var firstLine = true
+        private var firstLine = true
         /**
          * set to true once our [Chain] state table is loaded with data.
          */
@@ -252,7 +251,7 @@ class Markov {
          * just felt nervous). Finally we return a *typed* array containing all of the elements of
          * `outPutList` to our caller.
          */
-        internal fun myFastSplit(line: String): Array<String> {
+        private fun myFastSplit(line: String): Array<String> {
             var index = 0
             var startIndex = 0
             var endIndex = 0
@@ -311,7 +310,7 @@ class Markov {
          * initialize our [Prefix] field [prefix] with a new instance of [Prefix] pointing to the
          * first entry in the Markov chain state table: `["%", "%"]`, and set [firstLine] to false.
          */
-        internal fun init() {
+        private fun init() {
             if (firstLine) {
                 prefix = Prefix(NONWORD)
                 firstLine = false
@@ -327,7 +326,7 @@ class Markov {
          * @param word Word to check for end of sentence punctuation.
          * @return true if String word is not an end of sentence word, false if it is.
          */
-        internal fun notEnd(word: String): Boolean {
+        private fun notEnd(word: String): Boolean {
             return !(word.contains(".") || word.contains("?") || word.contains("!"))
         }
 

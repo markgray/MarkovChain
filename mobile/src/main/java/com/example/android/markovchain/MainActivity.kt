@@ -24,7 +24,6 @@ import com.example.android.markovchain.whatisman.WhatIsManActivity
  * wrapped in a `ScrollView` and `Button`'s and `TextView`'s are added to the `LinearLayout` using
  * java code.
  */
-@Suppress("MemberVisibilityCanBePrivate")
 class MainActivity : AppCompatActivity() {
 
     /**
@@ -71,7 +70,7 @@ class MainActivity : AppCompatActivity() {
      * @param description text for the [Button]
      * @param parent the [ViewGroup] we are adding the [Button] to using **ViewGroup.addView**
      */
-    fun addButton(destination: Class<*>, description: String, parent: ViewGroup) {
+    private fun addButton(destination: Class<*>, description: String, parent: ViewGroup) {
         val button = Button(this)
         button.text = description
         /*
@@ -98,7 +97,7 @@ class MainActivity : AppCompatActivity() {
      * @param text text to display in the `TextView` we add to `ViewGroup parent`
      * @param parent `ViewGroup` to add our `TextView` to
      */
-    fun addText(text: String, parent: ViewGroup) {
+    private fun addText(text: String, parent: ViewGroup) {
         val mText = TextView(this)
         mText.text = text
         parent.addView(mText)

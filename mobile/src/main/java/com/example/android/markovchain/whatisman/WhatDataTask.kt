@@ -1,12 +1,10 @@
 package com.example.android.markovchain.whatisman
 
-import android.annotation.SuppressLint
 import android.content.Context
-import android.os.Build
+import android.os.Build.*
 import android.text.Html
 import android.text.Spanned
 import android.util.Log
-import androidx.annotation.RequiresApi
 import com.example.android.markovchain.util.CoroutinesAsyncTask
 import java.io.BufferedReader
 import java.io.IOException
@@ -30,8 +28,7 @@ internal constructor(
          * `getApplicationContext` method of the `WhatIsMan` activity and then passed to our
          * constructor).
          */
-        @field:SuppressLint("StaticFieldLeak")
-        var mContext: Context) : CoroutinesAsyncTask<Int, String, Spanned>() {
+        private var mContext: Context) : CoroutinesAsyncTask<Int, String, Spanned>() {
 
     /**
      * Loads a Html file from our resources on a background thread and returns a [Spanned] string
@@ -60,7 +57,6 @@ internal constructor(
      * @param params the resource ID of the Html file we are to load.
      * @return A [Spanned] string created from the contents of the file we load.
      */
-    @RequiresApi(Build.VERSION_CODES.N)
     override fun doInBackground(vararg params: Int?): Spanned {
         var builder: StringBuilder? = null
         var line: String?
@@ -84,7 +80,12 @@ internal constructor(
         }
 
         Log.i(TAG, "sizeOfInputStream: " + sizeOfInputStream + " Size of builder: " + builder!!.capacity())
-        return Html.fromHtml(builder.toString(), 0)
+        return if (VERSION.SDK_INT >= VERSION_CODES.N) {
+            Html.fromHtml(builder.toString(), 0)
+        } else {
+            @Suppress("DEPRECATION")
+            Html.fromHtml(builder.toString())
+        }
     }
 
     /**

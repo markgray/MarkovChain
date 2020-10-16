@@ -11,18 +11,19 @@ import com.example.android.markovchain.R
 
 /**
  * `DialogFragment` to display number of possibilities given the first two words, and the verse
- * we randomly generated using `Markov.line`.
+ * we randomly generated using `Markov.line`. No longer used since we switched to speaking the
+ * verse when long clicked.
  */
-@Suppress("MemberVisibilityCanBePrivate", "unused")
+@Suppress("unused")
 class MarkovDialog : DialogFragment() {
     /**
      * Possibility statistics for the current verse
      */
-    var mPossibles: String? = null
+    private var mPossibles: String? = null
     /**
      * Text of the current verse
      */
-    var mVerse: String? = null
+    private var mVerse: String? = null
 
     /**
      * Called to do initial creation of a `DialogFragment`. First we call our super's implementation

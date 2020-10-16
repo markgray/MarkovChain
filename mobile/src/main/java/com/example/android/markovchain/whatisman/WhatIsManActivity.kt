@@ -1,6 +1,5 @@
 package com.example.android.markovchain.whatisman
 
-import android.annotation.SuppressLint
 import android.app.Activity
 import android.os.Bundle
 import android.text.Spanned
@@ -17,7 +16,6 @@ import com.example.android.markovchain.R
  * This [Activity] loads html files from the raw resources of the app in the background, and
  * displays them in a [TextView].
  */
-@Suppress("MemberVisibilityCanBePrivate")
 class WhatIsManActivity : AppCompatActivity() {
     /**
      * [TextView] used to display our book chapters
@@ -30,12 +28,12 @@ class WhatIsManActivity : AppCompatActivity() {
     /**
      * [LinearLayout] that we add our chapter selection [Button]'s to.
      */
-    lateinit var whatChapter: LinearLayout
+    private lateinit var whatChapter: LinearLayout
     /**
      * [ScrollView] that holds the [LinearLayout] field [whatChapter] (which holds our chapter
      * selection [Button]'s)
      */
-    lateinit var whatChapterScrollView: ScrollView
+    private lateinit var whatChapterScrollView: ScrollView
 
     /**
      * Called when the activity is starting. First we call our super's implementation of `onCreate`,
@@ -84,7 +82,7 @@ class WhatIsManActivity : AppCompatActivity() {
      * @param description Label for our [Button]
      * @param parent      [ViewGroup] we should add our [Button] to.
      */
-    fun addButton(resourceID: Int, description: String, parent: ViewGroup) {
+    private fun addButton(resourceID: Int, description: String, parent: ViewGroup) {
         val button = Button(this)
         button.text = description
         /**
@@ -118,7 +116,6 @@ class WhatIsManActivity : AppCompatActivity() {
      * @param resourceID resource ID of Html file located in our raw resources.
      */
     private fun loadResourceHtml(resourceID: Int) {
-        @SuppressLint("StaticFieldLeak")
         val mWhatDataTask = object : WhatDataTask(applicationContext) {
             /**
              * Runs on the UI thread after [.doInBackground]. The parameter `Spanned s`

@@ -11,20 +11,19 @@ import android.widget.TextView
 import androidx.fragment.app.DialogFragment
 import com.example.android.markovchain.R
 
-@Suppress("unused", "MemberVisibilityCanBePrivate")
 class SpeechDialog : DialogFragment(), TextToSpeech.OnInitListener {
     /**
      * text of current verse
      */
-    var mText: String? = null
+    private var mText: String? = null
     /**
      * [TextToSpeech] instance we will use to synthesize speech
      */
-    var mTts: TextToSpeech? = null
+    private var mTts: TextToSpeech? = null
     /**
      * [View] containing our layout, inflated in [onCreateView]
      */
-    lateinit var mView: View
+    private lateinit var mView: View
 
     /**
      * Called to have the fragment instantiate its user interface view. First we initialize our [View]
@@ -102,7 +101,7 @@ class SpeechDialog : DialogFragment(), TextToSpeech.OnInitListener {
      * to have it release the resources used by the [TextToSpeech] engine. Then we call our [dismiss]
      * method to dismiss our fragment and its dialog.
      */
-    fun dismissMe() {
+    private fun dismissMe() {
         mTts?.stop()
         mTts?.shutdown()
         mTts = null

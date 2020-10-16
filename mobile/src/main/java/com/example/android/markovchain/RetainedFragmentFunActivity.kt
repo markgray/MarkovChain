@@ -1,11 +1,5 @@
 package com.example.android.markovchain
 
-import android.annotation.TargetApi
-import androidx.fragment.app.FragmentActivity
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.DialogFragment
-import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -16,18 +10,21 @@ import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentManager
+import com.example.android.markovchain.RetainedFragmentFunActivity.MyDialogFragment.Companion.newInstance
 import com.example.android.markovchain.util.DoneListener
 
 /**
  * Just a test Activity for experimenting with retained fragments.
  */
-@Suppress("PLATFORM_CLASS_MAPPED_TO_KOTLIN", "MemberVisibilityCanBePrivate")
-@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 class RetainedFragmentFunActivity : FragmentActivity() {
     /**
      * Handle to the [FragmentManager] for interacting with fragments associated with this activity
      */
-    lateinit var mFragmentManager: FragmentManager
+    private lateinit var mFragmentManager: FragmentManager
 
     /**
      * Called when the activity is starting. First we call through to our super's implementation of
@@ -89,7 +86,7 @@ class RetainedFragmentFunActivity : FragmentActivity() {
         ft.addToBackStack(null)
 
         // Create and show the dialog.
-        val newFragment = MyDialogFragment.newInstance(
+        val newFragment : MyDialogFragment = newInstance(
                 "This is label",
                 "This is the text"
         )
@@ -100,15 +97,15 @@ class RetainedFragmentFunActivity : FragmentActivity() {
      * This is a fragment showing the UI that will be updated from work done
      * in the retained fragment.
      */
-    class UiFragment internal constructor(internal var mFM: FragmentManager) : Fragment() {
+    class UiFragment internal constructor(private var mFM: FragmentManager) : Fragment() {
         /**
          * A reference to our example retained [Fragment]
          */
-        internal var mWorkFragment: RetainedFragment? = null
+        private var mWorkFragment: RetainedFragment? = null
         /**
          * [View] containing our layout file
          */
-        internal lateinit var mView: View
+        private lateinit var mView: View
 
         /**
          * [DoneListener] for our [RetainedFragment] field [mWorkFragment]. When [mWorkFragment] is
@@ -117,7 +114,7 @@ class RetainedFragmentFunActivity : FragmentActivity() {
          * R.id.progress_view_linear_layout from VISIBLE to GONE, and the visibility of the [TextView]
          * with id R.id.main_view from GONE to VISIBLE.
          */
-        internal var mIamDone: DoneListener = object : DoneListener() {
+        private var mIamDone: DoneListener = object : DoneListener() {
             /**
              * Called by [DoneListener.onDone]. First we locate the [TextView] with id
              * R.id.main_view in our [View] parameter [view] and save a reference in our [TextView]
@@ -279,11 +276,11 @@ class RetainedFragmentFunActivity : FragmentActivity() {
         /**
          * [LinearLayout] in our layout that contains our [ProgressBar]
          */
-        internal lateinit var mProgressViewLinearLayout: LinearLayout
+        private lateinit var mProgressViewLinearLayout: LinearLayout
         /**
          * [TextView] in our layout that is used for results
          */
-        internal lateinit var mMainView: TextView
+        private lateinit var mMainView: TextView
         /**
          * [DoneListener] instance used when our work thread finishes
          */
@@ -332,6 +329,7 @@ class RetainedFragmentFunActivity : FragmentActivity() {
                             doneListener!!.onDone(mView!!)
 
                             try {
+                                @Suppress("PLATFORM_CLASS_MAPPED_TO_KOTLIN")
                                 (this as Object).wait()
                             } catch (e: InterruptedException) {
                                 e.printStackTrace()
@@ -349,6 +347,7 @@ class RetainedFragmentFunActivity : FragmentActivity() {
                     // here to pretend like we are.
                     synchronized(this) {
                         try {
+                            @Suppress("PLATFORM_CLASS_MAPPED_TO_KOTLIN")
                             (this as Object).wait(50)
                         } catch (e: InterruptedException) {
                             e.printStackTrace()
@@ -431,6 +430,7 @@ class RetainedFragmentFunActivity : FragmentActivity() {
             // We are ready for our thread to go.
             synchronized(mThread) {
                 mReady = true
+                @Suppress("PLATFORM_CLASS_MAPPED_TO_KOTLIN")
                 (mThread as Object).notify()
             }
         }
@@ -452,6 +452,7 @@ class RetainedFragmentFunActivity : FragmentActivity() {
             synchronized(mThread) {
                 mReady = false
                 mQuiting = true
+                @Suppress("PLATFORM_CLASS_MAPPED_TO_KOTLIN")
                 (mThread as Object).notify()
             }
 
@@ -476,6 +477,7 @@ class RetainedFragmentFunActivity : FragmentActivity() {
             synchronized(mThread) {
                 mProgressBar = null
                 mReady = false
+                @Suppress("PLATFORM_CLASS_MAPPED_TO_KOTLIN")
                 (mThread as Object).notify()
             }
 
@@ -504,6 +506,7 @@ class RetainedFragmentFunActivity : FragmentActivity() {
         fun restart() {
             synchronized(mThread) {
                 mPosition = 0
+                @Suppress("PLATFORM_CLASS_MAPPED_TO_KOTLIN")
                 (mThread as Object).notify()
             }
         }
@@ -529,11 +532,11 @@ class RetainedFragmentFunActivity : FragmentActivity() {
         /**
          * "label" to display
          */
-        internal var mLabel: String? = null
+        private var mLabel: String? = null
         /**
          * "text" to display
          */
-        internal var mText: String? = null
+        private var mText: String? = null
 
         /**
          * Called to do initial creation of a fragment. First we call through to our super's
