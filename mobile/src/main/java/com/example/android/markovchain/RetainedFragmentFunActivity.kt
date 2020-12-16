@@ -152,7 +152,12 @@ class RetainedFragmentFunActivity : FragmentActivity() {
          *
          * @return Return the View for the fragment's UI, or null.
          */
-        override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        @Suppress("RedundantNullableReturnType")
+        override fun onCreateView(
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
+        ): View? {
             mView = inflater.inflate(R.layout.fragment_retain_instance, container, false)
             return mView
         }
