@@ -136,8 +136,8 @@ class BibleDialog : DialogFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        mLabel = arguments!!.getString("label")
-        mText = arguments!!.getString("text")
+        mLabel = requireArguments().getString("label")
+        mText = requireArguments().getString("text")
 
         setStyle(STYLE_NORMAL, 0)
     }

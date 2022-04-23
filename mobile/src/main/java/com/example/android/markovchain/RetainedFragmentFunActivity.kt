@@ -556,8 +556,8 @@ class RetainedFragmentFunActivity : FragmentActivity() {
             super.onCreate(savedInstanceState)
 
 
-            mLabel = arguments!!.getString("label")
-            mText = arguments!!.getString("text")
+            mLabel = requireArguments().getString("label")
+            mText = requireArguments().getString("text")
 
             // Pick a style based on the num.
             val theme = 0

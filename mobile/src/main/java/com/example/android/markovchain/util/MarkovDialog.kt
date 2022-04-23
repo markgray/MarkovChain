@@ -37,8 +37,8 @@ class MarkovDialog : DialogFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        mPossibles = arguments!!.getString("possibles")
-        mVerse = arguments!!.getString("verse")
+        mPossibles = requireArguments().getString("possibles")
+        mVerse = requireArguments().getString("verse")
 
         setStyle(STYLE_NORMAL, 0)
     }

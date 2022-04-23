@@ -124,8 +124,8 @@ class BibleSpeak : DialogFragment(), OnInitListener {
         super.onCreate(savedInstanceState)
 
 
-        mLabel = arguments!!.getString("label")
-        mText = arguments!!.getString("text")
+        mLabel = requireArguments().getString("label")
+        mText = requireArguments().getString("text")
         Log.i(TAG, "onCreate called with: $mLabel $mText")
 
         setStyle(STYLE_NORMAL, 0)

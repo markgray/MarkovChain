@@ -70,7 +70,7 @@ class SpeechDialog : DialogFragment(), TextToSpeech.OnInitListener {
      */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mText = arguments!!.getString("text")
+        mText = requireArguments().getString("text")
         mTts = TextToSpeech(activity, this)
     }
 

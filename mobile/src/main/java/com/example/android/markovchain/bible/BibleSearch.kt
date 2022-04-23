@@ -104,8 +104,8 @@ class BibleSearch : DialogFragment() {
         super.onCreate(savedInstanceState)
 
 
-        mLabel = arguments!!.getString("label")
-        mText = arguments!!.getString("text")
+        mLabel = requireArguments().getString("label")
+        mText = requireArguments().getString("text")
 
         mSuggestions = uniq(
                 noPunct(mText!!)
