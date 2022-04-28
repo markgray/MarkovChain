@@ -252,6 +252,7 @@ class RetainedFragmentFunActivity : FragmentActivity() {
             if (mWorkFragment == null) {
                 mWorkFragment = RetainedFragment()
                 // Tell it who it is working with.
+                @Suppress("DEPRECATION") // Use a FragmentResultListener
                 mWorkFragment!!.setTargetFragment(this, 0)
                 mFM.beginTransaction().add(mWorkFragment!!, "work").commit()
             }
@@ -380,16 +381,18 @@ class RetainedFragmentFunActivity : FragmentActivity() {
 
             // Tell the framework to try to keep this fragment around
             // during a configuration change.
+            @Suppress("DEPRECATION")// Replace with a ViewModel
             retainInstance = true
             // Start up the worker thread.
             mThread.start()
         }
 
         /**
-         * This is called when the [Fragment]'s Activity is ready to go, after its content view has
-         * been installed. It is called both after the initial fragment creation and after the
-         * fragment is re-attached to a new activity. First we call through to our super's
-         * implementation of `onActivityCreated`, then we retrieve the reference to our `UIFragment`
+         * Called when all saved state has been restored into the view hierarchy of the fragment.
+         * This can be used to do initialization based on saved state that you are letting the view
+         * hierarchy track itself, such as whether check box widgets are currently checked. This is
+         * called after [onViewCreated] and before [onStart]. First we call through to our super's
+         * implementation of `onViewStateRestored`, then we retrieve the reference to our `UIFragment`
          * which it passed to the system with a call to [setTargetFragment] in its [onActivityCreated]
          * override to initialize our [Fragment] variable `val targetFragment` by calling the method
          * [getTargetFragment]. We initialize our [View] variable `val gotView` to *null*, and if
@@ -406,11 +409,12 @@ class RetainedFragmentFunActivity : FragmentActivity() {
          *
          * @param savedInstanceState we do not override `onSaveInstanceState` so do not use
          */
-        override fun onActivityCreated(savedInstanceState: Bundle?) {
-            super.onActivityCreated(savedInstanceState)
+        override fun onViewStateRestored(savedInstanceState: Bundle?) {
+            super.onViewStateRestored(savedInstanceState)
             Log.i(TAG, "onActivityCreated has been called")
 
             // Retrieve the progress bar from the target's view hierarchy.
+            @Suppress("DEPRECATION") // Use a FragmentResultListener
             val targetFragment = targetFragment
             val gotView: View?
             if (targetFragment != null) {
