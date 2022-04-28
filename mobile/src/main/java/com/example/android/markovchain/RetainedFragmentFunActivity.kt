@@ -219,14 +219,13 @@ class RetainedFragmentFunActivity : FragmentActivity() {
         }
 
         /**
-         * Called when the fragment's activity has been created and this fragment's view hierarchy
-         * instantiated. It can be used to do final initialization once these pieces are in place,
-         * such as retrieving views or restoring state. It is also useful for fragments that use
-         * [setRetainInstance] to retain their instance, as this callback tells the fragment wh
-         * it is fully associated with the new activity instance. This is called after [onCreateView]
-         * and before [onViewStateRestored].
+         * Called when all saved state has been restored into the view hierarchy of the fragment.
+         * This can be used to do initialization based on saved state that you are letting the view
+         * hierarchy track itself, such as whether check box widgets are currently checked. This is
+         * called after [onViewCreated] and before [onStart]. (This code used to be executed in a
+         * deprecated `onActivityCreated` override).
          *
-         * First we call through to our super's implementation of `onActivityCreated`. Next we
+         * First we call through to our super's implementation of `onViewStateRestored`. Next we
          * use our [FragmentManager] field [mFM] to look for a fragment with the tag "work" and use
          * this value to set our [RetainedFragment] field [mWorkFragment]. If *null* was returned
          * (the [Fragment] was not found) we construct a new instance of [RetainedFragment] for
@@ -241,10 +240,10 @@ class RetainedFragmentFunActivity : FragmentActivity() {
          * VISIBLE which is changed to GONE, and R.id.main_view starts out with a visibility of GONE
          * which is changed to VISIBLE).
          *
-         * @param savedInstanceState we do not override onSaveInstanceState so ignore the value
+         * @param savedInstanceState we do not override [onSaveInstanceState] so ignore the value
          */
-        override fun onActivityCreated(savedInstanceState: Bundle?) {
-            super.onActivityCreated(savedInstanceState)
+        override fun onViewStateRestored(savedInstanceState: Bundle?) {
+            super.onViewStateRestored(savedInstanceState)
 
             // Check to see if we have retained the worker fragment.
             mWorkFragment = mFM.findFragmentByTag("work") as RetainedFragment?
@@ -258,6 +257,7 @@ class RetainedFragmentFunActivity : FragmentActivity() {
             }
             mWorkFragment!!.setDoneListener(mIamDone, mView)
         }
+
     }
 
     /**
