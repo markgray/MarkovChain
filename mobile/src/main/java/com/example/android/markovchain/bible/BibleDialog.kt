@@ -144,7 +144,7 @@ class BibleDialog : DialogFragment() {
 
     /**
      * Called to have the fragment instantiate its user interface view. This will be called between
-     * `onCreate(Bundle)` and `onActivityCreated(Bundle)`.
+     * `onCreate` and `onActivityCreated`.
      *
      * First we initialize our [View] variable `val v` by using our [LayoutInflater] parameter
      * [inflater] to inflate our layout file R.layout.bible_dialog using our [ViewGroup] parameter
