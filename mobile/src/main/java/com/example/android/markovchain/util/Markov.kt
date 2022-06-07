@@ -166,8 +166,8 @@ class Markov {
 
             val st = StreamTokenizer(quotes)
             st.resetSyntax()                     // remove default rules
-            st.wordChars(0, Character.MAX_VALUE.toInt()) // turn on all chars
-            st.whitespaceChars(0, ' '.toInt())           // except up to blank
+            st.wordChars(0, Character.MAX_VALUE.code) // turn on all chars
+            st.whitespaceChars(0, ' '.code)           // except up to blank
 
             var wordsRead = 0 // for debugging only
             while (st.nextToken() != StreamTokenizer.TT_EOF) {
