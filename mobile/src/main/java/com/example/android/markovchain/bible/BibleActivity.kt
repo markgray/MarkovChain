@@ -23,18 +23,21 @@ class BibleActivity : FragmentActivity() {
      * Reference to the `RecyclerView` in our layout
      */
     private lateinit var mRecyclerView: RecyclerView
+
     /**
      * `LayoutManager` for our `RecyclerView`
      */
     private lateinit var mLayoutManager: RecyclerView.LayoutManager
+
     /**
      * The Adapter used to fill our `RecyclerView`
      */
     private lateinit var mAdapter: BibleAdapter
+
     /**
      * List of Bible verses
      */
-    var stringList = ArrayList<String>()
+    var stringList: ArrayList<String> = ArrayList()
 
     /**
      * Called when the activity is starting. First we call our super's implementation of `onCreate`.
@@ -85,7 +88,7 @@ class BibleActivity : FragmentActivity() {
     override fun onPause() {
 
         val lastFirstVisiblePosition = (mRecyclerView.layoutManager as LinearLayoutManager)
-                .findFirstCompletelyVisibleItemPosition()
+            .findFirstCompletelyVisibleItemPosition()
         saveVerseNumber(lastFirstVisiblePosition, LAST_VERSE_VIEWED)
         super.onPause()
     }
@@ -117,8 +120,8 @@ class BibleActivity : FragmentActivity() {
         Log.i(TAG, "onDestroy has been called")
         // Don't forget to shutdown!
         if (textToSpeech != null) {
-            textToSpeech!!.stop()
-            textToSpeech!!.shutdown()
+            (textToSpeech ?: return).stop()
+            (textToSpeech ?: return).shutdown()
             textToSpeech = null
         }
         super.onDestroy()
@@ -202,7 +205,7 @@ class BibleActivity : FragmentActivity() {
      * be garbage collected. TODO: Create only one BibleDialog ever!
      */
     fun dismissDialog() {
-        bibleDialog!!.dismiss()
+        (bibleDialog ?: return).dismiss()
         bibleDialog = null
     }
 
@@ -237,12 +240,12 @@ class BibleActivity : FragmentActivity() {
             }
             BibleDialog.CHOICE_RANDOM_VERSE -> {
                 BibleAdapter.moveToRandom(v)
-                bibleDialog!!.refresh(dialogTitle, dialogText)
+                (bibleDialog ?: return).refresh(dialogTitle, dialogText)
             }
             BibleDialog.CHOICE_GOOGLE -> {
                 showDialog(BibleSearch.newInstance(dialogTitle, dialogText))
                 BibleAdapter.moveToVerse(v, dialogVerse)
-                bibleDialog!!.refresh(dialogTitle, dialogText)
+                (bibleDialog ?: return).refresh(dialogTitle, dialogText)
             }
             BibleDialog.CHOICE_BOOKMARK -> showDialog(BibleBookmark.newInstance(dialogTitle, dialogText))
             BibleDialog.CHOICE_GO_TO_VERSE -> showDialog(BibleChoose.newInstance(dialogTitle, dialogText))
@@ -290,6 +293,7 @@ class BibleActivity : FragmentActivity() {
              * Line read from `BufferedReader reader`
              */
             var line: String? = null
+
             /**
              * `StringBuilder` used to assemble the lines of the current verse.
              */
@@ -318,10 +322,10 @@ class BibleActivity : FragmentActivity() {
                 mDoneReading.close()
                 try {
                     while (lineFiller()) {
-                        bookChapterVerse.add(line!!)
+                        bookChapterVerse.add(line ?: return)
                         while (lineFiller()) {
                             builder.append(line)
-                            if (line!!.isEmpty()) {
+                            if ((line ?: return).isEmpty()) {
                                 stringList.add(builder.toString())
                                 builder.setLength(0)
                                 break
@@ -350,7 +354,7 @@ class BibleActivity : FragmentActivity() {
              *
              * @return *true* if the [line] read is not *null* or *false* if it is (EOF occurred)
              */
-            fun lineFiller() : Boolean {
+            fun lineFiller(): Boolean {
                 line = reader.readLine()
                 return line != null
             }
@@ -362,47 +366,58 @@ class BibleActivity : FragmentActivity() {
         /**
          * TAG for logging
          */
-        const val TAG = "BibleMain"
+        const val TAG: String = "BibleMain"
+
         /**
          * Key for shared preference to save verse number
          */
-        const val LAST_VERSE_VIEWED = "LAST_VERSE_VIEWED"
+        const val LAST_VERSE_VIEWED: String = "LAST_VERSE_VIEWED"
+
         /**
          * Used to access shared preference file
          */
         private val CLASS = BibleActivity::class.java.simpleName
+
         /**
          * Application Context for `BibleMain` and dialogs to use when necessary
          */
         lateinit var bibleContext: Context
+
         /**
          * Flag used to signal that we are done reading in the Bible
          */
-        var doneReading = false
+        var doneReading: Boolean = false
+
         /**
          * Used to block until reading is finished
          */
-        var mDoneReading = ConditionVariable()
+        var mDoneReading: ConditionVariable = ConditionVariable()
+
         /**
          * List of citations corresponding to each `stringList` verse
          */
-        var bookChapterVerse = ArrayList<String>()
+        var bookChapterVerse: ArrayList<String> = ArrayList()
+
         /**
          * Contains reference to the `BibleDialog` launched by long clicking a verse
          */
         var bibleDialog: BibleDialog? = null
+
         /**
          * Canonical Bible citation used as label for `BibleDialog` and the other dialogs
          */
         lateinit var dialogTitle: String
+
         /**
          * Verse text used as text contents for `BibleDialog` and the other dialogs
          */
         lateinit var dialogText: String
+
         /**
          * Verse number used in `BibleDialog` and the other dialogs
          */
         var dialogVerse: Int = 0
+
         /**
          * `TextToSpeech` instance used by `BibleSpeak`
          */

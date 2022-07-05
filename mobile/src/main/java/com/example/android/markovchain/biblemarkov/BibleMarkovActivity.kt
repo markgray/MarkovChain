@@ -26,23 +26,31 @@ class BibleMarkovActivity : FragmentActivity() {
      * is being loaded.
      */
     private lateinit var mProgressBar: ProgressBar
+
     /**
      * [RecyclerView] in our layout file that displays the random gibberish verses.
      */
     private lateinit var mRecyclerView: RecyclerView
+
     /**
      * `LayoutManager` used for our [RecyclerView]
      */
     private lateinit var mLayoutManager: RecyclerView.LayoutManager
+
     /**
      * [MarkovAdapter] used as the adapter for our [RecyclerView]
      */
     private lateinit var mAdapter: MarkovAdapter
+
     /**
      * [Markov] instance used to generate random text to display
      */
-    var mMarkov = Markov()
+    var mMarkov: Markov = Markov()
 
+    /**
+     * The [BenchMark] instance we use to time the loading of our Markov state table (used for
+     * logging purposes only.
+     */
     var mBibleMarkovBenchMark: BenchMark = BenchMark()
 
     /**
@@ -94,8 +102,8 @@ class BibleMarkovActivity : FragmentActivity() {
         mProgressBar.setOnClickListener {
             mProgressBar.visibility = View.INVISIBLE
             mRecyclerView.visibility = View.VISIBLE
-            Snackbar.make(mRecyclerView,"Long click a verse to hear it read", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
+            Snackbar.make(mRecyclerView, "Long click a verse to hear it read", Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show()
             mAdapter.notifyDataSetChanged()
         }
         mMarkov.setDoneListener(object : DoneListener() {
@@ -154,6 +162,6 @@ class BibleMarkovActivity : FragmentActivity() {
         /**
          * TAG for logging
          */
-        const val TAG = "BibleMarkovFragment"
+        const val TAG: String = "BibleMarkovFragment"
     }
 }

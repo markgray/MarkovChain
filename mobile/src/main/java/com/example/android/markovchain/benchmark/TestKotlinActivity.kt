@@ -25,18 +25,22 @@ class TestKotlinActivity : AppCompatActivity() {
      * VISIBLE then switches to GONE when a benchmark finishes so that the results can be seen.
      */
     internal lateinit var vProgressLayout: LinearLayout
+
     /**
      * [ProgressBar] in our layout used to show the progress of our benchmark.
      */
     internal lateinit var vProgressBar: ProgressBar
+
     /**
      * [Button] used to start version one of code
      */
     private lateinit var vStartButtonOne: Button
+
     /**
      * [Button] used to start version two of code
      */
     private lateinit var vStartButtonTwo: Button
+
     /**
      * [Button] currently used to `finish()` this `Activity`
      */
@@ -46,6 +50,7 @@ class TestKotlinActivity : AppCompatActivity() {
      * [EditText] in layout used to change [mProgressSteps]
      */
     private lateinit var vProgressSteps: EditText
+
     /**
      * [EditText] in layout used to change [mIterationsPerStep]
      */
@@ -55,6 +60,7 @@ class TestKotlinActivity : AppCompatActivity() {
      * Number of steps in the [ProgressBar] field [vProgressBar]
      */
     internal var mProgressSteps: Long = 100L
+
     /**
      * Number of repetitions per [ProgressBar] step.
      */
@@ -68,10 +74,12 @@ class TestKotlinActivity : AppCompatActivity() {
      * can be seen.
      */
     internal lateinit var vResultsLinearLayout: LinearLayout
+
     /**
      * [TextView] used to display results
      */
     internal lateinit var vResults: TextView
+
     /**
      * [Button] in the [vResultsLinearLayout] field that "returns" us to [vProgressLayout]
      */
@@ -240,8 +248,8 @@ class TestKotlinActivity : AppCompatActivity() {
             super.onPostExecute(result)
             Log.i(TAG, "Benchmark took $result milliseconds")
             val formattedIterations = NumberFormat
-                    .getNumberInstance(Locale.US)
-                    .format(mProgressSteps * mIterationsPerStep)
+                .getNumberInstance(Locale.US)
+                .format(mProgressSteps * mIterationsPerStep)
             val formattedResult = NumberFormat.getNumberInstance(Locale.US).format(result)
             vResults.append("Executed $formattedIterations times in\n$formattedResult milliseconds\n")
             vProgressLayout.visibility = View.GONE
@@ -261,7 +269,7 @@ class TestKotlinActivity : AppCompatActivity() {
          */
         override fun onProgressUpdate(vararg progress: Long?) {
             super.onProgressUpdate(*progress)
-            vProgressBar.progress = progress[0]!!.toInt()
+            vProgressBar.progress = (progress[0] ?: return).toInt()
         }
     }
 
@@ -273,6 +281,7 @@ class TestKotlinActivity : AppCompatActivity() {
          * Accumulator register for repeated divisions
          */
         var acc = 1.000000001
+
         /**
          * Divisor register for repeated divisions
          */
@@ -296,6 +305,7 @@ class TestKotlinActivity : AppCompatActivity() {
          * Accumulator register for repeated multiplications
          */
         var acc = 1.000000001
+
         /**
          * Multiplicand register for repeated multiplications
          */

@@ -71,7 +71,7 @@ class StringListAdapter
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         // Create a new view.
         val v = LayoutInflater.from(viewGroup.context)
-                .inflate(R.layout.line_list_item, viewGroup, false)
+            .inflate(R.layout.line_list_item, viewGroup, false)
 
         return ViewHolder(v)
     }
@@ -118,7 +118,7 @@ class StringListAdapter
     /**
      * `ViewHolder` class that our `Adapter` uses.
      */
-    inner class ViewHolder
+    class ViewHolder
     /**
      * Our constructor. First we call our super's constructor. Then we set the `View v`
      * parameter's `OnLongClickListener` to our `StringListAdapter`'s field
@@ -149,14 +149,17 @@ class StringListAdapter
          * TAG used for logging
          */
         private const val TAG = "StringListAdapter"
+
         /**
          * Random number generator used to select a random verse
          */
         private val rand = Random()
+
         /**
          * Our data set.
          */
         lateinit var mDataSet: List<String>
+
         /**
          * `LinearLayoutManager` used by the `RecyclerView` we are the adapter for
          */

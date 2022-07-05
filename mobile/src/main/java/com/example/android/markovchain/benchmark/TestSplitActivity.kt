@@ -25,18 +25,22 @@ class TestSplitActivity : AppCompatActivity() {
      * VISIBLE then switches to GONE when a benchmark finishes so that the results can be seen.
      */
     lateinit var vProgressLayout: LinearLayout
+
     /**
      * [ProgressBar] in our layout used to show the progress of our benchmark.
      */
     lateinit var vProgressBar: ProgressBar
+
     /**
      * [Button] used to start version one of code
      */
     private lateinit var vStartButtonOne: Button
+
     /**
      * [Button] used to start version two of code
      */
     private lateinit var vStartButtonTwo: Button
+
     /**
      * [Button] currently used to `finish()` this `Activity`
      */
@@ -46,6 +50,7 @@ class TestSplitActivity : AppCompatActivity() {
      * [EditText] in layout used to change [mProgressSteps]
      */
     private lateinit var vProgressSteps: EditText
+
     /**
      * [EditText] in layout used to change [mIterationsPerStep]
      */
@@ -55,6 +60,7 @@ class TestSplitActivity : AppCompatActivity() {
      * Number of steps in the [ProgressBar] field [vProgressBar]
      */
     var mProgressSteps: Long = 100L
+
     /**
      * Number of repetitions per [ProgressBar] step.
      */
@@ -68,10 +74,12 @@ class TestSplitActivity : AppCompatActivity() {
      * can be seen.
      */
     lateinit var vResultsLinearLayout: LinearLayout
+
     /**
      * [TextView] used to display results
      */
     lateinit var vResults: TextView
+
     /**
      * [Button] in the [vResultsLinearLayout] field that "returns" us to [vProgressLayout]
      */
@@ -86,6 +94,7 @@ class TestSplitActivity : AppCompatActivity() {
      * [List] used as output by our library split method in [ControlClass1]
      */
     var testOutputList: List<String> = ArrayList()
+
     /**
      * [MutableList] used as output by our hand rolled split method in [ControlClass2]
      */
@@ -251,8 +260,8 @@ class TestSplitActivity : AppCompatActivity() {
             super.onPostExecute(result)
             Log.i(TAG, "Benchmark took $result milliseconds")
             val formattedIterations = NumberFormat
-                    .getNumberInstance(Locale.US)
-                    .format(mProgressSteps * mIterationsPerStep)
+                .getNumberInstance(Locale.US)
+                .format(mProgressSteps * mIterationsPerStep)
             val formattedResult = NumberFormat.getNumberInstance(Locale.US).format(result)
             vResults.append("Executed $formattedIterations times in\n$formattedResult milliseconds\n")
             vProgressLayout.visibility = View.GONE
@@ -271,7 +280,7 @@ class TestSplitActivity : AppCompatActivity() {
          * @param progress The values indicating progress.
          */
         override fun onProgressUpdate(vararg progress: Long?) {
-            vProgressBar.progress = progress[0]!!.toInt()
+            vProgressBar.progress = (progress[0] ?: return).toInt()
         }
     }
 
@@ -287,8 +296,8 @@ class TestSplitActivity : AppCompatActivity() {
         override fun testMethod() {
             timesCalled++
             testOutputList = testString
-                    .split(" ".toRegex())
-                    .dropLastWhile { it.isEmpty() }
+                .split(" ".toRegex())
+                .dropLastWhile { it.isEmpty() }
             if (timesCalled % 1000 == 0) {
                 Log.i(TAG, "Results of split: $testOutputList")
             }
@@ -361,7 +370,7 @@ class TestSplitActivity : AppCompatActivity() {
          * The test `String` that our two "split" methods split.
          */
         internal const val testString: String =
-                "from fairest creatures we desire increase " +
+            "from fairest creatures we desire increase " +
                 "that thereby beauty's rose might never die " +
                 "but as the riper should by time decease " +
                 "his tender heir might bear his memory " +

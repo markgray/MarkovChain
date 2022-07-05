@@ -75,6 +75,7 @@ class MarkovAdapter
          * `TextView` to write our Markov mChain generated lines to.
          */
         lateinit var textView: TextView
+
         /**
          * `MarkovStats` instance used to report number of possibilities for each line
          */
@@ -94,7 +95,8 @@ class MarkovAdapter
                  * @param view `View` that was clicked
                  */
                 Log.d(TAG, "Element $layoutPosition clicked.")
-                Toast.makeText(view.context, "Number of possibilities:\n" + possibles!!, Toast.LENGTH_LONG).show()
+                Toast.makeText(view.context, "Number of possibilities:\n" + (possibles
+                    ?: return@setOnClickListener), Toast.LENGTH_LONG).show()
             }
             // Define OnLongClickListener for the ViewHolder's View.
             v.setOnLongClickListener {
@@ -136,7 +138,7 @@ class MarkovAdapter
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         // Create a new view.
         val v = LayoutInflater.from(parent.context)
-                .inflate(R.layout.line_list_item, parent, false)
+            .inflate(R.layout.line_list_item, parent, false)
 
         return ViewHolder(v)
     }
@@ -166,7 +168,7 @@ class MarkovAdapter
 
         // Get element from your data set at this position and replace the contents of the view
         // with that element
-        if (mMarkov.mChain.loaded) holder.textView.text = mMarkov.line(holder.possibles!!)
+        if (mMarkov.mChain.loaded) holder.textView.text = mMarkov.line(holder.possibles ?: return)
     }
 
     /**
@@ -189,10 +191,12 @@ class MarkovAdapter
          * TAG used for Logging
          */
         private const val TAG = "MarkovAdapter"
+
         /**
          * Just used as an arbitrary number for getItemCount
          */
         private const val NLINES = 10000
+
         /**
          * Handle to the the `FragmentManager` for interacting with fragments associated with the
          * activity that is using us.

@@ -13,15 +13,20 @@ import android.widget.Spinner
 import android.widget.TextView
 import com.example.android.markovchain.R
 
+/**
+ * The [DialogFragment] that pops up when you long click a verse.
+ */
 class BibleDialog : DialogFragment() {
     /**
      * label for the `DialogFragment` (we use the canonical Bible citation for the verse)
      */
     var mLabel: String? = null
+
     /**
      * text of the current verse
      */
     var mText: String? = null
+
     /**
      * Button to use to repeat last operation selected in the Spinner
      */
@@ -31,6 +36,7 @@ class BibleDialog : DialogFragment() {
      * `TextView` in our inflated layout used for the Bible citation label
      */
     private lateinit var lastLabelView: TextView
+
     /**
      * `TextView` in our inflated layout used for the text of the current verse
      */
@@ -39,21 +45,24 @@ class BibleDialog : DialogFragment() {
     /**
      * Objects used in the ArrayAdapter used for our Spinner
      */
-    var spinChoices = arrayOf("Choose Action", "Random verse", "Google",
-            "Bookmark", "Go to verse", "Read aloud")
+    var spinChoices: Array<String> = arrayOf("Choose Action", "Random verse", "Google",
+        "Bookmark", "Go to verse", "Read aloud")
+
     /**
      * Which spinChoices action has been chosen
      */
-    var spinChosen = ""
+    var spinChosen: String = ""
+
     /**
      * The index of the action chosen in the Spinner
      */
-    var spinIndex = 0
+    var spinIndex: Int = 0
+
     /**
      * Used to determine if Spinner has chosen a new action or
      * whether the "REPEAT" Button should be visible
      */
-    var lastIndex = 0
+    var lastIndex: Int = 0
 
     /**
      * `AdapterView.OnItemSelectedListener` used for the function chooser `Spinner`
@@ -87,7 +96,7 @@ class BibleDialog : DialogFragment() {
 
             if (spinIndex != lastIndex) {
 
-                (activity as BibleActivity).handleAction(view!!, spinIndex)
+                (activity as BibleActivity).handleAction(view ?: return, spinIndex)
                 lastIndex = spinIndex
             }
             if (spinIndex != 0) {
@@ -189,8 +198,8 @@ class BibleDialog : DialogFragment() {
         val spin = v.findViewById<Spinner>(R.id.spinner)
 
         val spinnerArrayAdapter = ArrayAdapter(v.context,
-                android.R.layout.simple_spinner_item,
-                spinChoices)
+            android.R.layout.simple_spinner_item,
+            spinChoices)
         spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spin.adapter = spinnerArrayAdapter
         spin.onItemSelectedListener = spinSelected
@@ -271,26 +280,31 @@ class BibleDialog : DialogFragment() {
         /**
          * "Choose Action"
          */
-        const val CHOICE_NONE = 0
+        const val CHOICE_NONE: Int = 0
+
         /**
          * "Random verse"
          */
-        const val CHOICE_RANDOM_VERSE = 1
+        const val CHOICE_RANDOM_VERSE: Int = 1
+
         /**
          * "Google"
          */
-        const val CHOICE_GOOGLE = 2
+        const val CHOICE_GOOGLE: Int = 2
+
         /**
          * "Bookmark"
          */
-        const val CHOICE_BOOKMARK = 3
+        const val CHOICE_BOOKMARK: Int = 3
+
         /**
          * "Go to verse"
          */
-        const val CHOICE_GO_TO_VERSE = 4
+        const val CHOICE_GO_TO_VERSE: Int = 4
+
         /**
          * "Read aloud"
          */
-        const val CHOICE_READ_ALOUD = 5
+        const val CHOICE_READ_ALOUD: Int = 5
     }
 }

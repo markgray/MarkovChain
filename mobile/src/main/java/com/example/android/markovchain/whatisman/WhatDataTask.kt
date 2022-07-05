@@ -22,13 +22,13 @@ open class WhatDataTask
  * Parameter: [Context] to use to access resources of this application
  */
 internal constructor(
-        /**
-         * [Context] to use to access resources from our application (in our case this is the
-         * "context of the single, global Application object of the current process" obtained from the
-         * `getApplicationContext` method of the `WhatIsMan` activity and then passed to our
-         * constructor).
-         */
-        private var mContext: Context) : CoroutinesAsyncTask<Int, String, Spanned>() {
+    /**
+     * [Context] to use to access resources from our application (in our case this is the
+     * "context of the single, global Application object of the current process" obtained from the
+     * `getApplicationContext` method of the `WhatIsMan` activity and then passed to our
+     * constructor).
+     */
+    private var mContext: Context) : CoroutinesAsyncTask<Int, String, Spanned>() {
 
     /**
      * Loads a Html file from our resources on a background thread and returns a [Spanned] string
@@ -62,8 +62,8 @@ internal constructor(
         var line: String?
         var sizeOfInputStream = 0
         val inputStream = mContext
-                .resources
-                .openRawResource(params[0]!!)
+            .resources
+            .openRawResource(params[0]!!)
 
         val reader = BufferedReader(InputStreamReader(inputStream))
         try {

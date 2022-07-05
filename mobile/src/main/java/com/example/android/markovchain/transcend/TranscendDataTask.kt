@@ -18,13 +18,13 @@ open class TranscendDataTask
  * Parameter: [Context] to use to access resources of this application
  */
 internal constructor(
-        /**
-         * `Context` to use to access resources from our application (in our case this is the
-         * "context of the single, global Application object of the current process" obtained from the
-         * `getApplicationContext` method of the `TranscendActivity` activity and then passed
-         * to our constructor).
-         */
-        private var mContext: Context) : CoroutinesAsyncTask<Int, String, List<String>>() {
+    /**
+     * `Context` to use to access resources from our application (in our case this is the
+     * "context of the single, global Application object of the current process" obtained from the
+     * `getApplicationContext` method of the `TranscendActivity` activity and then passed
+     * to our constructor).
+     */
+    private var mContext: Context) : CoroutinesAsyncTask<Int, String, List<String>>() {
 
     /**
      * We override this method to perform a computation on a background thread. The specified
@@ -61,8 +61,8 @@ internal constructor(
         var line: String?
         val results = ArrayList<String>()
         val inputStream = mContext
-                .resources
-                .openRawResource(params[0]!!)
+            .resources
+            .openRawResource(params[0]!!)
 
         val reader = BufferedReader(InputStreamReader(inputStream))
         try {

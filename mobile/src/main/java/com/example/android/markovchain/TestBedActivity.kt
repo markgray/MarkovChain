@@ -7,8 +7,16 @@ import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.android.markovchain.shakespeare.ShakespeareSonnets
 
+/**
+ * Just an [AppCompatActivity] that was created to test some aspect of the API.
+ */
 class TestBedActivity : AppCompatActivity() {
 
+    /**
+     * Called when the activity is starting.
+     *
+     * @param savedInstanceState we do not override [onSaveInstanceState] so do not use.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_test_bed)
@@ -17,13 +25,13 @@ class TestBedActivity : AppCompatActivity() {
         val string = "Button Label"
         myButton.text = string
         val adapter = ArrayAdapter(this,
-                android.R.layout.simple_list_item_1,
-                ShakespeareSonnets.SONNETS)
+            android.R.layout.simple_list_item_1,
+            ShakespeareSonnets.SONNETS)
         val listView: ListView = findViewById(R.id.listview)
         listView.adapter = adapter
         val list = mutableListOf("a", "b", "c")
 
-        val pair: Pair<Int, Int> = Pair(1,2)
+        val pair: Pair<Int, Int> = Pair(1, 2)
         @Suppress("RedundantSamConstructor")
         list.sortWith(Comparator { _, _ -> pair.first })
     }

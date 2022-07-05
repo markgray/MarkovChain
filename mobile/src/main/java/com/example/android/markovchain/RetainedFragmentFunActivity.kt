@@ -55,9 +55,9 @@ class RetainedFragmentFunActivity : FragmentActivity() {
         // First time init, create the UI.
         if (savedInstanceState == null) {
             mFragmentManager
-                    .beginTransaction()
-                    .add(android.R.id.content, UiFragment(mFragmentManager))
-                    .commit()
+                .beginTransaction()
+                .add(android.R.id.content, UiFragment(mFragmentManager))
+                .commit()
         } else {
             Log.i(TAG, "Bundle savedInstanceState is not null")
         }
@@ -86,9 +86,9 @@ class RetainedFragmentFunActivity : FragmentActivity() {
         ft.addToBackStack(null)
 
         // Create and show the dialog.
-        val newFragment : MyDialogFragment = newInstance(
-                "This is label",
-                "This is the text"
+        val newFragment: MyDialogFragment = newInstance(
+            "This is label",
+            "This is the text"
         )
         newFragment.show(ft, "dialog")
     }
@@ -102,6 +102,7 @@ class RetainedFragmentFunActivity : FragmentActivity() {
          * A reference to our example retained [Fragment]
          */
         private var mWorkFragment: RetainedFragment? = null
+
         /**
          * [View] containing our layout file
          */
@@ -194,7 +195,7 @@ class RetainedFragmentFunActivity : FragmentActivity() {
              * Parameter: View of Button that was clicked
              */
             button.setOnClickListener {
-                mWorkFragment!!.restart()
+                (mWorkFragment ?: return@setOnClickListener).restart()
             }
 
             button = mView.findViewById(R.id.toast_me)
@@ -253,10 +254,10 @@ class RetainedFragmentFunActivity : FragmentActivity() {
                 mWorkFragment = RetainedFragment()
                 // Tell it who it is working with.
                 @Suppress("DEPRECATION") // Use a FragmentResultListener
-                mWorkFragment!!.setTargetFragment(this, 0)
-                mFM.beginTransaction().add(mWorkFragment!!, "work").commit()
+                (mWorkFragment ?: return).setTargetFragment(this, 0)
+                mFM.beginTransaction().add(mWorkFragment ?: return, "work").commit()
             }
-            mWorkFragment!!.setDoneListener(mIamDone, mView)
+            (mWorkFragment ?: return).setDoneListener(mIamDone, mView)
         }
 
     }
@@ -271,31 +272,38 @@ class RetainedFragmentFunActivity : FragmentActivity() {
          * [ProgressBar] in our layout that we update to the latest value of [mPosition]
          */
         internal var mProgressBar: ProgressBar? = null
+
         /**
          * Flag set by our `UIFragment` to start (true) and stop (false) our work thread
          */
         internal var mReady = false
+
         /**
          * Flag set in `onDestroy` callback to stop our work thread
          */
         internal var mQuiting = false
+
         /**
          * [LinearLayout] in our layout that contains our [ProgressBar]
          */
         private lateinit var mProgressViewLinearLayout: LinearLayout
+
         /**
          * [TextView] in our layout that is used for results
          */
         private lateinit var mMainView: TextView
+
         /**
          * [DoneListener] instance used when our work thread finishes
          */
         private var doneListener: DoneListener? = null
+
         /**
          * [View] passed to `setDoneListener`, used as the parameter when calling the
          * `onDone` method of that [DoneListener].
          */
         private var mView: View? = null
+
         /**
          * This is the [Thread] that will do our work. It sits in a loop incrementing the
          * [ProgressBar] until it has reached its max, then stops and waits until killed.
@@ -332,7 +340,8 @@ class RetainedFragmentFunActivity : FragmentActivity() {
                             if (mQuiting) {
                                 return
                             }
-                            doneListener!!.onDone(mView!!)
+                            (doneListener ?: return@synchronized).onDone(mView
+                                ?: return@synchronized)
 
                             try {
                                 @Suppress("PLATFORM_CLASS_MAPPED_TO_KOTLIN")
@@ -346,7 +355,7 @@ class RetainedFragmentFunActivity : FragmentActivity() {
                         // we touch the progress bar with the lock held, so it
                         // doesn't disappear on us.
                         mPosition++
-                        mProgressBar!!.progress = mPosition
+                        (mProgressBar ?: return@synchronized).progress = mPosition
                     }
 
                     // Normally we would be doing some work, but put a kludge
@@ -525,6 +534,7 @@ class RetainedFragmentFunActivity : FragmentActivity() {
              * TAG used for logging.
              */
             private const val TAG = "RetainedFragment"
+
             /**
              * Counter that we increment and use to set the progress of our `ProgressBar mProgressBar`
              */
@@ -542,6 +552,7 @@ class RetainedFragmentFunActivity : FragmentActivity() {
          * "label" to display
          */
         private var mLabel: String? = null
+
         /**
          * "text" to display
          */
@@ -645,6 +656,7 @@ class RetainedFragmentFunActivity : FragmentActivity() {
          * TAG used for logging
          */
         internal const val TAG = "RetainedFragmentFun"
+
         /**
          * Maximum value of the [ProgressBar]
          */

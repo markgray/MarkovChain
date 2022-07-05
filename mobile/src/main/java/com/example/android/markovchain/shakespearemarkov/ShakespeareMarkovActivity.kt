@@ -23,6 +23,7 @@ class ShakespeareMarkovActivity : FragmentActivity() {
      * [Markov] instance used to generate nonsense text
      */
     private var mMarkov = Markov()
+
     /**
      * [RecyclerView] in our layout file where our text is displayed.
      */
@@ -32,6 +33,7 @@ class ShakespeareMarkovActivity : FragmentActivity() {
      * [RecyclerView.LayoutManager] used by our [RecyclerView] as its `LayoutManager`
      */
     private lateinit var mLayoutManager: RecyclerView.LayoutManager
+
     /**
      * [MarkovAdapter] used by our [RecyclerView] field [mRecyclerView] to supply data for it to
      * display (a `RecyclerView.Adapter<MarkovAdapter.ViewHolder>`)
@@ -63,12 +65,12 @@ class ShakespeareMarkovActivity : FragmentActivity() {
 
         mAdapter = MarkovAdapter(supportFragmentManager, mMarkov)
         // Set CustomAdapter as the adapter for RecyclerView.
-        mRecyclerView!!.adapter = mAdapter
-        mRecyclerView!!.layoutManager = mLayoutManager
+        (mRecyclerView ?: return).adapter = mAdapter
+        (mRecyclerView ?: return).layoutManager = mLayoutManager
         Snackbar.make(
-                mRecyclerView!!,
-                "Long click a verse to hear it read",
-                Snackbar.LENGTH_LONG
+            mRecyclerView ?: return,
+            "Long click a verse to hear it read",
+            Snackbar.LENGTH_LONG
         ).setAction("Action", null).show()
     }
 
@@ -97,7 +99,7 @@ class ShakespeareMarkovActivity : FragmentActivity() {
             override fun onDoneDo(view: View) {
                 view.callOnClick()
             }
-        }, mRecyclerView!!)
+        }, mRecyclerView ?: return)
 
         try {
             Log.i(TAG, "making mChain")
@@ -112,6 +114,6 @@ class ShakespeareMarkovActivity : FragmentActivity() {
         /**
          * TAG used for logging
          */
-        const val TAG = "ShakespeareMarkovR..."
+        const val TAG: String = "ShakespeareMarkovR..."
     }
 }

@@ -29,30 +29,37 @@ class ClockDataItem
      * The hour of the day we represent
      */
     private var timeHour: Int = 0
+
     /**
      * The minute of the hour we represent
      */
     private var timeMinute: Int = 0
+
     /**
      * The second of the minute we represent
      */
     var timeSecond: Double = 0.0
+
     /**
      * Angle of the hour hand on the face of the clock
      */
     private var angleHour: Double = 0.0
+
     /**
      * Angle of the minute hand on the face of the clock
      */
     private var angleMinute: Double = 0.0
+
     /**
      * Angle of the second hand on the face of the clock
      */
     private var angleSecond: Double = 0.0
+
     /**
      * The sizes of the three clock face pie slices made by the clock hands (120,120,120) is perfect.
      */
     private var pieSlices = DoubleArray(3)
+
     /**
      * How bad is our trisection (the sum of the absolute values when each `Double[]` `pieSlice`
      * is compared to a perfect trisection of 120 degrees)
@@ -289,12 +296,12 @@ class ClockDataItem
         /**
          * Format string for [toString] to use for the formatting of our [Double] field [timeSecond].
          */
-        var secondFormat = "%06.4f"
+        var secondFormat: String = "%06.4f"
 
         /**
          * [Paint] that our [clockFace] method uses to draw the [BitmapDrawable] pie
          * chart of the clock face for the time value that we hold
          */
-        var mPaint = Paint()
+        var mPaint: Paint = Paint()
     }
 }

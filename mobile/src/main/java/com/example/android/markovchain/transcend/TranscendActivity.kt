@@ -22,22 +22,27 @@ class TranscendActivity : AppCompatActivity() {
      * [RecyclerView] used to display our books
      */
     lateinit var transcendRecyleView: RecyclerView
+
     /**
      * [StringListAdapter] we use to feed our [RecyclerView] field [transcendRecyleView]
      */
     lateinit var transcendAdapter: StringListAdapter
+
     /**
      * [RecyclerView.LayoutManager] for our `RecyclerView` (a [LinearLayout] instance)
      */
     lateinit var mLayoutManager: RecyclerView.LayoutManager
+
     /**
      * [TextView] used to display "Waiting for data to load…" message while waiting
      */
     lateinit var transcendWaiting: TextView
+
     /**
      * [LinearLayout] that we add our book selection [Button]'s to.
      */
     private lateinit var transcendBooks: LinearLayout
+
     /**
      * [ScrollView] that holds the [LinearLayout] field [transcendBooks]
      */
@@ -134,7 +139,7 @@ class TranscendActivity : AppCompatActivity() {
              * @param result The result of the operation computed by [.doInBackground].
              */
             override fun onPostExecute(result: List<String>?) {
-                transcendAdapter = StringListAdapter(result!!, mLayoutManager)
+                transcendAdapter = StringListAdapter(result ?: return, mLayoutManager)
                 transcendRecyleView.adapter = transcendAdapter
                 transcendRecyleView.layoutManager = mLayoutManager
                 transcendWaiting.visibility = View.GONE
@@ -149,27 +154,27 @@ class TranscendActivity : AppCompatActivity() {
         /**
          * List of the resource ids for the transcendental Books
          */
-        val resourceIDS = intArrayOf(
-                R.raw.emerson_conduct_of_life,
-                R.raw.emerson_essays_second_series,
-                R.raw.emerson_poems,
-                R.raw.emerson_representative_men,
-                R.raw.thoreau_excursions,
-                R.raw.bulfinch,
-                R.raw.nietzshe
+        val resourceIDS: IntArray = intArrayOf(
+            R.raw.emerson_conduct_of_life,
+            R.raw.emerson_essays_second_series,
+            R.raw.emerson_poems,
+            R.raw.emerson_representative_men,
+            R.raw.thoreau_excursions,
+            R.raw.bulfinch,
+            R.raw.nietzshe
         )
 
         /**
          * List of the titles for the transcendental Books (used to label the selection buttons)
          */
-        val titles = arrayOf(
-                "Emerson The Conduct of Life",
-                "Emerson Essays, Second Series",
-                "Emerson Poems",
-                "Emerson Representative Men",
-                "Thoreau Excursions",
-                "Bulfinch’s Mythology",
-                "Nietzshe's Philosophy"
+        val titles: Array<String> = arrayOf(
+            "Emerson The Conduct of Life",
+            "Emerson Essays, Second Series",
+            "Emerson Poems",
+            "Emerson Representative Men",
+            "Thoreau Excursions",
+            "Bulfinch’s Mythology",
+            "Nietzshe's Philosophy"
         )
     }
 

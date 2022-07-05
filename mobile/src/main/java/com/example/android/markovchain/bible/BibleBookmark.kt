@@ -18,6 +18,7 @@ class BibleBookmark : DialogFragment() {
      * Canonical Bible citation for current verse
      */
     private var mLabel: String? = null
+
     /**
      * Text of the current verse
      */
@@ -94,8 +95,10 @@ class BibleBookmark : DialogFragment() {
         v.findViewById<View>(R.id.dismiss).setOnClickListener {
             this@BibleBookmark.dismiss()
 
-            BibleActivity.bibleDialog!!.mLabel = BibleActivity.dialogTitle
-            BibleActivity.bibleDialog!!.mText = BibleActivity.dialogText
+            (BibleActivity.bibleDialog
+                ?: return@setOnClickListener).mLabel = BibleActivity.dialogTitle
+            (BibleActivity.bibleDialog
+                ?: return@setOnClickListener).mText = BibleActivity.dialogText
         }
 
         return v
@@ -105,7 +108,7 @@ class BibleBookmark : DialogFragment() {
         /**
          * TAG for logging
          */
-        const val TAG = "BibleBookmark"
+        const val TAG: String = "BibleBookmark"
 
         /**
          * Create a new [BibleBookmark] instance. We initialize [BibleBookmark] `val f`, with

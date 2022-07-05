@@ -8,8 +8,8 @@ object ShakespeareSmall {
     /**
      * Our data
      */
-    val SONNETS = arrayOf(
-            "from fairest creatures we desire increase\n" +
+    val SONNETS: Array<String> = arrayOf(
+        "from fairest creatures we desire increase\n" +
             "that thereby beauty's rose might never die\n" +
             "but as the riper should by time decease\n" +
             "his tender heir might bear his memory\n" +
@@ -24,7 +24,7 @@ object ShakespeareSmall {
             "  pity the world or else this glutton be\n" +
             "  to eat the world's due by the grave and thee. ",
 
-            "when forty winters shall besiege thy brow\n" +
+        "when forty winters shall besiege thy brow\n" +
             "and dig deep trenches in thy beauty's field\n" +
             "thy youth's proud livery so gazed on now\n" +
             "will be a tatter'd weed of small worth held\n" +
@@ -39,7 +39,7 @@ object ShakespeareSmall {
             "  this were to be new made when thou art old\n" +
             "  and see thy blood warm when thou feel'st it cold. ",
 
-            "look in thy glass and tell the face thou viewest\n" +
+        "look in thy glass and tell the face thou viewest\n" +
             "now is the time that face should form another\n" +
             "whose fresh repair if now thou not renewest\n" +
             "thou dost beguile the world unbless some mother.\n" +
@@ -54,7 +54,7 @@ object ShakespeareSmall {
             "  but if thou live remember'd not to be\n" +
             "  die single and thine image dies with thee. ",
 
-            "unthrifty loveliness why dost thou spend\n" +
+        "unthrifty loveliness why dost thou spend\n" +
             "upon thy self thy beauty's legacy?\n" +
             "nature's bequest gives nothing but doth lend\n" +
             "and being frank she lends to those are free\n" +
@@ -69,7 +69,7 @@ object ShakespeareSmall {
             "  thy unused beauty must be tombed with thee\n" +
             "  which used lives th' executor to be. ",
 
-            "those hours that with gentle work did frame\n" +
+        "those hours that with gentle work did frame\n" +
             "the lovely gaze where every eye doth dwell\n" +
             "will play the tyrants to the very same\n" +
             "and that unfair which fairly doth excel\n" +
@@ -84,7 +84,7 @@ object ShakespeareSmall {
             "  but flowers distill'd though they with winter meet\n" +
             "  leese but their show their substance still lives sweet. ",
 
-            "then let not winter's ragged hand deface\n" +
+        "then let not winter's ragged hand deface\n" +
             "in thee thy summer ere thou be distill'd\n" +
             "make sweet some vial treasure thou some place\n" +
             "with beauty's treasure ere it be self-kill'd.\n" +
@@ -99,7 +99,7 @@ object ShakespeareSmall {
             "  be not self-will'd for thou art much too fair\n" +
             "  to be death's conquest and make worms thine heir. ",
 
-            "lo! in the orient when the gracious light\n" +
+        "lo! in the orient when the gracious light\n" +
             "lifts up his burning head each under eye\n" +
             "doth homage to his new-appearing sight\n" +
             "serving with looks his sacred majesty\n" +
@@ -114,7 +114,7 @@ object ShakespeareSmall {
             "  so thou thyself outgoing in thy noon\n" +
             "  unlook'd on diest unless thou get a son. ",
 
-            "music to hear why hear'st thou music sadly?\n" +
+        "music to hear why hear'st thou music sadly?\n" +
             "sweets with sweets war not joy delights in joy\n" +
             "why lov'st thou that which thou receiv'st not gladly\n" +
             "or else receiv'st with pleasure thine annoy?\n" +
@@ -129,7 +129,7 @@ object ShakespeareSmall {
             "  whose speechless song being many seeming one\n" +
             "  sings this to thee 'thou single wilt prove none.' ",
 
-            "is it for fear to wet a widow's eye\n" +
+        "is it for fear to wet a widow's eye\n" +
             "that thou consum'st thy self in single life?\n" +
             "ah! if thou issueless shalt hap to die\n" +
             "the world will wail thee like a makeless wife\n" +
@@ -144,7 +144,7 @@ object ShakespeareSmall {
             "  no love toward others in that bosom sits\n" +
             "  that on himself such murd'rous shame commits. ",
 
-            "for shame! deny that thou bear'st love to any\n" +
+        "for shame! deny that thou bear'st love to any\n" +
             "who for thy self art so unprovident.\n" +
             "grant if thou wilt thou art belov'd of many\n" +
             "but that thou none lov'st is most evident\n" +
@@ -159,7 +159,7 @@ object ShakespeareSmall {
             "  make thee another self for love of me\n" +
             "  that beauty still may live in thine or thee. ",
 
-            "as fast as thou shalt wane so fast thou grow'st\n" +
+        "as fast as thou shalt wane so fast thou grow'st\n" +
             "in one of thine from that which thou departest\n" +
             "and that fresh blood which youngly thou bestow'st\n" +
             "thou mayst call thine when thou from youth convertest\n" +
@@ -174,7 +174,7 @@ object ShakespeareSmall {
             "  she carv'd thee for her seal and meant thereby\n" +
             "  thou shouldst print more not let that copy die. ",
 
-            "when I do count the clock that tells the time\n" +
+        "when I do count the clock that tells the time\n" +
             "and see the brave day sunk in hideous night\n" +
             "when I behold the violet past prime\n" +
             "and sable curls all silvered o'er with white\n" +
@@ -189,7 +189,7 @@ object ShakespeareSmall {
             "  and nothing 'gainst time's scythe can make defence\n" +
             "  save breed to brave him when he takes thee hence. ",
 
-            "o! that you were your self but love you are\n" +
+        "o! that you were your self but love you are\n" +
             "no longer yours than you your self here live\n" +
             "against this coming end you should prepare\n" +
             "and your sweet semblance to some other give\n" +
@@ -204,7 +204,7 @@ object ShakespeareSmall {
             "  o! none but unthrifts. dear my love you know\n" +
             "  you had a father let your son say so. ",
 
-            "not from the stars do I my judgement pluck\n" +
+        "not from the stars do I my judgement pluck\n" +
             "and yet methinks I have astronomy\n" +
             "but not to tell of good or evil luck\n" +
             "of plagues of dearths or seasons' quality\n" +
@@ -219,7 +219,7 @@ object ShakespeareSmall {
             "  or else of thee this I prognosticate\n" +
             "  'thy end is truth's and beauty's doom and date.' ",
 
-            "when I consider every thing that grows\n" +
+        "when I consider every thing that grows\n" +
             "holds in perfection but a little moment\n" +
             "that this huge stage presenteth nought but shows\n" +
             "whereon the stars in secret influence comment\n" +
@@ -234,7 +234,7 @@ object ShakespeareSmall {
             "  and all in war with time for love of you\n" +
             "  as he takes from you I engraft you new. ",
 
-            "but wherefore do not you a mightier way\n" +
+        "but wherefore do not you a mightier way\n" +
             "make war upon this bloody tyrant time?\n" +
             "and fortify your self in your decay\n" +
             "with means more blessed than my barren rhyme?\n" +
@@ -249,7 +249,7 @@ object ShakespeareSmall {
             "  to give away yourself keeps yourself still\n" +
             "  and you must live drawn by your own sweet skill. ",
 
-            "who will believe my verse in time to come\n" +
+        "who will believe my verse in time to come\n" +
             "if it were fill'd with your most high deserts?\n" +
             "though yet heaven knows it is but as a tomb\n" +
             "which hides your life and shows not half your parts.\n" +
@@ -264,7 +264,7 @@ object ShakespeareSmall {
             "  but were some child of yours alive that time\n" +
             "  you should live twice--in it and in my rhyme. ",
 
-            "shall I compare thee to a summer's day?\n" +
+        "shall I compare thee to a summer's day?\n" +
             "thou art more lovely and more temperate\n" +
             "rough winds do shake the darling buds of may\n" +
             "and summer's lease hath all too short a date\n" +
@@ -279,7 +279,7 @@ object ShakespeareSmall {
             "  so long as men can breathe or eyes can see\n" +
             "  so long lives this and this gives life to thee. ",
 
-            "devouring time blunt thou the lion's paws\n" +
+        "devouring time blunt thou the lion's paws\n" +
             "and make the earth devour her own sweet brood\n" +
             "pluck the keen teeth from the fierce tiger's jaws\n" +
             "and burn the long-liv'd phoenix in her blood\n" +
@@ -294,7 +294,7 @@ object ShakespeareSmall {
             "  yet do thy worst old time despite thy wrong\n" +
             "  my love shall in my verse ever live young. ",
 
-            "a woman's face with nature's own hand painted\n" +
+        "a woman's face with nature's own hand painted\n" +
             "hast thou the master mistress of my passion\n" +
             "a woman's gentle heart but not acquainted\n" +
             "with shifting change as is false women's fashion\n" +
@@ -309,7 +309,7 @@ object ShakespeareSmall {
             "  but since she prick'd thee out for women's pleasure\n" +
             "  mine be thy love and thy love's use their treasure. ",
 
-            "so is it not with me as with that muse\n" +
+        "so is it not with me as with that muse\n" +
             "stirr'd by a painted beauty to his verse\n" +
             "who heaven itself for ornament doth use\n" +
             "and every fair with his fair doth rehearse\n" +
@@ -324,7 +324,7 @@ object ShakespeareSmall {
             "  let them say more that like of hearsay well\n" +
             "  I will not praise that purpose not to sell. ",
 
-            "my glass shall not persuade me I am old\n" +
+        "my glass shall not persuade me I am old\n" +
             "so long as youth and thou are of one date\n" +
             "but when in thee time's furrows I behold\n" +
             "then look I death my days should expiate.\n" +
@@ -339,7 +339,7 @@ object ShakespeareSmall {
             "  presume not on thy heart when mine is slain\n" +
             "  thou gav'st me thine not to give back again. ",
 
-            "as an unperfect actor on the stage\n" +
+        "as an unperfect actor on the stage\n" +
             "who with his fear is put beside his part\n" +
             "or some fierce thing replete with too much rage\n" +
             "whose strength's abundance weakens his own heart\n" +
@@ -354,7 +354,7 @@ object ShakespeareSmall {
             "  o! learn to read what silent love hath writ\n" +
             "  to hear with eyes belongs to love's fine wit. ",
 
-            "mine eye hath play'd the painter and hath stell'd\n" +
+        "mine eye hath play'd the painter and hath stell'd\n" +
             "thy beauty's form in table of my heart\n" +
             "my body is the frame wherein 'tis held\n" +
             "and perspective it is best painter's art.\n" +
@@ -369,7 +369,7 @@ object ShakespeareSmall {
             "  yet eyes this cunning want to grace their art\n" +
             "  they draw but what they see know not the heart. ",
 
-            "let those who are in favour with their stars\n" +
+        "let those who are in favour with their stars\n" +
             "of public honour and proud titles boast\n" +
             "whilst I whom fortune of such triumph bars\n" +
             "unlook'd for joy in that I honour most.\n" +
@@ -384,7 +384,7 @@ object ShakespeareSmall {
             "then happy I that love and am belov'd\n" +
             "where I may not remove nor be remov'd. ",
 
-            "lord of my love to whom in vassalage\n" +
+        "lord of my love to whom in vassalage\n" +
             "thy merit hath my duty strongly knit\n" +
             "to thee I send this written embassage\n" +
             "to witness duty not to show my wit\n" +
@@ -399,7 +399,7 @@ object ShakespeareSmall {
             "  then may I dare to boast how I do love thee\n" +
             "  till then not show my head where thou mayst prove me. ",
 
-            "weary with toil I haste me to my bed\n" +
+        "weary with toil I haste me to my bed\n" +
             "the dear respose for limbs with travel tir'd\n" +
             "but then begins a journey in my head\n" +
             "to work my mind when body's work's expired\n" +
@@ -414,7 +414,7 @@ object ShakespeareSmall {
             "  lo! thus by day my limbs by night my mind\n" +
             "  for thee and for myself no quiet find. ",
 
-            "how can I then return in happy plight\n" +
+        "how can I then return in happy plight\n" +
             "that am debarre'd the benefit of rest?\n" +
             "when day's oppression is not eas'd by night\n" +
             "but day by night and night by day oppress'd\n" +
@@ -429,7 +429,7 @@ object ShakespeareSmall {
             "  but day doth daily draw my sorrows longer\n" +
             "  and night doth nightly make grief's length seem stronger. ",
 
-            "when in disgrace with fortune and men's eyes\n" +
+        "when in disgrace with fortune and men's eyes\n" +
             "I all alone beweep my outcast state\n" +
             "and trouble deaf heaven with my bootless cries\n" +
             "and look upon myself and curse my fate\n" +
@@ -444,7 +444,7 @@ object ShakespeareSmall {
             "  for thy sweet love remember'd such wealth brings\n" +
             "  that then I scorn to change my state with kings. ",
 
-            "when to the sessions of sweet silent thought\n" +
+        "when to the sessions of sweet silent thought\n" +
             "I summon up remembrance of things past\n" +
             "I sigh the lack of many a thing I sought\n" +
             "and with old woes new wail my dear time's waste\n" +
@@ -459,7 +459,7 @@ object ShakespeareSmall {
             "  but if the while I think on thee dear friend\n" +
             "  all losses are restor'd and sorrows end. ",
 
-            "thy bosom is endeared with all hearts\n" +
+        "thy bosom is endeared with all hearts\n" +
             "which I by lacking have supposed dead\n" +
             "and there reigns love and all love's loving parts\n" +
             "and all those friends which I thought buried.\n" +
@@ -474,7 +474,7 @@ object ShakespeareSmall {
             "  their images I lov'd I view in thee\n" +
             "  and thou--all they--hast all the all of me. ",
 
-            "if thou survive my well-contented day\n" +
+        "if thou survive my well-contented day\n" +
             "when that churl death my bones with dust shall cover\n" +
             "and shalt by fortune once more re-survey\n" +
             "these poor rude lines of thy deceased lover\n" +
@@ -489,7 +489,7 @@ object ShakespeareSmall {
             "  but since he died and poets better prove\n" +
             "  theirs for their style I'll read his for his love'. ",
 
-            "full many a glorious morning have I seen\n" +
+        "full many a glorious morning have I seen\n" +
             "flatter the mountain tops with sovereign eye\n" +
             "kissing with golden face the meadows green\n" +
             "gilding pale streams with heavenly alchemy\n" +
@@ -504,7 +504,7 @@ object ShakespeareSmall {
             "  yet him for this my love no whit disdaineth\n" +
             "  suns of the world may stain when heaven's sun staineth. ",
 
-            "why didst thou promise such a beauteous day\n" +
+        "why didst thou promise such a beauteous day\n" +
             "and make me travel forth without my cloak\n" +
             "to let base clouds o'ertake me in my way\n" +
             "hiding thy bravery in their rotten smoke?\n" +
@@ -519,7 +519,7 @@ object ShakespeareSmall {
             "  ah! but those tears are pearl which thy love sheds\n" +
             "  and they are rich and ransom all ill deeds. ",
 
-            "no more be griev'd at that which thou hast done\n" +
+        "no more be griev'd at that which thou hast done\n" +
             "roses have thorns and silver fountains mud\n" +
             "clouds and eclipses stain both moon and sun\n" +
             "and loathsome canker lives in sweetest bud.\n" +
@@ -534,7 +534,7 @@ object ShakespeareSmall {
             "  that I an accessary needs must be\n" +
             "  to that sweet thief which sourly robs from me. ",
 
-            "let me confess that we two must be twain\n" +
+        "let me confess that we two must be twain\n" +
             "although our undivided loves are one\n" +
             "so shall those blots that do with me remain\n" +
             "without thy help by me be borne alone.\n" +
@@ -549,7 +549,7 @@ object ShakespeareSmall {
             "  but do not so I love thee in such sort\n" +
             "  as thou being mine mine is thy good report. ",
 
-            "as a decrepit father takes delight\n" +
+        "as a decrepit father takes delight\n" +
             "to see his active child do deeds of youth\n" +
             "so I made lame by fortune's dearest spite\n" +
             "take all my comfort of thy worth and truth\n" +
@@ -564,7 +564,7 @@ object ShakespeareSmall {
             "  look what is best that best I wish in thee\n" +
             "  this wish I have then ten times happy me! ",
 
-            "how can my muse want subject to invent\n" +
+        "how can my muse want subject to invent\n" +
             "while thou dost breathe that pour'st into my verse\n" +
             "thine own sweet argument too excellent\n" +
             "for every vulgar paper to rehearse?\n" +
@@ -579,7 +579,7 @@ object ShakespeareSmall {
             "  if my slight muse do please these curious days\n" +
             "  the pain be mine but thine shall be the praise. ",
 
-            "o! how thy worth with manners may I sing\n" +
+        "o! how thy worth with manners may I sing\n" +
             "when thou art all the better part of me?\n" +
             "what can mine own praise to mine own self bring?\n" +
             "and what is't but mine own when I praise thee?\n" +
@@ -594,7 +594,7 @@ object ShakespeareSmall {
             "  and that thou teachest how to make one twain\n" +
             "  by praising him here who doth hence remain. ",
 
-            "take all my loves my love yea take them all\n" +
+        "take all my loves my love yea take them all\n" +
             "what hast thou then more than thou hadst before?\n" +
             "no love my love that thou mayst true love call\n" +
             "all mine was thine before thou hadst this more.\n" +
@@ -609,7 +609,7 @@ object ShakespeareSmall {
             "  lascivious grace in whom all ill well shows\n" +
             "  kill me with spites yet we must not be foes. ",
 
-            "those pretty wrongs that liberty commits\n" +
+        "those pretty wrongs that liberty commits\n" +
             "when I am sometime absent from thy heart\n" +
             "thy beauty and thy years full well befits\n" +
             "for still temptation follows where thou art.\n" +
@@ -624,7 +624,7 @@ object ShakespeareSmall {
             "  hers by thy beauty tempting her to thee\n" +
             "  thine by thy beauty being false to me. ",
 
-            "that thou hast her it is not all my grief\n" +
+        "that thou hast her it is not all my grief\n" +
             "and yet it may be said I loved her dearly\n" +
             "that she hath thee is of my wailing chief\n" +
             "a loss in love that touches me more nearly.\n" +
@@ -639,7 +639,7 @@ object ShakespeareSmall {
             "  but here's the joy my friend and I are one\n" +
             "  sweet flattery! then she loves but me alone. ",
 
-            "when most I wink then do mine eyes best see\n" +
+        "when most I wink then do mine eyes best see\n" +
             "for all the day they view things unrespected\n" +
             "but when I sleep in dreams they look on thee\n" +
             "and darkly bright are bright in dark directed.\n" +
@@ -654,7 +654,7 @@ object ShakespeareSmall {
             "  all days are nights to see till I see thee\n" +
             "  and nights bright days when dreams do show thee me. ",
 
-            "if the dull substance of my flesh were thought\n" +
+        "if the dull substance of my flesh were thought\n" +
             "injurious distance should not stop my way\n" +
             "for then despite of space I would be brought\n" +
             "from limits far remote where thou dost stay.\n" +
@@ -669,7 +669,7 @@ object ShakespeareSmall {
             "  receiving nought by elements so slow\n" +
             "  but heavy tears badges of either's woe. ",
 
-            "the other two slight air and purging fire\n" +
+        "the other two slight air and purging fire\n" +
             "are both with thee wherever I abide\n" +
             "the first my thought the other my desire\n" +
             "these present-absent with swift motion slide.\n" +
@@ -684,7 +684,7 @@ object ShakespeareSmall {
             "  this told I joy but then no longer glad\n" +
             "  I send them back again and straight grow sad. ",
 
-            "mine eye and heart are at a mortal war\n" +
+        "mine eye and heart are at a mortal war\n" +
             "how to divide the conquest of thy sight\n" +
             "mine eye my heart thy picture's sight would bar\n" +
             "my heart mine eye the freedom of that right.\n" +
@@ -699,7 +699,7 @@ object ShakespeareSmall {
             "  as thus mine eye's due is thy outward part\n" +
             "  and my heart's right thy inward love of heart. ",
 
-            "betwixt mine eye and heart a league is took\n" +
+        "betwixt mine eye and heart a league is took\n" +
             "and each doth good turns now unto the other\n" +
             "when that mine eye is famish'd for a look\n" +
             "or heart in love with sighs himself doth smother\n" +
@@ -714,7 +714,7 @@ object ShakespeareSmall {
             "  or if they sleep thy picture in my sight\n" +
             "  awakes my heart to heart's and eye's delight. ",
 
-            "how careful was I when I took my way\n" +
+        "how careful was I when I took my way\n" +
             "each trifle under truest bars to thrust\n" +
             "that to my use it might unused stay\n" +
             "from hands of falsehood in sure wards of trust!\n" +
@@ -729,7 +729,7 @@ object ShakespeareSmall {
             "  and even thence thou wilt be stol'n I fear\n" +
             "  for truth proves thievish for a prize so dear. ",
 
-            "against that time if ever that time come\n" +
+        "against that time if ever that time come\n" +
             "when I shall see thee frown on my defects\n" +
             "when as thy love hath cast his utmost sum\n" +
             "call'd to that audit by advis'd respects\n" +
@@ -744,7 +744,7 @@ object ShakespeareSmall {
             "  to leave poor me thou hast the strength of laws\n" +
             "  since why to love I can allege no cause. ",
 
-            "how heavy do I journey on the way\n" +
+        "how heavy do I journey on the way\n" +
             "when what I seek my weary travel's end\n" +
             "doth teach that ease and that repose to say\n" +
             "'thus far the miles are measured from thy friend!'\n" +
@@ -759,7 +759,7 @@ object ShakespeareSmall {
             "  for that same groan doth put this in my mind\n" +
             "  my grief lies onward and my joy behind. ",
 
-            "thus can my love excuse the slow offence\n" +
+        "thus can my love excuse the slow offence\n" +
             "of my dull bearer when from thee I speed\n" +
             "from where thou art why should I haste me thence?\n" +
             "till I return of posting is no need.\n" +
@@ -774,7 +774,7 @@ object ShakespeareSmall {
             "  'since from thee going he went wilful-slow\n" +
             "  towards thee I'll run and give him leave to go.' ",
 
-            "so am I as the rich whose blessed key\n" +
+        "so am I as the rich whose blessed key\n" +
             "can bring him to his sweet up-locked treasure\n" +
             "the which he will not every hour survey\n" +
             "for blunting the fine point of seldom pleasure.\n" +
@@ -789,7 +789,7 @@ object ShakespeareSmall {
             "  blessed are you whose worthiness gives scope\n" +
             "  being had to triumph being lacked to hope. ",
 
-            "what is your substance whereof are you made\n" +
+        "what is your substance whereof are you made\n" +
             "that millions of strange shadows on you tend?\n" +
             "since every one hath every one one shade\n" +
             "and you but one can every shadow lend.\n" +
@@ -804,7 +804,7 @@ object ShakespeareSmall {
             "  in all external grace you have some part\n" +
             "  but you like none none you for constant heart. ",
 
-            "o! how much more doth beauty beauteous seem\n" +
+        "o! how much more doth beauty beauteous seem\n" +
             "by that sweet ornament which truth doth give.\n" +
             "the rose looks fair but fairer we it deem\n" +
             "for that sweet odour which doth in it live.\n" +
@@ -819,7 +819,7 @@ object ShakespeareSmall {
             "  and so of you beauteous and lovely youth\n" +
             "  when that shall vade by verse distills your truth. ",
 
-            "not marble nor the gilded monuments\n" +
+        "not marble nor the gilded monuments\n" +
             "of princes shall outlive this powerful rhyme\n" +
             "but you shall shine more bright in these contents\n" +
             "than unswept stone besmear'd with sluttish time.\n" +
@@ -834,7 +834,7 @@ object ShakespeareSmall {
             "  so till the judgment that yourself arise\n" +
             "  you live in this and dwell in lovers' eyes. ",
 
-            "sweet love renew thy force be it not said\n" +
+        "sweet love renew thy force be it not said\n" +
             "thy edge should blunter be than appetite\n" +
             "which but to-day by feeding is allay'd\n" +
             "to-morrow sharpened in his former might\n" +
@@ -849,7 +849,7 @@ object ShakespeareSmall {
             "  or call it winter which being full of care\n" +
             "  makes summer's welcome thrice more wished more rare. ",
 
-            "being your slave what should I do but tend\n" +
+        "being your slave what should I do but tend\n" +
             "upon the hours and times of your desire?\n" +
             "I have no precious time at all to spend\n" +
             "nor services to do till you require.\n" +
@@ -864,7 +864,7 @@ object ShakespeareSmall {
             "  so true a fool is love that in your will\n" +
             "  though you do anything he thinks no ill. ",
 
-            "that god forbid that made me first your slave\n" +
+        "that god forbid that made me first your slave\n" +
             "I should in thought control your times of pleasure\n" +
             "or at your hand the account of hours to crave\n" +
             "being your vassal bound to stay your leisure!\n" +
@@ -879,7 +879,7 @@ object ShakespeareSmall {
             "  I am to wait though waiting so be hell\n" +
             "  not blame your pleasure be it ill or well. ",
 
-            "if there be nothing new but that which is\n" +
+        "if there be nothing new but that which is\n" +
             "hath been before how are our brains beguil'd\n" +
             "which labouring for invention bear amiss\n" +
             "the second burthen of a former child!\n" +
@@ -894,7 +894,7 @@ object ShakespeareSmall {
             "  o! sure I am the wits of former days\n" +
             "  to subjects worse have given admiring praise. ",
 
-            "like as the waves make towards the pebbled shore\n" +
+        "like as the waves make towards the pebbled shore\n" +
             "so do our minutes hasten to their end\n" +
             "each changing place with that which goes before\n" +
             "in sequent toil all forwards do contend.\n" +
@@ -909,7 +909,7 @@ object ShakespeareSmall {
             "  and yet to times in hope my verse shall stand.\n" +
             "  praising thy worth despite his cruel hand. ",
 
-            "is it thy will thy image should keep open\n" +
+        "is it thy will thy image should keep open\n" +
             "my heavy eyelids to the weary night?\n" +
             "dost thou desire my slumbers should be broken\n" +
             "while shadows like to thee do mock my sight?\n" +
@@ -924,7 +924,7 @@ object ShakespeareSmall {
             "  for thee watch I whilst thou dost wake elsewhere\n" +
             "  from me far off with others all too near. ",
 
-            "sin of self-love possesseth all mine eye\n" +
+        "sin of self-love possesseth all mine eye\n" +
             "and all my soul and all my every part\n" +
             "and for this sin there is no remedy\n" +
             "it is so grounded inward in my heart.\n" +
@@ -939,7 +939,7 @@ object ShakespeareSmall {
             "  'tis thee--myself--that for myself I praise\n" +
             "  painting my age with beauty of thy days. ",
 
-            "against my love shall be as I am now\n" +
+        "against my love shall be as I am now\n" +
             "with time's injurious hand crush'd and o'erworn\n" +
             "when hours have drain'd his blood and fill'd his brow\n" +
             "with lines and wrinkles when his youthful morn\n" +
@@ -954,7 +954,7 @@ object ShakespeareSmall {
             "  his beauty shall in these black lines be seen\n" +
             "  and they shall live and he in them still green. ",
 
-            "when I have seen by time's fell hand defac'd\n" +
+        "when I have seen by time's fell hand defac'd\n" +
             "the rich-proud cost of outworn buried age\n" +
             "when sometime lofty towers I see down-raz'd\n" +
             "and brass eternal slave to mortal rage\n" +
@@ -969,7 +969,7 @@ object ShakespeareSmall {
             "  this thought is as a death which cannot choose\n" +
             "  but weep to have that which it fears to lose. ",
 
-            "since brass nor stone nor earth nor boundless sea\n" +
+        "since brass nor stone nor earth nor boundless sea\n" +
             "but sad mortality o'ersways their power\n" +
             "how with this rage shall beauty hold a plea\n" +
             "whose action is no stronger than a flower?\n" +
@@ -984,7 +984,7 @@ object ShakespeareSmall {
             "  o! none unless this miracle have might\n" +
             "  that in black ink my love may still shine bright. ",
 
-            "tired with all these for restful death I cry\n" +
+        "tired with all these for restful death I cry\n" +
             "as to behold desert a beggar born\n" +
             "and needy nothing trimm'd in jollity\n" +
             "and purest faith unhappily forsworn\n" +
@@ -999,7 +999,7 @@ object ShakespeareSmall {
             "  tir'd with all these from these would I be gone\n" +
             "  save that to die I leave my love alone. ",
 
-            "ah! wherefore with infection should he live\n" +
+        "ah! wherefore with infection should he live\n" +
             "and with his presence grace impiety\n" +
             "that sin by him advantage should achieve\n" +
             "and lace itself with his society?\n" +
@@ -1014,7 +1014,7 @@ object ShakespeareSmall {
             "  o! him she stores to show what wealth she had\n" +
             "  in days long since before these last so bad. ",
 
-            "thus is his cheek the map of days outworn\n" +
+        "thus is his cheek the map of days outworn\n" +
             "when beauty lived and died as flowers do now\n" +
             "before these bastard signs of fair were born\n" +
             "or durst inhabit on a living brow\n" +
@@ -1029,7 +1029,7 @@ object ShakespeareSmall {
             "  and him as for a map doth nature store\n" +
             "  to show false art what beauty was of yore. ",
 
-            "those parts of thee that the world's eye doth view\n" +
+        "those parts of thee that the world's eye doth view\n" +
             "want nothing that the thought of hearts can mend\n" +
             "all tongues--the voice of souls--give thee that due\n" +
             "uttering bare truth even so as foes commend.\n" +
@@ -1044,7 +1044,7 @@ object ShakespeareSmall {
             "  but why thy odour matcheth not thy show\n" +
             "  the soil is this that thou dost common grow. ",
 
-            "that thou art blam'd shall not be thy defect\n" +
+        "that thou art blam'd shall not be thy defect\n" +
             "for slander's mark was ever yet the fair\n" +
             "the ornament of beauty is suspect\n" +
             "a crow that flies in heaven's sweetest air.\n" +
@@ -1059,7 +1059,7 @@ object ShakespeareSmall {
             "  if some suspect of ill mask'd not thy show\n" +
             "  then thou alone kingdoms of hearts shouldst owe. ",
 
-            "no longer mourn for me when I am dead\n" +
+        "no longer mourn for me when I am dead\n" +
             "than you shall hear the surly sullen bell\n" +
             "give warning to the world that I am fled\n" +
             "from this vile world with vilest worms to dwell\n" +
@@ -1074,7 +1074,7 @@ object ShakespeareSmall {
             "  lest the wise world should look into your moan\n" +
             "  and mock you with me after I am gone. ",
 
-            "o! lest the world should task you to recite\n" +
+        "o! lest the world should task you to recite\n" +
             "what merit lived in me that you should love\n" +
             "after my death--dear love forget me quite\n" +
             "for you in me can nothing worthy prove\n" +
@@ -1089,7 +1089,7 @@ object ShakespeareSmall {
             "  for I am shamed by that which I bring forth\n" +
             "  and so should you to love things nothing worth. ",
 
-            "that time of year thou mayst in me behold\n" +
+        "that time of year thou mayst in me behold\n" +
             "when yellow leaves or none or few do hang\n" +
             "upon those boughs which shake against the cold\n" +
             "bare ruin'd choirs where late the sweet birds sang.\n" +
@@ -1104,7 +1104,7 @@ object ShakespeareSmall {
             "  this thou perceiv'st which makes thy love more strong\n" +
             "  to love that well which thou must leave ere long. ",
 
-            "but be contented when that fell arrest\n" +
+        "but be contented when that fell arrest\n" +
             "without all bail shall carry me away\n" +
             "my life hath in this line some interest\n" +
             "which for memorial still with thee shall stay.\n" +
@@ -1119,7 +1119,7 @@ object ShakespeareSmall {
             "  the worth of that is that which it contains\n" +
             "  and that is this and this with thee remains. ",
 
-            "so are you to my thoughts as food to life\n" +
+        "so are you to my thoughts as food to life\n" +
             "or as sweet-season'd showers are to the ground\n" +
             "and for the peace of you I hold such strife\n" +
             "as 'twixt a miser and his wealth is found.\n" +
@@ -1134,7 +1134,7 @@ object ShakespeareSmall {
             "  thus do I pine and surfeit day by day\n" +
             "  or gluttoning on all or all away. ",
 
-            "why is my verse so barren of new pride\n" +
+        "why is my verse so barren of new pride\n" +
             "so far from variation or quick change?\n" +
             "why with the time do I not glance aside\n" +
             "to new-found methods and to compounds strange?\n" +
@@ -1149,7 +1149,7 @@ object ShakespeareSmall {
             "  for as the sun is daily new and old\n" +
             "  so is my love still telling what is told. ",
 
-            "thy glass will show thee how thy beauties wear\n" +
+        "thy glass will show thee how thy beauties wear\n" +
             "thy dial how thy precious minutes waste\n" +
             "these vacant leaves thy mind's imprint will bear\n" +
             "and of this book this learning mayst thou taste.\n" +
@@ -1164,7 +1164,7 @@ object ShakespeareSmall {
             "  these offices so oft as thou wilt look\n" +
             "  shall profit thee and much enrich thy book. ",
 
-            "so oft have I invoked thee for my muse\n" +
+        "so oft have I invoked thee for my muse\n" +
             "and found such fair assistance in my verse\n" +
             "as every alien pen hath got my use\n" +
             "and under thee their poesy disperse.\n" +
@@ -1179,7 +1179,7 @@ object ShakespeareSmall {
             "  but thou art all my art and dost advance\n" +
             "  as high as learning my rude ignorance. ",
 
-            "whilst I alone did call upon thy aid\n" +
+        "whilst I alone did call upon thy aid\n" +
             "my verse alone had all thy gentle grace\n" +
             "but now my gracious numbers are decay'd\n" +
             "and my sick muse doth give an other place.\n" +
@@ -1194,7 +1194,7 @@ object ShakespeareSmall {
             "  then thank him not for that which he doth say\n" +
             "  since what he owes thee thou thyself dost pay. ",
 
-            "o! how I faint when I of you do write\n" +
+        "o! how I faint when I of you do write\n" +
             "knowing a better spirit doth use your name\n" +
             "and in the praise thereof spends all his might\n" +
             "to make me tongue-tied speaking of your fame!\n" +
@@ -1209,7 +1209,7 @@ object ShakespeareSmall {
             "  then if he thrive and I be cast away\n" +
             "  the worst was this--my love was my decay. ",
 
-            "or I shall live your epitaph to make\n" +
+        "or I shall live your epitaph to make\n" +
             "or you survive when I in earth am rotten\n" +
             "from hence your memory death cannot take\n" +
             "although in me each part will be forgotten.\n" +
@@ -1224,7 +1224,7 @@ object ShakespeareSmall {
             "  you still shall live--such virtue hath my pen--\n" +
             "  where breath most breathes even in the mouths of men. ",
 
-            "I grant thou wert not married to my muse\n" +
+        "I grant thou wert not married to my muse\n" +
             "and therefore mayst without attaint o'erlook\n" +
             "the dedicated words which writers use\n" +
             "of their fair subject blessing every book.\n" +
@@ -1239,7 +1239,7 @@ object ShakespeareSmall {
             "  and their gross painting might be better us'd\n" +
             "  where cheeks need blood in thee it is abus'd. ",
 
-            "I never saw that you did painting need\n" +
+        "I never saw that you did painting need\n" +
             "and therefore to your fair no painting set\n" +
             "I found or thought I found you did exceed\n" +
             "that barren tender of a poet's debt\n" +
@@ -1254,7 +1254,7 @@ object ShakespeareSmall {
             "  there lives more life in one of your fair eyes\n" +
             "  than both your poets can in praise devise. ",
 
-            "who is it that says most which can say more\n" +
+        "who is it that says most which can say more\n" +
             "than this rich praise--that you alone are you?\n" +
             "in whose confine immured is the store\n" +
             "which should example where your equal grew.\n" +
@@ -1269,7 +1269,7 @@ object ShakespeareSmall {
             "  you to your beauteous blessings add a curse\n" +
             "  being fond on praise which makes your praises worse. ",
 
-            "my tongue-tied muse in manners holds her still\n" +
+        "my tongue-tied muse in manners holds her still\n" +
             "while comments of your praise richly compil'd\n" +
             "reserve their character with golden quill\n" +
             "and precious phrase by all the muses fil'd.\n" +
@@ -1284,7 +1284,7 @@ object ShakespeareSmall {
             "  then others for the breath of words respect\n" +
             "  me for my dumb thoughts speaking in effect. ",
 
-            "was it the proud full sail of his great verse\n" +
+        "was it the proud full sail of his great verse\n" +
             "bound for the prize of all too precious you\n" +
             "that did my ripe thoughts in my brain inhearse\n" +
             "making their tomb the womb wherein they grew?\n" +
@@ -1299,7 +1299,7 @@ object ShakespeareSmall {
             "  but when your countenance fill'd up his line\n" +
             "  then lacked I matter that enfeebled mine. ",
 
-            "farewell! thou art too dear for my possessing\n" +
+        "farewell! thou art too dear for my possessing\n" +
             "and like enough thou know'st thy estimate\n" +
             "the charter of thy worth gives thee releasing\n" +
             "my bonds in thee are all determinate.\n" +
@@ -1314,7 +1314,7 @@ object ShakespeareSmall {
             "  thus have I had thee as a dream doth flatter\n" +
             "  in sleep a king but waking no such matter. ",
 
-            "when thou shalt be dispos'd to set me light\n" +
+        "when thou shalt be dispos'd to set me light\n" +
             "and place my merit in the eye of scorn\n" +
             "upon thy side against myself I'll fight\n" +
             "and prove thee virtuous though thou art forsworn.\n" +
@@ -1329,7 +1329,7 @@ object ShakespeareSmall {
             "  such is my love to thee I so belong\n" +
             "  that for thy right myself will bear all wrong. ",
 
-            "say that thou didst forsake me for some fault\n" +
+        "say that thou didst forsake me for some fault\n" +
             "and I will comment upon that offence\n" +
             "speak of my lameness and I straight will halt\n" +
             "against thy reasons making no defence.\n" +
@@ -1344,7 +1344,7 @@ object ShakespeareSmall {
             "  for thee against my self I'll vow debate\n" +
             "  for I must ne'er love him whom thou dost hate. ",
 
-            "then hate me when thou wilt if ever now\n" +
+        "then hate me when thou wilt if ever now\n" +
             "now while the world is bent my deeds to cross\n" +
             "join with the spite of fortune make me bow\n" +
             "and do not drop in for an after-loss\n" +
@@ -1359,7 +1359,7 @@ object ShakespeareSmall {
             "  and other strains of woe which now seem woe\n" +
             "  compar'd with loss of thee will not seem so. ",
 
-            "some glory in their birth some in their skill\n" +
+        "some glory in their birth some in their skill\n" +
             "some in their wealth some in their body's force\n" +
             "some in their garments though new-fangled ill\n" +
             "some in their hawks and hounds some in their horse\n" +
@@ -1374,7 +1374,7 @@ object ShakespeareSmall {
             "  wretched in this alone that thou mayst take\n" +
             "  all this away and me most wretchcd make. ",
 
-            "but do thy worst to steal thyself away\n" +
+        "but do thy worst to steal thyself away\n" +
             "for term of life thou art assured mine\n" +
             "and life no longer than thy love will stay\n" +
             "for it depends upon that love of thine.\n" +
@@ -1389,7 +1389,7 @@ object ShakespeareSmall {
             "  but what's so blessed-fair that fears no blot?\n" +
             "  thou mayst be false and yet I know it not. ",
 
-            "so shall I live supposing thou art true\n" +
+        "so shall I live supposing thou art true\n" +
             "like a deceived husband so love's face\n" +
             "may still seem love to me though alter'd new\n" +
             "thy looks with me thy heart in other place\n" +
@@ -1404,7 +1404,7 @@ object ShakespeareSmall {
             "  how like eve's apple doth thy beauty grow\n" +
             "  if thy sweet virtue answer not thy show! ",
 
-            "they that have power to hurt and will do none\n" +
+        "they that have power to hurt and will do none\n" +
             "that do not do the thing they most do show\n" +
             "who moving others are themselves as stone\n" +
             "unmoved cold and to temptation slow\n" +
@@ -1419,7 +1419,7 @@ object ShakespeareSmall {
             "  for sweetest things turn sourest by their deeds\n" +
             "  lilies that fester smell far worse than weeds. ",
 
-            "how sweet and lovely dost thou make the shame\n" +
+        "how sweet and lovely dost thou make the shame\n" +
             "which like a canker in the fragrant rose\n" +
             "doth spot the beauty of thy budding name!\n" +
             "o! in what sweets dost thou thy sins enclose.\n" +
@@ -1434,7 +1434,7 @@ object ShakespeareSmall {
             "  take heed dear heart of this large privilege\n" +
             "  the hardest knife ill-us'd doth lose his edge. ",
 
-            "some say thy fault is youth some wantonness\n" +
+        "some say thy fault is youth some wantonness\n" +
             "some say thy grace is youth and gentle sport\n" +
             "both grace and faults are lov'd of more and less\n" +
             "thou mak'st faults graces that to thee resort.\n" +
@@ -1449,7 +1449,7 @@ object ShakespeareSmall {
             "  but do not so I love thee in such sort\n" +
             "  as thou being mine mine is thy good report. ",
 
-            "how like a winter hath my absence been\n" +
+        "how like a winter hath my absence been\n" +
             "from thee the pleasure of the fleeting year!\n" +
             "what freezings have I felt what dark days seen!\n" +
             "what old december's bareness everywhere!\n" +
@@ -1464,7 +1464,7 @@ object ShakespeareSmall {
             "  or if they sing 'tis with so dull a cheer\n" +
             "  that leaves look pale dreading the winter's near. ",
 
-            "from you have I been absent in the spring\n" +
+        "from you have I been absent in the spring\n" +
             "when proud-pied april dress'd in all his trim\n" +
             "hath put a spirit of youth in every thing\n" +
             "that heavy saturn laugh'd and leap'd with him.\n" +
@@ -1479,7 +1479,7 @@ object ShakespeareSmall {
             "  yet seem'd it winter still and you away\n" +
             "  as with your shadow I with these did play. ",
 
-            "the forward violet thus did I chide\n" +
+        "the forward violet thus did I chide\n" +
             "sweet thief whence didst thou steal thy sweet that smells\n" +
             "If not from my love's breath? the purple pride\n" +
             "which on thy soft cheek for complexion dwells\n" +
@@ -1495,7 +1495,7 @@ object ShakespeareSmall {
             "  more flowers I noted yet I none could see\n" +
             "  but sweet or colour it had stol'n from thee. ",
 
-            "where art thou muse that thou forget'st so long\n" +
+        "where art thou muse that thou forget'st so long\n" +
             "to speak of that which gives thee all thy might?\n" +
             "spend'st thou thy fury on some worthless song\n" +
             "darkening thy power to lend base subjects light?\n" +
@@ -1510,7 +1510,7 @@ object ShakespeareSmall {
             "  give my love fame faster than time wastes life\n" +
             "  so thou prevent'st his scythe and crooked knife. ",
 
-            "o truant muse what shall be thy amends\n" +
+        "o truant muse what shall be thy amends\n" +
             "for thy neglect of truth in beauty dy'd?\n" +
             "both truth and beauty on my love depends\n" +
             "so dost thou too and therein dignified.\n" +
@@ -1525,7 +1525,7 @@ object ShakespeareSmall {
             "  then do thy office muse I teach thee how\n" +
             "  to make him seem long hence as he shows now. ",
 
-            "my love is strengthen'd though more weak in seeming\n" +
+        "my love is strengthen'd though more weak in seeming\n" +
             "I love not less though less the show appear\n" +
             "that love is merchandiz'd whose rich esteeming\n" +
             "the owner's tongue doth publish every where.\n" +
@@ -1540,7 +1540,7 @@ object ShakespeareSmall {
             "  therefore like her I sometime hold my tongue\n" +
             "  because I would not dull you with my song. ",
 
-            "alack! what poverty my muse brings forth\n" +
+        "alack! what poverty my muse brings forth\n" +
             "that having such a scope to show her pride\n" +
             "the argument all bare is of more worth\n" +
             "than when it hath my added praise beside!\n" +
@@ -1555,7 +1555,7 @@ object ShakespeareSmall {
             "  and more much more than in my verse can sit\n" +
             "  your own glass shows you when you look in it. ",
 
-            "to me fair friend you never can be old\n" +
+        "to me fair friend you never can be old\n" +
             "for as you were when first your eye I ey'd\n" +
             "such seems your beauty still. three winters cold\n" +
             "have from the forests shook three summers' pride\n" +
@@ -1570,7 +1570,7 @@ object ShakespeareSmall {
             "  for fear of which hear this thou age unbred\n" +
             "  ere you were born was beauty's summer dead. ",
 
-            "let not my love be call'd idolatry\n" +
+        "let not my love be call'd idolatry\n" +
             "nor my beloved as an idol show\n" +
             "since all alike my songs and praises be\n" +
             "to one of one still such and ever so.\n" +
@@ -1585,7 +1585,7 @@ object ShakespeareSmall {
             "  fair kind and true have often liv'd alone\n" +
             "  which three till now never kept seat in one. ",
 
-            "when in the chronicle of wasted time\n" +
+        "when in the chronicle of wasted time\n" +
             "I see descriptions of the fairest wights\n" +
             "and beauty making beautiful old rime\n" +
             "In praise of ladies dead and lovely knights\n" +
@@ -1600,7 +1600,7 @@ object ShakespeareSmall {
             "  for we which now behold these present days\n" +
             "  have eyes to wonder but lack tongues to praise. ",
 
-            "not mine own fears nor the prophetic soul\n" +
+        "not mine own fears nor the prophetic soul\n" +
             "of the wide world dreaming on things to come\n" +
             "can yet the lease of my true love control\n" +
             "supposed as forfeit to a confin'd doom.\n" +
@@ -1615,7 +1615,7 @@ object ShakespeareSmall {
             "  and thou in this shalt find thy monument\n" +
             "  when tyrants' crests and tombs of brass are spent. ",
 
-            "what's in the brain that ink may character\n" +
+        "what's in the brain that ink may character\n" +
             "which hath not figur'd to thee my true spirit?\n" +
             "what's new to speak what now to register\n" +
             "that may express my love or thy dear merit?\n" +
@@ -1630,7 +1630,7 @@ object ShakespeareSmall {
             "  finding the first conceit of love there bred\n" +
             "  where time and outward form would show it dead. ",
 
-            "o! never say that I was false of heart\n" +
+        "o! never say that I was false of heart\n" +
             "though absence seem'd my flame to qualify\n" +
             "as easy might I from my self depart\n" +
             "as from my soul which in thy breast doth lie\n" +
@@ -1645,7 +1645,7 @@ object ShakespeareSmall {
             "  for nothing this wide universe I call\n" +
             "  save thou my rose in it thou art my all. ",
 
-            "alas! 'tis true I have gone here and there\n" +
+        "alas! 'tis true I have gone here and there\n" +
             "and made my self a motley to the view\n" +
             "gor'd mine own thoughts sold cheap what is most dear\n" +
             "made old offences of affections new\n" +
@@ -1660,7 +1660,7 @@ object ShakespeareSmall {
             "  then give me welcome next my heaven the best\n" +
             "  even to thy pure and most most loving breast. ",
 
-            "o! for my sake do you with fortune chide\n" +
+        "o! for my sake do you with fortune chide\n" +
             "the guilty goddess of my harmful deeds\n" +
             "that did not better for my life provide\n" +
             "than public means which public manners breeds.\n" +
@@ -1675,7 +1675,7 @@ object ShakespeareSmall {
             "  pity me then dear friend and I assure ye\n" +
             "  even that your pity is enough to cure me. ",
 
-            "your love and pity doth the impression fill\n" +
+        "your love and pity doth the impression fill\n" +
             "which vulgar scandal stamp'd upon my brow\n" +
             "for what care I who calls me well or ill\n" +
             "so you o'er-green my bad my good allow?\n" +
@@ -1690,7 +1690,7 @@ object ShakespeareSmall {
             "  you are so strongly in my purpose bred\n" +
             "  that all the world besides methinks are dead. ",
 
-            "since I left you mine eye is in my mind\n" +
+        "since I left you mine eye is in my mind\n" +
             "and that which governs me to go about\n" +
             "doth part his function and is partly blind\n" +
             "seems seeing but effectually is out\n" +
@@ -1705,7 +1705,7 @@ object ShakespeareSmall {
             "  incapable of more replete with you\n" +
             "  my most true mind thus maketh mine untrue. ",
 
-            "or whether doth my mind being crown'd with you\n" +
+        "or whether doth my mind being crown'd with you\n" +
             "drink up the monarch's plague this flattery?\n" +
             "or whether shall I say mine eye saith true\n" +
             "and that your love taught it this alchemy\n" +
@@ -1720,7 +1720,7 @@ object ShakespeareSmall {
             "  if it be poison'd 'tis the lesser sin\n" +
             "  that mine eye loves it and doth first begin. ",
 
-            "those lines that I before have writ do lie\n" +
+        "those lines that I before have writ do lie\n" +
             "even those that said I could not love you dearer\n" +
             "yet then my judgment knew no reason why\n" +
             "my most full flame should afterwards burn clearer.\n" +
@@ -1735,7 +1735,7 @@ object ShakespeareSmall {
             "  love is a babe then might I not say so\n" +
             "  to give full growth to that which still doth grow? ",
 
-            "let me not to the marriage of true minds\n" +
+        "let me not to the marriage of true minds\n" +
             "admit impediments. love is not love\n" +
             "which alters when it alteration finds\n" +
             "or bends with the remover to remove\n" +
@@ -1750,7 +1750,7 @@ object ShakespeareSmall {
             "  if this be error and upon me prov'd\n" +
             "  I never writ nor no man ever lov'd. ",
 
-            "accuse me thus that I have scanted all\n" +
+        "accuse me thus that I have scanted all\n" +
             "wherein I should your great deserts repay\n" +
             "forgot upon your dearest love to call\n" +
             "whereto all bonds do tie me day by day\n" +
@@ -1765,7 +1765,7 @@ object ShakespeareSmall {
             "  since my appeal says I did strive to prove\n" +
             "  the constancy and virtue of your love. ",
 
-            "like as to make our appetite more keen\n" +
+        "like as to make our appetite more keen\n" +
             "with eager compounds we our palate urge\n" +
             "as to prevent our maladies unseen\n" +
             "we sicken to shun sickness when we purge\n" +
@@ -1780,7 +1780,7 @@ object ShakespeareSmall {
             "  but thence I learn and find the lesson true\n" +
             "  drugs poison him that so fell sick of you. ",
 
-            "what potions have I drunk of siren tears\n" +
+        "what potions have I drunk of siren tears\n" +
             "distill'd from limbecks foul as hell within\n" +
             "applying fears to hopes and hopes to fears\n" +
             "still losing when I saw myself to win!\n" +
@@ -1795,7 +1795,7 @@ object ShakespeareSmall {
             "  so I return rebuk'd to my content\n" +
             "  and gain by ill thrice more than I have spent. ",
 
-            "that you were once unkind befriends me now\n" +
+        "that you were once unkind befriends me now\n" +
             "and for that sorrow which I then did feel\n" +
             "needs must I under my transgression bow\n" +
             "unless my nerves were brass or hammer'd steel.\n" +
@@ -1810,7 +1810,7 @@ object ShakespeareSmall {
             "  but that your trespass now becomes a fee\n" +
             "  mine ransoms yours and yours must ransom me. ",
 
-            "'tis better to be vile than vile esteem'd\n" +
+        "'tis better to be vile than vile esteem'd\n" +
             "when not to be receives reproach of being\n" +
             "and the just pleasure lost which is so deem'd\n" +
             "not by our feeling but by others' seeing\n" +
@@ -1825,7 +1825,7 @@ object ShakespeareSmall {
             "  unless this general evil they maintain\n" +
             "  all men are bad and in their doBadness reign. ",
 
-            "thy gift thy tables are within my brain\n" +
+        "thy gift thy tables are within my brain\n" +
             "full character'd with lasting memory\n" +
             "which shall above that idle rank remain\n" +
             "beyond all date even to eternity\n" +
@@ -1840,7 +1840,7 @@ object ShakespeareSmall {
             "  to keep an adjunct to remember thee\n" +
             "  were to import forgetfulness in me. ",
 
-            "no time thou shalt not boast that I do change\n" +
+        "no time thou shalt not boast that I do change\n" +
             "thy pyramids built up with newer might\n" +
             "to me are nothing novel nothing strange\n" +
             "they are but dressings of a former sight.\n" +
@@ -1855,7 +1855,7 @@ object ShakespeareSmall {
             "  this I do vow and this shall ever be\n" +
             "  I will be true despite thy scythe and thee. ",
 
-            "If my dear love were but the child of state\n" +
+        "If my dear love were but the child of state\n" +
             "It might for fortune's bastard be unfather'd\n" +
             "as subject to time's love or to time's hate\n" +
             "weeds among weeds or flowers with flowers gather'd.\n" +
@@ -1870,7 +1870,7 @@ object ShakespeareSmall {
             "  to this I witness call the fools of time\n" +
             "  which die for goodness who have lived for crime. ",
 
-            "were't aught to me I bore the canopy\n" +
+        "were't aught to me I bore the canopy\n" +
             "with my extern the outward honouring\n" +
             "or laid great bases for eternity\n" +
             "which proves more short than waste or ruining?\n" +
@@ -1885,7 +1885,7 @@ object ShakespeareSmall {
             "  hence thou suborned informer! a true soul\n" +
             "  when most impeach'd stands least in thy control. ",
 
-            "o thou my lovely boy who in thy power\n" +
+        "o thou my lovely boy who in thy power\n" +
             "dost hold time's fickle glass his fickle hour\n" +
             "who hast by waning grown and therein show'st\n" +
             "thy lovers withering as thy sweet self grow'st.\n" +
@@ -1898,7 +1898,7 @@ object ShakespeareSmall {
             "  her audit (though delayed) answered must be\n" +
             "  and her quietus is to render thee. ",
 
-            "In the old age black was not counted fair\n" +
+        "In the old age black was not counted fair\n" +
             "or if it were it bore not beauty's name\n" +
             "but now is black beauty's successive heir\n" +
             "and beauty slander'd with a bastard shame\n" +
@@ -1913,7 +1913,7 @@ object ShakespeareSmall {
             "  yet so they mourn becoming of their woe\n" +
             "  that every tongue says beauty should look so. ",
 
-            "how oft when thou my music music play'st\n" +
+        "how oft when thou my music music play'st\n" +
             "upon that blessed wood whose motion sounds\n" +
             "with thy sweet fingers when thou gently sway'st\n" +
             "the wiry concord that mine ear confounds\n" +
@@ -1928,7 +1928,7 @@ object ShakespeareSmall {
             "  since saucy jacks so happy are in this\n" +
             "  give them thy fingers me thy lips to kiss. ",
 
-            "the expense of spirit in a waste of shame\n" +
+        "the expense of spirit in a waste of shame\n" +
             "Is lust in action and till action lust\n" +
             "Is perjur'd murderous bloody full of blame\n" +
             "savage extreme rude cruel not to trust\n" +
@@ -1943,7 +1943,7 @@ object ShakespeareSmall {
             "  all this the world well knows yet none knows well\n" +
             "  to shun the heaven that leads men to this hell. ",
 
-            "my mistress' eyes are nothing like the sun\n" +
+        "my mistress' eyes are nothing like the sun\n" +
             "coral is far more red than her lips red\n" +
             "If snow be white why then her breasts are dun\n" +
             "If hairs be wires black wires grow on her head.\n" +
@@ -1958,7 +1958,7 @@ object ShakespeareSmall {
             "  and yet by heaven I think my love as rare\n" +
             "  as any she belied with false compare. ",
 
-            "thou art as tyrannous so as thou art\n" +
+        "thou art as tyrannous so as thou art\n" +
             "as those whose beauties proudly make them cruel\n" +
             "for well thou know'st to my dear doting heart\n" +
             "thou art the fairest and most precious jewel.\n" +
@@ -1973,7 +1973,7 @@ object ShakespeareSmall {
             "  in nothing art thou black save in thy deeds\n" +
             "  and thence this slander as I think proceeds. ",
 
-            "thine eyes I love and they as pitying me\n" +
+        "thine eyes I love and they as pitying me\n" +
             "knowing thy heart torment me with disdain\n" +
             "have put on black and loving mourners be\n" +
             "looking with pretty ruth upon my pain.\n" +
@@ -1988,7 +1988,7 @@ object ShakespeareSmall {
             "  then will I swear beauty herself is black\n" +
             "  and all they foul that thy complexion lack. ",
 
-            "beshrew that heart that makes my heart to groan\n" +
+        "beshrew that heart that makes my heart to groan\n" +
             "for that deep wound it gives my friend and me!\n" +
             "Is't not enough to torture me alone\n" +
             "but slave to slavery my sweet'st friend must be?\n" +
@@ -2003,7 +2003,7 @@ object ShakespeareSmall {
             "  and yet thou wilt for I being pent in thee\n" +
             "  perforce am thine and all that is in me. ",
 
-            "so now I have confess'd that he is thine\n" +
+        "so now I have confess'd that he is thine\n" +
             "and I my self am mortgag'd to thy will\n" +
             "myself I'll forfeit so that other mine\n" +
             "thou wilt restore to be my comfort still\n" +
@@ -2018,7 +2018,7 @@ object ShakespeareSmall {
             "  him have I lost thou hast both him and me\n" +
             "  he pays the whole and yet am I not free. ",
 
-            "whoever hath her wish thou hast thy 'will'\n" +
+        "whoever hath her wish thou hast thy 'will'\n" +
             "and 'will' to boot and 'will' in over-plus\n" +
             "more than enough am I that vex'd thee still\n" +
             "to thy sweet will making addition thus.\n" +
@@ -2033,7 +2033,7 @@ object ShakespeareSmall {
             "  let no unkind 'no' fair beseechers kill\n" +
             "  think all but one and me in that one 'will.' ",
 
-            "If thy soul check thee that I come so near\n" +
+        "If thy soul check thee that I come so near\n" +
             "swear to thy blind soul that I was thy 'will'\n" +
             "and will thy soul knows is admitted there\n" +
             "thus far for love my love-suit sweet fulfil.\n" +
@@ -2048,7 +2048,7 @@ object ShakespeareSmall {
             "  make but my name thy love and love that still\n" +
             "  and then thou lov'st me for my name is 'will.' ",
 
-            "thou blind fool love what dost thou to mine eyes\n" +
+        "thou blind fool love what dost thou to mine eyes\n" +
             "that they behold and see not what they see?\n" +
             "they know what beauty is see where it lies\n" +
             "yet what the best is take the worst to be.\n" +
@@ -2063,7 +2063,7 @@ object ShakespeareSmall {
             "  in things right true my heart and eyes have err'd\n" +
             "  and to this false plague are they now transferr'd. ",
 
-            "when my love swears that she is made of truth\n" +
+        "when my love swears that she is made of truth\n" +
             "I do believe her though I know she lies\n" +
             "that she might think me some untutor'd youth\n" +
             "unlearned in the world's false subtleties.\n" +
@@ -2078,7 +2078,7 @@ object ShakespeareSmall {
             "  therefore I lie with her and she with me\n" +
             "  and in our faults by lies we flatter'd be. ",
 
-            "o! call not me to justify the wrong\n" +
+        "o! call not me to justify the wrong\n" +
             "that thy unkindness lays upon my heart\n" +
             "wound me not with thine eye but with thy tongue\n" +
             "use power with power and slay me not by art\n" +
@@ -2093,7 +2093,7 @@ object ShakespeareSmall {
             "  yet do not so but since I am near slain\n" +
             "  kill me outright with looks and rid my pain. ",
 
-            "be wise as thou art cruel do not press\n" +
+        "be wise as thou art cruel do not press\n" +
             "my tongue-tied patience with too much disdain\n" +
             "lest sorrow lend me words and words express\n" +
             "the manner of my pity-wanting pain.\n" +
@@ -2108,7 +2108,7 @@ object ShakespeareSmall {
             "  that I may not be so nor thou belied\n" +
             "  bear thine eyes straight though thy proud heart go wide. ",
 
-            "In faith I do not love thee with mine eyes\n" +
+        "In faith I do not love thee with mine eyes\n" +
             "for they in thee a thousand errors note\n" +
             "but 'tis my heart that loves what they despise\n" +
             "who in despite of view is pleased to dote.\n" +
@@ -2123,7 +2123,7 @@ object ShakespeareSmall {
             "  only my plague thus far I count my gain\n" +
             "  that she that makes me sin awards me pain. ",
 
-            "love is my sin and thy dear virtue hate\n" +
+        "love is my sin and thy dear virtue hate\n" +
             "hate of my sin grounded on sinful loving\n" +
             "o! but with mine compare thou thine own state\n" +
             "and thou shalt find it merits not reproving\n" +
@@ -2138,7 +2138,7 @@ object ShakespeareSmall {
             "  if thou dost seek to have what thou dost hide\n" +
             "  by self-example mayst thou be denied! ",
 
-            "lo as a careful housewife runs to catch\n" +
+        "lo as a careful housewife runs to catch\n" +
             "one of her feather'd creatures broke away\n" +
             "sets down her babe and makes all swift dispatch\n" +
             "In pursuit of the thing she would have stay\n" +
@@ -2153,7 +2153,7 @@ object ShakespeareSmall {
             "  so will I pray that thou mayst have thy 'will'\n" +
             "  if thou turn back and my loud crying still. ",
 
-            "two loves I have of comfort and despair\n" +
+        "two loves I have of comfort and despair\n" +
             "which like two spirits do suggest me still\n" +
             "the better angel is a man right fair\n" +
             "the worser spirit a woman colour'd ill.\n" +
@@ -2168,7 +2168,7 @@ object ShakespeareSmall {
             "  yet this shall I ne'er know but live in doubt\n" +
             "  till my bad angel fire my good one out. ",
 
-            "those lips that love's own hand did make\n" +
+        "those lips that love's own hand did make\n" +
             "breathed forth the sound that said 'I hate'\n" +
             "to me that languish'd for her sake\n" +
             "but when she saw my woeful state\n" +
@@ -2183,7 +2183,7 @@ object ShakespeareSmall {
             "  'I hate' from hate away she threw\n" +
             "  and sav'd my life saying 'not you'. ",
 
-            "poor soul the centre of my sinful earth\n" +
+        "poor soul the centre of my sinful earth\n" +
             "my sinful earth these rebel powers array\n" +
             "why dost thou pine within and suffer dearth\n" +
             "painting thy outward walls so costly gay?\n" +
@@ -2198,7 +2198,7 @@ object ShakespeareSmall {
             "  so shall thou feed on death that feeds on men\n" +
             "  and death once dead there's no more dying then. ",
 
-            "my love is as a fever longing still\n" +
+        "my love is as a fever longing still\n" +
             "for that which longer nurseth the disease\n" +
             "feeding on that which doth preserve the ill\n" +
             "the uncertain sickly appetite to please.\n" +
@@ -2213,7 +2213,7 @@ object ShakespeareSmall {
             "  for I have sworn thee fair and thought thee bright\n" +
             "  who art as black as hell as dark as night. ",
 
-            "o me! what eyes hath love put in my head\n" +
+        "o me! what eyes hath love put in my head\n" +
             "which have no correspondence with true sight\n" +
             "or if they have where is my judgment fled\n" +
             "that censures falsely what they see aright?\n" +
@@ -2228,7 +2228,7 @@ object ShakespeareSmall {
             "  o cunning love! with tears thou keep'st me blind\n" +
             "  lest eyes well-seeing thy foul faults should find. ",
 
-            "canst thou o cruel! say I love thee not\n" +
+        "canst thou o cruel! say I love thee not\n" +
             "when I against myself with thee partake?\n" +
             "do I not think on thee when I forgot\n" +
             "am of my self all tyrant for thy sake?\n" +
@@ -2243,7 +2243,7 @@ object ShakespeareSmall {
             "  but love hate on for now I know thy mind\n" +
             "  those that can see thou lov'st and I am blind. ",
 
-            "o! from what power hast thou this powerful might\n" +
+        "o! from what power hast thou this powerful might\n" +
             "with insufficiency my heart to sway?\n" +
             "to make me give the lie to my true sight\n" +
             "and swear that brightness doth not grace the day?\n" +
@@ -2258,7 +2258,7 @@ object ShakespeareSmall {
             "  if thy unworthiness rais'd love in me\n" +
             "  more worthy I to be belov'd of thee. ",
 
-            "love is too young to know what conscience is\n" +
+        "love is too young to know what conscience is\n" +
             "yet who knows not conscience is born of love?\n" +
             "then gentle cheater urge not my amiss\n" +
             "lest guilty of my faults thy sweet self prove\n" +
@@ -2273,7 +2273,7 @@ object ShakespeareSmall {
             "  no want of conscience hold it that I call\n" +
             "  her 'love' for whose dear love I rise and fall. ",
 
-            "In loving thee thou know'st I am forsworn\n" +
+        "In loving thee thou know'st I am forsworn\n" +
             "but thou art twice forsworn to me love swearing\n" +
             "In act thy bed-vow broke and new faith torn\n" +
             "In vowing new hate after new love bearing\n" +
@@ -2288,7 +2288,7 @@ object ShakespeareSmall {
             "  for I have sworn thee fair more perjur'd I\n" +
             "  to swear against the truth so foul a lie! ",
 
-            "cupid laid by his brand and fell asleep\n" +
+        "cupid laid by his brand and fell asleep\n" +
             "a maid of dian's this advantage found\n" +
             "and his love-kindling fire did quickly steep\n" +
             "In a cold valley-fountain of that ground\n" +
@@ -2303,7 +2303,7 @@ object ShakespeareSmall {
             "  but found no cure the bath for my help lies\n" +
             "  where cupid got new fire my mistress' eyes. ",
 
-            "the little love-god lying once asleep\n" +
+        "the little love-god lying once asleep\n" +
             "laid by his side his heart-inflaming brand\n" +
             "whilst many nymphs that vow'd chaste life to keep\n" +
             "came tripping by but in her maiden hand\n" +

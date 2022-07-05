@@ -50,7 +50,7 @@ class StringArrayAdapter
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         // Create a new view.
         val v = LayoutInflater.from(viewGroup.context)
-                .inflate(R.layout.line_list_item, viewGroup, false)
+            .inflate(R.layout.line_list_item, viewGroup, false)
 
         return ViewHolder(v)
     }
@@ -97,7 +97,7 @@ class StringArrayAdapter
     /**
      * [ViewHolder] class that our `Adapter` uses.
      */
-    inner class ViewHolder
+    class ViewHolder
     /**
      * Our constructor. First we call our super's constructor. Then we set the `OnClickListener`
      * of our [View] parameter `v` to a lambda whose `onClick` override just logs which position
@@ -149,10 +149,12 @@ class StringArrayAdapter
          * TAG used for logging
          */
         private const val TAG = "StringArrayAdapter"
+
         /**
          * Our data set.
          */
         private lateinit var mDataSet: Array<String>
+
         /**
          * `LinearLayoutManager` used by the `RecyclerView` we are the adapter for
          */

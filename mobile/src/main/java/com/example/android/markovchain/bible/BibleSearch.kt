@@ -27,14 +27,17 @@ class BibleSearch : DialogFragment() {
      * Canonical Bible citation for current verse
      */
     private var mLabel: String? = null
+
     /**
      * Current verse
      */
     private var mText: String? = null
+
     /**
      * Array containing all words in current verse (duplicates removed)
      */
     private lateinit var mSuggestions: Array<String>
+
     /**
      * Suggestions Adapter for the `MultiAutoCompleteTextView` with id R.id.edit
      */
@@ -108,13 +111,13 @@ class BibleSearch : DialogFragment() {
         mText = requireArguments().getString("text")
 
         mSuggestions = uniq(
-                noPunct(mText!!)
-                        .split(" ".toRegex())
-                        .dropLastWhile { it.isEmpty() }
-                        .toTypedArray()
+            noPunct(mText ?: return)
+                .split(" ".toRegex())
+                .dropLastWhile { it.isEmpty() }
+                .toTypedArray()
         )
         mAdapter = ArrayAdapter(BibleActivity.bibleContext,
-                android.R.layout.simple_dropdown_item_1line, mSuggestions)
+            android.R.layout.simple_dropdown_item_1line, mSuggestions)
 
         Log.i(TAG, "onCreate called with: $mLabel $mText")
 
@@ -177,8 +180,10 @@ class BibleSearch : DialogFragment() {
             startActivity(intent)
 
 
-            BibleActivity.bibleDialog!!.mLabel = BibleActivity.dialogTitle
-            BibleActivity.bibleDialog!!.mText = BibleActivity.dialogText
+            (BibleActivity.bibleDialog
+                ?: return@setOnClickListener).mLabel = BibleActivity.dialogTitle
+            (BibleActivity.bibleDialog
+                ?: return@setOnClickListener).mText = BibleActivity.dialogText
             this@BibleSearch.dismiss()
         }
         return v
@@ -188,7 +193,7 @@ class BibleSearch : DialogFragment() {
         /**
          * TAG used for logging
          */
-        const val TAG = "BibleSearch"
+        const val TAG: String = "BibleSearch"
 
         /**
          * Create and initialize a [BibleSearch] `DialogFragment`. First we initialize our

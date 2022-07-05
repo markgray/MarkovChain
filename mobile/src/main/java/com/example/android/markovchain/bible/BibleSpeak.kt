@@ -22,14 +22,17 @@ class BibleSpeak : DialogFragment(), OnInitListener {
      * canonical Bible citation for current verse
      */
     private var mLabel: String? = null
+
     /**
      * text of current verse
      */
     private var mText: String? = null
+
     /**
      * `TextToSpeech` instance we will use to synthesize speech
      */
     private var mTts: TextToSpeech? = null
+
     /**
      * `View` containing our layout, inflated in `onCreateView`
      */
@@ -57,28 +60,31 @@ class BibleSpeak : DialogFragment(), OnInitListener {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         Log.i(TAG, "onCreateView called")
         mView = inflater.inflate(R.layout.bible_speak, container, false)
-        setDisplayedText(mView!!)
+        setDisplayedText(mView ?: return null)
 
         // Watch for dismiss button clicks
-        var button = mView!!.findViewById<Button>(R.id.dismiss)
+        var button = (mView ?: return null).findViewById<Button>(R.id.dismiss)
         button.setOnClickListener {
             // When button is clicked, dismiss this DialogFragment
 
-            BibleActivity.bibleDialog!!.mLabel = BibleActivity.dialogTitle
-            BibleActivity.bibleDialog!!.mText = BibleActivity.dialogText
+            (BibleActivity.bibleDialog
+                ?: return@setOnClickListener).mLabel = BibleActivity.dialogTitle
+            (BibleActivity.bibleDialog
+                ?: return@setOnClickListener).mText = BibleActivity.dialogText
             this@BibleSpeak.dismiss()
         }
         // Watch for NEXT  button clicks
-        button = mView!!.findViewById(R.id.next)
+        button = (mView ?: return null).findViewById(R.id.next)
         button.setOnClickListener { v ->
             // When button is clicked, move to the next verse and speak it
             BibleAdapter.moveToVerse(v, BibleActivity.dialogVerse + 1)
             mLabel = BibleActivity.dialogTitle
             mText = BibleActivity.dialogText
-            setDisplayedText(mView!!)
+            setDisplayedText(mView ?: return@setOnClickListener)
 
             val dummyBundle: Bundle? = null
-            mTts!!.speak(mText, TextToSpeech.QUEUE_ADD, dummyBundle,null)
+            (mTts
+                ?: return@setOnClickListener).speak(mText, TextToSpeech.QUEUE_ADD, dummyBundle, null)
         }
 
         return mView
@@ -137,7 +143,7 @@ class BibleSpeak : DialogFragment(), OnInitListener {
             mTts = BibleActivity.textToSpeech
 
             val dummyBundle: Bundle? = null
-            mTts!!.speak(mText, TextToSpeech.QUEUE_ADD, dummyBundle, null)
+            (mTts ?: return).speak(mText, TextToSpeech.QUEUE_ADD, dummyBundle, null)
         }
 
     }
@@ -154,13 +160,13 @@ class BibleSpeak : DialogFragment(), OnInitListener {
      */
     override fun onInit(status: Int) {
         if (status == TextToSpeech.SUCCESS) {
-            val result = mTts!!.setLanguage(Locale.US)
+            val result = (mTts ?: return).setLanguage(Locale.US)
             if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
                 Log.e(TAG, "TTS language is not available.")
             } else {
 
                 val dummyBundle: Bundle? = null
-                mTts!!.speak(mText, TextToSpeech.QUEUE_ADD, dummyBundle,null)
+                (mTts ?: return).speak(mText, TextToSpeech.QUEUE_ADD, dummyBundle, null)
             }
         } else {
             // Initialization failed.

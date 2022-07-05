@@ -23,10 +23,12 @@ class Markov {
      * Our instance's Markov [Chain] instance
      */
     lateinit var mChain: Chain
+
     /**
      * Optional callback class instance to invoke when class is ready to be used
      */
     private var mDoneListener: DoneListener? = null
+
     /**
      * Optional View for above [DoneListener] to use for Toast context
      */
@@ -118,23 +120,27 @@ class Markov {
          * follow those two words in the original source text.
          */
         private var stateTable = Hashtable<Prefix, Array<String>>()
+
         /**
          * [Prefix] that we are currently working with, the initial prefix is two [NONWORD] "words"
          */
         private var prefix = Prefix(NONWORD)
+
         /**
          * Used to pick a random word from suffix array to follow up the Prefix
          */
         private var rand = Random()
+
         /**
          * Used in `init()` method to decide if the [Prefix] field [prefix] needs to be reset to
          * (NONWORD,NONWORD) (The first line indicator).
          */
         private var firstLine = true
+
         /**
          * set to true once our [Chain] state table is loaded with data.
          */
-        var loaded = false
+        var loaded: Boolean = false
 
         /**
          * Build State table from our [Reader] parameter [quotes] input stream. First we check if our
@@ -179,11 +185,11 @@ class Markov {
                 wordsRead++ // for debugging only
             }
             Log.i(TAG, "Words read: $wordsRead") // for debugging only
-            Log.i(TAG, "Size of HashTable: ${ stateTable.size } ")
+            Log.i(TAG, "Size of HashTable: ${stateTable.size} ")
             add(NONWORD)
             loaded = true
             if (mDoneListener != null) {
-                mDoneListener!!.onDone(mDoneListenerView!!)
+                (mDoneListener ?: return).onDone(mDoneListenerView ?: return)
             }
 
         }
@@ -215,7 +221,7 @@ class Markov {
             try {
                 line = reader.readLine()
                 while (line != null) {
-                    val words= myFastSplit(line)
+                    val words = myFastSplit(line)
                     prefix.pref[0] = words[0]
                     prefix.pref[1] = words[1]
                     stateTable[Prefix(prefix)] = words
@@ -226,9 +232,9 @@ class Markov {
             }
 
             loaded = true
-            Log.i(TAG, "Size of HashTable: ${ stateTable.size } ")
+            Log.i(TAG, "Size of HashTable: ${stateTable.size} ")
             if (mDoneListener != null) {
-                mDoneListener!!.onDone(mDoneListenerView!!)
+                (mDoneListener ?: return).onDone(mDoneListenerView ?: return)
             }
         }
 
@@ -529,10 +535,12 @@ class Markov {
          * Used for log.i calls
          */
         internal const val TAG = "Markov"
+
         /**
          * "word" that can't appear
          */
         internal const val NONWORD = "%"
+
         /**
          * Constant used by `hashCode()`
          */

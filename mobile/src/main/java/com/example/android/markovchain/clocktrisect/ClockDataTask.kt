@@ -19,18 +19,22 @@ open class ClockDataTask
      * The hour we are currently working on
      */
     internal var h: Int = 0
+
     /**
      * The minute we are currently working on
      */
     internal var m: Int = 0
+
     /**
      * The second we are currently working on
      */
     internal var s: Double = 0.0
+
     /**
      * The fraction of a second we are to increment by
      */
     private var increment = 1.0
+
     /**
      * The `ClockDataItem` whose badness we are currently considering.
      */
@@ -107,11 +111,11 @@ open class ClockDataTask
                 if (nextClockDataItem != null) {
                     s = when (increment) {
                         1.0 -> 0.0
-                        else -> nextClockDataItem.timeSecond - 10.0*increment
+                        else -> nextClockDataItem.timeSecond - 10.0 * increment
                     }
                     val endSecond: Double = when (increment) {
                         1.0 -> 60.0
-                        else -> nextClockDataItem.timeSecond + 10.0*increment
+                        else -> nextClockDataItem.timeSecond + 10.0 * increment
                     }
                     while (s < endSecond) {
                         trialClock[h, m] = s

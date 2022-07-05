@@ -21,14 +21,17 @@ class WhatIsManActivity : AppCompatActivity() {
      * [TextView] used to display our book chapters
      */
     lateinit var whatTextView: TextView
+
     /**
      * [TextView] used to display "Waiting for data to load…" message while waiting
      */
     lateinit var whatWaiting: TextView
+
     /**
      * [LinearLayout] that we add our chapter selection [Button]'s to.
      */
     private lateinit var whatChapter: LinearLayout
+
     /**
      * [ScrollView] that holds the [LinearLayout] field [whatChapter] (which holds our chapter
      * selection [Button]'s)
@@ -127,7 +130,7 @@ class WhatIsManActivity : AppCompatActivity() {
              * @param result The result of the operation computed by [.doInBackground].
              */
             override fun onPostExecute(result: Spanned?) {
-                whatTextView.text = result!!
+                whatTextView.text = (result ?: return)
                 whatWaiting.visibility = View.GONE
                 whatTextView.visibility = View.VISIBLE
             }
@@ -142,42 +145,43 @@ class WhatIsManActivity : AppCompatActivity() {
         /**
          * List of the resource ids for the chapters in "What Is Man"
          */
-        val resourceIDS = intArrayOf(
-                R.raw.chapter1,
-                R.raw.chapter2,
-                R.raw.chapter3,
-                R.raw.chapter4,
-                R.raw.chapter5,
-                R.raw.chapter6,
-                R.raw.chapter7,
-                R.raw.chapter8,
-                R.raw.chapter9,
-                R.raw.chapter10,
-                R.raw.chapter11,
-                R.raw.chapter12,
-                R.raw.chapter13,
-                R.raw.chapter14,
-                R.raw.chapter15
+        val resourceIDS: IntArray = intArrayOf(
+            R.raw.chapter1,
+            R.raw.chapter2,
+            R.raw.chapter3,
+            R.raw.chapter4,
+            R.raw.chapter5,
+            R.raw.chapter6,
+            R.raw.chapter7,
+            R.raw.chapter8,
+            R.raw.chapter9,
+            R.raw.chapter10,
+            R.raw.chapter11,
+            R.raw.chapter12,
+            R.raw.chapter13,
+            R.raw.chapter14,
+            R.raw.chapter15
         )
+
         /**
          * List of the titles for the chapters in "What Is Man" (used to label the selection buttons)
          */
-        val titles = arrayOf(
-                "Chapter 1: What is Man?",
-                "Chapter 2: The Death of Jean",
-                "Chapter 3: The Turning-Point of My Life",
-                "Chapter 4: How to Make History Dates Stick",
-                "Chapter 5: The Memorable Assassination",
-                "Chapter 6: A Scrap of Curious History",
-                "Chapter 7: Switzerland, the Cradle of Liberty",
-                "Chapter 8: At the Shrine of St. Wagner",
-                "Chapter 9: William Dean Howells",
-                "Chapter 10: English as she is Taught",
-                "Chapter 11: A Simplified Alphabet",
-                "Chapter 12: As Concerns Interpreting the Deity",
-                "Chapter 13: Concerning Tobacco",
-                "Chapter 14: The Bee",
-                "Chapter 15: Taming the Bicycle"
+        val titles: Array<String> = arrayOf(
+            "Chapter 1: What is Man?",
+            "Chapter 2: The Death of Jean",
+            "Chapter 3: The Turning-Point of My Life",
+            "Chapter 4: How to Make History Dates Stick",
+            "Chapter 5: The Memorable Assassination",
+            "Chapter 6: A Scrap of Curious History",
+            "Chapter 7: Switzerland, the Cradle of Liberty",
+            "Chapter 8: At the Shrine of St. Wagner",
+            "Chapter 9: William Dean Howells",
+            "Chapter 10: English as she is Taught",
+            "Chapter 11: A Simplified Alphabet",
+            "Chapter 12: As Concerns Interpreting the Deity",
+            "Chapter 13: Concerning Tobacco",
+            "Chapter 14: The Bee",
+            "Chapter 15: Taming the Bicycle"
         )
     }
 

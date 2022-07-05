@@ -11,15 +11,20 @@ import android.widget.TextView
 import androidx.fragment.app.DialogFragment
 import com.example.android.markovchain.R
 
+/**
+ * The [DialogFragment] that is launched when the user wishes to have [TextToSpeech] read a verse.
+ */
 class SpeechDialog : DialogFragment(), TextToSpeech.OnInitListener {
     /**
      * text of current verse
      */
     private var mText: String? = null
+
     /**
      * [TextToSpeech] instance we will use to synthesize speech
      */
     private var mTts: TextToSpeech? = null
+
     /**
      * [View] containing our layout, inflated in [onCreateView]
      */
@@ -47,9 +52,9 @@ class SpeechDialog : DialogFragment(), TextToSpeech.OnInitListener {
      */
     @Suppress("RedundantNullableReturnType")
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         mView = inflater.inflate(R.layout.speech_layout, container, false)
         mView.findViewById<TextView>(R.id.speech_text).text = mText
@@ -89,7 +94,7 @@ class SpeechDialog : DialogFragment(), TextToSpeech.OnInitListener {
         if (status == TextToSpeech.SUCCESS) {
             Log.i(TAG, "TextToSpeech successfully initialized")
             val dummyBundle: Bundle? = null
-            mTts!!.speak(mText, TextToSpeech.QUEUE_ADD, dummyBundle, null)
+            (mTts ?: return).speak(mText, TextToSpeech.QUEUE_ADD, dummyBundle, null)
         } else {
             Log.e(TAG, "Could not initialize TTS.")
         }

@@ -17,10 +17,12 @@ class ShakespeareActivity : FragmentActivity() {
      * The [RecyclerView] in our layout which display the text of Shakespeare's sonnets
      */
     private lateinit var mRecyclerView: RecyclerView
+
     /**
      * [RecyclerView.LayoutManager] for our [RecyclerView] (a `LinearLayoutManager` instance)
      */
     private lateinit var mLayoutManager: RecyclerView.LayoutManager
+
     /**
      * Adapter for our [RecyclerView]
      */
@@ -51,14 +53,14 @@ class ShakespeareActivity : FragmentActivity() {
         mRecyclerView.adapter = mAdapter
         mRecyclerView.layoutManager = mLayoutManager
         Log.i(TAG, "Verses read: " + ShakespeareSonnets.SONNETS.size)
-        Snackbar.make(mRecyclerView,"Long click a verse to hear it read", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
+        Snackbar.make(mRecyclerView, "Long click a verse to hear it read", Snackbar.LENGTH_LONG)
+            .setAction("Action", null).show()
     }
 
     companion object {
         /**
          * TAG for logging
          */
-        const val TAG = "ShakespeareRecycler"
+        const val TAG: String = "ShakespeareRecycler"
     }
 }

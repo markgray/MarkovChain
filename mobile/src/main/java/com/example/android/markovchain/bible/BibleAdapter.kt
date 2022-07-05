@@ -97,9 +97,9 @@ class BibleAdapter
                  */
                 Log.d(TAG, "Element $layoutPosition clicked.")
                 Toast.makeText(
-                        view.context,
-                        makeCitation(mChapterAndVerse[layoutPosition]),
-                        Toast.LENGTH_LONG
+                    view.context,
+                    makeCitation(mChapterAndVerse[layoutPosition]),
+                    Toast.LENGTH_LONG
                 ).show()
             }
             // Define long click listener for the ViewHolder's View.
@@ -114,7 +114,7 @@ class BibleAdapter
                  * @return true because the callback consumed the long click
                  */
                 (view.context as BibleActivity).showDialog(makeCitation(mChapterAndVerse[layoutPosition]),
-                        textView.text as String)
+                    textView.text as String)
                 BibleActivity.dialogVerse = adapterPosition
                 true
             }
@@ -136,7 +136,7 @@ class BibleAdapter
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         // Create a new view.
         val v = LayoutInflater.from(viewGroup.context)
-                .inflate(R.layout.line_list_item, viewGroup, false)
+            .inflate(R.layout.line_list_item, viewGroup, false)
 
         return ViewHolder(v)
     }
@@ -177,19 +177,23 @@ class BibleAdapter
          * TAG used for logging
          */
         private const val TAG = "BibleAdapter"
+
         /**
          * Random number generator used for moveToRandom
          */
         private val rand = Random()
+
         /**
          * `RecyclerView.LayoutManager` passed to our constructor
          */
         lateinit var mLayoutManager: LinearLayoutManager
+
         /**
          * Verses of the King James Bible read in by the `initDataSet()` method of `BibleMain`,
          * it is set by our constructor to its `ArrayList<String> dataSet` parameter.
          */
         lateinit var mDataSet: ArrayList<String>
+
         /**
          * Chapter and verse Citation for each verse in our dataset `mDataSet`, it is set by our
          * constructor to its `ArrayList<String> chapterAndVerse` parameter.
@@ -199,32 +203,35 @@ class BibleAdapter
         /**
          * Flag to prevent us from accessing our `numberToBook` map until initialization of it finishes
          */
-        var numberToBookInitialized = false
+        var numberToBookInitialized: Boolean = false
+
         /**
          * Map of book names indexed by book number
          */
         lateinit var numberToBook: HashMap<String, String>
+
         /**
          * Array of book numbers
          */
-        val numbers = arrayOf("01", "02", "03", "04", "05", "06", "07", "08", "09", "10",
-                "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24",
-                "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38",
-                "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52",
-                "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64", "65", "66")
+        val numbers: Array<String> = arrayOf("01", "02", "03", "04", "05", "06", "07", "08", "09", "10",
+            "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24",
+            "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38",
+            "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52",
+            "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64", "65", "66")
+
         /**
          * Array of book names
          */
-        val books = arrayOf("Genesis", "Exodus", "Leviticus", "Numbers", "Deuteronomy",
-                "Joshua", "Judges", "Ruth", "1 Samuel", "2 Samuel", "1 Kings", "2 Kings",
-                "1 Chronicles", "2 Chronicles", "Ezra", "Nehemiah", "Esther", "Job", "Psalms",
-                "Proverbs", "Ecclesiastes", "Song of Solomon", "Isaiah", "Jeremiah", "Lamentations",
-                "Ezekiel", "Daniel", "Hosea", "Joel", "Amos", "Obadiah", "Jonah", "Micah", "Nahum",
-                "Habakkuk", "Zephaniah", "Haggai", "Zechariah", "Malachi", "Matthew", "Mark", "Luke",
-                "John", "Acts", "Romans", "1 Corinthians", "2 Corinthians", "Galatians", "Ephesians",
-                "Philippians", "Colossians", "1 Thessalonians", "2 Thessalonians", "1 Timothy",
-                "2 Timothy", "Titus", "Philemon", "Hebrews", "James", "1 Peter", "2 Peter", "1 John",
-                "2 John", "3 John", "Jude", "Revelation")
+        val books: Array<String> = arrayOf("Genesis", "Exodus", "Leviticus", "Numbers", "Deuteronomy",
+            "Joshua", "Judges", "Ruth", "1 Samuel", "2 Samuel", "1 Kings", "2 Kings",
+            "1 Chronicles", "2 Chronicles", "Ezra", "Nehemiah", "Esther", "Job", "Psalms",
+            "Proverbs", "Ecclesiastes", "Song of Solomon", "Isaiah", "Jeremiah", "Lamentations",
+            "Ezekiel", "Daniel", "Hosea", "Joel", "Amos", "Obadiah", "Jonah", "Micah", "Nahum",
+            "Habakkuk", "Zephaniah", "Haggai", "Zechariah", "Malachi", "Matthew", "Mark", "Luke",
+            "John", "Acts", "Romans", "1 Corinthians", "2 Corinthians", "Galatians", "Ephesians",
+            "Philippians", "Colossians", "1 Thessalonians", "2 Thessalonians", "1 Timothy",
+            "2 Timothy", "Titus", "Philemon", "Hebrews", "James", "1 Peter", "2 Peter", "1 John",
+            "2 John", "3 John", "Jude", "Revelation")
 
         /**
          * Creates a Canonical Bible citation: "BookName:##:###:###" from the `String numChatVerse`

@@ -24,11 +24,13 @@ class ClockTrisectActivity : AppCompatActivity() {
     /**
      * Amount to increment seconds by for each trial [ClockDataItem]
      */
-    var increment = 1.0
+    var increment: Double = 1.0
+
     /**
      * The precision needed to format the current [increment]
      */
     private var incrementPrecision = 0
+
     /**
      * [LinearLayout] we add our results to
      */
@@ -38,18 +40,22 @@ class ClockTrisectActivity : AppCompatActivity() {
      * [Button] used to display result sorted by "badness"
      */
     private lateinit var mSortedButton: Button
+
     /**
      * The `AsyncTask` which does all our calculations
      */
     private lateinit var clockDataTask: ClockDataTask
+
     /**
      * The [BenchMark] which times how long it takes to do all our calculations
      */
     lateinit var benchMark: BenchMark
+
     /**
      * The array of [ClockDataItem] objects with the best trisection for each minute on the clock
      */
     private var minuteBestClock: Array<ClockDataItem?>? = null
+
     /**
      * The size of the clock face pie chart in pixels we are to display as part of our output.
      */
@@ -99,25 +105,25 @@ class ClockTrisectActivity : AppCompatActivity() {
          *
          * Parameter: The `View` that was clicked.
          */
-        button.setOnClickListener {view ->
+        button.setOnClickListener { view ->
             mSortedButton.visibility = View.VISIBLE
             if (increment > SMALLEST_INCREMENT) {
                 ClockDataItem.secondFormat = "%0" + (incrementPrecision + 2) + "." + incrementPrecision + "f"
                 createClockDataTask()
                 changeButtonLabel(
-                        view,
-                        "Increment of ${ format(Locale.US,"%6.5g", increment) } seconds, try smaller?"
+                    view,
+                    "Increment of ${format(Locale.US, "%6.5g", increment)} seconds, try smaller?"
                 )
                 increment /= 10.0
                 incrementPrecision++
                 benchMark = BenchMark()
-                clockDataTask.execute(minuteBestClock!!)
+                clockDataTask.execute(minuteBestClock ?: return@setOnClickListener)
             } else {
                 changeButtonLabel(view, "That's all folks, $increment is too small")
                 Toast.makeText(
-                        view.context,
-                        "Significant digits of double reached, sorry.",
-                        Toast.LENGTH_LONG
+                    view.context,
+                    "Significant digits of double reached, sorry.",
+                    Toast.LENGTH_LONG
                 ).show()
             }
         }
@@ -144,7 +150,7 @@ class ClockTrisectActivity : AppCompatActivity() {
      */
     private fun displaySortedResults() {
         outputLinearLayout.removeAllViews()
-        val sortedResults = minuteBestClock!!.filterNotNull().sortedDescending()
+        val sortedResults = (minuteBestClock ?: return).filterNotNull().sortedDescending()
         for (value in sortedResults) {
             addText(value.toString(), value, outputLinearLayout)
         }
@@ -203,7 +209,7 @@ class ClockTrisectActivity : AppCompatActivity() {
             override fun onPostExecute(result: ClockDataItem?) {
                 val benchResult = NumberFormat.getNumberInstance(Locale.US).format(benchMark.stop())
                 addText("Final Result: $benchResult milliseconds\n$result\n",
-                        result!!, outputLinearLayout)
+                    result ?: return, outputLinearLayout)
             }
 
             /**
@@ -217,7 +223,7 @@ class ClockTrisectActivity : AppCompatActivity() {
              */
             override fun onProgressUpdate(vararg progress: ClockDataItem?) {
                 addText(progress[0].toString() + "\n",
-                        progress[0]!!, outputLinearLayout)
+                    progress[0] ?: return, outputLinearLayout)
 //                Log.i(TAG, "Posting Hourly best for: " + values[0].timeHour)
             }
         }
@@ -234,10 +240,12 @@ class ClockTrisectActivity : AppCompatActivity() {
          * TAG used for logging.
          */
         internal const val TAG = "ClockTrisect"
+
         /**
          * The size of the clock face pie chart in DIPs we are to display as part of our output.
          */
         private const val CLOCK_SIZE_DIP = 100
+
         /**
          * Limit of significant digits of a [Double] value.
          */

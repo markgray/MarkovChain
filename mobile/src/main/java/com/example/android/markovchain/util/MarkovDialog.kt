@@ -20,6 +20,7 @@ class MarkovDialog : DialogFragment() {
      * Possibility statistics for the current verse
      */
     private var mPossibles: String? = null
+
     /**
      * Text of the current verse
      */

@@ -22,14 +22,17 @@ class BibleChoose : DialogFragment() {
      * Bible citation for the current verse
      */
     private var mLabel: String? = null
+
     /**
      * Text of the current verse
      */
     private var mText: String? = null
+
     /**
      * Name of the book chosen using the spinner
      */
     private lateinit var mBook: String
+
     /**
      * Chapter and verse read from the [EditText] used for that purpose
      */
@@ -38,11 +41,13 @@ class BibleChoose : DialogFragment() {
     /**
      * Book number of the book selected in the `Spinner`
      */
-    var bookNumber = 0
+    var bookNumber: Int = 0
+
     /**
      * Book name corresponding to the `bookNumber`
      */
     lateinit var bookName: String
+
     /**
      * `OnItemSelectedListener` for the adapter of the `Spinner`
      */
@@ -156,12 +161,12 @@ class BibleChoose : DialogFragment() {
         val spin = v.findViewById<Spinner>(R.id.spinner)
 
         val spinnerArrayAdapter = ArrayAdapter(v.context,
-                android.R.layout.simple_spinner_item,
-                BibleAdapter.books)
+            android.R.layout.simple_spinner_item,
+            BibleAdapter.books)
         spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spin.adapter = spinnerArrayAdapter
         spin.onItemSelectedListener = spinSelected
-        spin.setSelection(BibleActivity.indexFromCitation(mLabel!!))
+        spin.setSelection(BibleActivity.indexFromCitation(mLabel ?: return null))
 
         val cavEditText = v.findViewById<EditText>(R.id.chapter_and_verse)
 
@@ -206,8 +211,10 @@ class BibleChoose : DialogFragment() {
             BibleAdapter.moveToVerse(view, verseNumber)
             this@BibleChoose.dismiss()
 
-            BibleActivity.bibleDialog!!.mLabel = BibleActivity.dialogTitle
-            BibleActivity.bibleDialog!!.mText = BibleActivity.dialogText
+            (BibleActivity.bibleDialog
+                ?: return@setOnClickListener).mLabel = BibleActivity.dialogTitle
+            (BibleActivity.bibleDialog
+                ?: return@setOnClickListener).mText = BibleActivity.dialogText
         }
 
         return v
@@ -217,7 +224,7 @@ class BibleChoose : DialogFragment() {
         /**
          * TAG used for logging
          */
-        const val TAG = "BibleChoose"
+        const val TAG: String = "BibleChoose"
 
         /**
          * Create a new [BibleChoose] instance. First we initialize our [BibleChoose] variable
