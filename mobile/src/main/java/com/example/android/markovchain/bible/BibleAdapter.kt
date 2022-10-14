@@ -115,7 +115,7 @@ class BibleAdapter
                  */
                 (view.context as BibleActivity).showDialog(makeCitation(mChapterAndVerse[layoutPosition]),
                     textView.text as String)
-                BibleActivity.dialogVerse = adapterPosition
+                BibleActivity.dialogVerse = bindingAdapterPosition
                 true
             }
         }

@@ -1,6 +1,7 @@
 package com.example.android.markovchain.util
 
 import android.util.Log
+import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -10,6 +11,7 @@ import kotlinx.coroutines.withContext
  * A coroutine version of `AsyncTask`
  * TODO: make methods and comments more closely resemble AsyncTask
  */
+@OptIn(DelicateCoroutinesApi::class)
 abstract class CoroutinesAsyncTask<Params, Progress, Result> {
 
     /**
