@@ -32,7 +32,6 @@ class TestBedActivity : AppCompatActivity() {
         val list = mutableListOf("a", "b", "c")
 
         val pair: Pair<Int, Int> = Pair(1, 2)
-        @Suppress("RedundantSamConstructor")
-        list.sortWith(Comparator { _, _ -> pair.first })
+        list.sortWith { _, _ -> pair.first }
     }
 }

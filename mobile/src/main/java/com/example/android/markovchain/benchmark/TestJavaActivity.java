@@ -123,7 +123,7 @@ public class TestJavaActivity extends AppCompatActivity {
      *
      * @param savedInstanceState always null since onSaveInstanceState is not overridden
      */
-    @SuppressLint("SetTextI18n")
+    @SuppressLint("SetTextI18n") // This is a US only app
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -239,7 +239,7 @@ public class TestJavaActivity extends AppCompatActivity {
      * This class should be extended by classes which wish to benchmark their code in the
      * overridden method {@code testMethod()}.
      */
-    @SuppressLint("StaticFieldLeak")
+    @SuppressLint("StaticFieldLeak") // TODO: Fix static field leak
     private class ControlClass extends CalcTask {
         /**
          * Runs on the UI thread after {@code doInBackground(Long...)}. The {@code Long result} parameter
@@ -287,7 +287,7 @@ public class TestJavaActivity extends AppCompatActivity {
     /**
      * This is a simple example use of ControlClass designed to benchmark division.
      */
-    @SuppressLint("StaticFieldLeak")
+    @SuppressLint("StaticFieldLeak") // TODO: Fix static field leak
     private class ControlClass1 extends ControlClass {
         /**
          * Accumulator register for repeated divisions
@@ -312,7 +312,7 @@ public class TestJavaActivity extends AppCompatActivity {
     /**
      * This is a simple example use of ControlClass designed to benchmark multiplication.
      */
-    @SuppressLint("StaticFieldLeak")
+    @SuppressLint("StaticFieldLeak") // TODO: Fix static field leak
     private class ControlClass2 extends ControlClass {
         /**
          * Accumulator register for repeated multiplications

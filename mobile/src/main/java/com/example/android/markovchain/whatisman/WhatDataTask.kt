@@ -83,7 +83,7 @@ internal constructor(
         return if (VERSION.SDK_INT >= VERSION_CODES.N) {
             Html.fromHtml(builder.toString(), 0)
         } else {
-            @Suppress("DEPRECATION")
+            @Suppress("DEPRECATION") // Needed for Build.VERSION.SDK_INT < Build.VERSION_CODES.N
             Html.fromHtml(builder.toString())
         }
     }

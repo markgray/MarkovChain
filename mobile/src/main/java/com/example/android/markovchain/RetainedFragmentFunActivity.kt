@@ -153,7 +153,7 @@ class RetainedFragmentFunActivity : FragmentActivity() {
          *
          * @return Return the View for the fragment's UI, or null.
          */
-        @Suppress("RedundantNullableReturnType")
+        @Suppress("RedundantNullableReturnType") // The method we override returns nullable
         override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
@@ -253,7 +253,7 @@ class RetainedFragmentFunActivity : FragmentActivity() {
             if (mWorkFragment == null) {
                 mWorkFragment = RetainedFragment()
                 // Tell it who it is working with.
-                @Suppress("DEPRECATION") // Use a FragmentResultListener
+                @Suppress("DEPRECATION") // TODO: Use a FragmentResultListener
                 (mWorkFragment ?: return).setTargetFragment(this, 0)
                 mFM.beginTransaction().add(mWorkFragment ?: return, "work").commit()
             }
@@ -344,7 +344,7 @@ class RetainedFragmentFunActivity : FragmentActivity() {
                                 ?: return@synchronized)
 
                             try {
-                                @Suppress("PLATFORM_CLASS_MAPPED_TO_KOTLIN")
+                                @Suppress("PLATFORM_CLASS_MAPPED_TO_KOTLIN") // synchronized is good IMO
                                 (this as Object).wait()
                             } catch (e: InterruptedException) {
                                 e.printStackTrace()
@@ -362,7 +362,7 @@ class RetainedFragmentFunActivity : FragmentActivity() {
                     // here to pretend like we are.
                     synchronized(this) {
                         try {
-                            @Suppress("PLATFORM_CLASS_MAPPED_TO_KOTLIN")
+                            @Suppress("PLATFORM_CLASS_MAPPED_TO_KOTLIN") // synchronized is good IMO
                             (this as Object).wait(50)
                         } catch (e: InterruptedException) {
                             e.printStackTrace()
@@ -390,7 +390,7 @@ class RetainedFragmentFunActivity : FragmentActivity() {
 
             // Tell the framework to try to keep this fragment around
             // during a configuration change.
-            @Suppress("DEPRECATION")// Replace with a ViewModel
+            @Suppress("DEPRECATION") // TODO: Replace with a ViewModel
             retainInstance = true
             // Start up the worker thread.
             mThread.start()
@@ -423,7 +423,7 @@ class RetainedFragmentFunActivity : FragmentActivity() {
             Log.i(TAG, "onActivityCreated has been called")
 
             // Retrieve the progress bar from the target's view hierarchy.
-            @Suppress("DEPRECATION") // Use a FragmentResultListener
+            @Suppress("DEPRECATION") // TODO: Use a FragmentResultListener
             val targetFragment = targetFragment
             val gotView: View?
             if (targetFragment != null) {
@@ -448,7 +448,7 @@ class RetainedFragmentFunActivity : FragmentActivity() {
             // We are ready for our thread to go.
             synchronized(mThread) {
                 mReady = true
-                @Suppress("PLATFORM_CLASS_MAPPED_TO_KOTLIN")
+                @Suppress("PLATFORM_CLASS_MAPPED_TO_KOTLIN") // synchronized is good IMO
                 (mThread as Object).notify()
             }
         }
@@ -470,7 +470,7 @@ class RetainedFragmentFunActivity : FragmentActivity() {
             synchronized(mThread) {
                 mReady = false
                 mQuiting = true
-                @Suppress("PLATFORM_CLASS_MAPPED_TO_KOTLIN")
+                @Suppress("PLATFORM_CLASS_MAPPED_TO_KOTLIN") // synchronized is good IMO
                 (mThread as Object).notify()
             }
 
@@ -495,7 +495,7 @@ class RetainedFragmentFunActivity : FragmentActivity() {
             synchronized(mThread) {
                 mProgressBar = null
                 mReady = false
-                @Suppress("PLATFORM_CLASS_MAPPED_TO_KOTLIN")
+                @Suppress("PLATFORM_CLASS_MAPPED_TO_KOTLIN") // synchronized is good IMO
                 (mThread as Object).notify()
             }
 
@@ -524,7 +524,7 @@ class RetainedFragmentFunActivity : FragmentActivity() {
         fun restart() {
             synchronized(mThread) {
                 mPosition = 0
-                @Suppress("PLATFORM_CLASS_MAPPED_TO_KOTLIN")
+                @Suppress("PLATFORM_CLASS_MAPPED_TO_KOTLIN") // synchronized is good IMO
                 (mThread as Object).notify()
             }
         }

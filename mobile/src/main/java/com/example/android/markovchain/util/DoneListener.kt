@@ -25,15 +25,9 @@ open class DoneListener {
      * @param view [View] to provide `Context` for a Toast or other use that needs a [View] or `Context`.
      */
     fun onDone(view: View) {
-        @Suppress("RedundantSamConstructor")
-        (view.context as Activity).runOnUiThread(Thread(Runnable
-        /**
-         * When our Thread is run, we simply call `onDoneDo(View view)`, where
-         * `View view` is the `View` passed to `onDone`.
-         */
-        {
+        (view.context as Activity).runOnUiThread(Thread {
             onDoneDo(view)
-        }))
+        })
 
     }
 

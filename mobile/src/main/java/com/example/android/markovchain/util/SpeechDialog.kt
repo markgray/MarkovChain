@@ -50,7 +50,7 @@ class SpeechDialog : DialogFragment(), TextToSpeech.OnInitListener {
      * @return Return the [View] for the fragment's UI, or null.
      * TODO: Move findViewById calls to onViewCreated? No advantage as I see it.
      */
-    @Suppress("RedundantNullableReturnType")
+    @Suppress("RedundantNullableReturnType") // The method we override returns nullable
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

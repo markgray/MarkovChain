@@ -146,7 +146,7 @@ abstract class CoroutinesAsyncTask<Params, Progress, Result> {
      * @param mayInterruptIfRunning `<tt></tt>` if the thread executing this task should be
      * interrupted; otherwise, in-progress tasks are allowed to complete.
      */
-    @Suppress("MemberVisibilityCanBePrivate")
+    @Suppress("MemberVisibilityCanBePrivate") // I like to use kdoc [] references
     fun cancel(mayInterruptIfRunning: Boolean) {
         if (!mayInterruptIfRunning) Log.d("cancel", "cancel called with mayInterruptIfRunning false")
         isCancelled = true
