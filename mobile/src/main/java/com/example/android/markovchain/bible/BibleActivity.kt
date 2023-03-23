@@ -1,5 +1,6 @@
 package com.example.android.markovchain.bible
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.os.ConditionVariable
@@ -381,6 +382,7 @@ class BibleActivity : FragmentActivity() {
         /**
          * Application Context for `BibleMain` and dialogs to use when necessary
          */
+        @SuppressLint("StaticFieldLeak") // TODO: Fix static field leak
         lateinit var bibleContext: Context
 
         /**
@@ -401,6 +403,7 @@ class BibleActivity : FragmentActivity() {
         /**
          * Contains reference to the `BibleDialog` launched by long clicking a verse
          */
+        @SuppressLint("StaticFieldLeak") // TODO: fix static field length
         var bibleDialog: BibleDialog? = null
 
         /**
