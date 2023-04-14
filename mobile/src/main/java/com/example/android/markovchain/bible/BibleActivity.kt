@@ -239,15 +239,18 @@ class BibleActivity : FragmentActivity() {
         when (spinIndex) {
             BibleDialog.CHOICE_NONE -> {
             }
+
             BibleDialog.CHOICE_RANDOM_VERSE -> {
                 BibleAdapter.moveToRandom(v)
                 (bibleDialog ?: return).refresh(dialogTitle, dialogText)
             }
+
             BibleDialog.CHOICE_GOOGLE -> {
                 showDialog(BibleSearch.newInstance(dialogTitle, dialogText))
                 BibleAdapter.moveToVerse(v, dialogVerse)
                 (bibleDialog ?: return).refresh(dialogTitle, dialogText)
             }
+
             BibleDialog.CHOICE_BOOKMARK -> showDialog(BibleBookmark.newInstance(dialogTitle, dialogText))
             BibleDialog.CHOICE_GO_TO_VERSE -> showDialog(BibleChoose.newInstance(dialogTitle, dialogText))
             BibleDialog.CHOICE_READ_ALOUD -> showDialog(BibleSpeak.newInstance(dialogTitle, dialogText))

@@ -189,6 +189,7 @@ class ClockDataItem
                     angle2 = angleSecond
                 }
             }
+
             angleMinute < angleSecond && angleMinute < angleHour -> {
                 angle1 = angleMinute
                 if (angleSecond < angleHour) {
@@ -199,6 +200,7 @@ class ClockDataItem
                     angle2 = angleHour
                 }
             }
+
             else -> {
                 angle1 = angleSecond
                 if (angleMinute < angleHour) {

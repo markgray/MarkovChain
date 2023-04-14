@@ -14,7 +14,7 @@ import com.example.android.markovchain.R
  * we randomly generated using `Markov.line`. No longer used since we switched to speaking the
  * verse when long clicked.
  */
-@Suppress("unused") // It used to be used
+// It used to be used
 class MarkovDialog : DialogFragment() {
     /**
      * Possibility statistics for the current verse
