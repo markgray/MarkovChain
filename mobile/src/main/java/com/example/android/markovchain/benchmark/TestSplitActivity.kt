@@ -290,12 +290,12 @@ class TestSplitActivity : AppCompatActivity() {
     private inner class ControlClass1 : ControlClass() {
         /**
          * This method should be overridden by a method which performs whatever computation
-         * you wish to benchmark. Here we just split our [testString] using the library `split`
+         * you wish to benchmark. Here we just split our [TEST_STRING] using the library `split`
          * method
          */
         override fun testMethod() {
             timesCalled++
-            testOutputList = testString
+            testOutputList = TEST_STRING
                 .split(" ".toRegex())
                 .dropLastWhile { it.isEmpty() }
             if (timesCalled % 1000 == 0) {
@@ -312,20 +312,20 @@ class TestSplitActivity : AppCompatActivity() {
 
         /**
          * This method should be overridden by a method which performs whatever computation
-         * you wish to benchmark. Here we split our test [String] field [testString] using a
+         * you wish to benchmark. Here we split our test [String] field [TEST_STRING] using a
          * hand rolled method instead of the kotlin library split method. First we increment
          * our field [timesCalled], then we initialize our [Int] variables `var index` (pointer
-         * to the next character in [testString] to be checked for being a space delimiter),
+         * to the next character in [TEST_STRING] to be checked for being a space delimiter),
          * `var startIndex` (the start index of the current word) and `var endIndex` (the end
          * index of the current word) all to 0. Then we loop while `index` is less than the length
-         * of [testString]:
-         *  - If the character at position `index` in [testString] is a blank character we set
+         * of [TEST_STRING]:
+         *  - If the character at position `index` in [TEST_STRING] is a blank character we set
          *  `endIndex` to `index`, initialize our [String] variable `val word` to the substring
-         *  of [testString] starting at `startIndex` and ending right before `endIndex`, add `word`
+         *  of [TEST_STRING] starting at `startIndex` and ending right before `endIndex`, add `word`
          *  to our [MutableList] field [testOutput] and then set `startIndex` to `index` plus 1.
          *  - In any case we then increment `index` and loop around to consider the next character.
          *
-         * When done with the loop, we add the last substring of [testString] from `startIndex`
+         * When done with the loop, we add the last substring of [TEST_STRING] from `startIndex`
          * to the end of the string (the add is surrounded by an *if* statement for no really
          * good reason, I just felt nervous). If [timesCalled] modulo 1,000 is 0 we log the
          * output we created in [testOutput]. Finally we initialize [testOutput] to an empty
@@ -336,17 +336,17 @@ class TestSplitActivity : AppCompatActivity() {
             var index = 0
             var startIndex = 0
             var endIndex = 0
-            while (index < testString.length) {
-                if (testString[index] == ' ') {
+            while (index < TEST_STRING.length) {
+                if (TEST_STRING[index] == ' ') {
                     endIndex = index
-                    val word: String = testString.substring(startIndex, endIndex)
+                    val word: String = TEST_STRING.substring(startIndex, endIndex)
                     testOutput.add(word)
                     startIndex = index + 1
                 }
                 index++
             }
             if (startIndex != endIndex) {
-                testOutput.add(testString.substring(startIndex))
+                testOutput.add(TEST_STRING.substring(startIndex))
             }
             if (timesCalled % 1000 == 0) {
                 Log.i(TAG, "Results of split: $testOutput")
@@ -369,7 +369,7 @@ class TestSplitActivity : AppCompatActivity() {
         /**
          * The test `String` that our two "split" methods split.
          */
-        internal const val testString: String =
+        internal const val TEST_STRING: String =
             "from fairest creatures we desire increase " +
                 "that thereby beauty's rose might never die " +
                 "but as the riper should by time decease " +
