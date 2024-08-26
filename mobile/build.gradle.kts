@@ -6,7 +6,7 @@ plugins {
 android {
     compileSdk = 34
     defaultConfig {
-        applicationId = "com.example.android.markovchain"
+        applicationId = "com.marktgray.markovchain"
         minSdk = 21
         targetSdk = 34
         versionCode = 1
