@@ -32,7 +32,9 @@
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".biblemarkov.BibleMarkovActivity" />
+        <activity
+            android:name=".biblemarkov.BibleMarkovActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".RetainedFragmentFunActivity"
             android:theme="@style/AppTheme.NoActionBar" />
