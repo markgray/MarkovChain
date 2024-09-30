@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.ScrollView
 import android.widget.TextView
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.example.android.markovchain.R
 
@@ -60,6 +61,7 @@ class WhatIsManActivity : AppCompatActivity() {
      * @param savedInstanceState we do not override `onSaveInstanceState` so do not use
      */
     override fun onCreate(savedInstanceState: Bundle?) {
+        enableEdgeToEdge()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_what_is_man)
 

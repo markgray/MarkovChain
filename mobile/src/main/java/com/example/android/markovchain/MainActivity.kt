@@ -39,8 +39,8 @@ class MainActivity : AppCompatActivity() {
      * @param savedInstanceState we do not override `onSaveInstanceState` so do not use this
      */
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         val linearLayout = findViewById<ViewGroup>(R.id.linear_layout)

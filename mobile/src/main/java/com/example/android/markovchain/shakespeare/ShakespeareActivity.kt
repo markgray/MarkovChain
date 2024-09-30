@@ -2,6 +2,7 @@ package com.example.android.markovchain.shakespeare
 
 import android.os.Bundle
 import android.util.Log
+import androidx.activity.enableEdgeToEdge
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -43,6 +44,7 @@ class ShakespeareActivity : FragmentActivity() {
      * @param savedInstanceState we do not override onSaveInstanceState so ignore this
      */
     override fun onCreate(savedInstanceState: Bundle?) {
+        enableEdgeToEdge()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shakespeare_recycler)
 

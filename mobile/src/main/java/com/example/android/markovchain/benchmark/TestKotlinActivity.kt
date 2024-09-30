@@ -8,6 +8,7 @@ import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.TextView
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.example.android.markovchain.R
 import java.text.NumberFormat
@@ -126,6 +127,7 @@ class TestKotlinActivity : AppCompatActivity() {
      * @param savedInstanceState always null since [onSaveInstanceState] is not overridden
      */
     override fun onCreate(savedInstanceState: Bundle?) {
+        enableEdgeToEdge()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_test_bench_mark)
 

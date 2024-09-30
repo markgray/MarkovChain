@@ -7,6 +7,7 @@ import android.os.ConditionVariable
 import android.speech.tts.TextToSpeech
 import android.util.Log
 import android.view.View
+import androidx.activity.enableEdgeToEdge
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -64,6 +65,7 @@ class BibleActivity : FragmentActivity() {
      * @param savedInstanceState always null since onSaveInstanceState is not overridden
      */
     override fun onCreate(savedInstanceState: Bundle?) {
+        enableEdgeToEdge()
         super.onCreate(savedInstanceState)
         doneReading = false
         mDoneReading.close()

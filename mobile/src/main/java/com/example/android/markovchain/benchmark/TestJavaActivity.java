@@ -9,7 +9,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-
+import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.android.markovchain.R;
@@ -126,6 +126,7 @@ public class TestJavaActivity extends AppCompatActivity {
     @SuppressLint("SetTextI18n") // This is a US only app
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        EdgeToEdge.enable(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_bench_mark);
 
