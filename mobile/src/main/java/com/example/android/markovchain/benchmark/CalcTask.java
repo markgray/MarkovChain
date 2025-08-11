@@ -56,7 +56,6 @@ public class CalcTask extends CoroutinesAsyncTask<Long, Long, Long> {
      */
     @Override
     public Long doInBackground(Long... reps) {
-        //noinspection DataFlowIssue
         Long repeats = reps[0];
         Long publish = reps[1];
         int totalNumber = 0;

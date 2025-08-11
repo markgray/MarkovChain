@@ -16,6 +16,7 @@ import com.example.android.markovchain.R
 import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader
+import androidx.core.content.edit
 
 /**
  * This is the main activity of our Bible Text reading function.
@@ -445,9 +446,9 @@ class BibleActivity : FragmentActivity() {
          */
         fun saveVerseNumber(verse: Int, key: String) {
             val pref = bibleContext.getSharedPreferences(CLASS, Context.MODE_PRIVATE)
-            val editor = pref.edit()
-            editor.putInt(key, verse)
-            editor.apply()
+            pref.edit {
+                putInt(key, verse)
+            }
         }
 
         /**

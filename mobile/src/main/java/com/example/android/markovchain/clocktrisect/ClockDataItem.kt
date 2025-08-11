@@ -12,6 +12,8 @@ import java.util.Formatter
 import java.util.Locale
 import kotlin.math.abs
 import kotlin.math.min
+import androidx.core.graphics.createBitmap
+import androidx.core.graphics.drawable.toDrawable
 
 /**
  * Contains data and methods for holding a time of day, and the corresponding clock hand angles.
@@ -239,7 +241,7 @@ class ClockDataItem
      * @return a `BitmapDrawable` pie chart clock face for the time value we hold
      */
     fun clockFace(resources: Resources, sizeOfBitmap: Int): BitmapDrawable {
-        val bitmap = Bitmap.createBitmap(sizeOfBitmap, sizeOfBitmap, Bitmap.Config.ARGB_8888)
+        val bitmap = createBitmap(sizeOfBitmap, sizeOfBitmap)
         val oval = RectF(0f, 0f, sizeOfBitmap.toFloat(), sizeOfBitmap.toFloat())
         val canvas = Canvas(bitmap)
         var startAngle = min(angleHour, min(angleMinute, angleSecond)).toFloat()
@@ -254,7 +256,7 @@ class ClockDataItem
         mPaint.color = Color.BLUE
         canvas.drawArc(oval, startAngle, pieSlices[2].toFloat(), true, mPaint)
 
-        val bmd = BitmapDrawable(resources, bitmap)
+        val bmd = bitmap.toDrawable(resources)
         bmd.setBounds(0, 0, sizeOfBitmap, sizeOfBitmap)
         return bmd
     }
