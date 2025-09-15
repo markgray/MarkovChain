@@ -143,7 +143,7 @@ class BibleActivity : FragmentActivity() {
      * @return      verse number stored in shared preferences, or the default value passed it
      */
     private fun restoreVerseNumber(verse: Int, key: String): Int {
-        val pref = getSharedPreferences(CLASS, Context.MODE_PRIVATE)
+        val pref = getSharedPreferences(CLASS, MODE_PRIVATE)
         return pref.getInt(key, verse)
     }
 
@@ -445,7 +445,7 @@ class BibleActivity : FragmentActivity() {
          * @param key   key to store it under (presently only "LAST_VERSE_VIEWED")
          */
         fun saveVerseNumber(verse: Int, key: String) {
-            val pref = bibleContext.getSharedPreferences(CLASS, Context.MODE_PRIVATE)
+            val pref = bibleContext.getSharedPreferences(CLASS, MODE_PRIVATE)
             pref.edit {
                 putInt(key, verse)
             }
