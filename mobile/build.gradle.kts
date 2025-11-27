@@ -9,7 +9,7 @@ android {
     compileSdk = 36
     defaultConfig {
         applicationId = "com.marktgray.markovchain"
-        minSdk = 21
+        minSdk = 23
         targetSdk = 36
         versionCode = 1
         versionName = "1.0"
@@ -40,7 +40,7 @@ android {
 }
 
 dependencies {
-    implementation("androidx.activity:activity-ktx:1.11.0")
+    implementation("androidx.activity:activity-ktx:1.12.0")
     implementation("androidx.constraintlayout:constraintlayout:2.2.1")
     implementation("com.google.android.material:material:1.13.0")
     implementation("androidx.recyclerview:recyclerview:1.4.0")
