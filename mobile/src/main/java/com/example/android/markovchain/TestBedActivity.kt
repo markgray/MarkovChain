@@ -14,7 +14,8 @@ import com.example.android.markovchain.shakespeare.ShakespeareSonnets
 class TestBedActivity : AppCompatActivity() {
 
     /**
-     * Called when the activity is starting.
+     * Called when the activity is starting. First we call [enableEdgeToEdge] to enable edge to
+     * edge display, then we call our super's implementation of `onCreate`.
      *
      * @param savedInstanceState we do not override [onSaveInstanceState] so do not use.
      */

@@ -55,8 +55,9 @@ class BibleMarkovActivity : FragmentActivity() {
     var mBibleMarkovBenchMark: BenchMark = BenchMark()
 
     /**
-     * Called when the activity is starting. First we call through to our super's implementation of
-     * `onCreate`, then we set our content view to our layout file R.layout.activity_bible_markov_fragment.
+     * First we call [enableEdgeToEdge] to enable edge to edge display, then we call our super's
+     * implementation of `onCreate`, and set our content view to our layout file
+     * `R.layout.activity_bible_markov_fragment`.
      * We initialize our [ProgressBar] field [mProgressBar] by fining the view in our layout with id
      * R.id.bible_markov_fragment_progress, our [RecyclerView] field [mRecyclerView] by finding the
      * view with id R.id.bible_markov_fragment, and initialize our `LayoutManager` field [mLayoutManager]

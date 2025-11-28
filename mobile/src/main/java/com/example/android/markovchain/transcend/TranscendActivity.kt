@@ -50,8 +50,9 @@ class TranscendActivity : AppCompatActivity() {
     private lateinit var transcendBooksScrollView: ScrollView
 
     /**
-     * Called when the activity is starting. First we call our super's implementation of `onCreate`,
-     * then we set our content view to our layout file R.layout.activity_transcend. We initialize our
+     * Called when the activity is starting. First we call [enableEdgeToEdge] to enable edge to
+     * edge display, then we call our super's implementation of `onCreate`, and set our content
+     * view to our layout file R.`layout.activity_transcend`. We initialize our
      * [RecyclerView.LayoutManager] field [mLayoutManager] with a new [LinearLayoutManager] instance,
      * initialize our [LinearLayout] field [transcendBooks] by finding the view with the id
      * R.id.transcend_books, initialize our [ScrollView] field [transcendBooksScrollView] by

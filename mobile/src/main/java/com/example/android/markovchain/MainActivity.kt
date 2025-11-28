@@ -28,13 +28,13 @@ import com.example.android.markovchain.whatisman.WhatIsManActivity
 class MainActivity : AppCompatActivity() {
 
     /**
-     * Called when the activity is starting. First we call through to our super's implementation of
-     * `onCreate`, then we set our content view to our layout file R.layout.activity_main. We
-     * initialize our `val linearLayout` by finding the [ViewGroup] in our content view with the
-     * id R.id.linear_layout. We then use our [addButton] method to add buttons that will
-     * launch each of our activities to `linearLayout` as well as using our method [addText]
-     * to add a [TextView] to separate the "featured" Activity's from experimental ones added
-     * to the end of `linearLayout`.
+     * Called when the activity is starting. First we call [enableEdgeToEdge] to enable edge to
+     * edge display, then we call our super's implementation of `onCreate`, and set our content
+     * view to our layout file `R.layout.activity_main`. We initialize our `val linearLayout` by
+     * finding the [ViewGroup] in our content view with the id R.id.linear_layout. We then use our
+     * [addButton] method to add buttons that will launch each of our activities to `linearLayout`
+     * as well as using our method [addText] to add a [TextView] to separate the "featured"
+     * Activity's from experimental ones added to the end of `linearLayout`.
      *
      * @param savedInstanceState we do not override `onSaveInstanceState` so do not use this
      */

@@ -28,9 +28,9 @@ class RetainedFragmentFunActivity : FragmentActivity() {
     private lateinit var mFragmentManager: FragmentManager
 
     /**
-     * Called when the activity is starting. First we call through to our super's implementation of
-     * `onCreate`. If this is the first time we are called (our [Bundle] parameter [savedInstanceState]
-     * is *null*) we need to:
+     * First we call [enableEdgeToEdge] to enable edge to edge display, then we call our super's
+     * implementation of `onCreate`.  If this is the first time we are called (our [Bundle]
+     * parameter [savedInstanceState] is *null*) we need to:
      *  1. Get the [FragmentManager] for interacting with fragments associated with this activity
      *  to initialize our [FragmentManager] field [mFragmentManager]
      *  2. Start a series of edit operations on the Fragments associated with this [FragmentManager].

@@ -92,8 +92,9 @@ class TestKotlinActivity : AppCompatActivity() {
     private lateinit var mControlInstance: ControlClass
 
     /**
-     * Called when the activity is starting. First we call through to our super's implementation of
-     * `onCreate`, then we set our content view to our layout file activity_test_bench_mark.
+     * Called when the activity is starting. First we call [enableEdgeToEdge] to enable edge to
+     * edge display, then we call our super's implementation of `onCreate`, and set our content
+     * view to our layout file `activity_test_bench_mark`.
      * We initialize our [ProgressBar] field [vProgressBar] by finding the view with id
      * R.id.progress_horizontal, initialize our [Button] field [vStartButtonOne] by finding the
      * view with id R.id.start_one and set its `OnClickListener` to an a lambda that will run the

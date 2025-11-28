@@ -43,7 +43,8 @@ class BibleActivity : FragmentActivity() {
     var stringList: ArrayList<String> = ArrayList()
 
     /**
-     * Called when the activity is starting. First we call our super's implementation of `onCreate`.
+     * Called when the activity is starting. First we call [enableEdgeToEdge] to enable edge to
+     * edge display, then we call our super's implementation of `onCreate`.
      * We set the field [mDoneReading] to false so that our UI thread knows to wait until our text
      * file is read into memory before trying to access the data. We reset our [ConditionVariable]
      * field [mDoneReading] to the closed state so that any threads that call its `block()` method

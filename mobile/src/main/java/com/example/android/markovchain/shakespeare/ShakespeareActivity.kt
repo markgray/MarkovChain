@@ -30,8 +30,9 @@ class ShakespeareActivity : FragmentActivity() {
     private lateinit var mAdapter: StringArrayAdapter
 
     /**
-     * Called when the activity is starting. First we call through to our super's implementation of
-     * `onCreate`, then we set our content view to our layout file R.layout.activity_shakespeare_recycler.
+     * First we call [enableEdgeToEdge] to enable edge to edge display, then we call our super's
+     * implementation of `onCreate`, and set our content view to our layout file
+     * `R.layout.activity_shakespeare_recycler`.
      * Next we initialize our [RecyclerView.LayoutManager] field [mLayoutManager] with an instance of
      * [LinearLayoutManager]. We locate the view with id R.id.shakespeare_recyclerview in order to
      * initialize our [RecyclerView] field [mRecyclerView] to it. We create a new instance of

@@ -42,8 +42,9 @@ class ShakespeareMarkovActivity : FragmentActivity() {
     private lateinit var mAdapter: MarkovAdapter
 
     /**
-     * Called when the activity is starting. First we call through to our super's implementation of
-     * `onCreate`, then we cause our layout file R.layout.activity_shakespeare_markov_recycler
+     * First we call [enableEdgeToEdge] to enable edge to edge display, then we call our super's
+     * implementation of `onCreate`, and cause our layout file
+     * `R.layout.activity_shakespeare_markov_recycler`
      * to be inflated and set to be our content view. Next we initialize our field [mLayoutManager]
      * with an instance of [LinearLayoutManager] and we initialize our field [mRecyclerView]
      * by finding the [RecyclerView] with id R.id.shakespeare_markov_recycler_view. Then we

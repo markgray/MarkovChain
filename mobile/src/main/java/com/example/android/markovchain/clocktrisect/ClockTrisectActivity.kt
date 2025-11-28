@@ -64,8 +64,9 @@ class ClockTrisectActivity : AppCompatActivity() {
 
 
     /**
-     * Called when the [Activity] is starting. First we call our super's implementation of
-     * `onCreate`, then we set our content view to our layout file R.layout.activity_clock_trisect.
+     * First we call [enableEdgeToEdge] to enable edge to edge display, then we call our super's
+     * implementation of `onCreate`, and set our content view to our layout file
+     * `R.layout.activity_clock_trisect`.
      * We initialize our [Int] field [mClockSize] by using the logical density of the display to
      * scale our constant CLOCK_SIZE_DIP to pixels. We initialize our [LinearLayout] field
      * [outputLinearLayout] by finding the view with id R.id.linear_layout, and our [Button]

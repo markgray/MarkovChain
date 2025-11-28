@@ -40,8 +40,9 @@ class WhatIsManActivity : AppCompatActivity() {
     private lateinit var whatChapterScrollView: ScrollView
 
     /**
-     * Called when the activity is starting. First we call our super's implementation of `onCreate`,
-     * then we set our content view to our layout file R.layout.activity_what_is_man. We initialize our
+     * Called when the activity is starting. First we call [enableEdgeToEdge] to enable edge to
+     * edge display, then we call our super's implementation of `onCreate`, and set our content
+     * view to our layout file `R.layout.activity_what_is_man`. We initialize our
      * [LinearLayout] field [whatChapter] by finding the view with id R.id.what_chapter (the chapter
      * selection buttons are placed here), initialize our [ScrollView] field [whatChapterScrollView]
      * by finding the view with id R.id.what_chapter_scrollView (holds our [LinearLayout] field
