@@ -1,6 +1,5 @@
 package com.example.android.markovchain.clocktrisect
 
-import android.app.Activity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -11,6 +10,10 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.graphics.Insets
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updateLayoutParams
 import com.example.android.markovchain.R
 import com.example.android.markovchain.benchmark.BenchMark
 import java.lang.String.format
@@ -66,16 +69,30 @@ class ClockTrisectActivity : AppCompatActivity() {
     /**
      * First we call [enableEdgeToEdge] to enable edge to edge display, then we call our super's
      * implementation of `onCreate`, and set our content view to our layout file
-     * `R.layout.activity_clock_trisect`.
-     * We initialize our [Int] field [mClockSize] by using the logical density of the display to
-     * scale our constant CLOCK_SIZE_DIP to pixels. We initialize our [LinearLayout] field
-     * [outputLinearLayout] by finding the view with id R.id.linear_layout, and our [Button]
-     * variable `val button` by finding the view with id R.id.start_the_clock ("Start the clock").
-     * Finally we set the `OnClickListener` of `button` to an a lambda whose `onClick` override
-     * calls our method [createClockDataTask] to initialize our [ClockDataTask] field [clockDataTask],
-     * initializes our [BenchMark] field [benchMark] (starting its clock) then calls the `execute`
-     * method of `clockDataTask` to start it running (its `doInBackground` method will be called
-     * with the value of the [minuteBestClock] array of [ClockDataItem]'s as its parameter).
+     * `R.layout.activity_clock_trisect`. We initialize our [Int] field [mClockSize] by using the
+     * logical density of the display to scale our constant CLOCK_SIZE_DIP to pixels. We initialize
+     * our [LinearLayout] field [outputLinearLayout] by finding the view with id R.id.linear_layout.
+     *
+     * We call [ViewCompat.setOnApplyWindowInsetsListener] to take over the policy for applying
+     * window insets to [outputLinearLayout], with the `listener` argument a lambda that accepts
+     * the [View] passed the lambda in variable `v` and the [WindowInsetsCompat] passed the lambda
+     * in variable `windowInsets`. It initializes its [Insets] variable `systemBars` to the
+     * [WindowInsetsCompat.getInsets] of `windowInsets` with [WindowInsetsCompat.Type.systemBars]
+     * as the argument. It then gets the insets for the IME (keyboard) using
+     * [WindowInsetsCompat.Type.ime]. It then updates the layout parameters of `v` to be a
+     * [ViewGroup.MarginLayoutParams] with the left margin set to `systemBars.left`, the right
+     * margin set to `systemBars.right`, the top margin set to `systemBars.top`, and the bottom
+     * margin set to the maximum of the system bars bottom inset and the IME bottom inset.
+     * Finally it returns [WindowInsetsCompat.CONSUMED] to the caller (so that the window insets
+     * will not keep passing down to descendant views).
+     *
+     * We initialize our [Button] variable `val button` by finding the view with id
+     * R.id.start_the_clock ("Start the clock"). Finally we set the `OnClickListener` of `button`
+     * to an a lambda whose `onClick` override calls our method [createClockDataTask] to initialize
+     * our [ClockDataTask] field [clockDataTask], initializes our [BenchMark] field [benchMark]
+     * (starting its clock) then calls the `execute` method of `clockDataTask` to start it running
+     * (its `doInBackground` method will be called with the value of the [minuteBestClock] array of
+     * [ClockDataItem]'s as its parameter).
      *
      * @param savedInstanceState we do not override [onSaveInstanceState] so do not use.
      */
@@ -87,6 +104,22 @@ class ClockTrisectActivity : AppCompatActivity() {
         mClockSize = (CLOCK_SIZE_DIP * resources.displayMetrics.density + 0.5f).toInt()
 
         outputLinearLayout = findViewById(R.id.linear_layout)
+        ViewCompat.setOnApplyWindowInsetsListener(outputLinearLayout) { v: View, windowInsets: WindowInsetsCompat ->
+            val systemBars = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
+            val ime = windowInsets.getInsets(WindowInsetsCompat.Type.ime())
+
+            // Apply the insets as a margin to the view.
+            v.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                leftMargin = systemBars.left
+                rightMargin = systemBars.right
+                topMargin = systemBars.top
+                bottomMargin = systemBars.bottom.coerceAtLeast(ime.bottom)
+            }
+            // Return CONSUMED if you don't want want the window insets to keep passing
+            // down to descendant views.
+            WindowInsetsCompat.CONSUMED
+        }
+
         val button = findViewById<Button>(R.id.start_the_clock)
         /**
          * Called when our [Button] `val button` has been clicked. We set the static field

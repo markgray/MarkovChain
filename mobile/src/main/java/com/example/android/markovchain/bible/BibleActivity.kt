@@ -1,3 +1,5 @@
+@file:Suppress("ReplaceSubstringWithSubstringBefore", "ReplaceSubstringWithTake")
+
 package com.example.android.markovchain.bible
 
 import android.annotation.SuppressLint
@@ -7,6 +9,8 @@ import android.os.ConditionVariable
 import android.speech.tts.TextToSpeech
 import android.util.Log
 import android.view.View
+import android.view.ViewGroup
+import android.widget.FrameLayout
 import androidx.activity.enableEdgeToEdge
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentActivity
@@ -17,6 +21,10 @@ import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader
 import androidx.core.content.edit
+import androidx.core.graphics.Insets
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updateLayoutParams
 
 /**
  * This is the main activity of our Bible Text reading function.
@@ -55,16 +63,32 @@ class BibleActivity : FragmentActivity() {
      * forget why we need this though?). We next call our method [initDataSet] which will spawn a
      * background thread to read in the data file we will be using (R.raw.king_james_text_and_verse)
      * and create the data structures needed by our activity. Then we set our content View to our
-     * layout file R.layout.activity_bible_fragment, locate the [RecyclerView] in the layout with
-     * the id R.id.bible_recyclerview and save a reference to it in our [RecyclerView] field
-     * [mRecyclerView]. We initialize our [BibleAdapter] field [mAdapter] to a new instance using
-     * the List containing the text (`ArrayList<String> stringList`), the List containing chapter
-     * and verse annotation for each paragraph (`ArrayList<String> bookChapterVerse`), and using the
-     * layout manager `RecyclerView.LayoutManager mLayoutManager` (an instance of `LinearLayoutManager`
-     * created above). We now set the adapter of [mRecyclerView] to [mAdapter], and the layout manager
-     * to be used to [mLayoutManager].
+     * layout file R.layout.activity_bible_fragment.
      *
-     * @param savedInstanceState always null since onSaveInstanceState is not overridden
+     * We initialize our [FrameLayout] variable `rootView` to the view with ID `R.id.bible_root`
+     * then call [ViewCompat.setOnApplyWindowInsetsListener] to take over the policy for applying
+     * window insets to `rootView`, with the `listener` argument a lambda that accepts the [View]
+     * passed the lambda in variable `v` and the [WindowInsetsCompat] passed the lambda in variable
+     * `windowInsets`. It initializes its [Insets] variable `systemBars` to the
+     * [WindowInsetsCompat.getInsets] of `windowInsets` with [WindowInsetsCompat.Type.systemBars]
+     * as the argument. It then gets the insets for the IME (keyboard) using
+     * [WindowInsetsCompat.Type.ime]. It then updates the layout parameters of `v` to be a
+     * [ViewGroup.MarginLayoutParams] with the left margin set to `systemBars.left`, the right
+     * margin set to `systemBars.right`, the top margin set to `systemBars.top`, and the bottom
+     * margin set to the maximum of the system bars bottom inset and the IME bottom inset.
+     * Finally it returns [WindowInsetsCompat.CONSUMED] to the caller (so that the window insets
+     * will not keep passing down to descendant views).
+     *
+     * Next we locate the [RecyclerView] in the layout with the id `R.id.bible_recyclerview` and
+     * save a reference to it in our [RecyclerView] field [mRecyclerView]. We initialize our
+     * [BibleAdapter] field [mAdapter] to a new instance using the List containing the text
+     * (`ArrayList<String> stringList`), the List containing chapter and verse annotation for each
+     * paragraph (`ArrayList<String> bookChapterVerse`), and using the layout manager
+     * `RecyclerView.LayoutManager mLayoutManager` (an instance of `LinearLayoutManager` created
+     * above). We now set the adapter of [mRecyclerView] to [mAdapter], and the layout manager to
+     * be used to [mLayoutManager].
+     *
+     * @param savedInstanceState always null since [onSaveInstanceState] is not overridden
      */
     override fun onCreate(savedInstanceState: Bundle?) {
         enableEdgeToEdge()
@@ -74,9 +98,29 @@ class BibleActivity : FragmentActivity() {
         bibleContext = applicationContext
         initDataSet()
         setContentView(R.layout.activity_bible_fragment)
+        val rootView = findViewById<FrameLayout>(R.id.bible_root)
+        ViewCompat.setOnApplyWindowInsetsListener(rootView) { v: View, windowInsets: WindowInsetsCompat ->
+            val systemBars = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
+            val ime = windowInsets.getInsets(WindowInsetsCompat.Type.ime())
+
+            // Apply the insets as a margin to the view.
+            v.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                leftMargin = systemBars.left
+                rightMargin = systemBars.right
+                topMargin = systemBars.top
+                bottomMargin = systemBars.bottom.coerceAtLeast(ime.bottom)
+            }
+            // Return CONSUMED if you don't want want the window insets to keep passing
+            // down to descendant views.
+            WindowInsetsCompat.CONSUMED
+        }
         mLayoutManager = LinearLayoutManager(applicationContext)
         mRecyclerView = findViewById(R.id.bible_recyclerview)
-        mAdapter = BibleAdapter(stringList, bookChapterVerse, mLayoutManager)
+        mAdapter = BibleAdapter(
+            dataSet = stringList,
+            chapterAndVerse = bookChapterVerse,
+            layoutManager = mLayoutManager
+        )
         // Set CustomAdapter as the adapter for RecyclerView.
         mRecyclerView.adapter = mAdapter
         mRecyclerView.layoutManager = mLayoutManager
