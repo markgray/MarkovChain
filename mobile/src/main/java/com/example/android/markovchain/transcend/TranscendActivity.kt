@@ -4,11 +4,16 @@ import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.FrameLayout
 import android.widget.LinearLayout
 import android.widget.ScrollView
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.graphics.Insets
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updateLayoutParams
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android.markovchain.R
@@ -52,18 +57,33 @@ class TranscendActivity : AppCompatActivity() {
     /**
      * Called when the activity is starting. First we call [enableEdgeToEdge] to enable edge to
      * edge display, then we call our super's implementation of `onCreate`, and set our content
-     * view to our layout file R.`layout.activity_transcend`. We initialize our
-     * [RecyclerView.LayoutManager] field [mLayoutManager] with a new [LinearLayoutManager] instance,
-     * initialize our [LinearLayout] field [transcendBooks] by finding the view with the id
-     * R.id.transcend_books, initialize our [ScrollView] field [transcendBooksScrollView] by
-     * finding the view with id R.id.transcend_books_scrollView, initialize our [RecyclerView] field
-     * [transcendRecyleView] by finding the view with the id R.id.transcend_recycle_view, and
-     * initialize our [TextView] field [transcendWaiting] by finding the view with the id
-     * R.id.transcend_waiting. Then we loop over the [Int] variable `i` for all the resource id's in
-     * the [Int] array [resourceIDS] calling our method [addButton] to add a [Button] to our field
-     * [transcendBooks] whose label is the `i`'th entry in the string array [titles], and which will
-     * when clicked load and display the raw text file whose resource id is the `i`'th entry in the
-     * [Int] array [resourceIDS].
+     * view to our layout file R.`layout.activity_transcend`.
+     *
+     * We initialize our [FrameLayout] variable `rootView` to the view with ID `R.id.transcend_root`
+     * then call [ViewCompat.setOnApplyWindowInsetsListener] to take over the policy for applying
+     * window insets to `rootView`, with the `listener` argument a lambda that accepts the [View]
+     * passed the lambda in variable `v` and the [WindowInsetsCompat] passed the lambda in variable
+     * `windowInsets`. It initializes its [Insets] variable `systemBars` to the
+     * [WindowInsetsCompat.getInsets] of `windowInsets` with [WindowInsetsCompat.Type.systemBars]
+     * as the argument. It then gets the insets for the IME (keyboard) using
+     * [WindowInsetsCompat.Type.ime]. It then updates the layout parameters of `v` to be a
+     * [ViewGroup.MarginLayoutParams] with the left margin set to `systemBars.left`, the right
+     * margin set to `systemBars.right`, the top margin set to `systemBars.top`, and the bottom
+     * margin set to the maximum of the system bars bottom inset and the IME bottom inset.
+     * Finally it returns [WindowInsetsCompat.CONSUMED] to the caller (so that the window insets
+     * will not keep passing down to descendant views).     *
+     *
+     * Next we initialize our [RecyclerView.LayoutManager] field [mLayoutManager] with a new
+     * [LinearLayoutManager] instance, initialize our [LinearLayout] field [transcendBooks] by
+     * finding the view with the id `R.id.transcend_books`, initialize our [ScrollView] field
+     * [transcendBooksScrollView] by finding the view with id `R.id.transcend_books_scrollView`,
+     * initialize our [RecyclerView] field [transcendRecyleView] by finding the view with the id
+     * `R.id.transcend_recycle_view`, and initialize our [TextView] field [transcendWaiting] by
+     * finding the view with the id `R.id.transcend_waiting`. Then we loop over the [Int] variable
+     * `i` for all the resource id's in the [Int] array [resourceIDS] calling our method [addButton]
+     * to add a [Button] to our field [transcendBooks] whose label is the `i`'th entry in the string
+     * array [titles], and which will when clicked load and display the raw text file whose resource
+     * id is the `i`'th entry in the [Int] array [resourceIDS].
      *
      * @param savedInstanceState we do not override `onSaveInstanceState` so do not use
      */
@@ -71,6 +91,22 @@ class TranscendActivity : AppCompatActivity() {
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_transcend)
+        val rootView = findViewById<FrameLayout>(R.id.transcend_root)
+        ViewCompat.setOnApplyWindowInsetsListener(rootView) { v: View, windowInsets: WindowInsetsCompat ->
+            val systemBars = windowInsets.getInsets(/* typeMask = */ WindowInsetsCompat.Type.systemBars())
+            val ime = windowInsets.getInsets(WindowInsetsCompat.Type.ime())
+
+            // Apply the insets as a margin to the view.
+            v.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                leftMargin = systemBars.left
+                rightMargin = systemBars.right
+                topMargin = systemBars.top
+                bottomMargin = systemBars.bottom.coerceAtLeast(ime.bottom)
+            }
+            // Return CONSUMED if you don't want want the window insets to keep passing
+            // down to descendant views.
+            WindowInsetsCompat.CONSUMED
+        }
 
         mLayoutManager = LinearLayoutManager(applicationContext)
         transcendBooks = findViewById(R.id.transcend_books)

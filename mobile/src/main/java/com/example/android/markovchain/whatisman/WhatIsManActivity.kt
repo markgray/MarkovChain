@@ -6,11 +6,16 @@ import android.text.Spanned
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.FrameLayout
 import android.widget.LinearLayout
 import android.widget.ScrollView
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.graphics.Insets
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updateLayoutParams
 import com.example.android.markovchain.R
 
 /**
@@ -42,22 +47,37 @@ class WhatIsManActivity : AppCompatActivity() {
     /**
      * Called when the activity is starting. First we call [enableEdgeToEdge] to enable edge to
      * edge display, then we call our super's implementation of `onCreate`, and set our content
-     * view to our layout file `R.layout.activity_what_is_man`. We initialize our
-     * [LinearLayout] field [whatChapter] by finding the view with id R.id.what_chapter (the chapter
-     * selection buttons are placed here), initialize our [ScrollView] field [whatChapterScrollView]
-     * by finding the view with id R.id.what_chapter_scrollView (holds our [LinearLayout] field
-     * [whatChapter] which in turn holds our chapter selection buttons), initialize our [TextView]
-     * field [whatTextView] by finding the view with id R.id.what_textView (the selected chapter
-     * will be displayed here), and initialize our [TextView] field [whatWaiting] by finding the
-     * view with id R.id.what_waiting (this will be displayed while our `WhatDataTask` loads the
-     * chapter selected from our resources). Finally we loop over the [Int] variable `i` for all
-     * of the resource ids in the [Int] array [resourceIDS] calling our method [addButton] method
-     * to add a [Button] to [whatChapter] whose title is given by `titles[ i ]` and whose
-     * `OnClickListener` sets the visibility of [whatChapterScrollView] to GONE, sets the visibility
-     * of [whatWaiting] to VISIBLE and calls our method [loadResourceHtml] to have a [WhatDataTask]
-     * instance load the html file with resource id `resourceIDS[ i ]` in the background into
-     * [whatTextView] (its `onPostExecute` override also changes the visibility of [whatWaiting]
-     * to GONE).
+     * view to our layout file `R.layout.activity_what_is_man`.
+     *
+     * We initialize our [FrameLayout] variable `rootView` to the view with ID `R.id.what_is_man_root`
+     * then call [ViewCompat.setOnApplyWindowInsetsListener] to take over the policy for applying
+     * window insets to `rootView`, with the `listener` argument a lambda that accepts the [View]
+     * passed the lambda in variable `v` and the [WindowInsetsCompat] passed the lambda in variable
+     * `windowInsets`. It initializes its [Insets] variable `systemBars` to the
+     * [WindowInsetsCompat.getInsets] of `windowInsets` with [WindowInsetsCompat.Type.systemBars]
+     * as the argument. It then gets the insets for the IME (keyboard) using
+     * [WindowInsetsCompat.Type.ime]. It then updates the layout parameters of `v` to be a
+     * [ViewGroup.MarginLayoutParams] with the left margin set to `systemBars.left`, the right
+     * margin set to `systemBars.right`, the top margin set to `systemBars.top`, and the bottom
+     * margin set to the maximum of the system bars bottom inset and the IME bottom inset.
+     * Finally it returns [WindowInsetsCompat.CONSUMED] to the caller (so that the window insets
+     * will not keep passing down to descendant views).
+     *
+     * Next We initialize our [LinearLayout] field [whatChapter] by finding the view with id
+     * `R.id.what_chapter` (the chapter selection buttons are placed here), initialize our
+     * [ScrollView] field [whatChapterScrollView] by finding the view with id
+     * `R.id.what_chapter_scrollView` (holds our [LinearLayout] field [whatChapter] which in turn
+     * holds our chapter selection buttons), initialize our [TextView] field [whatTextView] by
+     * finding the view with id `R.id.what_textView` (the selected chapter will be displayed here),
+     * and initialize our [TextView] field [whatWaiting] by finding the view with id
+     * `R.id.what_waiting` (this will be displayed while our `WhatDataTask` loads the chapter
+     * selected from our resources). Finally we loop over the [Int] variable `i` for all of the
+     * resource ids in the [Int] array [resourceIDS] calling our method [addButton] method to add
+     * a [Button] to [whatChapter] whose title is given by `titles[ i ]` and whose `OnClickListener`
+     * sets the visibility of [whatChapterScrollView] to GONE, sets the visibility of [whatWaiting]
+     * to VISIBLE and calls our method [loadResourceHtml] to have a [WhatDataTask] instance load
+     * the html file with resource id `resourceIDS[ i ]` in the background into [whatTextView]
+     * (its `onPostExecute` override also changes the visibility of [whatWaiting] to GONE).
      *
      * @param savedInstanceState we do not override `onSaveInstanceState` so do not use
      */
@@ -65,6 +85,22 @@ class WhatIsManActivity : AppCompatActivity() {
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_what_is_man)
+        val rootView = findViewById<FrameLayout>(R.id.what_is_man_root)
+        ViewCompat.setOnApplyWindowInsetsListener(rootView) { v: View, windowInsets: WindowInsetsCompat ->
+            val systemBars = windowInsets.getInsets(/* typeMask = */ WindowInsetsCompat.Type.systemBars())
+            val ime = windowInsets.getInsets(WindowInsetsCompat.Type.ime())
+
+            // Apply the insets as a margin to the view.
+            v.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                leftMargin = systemBars.left
+                rightMargin = systemBars.right
+                topMargin = systemBars.top
+                bottomMargin = systemBars.bottom.coerceAtLeast(ime.bottom)
+            }
+            // Return CONSUMED if you don't want want the window insets to keep passing
+            // down to descendant views.
+            WindowInsetsCompat.CONSUMED
+        }
 
         whatChapter = findViewById(R.id.what_chapter)
         whatChapterScrollView = findViewById(R.id.what_chapter_scrollView)
